@@ -1,0 +1,21 @@
+{
+  "name": "research-software-directory-admin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@nlesc/react-scripts": "0.3.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "@types/react": "^15.0.38",
+    "@types/react-dom": "^15.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "react-scripts lint"
+  }
+}
