@@ -1,35 +1,27 @@
 import * as React from 'react';
-
-import './App.css';
-
 import {Col, Well} from 'react-bootstrap';
-import Form from 'react-jsonschema-form';
+import {connect, Dispatch} from 'react-redux';
+import {fetchJson, IFetchJSON} from './actions';
+import './App.css';
+import {SoftwareForm} from './form/SoftwareForm';
 
-export class App extends React.Component<{}, { schema: object, formData: object }> {
+const mapDispatchToProps = (dispatch: Dispatch<IFetchJSON>) => ({
+  startFetch: () => dispatch(fetchJson)
+});
+
+const connector = connect((state) => state, mapDispatchToProps );
+class AppComponent extends React.Component<{ startFetch: any}, { }> {
   componentWillMount() {
-    this.setState({});
-    fetch('software.schema.json').then((data) => data.json()).then((data) =>
-      this.setState({ schema : data })
-    );
+    console.log(this.props.startFetch());
   }
-
-  updateFormData = (data: any) => {
-      this.setState({formData: data});
-  }
-
-  form = () => (
-    <Form
-        schema={this.state.schema}
-        onChange={this.updateFormData}
-        formData={this.state.formData}
-    />
-  )
 
   render() {
+    // console.log(this.props.startFetch());
+
     return (
       <div className="App">
         <Col md={8}>
-          {this.state.schema && this.form()}
+          <SoftwareForm />
         </Col>
         <Col md={4}>
           <Well>
@@ -40,3 +32,5 @@ export class App extends React.Component<{}, { schema: object, formData: object 
     );
   }
 }
+
+export const App = connector(AppComponent);
