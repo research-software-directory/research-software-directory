@@ -19,14 +19,32 @@ const enums = {
   ]
 };
 
-const connector = connect((state) => state, {});
+/**
+ * merges non-empty values of `b` that are not in `a` with `a`
+ *
+ * @param {string[]} a enum1
+ * @param {(string[] | null)} b
+ * @returns merge of a and b
+ */
+const mergeEnums = (a: string[], b: string[] | null) => {
+  return a.concat(b && b.filter(
+    (lang: string) => lang !== '' && a.indexOf(lang) === -1
+  ) || []);
+};
+
+const mapStateToProps = (state: any) => {
+  console.log(state);
+  console.log('test', state.data.software.map((software: any) => software.programmingLanguage)
+    .reduce(mergeEnums, []));
+
+  return state.data.software.map((software: any) => software.programmingLanguage);
+};
+
+const connector = connect(mapStateToProps, {});
 
 class SoftwareFormComponent extends React.Component<{}, { schema: object, formData: any }> {
   componentWillMount() {
     this.setState({formData: {id: ''}});
-    // fetch('software.schema.json').then((data) => data.json()).then((data) =>
-      // this.setState({ schema: data })
-    // );
   }
 
   updateFormValue(field: string, value: any) {

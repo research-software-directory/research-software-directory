@@ -1,19 +1,20 @@
-// import { reducer as toastrReducer } from 'react-redux-toastr';
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
+import { IFetchRootJSONFulfilled, IFetchSchemaFulfilled } from './actions';
 
-// import { reducer as ligands } from './ligands';
-// import { reducer as pharmacophores } from './pharmacophores';
-// import { reducer as pocketRadius } from './pocketradius';
-// import { reducer as proteins } from './proteins';
-// import { reducer as sse } from './sse';
+const fetchRootJSONReducer = (state: any = {}, action: IFetchRootJSONFulfilled) => {
+    switch (action.type) {
+        case 'FETCH_ROOT_JSON_FULFILLED':
+            return action.payload;
+        default: return state;
+    }
+};
 
-// export const rootReducer = combineReducers({
-    // sse,
-    // ligands,
-    // pharmacophores,
-    // pocketRadius,
-    // proteins,
-    // toastr: toastrReducer
-// });
+const fetchSchemaReducer = (state: any = {}, action: IFetchSchemaFulfilled) => {
+    switch (action.type) {
+        case 'FETCH_SCHEMA_FULFILLED':
+            return action.payload;
+        default: return state;
+    }
+};
 
-export const rootReducer = (state: any = {}) => state;
+export const rootReducer = combineReducers({data: fetchRootJSONReducer, schema: fetchSchemaReducer});

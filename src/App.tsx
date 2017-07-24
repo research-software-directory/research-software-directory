@@ -1,36 +1,62 @@
 import * as React from 'react';
-import {Col, Well} from 'react-bootstrap';
+import {Col, Row, Well} from 'react-bootstrap';
 import {connect, Dispatch} from 'react-redux';
-import {fetchJson, IFetchJSON} from './actions';
+import { Action } from 'redux';
+import {fetchRootJSON, fetchSchema} from './actions';
 import './App.css';
 import {SoftwareForm} from './form/SoftwareForm';
 
-const mapDispatchToProps = (dispatch: Dispatch<IFetchJSON>) => ({
-  startFetch: () => dispatch(fetchJson)
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  fetchRootJSON: (): Action => dispatch(fetchRootJSON),
+  fetchSchema: (): Action => dispatch(fetchSchema)
 });
 
-const connector = connect((state) => state, mapDispatchToProps );
-class AppComponent extends React.Component<{ startFetch: any}, { }> {
+const mapStateToProps = (state: any) => ({
+  data: state.data,
+  schema: state.schema
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps );
+
+interface IProps {
+  data: any;
+  schema: any;
+  fetchRootJSON(): Action;
+  fetchSchema(): Action;
+}
+
+class AppComponent extends React.Component<IProps, { }> {
   componentWillMount() {
-    console.log(this.props.startFetch());
+    this.props.fetchRootJSON();
+    this.props.fetchSchema();
+  }
+
+  renderAppLoaded() {
+    if (this.props.data && this.props.data.software && this.props.schema) {
+      return (
+        <Row>
+          <Col md={8}>
+            <SoftwareForm />
+          </Col>
+          <Col md={4}>
+            <Well>
+              {JSON.stringify(this.props)}
+            </Well>
+          </Col>
+        </Row>
+      );
+    }
+
+    return null;
   }
 
   render() {
-    // console.log(this.props.startFetch());
-
     return (
       <div className="App">
-        <Col md={8}>
-          <SoftwareForm />
-        </Col>
-        <Col md={4}>
-          <Well>
-            test
-          </Well>
-        </Col>
+        {this.renderAppLoaded()}
       </div>
-    );
+      );
+    }
   }
-}
 
 export const App = connector(AppComponent);
