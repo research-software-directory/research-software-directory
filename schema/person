@@ -1,0 +1,175 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://software.esciencecenter.nl/schema/person",
+	"type": "object",
+	"properties" : {
+		"schema": {
+			"description": "Fixed property, to validate the JSON object with the current schema.",
+			"type": "string",
+			"format": "uri",
+			"enum": [ "http://software.esciencecenter.nl/schema/person" ]
+		},
+		"name" : {
+			"description": "Full name of the person.",
+			"type" : "string"
+		},
+		"@id" : {
+			"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+			"type" : "string",
+			"format" : "uri"
+		},
+    "website": {
+      "description": "Link to the main website.",
+      "type": "string",
+      "format": "uri"
+    },
+    "nlescWebsite": {
+      "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/profile/ing.-stefan-verhoeven).",
+      "type": "string",
+      "format": "uri"
+    },
+		"researchgateUrl": {
+			"description": "Personal ResearchGate profile (e.g. https://www.researchgate.net/profile/Stefan_Verhoeven).",
+			"type": "string",
+			"format": "uri"
+		},
+		"linkedInUrl": {
+			"description": "Person's LinkedIn profile (e.g. https://www.linkedin.com/in/stefan-verhoeven-15381122).",
+			"type": "string",
+			"format": "uri"
+		},
+		"twitterUrl": {
+			"description": "Person's Twitter profile",
+			"type": "string",
+			"format": "uri"
+		},
+		"githubUrl": {
+			"description": "Person's github user profile (e.g. https://github.com/sverhoeven).",
+			"type": "string",
+			"format": "uri"
+		},
+		"ORCID": {
+			"description": "Person's ORCID ID (e.g. http://orcid.org/0000-0002-4510-0385).",
+			"type": "string",
+			"format": "uri"
+		},
+		"jobTitle" : {
+			"description" : "The job title of the person (for example, eScience Research Engineer).",
+			"type" : "string"
+		},
+		"affiliation" : {
+			"description": "Affiliations of a person.",
+			"type": "array",
+			"items": {
+				"anyOf" : [
+					 { "$ref": "organization" },
+					 {
+					 	"properties" : {
+					 		"id" : {
+					 			"type" : "string",
+					 			"format" : "uri"
+					 		}
+					 	}
+					}
+				]
+			}
+		},
+		"description" : {
+			"description": "Person description, bio and/or CV, in Markdown format underneath Frontmatter (---) in Markdown files",
+			"type" : "string"
+		},
+		"photo" : {
+			"description": "Person's portrait.",
+			"type" : "string",
+			"format" : "uri"
+		},
+		"contactPersonOf" : {
+			"description": "Projects or software that a person is contact person of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a project or software, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"ownerOf" : {
+			"description": "Software that a person is the owner of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a software package, preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"contributorOf" : {
+			"description": "Software that a person is a contributor of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a software package, preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"userOf" : {
+			"description": "Software that a person is a user of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a software package, preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"coordinatorOf" : {
+			"description": "Projects that a person is coordinator of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"engineerOf" : {
+			"description": "Projects that a person is engineer of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"principalInvestigatorOf" : {
+			"description": "Projects that a person is PI of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"authorOfReport" : {
+			"description": "Report that a person is an author of.",
+			"type": "array",
+			"items": {
+				"description": "ID of a report, an URI where the reports's metadata can be resolved, e.g., http://software.esciencecenter.nl/report/guide",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"endorsedBy" : {
+			"description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization.",
+			"type": "array",
+			"items": {
+				"description" : "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"email": {
+			"description": "Email address of the person",
+			"type": "string",
+			"format": "email"
+		}
+	},
+	"required": ["name", "affiliation"],
+	"additionalProperties": false
+}

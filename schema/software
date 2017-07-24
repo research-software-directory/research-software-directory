@@ -1,0 +1,258 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://software.esciencecenter.nl/schema/software",
+	"type": "object",
+	"properties" : {
+		"schema": {
+			"description": "Fixed property, to validate the JSON object with the current schema.",
+			"type": "string",
+			"format": "uri",
+			"enum": [ "http://software.esciencecenter.nl/schema/software" ]
+		},
+		"name" : {
+			"description": "Human-readable name",
+			"type" : "string"
+		},
+		"tagLine" : {
+			"description": "One-sentence description of the software.",
+			"type" : "string"
+		},
+		"description" : {
+			"description": "Full description of the software, in Markdown format underneath Frontmatter (---) in Markdown files",
+			"type" : "string"
+		},
+		"@id" : {
+			"description" : "ID of the software. This is preferably an URI where the software's metadata can be resolved, e.g., /software/xenon.",
+			"type" : "string",
+			"format" : "uri"
+		},
+		"codeRepository": {
+			"description": "Link to the repository where the un-compiled, human readable code and related code is located (github, SVN, CodePlex).",
+			"type": "string",
+			"format": "uri"
+		},
+		"nlescWebsite": {
+			"description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/technology/software/xenon).",
+			"type": "string",
+			"format": "uri"
+		},
+		"website": {
+			"description": "Link to the main website.",
+			"type": "string",
+			"format": "uri"
+		},
+		"documentationUrl": {
+			"description": "Link to the documentation pages.",
+			"type": "string",
+			"format": "uri"
+		},
+		"downloadUrl": {
+			"description": "Link to download page (e.g. Github releases, PyPi, npm, jcenter).",
+			"type": "string",
+			"format": "uri"
+		},
+		"doi": {
+			"description": "URL of a relevant DOI (e.g. http://dx.doi.org/10.5281/zenodo.35415).",
+			"type": "string",
+			"format": "uri"
+		},
+		"logo" : {
+			"description" : "URL to an image of the logo of the organization.",
+			"type" : "string",
+			"format" : "uri"
+		},
+		"programmingLanguage" : {
+			"description": "Programming languages used in the software or supported by the software.",
+			"type" : "array",
+			"items" : {
+					"description" : "e.g. C, C++, Java, Python, R, JavaScript, PHP, TypeScript, etc. See https://github.com/github/linguist",
+					"type" : "string"
+			}
+		},
+		"license" : {
+			"description": "Software license.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"description" : "e.g. apache-2.0, gpl-3.0, etc. See https://developer.github.com/v3/licenses/"
+			}
+		},
+		"competence" : {
+			"description": "NLeSC core competences associated to the software.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["Big Data Analytics", "Optimized Data Handling", "Efficient Computing"]
+			}
+		},
+		"discipline" : {
+			"description": "NLeSC disciplines associated to the software.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["Physics & Beyond", "Environment & Sustainability", "Life Sciences & eHealth", "Humanities & Social Sciences", "eScience Methodology"]
+			}
+		},
+		"expertise" : {
+			"description": "NLeSC expertises associated to the project.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["Text Mining", "Machine Learning", "Information Visualization", "Scientific Visualization", "Information Retrieval", "Computer Vision",
+				          "Handling Sensor Data", "Linked Data", "Information Integration", "Databases", "Data Assimilation",
+				          "Distributed Computing", "Accelerated Computing", "Low Power Computing", "Orchestrated Computing", "High Performance Computing", "Reproducible Research",
+				          "Statistical Inference"]
+			}
+		},
+		"supportLevel" : {
+			"description": "Level of support that NLeSC can provide under eStep.",
+			"type" : "string",
+			"enum" : ["none", "basic", "advanced", "specialized"]
+		},
+		"contactPerson" : {
+			"description" : "Contact person of the project.",
+			"anyOf" : [
+				 { "$ref": "person" },
+				 {
+					"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
+					"type" : "string",
+					"format" : "uri"
+				 }
+			]
+		},
+		"endorsedBy" : {
+			"description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization.",
+			"type": "array",
+			"items": {
+				"description" : "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"owner" : {
+			"description": "Entity that is the copyright holder of the software (usually NLeSC and project partners).",
+			"type": "array",
+			"items": {
+				"anyOf" : [
+					 { "$ref": "person" },
+					 { "$ref": "organization" },
+					 {
+						"description" : "ID of the person or organization. This is preferably an URI where the person's or organization's metadata can be resolved, e.g., /person/s.verhoeven.",
+						"type" : "string",
+						"format" : "uri"
+					 }
+				]
+			}
+		},
+		"contributor" : {
+			"description": "Contributor to the software",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "person" },
+					 {
+						"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
+						"type" : "string",
+						"format" : "uri"
+					 }
+				]
+			}
+		},
+		"contributingOrganization" : {
+			"description": "Organizations that have contributed to this entry, e.g. software made by, or contributed to (either financially or otherwise) by this organisation; Used for grouping items on the website per organization.",
+			"type": "array",
+			"items": {
+				"description" : "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"user" : {
+			"description": "Entities that use the software.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "person" },
+					 { "$ref": "organization" },
+					 {
+						"description" : "ID of the person or organization. This is preferably an URI where the person's or organization's metadata can be resolved, e.g., /person/s.verhoeven.",
+						"type" : "string",
+						"format" : "uri"
+					 }
+				]
+			}
+		},
+		"involvedOrganization" : {
+			"description": "Organizations that developing this software or have a large stake in the software.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "organization" },
+					 {
+						"description" : "ID of the project. This is preferably an URI where the project's metadata can be resolved, e.g., /project/emetabolomics.",
+						"type" : "string",
+						"format" : "uri"
+					 }
+				]
+			}
+		},
+		"usedIn" : {
+			"description" : "Projects the software is used in.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "project" },
+					 {
+						"description" : "ID of the project. This is preferably an URI where the project's metadata can be resolved, e.g., /project/emetabolomics.",
+						"type" : "string",
+						"format" : "uri"
+					 }
+				]
+			}
+		},
+		"startDate" : {
+			"description" : "Start date of development.",
+			"type" : "string",
+			"format" : "date-time"
+		},
+		"status" : {
+			"description" : "Development status, see http://www.repostatus.org",
+			"type" : "string",
+			"enum" : ["concept", "wip", "suspended", "abandoned", "active", "inactive", "unsupported"]
+		},
+		"dependency" : {
+			"description": "Dependencies to run or compile the current software.",
+			"type" : "array",
+			"items" : {
+				"description" : "e.g. internal software as URI (/software/xenon) or external software package name (D3, Elasticsearch, AngularJS, Spark, Hadoop), etc.",
+				"type" : "string"
+			}
+		},
+		"dependencyOf" : {
+			"description": "Other software that this software is a dependency of.",
+			"type" : "array",
+			"items" : {
+				"description" : "e.g. internal software as URI (/software/xenon) or external software package name (D3, Elasticsearch, AngularJS, Spark, Hadoop), etc.",
+				"type" : "string"
+			}
+		},
+		"technologyTag" : {
+			"description": "Keywords of related or relevant technologies.",
+			"type" : "array",
+			"items" : {
+					"description" : "e.g. Simulation, Modeling, MultiModel, ImageClassification, NER, NeuralNetworks, etc.",
+					"type" : "string"
+			}
+		},
+		"badges": {
+			"description": "List of badges",
+			"type": "array",
+			"items": {
+				"description": "Single badge",
+				"type": "string"
+			}
+		}
+	},
+	"required": ["name"],
+	"additionalProperties": false
+}

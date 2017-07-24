@@ -1,0 +1,58 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://software.esciencecenter.nl/schema/report",
+        "type": "object",
+        "properties" : {
+                "schema": {
+                        "description": "Fixed property, to validate the JSON object with the current schema.",
+                        "type": "string",
+                        "format": "uri",
+                        "enum": [ "http://software.esciencecenter.nl/schema/report" ]
+                },
+                "title" : {
+                        "description": "Title of report",
+                        "type" : "string"
+                },
+		"@id" : {
+                        "description" : "ID of the report. This is an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/report/guide.",
+                        "type" : "string",
+                        "format" : "uri"
+                },
+		"description" : {
+                        "description" : "Short report abstract",
+                        "type" : "string"
+                },
+		"link": {
+                        "description": "Link to content (usually GitBook or in assets/report/content/FILE.pdf)",
+                        "type": "string",
+                        "format": "uri"
+                },
+		"cover" : {
+                        "description" : "URL to an image of the cover of the report, usually in assets/report/covers/COVER.png, will be scaled to 165x117 pixels .",
+                        "type" : "string",
+                        "format" : "uri"
+                },
+    "date" : {
+            "description": "Date of publication.",
+            "type" : "string",
+            "format" : "date-time"
+    },
+		"author" : {
+                        "description": "Entity that is the author.",
+                        "type": "array",
+                        "items": {
+                                "anyOf" : [
+                                         { "$ref": "person" },
+                                         { "$ref": "organization" },
+                                         {
+                                                "description" : "ID of the person or organization. This is preferably an URI where the person's or organization's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+                                                "type" : "string",
+                                                "format" : "uri"
+                                         }
+                                ]
+                        }
+	        }
+	},
+        "required": ["title", "link", "date"],
+        "additionalProperties": false
+}

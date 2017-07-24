@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://software.esciencecenter.nl/schema/publication",
+    "type": "object",
+    "description": "An publication such as a journal article.",
+    "properties" : {
+        "schema": {
+            "description": "Fixed property, to validate the JSON object with the current schema.",
+            "type": "string",
+            "format": "uri",
+            "enum": [ "http://software.esciencecenter.nl/schema/publication" ]
+        },
+        "@id" : {
+            "description" : "Digital Object Identifiers (DOI) of publication",
+            "type" : "string",
+            "format" : "uri"
+        },
+        "doi" : {
+            "description" : "Digital Object Identifiers (DOI) of publication",
+            "type" : "string",
+            "format" : "uri"
+        },
+        "description" : {
+            "description": "Bibliography as text, in Markdown format underneath Frontmatter (---) in Markdown files",
+            "type" : "string"
+        },
+		"endorsedBy" : {
+			"description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization.",
+			"type": "array",
+			"items": {
+				"description" : "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+        "author" : {
+            "description" : "ID of projects that are responsible for the publication.",
+            "type": "array",
+            "items": {
+                "type" : "string",
+                "format" : "uri",
+                "description" : "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics"
+            }
+        },
+        "type": {
+            "description": "Type of citation. In Citation Style Language (CSL) it is the `type` field.",
+            "type": "string",
+            "enum": [
+                "proceedings-article",
+                "journal-article"
+            ]
+        },
+        "publishedIn": {
+            "description": "Title of the container holding the item (e.g. the book title for a book chapter, the journal title for a journal article). In Citation Style Language (CSL) it is the `container-title` field.",
+            "type": "string"
+        },
+        "date": {
+            "description": "Date the item was issued/published. In Citation Style Language (CSL) it is the `issued` field.",
+            "type": "string",
+            "format": "date-time"
+        }
+    },
+    "required": ["@id", "schema", "description", "endorsedBy", "author", "date"],
+    "additionalProperties": false
+}

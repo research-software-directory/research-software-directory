@@ -1,0 +1,219 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "http://software.esciencecenter.nl/schema/project",
+	"type": "object",
+	"properties" : {
+		"schema": {
+			"description": "Fixed property, to validate the JSON object with the current schema.",
+			"type": "string",
+			"format": "uri",
+			"enum": [ "http://software.esciencecenter.nl/schema/project" ]
+		},
+		"name" : {
+			"description": "Project name.",
+			"type" : "string"
+		},
+		"@id" : {
+			"description" : "ID of the project. This is preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics.",
+			"type" : "string",
+			"format" : "uri"
+		},
+		"tagLine" : {
+			"description" : "One-sentence description of the project.",
+			"type" : "string"
+		},
+		"description" : {
+			"description" : "Technical project description, in Markdown format underneath Frontmatter (---) in Markdown files",
+			"type" : "string"
+		},
+		"nlescWebsite": {
+			"description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/project/chemical-informatics-for-metabolite-identification-and-biochemical-network).",
+			"type": "string",
+			"format": "uri"
+		},
+		"website": {
+			"description": "Link to the main website.",
+			"type": "string",
+			"format": "uri"
+		},
+		"logo" : {
+			"description": "An URI to associated logo image.",
+			"type" : "string",
+			"format" : "uri"
+		},
+		"competence" : {
+			"description": "NLeSC core competences associated to the project.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["Big Data Analytics", "Optimized Data Handling", "Efficient Computing"]
+			}
+		},
+		"discipline" : {
+			"description": "NLeSC disciplines associated to the project.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["Physics & Beyond", "Environment & Sustainability", "Life Sciences & eHealth", "Humanities & Social Sciences", "eScience Methodology"]
+			}
+		},
+		"expertise" : {
+			"description": "NLeSC expertises associated to the project.",
+			"type" : "array",
+			"items" : {
+				"type" : "string",
+				"enum" : ["Text Mining", "Machine Learning", "Information Visualization", "Scientific Visualization", "Information Retrieval", "Computer Vision",
+						  "Handling Sensor Data", "Linked Data", "Information Integration", "Databases", "Data Assimilation",
+						  "Distributed Computing", "Accelerated Computing", "Low Power Computing", "Orchestrated Computing", "High Performance Computing", "Reproducible Research"]
+			}
+		},
+		"infrastructure" : {
+			"description" : "What kind of infrastructure the project uses, e.g. Supercomputer, cloud, laptop, etc.",
+			"type" : "string"
+		},
+		"dataMagnitude" : {
+			"description" : "Total data size of all data stored, collected or generated.",
+			"type" : "string",
+			"enum" : ["KB","MB","GB","TB","PB","EB","ZB","YB","HB"]
+		},
+		"dataFormat" : {
+			"description" : "Data formats used in the project, e.g. NetCDF, RDF, CSV, JSON, etc.",
+			"type" : "array",
+			"items" : {
+				"type" : "string"
+			}
+		},
+		"contactPerson" : {
+			"description" : "Contact person of the project.",
+			"anyOf" : [
+				 { "$ref": "person" },
+				 {
+				 	"properties" : {
+				 		"id" : {
+							"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+				 			"type" : "string",
+				 			"format" : "uri"
+				 		}
+				 	}
+				 }
+			]
+		},
+		"coordinator" : {
+			"description" : "Coordinator of the project.",
+			"anyOf" : [
+				 { "$ref": "person" },
+				 {
+				 	"properties" : {
+				 		"id" : {
+							"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+				 			"type" : "string",
+				 			"format" : "uri"
+				 		}
+				 	}
+				 }
+			]
+		},
+		"engineer" : {
+			"description" : "Engineers on the project.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "person" },
+					 {
+					 	"properties" : {
+					 		"id" : {
+								"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+					 			"type" : "string",
+					 			"format" : "uri"
+					 		}
+					 	}
+					 }
+				]
+			}
+		},
+		"principalInvestigator" : {
+			"description" : "PI of the project.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "person" },
+					 {
+					 	"properties" : {
+					 		"id" : {
+								"description" : "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+					 			"type" : "string",
+					 			"format" : "uri"
+					 		}
+					 	}
+					 }
+				]
+			}
+		},
+		"involvedOrganization" : {
+			"description" : "Organizations involved in the project.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "organization" },
+					 {
+					 	"properties" : {
+					 		"id" : {
+								"description" : "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., http://software.esciencecenter.nl/organization/nlesc.",
+					 			"type" : "string",
+					 			"format" : "uri"
+					 		}
+					 	}
+					 }
+				]
+			}
+		},
+		"endorsedBy" : {
+			"description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization.",
+			"type": "array",
+			"items": {
+				"description" : "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
+				"type" : "string",
+				"format" : "uri"
+			}
+		},
+		"uses" : {
+			"description" : "Software used in the project.",
+			"type" : "array",
+			"items" : {
+				"anyOf" : [
+					 { "$ref": "software" },
+					 {
+					 	"properties" : {
+					 		"id" : {
+								"description" : "ID of the software. This is preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon.",
+					 			"type" : "string",
+					 			"format" : "uri"
+					 		}
+					 	}
+					 }
+				]
+			}
+		},
+		"startDate" : {
+			"description": "Project's official start date.",
+			"type" : "string",
+			"format" : "date-time"
+		},
+		"endDate" : {
+			"description": "Project's official end date.",
+			"type" : "string",
+			"format" : "date-time"
+		},
+		"publication": {
+			"description": "Publications of project as a list of Digital Object Identifiers (DOI)",
+			"type": "array",
+			"items": {
+				"description": "URL of DOI (e.g. http://dx.doi.org/10.5281/zenodo.35415). Should also be available as Markdown file in `_publication/` directory.",
+				"type": "string",
+				"format": "uri"
+			}
+		}
+	},
+	"required": ["name"],
+	"additionalProperties": false
+}
