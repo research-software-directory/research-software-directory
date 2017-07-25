@@ -18,7 +18,7 @@ def json_response(json_string, status=200):
 
 def init(app):
     @app.errorhandler(404)
-    def _page_not_found():
+    def _page_not_found(a):
         return json_response({"error" : "Resource not found"}, 404)
 
     @app.errorhandler(Exception)

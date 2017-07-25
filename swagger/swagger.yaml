@@ -1,0 +1,95 @@
+swagger: '2.0'
+info:
+  description: Swagger definition for NLeSC Research Software Directory backend
+  version: 1.0.0
+  title: Swagger Research Software Directory
+  contact:
+    email: t.klaver@esciencecenter.nl
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+basePath: "/"
+schemes:
+  - http
+paths:
+  '/enum/{type}/{field}':
+    post:
+      summary: Add a new value to the enum
+      description: asdasd
+      operationId: addEnum
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: type
+          in: path
+          description: Resource type (project/software etc)
+          required: true
+          type: string
+        - in: path
+          name: field
+          description: Field name
+          required: true
+          type: string
+        - name: value
+          in: body
+          description: Value that has to be added
+          required: true
+          schema:
+            type: object
+            properties:
+              value:
+                type: string
+      responses:
+        '405':
+          description: Invalid input
+    get:
+      summary: Add a new value to the enum
+      description: asdasd
+      operationId: getEnum
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: type
+          in: path
+          description: Resource type (project/software etc)
+          required: true
+          type: string
+        - in: path
+          name: field
+          description: Field name
+          required: true
+          type: string
+        - name: value
+          in: body
+          description: Value that has to be added
+          required: true
+          schema:
+            type: object
+            properties:
+              value:
+                type: string
+      responses:
+        '405':
+          description: Invalid input
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: 'http://petstore.swagger.io/oauth/dialog'
+    flow: implicit
+    scopes:
+      'write:pets': modify pets in your account
+      'read:pets': read your pets
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Value:
+    type: object
+    properties:
+      value:
+        type: string
