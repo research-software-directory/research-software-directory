@@ -2,58 +2,44 @@ import * as React from 'react';
 
 import {ControlLabel, FormControl} from 'react-bootstrap';
 
+// import * as ReactSelect from 'react-select';
+// using require syntax to load without Typescript definitions, which are missing props
 // tslint:disable-next-line:no-require-imports no-var-requires
-// const Select = require('react-select');
-
-import * as ReactSelect from 'react-select';
+const ReactSelect = require('react-select');
 
 import 'react-select/dist/react-select.css';
 
 import {connect} from 'react-redux';
 
-const enums = {
-  programmingLanguages: [
-    'C++',
-    'Python',
-    'etc'
-  ]
-};
-
-/**
- * merges non-empty values of `b` that are not in `a` with `a`
- *
- * @param {string[]} a enum1
- * @param {(string[] | null)} b
- * @returns merge of a and b
- */
-const mergeEnums = (a: string[], b: string[] | null) => {
-  return a.concat(b && b.filter(
-    (lang: string) => lang !== '' && a.indexOf(lang) === -1
-  ) || []);
-};
-
 const mapStateToProps = (state: any) => {
-  console.log(state);
-  console.log('test', state.data.software.map((software: any) => software.programmingLanguage)
-    .reduce(mergeEnums, []));
-
-  return state.data.software.map((software: any) => software.programmingLanguage);
+  return {
+    schema: state.schema
+  };
 };
 
 const connector = connect(mapStateToProps, {});
 
-class SoftwareFormComponent extends React.Component<{}, { schema: object, formData: any }> {
+class SoftwareFormComponent extends React.Component<{ schema: any }, any> {
   componentWillMount() {
-    this.setState({formData: {id: ''}});
+    this.setState({id: ''});
   }
 
   updateFormValue(field: string, value: any) {
-    this.setState({formData : {...this.state.formData, [field]: value}});
+    this.setState({...this.state, [field]: value});
   }
 
   onReactSelectChange(field: string) {
-    return (value: null|ReactSelect.Option|ReactSelect.Option[]) => {
-      this.updateFormValue(field, value);
+    return (value: any[]) => {
+      if (value.length > 0) {
+        const lastElm = value.slice(-1)[0];
+        if (lastElm.className && lastElm.className === 'Select-create-option-placeholder') {
+          const newOption = { ...value.splice(-1)[0] };
+          delete newOption.className;
+          this.updateFormValue(field, [...value, newOption]);
+        } else {
+          this.updateFormValue(field, value);
+        }
+      }
     };
   }
 
@@ -63,52 +49,58 @@ class SoftwareFormComponent extends React.Component<{}, { schema: object, formDa
     };
   }
 
+  schemaEnum(type: string, fieldName: string): string[] {
+    const field = this.props.schema[type].properties[fieldName];
+
+    return (field.type === 'array') ? (field.items.enum || []) : (field.enum || []);
+  }
+
   render() {
     return (
       <div style={{maxWidth: '400px'}}>
 
         <ControlLabel>ID</ControlLabel>
         <FormControl
-          value={this.state.formData.id}
+          value={this.state.id}
           onChange={this.onInputChange('id')}
         />
 
         <ControlLabel>Human-readable name</ControlLabel>
-        <FormControl value={this.state.formData.name}/>
+        <FormControl value={this.state.name}/>
 
         <ControlLabel>Description</ControlLabel>
-        <FormControl value={this.state.formData.description}/>
+        <FormControl value={this.state.description}/>
 
         <ControlLabel>tagLine</ControlLabel>
-        <FormControl value={this.state.formData.tagLine}/>
+        <FormControl value={this.state.tagLine}/>
 
         <ControlLabel>codeRepository</ControlLabel>
-        <FormControl value={this.state.formData.codeRepository}/>
+        <FormControl value={this.state.codeRepository}/>
 
         <ControlLabel>nlescWebsite</ControlLabel>
-        <FormControl value={this.state.formData.nlescWebsite}/>
+        <FormControl value={this.state.nlescWebsite}/>
 
         <ControlLabel>documentationUrl</ControlLabel>
-        <FormControl value={this.state.formData.website}/>
+        <FormControl value={this.state.website}/>
 
         <ControlLabel>downloadUrl</ControlLabel>
-        <FormControl value={this.state.formData.downloadUrl}/>
+        <FormControl value={this.state.downloadUrl}/>
 
         <ControlLabel>logo</ControlLabel>
-        <FormControl value={this.state.formData.logo}/>
+        <FormControl value={this.state.logo}/>
 
         <ControlLabel>website</ControlLabel>
-        <FormControl value={this.state.formData.website}/>
+        <FormControl value={this.state.website}/>
 
         <ControlLabel>website</ControlLabel>
-        <FormControl value={this.state.formData.website}/>
+        <FormControl value={this.state.website}/>
 
         <ControlLabel>programmingLanguages</ControlLabel>
-        <ReactSelect
-          options={enums.programmingLanguages.map((lang) => ({ label: lang, value: lang}))}
+        <ReactSelect.Creatable
+          options={this.schemaEnum('software', 'programmingLanguage').map((lang) => ({ label: lang, value: lang}))}
           multi={true}
-          value={this.state.formData.programmingLanguages}
-          onChange={this.onReactSelectChange('programmingLanguages')}
+          value={this.state.programmingLanguage}
+          onChange={this.onReactSelectChange('programmingLanguage')}
         />
       </div>
     );

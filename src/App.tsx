@@ -32,7 +32,7 @@ class AppComponent extends React.Component<IProps, { }> {
   }
 
   renderAppLoaded() {
-    if (this.props.data && this.props.data.software && this.props.schema) {
+    if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
       return (
         <Row>
           <Col md={8}>
