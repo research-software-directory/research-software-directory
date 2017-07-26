@@ -1,4 +1,4 @@
 import { combineEpics } from 'redux-observable';
 import { fetchEpic } from './async';
-
-export const rootEpic = combineEpics(fetchEpic);
+import { epic as softwareFormEpic } from './form/epic';
+export const rootEpic = combineEpics(fetchEpic, softwareFormEpic);

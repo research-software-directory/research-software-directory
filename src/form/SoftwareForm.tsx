@@ -1,51 +1,50 @@
 import * as React from 'react';
-
 import {ControlLabel, FormControl} from 'react-bootstrap';
-
-// import * as ReactSelect from 'react-select';
-// using require syntax to load without Typescript definitions, which are missing props
-// tslint:disable-next-line:no-require-imports no-var-requires
-const ReactSelect = require('react-select');
+import { Option } from 'react-select';
+import { AddableReactSelect } from './components/AddableReactSelect';
 
 import 'react-select/dist/react-select.css';
 
-import {connect} from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
+import { Action } from 'redux';
+import { addToSchemaEnum } from './actions';
 
-const mapStateToProps = (state: any) => {
-  return {
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  addToSchemaEnum: (resourceType: string, field: string, value: string) =>
+    dispatch(addToSchemaEnum(resourceType, field, value))
+});
+
+const mapStateToProps = (state: any) => ({
     schema: state.schema
-  };
-};
+});
 
-const connector = connect(mapStateToProps, {});
+interface IProps {
+    schema: any;
+    addToSchemaEnum: any;
+}
 
-class SoftwareFormComponent extends React.Component<{ schema: any }, any> {
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+class SoftwareFormComponent extends React.Component<IProps, any> {
   componentWillMount() {
-    this.setState({id: ''});
+    this.setState({id: '', programmingLanguage: []});
   }
 
-  updateFormValue(field: string, value: any) {
+  updateFormValue = (field: string) => (value: any) => {
     this.setState({...this.state, [field]: value});
   }
 
-  onReactSelectChange(field: string) {
-    return (value: any[]) => {
-      if (value.length > 0) {
-        const lastElm = value.slice(-1)[0];
-        if (lastElm.className && lastElm.className === 'Select-create-option-placeholder') {
-          const newOption = { ...value.splice(-1)[0] };
-          delete newOption.className;
-          this.updateFormValue(field, [...value, newOption]);
-        } else {
-          this.updateFormValue(field, value);
-        }
-      }
-    };
+  updateFormOptionsValue = (field: string) => (options: Option[]) => {
+    this.updateFormValue(field)(options.map((val) => val.value));
+  }
+
+  onNewOption = (resourceType: string, field: string) => (option: Option) => {
+    this.props.addToSchemaEnum(resourceType, field, option.value);
   }
 
   onInputChange(field: string): React.FormEventHandler<React.Component<any>> {
     return (e: React.ChangeEvent<any>) => {
-      this.updateFormValue(field, e.target.value);
+      this.updateFormValue(field)(e.target.value);
     };
   }
 
@@ -96,11 +95,12 @@ class SoftwareFormComponent extends React.Component<{ schema: any }, any> {
         <FormControl value={this.state.website}/>
 
         <ControlLabel>programmingLanguages</ControlLabel>
-        <ReactSelect.Creatable
+        <AddableReactSelect
           options={this.schemaEnum('software', 'programmingLanguage').map((lang) => ({ label: lang, value: lang}))}
           multi={true}
-          value={this.state.programmingLanguage}
-          onChange={this.onReactSelectChange('programmingLanguage')}
+          value={this.state.programmingLanguage.map((val: string) => ({value: val, label: val}))}
+          onChange={this.updateFormOptionsValue('programmingLanguage')}
+          onNewOption={this.onNewOption('software', 'programmingLanguage')}
         />
       </div>
     );

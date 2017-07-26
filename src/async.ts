@@ -7,6 +7,7 @@ export enum Method {
     GET,
     POST
 }
+
 export interface IFetchAction extends Action {
   id: number;
   fetchAction: boolean;
@@ -30,8 +31,7 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
       (action: IFetchAction): Observable<any> => {
         const req = (action.method === Method.GET)
           ? Axios.get(action.url, { responseType: 'json', headers: { 'Content-Type' : 'application/json' } })
-          : Axios.post(action.url, {
-            data: JSON.stringify(action.data),
+          : Axios.post(action.url, action.data, {
             headers: { 'Content-Type' : 'application/json' },
             responseType: 'json'
           });
