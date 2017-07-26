@@ -12,4 +12,11 @@ logger.info('Starting')
 
 commands.init(app, database)
 routes.init(app, database, schema)
+
+
+def before_req():
+    print("before req")
+
+
+app.before_request(before_req)
 app.run()
