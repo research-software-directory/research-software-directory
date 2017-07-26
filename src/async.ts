@@ -1,25 +1,57 @@
+import Axios, { AxiosResponse } from 'axios';
 import { Action } from 'redux';
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Rx';
 
-export interface IFulfilledAction extends Action { type: string; payload: any; }
-export interface IFailedAction extends Action { type: string; error: any; }
+export enum Method {
+    GET,
+    POST
+}
+export interface IFetchAction extends Action {
+  id: number;
+  fetchAction: boolean;
+  method: Method;
+  url: string;
+  data?: any;
+}
 
-export type IFulfilledActionCreator = (payload: any) => IFulfilledAction;
-export type IFailedActionCreator = (payload: any) => IFailedAction;
+export interface IFetchFulfilledAction extends IFetchAction { status: number; response?: any; }
+export interface IFetchFailedAction extends IFetchAction { status: number; response?: any; }
 
-export const fetchEpic = <T>(
-    type: string,
-    url: string,
-    actionFulfilled: IFulfilledActionCreator,
-    actionFailed: IFailedActionCreator
-  ): Epic<T, {}> => (action$) =>
-    action$.ofType(type).mergeMap(
-      (): Observable<any> => {
-        const req = fetch(url).then((resp) => resp.json());
+let incrementalID = 0;
+export const createFetchAction = (type: string, method: Method, url: string, data: any = {}): IFetchAction => {
+  incrementalID += 1;
+
+  return {id: incrementalID, fetchAction: true, type, method, url, data};
+};
+
+export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
+  action$.filter((action) => action.fetchAction).mergeMap(
+      (action: IFetchAction): Observable<any> => {
+        const req = (action.method === Method.GET)
+          ? Axios.get(action.url, { responseType: 'json', headers: { 'Content-Type' : 'application/json' } })
+          : Axios.post(action.url, {
+            data: JSON.stringify(action.data),
+            headers: { 'Content-Type' : 'application/json' },
+            responseType: 'json'
+          });
 
         return Observable.fromPromise(req)
-          .map(actionFulfilled)
-          .catch((error) => Observable.of(actionFailed(error.toString())));
+          .map((response: AxiosResponse): IFetchFulfilledAction => ({
+            ...action,
+            fetchAction: false,
+            response: response.data,
+            status: response.status,
+            type: `${action.type}_FULFILLED`
+          }))
+          .catch((e: any): Observable<IFetchFailedAction> =>
+            Observable.of({
+              ...action,
+              fetchAction: false,
+              response: e.toString(),
+              status: (e.response && e.response.status) || null,
+              type: `${action.type}_FAILED`
+            })
+          );
       }
-    );
+  );
