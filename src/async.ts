@@ -2,6 +2,7 @@ import Axios, { AxiosResponse } from 'axios';
 import { Action } from 'redux';
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Rx';
+import { BACKEND_URL } from './constants';
 
 export enum Method {
     GET,
@@ -13,6 +14,7 @@ export interface IFetchAction extends Action {
   fetchAction: boolean;
   method: Method;
   url: string;
+  headers?: any;
   data?: any;
 }
 
@@ -20,19 +22,45 @@ export interface IFetchFulfilledAction extends IFetchAction { status: number; re
 export interface IFetchFailedAction extends IFetchAction { status: number; response?: any; error: string; }
 
 let incrementalID = 0;
-export const createFetchAction = (type: string, method: Method, url: string, data: any = {}): IFetchAction => {
+export const createFetchAction = (
+  type: string,
+  method: Method,
+  url: string,
+  data: any = {},
+  headers: any = {}
+): IFetchAction => {
   incrementalID += 1;
 
-  return {id: incrementalID, fetchAction: true, type, method, url, data};
+  return {id: incrementalID, fetchAction: true, type, method, url, data, headers};
+};
+
+export const backend = {
+  get: (name: string, params: string): IFetchAction => createFetchAction(
+    name,
+    Method.GET,
+    `${BACKEND_URL}/${params}`,
+    {},
+    { token: localStorage.getItem('access_token') }
+  ),
+  post: (name: string, params: string, data: any): IFetchAction => createFetchAction(
+    name,
+    Method.POST,
+    `${BACKEND_URL}/${params}`,
+    data,
+    { token: localStorage.getItem('access_token') }
+  )
 };
 
 export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
   action$.filter((action) => action.fetchAction).mergeMap(
       (action: IFetchAction): Observable<any> => {
         const req = (action.method === Method.GET)
-          ? Axios.get(action.url, { responseType: 'json', headers: { 'Content-Type' : 'application/json' } })
+          ? Axios.get(action.url, {
+            headers: { ...action.headers, 'Content-Type' : 'application/json' },
+            responseType: 'json'
+          })
           : Axios.post(action.url, action.data, {
-            headers: { 'Content-Type' : 'application/json' },
+            headers: { ...action.headers, 'Content-Type' : 'application/json' },
             responseType: 'json'
           });
 

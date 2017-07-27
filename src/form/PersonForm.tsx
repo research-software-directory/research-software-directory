@@ -1,9 +1,7 @@
 import * as React from 'react';
+import {ControlLabel, FormControl} from 'react-bootstrap';
 import { Option } from 'react-select';
 import { AddableReactSelect } from './components/AddableReactSelect';
-
-import { StringArray } from './components/StringArray';
-import { TextInput } from './components/TextInput';
 
 import 'react-select/dist/react-select.css';
 
@@ -56,40 +54,54 @@ class SoftwareFormComponent extends React.Component<IProps, any> {
     return (field.type === 'array') ? (field.items.enum || []) : (field.enum || []);
   }
 
-  renderField = (key: string, field: any): any => {
-    if (field.type === 'string') {
-      return (<TextInput value={this.state[key]} label={field.description} onChange={this.updateFormValue(key)} />);
-    } else if (field.type === 'array' && 'items' in field && field.items.enum) {
-      return (
-        <AddableReactSelect
-          label={field.description}
-          options={this.schemaEnum('software', key).map((option) => ({ label: option, value: option}))}
-          multi={true}
-          value={(this.state[key] || []).map((val: string) => ({value: val, label: val}))}
-          onChange={this.updateFormOptionsValue(key)}
-          onNewOption={this.onNewOption('software', key)}
-        />
-      );
-    } else if (field.type === 'array' && (!('items' in field) || !('enum' in field.items))) {
-      return (
-        <StringArray
-          label={field.description}
-          value={(this.state[key] || [])}
-          onChange={this.updateFormValue(key)}
-        />
-      );
-    } else {
-      return (<div>{key} {JSON.stringify(field)}</div>);
-    }
-  }
-
-  renderFields = (schema: any) =>
-    Object.keys(schema.properties).map((key: string) => this.renderField(key, schema.properties[key]))
-
   render() {
     return (
-      <div style={{maxWidth: '400px', margin: '0 auto'}}>
-        {this.renderFields(this.props.schema.software)}
+      <div style={{maxWidth: '400px'}}>
+
+        <ControlLabel>ID</ControlLabel>
+        <FormControl
+          value={this.state.id}
+          onChange={this.onInputChange('id')}
+        />
+
+        <ControlLabel>Human-readable name</ControlLabel>
+        <FormControl value={this.state.name}/>
+
+        <ControlLabel>Description</ControlLabel>
+        <FormControl value={this.state.description}/>
+
+        <ControlLabel>tagLine</ControlLabel>
+        <FormControl value={this.state.tagLine}/>
+
+        <ControlLabel>codeRepository</ControlLabel>
+        <FormControl value={this.state.codeRepository}/>
+
+        <ControlLabel>nlescWebsite</ControlLabel>
+        <FormControl value={this.state.nlescWebsite}/>
+
+        <ControlLabel>documentationUrl</ControlLabel>
+        <FormControl value={this.state.website}/>
+
+        <ControlLabel>downloadUrl</ControlLabel>
+        <FormControl value={this.state.downloadUrl}/>
+
+        <ControlLabel>logo</ControlLabel>
+        <FormControl value={this.state.logo}/>
+
+        <ControlLabel>website</ControlLabel>
+        <FormControl value={this.state.website}/>
+
+        <ControlLabel>website</ControlLabel>
+        <FormControl value={this.state.website}/>
+
+        <ControlLabel>programmingLanguages</ControlLabel>
+        <AddableReactSelect
+          options={this.schemaEnum('software', 'programmingLanguage').map((lang) => ({ label: lang, value: lang}))}
+          multi={true}
+          value={this.state.programmingLanguage.map((val: string) => ({value: val, label: val}))}
+          onChange={this.updateFormOptionsValue('programmingLanguage')}
+          onNewOption={this.onNewOption('software', 'programmingLanguage')}
+        />
       </div>
     );
   }

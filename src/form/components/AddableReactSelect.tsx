@@ -1,7 +1,10 @@
 import * as React from 'react';
 import * as ReactSelect from 'react-select';
 
+import { ControlLabel, FormGroup } from 'react-bootstrap';
+
 interface IProps extends ReactSelect.ReactCreatableSelectProps {
+  label: string;
   onNewOption(option: ReactSelect.Option): void;
 }
 
@@ -26,5 +29,10 @@ const onReactSelectChange = (
 export const AddableReactSelect = (props: IProps) => {
   const { onChange, onNewOption, ...otherProps } = props;
 
-  return <ReactSelect.Creatable onChange={onReactSelectChange(onNewOption, onChange)} multi={true} {...otherProps} />;
+  return (
+    <FormGroup>
+      <ControlLabel>{props.label}</ControlLabel>
+      <ReactSelect.Creatable onChange={onReactSelectChange(onNewOption, onChange)} multi={true} {...otherProps} />
+    </FormGroup>
+  );
 };

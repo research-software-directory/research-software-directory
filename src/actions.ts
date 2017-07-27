@@ -1,5 +1,4 @@
-import { createFetchAction, IFetchAction, Method } from './async';
-import { BACKEND_URL } from './constants';
+import { backend, IFetchAction } from './async';
 
-export const fetchRootJSON: IFetchAction = createFetchAction('FETCH_ROOT_JSON', Method.GET, `${BACKEND_URL}/all`);
-export const fetchSchema: IFetchAction = createFetchAction('FETCH_SCHEMA', Method.GET, `${BACKEND_URL}/schema`);
+export const fetchRootJSON: IFetchAction = backend.get('FETCH_ROOT_JSON', 'all');
+export const fetchSchema: IFetchAction = backend.get('FETCH_SCHEMA', 'schema');
