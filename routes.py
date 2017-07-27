@@ -2,23 +2,20 @@ from flask import abort, request
 from flask_cors import CORS, cross_origin
 from json_handlers import json_response, init as json_handlers_init
 from database import sync_db, sync_schema
-from settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
-import requests
-
-import json
+from services.user import login, get_user
 
 def init(app, db, schema):
-    cors = CORS(app, resource={r"*": {"origins": "*"}})
+    cors = CORS(app, resources={r"*": {"origins": "*"}})
     json_handlers_init(app)
 
     @app.route('/all', methods=["GET"])
     #@cross_origin(origins=['localhost:*','127.0.0.1','::1'])
-    @cross_origin(origins=r'.*localhost.*')
+    # @cross_origin(origins=r'.*localhost.*')
     def _get_all_data():
         return json_response(db)
 
     @app.route('/schema')
-    @cross_origin(origins=r'.*localhost.*')
+    # @cross_origin(origins=r'.*localhost.*')
     def _schema():
         return json_response(schema)
 
@@ -36,15 +33,20 @@ def init(app, db, schema):
     def _err():
         return json_response(db)
 
-    @app.route('/login/<token>')
+    @app.route('/get_access_token/<token>')
     def _login(token):
-        url = 'https://github.com/login/oauth/access_token?client_id=%s&client_secret=%s&code=%s&accept=json' %\
-            (GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, token)
-        req = requests.get(url)
-        import urllib.parse
-        query = urllib.parse.parse_qsl(req.text)
-        return json_response({'trying': token, 'url':url, 'result':query})
+        res = login(token)
+        if 'error' in res:
+            return json_response({'error': '%s: %s' % (res['error'], res['error_description'])}, 401)
+        res['user'] = get_user(res['access_token'])
+        return json_response(res)
 
+    @app.route('/verify_access_token/<token>')
+    def _verify_access_token(token):
+        res = get_user(token)
+        if 'error' in res:
+            return json_response({'error': 'code %i: %s' % (res['status_code'], res['error'])}, 401)
+        return json_response({'user': res})
 
     @app.route('/enum/<resource_type>/<field>', methods=["GET"])
     def _get_enum(resource_type, field):
