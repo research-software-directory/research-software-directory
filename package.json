@@ -9,7 +9,9 @@
     "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.1",
     "react-jsonschema-form": "^0.49.0",
+    "react-notification-system": "^0.2.14",
     "react-redux": "^5.0.5",
+    "react-redux-toastr": "^7.1.0",
     "react-select": "^1.0.0-rc.5",
     "redux": "^3.7.2",
     "redux-observable": "^0.14.1",
@@ -20,7 +22,9 @@
     "@types/react-bootstrap": "0.0.52",
     "@types/react-dom": "^15.5.1",
     "@types/react-jsonschema-form": "^0.43.1",
+    "@types/react-notification-system": "^0.2.35",
     "@types/react-redux": "^4.4.46",
+    "@types/react-redux-toastr": "^7.0.0",
     "@types/react-select": "^1.0.48"
   },
   "scripts": {

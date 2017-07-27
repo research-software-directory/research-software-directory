@@ -1,3 +1,6 @@
+import { reducer as toastrReducer } from 'react-redux-toastr';
+import { reducer as authReducer } from './auth/reducer';
+
 import { combineReducers } from 'redux';
 import { IFetchFulfilledAction } from './async';
 
@@ -17,4 +20,9 @@ const fetchSchemaReducer = (state: any = {}, action: IFetchFulfilledAction) => {
     }
 };
 
-export const rootReducer = combineReducers({data: fetchRootJSONReducer, schema: fetchSchemaReducer});
+export const rootReducer = combineReducers({
+    auth:   authReducer,
+    data:   fetchRootJSONReducer,
+    schema: fetchSchemaReducer,
+    toastr: toastrReducer
+});

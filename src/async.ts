@@ -17,7 +17,7 @@ export interface IFetchAction extends Action {
 }
 
 export interface IFetchFulfilledAction extends IFetchAction { status: number; response?: any; }
-export interface IFetchFailedAction extends IFetchAction { status: number; response?: any; }
+export interface IFetchFailedAction extends IFetchAction { status: number; response?: any; error: string; }
 
 let incrementalID = 0;
 export const createFetchAction = (type: string, method: Method, url: string, data: any = {}): IFetchAction => {
@@ -47,8 +47,9 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
           .catch((e: any): Observable<IFetchFailedAction> =>
             Observable.of({
               ...action,
+              error: e.toString(),
               fetchAction: false,
-              response: e.toString(),
+              response: (e.response && e.response.data) || null,
               status: (e.response && e.response.status) || null,
               type: `${action.type}_FAILED`
             })

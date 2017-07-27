@@ -1,6 +1,7 @@
 body * {
     margin: 0;
     padding: 0;
-    color: #125423;
+    /* color: #125423; */
+    font-size: 100%;
     font-family: sans-serif;
 }
