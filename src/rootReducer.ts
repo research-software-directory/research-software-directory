@@ -1,5 +1,6 @@
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import { reducer as authReducer } from './auth/reducer';
+import { reducer as formReducer } from './form/reducer';
 
 import { combineReducers } from 'redux';
 import { IFetchFulfilledAction } from './async';
@@ -21,8 +22,9 @@ const fetchSchemaReducer = (state: any = {}, action: IFetchFulfilledAction) => {
 };
 
 export const rootReducer = combineReducers({
-    auth:   authReducer,
-    data:   fetchRootJSONReducer,
-    schema: fetchSchemaReducer,
-    toastr: toastrReducer
+    auth:    authReducer,
+    current: formReducer,
+    data:    fetchRootJSONReducer,
+    schema:  fetchSchemaReducer,
+    toastr:  toastrReducer
 });

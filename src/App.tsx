@@ -1,10 +1,12 @@
 import * as React from 'react';
-import {Col, Row, Well} from 'react-bootstrap';
 import {connect, Dispatch} from 'react-redux';
 import { Action } from 'redux';
 import {fetchRootJSON, fetchSchema } from './actions';
 
-import './App.css';
+import { AppMenu } from './AppMenu';
+
+import { Segment, Sidebar } from 'semantic-ui-react';
+
 import {SoftwareForm} from './form/SoftwareForm';
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
@@ -26,7 +28,7 @@ interface IProps {
   fetchSchema(): Action;
 }
 
-class AppComponent extends React.Component<IProps, { }> {
+class AppComponent extends React.Component<IProps, {}> {
   componentWillMount() {
     this.props.fetchRootJSON();
     this.props.fetchSchema();
@@ -35,16 +37,14 @@ class AppComponent extends React.Component<IProps, { }> {
   renderAppLoaded() {
     if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
       return (
-        <Row>
-          <Col md={8}>
-            <SoftwareForm />
-          </Col>
-          <Col md={4}>
-            <Well>
-              {JSON.stringify(this.props)}
-            </Well>
-          </Col>
-        </Row>
+        <Sidebar.Pushable as={Segment}>
+          <AppMenu />
+          <Sidebar.Pusher>
+            <Segment basic={true}>
+              <SoftwareForm />
+            </Segment>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
       );
     }
 

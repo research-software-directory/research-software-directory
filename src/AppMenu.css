@@ -1,0 +1,30 @@
+div.ui.menu.submenu {
+    margin: 0 !important;
+    padding: .5em .5em !important;
+    width: 100%;
+}
+
+div.ui.menu.submenu>button {
+    margin-top: 1em;
+}
+
+div.submenu-search {
+    width: 100%;
+}
+
+div.menu.submenu>div>input {
+    background-color: #444;
+    color: #ccc;
+    border: none;
+}
+
+div.menu.submenu>div>input:focus {
+    background-color: #444;
+    color: white;
+}
+
+div.ui.vertical.inverted.menu .menu .item {
+    color: #ccc;
+    line-height: 1.2rem;
+    padding: .5em 0;
+}

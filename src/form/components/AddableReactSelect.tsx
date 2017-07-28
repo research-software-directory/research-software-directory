@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactSelect from 'react-select';
 
+import 'react-select/dist/react-select.css';
+
 import { ControlLabel, FormGroup } from 'react-bootstrap';
 
 interface IProps extends ReactSelect.ReactCreatableSelectProps {

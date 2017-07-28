@@ -5,24 +5,26 @@ import { AddableReactSelect } from './components/AddableReactSelect';
 import { StringArray } from './components/StringArray';
 import { TextInput } from './components/TextInput';
 
-import 'react-select/dist/react-select.css';
+// tslint:disable-next-line:no-require-imports no-var-requires
+const deepDiff = require('deep-diff').default;
 
-import { connect, Dispatch } from 'react-redux';
-import { Action } from 'redux';
+import { connect } from 'react-redux';
+
 import { addToSchemaEnum } from './actions';
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  addToSchemaEnum: (resourceType: string, field: string, value: string) =>
-    dispatch(addToSchemaEnum(resourceType, field, value))
-});
+const mapDispatchToProps = {
+  addToSchemaEnum
+};
 
 const mapStateToProps = (state: any) => ({
-    schema: state.schema
+    oldSchema: state.schema,
+    schema: state.current.schema
 });
 
 interface IProps {
     schema: any;
-    addToSchemaEnum: any;
+    oldSchema: any;
+    addToSchemaEnum: typeof addToSchemaEnum;
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -41,13 +43,21 @@ class SoftwareFormComponent extends React.Component<IProps, any> {
   }
 
   onNewOption = (resourceType: string, field: string) => (option: Option) => {
-    this.props.addToSchemaEnum(resourceType, field, option.value);
+    this.props.addToSchemaEnum(resourceType, field, option.value as string );
   }
 
   onInputChange(field: string): React.FormEventHandler<React.Component<any>> {
     return (e: React.ChangeEvent<any>) => {
       this.updateFormValue(field)(e.target.value);
     };
+  }
+
+  arrayToObjectById = (arr: any[]) => {
+    return Object.assign({}, ...arr.map((obj) => ({[obj.id] : obj}) ));
+  }
+
+  compareStuff = () => {
+    console.log(deepDiff(this.props.oldSchema, this.props.schema));
   }
 
   schemaEnum(type: string, fieldName: string): string[] {
@@ -88,7 +98,8 @@ class SoftwareFormComponent extends React.Component<IProps, any> {
 
   render() {
     return (
-      <div style={{maxWidth: '400px', margin: '0 auto'}}>
+      <div style={{maxWidth: '400px'}}>
+        <button onClick={this.compareStuff} >Compare stuff</button>
         {this.renderFields(this.props.schema.software)}
       </div>
     );
