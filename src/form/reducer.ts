@@ -8,7 +8,32 @@ const dataReducer = (state: any = {}, action: any) => {
   switch (action.type) {
     case 'FETCH_ROOT_JSON_FULFILLED':
       return action.response;
+    case 'UPDATE_FIELD':
+      const rowIndex = state[action.resourceType].findIndex((row: any) => row.id === action.id);
+
+      return update(state, {
+        [action.resourceType] : {
+          [ rowIndex ] : {
+            [action.field] : {
+              $set : action.value
+            }
+          }
+        }
+      });
     default: return state;
+  }
+};
+
+const changes = (state: any = [], action: actions.IUpdateField) => {
+  switch (action.type) {
+    case 'UPDATE_FIELD':
+      if (state.indexOf(action.id) === -1) {
+        return update(state, { $push: [action.id] });
+      } else {
+        return state;
+      }
+    default:
+      return state;
   }
 };
 
@@ -32,4 +57,4 @@ const schemaReducer = (state: any = {}, action: any) => {
   }
 };
 
-export const reducer = combineReducers({ data: dataReducer, schema: schemaReducer });
+export const reducer = combineReducers({ data: dataReducer, schema: schemaReducer, changes });

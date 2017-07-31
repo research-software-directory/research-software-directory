@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Button, ControlLabel, FormControl, FormGroup, Glyphicon, InputGroup } from 'react-bootstrap';
 import * as ReactDOM from 'react-dom';
-
+import { Button, Input, Segment } from 'semantic-ui-react';
 interface IProps {
   value: any[];
   label: string;
@@ -35,24 +34,20 @@ export class StringArray extends React.Component<IProps, any> {
   }
 
   inputs = () => this.props.value.map((value, key) => (
-    <InputGroup>
-      <FormControl
-        key={key}
-        value={value}
-        onChange={this.onInputChange(key)}
-        ref={this.saveRef}
-      />
-      <span className="input-group-btn">
-        <Button onClick={this.onRemove(key)}>
-          <Glyphicon glyph="remove" />
-        </Button>
-      </span>
-    </InputGroup>
+      <div>
+        <Input
+          key={key}
+          value={value}
+          onChange={this.onInputChange(key)}
+          ref={this.saveRef}
+          action={<Button onClick={this.onRemove(key)} icon="remove"/>}
+        />
+      </div>
   ))
 
   componentDidUpdate(prevProps: IProps) {
     if (this.props.value.length - prevProps.value.length === 1) {
-      (ReactDOM.findDOMNode(this.lastInput) as any).focus();
+      (ReactDOM.findDOMNode(this.lastInput).firstChild as any).focus();
     }
   }
 
@@ -62,11 +57,13 @@ export class StringArray extends React.Component<IProps, any> {
 
   render() {
     return (
-      <FormGroup>
-        <ControlLabel>{this.props.label}</ControlLabel>
-        {this.inputs()}
-        <FormControl onChange={this.onAdd} value="" />
-      </FormGroup>
+      <div>
+        <Segment>
+          {this.props.label}<br />
+          {this.inputs()}
+          <Input onChange={this.onAdd} value="" />
+        </Segment>
+      </div>
     );
   }
 }

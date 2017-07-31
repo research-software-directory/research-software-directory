@@ -7,7 +7,9 @@ import { AppMenu } from './AppMenu';
 
 import { Segment, Sidebar } from 'semantic-ui-react';
 
-import {SoftwareForm} from './form/SoftwareForm';
+import { Routes } from './Routes';
+
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   fetchRootJSON:  (): Action => dispatch(fetchRootJSON),
@@ -34,17 +36,21 @@ class AppComponent extends React.Component<IProps, {}> {
     this.props.fetchSchema();
   }
 
+  renderMenu = (routeParams: any) => <AppMenu routeParams={routeParams} />;
+
   renderAppLoaded() {
     if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
       return (
-        <Sidebar.Pushable as={Segment}>
-          <AppMenu />
-          <Sidebar.Pusher>
-            <Segment basic={true}>
-              <SoftwareForm />
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+        <BrowserRouter>
+          <Sidebar.Pushable as={Segment}>
+            <Route component={this.renderMenu} />
+            <Sidebar.Pusher>
+              <Segment basic={true}>
+                <Routes />
+              </Segment>
+            </Sidebar.Pusher>
+          </Sidebar.Pushable>
+        </BrowserRouter>
       );
     }
 

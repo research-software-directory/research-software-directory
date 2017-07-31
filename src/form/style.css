@@ -1,0 +1,7 @@
+div.ui.input.dirty>input {
+    border-color: orange;
+}
+
+.main_form input {
+    min-width: 30rem;
+}

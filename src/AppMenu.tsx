@@ -9,7 +9,10 @@ import { Button, Icon, Image, Input, Menu, Sidebar } from 'semantic-ui-react';
 
 import * as update from 'immutability-helper';
 
-const mapStateToProps = (state: any) => ({
+import { Link } from 'react-router-dom';
+
+const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
+  changes: state.current.changes,
   data:   state.data,
   schema: state.schema,
   user:   state.auth.user
@@ -21,6 +24,8 @@ interface IProps {
   data: any;
   schema: any;
   user: any;
+  changes: string[];
+  routeParams: any;
 }
 
 interface IMenuState {
@@ -49,8 +54,15 @@ class AppMenuComponent extends React.Component<IProps, IState> {
 
   menuItem = (item: any) => {
     return (
-        <Menu.Item key={item.id} as="a" href="/">
-          {item.name}
+        <Menu.Item
+          key={item.id}
+          className={this.props.routeParams.location.pathname === item.id ? 'active' : ''}
+        >
+          <Link to={`${item.id}`} style={{display: 'block'}}>
+            {item.name}
+            {this.props.changes.indexOf(item.id) !== -1 && <Icon name="pencil" style={{float: 'right'}} />}
+          </Link>
+
         </Menu.Item>
     );
   }
@@ -89,10 +101,10 @@ class AppMenuComponent extends React.Component<IProps, IState> {
 
     const subMenu = this.state.menu[type].open
     ? (
-      <Menu className="submenu" inverted={true} vertical={true} visible={false}>
+      <Menu className="submenu" inverted={true} vertical={true}>
         <Input
-          className="submenu-search"
-          icon="search inverted"
+          className="submenu-search inverted"
+          icon={<Icon name="search" inverted={true}/>}
           value={this.state.menu[type].search}
           onChange={this.onSubmenuSearch(type)}
         />
@@ -102,7 +114,10 @@ class AppMenuComponent extends React.Component<IProps, IState> {
     ) : null;
 
     return  (
-      <Menu.Item key={type}>
+      <Menu.Item
+        key={type}
+        className={`${this.state.menu[type].open ? 'active' : ''} resource_menu`}
+      >
         {this.resourceTypeHeader(type)}
         {subMenu}
       </Menu.Item>
@@ -117,10 +132,12 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           visible={true}
           vertical={true}
           inverted={true}
+          className="main_menu"
         >
           <Menu.Item>
             <Image avatar={true} src={this.props.user.avatar_url} />&nbsp;
             {this.props.user.name}
+            <Button floated="right" inverted={true} color="red" disabled={this.props.changes.length === 0}>Save</Button>
           </Menu.Item>
           <Menu.Item name="home" as="a" href="/" >
             <Icon name="home" />

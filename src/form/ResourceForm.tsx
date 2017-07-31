@@ -10,32 +10,51 @@ const deepDiff = require('deep-diff').default;
 
 import { connect } from 'react-redux';
 
-import { addToSchemaEnum } from './actions';
+import { addToSchemaEnum, updateField } from './actions';
+
+import './style.css';
 
 const mapDispatchToProps = {
-  addToSchemaEnum
+  addToSchemaEnum,
+  updateField
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps  = (state: any, props: IOwnProps) => {
+  return ({
+    data: state.current.data[props.resourceType].find(
+      (resource: any) => resource.id === `${props.id}`
+    ),
+    oldData: state.data[props.resourceType].find(
+      (resource: any) => resource.id === `${props.id}`
+    ),
     oldSchema: state.schema,
     schema: state.current.schema
-});
+  });
+};
 
 interface IProps {
     schema: any;
     oldSchema: any;
+    data: any;
+    oldData: any;
     addToSchemaEnum: typeof addToSchemaEnum;
+    updateField: typeof updateField;
+}
+
+interface IOwnProps {
+  resourceType: string;
+  id: string;
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-class SoftwareFormComponent extends React.Component<IProps, any> {
+class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
   componentWillMount() {
-    this.setState({id: '', programmingLanguage: []});
+    // this.setState({id: '', programmingLanguage: []});
   }
 
   updateFormValue = (field: string) => (value: any) => {
-    this.setState({...this.state, [field]: value});
+    this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }
 
   updateFormOptionsValue = (field: string) => (options: Option[]) => {
@@ -66,30 +85,44 @@ class SoftwareFormComponent extends React.Component<IProps, any> {
     return (field.type === 'array') ? (field.items.enum || []) : (field.enum || []);
   }
 
+  hasChanged(field: string) {
+    return !!deepDiff(this.props.data[field] || null, this.props.oldData[field] || null);
+  }
+
   renderField = (key: string, field: any): any => {
     if (field.type === 'string') {
-      return (<TextInput value={this.state[key]} label={field.description} onChange={this.updateFormValue(key)} />);
+      return (
+        <TextInput
+          key={key}
+          value={this.props.data[key]}
+          label={field.description}
+          onChange={this.updateFormValue(key)}
+          className={this.hasChanged(key) ? 'dirty' : ''}
+        />
+      );
     } else if (field.type === 'array' && 'items' in field && field.items.enum) {
       return (
         <AddableReactSelect
+          key={key}
           label={field.description}
-          options={this.schemaEnum('software', key).map((option) => ({ label: option, value: option}))}
+          options={this.schemaEnum(this.props.resourceType, key).map((option) => ({ label: option, value: option}))}
           multi={true}
-          value={(this.state[key] || []).map((val: string) => ({value: val, label: val}))}
+          value={(this.props.data[key] || []).map((val: string) => ({value: val, label: val}))}
           onChange={this.updateFormOptionsValue(key)}
-          onNewOption={this.onNewOption('software', key)}
+          onNewOption={this.onNewOption(this.props.resourceType, key)}
         />
       );
     } else if (field.type === 'array' && (!('items' in field) || !('enum' in field.items))) {
       return (
         <StringArray
+          key={key}
           label={field.description}
-          value={(this.state[key] || [])}
+          value={(this.props.data[key] || [])}
           onChange={this.updateFormValue(key)}
         />
       );
     } else {
-      return (<div>{key} {JSON.stringify(field)}</div>);
+      return (<div key={key}>{key} {JSON.stringify(field)}</div>);
     }
   }
 
@@ -98,12 +131,14 @@ class SoftwareFormComponent extends React.Component<IProps, any> {
 
   render() {
     return (
-      <div style={{maxWidth: '400px'}}>
+      <div className="main_form">
+        {JSON.stringify(this.props.data || 'asdas')}
+        {this.props.id}
         <button onClick={this.compareStuff} >Compare stuff</button>
-        {this.renderFields(this.props.schema.software)}
+        {this.renderFields(this.props.schema[this.props.resourceType])}
       </div>
     );
   }
 }
 
-export const SoftwareForm = connector(SoftwareFormComponent);
+export const ResourceForm = connector(ResourceFormComponent);

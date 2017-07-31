@@ -7,6 +7,7 @@
     "axios": "^0.16.2",
     "deep-diff": "^0.3.8",
     "immutability-helper": "^2.3.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.1",
@@ -14,6 +15,8 @@
     "react-notification-system": "^0.2.14",
     "react-redux": "^5.0.5",
     "react-redux-toastr": "^7.1.0",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
     "react-select": "^1.0.0-rc.5",
     "redux": "^3.7.2",
     "redux-observable": "^0.14.1",
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@types/deep-diff": "0.0.30",
     "@types/immutability-helper": "^2.0.15",
+    "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.38",
     "@types/react-bootstrap": "0.0.52",
     "@types/react-dom": "^15.5.1",
@@ -31,6 +35,7 @@
     "@types/react-notification-system": "^0.2.35",
     "@types/react-redux": "^4.4.46",
     "@types/react-redux-toastr": "^7.0.0",
+    "@types/react-router-dom": "^4.0.7",
     "@types/react-select": "^1.0.48"
   },
   "scripts": {
