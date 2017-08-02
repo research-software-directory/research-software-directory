@@ -1,9 +1,13 @@
 import * as React from 'react';
-import { Option } from 'react-select';
-import { AddableReactSelect } from './components/AddableReactSelect';
+// import { Option } from 'react-select';
+// import { AddableReactSelect } from './components/AddableReactSelect';
+import { IOption, MultiSelect } from './components/MultiSelect';
 
+import { ResourceArray } from './components/ResourceArray';
 import { StringArray } from './components/StringArray';
 import { TextInput } from './components/TextInput';
+
+import { TestAny } from './components/TestAny';
 
 // tslint:disable-next-line:no-require-imports no-var-requires
 const deepDiff = require('deep-diff').default;
@@ -57,11 +61,7 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }
 
-  updateFormOptionsValue = (field: string) => (options: Option[]) => {
-    this.updateFormValue(field)(options.map((val) => val.value));
-  }
-
-  onNewOption = (resourceType: string, field: string) => (option: Option) => {
+  onNewOption = (resourceType: string, field: string) => (option: IOption) => {
     this.props.addToSchemaEnum(resourceType, field, option.value as string );
   }
 
@@ -101,15 +101,30 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
         />
       );
     } else if (field.type === 'array' && 'items' in field && field.items.enum) {
+      const options = this.schemaEnum(this.props.resourceType, key).map((option) =>
+            ({ label: option, value: option, key: option}));
+
       return (
-        <AddableReactSelect
+        <MultiSelect
           key={key}
           label={field.description}
-          options={this.schemaEnum(this.props.resourceType, key).map((option) => ({ label: option, value: option}))}
+          value={this.props.data[key] || []}
+          options={options}
           multi={true}
-          value={(this.props.data[key] || []).map((val: string) => ({value: val, label: val}))}
-          onChange={this.updateFormOptionsValue(key)}
+          search={true}
+          addable={true}
+          onChange={this.updateFormValue(key)}
           onNewOption={this.onNewOption(this.props.resourceType, key)}
+        />
+
+      );
+    } else if (field.type === 'array' && 'items' in field && 'resType' in field.items) {
+      return (
+        <ResourceArray
+          key={key}
+          resourceType={field.items.resType.slice(1)}
+          label={field.description}
+          value={this.props.data[key] || []}
         />
       );
     } else if (field.type === 'array' && (!('items' in field) || !('enum' in field.items))) {
@@ -126,12 +141,18 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     }
   }
 
+  alphabetSort = (a: string, b: string) => a.localeCompare(b);
+
   renderFields = (schema: any) =>
-    Object.keys(schema.properties).map((key: string) => this.renderField(key, schema.properties[key]))
+    Object.keys(schema.properties).sort(this.alphabetSort)
+      .map((key: string) => this.renderField(key, schema.properties[key]))
 
   render() {
     return (
       <div className="main_form">
+
+        <TestAny />
+
         {JSON.stringify(this.props.data || 'asdas')}
         {this.props.id}
         <button onClick={this.compareStuff} >Compare stuff</button>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './AppMenu.css';
 
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Icon, Image, Input, Menu, Sidebar } from 'semantic-ui-react';
+import { Button, Icon, Image, Input, Menu } from 'semantic-ui-react';
 
 import * as update from 'immutability-helper';
 
@@ -108,7 +108,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           value={this.state.menu[type].search}
           onChange={this.onSubmenuSearch(type)}
         />
-        <Button inverted={true}>+ New</Button>
+        <Button size="mini" inverted={true} >+ New</Button>
         {this.props.data[type].filter(this.searchFilter(this.state.menu[type].search)).map(this.menuItem)}
       </Menu>
     ) : null;
@@ -126,9 +126,8 @@ class AppMenuComponent extends React.Component<IProps, IState> {
 
   render() {
       return (
-        <Sidebar
-          as={Menu}
-          animation="push"
+        <Menu
+          id="main_menu"
           visible={true}
           vertical={true}
           inverted={true}
@@ -137,14 +136,22 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           <Menu.Item>
             <Image avatar={true} src={this.props.user.avatar_url} />&nbsp;
             {this.props.user.name}
-            <Button floated="right" inverted={true} color="red" disabled={this.props.changes.length === 0}>Save</Button>
+            <Button
+              floated="right"
+              inverted={true}
+              color="red"
+              size="tiny"
+              disabled={this.props.changes.length === 0}
+            >
+              Save
+            </Button>
           </Menu.Item>
-          <Menu.Item name="home" as="a" href="/" >
+          <Menu.Item name="home" as={Link} to="/" >
             <Icon name="home" />
             Home
           </Menu.Item>
           {resourceTypes.map(this.resourceTypeMenu)}
-        </Sidebar>
+        </Menu>
       );
     }
   }

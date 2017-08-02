@@ -1,6 +1,7 @@
     div.ui.menu.submenu {
         margin: 0 !important;
         padding: 1em 1em !important;
+        font-size: 1em;
         width: 100%;
     }
     
@@ -53,12 +54,18 @@
         padding: 1em 1em;
     }
     
-    div.main_menu>.item>.header {
-        padding-top: .5em;
-        padding-bottom: .5em;
+    #main_menu {
+        width: 100%;
+        height: 100%;
+        font-size: 80%;
+    }
+    
+    #main_menu>.item>.header {
+        padding-top: 1em;
+        padding-bottom: 1em;
         margin: 0 !important;
     }
     
-    div.main_menu>.item>.header:hover {
-        color: red;
+    #main_menu>.item>.header:hover {
+        color: #aa8888;
     }

@@ -6,6 +6,8 @@ import * as actions from './actions';
 
 import { actions as toastrActions } from 'react-redux-toastr';
 
+import createHistory from 'history/createBrowserHistory';
+
 export const epic = combineEpics(
   (action$: any) => action$.ofType('LOGIN')
     .map(() => {
@@ -14,6 +16,8 @@ export const epic = combineEpics(
       const query = window.location.search.substr(1);
       const reResult = query.match(/code=(.*?)($|&)/);
       if (reResult) {
+        createHistory().replace('/'); // removes ?code=... from url
+
         return actions.getAccessToken(reResult[1]);
       }
 

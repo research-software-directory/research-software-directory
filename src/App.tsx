@@ -5,7 +5,7 @@ import {fetchRootJSON, fetchSchema } from './actions';
 
 import { AppMenu } from './AppMenu';
 
-import { Segment, Sidebar } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 
 import { Routes } from './Routes';
 
@@ -42,14 +42,16 @@ class AppComponent extends React.Component<IProps, {}> {
     if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
       return (
         <BrowserRouter>
-          <Sidebar.Pushable as={Segment}>
-            <Route component={this.renderMenu} />
-            <Sidebar.Pusher>
-              <Segment basic={true}>
-                <Routes />
+          <div style={{display: 'flex'}}>
+            <div style={{minWidth: '300px'}}>
+              <Route component={this.renderMenu} />
+            </div>
+            <div>
+              <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
+                  <Routes />
               </Segment>
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
+            </div>
+          </div>
         </BrowserRouter>
       );
     }

@@ -16,6 +16,8 @@ import 'rxjs';
 
 const store = configureStore();
 
+import './reset.css';
+
 import './index.css';
 
 ReactDOM.render(

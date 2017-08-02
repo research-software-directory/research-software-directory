@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {
-  Link,
   Route,
   Switch
 } from 'react-router-dom';
@@ -20,9 +19,8 @@ export class Routes extends React.Component<{}, {}> {
   render() {
     return (
       <div>
-        <Link to="/person/23">Person</Link>
         <Switch>
-          <Route exact={true} path="/" component={Resource('software')}/>
+          <Route exact={true} path="/" component={() => <div>welcome</div>}/>
           {resourceTypes.map(resourceRoute)}
         </Switch>
       </div>
