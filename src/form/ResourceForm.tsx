@@ -153,7 +153,6 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
 
         <TestAny />
 
-        {JSON.stringify(this.props.data || 'asdas')}
         {this.props.id}
         <button onClick={this.compareStuff} >Compare stuff</button>
         {this.renderFields(this.props.schema[this.props.resourceType])}

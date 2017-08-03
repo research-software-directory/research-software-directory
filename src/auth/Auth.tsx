@@ -23,11 +23,7 @@ class AuthComponent extends React.Component<IProps, { }> {
     this.props.logIn();
   }
   render() {
-    return (
-      <div>
-        {this.props.user ? this.props.children : null}
-      </div>
-    );
+    return this.props.user ? React.Children.only(this.props.children) : null;
   }
 }
 

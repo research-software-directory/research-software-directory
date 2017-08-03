@@ -43,14 +43,10 @@ class AppComponent extends React.Component<IProps, {}> {
       return (
         <BrowserRouter>
           <div style={{display: 'flex'}}>
-            <div style={{minWidth: '300px'}}>
               <Route component={this.renderMenu} />
-            </div>
-            <div>
               <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
                   <Routes />
               </Segment>
-            </div>
           </div>
         </BrowserRouter>
       );
@@ -61,9 +57,7 @@ class AppComponent extends React.Component<IProps, {}> {
 
   render() {
     return (
-      <div className="App">
-        {this.renderAppLoaded()}
-      </div>
+        this.renderAppLoaded()
     );
   }
 }

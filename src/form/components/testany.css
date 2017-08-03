@@ -1,0 +1,4 @@
+div.segment.editable:hover {
+    background-color: #eee;
+    cursor: pointer;
+}

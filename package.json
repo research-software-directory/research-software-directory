@@ -3,14 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@nlesc/react-scripts": "0.3.2",
         "axios": "^0.16.2",
         "deep-diff": "^0.3.8",
         "history": "^4.6.3",
         "immutability-helper": "^2.3.0",
         "prop-types": "^15.5.10",
         "react": "^15.6.1",
-        "react-bootstrap": "^0.31.1",
         "react-dom": "^15.6.1",
         "react-redux": "^5.0.5",
         "react-redux-toastr": "^7.1.0",
@@ -20,15 +18,15 @@
         "redux-observable": "^0.14.1",
         "rxjs": "^5.4.2",
         "semantic-ui-css": "^2.2.11",
-        "semantic-ui-react": "^0.71.2"
+        "semantic-ui-react": "^0.71.3"
     },
     "devDependencies": {
+        "@nlesc/react-scripts": "0.3.2",
         "@types/deep-diff": "0.0.30",
         "@types/history": "^4.6.0",
         "@types/immutability-helper": "^2.0.15",
         "@types/prop-types": "^15.5.1",
         "@types/react": "^15.0.38",
-        "@types/react-bootstrap": "0.0.52",
         "@types/react-dom": "^15.5.1",
         "@types/react-jsonschema-form": "^0.43.1",
         "@types/react-redux": "^4.4.46",

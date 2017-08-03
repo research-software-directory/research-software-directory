@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button, Input, Segment } from 'semantic-ui-react';
+import { Button, Input, Segment} from 'semantic-ui-react';
+
 interface IProps {
   value: any[];
   label: string;
@@ -36,7 +37,7 @@ export class StringArray extends React.Component<IProps, any> {
   inputs = () => this.props.value.map((value, key) => (
       <div>
         <Input
-          key={key}
+          key={value}
           value={value}
           onChange={this.onInputChange(key)}
           ref={this.saveRef}
@@ -60,7 +61,7 @@ export class StringArray extends React.Component<IProps, any> {
       <div>
         <Segment>
           {this.props.label}<br />
-          {this.inputs()}
+            {this.inputs()}
           <Input onChange={this.onAdd} value="" />
         </Segment>
       </div>

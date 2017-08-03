@@ -1,8 +1,12 @@
 import * as React from 'react';
 
-import { Button, Segment } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
+
+import { EditableSegment } from './EditableSegment';
 
 import { MultiSelect} from './MultiSelect';
+
+import './testany.css';
 
 const options = [
   { label: 'Tom', id: '/person/tom' },
@@ -15,30 +19,20 @@ const value = [
 ];
 
 export class TestAny extends React.Component<{}, {}> {
-
-  renderValues() {
-    const segments = value.map((val) => (
-      <Segment>
-        {JSON.stringify(val)}
-        <Button size="mini" floated="right" icon="close"/>
-      </Segment>
-    ));
-
-    return (
-      <Segment.Group style={{maxWidth: '500px'}}>
-        {segments}
-      </Segment.Group>
-    );
-  }
-
   render() {
-    // const props = {...this.defaults, ...this.props};
+    const segments = value.map((val) =>
+      (typeof val === 'string')
+        ? <Segment>{JSON.stringify(val)}</Segment>
+        : <EditableSegment value={val} />
+    );
 
     return (
       <Segment>
-        {this.renderValues()}
+        <Segment.Group style={{maxWidth: '500px'}}>
+          {segments}
+        </Segment.Group>
         <MultiSelect
-          label={'bladiebla'}
+          label={'Search'}
           options={options.filter((option) => value.indexOf(option.id) === -1).map((option) => ({ ...option, value: option.id}))}
           multi={false}
           search={true}
