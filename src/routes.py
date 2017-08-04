@@ -1,8 +1,10 @@
-from flask import abort, request
-from flask_cors import CORS, cross_origin
-from json_handlers import json_response, init as json_handlers_init
-from database import sync_db, sync_schema
-from services.user import login, get_user
+from flask import request
+from flask_cors import CORS
+from .json_handlers import json_response, init as json_handlers_init
+
+from .database import sync_db, sync_schema
+from .services.user import login, get_user
+
 
 def init(app, db, schema):
     cors = CORS(app, resources={r"*": {"origins": "*"}})

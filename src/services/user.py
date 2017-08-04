@@ -1,5 +1,6 @@
 import requests
-from settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+
+from src.settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
 
 
 def get_user(token):

@@ -1,9 +1,12 @@
+import datetime
 import logging
 import re
-import datetime
-import settings
+
 from github import Github
 from tinydb import Query
+
+from src import settings
+
 logger = logging.getLogger(__name__)
 
 GITHUB_INDEX_START_DATE = datetime.datetime(2012, 1, 1, 0, 0, 0)
