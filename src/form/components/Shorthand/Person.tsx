@@ -1,18 +1,22 @@
 import * as React from 'react';
 
-import { Button, Input } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 
 interface IProps {
   value: any;
+  onChange(value: any): void;
 }
 
 export class Person extends React.Component<IProps, {}> {
+  updateField = (field: string) => (e: any) => {
+    this.props.onChange({ ...this.props.value, [field]: e.target.value });
+  }
+
   render() {
    return (
     <div>
-      {JSON.stringify(this.props.value)}
-      <Input defaultValue={this.props.value} />
-      <Button color="green">Save</Button>
+      <Input value={this.props.value.name || ''} placeholder="name" onChange={this.updateField('name')} />
+      <Input value={this.props.value.url || ''} placeholder="URL" onChange={this.updateField('url')}/>
     </div>
   );
   }

@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:8.2.1
+FROM node:8.2.1-alpine
 
 WORKDIR /src
 
@@ -12,6 +12,6 @@ RUN (npm install)
 
 #RUN (npm test)
 
-RUN (npm start)
+CMD (npm start)
 
 ENTRYPOINT ["/bin/sh"]

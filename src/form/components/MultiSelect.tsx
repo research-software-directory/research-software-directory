@@ -9,6 +9,7 @@ interface IProps {
   addable?: boolean;
   multi?: boolean;
   search?: boolean;
+  propagateNewOption?: boolean;
   onChange?(value: string | string[]): void;
   onNewOption?(option: IOption): void;
 }
@@ -35,7 +36,8 @@ export class MultiSelect extends React.Component<IProps, IState> {
   }
 
   onChange = (e: any, data: any) => {
-    if (this.props.onChange) {
+
+    if (this.props.onChange && e.target.tagName !== 'INPUT') {
       this.props.onChange(data.value);
     }
 
@@ -55,7 +57,10 @@ export class MultiSelect extends React.Component<IProps, IState> {
         this.props.onNewOption({value: this.state.search, label: this.state.search});
       }
       if (this.props.onChange) {
-        this.props.onChange([...this.props.value as string[], this.state.search ]);
+        const propagate = this.props.propagateNewOption === undefined || this.props.propagateNewOption;
+        if (propagate) {
+          this.props.onChange([...this.props.value as string[], this.state.search ]);
+        }
       }
       this.setState({search: ''});
     };
@@ -76,7 +81,6 @@ export class MultiSelect extends React.Component<IProps, IState> {
   }
 
   render() {
-    // const props = {...this.defaults, ...this.props};
 
     return (
       <Segment>

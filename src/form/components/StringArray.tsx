@@ -35,9 +35,8 @@ export class StringArray extends React.Component<IProps, any> {
   }
 
   inputs = () => this.props.value.map((value, key) => (
-      <div>
+      <div key={key}>
         <Input
-          key={value}
           value={value}
           onChange={this.onInputChange(key)}
           ref={this.saveRef}

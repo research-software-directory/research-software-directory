@@ -1,66 +1,114 @@
 import * as React from 'react';
 
-import { IOption, MultiSelect } from './MultiSelect';
+import { Button, Icon, Segment } from 'semantic-ui-react';
 
-import { connect } from 'react-redux';
+import { EditableSegment } from './EditableSegment';
 
-interface IOwnProps {
+import { MultiSelect} from './MultiSelect';
+
+import './ResourceArray.css';
+
+const icon = (resourceType: string) => {
+  switch (resourceType) {
+    case 'person'       : return 'user';
+    case 'publication'  : return 'book';
+    case 'project'      : return 'lab';
+    case 'software'     : return 'file code outline';
+    case 'organization' : return 'university';
+    default: return 'caret right';
+  }
+};
+
+interface IOption {
   label: string;
+  id: string;
+}
+
+interface IProps {
+  addable: boolean;
+  maxItems?: number;
+  label: string;
+  value: any[];
+  options: IOption[];
   resourceType: string;
-  value: string[];
-  onChange?(value: string): void;
+  onChange(value: any[]): void;
 }
 
-interface IStateProps {
-  resources: any[];
-}
+export class ResourceArray extends React.Component<IProps, {}> {
+  addValue = (value: string) => {
+    const oldValue = [...this.props.value];
+    oldValue.push(value);
+    this.props.onChange(oldValue);
+  }
 
-const mapStateToProps = (state: any, props: IOwnProps) => ({
-  resources: state.current.data[props.resourceType]
-});
+  newOption = (option: any) => {
+    const oldValue = [...this.props.value];
+    oldValue.push({name: option.value});
+    this.props.onChange(oldValue);
+  }
 
-const connector = connect(mapStateToProps, {});
+  updateValue = (key: number) => (value: any) => {
+    const oldValue = [...this.props.value];
+    oldValue[key] = value;
+    this.props.onChange(oldValue);
+  }
 
-class ResourceArrayComponent extends React.Component<IOwnProps & IStateProps, {}> {
-  label = (option: any) => {
-    switch (this.props.resourceType) {
-      case 'person': return option.name;
-      default: return option.description;
+  removeValue = (key: number) => () => {
+    const oldValue = [...this.props.value];
+    oldValue.splice(key, 1);
+    this.props.onChange(oldValue);
+  }
+
+  segments = () => this.props.value.map((val, key) => {
+    if (typeof val === 'string') {
+      const option = this.props.options.find((opt: IOption) => opt.id === val);
+      const label = option ? option.label : val;
+
+      return (
+        <Segment key={key}><Icon name={icon(this.props.resourceType)} /> {label}
+          <Button size="mini" floated="right" icon="close" onClick={this.removeValue(key)} />
+        </Segment>
+      );
+    } else {
+      return (
+        <EditableSegment
+          key={key}
+          value={val}
+          onChange={this.updateValue(key)}
+          onDelete={this.removeValue(key)}
+        />
+      );
     }
-  }
+  })
 
-  onChange = (e: any, data: any) => {
-    if (this.props.onChange) {
-      this.props.onChange(data.value);
-    }
-
-    return e;
-  }
-
-  onSearchChange = (e: any, search: string) => {
-    this.setState({search});
-
-    return e;
-  }
+  options = () => this.props.options
+    .filter((option) => this.props.value.indexOf(option.id) === -1)
+    .map((option) => ({ ...option, value: option.id, icon: icon(this.props.resourceType)}))
 
   render() {
-    const options: IOption[] = this.props.resources.map((option) => ({
-      icon: 'user',
-      label: this.label(option),
-      value: option.id
-    }));
+    const input = (!this.props.maxItems || this.props.value.length < this.props.maxItems)
+      ? (
+        <MultiSelect
+          label={'Add'}
+          options={this.options()}
+          multi={false}
+          search={true}
+          addable={this.props.addable}
+          onChange={this.addValue}
+          onNewOption={this.newOption}
+          propagateNewOption={false}
+          value={''}
+        />)
+      : null;
 
     return (
-      <MultiSelect
-        label={this.props.label}
-        search={true}
-        options={options}
-        multi={true}
-        onChange={this.props.onChange}
-        value={this.props.value}
-      />
+      <Segment className="ResourceArray">
+        <p>{this.props.label}</p>
+        <Segment.Group style={{maxWidth: '500px'}}>
+          {this.segments()}
+        </Segment.Group>
+          {input}
+      </Segment>
     );
   }
 }
-
-export const ResourceArray = connector(ResourceArrayComponent);

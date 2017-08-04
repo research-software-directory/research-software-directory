@@ -21,7 +21,7 @@
         "semantic-ui-react": "^0.71.3"
     },
     "devDependencies": {
-        "@nlesc/react-scripts": "0.3.2",
+        "@nlesc/react-scripts": "https://registry.npmjs.org/@nlesc/react-scripts/-/react-scripts-0.3.0-dev1.tgz",
         "@types/deep-diff": "0.0.30",
         "@types/history": "^4.6.0",
         "@types/immutability-helper": "^2.0.15",

@@ -128,7 +128,6 @@ class AppMenuComponent extends React.Component<IProps, IState> {
       return (
         <Menu
           id="main_menu"
-          visible={true}
           vertical={true}
           inverted={true}
           className="main_menu"
