@@ -7,10 +7,10 @@ import {
 
 import { ResourceForm } from './form/ResourceForm';
 
+import { resourceTypes } from './constants';
+
 const Resource = (type: string) => ({match}: any) =>
   <ResourceForm resourceType={type} id={`/${type}/${match.params.id}`} />;
-
-const resourceTypes = ['software', 'person', 'project'];
 
 const resourceRoute = (resourceType: string) =>
   <Route key={resourceType} exact={true} path={`/${resourceType}/:id`} component={Resource(resourceType)}/>;

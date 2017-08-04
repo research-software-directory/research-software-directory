@@ -11,6 +11,8 @@ import * as update from 'immutability-helper';
 
 import { Link } from 'react-router-dom';
 
+import { resourceTypes } from './constants';
+
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
   changes: state.current.changes,
   data:   state.data,
@@ -38,8 +40,6 @@ interface IState {
     [index: string]: IMenuState;
   };
 }
-
-const resourceTypes = ['software', 'person', 'project'];
 
 class AppMenuComponent extends React.Component<IProps, IState> {
   componentWillMount() {
