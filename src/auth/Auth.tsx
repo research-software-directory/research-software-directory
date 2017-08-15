@@ -1,3 +1,7 @@
+/* Auth component should only contain a single child. It will
+   - Try to login when mounting
+   - Render its child if the user is authenticated, otherwise null
+*/
 import * as React from 'react';
 import {connect, Dispatch} from 'react-redux';
 import { Action } from 'redux';

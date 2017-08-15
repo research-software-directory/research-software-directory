@@ -10,10 +10,6 @@
         color: white !important;
     }
     
-    div.ui.menu.submenu>button {
-        margin-top: 1em;
-    }
-    
     div.submenu-search {
         width: 100%;
     }

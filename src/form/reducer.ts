@@ -16,24 +16,22 @@ const dataReducer = (state: any = {}, action: any) => {
           [ rowIndex ] : {
             [action.field] : {
               $set : action.value
-            }
-          }
+        } } }
+      });
+    case 'CREATE_NEW_ITEM':
+      const newItem: any = {};
+      Object.keys(action.schema.properties).forEach((propName: string) => {
+        newItem[propName] = action.schema.properties[propName].type === 'array' ? [] : '';
+      });
+      newItem.id = action.id;
+      newItem.name = action.id;
+
+      return update(state, {
+        [action.resourceType] : {
+          $unshift: [newItem]
         }
       });
     default: return state;
-  }
-};
-
-const changes = (state: any = [], action: actions.IUpdateField) => {
-  switch (action.type) {
-    case 'UPDATE_FIELD':
-      if (state.indexOf(action.id) === -1) {
-        return update(state, { $push: [action.id] });
-      } else {
-        return state;
-      }
-    default:
-      return state;
   }
 };
 
@@ -57,4 +55,4 @@ const schemaReducer = (state: any = {}, action: any) => {
   }
 };
 
-export const reducer = combineReducers({ data: dataReducer, schema: schemaReducer, changes });
+export const reducer = combineReducers({ data: dataReducer, schema: schemaReducer });

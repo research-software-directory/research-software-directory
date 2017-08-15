@@ -1,3 +1,10 @@
+/* async is used for backend calls, and takes care of redux actions
+   use eg backend.get('FETCH_TEST','test') will get BACKEND_URL/test
+   and create actions of type 'FETCH_TEST' and async its result:
+   - FETCH_TEST_FULFILLED or
+   - FETCH_TEST_FAILED
+*/
+
 import Axios, { AxiosResponse } from 'axios';
 import { Action } from 'redux';
 import { Epic } from 'redux-observable';
@@ -67,7 +74,7 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
         return Observable.fromPromise(req)
           .map((response: AxiosResponse): IFetchFulfilledAction => ({
             ...action,
-            fetchAction: false,
+            fetchAction: false, // set to false to avoid looping
             response: response.data,
             status: response.status,
             type: `${action.type}_FULFILLED`
@@ -76,7 +83,7 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
             Observable.of({
               ...action,
               error: e.toString(),
-              fetchAction: false,
+              fetchAction: false, // set to false to avoid looping
               response: (e.response && e.response.data) || null,
               status: (e.response && e.response.status) || null,
               type: `${action.type}_FAILED`

@@ -5,8 +5,11 @@ body * {
     font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+html {
+    font-size: 90%;
+}
+
 #main_content {
-    /* font-size: 80%; */
     font-family: Arial, sans-serif;
     line-height: 1.5;
 }

@@ -33,3 +33,24 @@ const mergeEnums = (a: string[], b: string[] | null) => {
         //       </Dropdown.Menu>
         //     </Dropdown.Menu>
         //   </Dropdown>
+
+
+            // <Button size="mini" inverted={true} as={Link} to={`/new/${type}`}>+ New</Button>;
+
+
+
+
+            // const initNewResourcesWhenLoaded = (action$: any) => Observable.combineLatest(
+            //   action$.ofType('FETCH_SCHEMA_FULFILLED'),
+            //   action$.ofType('FETCH_ROOT_JSON_FULFILLED')
+            // ).mergeMap(
+            //   (actions: any) => {
+            //     const schema = actions.find((action: any) => action.type === 'FETCH_SCHEMA_FULFILLED').response;
+            
+            //     return resourceTypes.map((resourceType: string) => ({
+            //       resourceType,
+            //       schema: schema[resourceType],
+            //       type: 'INIT_NEW'
+            //     }));
+            //   }
+            // );

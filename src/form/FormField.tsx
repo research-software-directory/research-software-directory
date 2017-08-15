@@ -51,8 +51,6 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     return (this.props.schema.type === 'array') ? (this.props.schema.items.enum || []) : (this.props.schema.enum || []);
   }
 
-  changeSingle = (val: any[]) => this.props.onChange(val ? val[0] : '');
-
   renderTextInput() {
     return (
       <TextInput
@@ -101,6 +99,8 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
       />
     );
   }
+
+  changeSingle = (func: (val: any) => void) => (val: any[]) => func(val ? val[0] : '');
   renderSingleResourceOrSimple() {
     let resourceType;
     for (const type of this.props.schema.anyOf) {
@@ -116,7 +116,8 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
       <ResourceArray
         label={this.props.schema.description}
         value={this.props.value ? [this.props.value] : []}
-        onChange={this.changeSingle}
+        onChange={this.changeSingle(this.props.onChange)}
+          // ResourceArray is array, convert to simple value before calling onChange
         options={options}
         resourceType={resourceType}
         addable={true}

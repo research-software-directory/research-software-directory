@@ -1,3 +1,5 @@
+import { saveChanges } from './actions';
+
 import * as React from 'react';
 
 import { connect } from 'react-redux';
@@ -5,29 +7,36 @@ import { connect } from 'react-redux';
 import './AppMenu.css';
 
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Icon, Image, Input, Menu } from 'semantic-ui-react';
+import { Button, Divider, Icon, Image, Input, Menu } from 'semantic-ui-react';
 
 import * as update from 'immutability-helper';
 
 import { Link } from 'react-router-dom';
 
-import { resourceTypes } from './constants';
+import { resourceTypes } from '../constants';
+
+import { NewItem } from './NewItem';
 
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
-  changes: state.current.changes,
-  data:   state.data,
+  data:   state.current.data,
+  oldData: state.data,
   schema: state.schema,
   user:   state.auth.user
 });
 
-const connector = connect(mapStateToProps, { } );
+const dispatchToProps = {
+  saveChanges: () => saveChanges
+};
+
+const connector = connect(mapStateToProps, dispatchToProps );
 
 interface IProps {
   data: any;
+  oldData: any;
   schema: any;
   user: any;
-  changes: string[];
   routeParams: any;
+  saveChanges(): void;
 }
 
 interface IMenuState {
@@ -52,7 +61,10 @@ class AppMenuComponent extends React.Component<IProps, IState> {
     this.setState(initialState);
   }
 
-  menuItem = (item: any) => {
+  menuItem = (type: string) => (item: any) => {
+    const oldEntry = (this.props.oldData[type].find((oldItem: any) => item.id === oldItem.id));
+    const hasChanged = oldEntry !== item;
+
     return (
         <Menu.Item
           key={item.id}
@@ -60,7 +72,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
         >
           <Link to={`${item.id}`} style={{display: 'block'}}>
             {item.name}
-            {this.props.changes.indexOf(item.id) !== -1 && <Icon name="pencil" style={{float: 'right'}} />}
+            {hasChanged && <Icon name="pencil" style={{float: 'right'}} />}
           </Link>
 
         </Menu.Item>
@@ -98,20 +110,27 @@ class AppMenuComponent extends React.Component<IProps, IState> {
   }
 
   resourceTypeMenu = (type: string) => {
+    let subMenu = null;
+    if (this.state.menu[type].open) {
+      const menuItems = this.props.data[type]
+        .filter((item: any) => item.id !== '_new')
+        .filter(this.searchFilter(this.state.menu[type].search))
+        .map(this.menuItem(type));
 
-    const subMenu = this.state.menu[type].open
-    ? (
-      <Menu className="submenu" inverted={true} vertical={true}>
-        <Input
-          className="submenu-search inverted"
-          icon={<Icon name="search" inverted={true}/>}
-          value={this.state.menu[type].search}
-          onChange={this.onSubmenuSearch(type)}
-        />
-        <Button size="mini" inverted={true} >+ New</Button>
-        {this.props.data[type].filter(this.searchFilter(this.state.menu[type].search)).map(this.menuItem)}
-      </Menu>
-    ) : null;
+      subMenu = (
+        <Menu className="submenu" inverted={true} vertical={true}>
+          <Input
+            className="submenu-search inverted"
+            icon={<Icon name="search" inverted={true}/>}
+            value={this.state.menu[type].search}
+            onChange={this.onSubmenuSearch(type)}
+          />
+          <Divider />
+          <NewItem resourceType={type} />
+          {menuItems}
+        </Menu>
+      );
+    }
 
     return  (
       <Menu.Item
@@ -122,6 +141,11 @@ class AppMenuComponent extends React.Component<IProps, IState> {
         {subMenu}
       </Menu.Item>
     );
+  }
+
+  save = () => {
+    // console.log(this.props.data, this.props.oldData);
+    this.props.saveChanges();
   }
 
   render() {
@@ -140,7 +164,8 @@ class AppMenuComponent extends React.Component<IProps, IState> {
               inverted={true}
               color="red"
               size="tiny"
-              disabled={this.props.changes.length === 0}
+              disabled={this.props.data === this.props.oldData}
+              onClick={this.save}
             >
               Save
             </Button>

@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {connect, Dispatch} from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Action } from 'redux';
+
 import {fetchRootJSON, fetchSchema } from './actions';
-
-import { AppMenu } from './AppMenu';
-
-import { Segment } from 'semantic-ui-react';
 
 import { Routes } from './Routes';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { AppMenu } from './menu/AppMenu';
+
+import { Segment } from 'semantic-ui-react';
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   fetchRootJSON:  (): Action => dispatch(fetchRootJSON),

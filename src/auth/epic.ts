@@ -11,6 +11,11 @@ import createHistory from 'history/createBrowserHistory';
 export const epic = combineEpics(
   (action$: any) => action$.ofType('LOGIN')
     .map(() => {
+      /* Try to find ACCESS TOKEN in local storage
+         If not found, check if url contains ?code=...
+         which contains AUTHORIZATION CODE (forwarded
+         from from GitHub.
+      */
       const token = localStorage.getItem('access_token');
       if (token) { return actions.verifyAccessToken(token); }
       const query = window.location.search.substr(1);
@@ -65,9 +70,3 @@ export const epic = combineEpics(
       })
     )
 );
-
-// login
-//  - empty:       code in url ? getAccessToken : getAuthToken (redirect)
-//                               -> fail: ERROR
-//  - accessToken: verifyAccessToken -> logged in
-//                                   -> fail: getAuthToken (redirect)

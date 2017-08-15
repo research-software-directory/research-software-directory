@@ -36,6 +36,7 @@ interface IProps {
 
 interface IOwnProps {
   resourceType: string;
+  isNew: boolean;
   id: string;
 }
 
@@ -59,6 +60,8 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
   }
 
   hasChanged(field: string) {
+    if (!this.props.oldData) { return true; }
+
     return !!deepDiff(this.props.data[field] || null, this.props.oldData[field] || null);
   }
 
