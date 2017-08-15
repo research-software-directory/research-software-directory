@@ -5,3 +5,8 @@ div.ui.input.dirty>input {
 .main_form input {
     min-width: 30rem;
 }
+
+.main_form textarea {
+    min-width: 30rem;
+    width: 100%;
+}

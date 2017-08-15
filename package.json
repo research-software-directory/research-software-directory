@@ -18,7 +18,8 @@
         "redux-observable": "^0.14.1",
         "rxjs": "^5.4.2",
         "semantic-ui-css": "^2.2.11",
-        "semantic-ui-react": "^0.71.3"
+        "semantic-ui-react": "^0.71.3",
+        "showdown": "^1.7.2"
     },
     "devDependencies": {
         "@nlesc/react-scripts": "https://registry.npmjs.org/@nlesc/react-scripts/-/react-scripts-0.3.0-dev1.tgz",
@@ -31,7 +32,8 @@
         "@types/react-jsonschema-form": "^0.43.1",
         "@types/react-redux": "^4.4.46",
         "@types/react-redux-toastr": "^7.0.0",
-        "@types/react-router-dom": "^4.0.7"
+        "@types/react-router-dom": "^4.0.7",
+        "@types/showdown": "^1.4.32"
     },
     "scripts": {
         "start": "react-scripts start",

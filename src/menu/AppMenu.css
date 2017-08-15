@@ -48,7 +48,7 @@
     
     #main_menu {
         min-height: 100vh;
-        font-size: 80%;
+        font-size: 100%;
         flex: 0 0 300px;
     }
     

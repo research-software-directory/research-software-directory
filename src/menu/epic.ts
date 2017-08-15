@@ -32,15 +32,24 @@ const saveEpic = (action$: any, state: any) => action$.ofType('SAVE_CHANGES').ma
 export const epic = combineEpics(
   saveEpic,
 
-  (action$: any) => action$.ofType('SAVE_CHANGES_POST_FULFILLED').mapTo(
-    toastrActions.add({
-      message: 'Changes saved!',
-      options: { timeOut: 3000 },
-      position: 'top-center',
-      title: 'Done',
-      type: 'info'
-    })
-  ),
+  (action$: any, state: any) => action$.ofType('SAVE_CHANGES_POST_FULFILLED').flatMap(() => {
+    const store = state.getState();
+
+    return [
+      toastrActions.add({
+        message: 'Changes saved!',
+        options: { timeOut: 3000 },
+        position: 'top-center',
+        title: 'Done',
+        type: 'info'
+      }),
+      {
+        currentData: store.current.data,
+        type: 'UPDATE_OLD_DATA'
+      }
+    ];
+    }
+     ),
 
   (action$: any) => action$.ofType('CREATE_NEW_ITEM').do((action: ICreateNewItem) => {
     // tslint:disable-next-line:prefer-type-cast

@@ -82,7 +82,8 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
   alphabetSort = (a: string, b: string) => a.localeCompare(b);
 
   renderFields = (schema: any) =>
-    Object.keys(schema.properties).sort(this.alphabetSort)
+    // Object.keys(schema.properties).sort(this.alphabetSort)
+    Object.keys(schema.properties)
       .map((field: string) => this.renderField(field))
 
   render() {

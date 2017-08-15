@@ -5,15 +5,17 @@ import { reducer as formReducer } from './form/reducer';
 import { combineReducers } from 'redux';
 import { IFetchFulfilledAction } from './async';
 
-const fetchRootJSONReducer = (state: any = {}, action: IFetchFulfilledAction) => {
+const dataReducer = (state: any = {}, action: any) => {
     switch (action.type) {
         case 'FETCH_ROOT_JSON_FULFILLED':
             return action.response;
+        case 'UPDATE_OLD_DATA':
+            return action.currentData;
         default: return state;
     }
 };
 
-const fetchSchemaReducer = (state: any = {}, action: IFetchFulfilledAction) => {
+const schemaReducer = (state: any = {}, action: IFetchFulfilledAction) => {
     switch (action.type) {
         case 'FETCH_SCHEMA_FULFILLED':
             return action.response;
@@ -24,7 +26,7 @@ const fetchSchemaReducer = (state: any = {}, action: IFetchFulfilledAction) => {
 export const rootReducer = combineReducers({
     auth:    authReducer,
     current: formReducer,
-    data:    fetchRootJSONReducer,
-    schema:  fetchSchemaReducer,
+    data:    dataReducer,
+    schema:  schemaReducer,
     toastr:  toastrReducer
 });

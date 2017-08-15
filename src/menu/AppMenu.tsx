@@ -18,10 +18,10 @@ import { resourceTypes } from '../constants';
 import { NewItem } from './NewItem';
 
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
-  data:   state.current.data,
+  data:    state.current.data,
   oldData: state.data,
-  schema: state.schema,
-  user:   state.auth.user
+  schema:  state.schema,
+  user:    state.auth.user
 });
 
 const dispatchToProps = {

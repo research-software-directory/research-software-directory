@@ -5,6 +5,10 @@ import { IOption, MultiSelect } from './components/MultiSelect';
 import { StringArray } from './components/StringArray';
 import { TextInput } from './components/TextInput';
 
+import { TextAreaInput } from './components/TextAreaInput';
+
+import { MarkDownInput } from './components/MarkDownInput';
+
 import { ResourceArray } from './components/ResourceArray';
 
 import { connect } from 'react-redux';
@@ -54,6 +58,28 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
   renderTextInput() {
     return (
       <TextInput
+        value={this.props.value || ''}
+        label={this.props.schema.description}
+        onChange={this.props.onChange}
+        className={this.props.hasChanged ? 'dirty' : ''}
+      />
+    );
+  }
+
+  renderTextArea() {
+    return (
+      <TextAreaInput
+        value={this.props.value || ''}
+        label={this.props.schema.description}
+        onChange={this.props.onChange}
+        className={this.props.hasChanged ? 'dirty' : ''}
+      />
+    );
+  }
+
+  renderMarkDown() {
+    return (
+      <MarkDownInput
         value={this.props.value || ''}
         label={this.props.schema.description}
         onChange={this.props.onChange}
@@ -161,7 +187,11 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
   render() {
     const field = this.props.schema;
 
-    if (field.type === 'string') {
+    if (field.type === 'string' && 'markdown' in field) {
+      return this.renderMarkDown();
+    } else if (field.type === 'string' && 'long' in field) {
+      return this.renderTextArea();
+    } else if (field.type === 'string') {
       return this.renderTextInput();
     } else if (field.type === 'array' && 'items' in field && field.items.enum) {
       return this.renderMultiEnum();
