@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import './AppMenu.css';
 
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Divider, Icon, Image, Input, Menu } from 'semantic-ui-react';
+import { Button, Divider, Icon, Image, Input, Loader, Menu } from 'semantic-ui-react';
 
 import * as update from 'immutability-helper';
 
@@ -19,9 +19,10 @@ import { NewItem } from './NewItem';
 
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
   data:    state.current.data,
+  numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
   oldData: state.data,
   schema:  state.schema,
-  user:    state.auth.user
+  user:    state.auth.user,
 });
 
 const dispatchToProps = {
@@ -32,6 +33,7 @@ const connector = connect(mapStateToProps, dispatchToProps );
 
 interface IProps {
   data: any;
+  numAsyncs: number;
   oldData: any;
   schema: any;
   user: any;
@@ -159,6 +161,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           <Menu.Item>
             <Image avatar={true} src={this.props.user.avatar_url} />&nbsp;
             {this.props.user.name}
+            <Loader inline={true} active={this.props.numAsyncs>0} />
             <Button
               floated="right"
               inverted={true}

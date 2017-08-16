@@ -75,6 +75,7 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
         value={this.props.data[field]}
         hasChanged={this.hasChanged(field)}
         onChange={this.updateFormValue(field)}
+        githubid={this.props.data.githubid}
       />
     );
   }
@@ -89,9 +90,7 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
   render() {
     return (
       <div className="main_form">
-
         {this.props.id}
-        <button onClick={this.compareStuff} >Compare stuff</button>
         {this.renderFields(this.props.schema[this.props.resourceType])}
       </div>
     );
@@ -99,3 +98,6 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
 }
 
 export const ResourceForm = connector(ResourceFormComponent);
+
+
+// getGH(id) -> completed() -> reducer(id -> getGHstuff

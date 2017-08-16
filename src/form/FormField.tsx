@@ -1,19 +1,7 @@
 import * as React from 'react';
-
-import { IOption, MultiSelect } from './components/MultiSelect';
-
-import { StringArray } from './components/StringArray';
-import { TextInput } from './components/TextInput';
-
-import { TextAreaInput } from './components/TextAreaInput';
-
-import { MarkDownInput } from './components/MarkDownInput';
-
-import { ResourceArray } from './components/ResourceArray';
-
 import { connect } from 'react-redux';
-
 import { addToSchemaEnum } from './actions';
+import * as comp from './components';
 
 const mapDispatchToProps = {
   addToSchemaEnum
@@ -32,6 +20,7 @@ interface IProps {
 
 interface IOwnProps {
   fieldName: string;
+  githubid?: string;
   parentResourceType: string;
   schema: any;
   value: any;
@@ -44,10 +33,11 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
   shouldComponentUpdate(nextProps: IProps&IOwnProps) {
     return (nextProps.value !== this.props.value)
-        || (nextProps.schema !== this.props.schema);
+        || (nextProps.schema !== this.props.schema)
+        || (nextProps.githubid !== this.props.githubid);
   }
 
-  onNewOption = (option: IOption) => {
+  onNewOption = (option: comp.IOption) => {
     this.props.addToSchemaEnum(this.props.parentResourceType, this.props.fieldName, option.value as string );
   }
 
@@ -57,7 +47,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
 
   renderTextInput() {
     return (
-      <TextInput
+      <comp.TextInput
         value={this.props.value || ''}
         label={this.props.schema.description}
         onChange={this.props.onChange}
@@ -68,7 +58,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
 
   renderTextArea() {
     return (
-      <TextAreaInput
+      <comp.TextAreaInput
         value={this.props.value || ''}
         label={this.props.schema.description}
         onChange={this.props.onChange}
@@ -79,7 +69,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
 
   renderMarkDown() {
     return (
-      <MarkDownInput
+      <comp.MarkDownInput
         value={this.props.value || ''}
         label={this.props.schema.description}
         onChange={this.props.onChange}
@@ -93,7 +83,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
           ({ label: option, value: option, key: option}));
 
     return (
-      <MultiSelect
+      <comp.MultiSelect
         label={this.props.schema.description}
         value={this.props.value || []}
         options={options}
@@ -115,7 +105,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     }));
 
     return (
-      <ResourceArray
+      <comp.ResourceArray
         label={this.props.schema.description}
         value={this.props.value || []}
         onChange={this.props.onChange}
@@ -139,11 +129,10 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     }));
 
     return (
-      <ResourceArray
+      <comp.ResourceArray
         label={this.props.schema.description}
         value={this.props.value ? [this.props.value] : []}
         onChange={this.changeSingle(this.props.onChange)}
-          // ResourceArray is array, convert to simple value before calling onChange
         options={options}
         resourceType={resourceType}
         addable={true}
@@ -163,7 +152,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     }));
 
     return (
-      <ResourceArray
+      <comp.ResourceArray
         label={this.props.schema.description}
         value={this.props.value || []}
         onChange={this.props.onChange}
@@ -176,7 +165,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
 
   renderMultiString() {
     return (
-      <StringArray
+      <comp.StringArray
         label={this.props.schema.description}
         value={this.props.value || []}
         onChange={this.props.onChange}
@@ -184,10 +173,22 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     );
   }
 
+  renderSoftwareReleases() {
+    return (
+      <comp.SoftwareReleases
+        label={this.props.schema.description}
+        value={this.props.value || []}
+        onChange={this.props.onChange}
+        githubid={this.props.githubid}
+      />
+    );
+  }
+
   render() {
     const field = this.props.schema;
-
-    if (field.type === 'string' && 'markdown' in field) {
+    if (this.props.fieldName === 'releases') {
+      return this.renderSoftwareReleases();
+    } else if (field.type === 'string' && 'markdown' in field) {
       return this.renderMarkDown();
     } else if (field.type === 'string' && 'long' in field) {
       return this.renderTextArea();

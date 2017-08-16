@@ -32,7 +32,7 @@ const saveEpic = (action$: any, state: any) => action$.ofType('SAVE_CHANGES').ma
 export const epic = combineEpics(
   saveEpic,
 
-  (action$: any, state: any) => action$.ofType('SAVE_CHANGES_POST_FULFILLED').flatMap(() => {
+  (action$: any, state: any) => action$.ofType('SAVE_CHANGES_POST/FULFILLED').flatMap(() => {
     const store = state.getState();
 
     return [
@@ -48,8 +48,17 @@ export const epic = combineEpics(
         type: 'UPDATE_OLD_DATA'
       }
     ];
-    }
-     ),
+  }),
+
+  (action$: any) => action$.ofType('SAVE_CHANGES_POST/FAILED').map((action: any) =>
+    toastrActions.add({
+      message: `${action.error} (${action.response.error})`,
+      options: { timeOut: 3000, showCloseButton: true },
+      position: 'top-center',
+      title: 'Error',
+      type: 'error'
+    })
+  ),
 
   (action$: any) => action$.ofType('CREATE_NEW_ITEM').do((action: ICreateNewItem) => {
     // tslint:disable-next-line:prefer-type-cast

@@ -1,8 +1,8 @@
 /* async is used for backend calls, and takes care of redux actions
    use eg backend.get('FETCH_TEST','test') will get BACKEND_URL/test
    and create actions of type 'FETCH_TEST' and async its result:
-   - FETCH_TEST_FULFILLED or
-   - FETCH_TEST_FAILED
+   - FETCH_TEST/FULFILLED or
+   - FETCH_TEST/FAILED
 */
 
 import Axios, { AxiosResponse } from 'axios';
@@ -58,6 +58,19 @@ export const backend = {
   )
 };
 
+export const rawReq = {
+  get: (params: string) =>
+    Axios.get(
+      `${BACKEND_URL}/${params}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'token': localStorage.getItem('access_token')
+        },
+        responseType: 'json'
+    })
+};
+
 export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
   action$.filter((action) => action.fetchAction).mergeMap(
       (action: IFetchAction): Observable<any> => {
@@ -77,7 +90,7 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
             fetchAction: false, // set to false to avoid looping
             response: response.data,
             status: response.status,
-            type: `${action.type}_FULFILLED`
+            type: `${action.type}/FULFILLED`
           }))
           .catch((e: any): Observable<IFetchFailedAction> =>
             Observable.of({
@@ -86,8 +99,24 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
               fetchAction: false, // set to false to avoid looping
               response: (e.response && e.response.data) || null,
               status: (e.response && e.response.status) || null,
-              type: `${action.type}_FAILED`
+              type: `${action.type}/FAILED`
             })
           );
       }
   );
+
+export const reducer = (state: any = [], action: IFetchAction) => {
+  if ('fetchAction' in action) {
+    if (action.fetchAction) { // new
+      return [ ...state, action];
+    } else { // fulfilled or failed
+      const index = state.findIndex((asyncAction: any) => asyncAction.id === action.id);
+      const newState = [...state];
+      newState[index] = { ...newState[index], status : 'DONE' };
+
+      return newState;
+    }
+  } else {
+    return state;
+  }
+}

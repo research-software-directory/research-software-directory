@@ -1,5 +1,14 @@
 {
     "extends": [
         "@nlesc/tslint-config-react-app"
-    ]
+    ],
+    "rules" : {
+        "react-no-dangerous-html": [true,
+            {
+                "file": "src/form/components/MarkDownInput.tsx",
+                "method": "render",
+                "comment": "Usage has been approved by our Security Group on 2015-03-12"
+            }
+        ]
+    }
 }

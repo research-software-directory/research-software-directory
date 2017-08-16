@@ -39,7 +39,7 @@ export const epic = combineEpics(
     .do(() => localStorage.removeItem('access_token'))
     .mapTo(actions.redirect(`${GITHUB_AUTH_URL}?client_id=${GITHUB_CLIENT_ID}`)),
 
-  (action$: any) => action$.ofType('GET_ACCESS_TOKEN_FAILED')
+  (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FAILED')
     .map((action: any) =>
       toastrActions.add({
         message: `${action.response && action.response.error ? `Server response: ${action.response.error}` : ''}`,
@@ -50,20 +50,21 @@ export const epic = combineEpics(
       })
     ),
 
-  (action$: any) => action$.ofType('GET_ACCESS_TOKEN_FULFILLED')
+  (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FULFILLED')
     .do ((action: any) => localStorage.setItem('access_token', action.response.access_token) )
     .map((action: any) => actions.loggedIn(action.response.user)),
 
-  (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN_FULFILLED')
+  (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN/FULFILLED')
     .map((action: any) => actions.loggedIn(action.response.user)),
 
-  (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN_FAILED')
+  (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN/FAILED')
     .mapTo(actions.getAuthToken),
 
   (action$: any) => action$.ofType('LOGGED_IN')
     .map((action: actions.ILoggedIn) =>
       toastrActions.add({
         message: `Logged in as ${action.user.name}`,
+        options: { timeOut: 3000, showCloseButton: true },
         position: 'top-center',
         title: 'Logged in',
         type: 'info'

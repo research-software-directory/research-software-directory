@@ -6,7 +6,7 @@ import * as actions from './actions';
 
 const dataReducer = (state: any = {}, action: any) => {
   switch (action.type) {
-    case 'FETCH_ROOT_JSON_FULFILLED':
+    case 'FETCH_ROOT_JSON/FULFILLED':
       return action.response;
     case 'UPDATE_FIELD':
       const rowIndex = state[action.resourceType].findIndex((row: any) => row.id === action.id);
@@ -37,7 +37,7 @@ const dataReducer = (state: any = {}, action: any) => {
 
 const schemaReducer = (state: any = {}, action: any) => {
   switch (action.type) {
-    case 'FETCH_SCHEMA_FULFILLED':
+    case 'FETCH_SCHEMA/FULFILLED':
       return action.response;
     case actions.ADD_TO_SCHEMA_ENUM:
       return update(state, {

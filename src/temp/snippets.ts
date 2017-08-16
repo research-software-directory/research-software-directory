@@ -41,11 +41,11 @@ const mergeEnums = (a: string[], b: string[] | null) => {
 
 
             // const initNewResourcesWhenLoaded = (action$: any) => Observable.combineLatest(
-            //   action$.ofType('FETCH_SCHEMA_FULFILLED'),
-            //   action$.ofType('FETCH_ROOT_JSON_FULFILLED')
+            //   action$.ofType('FETCH_SCHEMA/FULFILLED'),
+            //   action$.ofType('FETCH_ROOT_JSON/FULFILLED')
             // ).mergeMap(
             //   (actions: any) => {
-            //     const schema = actions.find((action: any) => action.type === 'FETCH_SCHEMA_FULFILLED').response;
+            //     const schema = actions.find((action: any) => action.type === 'FETCH_SCHEMA/FULFILLED').response;
             
             //     return resourceTypes.map((resourceType: string) => ({
             //       resourceType,

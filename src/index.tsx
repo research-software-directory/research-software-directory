@@ -34,6 +34,7 @@ ReactDOM.render(
         transitionIn="fadeIn"
         transitionOut="fadeOut"
         progressBar={false}
+        options={{showCloseButton: true}}
       />
       </div>
   </Provider>,
