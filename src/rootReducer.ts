@@ -1,7 +1,9 @@
 import {reducer as toastrReducer} from 'react-redux-toastr';
 import {reducer as asyncReducer} from './async';
 import {reducer as authReducer} from './auth/reducer';
+import {reducer as imageReducer} from './images/reducer';
 import {reducer as formReducer} from './form/reducer';
+
 
 import {combineReducers} from 'redux';
 import {IFetchFulfilledAction} from './async';
@@ -31,6 +33,7 @@ export const rootReducer = combineReducers({
   auth: authReducer,
   current: formReducer,
   data: dataReducer,
+  images: imageReducer,
   schema: schemaReducer,
   toastr: toastrReducer
 

@@ -22,7 +22,7 @@ const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (stat
   numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
   oldData: state.data,
   schema:  state.schema,
-  user:    state.auth.user,
+  user:    state.auth.user
 });
 
 const dispatchToProps = {
@@ -161,7 +161,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           <Menu.Item>
             <Image avatar={true} src={this.props.user.avatar_url} />&nbsp;
             {this.props.user.name}
-            <Loader inline={true} active={this.props.numAsyncs>0} />
+            <Loader inline={true} active={this.props.numAsyncs > 0} />
             <Button
               floated="right"
               inverted={true}
@@ -178,6 +178,10 @@ class AppMenuComponent extends React.Component<IProps, IState> {
             Home
           </Menu.Item>
           {resourceTypes.map(this.resourceTypeMenu)}
+          <Menu.Item name="image" as={Link} to="/images">
+            <Icon name="image" />
+            Images
+          </Menu.Item>
         </Menu>
       );
     }

@@ -13,7 +13,8 @@ import { BACKEND_URL } from './constants';
 
 export enum Method {
     GET,
-    POST
+    POST,
+    UPLOAD
 }
 
 export interface IFetchAction extends Action {
@@ -55,6 +56,13 @@ export const backend = {
     `${BACKEND_URL}/${params}`,
     data,
     { token: localStorage.getItem('access_token') }
+  ),
+  upload: (name: string, file: File): IFetchAction => createFetchAction(
+    name,
+    Method.UPLOAD,
+    `${BACKEND_URL}/upload`,
+    file,
+    { token: localStorage.getItem('access_token') }
   )
 };
 
@@ -74,15 +82,31 @@ export const rawReq = {
 export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
   action$.filter((action) => action.fetchAction).mergeMap(
       (action: IFetchAction): Observable<any> => {
-        const req = (action.method === Method.GET)
-          ? Axios.get(action.url, {
-            headers: { ...action.headers, 'Content-Type' : 'application/json' },
-            responseType: 'json'
-          })
-          : Axios.post(action.url, action.data, {
+        let req = null;
+
+        if (action.method === Method.GET) {
+          req = Axios.get(action.url, {
             headers: { ...action.headers, 'Content-Type' : 'application/json' },
             responseType: 'json'
           });
+        } else if (action.method === Method.POST) {
+          req = Axios.post(action.url, action.data, {
+            headers: {...action.headers, 'Content-Type': 'application/json'},
+            responseType: 'json'
+          });
+        } else { // is upload
+          const data = new FormData();
+          data.append('file', action.data);
+
+          const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+            // onUploadProgress: (progressEvent: any) => {
+            //   const percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+            //   console.log(percentCompleted);
+            // };
+          };
+          req = Axios.put(action.url, data, config);
+        }
 
         return Observable.fromPromise(req)
           .map((response: AxiosResponse): IFetchFulfilledAction => ({
@@ -119,4 +143,4 @@ export const reducer = (state: any = [], action: IFetchAction) => {
   } else {
     return state;
   }
-}
+};

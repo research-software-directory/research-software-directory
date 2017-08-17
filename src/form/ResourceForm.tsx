@@ -5,6 +5,8 @@ import { FormField } from './FormField';
 // tslint:disable-next-line:no-require-imports no-var-requires
 const deepDiff = require('deep-diff').default;
 
+import {Segment} from 'semantic-ui-react';
+
 import { connect } from 'react-redux';
 
 import { updateField } from './actions';
@@ -91,13 +93,10 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     return (
       <div className="main_form">
         {this.props.id}
-        {this.renderFields(this.props.schema[this.props.resourceType])}
+        <Segment.Group>{this.renderFields(this.props.schema[this.props.resourceType])}</Segment.Group>
       </div>
     );
   }
 }
 
 export const ResourceForm = connector(ResourceFormComponent);
-
-
-// getGH(id) -> completed() -> reducer(id -> getGHstuff

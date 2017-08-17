@@ -9,6 +9,8 @@ import { ResourceForm } from './form/ResourceForm';
 
 import { resourceTypes } from './constants';
 
+import { Images } from './images';
+
 const Resource = (type: string, isNew: boolean = false) => ({match}: any) => (
   <ResourceForm
     isNew={isNew}
@@ -35,6 +37,7 @@ export class Routes extends React.Component<{}, {}> {
           <Route exact={true} path="/" component={this.hello}/>
           {resourceTypes.map(resourceRoute(false))}
           {resourceTypes.map(resourceRoute(true))}
+          <Route exact={true} path="/images" component={Images} />
         </Switch>
       </div>
     );

@@ -57,13 +57,11 @@ export class StringArray extends React.Component<IProps, any> {
 
   render() {
     return (
-      <div>
-        <Segment>
-          {this.props.label}<br />
-            {this.inputs()}
-          <Input onChange={this.onAdd} value="" />
-        </Segment>
-      </div>
+      <Segment>
+        {this.props.label}<br />
+          {this.inputs()}
+        <Input onChange={this.onAdd} value="" />
+      </Segment>
     );
   }
 }
