@@ -168,7 +168,8 @@
                 "items": {
                     "format": "uri",
                     "type": "string",
-                    "description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics"
+                    "description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+                    "resType": "/project"
                 },
                 "type": "array",
                 "description": "Projects that the organization is involved in."
@@ -508,6 +509,48 @@
             "name"
         ],
         "properties": {
+            "name": {
+                "description": "Human-readable name",
+                "type": "string"
+            },
+            "githubid": {
+                "description": "Github ID (eg. NLeSC/repository)",
+                "type": "string"
+            },
+            "doi": {
+                "format": "uri",
+                "type": "string",
+                "description": "URL of a relevant DOI (e.g. http://dx.doi.org/10.5281/zenodo.35415)."
+            },
+            "tagLine": {
+                "description": "One-sentence description of the software.",
+                "type": "string"
+            },
+            "website": {
+                "format": "uri",
+                "description": "Link to the main website.",
+                "type": "string"
+            },
+            "contactPerson": {
+                "anyOf": [
+                    {
+                        "$ref": "person"
+                    },
+                    {
+                        "format": "uri",
+                        "type": "string",
+                        "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
+                        "resType": "/person"
+                    }
+                ],
+                "description": "Contact person of the project."
+            },
+            "description": {
+                "description": "Full description of the software, in Markdown format underneath Frontmatter (---) in Markdown files",
+                "type": "string",
+                "markdown": true,
+                "long": true
+            },
             "user": {
                 "type": "array",
                 "description": "Entities that use the software.",
@@ -533,11 +576,6 @@
                     "type": "string"
                 }
             },
-            "@id": {
-                "type": "string",
-                "description": "ID of the software. This is preferably an URI where the software's metadata can be resolved, e.g., /software/xenon.",
-                "format": "uri"
-            },
             "technologyTag": {
                 "items": {
                     "type": "string",
@@ -555,15 +593,6 @@
                 "type": "array",
                 "description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization."
             },
-            "name": {
-                "description": "Human-readable name",
-                "type": "string"
-            },
-            "doi": {
-                "format": "uri",
-                "type": "string",
-                "description": "URL of a relevant DOI (e.g. http://dx.doi.org/10.5281/zenodo.35415)."
-            },
             "owner": {
                 "description": "Entity that is the copyright holder of the software (usually NLeSC and project partners).",
                 "type": "array",
@@ -580,19 +609,6 @@
                         }
                     ]
                 }
-            },
-            "website": {
-                "format": "uri",
-                "description": "Link to the main website.",
-                "type": "string"
-            },
-            "schema": {
-                "format": "uri",
-                "enum": [
-                    "http://software.esciencecenter.nl/schema/software"
-                ],
-                "type": "string",
-                "description": "Fixed property, to validate the JSON object with the current schema."
             },
             "dependency": {
                 "description": "Dependencies to run or compile the current software.",
@@ -725,10 +741,6 @@
                     ]
                 }
             },
-            "description": {
-                "description": "Full description of the software, in Markdown format underneath Frontmatter (---) in Markdown files",
-                "type": "string"
-            },
             "badges": {
                 "description": "List of badges",
                 "type": "array",
@@ -813,20 +825,6 @@
                 "description": "Link to the documentation pages.",
                 "format": "uri"
             },
-            "contactPerson": {
-                "anyOf": [
-                    {
-                        "$ref": "person"
-                    },
-                    {
-                        "format": "uri",
-                        "type": "string",
-                        "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
-                        "resType": "/person"
-                    }
-                ],
-                "description": "Contact person of the project."
-            },
             "supportLevel": {
                 "type": "string",
                 "description": "Level of support that NLeSC can provide under eStep.",
@@ -847,9 +845,27 @@
                 "description": "URL to an image of the logo of the organization.",
                 "format": "uri"
             },
-            "tagLine": {
-                "description": "One-sentence description of the software.",
-                "type": "string"
+            "releases": {
+                "description": "Releases of the software (versioning)",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "doi": {
+                            "description": "DOI",
+                            "type": "string"
+                        },
+                        "version": {
+                            "description": "version number",
+                            "type": "string"
+                        },
+                        "date": {
+                            "description": "release date",
+                            "type": "string",
+                            "format": "date"
+                        }
+                    }
+                }
             }
         },
         "type": "object",
