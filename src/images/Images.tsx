@@ -45,11 +45,15 @@ class ImagesComponent extends React.Component<IProps, IState> {
     this.props.imageUpload(files[0]);
   }
 
+  onImageClick = (image: string) => () => this.setState({openImage: image});
+
   thumbnail = (image: string) => {
     return (
       <div className="img_container">
-        <img alt="thumbnail" src={`${BACKEND_URL}/thumbnail/${image}`}
-             onClick={() => this.setState({openImage: image})}
+        <img
+          alt="thumbnail"
+          src={`${BACKEND_URL}/thumbnail/${image}`}
+          onClick={this.onImageClick(image)}
         />
       </div>
     );

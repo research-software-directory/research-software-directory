@@ -8,6 +8,8 @@ import { actions as toastrActions } from 'react-redux-toastr';
 
 import createHistory from 'history/createBrowserHistory';
 
+import { accessToken } from '../async';
+
 export const epic = combineEpics(
   (action$: any) => action$.ofType('LOGIN')
     .map(() => {
@@ -16,7 +18,7 @@ export const epic = combineEpics(
          which contains AUTHORIZATION CODE (forwarded
          from from GitHub.
       */
-      const token = localStorage.getItem('access_token');
+      const token = accessToken.get();
       if (token) { return actions.verifyAccessToken(token); }
       const query = window.location.search.substr(1);
       const reResult = query.match(/code=(.*?)($|&)/);
@@ -36,7 +38,7 @@ export const epic = combineEpics(
     .ignoreElements(),
 
   (action$: any) => action$.ofType('GET_AUTH_TOKEN')
-    .do(() => localStorage.removeItem('access_token'))
+    .do(accessToken.clear)
     .mapTo(actions.redirect(`${GITHUB_AUTH_URL}?client_id=${GITHUB_CLIENT_ID}`)),
 
   (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FAILED')
@@ -51,7 +53,7 @@ export const epic = combineEpics(
     ),
 
   (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FULFILLED')
-    .do ((action: any) => localStorage.setItem('access_token', action.response.access_token) )
+    .do ((action: any) => accessToken.set(action.response.access_token) )
     .map((action: any) => actions.loggedIn(action.response.user)),
 
   (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN/FULFILLED')

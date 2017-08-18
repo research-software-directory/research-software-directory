@@ -42,27 +42,45 @@ export const createFetchAction = (
   return {id: incrementalID, fetchAction: true, type, method, url, data, headers};
 };
 
+class Token {
+  private value: string|null;
+  public get = () => {
+    if (!this.value && window.localStorage ) { this.value = localStorage.getItem('access_token'); }
+
+    return this.value;
+  }
+  public set = (newToken: string) => {
+    this.value = newToken;
+    if (window.localStorage) { localStorage.setItem('access_token', newToken); }
+  }
+  public clear = () => {
+    this.value = null;
+    if (window.localStorage) { localStorage.removeItem('access_token'); }
+  }
+}
+export const accessToken = new Token();
+
 export const backend = {
   get: (name: string, params: string): IFetchAction => createFetchAction(
     name,
     Method.GET,
     `${BACKEND_URL}/${params}`,
     {},
-    { token: localStorage.getItem('access_token') }
+    { token: accessToken.get() }
   ),
   post: (name: string, params: string, data: any): IFetchAction => createFetchAction(
     name,
     Method.POST,
     `${BACKEND_URL}/${params}`,
     data,
-    { token: localStorage.getItem('access_token') }
+    { token: accessToken.get() }
   ),
   upload: (name: string, file: File): IFetchAction => createFetchAction(
     name,
     Method.UPLOAD,
     `${BACKEND_URL}/upload`,
     file,
-    { token: localStorage.getItem('access_token') }
+    { token: accessToken.get() }
   )
 };
 
@@ -73,7 +91,7 @@ export const rawReq = {
       {
         headers: {
           'Content-Type': 'application/json',
-          'token': localStorage.getItem('access_token')
+          'token': accessToken.get()
         },
         responseType: 'json'
     })

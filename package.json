@@ -39,7 +39,9 @@
         "@types/react-redux": "^4.4.46",
         "@types/react-redux-toastr": "^7.0.0",
         "@types/react-router-dom": "^4.0.7",
-        "@types/showdown": "^1.4.32"
+        "@types/react-test-renderer": "^15.5.3",
+        "@types/showdown": "^1.4.32",
+        "react-test-renderer": "^15.6.1"
     },
     "scripts": {
         "start": "react-scripts start",

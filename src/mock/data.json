@@ -1,0 +1,452 @@
+{
+  "organization": [
+    {
+      "involvedIn": [
+        "/project/beyond-the-data-explosion",
+        "/project/error-detection-and-error-localization",
+        "/project/aa-alert"
+      ],
+      "website": "http://www.astron.nl/",
+      "schema": "http://software.esciencecenter.nl/schema/organization",
+      "userOf": [
+        "/software/casacore"
+      ],
+      "description": "<p>ASTRON is the Netherlands Institute for Radio Astronomy. Its mission\nis to make discoveries in radio astronomy happen, via the development\nof novel and innovative technologies, the operation of world-class\nradio astronomy facilities, and the pursuit of fundamental\nastronomical research.</p>\n",
+      "@id": "http://software.esciencecenter.nl/organization/astron/",
+      "id": "/organization/astron",
+      "logo": "/images/organization/astron.gif",
+      "tagLine": "Netherlands Institute for Radio Astronomy",
+      "title": "Astron",
+      "slug": "astron",
+      "ownerOf": [
+        "/software/casacore"
+      ],
+      "name": "ASTRON"
+    },
+    {
+      "schema": "http://software.esciencecenter.nl/schema/organization",
+      "tagLine": "An institute of the Royal Netherlands Academy of Arts and Sciences",
+      "involvedIn": [
+        "/project/massive-biological-data-clustering-reporting-and-visualization-tools"
+      ],
+      "website": "http://www.cbs.knaw.nl/",
+      "logo": "/images/organization/cbs-knaw.png",
+      "description": "<p>The Fungal Biodiversity Centre (CBS) is an independent research institute of the Royal Netherlands Academy of Arts and Sciences, situated on the campus of the largest university in the Netherlands (Utrecht). It studies fungal biodiversity in the widest sense, focusing on three priority areas, agriculture, human health, and industry (indoor air and food). Presently there are 6 research groups with a total of about 80 employees. The institute maintains a large culture collection of fungi and yeasts, and research groups such as those of Pedro Crous (Evolutionary Phytopathology), Robert Samson (Applied and Industrial Mycology), Sybren de Hoog (Origins of Pathogenicity in Clinical Fungi), Teun Boekhout (Yeast and Basidiomycete Research), Ronald de Vries (Fungal Physiology) and Vincent Robert (Bioinformatics).</p>\n",
+      "id": "/organization/cbs-knaw",
+      "@id": "http://software.esciencecenter.nl/organization/cbs-knaw/",
+      "slug": "cbs-knaw",
+      "title": "Cbs Knaw",
+      "name": "CBS-KNAW Fungal Biodiversity Centre"
+    }
+  ],
+  "report": [
+    {
+      "date": "2013-01-01T00:00:00+00:00",
+      "id": "/report/data-stewardship",
+      "schema": "http://software.esciencecenter.nl/schema/report",
+      "description": "<p>The purpose of this document is to propose a series of actions to NWO as it formulates its policies on\ndata-stewardship.</p>\n",
+      "@id": "http://software.esciencecenter.nl/report/data-stewardship/",
+      "link": "/assets/report/content/DataStewardship_Final.pdf",
+      "slug": "data-stewardship",
+      "cover": "/assets/report/covers/data-stewardship.png",
+      "author": [
+        "/organization/nlesc"
+      ],
+      "title": "Data-Stewardship in the Big Data Era"
+    },
+    {
+      "date": "2014-07-08T00:00:00+00:00",
+      "id": "/report/modern-data-management",
+      "schema": "http://software.esciencecenter.nl/schema/report",
+      "description": "<p>This document comprises a short overview of modern data management technology.</p>\n",
+      "@id": "http://software.esciencecenter.nl/report/modern-data-management/",
+      "link": "/assets/report/content/Modern_Data_Management.pdf",
+      "slug": "modern-data-management",
+      "cover": "/assets/report/covers/Modern_Data_Management-cover.png",
+      "author": [
+        {
+          "name": "Milena Ivanova"
+        }
+      ],
+      "title": "Modern Data Management Solutions"
+    }
+  ],
+  "publication": [
+    {
+      "date": "2012-09-10T00:00:00+00:00",
+      "schema": "http://software.esciencecenter.nl/schema/publication",
+      "type": "journal-article",
+      "@id": "http://software.esciencecenter.nl/publication/10.1002_rcm.6364/",
+      "author": [
+        "/project/emetabolomics"
+      ],
+      "id": "/publication/10.1002_rcm.6364",
+      "description": "<p>Ridder, L., van der Hooft, J. J. J., Verhoeven, S., de Vos, R. C. H., van Schaik, R., &amp; Vervoort, J. (2012).  Substructure-based annotation of high-resolution multistage MS  n  spectral trees . Rapid Commun. Mass Spectrom., 26(20), 2461\u00e2\u0080\u00932471. doi:10.1002/rcm.6364</p>\n",
+      "doi": "http://dx.doi.org/10.1002/rcm.6364",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "title": "10.1002_rcm.6364",
+      "slug": "10.1002_rcm.6364",
+      "publishedIn": "Rapid Communications in Mass Spectrometry"
+    },
+    {
+      "date": "2013-06-18T00:00:00+00:00",
+      "schema": "http://software.esciencecenter.nl/schema/publication",
+      "type": "journal-article",
+      "@id": "http://software.esciencecenter.nl/publication/10.1021_ac400861a/",
+      "author": [
+        "/project/emetabolomics"
+      ],
+      "id": "/publication/10.1021_ac400861a",
+      "description": "<p>Ridder, L., van der Hooft, J. J. J., Verhoeven, S., de Vos, R. C. H., Bino, R. J., &amp; Vervoort, J. (2013).  Automatic Chemical Structure Annotation of an LC\u00e2\u0080\u0093MS  n  Based Metabolic Profile from Green Tea . Anal. Chem., 85(12), 6033\u00e2\u0080\u00936040. doi:10.1021/ac400861a</p>\n\n",
+      "doi": "http://dx.doi.org/10.1021/ac400861a",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "title": "10.1021_ac400861a",
+      "slug": "10.1021_ac400861a",
+      "publishedIn": "Analytical Chemistry"
+    }
+  ],
+  "software": [
+    {
+      "status": "active",
+      "contactPerson": "/person/s.verhoeven",
+      "license": [
+        "apache-2.0"
+      ],
+      "dependency": [
+        "/software/chemical-analytics-platform"
+      ],
+      "schema": "http://software.esciencecenter.nl/schema/software",
+      "technologyTag": [
+        "Knime",
+        "Vagrant",
+        "Packer"
+      ],
+      "downloadUrl": "https://atlas.hashicorp.com/nlesc/boxes/3d-e-chem",
+      "id": "/software/3d-e-chem-vm",
+      "slug": "3d-e-chem-vm",
+      "description": "<p><img src=\"https://3d-e-chem.github.io/3D-e-Chem-VM/assets/images/3d-e-chem-vm-screenshot.png\" alt=\"Screenshot of Desktop\" title=\"Screenshot\" /></p>\n\n<p>3D-e-chem VM is freely available Virtual Machine (VM) encompassing tools, databases &amp; workflows, including new resources developed for ligand binding site comparisons and GPCR research.</p>\n\n<p>The VM contains a fully functional cheminformatics infrastructure consisting of a chemistry enabled relational database system (PostgreSQL + RDKit) with a data analytics workflow tool (KNIME) and additional cheminformatics capabilities.</p>\n\n<p>Tools, workflows and reference data sets are made available. The wide range of cheminformatics functionalities are provided in the downloadable 3D-e-chem VM allowing immediate use in research and education.</p>\n",
+      "doi": "http://dx.doi.org/10.5281/zenodo.51474",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "involvedOrganization": [
+        "/organization/nlesc",
+        "/organization/radboud.university.nijmegen",
+        "/organization/vua"
+      ],
+      "codeRepository": "https://github.com/3D-e-Chem/3D-e-Chem-VM",
+      "documentationUrl": "https://github.com/3D-e-Chem/3D-e-Chem-VM/wiki",
+      "discipline": [
+        "eScience Methodology"
+      ],
+      "contributor": [
+        "/person/s.verhoeven",
+        {
+          "linkedInUrl": "https://nl.linkedin.com/in/ross-mcguire-71457523",
+          "affiliation": [
+            "/organization/radboud.university.nijmegen"
+          ],
+          "name": "Ross McGuire"
+        }
+      ],
+      "title": "3d E Chem Vm",
+      "name": "3D-e-Chem Virtual machine",
+      "startDate": "2016-01-11",
+      "@id": "http://software.esciencecenter.nl/software/3d-e-chem-vm/",
+      "contributingOrganization": [
+        "/organization/nlesc"
+      ],
+      "tagLine": "Virtual machine with all software and sample data to run 3D-e-Chem Knime workflows",
+      "owner": [
+        "/organization/nlesc",
+        "/organization/radboud.university.nijmegen",
+        "/organization/vua"
+      ],
+      "website": "https://3d-e-chem.github.io/3D-e-Chem-VM",
+      "programmingLanguage": [
+        "YAML"
+      ],
+      "usedIn": [
+        "/project/3d-e-chem"
+      ],
+      "competence": [
+        "Optimized Data Handling"
+      ],
+      "expertise": [
+        "Reproducible Research"
+      ]
+    },
+    {
+      "status": "active",
+      "contactPerson": "/person/m.vanmeersbergen",
+      "@id": "http://software.esciencecenter.nl/software/ahn2webviewer/",
+      "supportLevel": "specialized",
+      "dependency": [
+        "/software/potree",
+        "/software/potreeconverter",
+        "/software/massivepotreeconverter"
+      ],
+      "schema": "http://software.esciencecenter.nl/schema/software",
+      "technologyTag": [
+        "Point clouds",
+        "WebGL",
+        "Website",
+        "3D"
+      ],
+      "id": "/software/ahn2webviewer",
+      "expertise": [
+        "Scientific Visualization"
+      ],
+      "description": "<p>WebGL point cloud visualization of the Actuele Hoogtekaart Nederland 2. \nThis renderer is based on http://potree.org</p>\n\n<p>In order to visualize such a massive data set, the AHN2 has to be reorganized in a multi-resolution octree. This processing can be done with the Massive-PotreeConverter (&lt;/software/massivepotreeconverter&gt;) which is a extension of the PotreeConverter (&lt;/software/potreeconverter&gt;) to distribute the processing into multiple machines/cores.</p>\n",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "involvedOrganization": [
+        "/organization/nlesc"
+      ],
+      "codeRepository": "https://github.com/NLeSC/ahn-pointcloud-viewer",
+      "name": "AHN2 pointcloud viewer",
+      "contributor": [
+        "/person/m.vanmeersbergen",
+        "/person/o.rubi",
+        "/person/s.verhoeven"
+      ],
+      "title": "Ahn2webviewer",
+      "website": "http://ahn2.pointclouds.nl/",
+      "startDate": "2014-04-01",
+      "user": [
+        "/organization/nlesc",
+        "/person/o.rubi"
+      ],
+      "license": [
+        "apache-2.0"
+      ],
+      "contributingOrganization": [
+        "/organization/nlesc"
+      ],
+      "tagLine": "WebGL point cloud visualization of AHN2",
+      "owner": [
+        "/organization/nlesc"
+      ],
+      "programmingLanguage": [
+        "JavaScript"
+      ],
+      "discipline": [
+        "eScience Methodology"
+      ],
+      "slug": "ahn2webviewer",
+      "usedIn": [
+        "/project/massive-point-clouds-for-esciences"
+      ],
+      "competence": [
+        "Big Data Analytics"
+      ]
+    }
+  ],
+  "project": [
+    {
+      "uses": [
+        "/software/3d-e-chem-vm",
+        "/software/cclustera",
+        "/software/knime-archetype",
+        "/software/knime-gpcrdb",
+        "/software/knime-klifs",
+        "/software/knime-molviewer",
+        "/software/chemical-analytics-platform",
+        "/software/rdkit"
+      ],
+      "contactPerson": "/person/s.verhoeven",
+      "description": "<p>The 3D-e-Chem project will develop technologies to improve the integration of ligand and protein data for structure-based prediction of protein-ligand selectivity and polypharmacology.</p>\n\n<p>The project will use <a href=\"http://www.knime.org\">Knime Analytics Platform</a> to integrate the different technologies and datasets.</p>\n",
+      "schema": "http://software.esciencecenter.nl/schema/project",
+      "infrastructure": "Virtual Machine",
+      "coordinator": "/person/l.ridder",
+      "id": "/project/3d-e-chem",
+      "expertise": [
+        "Information Integration",
+        "Reproducible Research"
+      ],
+      "logo": "/images/project/3d-e-chem.jpg",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "involvedOrganization": [
+        "/organization/nlesc",
+        "/organization/radboud.university.nijmegen",
+        "/organization/vua"
+      ],
+      "startDate": "2015-10-01",
+      "name": "3D-e-Chem",
+      "engineer": [
+        "/person/s.verhoeven"
+      ],
+      "title": "3d E Chem",
+      "website": "https://3d-e-chem.github.io/",
+      "principalInvestigator": [
+        {
+          "affiliation": [
+            "/organization/vua"
+          ],
+          "name": "Dr. Chris de Graaf",
+          "website": "http://www.few.vu.nl/~cdgraaf/"
+        }
+      ],
+      "endDate": "2018-10-01",
+      "dataFormat": [
+        "HDF5",
+        "CSV",
+        "sqlite3",
+        "JSON"
+      ],
+      "@id": "http://software.esciencecenter.nl/project/3d-e-chem/",
+      "tagLine": "Integration of ligand and protein data for structure-based prediction of protein-ligand selectivity and polypharmacology",
+      "discipline": [
+        "Life Sciences & eHealth"
+      ],
+      "slug": "3d-e-chem",
+      "nlescWebsite": "https://www.esciencecenter.nl/project/3d-e-chem",
+      "competence": [
+        "Optimized Data Handling"
+      ],
+      "dataMagnitude": "GB"
+    },
+    {
+      "uses": [
+        "/software/monetdb",
+        "/software/datavaults",
+        "/software/kernel_tuner",
+        "/software/liblas"
+      ],
+      "engineer": [
+        "/person/r.goncalves"
+      ],
+      "title": "3d Geospatial Data Exploration For Modern Risk Management Systems",
+      "discipline": [
+        "eScience Methodology"
+      ],
+      "logo": "/images/project/3d-geospatial-data-exploration-for-modern-risk-management-systems.jpg",
+      "expertise": [
+        "Information Visualization",
+        "Information Integration",
+        "Databases"
+      ],
+      "schema": "http://software.esciencecenter.nl/schema/project",
+      "slug": "3d-geospatial-data-exploration-for-modern-risk-management-systems",
+      "name": "3D Geospatial Data Exploration for Modern Risk Management Systems",
+      "@id": "http://software.esciencecenter.nl/project/3d-geospatial-data-exploration-for-modern-risk-management-systems/",
+      "tagLine": "COMMIT valorization project: 3D geospatial data exploration for modern risk management systems",
+      "dataMagnitude": "TB",
+      "description": "<p>55% of The Netherlands is below sea level. This area contains 60% of the population and generates 65% of the Gross National Product. Obviously, The Netherlands requires efficient risk and water management.</p>\n\n<p>Efficient risk assessment requires large-scale flood simulations with high precision in case a dike or dam breaks. Continuous monitoring of man-made infrastructures in search of small deviations or breaches. And impact assessment of urban area re-organization.</p>\n\n<p>For precise and effective risk assessment, we must increase precision in high-resolution flood simulations, improve accuracy of semantic trajectory determination of water channel networks, and provide the means to align and compare data sets at different resolutions to study the spatial evolution over time of an area or structure.</p>\n\n<p>Unfortunately, current solutions, consisting of PostGIS combined with stand-alone applications and libraries, lack the necessary flexibility and scalability and require extensive preprocessing of the data. The goal of this project is to modernize generation and manipulation of these datasets by using a Geospatial Database Management System (DBMS). The unique advantage of this approach is that, unlike previous solutions, it stores the raw data sets, and transforms, combines and processes them only when needed. This will vastly improve flexibility and performance.</p>\n\n<p>To achieve this goal the project team will extend a Geospatial Database Management System (G-DBMS) with a flexible storage schema for 2D/3D geospatial datasets (point cloud, raster, vector, etc.). This is used to store semantically rich objects needed for the personalization of 3D digital city models (i.e., data re-generation with user defined parameters). These 3D digital city models form the basis for flow simulations, urban planning and under- and over- ground formation analysis. Additionally they are very important for automated anomaly detection on manmade structures.</p>\n\n<p>In this G-DBMS, topological and geometric functionality for 3D raster manipulation will become first-class citizens. For near real-time 3D model generation and manipulation some of these operators will be complemented with a GPU version. Application specific functionality, such as constrained Delaunay triangulation and the marching cubes algorithm for surface re-construction, will also be added as they are important tools in the work done by our commercial partners.</p>\n\n<p>Within this project, spatial analysis tailored to different use case scenarios is done on demand and fast enough to be used by modern risk management systems to, for example, determine trajectory escape routes. In addition, it will provide the means to identify and quantify deviations on flow patterns, such as wind and water, while modeling under- and over- ground surfaces. In other words, it addresses the challenges identified by three major companies in the sector: Fugro, Geodan, and Deltares.</p>\n\n<p>Furthermore, this project stands on the shoulders of a successful COMMIT/ project, \u201cspatiotemporal data warehouses for trajectory exploitation\u201d (P19), and the strategic partnership between CWI Database group, Netherlands eScience Center (NLeSC), TU Delft 3D Geo-information group, VU Geographic Information Systems (GIS) group and Geodan to develop core technology for \u201cBig Data Analytics in the Geo-Spatial Domain\u201d.</p>\n",
+      "id": "/project/3d-geospatial-data-exploration-for-modern-risk-management-systems",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "involvedOrganization": [
+        "/organization/commit",
+        "/organization/monetdb",
+        "/organization/deltares",
+        "/organization/cwi",
+        "/organization/geodan",
+        "/organization/fugro"
+      ],
+      "dataFormat": [
+        "LAS",
+        "LAZ",
+        "GML",
+        "NetCDF",
+        "GeoJSON",
+        "Shapefiles"
+      ],
+      "competence": [
+        "Optimized Data Handling",
+        "Big Data Analytics"
+      ],
+      "contactPerson": "/person/r.goncalves"
+    }
+  ],
+  "person": [
+    {
+      "githubUrl": "https://github.com/arnikz",
+      "contributorOf": [
+        "/software/fairdatapoint"
+      ],
+      "photo": "/images/person/a.kuzniar.jpg",
+      "userOf": [
+        "/software/fairdatapoint"
+      ],
+      "engineerOf": [
+        "/project/odex4all",
+        "/project/candygene"
+      ],
+      "email": "a.kuzniar@esciencecenter.nl",
+      "contactPersonOf": [
+        "/software/fairdatapoint"
+      ],
+      "researchgateUrl": "https://www.researchgate.net/profile/Arnold_Kuzniar",
+      "@id": "http://software.esciencecenter.nl/person/a.kuzniar/",
+      "ORCID": "http://orcid.org/0000-0003-1711-7961",
+      "jobTitle": "eScience Research Engineer",
+      "schema": "http://software.esciencecenter.nl/schema/person",
+      "linkedInUrl": "https://www.linkedin.com/in/arnold-kuzniar-06312210",
+      "affiliation": [
+        "/organization/nlesc"
+      ],
+      "description": "<p>Arnold studied Molecular Biology at the Comenius University in Bratislava, Slovakia. In the last year of his masters, he received a scholarship to study bioinformatics at the Wageningen University and Research Centre (WUR), the Netherlands. He completed his thesis on comparative genomics of White spot syndrome (shrimp) virus isolates. During this period he also developed bioinformatics tools to mine these genomes for epidemiologically relevant biomarkers.</p>\n\n<p>Arnold obtained his PhD in Bioinformatics at the Laboratory of Bioinformatics, WUR. His PhD research was on scalable orthology-based cluster detection in fully sequenced genomes and on the integration of protein orthology/family data resources. In close collaboration with SURFsara, he used the Dutch Life Science Grid to compute a comprehensive map of corresponding (orthologous) proteins across species from all three domains of life.</p>\n\n<p>In 2011 Arnold moved to Switzerland and joined the Department of Ecology and Evolution at the University of Lausanne, Swiss Institute of Bioinformatics. He worked on an e-Science project aimed at speeding up the detection of positive selection in animal genomes using the Swiss Multi Science Grid (SMSCG).</p>\n\n<p>In 2012 Arnold returned to the Netherlands and carried out research in computational mass spectrometry(MS)-based proteomics at the Department of Genetics at the Erasmus Medical Center in Rotterdam. Here he focused on reliable MS-based detection of cellular responses (pathways) upon exposure to non-ionizing electromagnetic fields. To facilitate the MS data handling and statistical analyses, Arnold developed the <a href=\"http://www.bioinformatics.nl/piqmie\">PIQMIe</a> proteomics web server.</p>\n\n<p>At the Netherlands eScience Center, Arnold works on the ODEX4all and candYgene projects, which involve Linked Data/Semantic Web technologies, worlflows and Big data analytics.</p>\n",
+      "id": "/person/a.kuzniar",
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "title": "A.kuzniar",
+      "slug": "a.kuzniar",
+      "nlescWebsite": "https://www.esciencecenter.nl/profile/dr.-arnold-kuzniar",
+      "name": "Arnold Kuzniar"
+    },
+    {
+      "title": "B.vanwerkhoven",
+      "contributorOf": [
+        "/software/kernel_tuner",
+        "/software/xenon",
+        "/software/pattyvis"
+      ],
+      "photo": "/images/person/b.vanwerkhoven.jpg",
+      "userOf": [
+        "/software/kernel_tuner",
+        "/software/xenon"
+      ],
+      "engineerOf": [
+        "/project/a-jungle-computing-approach-to-large-scale-online-forensic-analysis",
+        "/project/neutrino",
+        "/project/microscopy"
+      ],
+      "email": "b.vanwerkhoven@esciencecenter.nl",
+      "contactPersonOf": [
+        "/software/kernel_tuner",
+        "/project/neutrino",
+        "/project/microscopy"
+      ],
+      "researchgateUrl": "https://www.researchgate.net/profile/Ben_Van_Werkhoven",
+      "@id": "http://software.esciencecenter.nl/person/b.vanwerkhoven/",
+      "jobTitle": "eScience Research Engineer",
+      "schema": "http://software.esciencecenter.nl/schema/person",
+      "linkedInUrl": "https://nl.linkedin.com/in/ben-van-werkhoven-3010528b",
+      "id": "/person/b.vanwerkhoven",
+      "description": "<p>Ben van Werkhoven did his BSc in Computer Science and a research masters in Parallel and Distributed Computer Systems at the VU University Amsterdam. The focus of his PhD research was developing programming models and performance models for the efficiently using Graphics Processing Units within Supercomputing applications.</p>\n\n<p>Ben\u2019s main research interests involve increasing application performance with the use of Graphics Processing Units and increasing our understanding of the performance behavior of large GPU applications.</p>\n",
+      "affiliation": [
+        "/organization/nlesc"
+      ],
+      "endorsedBy": [
+        "/organization/nlesc"
+      ],
+      "githubUrl": "https://github.com/benvanwerkhoven",
+      "slug": "b.vanwerkhoven",
+      "nlescWebsite": "https://www.esciencecenter.nl/profile/dr.-ben-van-werkhoven",
+      "ownerOf": [
+        "/software/kernel_tuner"
+      ],
+      "name": "Ben van Werkhoven"
+    }
+  ]
+}
