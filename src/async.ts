@@ -66,21 +66,21 @@ export const backend = {
     Method.GET,
     `${BACKEND_URL}/${params}`,
     {},
-    { token: accessToken.get() }
+    { token: accessToken.get() || '' }
   ),
   post: (name: string, params: string, data: any): IFetchAction => createFetchAction(
     name,
     Method.POST,
     `${BACKEND_URL}/${params}`,
     data,
-    { token: accessToken.get() }
+    { token: accessToken.get() || '' }
   ),
   upload: (name: string, file: File): IFetchAction => createFetchAction(
     name,
     Method.UPLOAD,
     `${BACKEND_URL}/upload`,
     file,
-    { token: accessToken.get() }
+    { token: accessToken.get() || '' }
   )
 };
 
@@ -98,7 +98,7 @@ export const rawReq = {
 };
 
 export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
-  action$.filter((action) => action.fetchAction).mergeMap(
+    action$.filter((action) => action.fetchAction).mergeMap(
       (action: IFetchAction): Observable<any> => {
         let req = null;
 

@@ -6,7 +6,7 @@ export interface ICreateNewItem {
   history: History;
 }
 
-export const createNewItem = (resourceType: string, id: string, schema: any, history: History) => ({
+export const createNewItem = (resourceType: string, id: string, schema: any, history: History|null) => ({
   history,
   id,
   resourceType,

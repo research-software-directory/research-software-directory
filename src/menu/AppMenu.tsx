@@ -115,7 +115,6 @@ class AppMenuComponent extends React.Component<IProps, IState> {
     let subMenu = null;
     if (this.state.menu[type].open) {
       const menuItems = this.props.data[type]
-        .filter((item: any) => item.id !== '_new')
         .filter(this.searchFilter(this.state.menu[type].search))
         .map(this.menuItem(type));
 
@@ -146,7 +145,6 @@ class AppMenuComponent extends React.Component<IProps, IState> {
   }
 
   save = () => {
-    // console.log(this.props.data, this.props.oldData);
     this.props.saveChanges();
   }
 

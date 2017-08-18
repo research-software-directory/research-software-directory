@@ -62,6 +62,7 @@ export const epic = combineEpics(
 
   (action$: any) => action$.ofType('CREATE_NEW_ITEM').do((action: ICreateNewItem) => {
     // tslint:disable-next-line:prefer-type-cast
-    (action.history as any).push(action.id); // push is not available in History @types, so cast to any
+    if (action.history) { (action.history as any).push(action.id); }
+    // push is not available in History @types, so cast to any
   }).ignoreElements()
 );
