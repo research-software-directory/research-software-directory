@@ -52,7 +52,7 @@ export const epic = combineEpics(
 
   (action$: any) => action$.ofType('SAVE_CHANGES_POST/FAILED').map((action: any) =>
     toastrActions.add({
-      message: `${action.error} (${action.response.error})`,
+      message: `${action.error} (${action.response ? action.response.error : 'no response'})`,
       options: { timeOut: 3000, showCloseButton: true },
       position: 'top-center',
       title: 'Error',
