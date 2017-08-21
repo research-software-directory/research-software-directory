@@ -117,7 +117,7 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
           data.append('file', action.data);
 
           const config = {
-            headers: { 'content-type': 'multipart/form-data' }
+            headers: { ...action.headers, 'Content-Type': 'multipart/form-data' }
             // onUploadProgress: (progressEvent: any) => {
             //   const percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
             //   console.log(percentCompleted);

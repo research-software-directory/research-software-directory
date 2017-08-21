@@ -6,7 +6,7 @@ import * as Dropzone from 'react-dropzone';
 
 import { imageUpload, loadImages } from './actions';
 
-import { Button, Modal, Segment } from 'semantic-ui-react';
+import { Button, Icon, Modal, Segment } from 'semantic-ui-react';
 
 import { BACKEND_URL } from '../constants';
 
@@ -49,26 +49,27 @@ class ImagesComponent extends React.Component<IProps, IState> {
 
   thumbnail = (image: string) => {
     return (
-      <div className="img_container">
+      <div
+        className="img_container"
+        onClick={this.onImageClick(image)}
+        role="img"
+      >
         <img
           alt="thumbnail"
           src={`${BACKEND_URL}/thumbnail/${image}`}
-          onClick={this.onImageClick(image)}
         />
       </div>
     );
   }
 
   thumbnails = (images: string[]) => (
-    <Segment className="thumbnails">
+    <div className="thumbnails">
       {images.map(this.thumbnail)}
-    </Segment>
+    </div>
   )
 
   dropzoneContent = (props: any) => (
-    <div style={{ border: `2px solid ${props.isDragActive ? 'green' : 'black'}` }}>
-      <p>dropzone</p>
-      {JSON.stringify(props)}
+    <div style={{ border: `2px solid ${props.isDragActive ? 'green' : 'white'}` }}>
       {this.thumbnails(this.props.images)}
     </div>
   )
@@ -85,7 +86,7 @@ class ImagesComponent extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div className="dropzone">
+      <Segment className="dropzone">
         <Modal
           open={!!this.state.openImage}
           basic={true}
@@ -95,7 +96,7 @@ class ImagesComponent extends React.Component<IProps, IState> {
         >
           <img src={`${BACKEND_URL}/image/${this.state.openImage}`} alt="zoomed" />
         </Modal>
-        <Button onClick={this.openFileDialog}>Add</Button>
+        <Button onClick={this.openFileDialog}>Add <Icon name="image" /></Button>
         <Dropzone
           ref={this.setDropzoneRef}
           disableClick={true}
@@ -105,7 +106,7 @@ class ImagesComponent extends React.Component<IProps, IState> {
         >
           {this.dropzoneContent}
         </Dropzone>
-      </div>
+      </Segment>
     );
   }
 }
