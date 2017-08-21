@@ -30,3 +30,14 @@ def sync_schema():
         for line in diff:
             file.write(line+'\n')
     current_schema = new_schema
+
+def append_to_schema_enum(resource_type, field_name, value):
+    field = schema[resource_type]['properties'][field_name]
+    if field['type'] == 'array':
+        enum = field['items']['enum']
+    elif field['type'] == 'string':
+        enum = field['enum']
+        enum.append(value)
+        enum.sort()
+        sync_schema()
+    return enum

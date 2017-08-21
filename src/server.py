@@ -1,9 +1,10 @@
 import logging
 
-from . import commands
-from . import routes
-from .app import app
+import src.commands as commands
+import src.routes as routes
+import src.error_handlers as error_handlers
 
+from src.app import app
 from src.database import database, schema
 
 logger = logging.getLogger()
@@ -14,17 +15,8 @@ handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s -
 logger.info('Starting')
 
 commands.init(app, database)
+error_handlers.init(app)
 routes.init(app, database, schema)
 
-
-def before_req():
-    print("before req")
-
-
-def run():
-    app.before_request(before_req)
-    app.run()
-
-
 if __name__ == "__main__":
-    run()
+    app.run()

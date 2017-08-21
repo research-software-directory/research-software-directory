@@ -1,138 +1,101 @@
-from flask import request
-from flask_cors import CORS
-from .json_handlers import json_response, init as json_handlers_init
+import flask
+import flask_resize
+import os
+import hashlib
 
-from .database import sync_db, sync_schema
-from .services.user import login, get_user
+from flask_cors import CORS
+
+
+from src.json_response import jsonify
+
+import src.exceptions as exceptions
+import src.database as database
+import src.services.user as user
+import src.services.github as github
+import src.constants as constants
 
 
 def init(app, db, schema):
+    resize = flask_resize.Resize(app)
     cors = CORS(app, resources={r"*": {"origins": "*"}})
-    json_handlers_init(app)
 
     @app.route('/all', methods=["GET"])
-    #@cross_origin(origins=['localhost:*','127.0.0.1','::1'])
-    # @cross_origin(origins=r'.*localhost.*')
+    @jsonify
+    @user.require_organization('nlesc')
     def _get_all_data():
-        return json_response(db)
+        return db, 200
 
     @app.route('/schema')
-    # @cross_origin(origins=r'.*localhost.*')
+    @jsonify
     def _schema():
-        return json_response(schema)
-
-    # @app.route('/syncdb')
-    # def _sync():
-    #     sync_db()
-    #     return json_response({'ok':'ok'})
-    #
-    # @app.route('/clear')
-    # def _clear():
-    #     db['software'] = "leeg"
-    #     return json_response(id(db))
-
-    # @app.route('/error')
-    # def _err():
-    #     return json_response(db)
+        return schema, 200
 
     @app.route('/get_access_token/<token>')
+    @jsonify
     def _login(token):
-        res = login(token)
-        if 'error' in res:
-            return json_response({'error': '%s: %s' % (res['error'], res['error_description'])}, 401)
-        res['user'] = get_user(res['access_token'])
-        return json_response(res)
+        res = user.login(token)
+        res['user'] = user.get_user(res['access_token'])
+        return res, 200
 
     @app.route('/verify_access_token/<token>')
+    @jsonify
     def _verify_access_token(token):
-        res = get_user(token)
-        if 'error' in res:
-            return json_response({'error': 'code %i: %s' % (res['status_code'], res['error'])}, 401)
-        return json_response({'user': res})
+        return {'user': user.get_user(token)}, 200
 
-    # @app.route('/enum/<resource_type>/<field>', methods=["GET"])
-    # def _get_enum(resource_type, field):
-    #     try:
-    #         field = schema[resource_type]['properties'][field]
-    #         if field['type'] == 'array':
-    #             return json_response(field['items']['enum'])
-    #         elif field['type'] == 'string':
-    #             return json_response(field['enum'])
-    #     except KeyError:
-    #         return json_response({"error": "invalid type/field"}, 500)
-
-    @app.route('/enum/<resource_type>/<field>', methods=["POST"])
-    # @cross_origin(origins='*')
-    def _post_enum(resource_type, field):
-        value = request.get_json()['value']
+    @app.route('/enum/<resource_type>/<field_name>', methods=["POST"])
+    @jsonify
+    @user.require_organization('nlesc')
+    def _post_enum(resource_type, field_name):
+        value = flask.request.get_json()['value']
         if not value:
-            raise Exception('no value provided')
+            raise exceptions.RouteException('no value provided', 401)
         try:
-            field = schema[resource_type]['properties'][field]
-            if field['type'] == 'array':
-                enum = field['items']['enum']
-            elif field['type'] == 'string':
-                enum = field['enum']
-            enum.append(value)
-            enum.sort()
-            sync_schema()
-            return json_response(enum)
+            return database.append_to_schema_enum(resource_type, field_name, value), 200
         except KeyError:
-            return json_response({"error": "invalid type/field"}, 500)
+            raise exceptions.RouteException("invalid type/field", 500)
 
     @app.route('/update', methods=["POST"])
-    # @cross_origin(origins='*')
+    @jsonify
+    @user.require_organization('nlesc')
     def _post_update():
-        value = request.get_json()
+        value = flask.request.get_json()
         if not value:
-            raise Exception('no value provided')
+            raise exceptions.RouteException('no value provided', 401)
         raise Exception('cant save (not yet implemented)')
 
     @app.route('/githubreleases', methods=["GET"])
+    @jsonify
     def _github_releases():
-        id = request.args.get('id')
+        id = flask.request.args.get('id')
         if not id or id.find('/') == -1:
-            return json_response({"error": "'id' parameter required"}, 400)
-        from .services.user import releases
-        rels = releases(request.headers.get('token'), id)
-        if 'error' in rels:
-            return json_response(rels, 500)
-        return json_response(rels)
+            raise exceptions.RouteException("'id' parameter required", 400)
+        return github.releases(flask.request.headers.get('token'), id), 200
 
     @app.route('/images', methods=["GET"])
+    @jsonify
     def _images():
-        import os
-        return json_response([filename for filename in os.listdir('data/images') if not filename == '.gitkeep'])
+        return [filename for filename in os.listdir('data/images') if not filename == '.gitkeep'], 200
 
     @app.route('/thumbnail/<filename>', methods=["GET"])
     def _thumbnail(filename):
-        from .app import resize
-        import os
-        from flask import send_file
-        base_path = os.path.dirname(os.path.abspath(__file__)) + '/..'
-        filename = base_path + '/data/images/' + filename
-        print(filename)
+        filename = constants.BASE_PATH + '/data/images/' + filename
         if not os.path.isfile(filename):
-            return send_file(base_path + '/data/image-not-found.png')
+            return flask.send_file(constants.BASE_PATH + '/data/image-not-found.png')
         resized_url = '../' + resize(filename, '100x100')
-        return send_file(resized_url)
+        return flask.send_file(resized_url)
 
     @app.route('/image/<filename>', methods=["GET"])
     def _image(filename):
-        import os
-        from flask import send_file
-        base_path = os.path.dirname(os.path.abspath(__file__)) + '/..'
-        filename = base_path + '/data/images/' + filename
-        print(filename)
+        filename = constants.BASE_PATH + '/data/images/' + filename
         if not os.path.isfile(filename):
-            return send_file(base_path + '/data/image-not-found.png')
-        return send_file(filename)
+            return flask.send_file(constants.BASE_PATH + '/data/image-not-found.png')
+        return flask.send_file(filename)
 
     @app.route('/upload', methods=["POST", "PUT"])
+    @jsonify
+    @user.require_organization('nlesc')
     def _upload():
-        import hashlib
-        import os
-        image = request.files['file']
+        image = flask.request.files['file']
         contents = image.stream.read()
         md5 = hashlib.md5(contents).hexdigest()
         image.filename = md5 + '.' + image.filename.split(".")[-1]
@@ -146,4 +109,4 @@ def init(app, db, schema):
         with open(full_path, 'wb') as file:
             file.write(contents)
 
-        return json_response({'status': 'ok', 'filename': image.filename})
+        return {'status': 'ok', 'filename': image.filename}, 200

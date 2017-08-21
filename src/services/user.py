@@ -1,9 +1,23 @@
 import requests
 
+from src.exceptions import UnauthorizedException
+
 from src.settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+
+from flask import request
 
 def get_user(token):
     url = 'https://api.github.com/user?access_token=%s' % token
+    headers = {'Accept': 'application/vnd.github.v3+json '}
+    req = requests.get(url, headers=headers)
+    resp = req.json()
+    if req.status_code != 200:
+        raise Exception('Request to github failed (code%s: %s)' % (req.status_code, resp['status_code']))
+    return resp
+
+
+def get_user_organizations(user, token):
+    url = '%s?access_token=%s' % (user['organizations_url'], token)
     headers = {'Accept': 'application/vnd.github.v3+json '}
     req = requests.get(url, headers=headers)
     resp = req.json()
@@ -24,21 +38,21 @@ def login(token):
         query_dict[pair[0]] = pair[1]
     return query_dict
 
-#http://api.github.com/repos/octocat/Hello-World/releases{/id}
 
-def releases(token, id):
-    url = 'https://api.github.com/repos/%s/releases?access_token=%s' % (id, token)
+def user_in_organization(token, organization):
+    user = get_user(token)
+    url = 'http://api.github.com/orgs/%s/members/%s?access_token=%s' % (organization, user['login'], token)
     headers = {'Accept': 'application/vnd.github.v3+json '}
     req = requests.get(url, headers=headers)
-    resp = req.json()
-    if req.status_code != 200:
-        resp['error'] = resp['message']
-        resp['status_code'] = req.status_code
-    else:
-        resp = [{
-            'version': release['tag_name'],
-            'date':    release['published_at'],
-            'name':    release['name']
-        } for release in resp if (release['draft'] is False and release['prerelease'] is False)]
-    return resp
+    return 200 <= req.status_code < 300
 
+
+def require_organization(organization):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            if user_in_organization(request.headers['Token'], organization):
+                return func(*args, **kwargs)
+            else:
+                raise UnauthorizedException('Not in organization '+organization)
+        return wrapper
+    return decorator
