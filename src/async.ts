@@ -11,7 +11,11 @@ import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Rx';
 import { BACKEND_URL } from './constants';
 
-import { uploadProgress } from './actions';
+export const uploadProgress = (id: number, percentage: number) => ({
+  id,
+  percentage,
+  type: 'UPLOAD_PROGRESS'
+});
 
 export enum Method {
     GET,
