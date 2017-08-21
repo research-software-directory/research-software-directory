@@ -5,7 +5,6 @@ import hashlib
 
 from flask_cors import CORS
 
-
 from src.json_response import jsonify
 
 import src.exceptions as exceptions

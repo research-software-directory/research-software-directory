@@ -50,9 +50,12 @@ def user_in_organization(token, organization):
 def require_organization(organization):
     def decorator(func):
         def wrapper(*args, **kwargs):
-            if user_in_organization(request.headers['Token'], organization):
-                return func(*args, **kwargs)
-            else:
-                raise UnauthorizedException('Not in organization '+organization)
+            if 'Token' not in request.headers:
+                raise UnauthorizedException('No "Token" header in request')
+            if not user_in_organization(request.headers['Token'], organization):
+                raise UnauthorizedException('Not in organization ' + organization)
+
+            return func(*args, **kwargs)
+        wrapper.__name__ = func.__name__
         return wrapper
     return decorator
