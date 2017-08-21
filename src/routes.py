@@ -60,7 +60,15 @@ def init(app, db, schema):
         value = flask.request.get_json()
         if not value:
             raise exceptions.RouteException('no value provided', 401)
-        raise Exception('cant save (not yet implemented)')
+
+        for resource_type in value:
+            for resource in value[resource_type]:
+                for (index, item) in enumerate(db[resource_type]):
+                    if item['id'] == resource['id']:
+                        print('match')
+                        db[resource_type][index] = resource
+
+        return {'status': 'ok'}, 200
 
     @app.route('/githubreleases', methods=["GET"])
     @jsonify
