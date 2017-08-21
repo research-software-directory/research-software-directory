@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import './AppMenu.css';
 
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Divider, Icon, Image, Input, Loader, Menu } from 'semantic-ui-react';
+import { Button, Divider, Icon, Image, Input, Loader, Menu, Progress } from 'semantic-ui-react';
 
 import * as update from 'immutability-helper';
 
@@ -22,6 +22,8 @@ const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (stat
   numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
   oldData: state.data,
   schema:  state.schema,
+  uploads: state.async.filter((asyncAction: any) =>
+    asyncAction.type === 'UPLOAD_IMAGE' && asyncAction.progress < 100),
   user:    state.auth.user
 });
 
@@ -34,6 +36,7 @@ const connector = connect(mapStateToProps, dispatchToProps );
 interface IProps {
   data: any;
   numAsyncs: number;
+  uploads: any[];
   oldData: any;
   schema: any;
   user: any;
@@ -171,6 +174,9 @@ class AppMenuComponent extends React.Component<IProps, IState> {
               Save
             </Button>
           </Menu.Item>
+          <Menu.Item>
+            <UploadStatus progress={this.props.uploads.length > 0 && this.props.uploads[0].progress || 0} />
+          </Menu.Item>
           <Menu.Item name="home" as={Link} to="/" >
             <Icon name="home" />
             Home
@@ -186,3 +192,14 @@ class AppMenuComponent extends React.Component<IProps, IState> {
   }
 
 export const AppMenu = connector(AppMenuComponent);
+
+const UploadStatus = (props: any) => props.progress === 0 ? null : (
+  <Progress
+    percent={props.progress}
+    indicating={true}
+    size="small"
+    style={{margin: 0, padding: 0}}
+    progress={true}
+    inverted={true}
+  />
+);

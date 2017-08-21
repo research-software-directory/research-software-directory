@@ -11,6 +11,8 @@ import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Rx';
 import { BACKEND_URL } from './constants';
 
+import { uploadProgress } from './actions';
+
 export enum Method {
     GET,
     POST,
@@ -97,7 +99,7 @@ export const rawReq = {
     })
 };
 
-export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
+export const fetchEpic: Epic<IFetchAction, {}> = (action$, store: any) =>
     action$.filter((action) => action.fetchAction).mergeMap(
       (action: IFetchAction): Observable<any> => {
         let req = null;
@@ -117,11 +119,11 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
           data.append('file', action.data);
 
           const config = {
-            headers: { ...action.headers, 'Content-Type': 'multipart/form-data' }
-            // onUploadProgress: (progressEvent: any) => {
-            //   const percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
-            //   console.log(percentCompleted);
-            // };
+            headers: { ...action.headers, 'Content-Type': 'multipart/form-data' },
+            onUploadProgress: (progressEvent: any) => {
+              const percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total );
+              store.dispatch(uploadProgress(action.id, percentCompleted));
+            }
           };
           req = Axios.put(action.url, data, config);
         }
@@ -147,7 +149,7 @@ export const fetchEpic: Epic<IFetchAction, {}> = (action$) =>
       }
   );
 
-export const reducer = (state: any = [], action: IFetchAction) => {
+export const reducer = (state: any = [], action: any) => {
   if ('fetchAction' in action) {
     if (action.fetchAction) { // new
       return [ ...state, action];
@@ -158,6 +160,12 @@ export const reducer = (state: any = [], action: IFetchAction) => {
 
       return newState;
     }
+  } else if (action.type === 'UPLOAD_PROGRESS') {
+    const index = state.findIndex((asyncAction: any) => asyncAction.id === action.id);
+    const newState = [...state];
+    newState[index] = { ...newState[index], progress : action.percentage };
+
+    return newState;
   } else {
     return state;
   }
