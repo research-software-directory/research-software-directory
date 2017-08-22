@@ -12,7 +12,9 @@ import src.database as database
 import src.services.user as user
 import src.services.github as github
 import src.constants as constants
+from src.services.report import load_reports
 
+from src.services.util import worker
 
 def init(app, db, schema):
     resize = flask_resize.Resize(app)
@@ -117,3 +119,19 @@ def init(app, db, schema):
             file.write(contents)
 
         return {'status': 'ok', 'filename': image.filename}, 200
+
+    @app.route('/generate_report/software/<software_id>', methods=["GET"])
+    @jsonify
+    def _generate_report(software_id):
+        id = '/software/' + software_id
+        if not database.get_resource_by_id('software', id):
+            raise Exception("Resource %s not found" % id)
+        worker('report', id)
+        return {'status': 'ok'}, 200
+
+    @app.route('/reports/software/<software_id>', methods=["GET"])
+    @jsonify
+    def _reports(software_id):
+        id = '/software/' + software_id
+        reports = load_reports()
+        return reports[id], 200

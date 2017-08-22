@@ -1,21 +1,49 @@
-import json
 import logging
-import time
+
+import urllib.parse
 
 import requests
-from tinydb import Query
-
+from src.services.util import rate_limit
 from src import settings
-from .github import get_repository
 
 logger = logging.getLogger(__name__)
 
-def update_data(software, table):
-    repo = get_repository(software)
-    if repo is None:
-        logger.warning("No github repository")
-        return
-    time.sleep(1)
-    r = requests.get('https://libraries.io/api/github/' + repo +'?api_key=' + settings.LIBRARIES_IO_API_KEY)
-    q = Query()
-    table.update({"librariesIO" : json.loads(r.text)}, q.id == software['id'])
+
+@rate_limit('libraries_io', 60, 60)
+def get_projects(githubid):
+    url = 'https://libraries.io/api/github/%s/projects?api_key=%s' % (githubid, settings.LIBRARIES_IO_API_KEY)
+    req = requests.get(url)
+    if req.status_code == 429:
+        logger.error('Libraries IO over API rate limit')
+    elif req.status_code == 200:
+        info = req.json()
+        projects = [{
+            'platform': project['platform'],
+            'name':     project['name'],
+            'rank':     project['rank'],
+            'stars':    project['stars'],
+            'forks':    project['forks']
+        } for project in info]
+        return projects
+    else:
+        logger.error('Libraries IO return unexpected status code %i', req.status_code)
+    return []
+
+
+@rate_limit('libraries_io', 60, 60)
+def get_dependencies(project):
+    url = 'https://libraries.io/api/%s/%s/dependents?api_key=%s' % (project['platform'], urllib.parse.quote(project['name']), settings.LIBRARIES_IO_API_KEY)
+    req = requests.get(url)
+    if (req.status_code == 200):
+        info = req.json()
+        projects = [{
+            'platform': project['platform'],
+            'name':     project['name'],
+            'rank':     project['rank'],
+            'stars':    project['stars'],
+            'forks':    project['forks']
+        } for project in info]
+        return projects
+    else:
+        logger.error('Libraries IO return unexpected status code %i', req.status_code)
+    return []

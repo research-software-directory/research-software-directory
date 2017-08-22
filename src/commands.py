@@ -1,14 +1,32 @@
-#from services import github, libraries_io, crossref
-import click
-import logging
-import re
-import pprint
-from os import walk
 import json
+import logging
+import pprint
+import re
+import subprocess
+from os import walk
+
+import click
+
+from src.database import sync_db
+from src.services.report import generate_report_for_software
 
 logger = logging.getLogger(__name__)
 
 def init(app, db):
+    @app.cli.command('report')
+    @click.argument('id')
+    def _report(id):
+        generate_report_for_software(id)
+
+    @app.cli.command('fill_software_github_id')
+    def _fillswghid():
+        for index, software in enumerate(db['software']):
+            if 'githubid' not in software and 'codeRepository' in software:
+                matches = re.match(r'https://github.com/(.*?/.*?)/?$', str(software['codeRepository']))
+                if matches:
+                    db['software'][index]['githubid'] = matches.group(1)
+        sync_db()
+
     @app.cli.command('bundleschema')
     def _bundleschemas():
         schema = {}

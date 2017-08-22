@@ -11,12 +11,31 @@ with open('data/index2.json') as data_file:
 
 
 def sync_db():
+    # print(database['software'])
     with open('data/index2.json', 'w') as file:
         file.write(json.dumps(database, indent=4))
 
 with open('data/schema2.json') as data_file:
     current_schema = data_file.read()
     schema = json.loads(current_schema, object_pairs_hook=OrderedDict)
+
+
+# def db_get_index_by_id(resourceType, id):
+
+
+# def updateDB(value):
+#     for resource_type in value:
+#         for resource in value[resource_type]:
+#             for (index, item) in enumerate(database[resource_type]):
+#                 if item['id'] == resource['id']:
+#                     print('match')
+#                     database[resource_type][index] = resource
+
+
+
+
+
+
 
 
 def sync_schema():
@@ -41,3 +60,10 @@ def append_to_schema_enum(resource_type, field_name, value):
         enum.sort()
         sync_schema()
     return enum
+
+
+def get_resource_by_id(resource_type, id):
+    for resource in database[resource_type]:
+        if resource['id'] == id:
+            return resource
+    return None

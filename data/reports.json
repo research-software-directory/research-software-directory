@@ -1,0 +1,147 @@
+{
+    "/software/3d-e-chem-vm": [
+        {
+            "status": "failed",
+            "time_start": 1503413955.0844972,
+            "time_end": 1503413955.2674105,
+            "exception": {
+                "error": "experiment",
+                "class": "Exception",
+                "traceback": [
+                    "  File \"/home/tom/Projects/research-software-directory-backend/src/services/report.py\", line 39, in get_report_for_software\n    'libraries_io': get_libraries_io_info(software['githubid']),\n",
+                    "  File \"/home/tom/Projects/research-software-directory-backend/src/services/report.py\", line 79, in get_libraries_io_info\n    raise Exception('experiment')\n"
+                ]
+            }
+        },
+        {
+            "status": "done",
+            "time_start": 1503414036.9145672,
+            "libraries_io": null,
+            "time_end": 1503414037.4800506
+        },
+        {
+            "time_start": 1503414037.557358,
+            "status": "done",
+            "time_end": 1503414038.340986,
+            "libraries_io": null
+        }
+    ],
+    "/software/cesium": [
+        {
+            "status": "done",
+            "time_start": 1503414062.527861,
+            "libraries_io": [
+                {
+                    "name": "cesium",
+                    "stars": 2379,
+                    "rank": 17,
+                    "platform": "NPM",
+                    "forks": 1130,
+                    "dependencies": [
+                        {
+                            "platform": "NPM",
+                            "name": "obj2gltf",
+                            "forks": 29,
+                            "stars": 97,
+                            "rank": 12
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "gltf-pipeline",
+                            "forks": 33,
+                            "stars": 80,
+                            "rank": 12
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "cesium-sensor-volumes",
+                            "forks": 2,
+                            "stars": 7,
+                            "rank": 10
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "earthtrek-core",
+                            "forks": 3,
+                            "stars": 5,
+                            "rank": 9
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "3d-tiles-tools",
+                            "forks": 19,
+                            "stars": 21,
+                            "rank": 9
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "cesium-buildings",
+                            "forks": 3,
+                            "stars": 7,
+                            "rank": 7
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "angular-cesium",
+                            "forks": 0,
+                            "stars": 0,
+                            "rank": 5
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "sampleterrain",
+                            "forks": 0,
+                            "stars": 0,
+                            "rank": 5
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "test1-zoic-globe",
+                            "forks": 0,
+                            "stars": 0,
+                            "rank": 4
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "angular2-cesium",
+                            "forks": 0,
+                            "stars": 0,
+                            "rank": 0
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "npmtest-cesium",
+                            "forks": 0,
+                            "stars": 0,
+                            "rank": 0
+                        },
+                        {
+                            "platform": "NPM",
+                            "name": "earthtrek",
+                            "forks": 0,
+                            "stars": 0,
+                            "rank": 0
+                        }
+                    ]
+                },
+                {
+                    "name": "cesiumjs",
+                    "stars": 2379,
+                    "rank": 12,
+                    "platform": "NPM",
+                    "forks": 1130,
+                    "dependencies": []
+                },
+                {
+                    "name": "cesium",
+                    "stars": 2379,
+                    "rank": 13,
+                    "platform": "Bower",
+                    "forks": 1130,
+                    "dependencies": []
+                }
+            ],
+            "time_end": 1503414063.7457564
+        }
+    ]
+}
