@@ -9,6 +9,18 @@ request_times = {}
 
 
 def rate_limit(name, calls, period):
+    """
+        Decorator to limit the rate of function calls
+        use eg. @rate_limit('some_api', 60, 60) to limit to 60 calls/minute
+
+        :param name: name to use limit on several functions
+        :type name: string
+        :param calls: number of calls allowed per period
+        :type calls: int
+        :param period: period where #calls are allowed (in seconds)
+        :type period: int
+        :return: wrapper
+    """
     def wrapper(func):
         def func_wrapper(*args, **kwargs):
             if name not in request_times:
@@ -29,6 +41,11 @@ def rate_limit(name, calls, period):
 
 
 def worker(*args):
+    """
+    Spawn flask command worker (subprocess in the background)
+
+    :param args: arguments after `flask` command
+    """
     env = os.environ.copy()
     env['FLASK_APP'] = './src/server.py'
     subprocess.Popen(["flask", *args], env=env)
