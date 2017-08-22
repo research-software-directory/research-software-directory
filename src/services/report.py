@@ -4,9 +4,13 @@ import src.services.libraries_io as libraries_io
 import traceback
 from src.database import get_resource_by_id
 from collections import OrderedDict
-
+import os
 
 filename = 'data/reports.json'
+
+if not os.path.isfile(filename) or os.path.getsize(filename) == 0:
+    with open(filename, 'w') as file:
+        file.write("{}")
 
 
 def load_reports():
