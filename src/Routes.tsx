@@ -19,12 +19,12 @@ const Resource = (type: string, isNew: boolean = false) => ({match}: any) => (
   />
 );
 
-const resourceRoute = (isNew: boolean = false) => (resourceType: string) => (
+const resourceRoute = (resourceType: string) => (
   <Route
     key={resourceType}
     exact={true}
-    path={isNew ? `/new/${resourceType}` : `/${resourceType}/:id`}
-    component={Resource(resourceType, isNew)}
+    path={`/${resourceType}/:id`}
+    component={Resource(resourceType)}
   />
 );
 
@@ -35,8 +35,12 @@ export class Routes extends React.Component<{}, {}> {
       <div>
         <Switch>
           <Route exact={true} path="/" component={this.hello}/>
-          {resourceTypes.map(resourceRoute(false))}
-          {resourceTypes.map(resourceRoute(true))}
+            {resourceTypes.map(resourceRoute)}
+            <Route
+              component={(props: any) => <div>{JSON.stringify(props)}</div>}
+              exact={true}
+              path={'/software/:id/report'}
+            />
           <Route exact={true} path="/images" component={Images} />
         </Switch>
       </div>

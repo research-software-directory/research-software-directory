@@ -5,13 +5,14 @@ import { FormField } from './FormField';
 // tslint:disable-next-line:no-require-imports no-var-requires
 const deepDiff = require('deep-diff').default;
 
-import {Segment} from 'semantic-ui-react';
+import {Button, Segment} from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 
 import { updateField } from './actions';
 
 import './style.css';
+import {Link} from "react-router-dom";
 
 const mapDispatchToProps = {
   updateField
@@ -89,10 +90,15 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     Object.keys(schema.properties)
       .map((field: string) => this.renderField(field))
 
+  impactReportButton = () => (
+    <Link to={`${this.props.id}/report/`}><Button>Impact reports</Button></Link>
+  )
+
   render() {
     return (
       <div className="main_form">
         {this.props.id}
+        {this.props.resourceType === 'software' && this.impactReportButton()}
         <Segment.Group>{this.renderFields(this.props.schema[this.props.resourceType])}</Segment.Group>
       </div>
     );
