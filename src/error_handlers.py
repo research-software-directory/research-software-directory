@@ -3,6 +3,7 @@ from .json_response import jsonify
 from .exceptions import RouteException
 
 
+
 def init(app):
     @app.errorhandler(RouteException)
     @jsonify

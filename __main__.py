@@ -1,3 +1,2 @@
-import src.server as server
-
-server.app.run()
+from entry import app
+app.run()

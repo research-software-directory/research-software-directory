@@ -2,34 +2,40 @@ import logging
 import json
 import time
 import difflib
-from collections import OrderedDict
+from pymongo import MongoClient
+
 
 logger = logging.getLogger(__name__)
 
-with open('data/index2.json') as data_file:
-    database = json.load(data_file, object_pairs_hook=OrderedDict)
 
+client = MongoClient('mongodb://localhost:27017/')
+db = client['test']
 
+#
+# with open('data/index2.json') as data_file:
+#     database = json.load(data_file, object_pairs_hook=OrderedDict)
+#
+#
 def sync_db():
     # print(database['software'])
     with open('data/index2.json', 'w') as file:
         file.write(json.dumps(database, indent=4))
-
-with open('data/schema2.json') as data_file:
-    current_schema = data_file.read()
-    schema = json.loads(current_schema, object_pairs_hook=OrderedDict)
+#
+# with open('data/schema2.json') as data_file:
+#     current_schema = data_file.read()
+#     schema = json.loads(current_schema, object_pairs_hook=OrderedDict)
 
 
 # def db_get_index_by_id(resourceType, id):
 
 
-# def updateDB(value):
-#     for resource_type in value:
-#         for resource in value[resource_type]:
-#             for (index, item) in enumerate(database[resource_type]):
-#                 if item['id'] == resource['id']:
-#                     print('match')
-#                     database[resource_type][index] = resource
+def updateDB(value):
+    for resource_type in value:
+        for resource in value[resource_type]:
+            for (index, item) in enumerate(database[resource_type]):
+                if item['id'] == resource['id']:
+                    print('match')
+                    database[resource_type][index] = resource
 
 
 

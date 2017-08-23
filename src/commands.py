@@ -2,7 +2,6 @@ import json
 import logging
 import pprint
 import re
-import subprocess
 from os import walk
 
 import click
@@ -12,7 +11,29 @@ from src.services.report import generate_report_for_software
 
 logger = logging.getLogger(__name__)
 
-def init(app, db):
+
+def init(app):
+    @app.cli.command('export_schema')
+    def _export():
+        from src.database import schema
+        result = []
+        for resource_name in schema:
+            new_schema = {'_id': resource_name}
+            for field_name in schema[resource_name]:
+                new_schema[field_name.replace('$','#')] = schema[resource_name][field_name]
+            result.append(new_schema)
+        print(json.dumps(result))
+
+    @app.cli.command('export_data')
+    @click.argument('resource_type')
+    def _export_data(resource_type):
+        result = []
+        for resource in db[resource_type]:
+            new_resource = resource.copy()
+            new_resource['_id'] = resource['id']
+            result.append(new_resource)
+        print(json.dumps(result))
+
     @app.cli.command('report')
     @click.argument('id')
     def _report(id):
@@ -44,8 +65,8 @@ def init(app, db):
                 return part, None
             else:
                 return matches.group(1), int(matches.group(2))
-        
-        def nav_list(path):    
+
+        def nav_list(path):
             path_parts = []
             for part in path.split('->'):
                 path, index = split_index(part)
@@ -53,13 +74,13 @@ def init(app, db):
                 if (index is not None):
                     path_parts.append(index)
             return path_parts
-            
+
         path_parts = nav_list(path)
         current = db.table(path_parts[0]).all()
         path_parts.pop(0)
         for path in path_parts:
             current = current[path]
-        
+
         pprint.pprint(current)
 
     # @app.cli.command('set_person_github')
@@ -81,4 +102,4 @@ def init(app, db):
     #         if github_username == "": github_username = None
     #         url = None if github_username is None else ('https://github.com/'+github_username)
     #         table.update({"githubUser" : github_username, "githubUrl" : url }, Query().id == person['id'])
-    
+
