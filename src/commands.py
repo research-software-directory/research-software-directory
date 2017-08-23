@@ -6,38 +6,17 @@ from os import walk
 
 import click
 
-from src.database import sync_db
-from src.services.report import generate_report_for_software
+from src.database import db
+from src.services.report import generate_impact_report
 
 logger = logging.getLogger(__name__)
 
 
 def init(app):
-    @app.cli.command('export_schema')
-    def _export():
-        from src.database import schema
-        result = []
-        for resource_name in schema:
-            new_schema = {'_id': resource_name}
-            for field_name in schema[resource_name]:
-                new_schema[field_name.replace('$','#')] = schema[resource_name][field_name]
-            result.append(new_schema)
-        print(json.dumps(result))
-
-    @app.cli.command('export_data')
-    @click.argument('resource_type')
-    def _export_data(resource_type):
-        result = []
-        for resource in db[resource_type]:
-            new_resource = resource.copy()
-            new_resource['_id'] = resource['id']
-            result.append(new_resource)
-        print(json.dumps(result))
-
-    @app.cli.command('report')
+    @app.cli.command('impact_report')
     @click.argument('id')
     def _report(id):
-        generate_report_for_software(id)
+        generate_impact_report(id)
 
     @app.cli.command('fill_software_github_id')
     def _fillswghid():

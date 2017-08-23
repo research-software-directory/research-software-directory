@@ -1,7 +1,7 @@
 import logging
 from flask import Flask
 from src.routes import api as api_routes
-from src.extensions import resize, mongo
+from src.extensions import resize
 import src.commands as commands
 import src.error_handlers as error_handlers
 
@@ -9,7 +9,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 logger.addHandler(handler)
-handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+handler.setFormatter(logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s'))
 logger.info('Starting')
 
 
@@ -34,9 +34,6 @@ def register_extensions(app):
     app.config['RESIZE_URL'] = 'data'
     app.config['RESIZE_ROOT'] = 'data'
     resize.init_app(app)
-
-    app.config['MONGO_DBNAME'] = 'test'
-    mongo.init_app(app)
 
 
 def register_commands(app):

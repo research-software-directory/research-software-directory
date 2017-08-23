@@ -2,22 +2,7 @@ import json
 import time
 import src.services.libraries_io as libraries_io
 import traceback
-from src.database import get_resource_by_id
-from collections import OrderedDict
-import os
-
-filename = 'data/reports.json'
-
-if not os.path.isfile(filename) or os.path.getsize(filename) == 0:
-    with open(filename, 'w') as file:
-        file.write("{}")
-
-
-def load_reports():
-    with open(filename) as reportsfile:
-        reports = json.load(reportsfile, object_pairs_hook=OrderedDict)
-        return reports
-
+from src.database import db
 
 # 3 AnalyticalGraphicsInc/cesium
 # 6 interedition/collatex
@@ -30,14 +15,14 @@ def load_reports():
 # 1 NLeSC/pyxenon
 # 1 recipy/recipy
 # 1 nlesc-sherlock/spiraljs
-def generate_report_for_software(id):
+def generate_impact_report(id):
     save_stub(id)
     report = get_report_for_software(id)
     save_report(id, report)
 
 
 def get_report_for_software(id):
-    software = get_resource_by_id('software', id)
+    software = db.software.find_one({'id': id})
     try:
         return {
             'libraries_io': get_libraries_io_info(software['githubid']),
@@ -57,25 +42,20 @@ def get_report_for_software(id):
 
 
 def save_stub(id):
-    reports = load_reports()
-    if id not in reports:
-        reports[id] = []
-    reports[id].append({
+    db.impact_report.insert({
+        'software_id': id,
         'time_start': time.time(),
         'status': 'generating'
     })
-    with open(filename, 'w') as file:
-        file.write(json.dumps(reports, indent=4))
 
 
 def save_report(id, report):
-    reports = load_reports()
-
-    stubs = [report for report in reports[id] if report['status'] == 'generating']
-    stubs[0].update(report)
-
-    with open(filename, 'w') as file:
-        file.write(json.dumps(reports, indent=4))
+    db.impact_report.update({
+        'software_id': id,
+        'status': 'generating'
+    }, {
+        '$set': report
+    })
 
 
 def get_libraries_io_info(github_id):

@@ -47,5 +47,5 @@ def worker(*args):
     :param args: arguments after `flask` command
     """
     env = os.environ.copy()
-    env['FLASK_APP'] = './src/server.py'
+    env['FLASK_APP'] = './entry.py'
     subprocess.Popen(["flask", *args], env=env)
