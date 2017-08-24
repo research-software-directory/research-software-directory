@@ -1,17 +1,11 @@
 import * as React from 'react';
-
+import { connect } from 'react-redux';
+import { updateField } from './actions';
+import { Link } from 'react-router-dom';
 import { FormField } from './FormField';
-
+import { Button, Segment } from 'semantic-ui-react';
 // tslint:disable-next-line:no-require-imports no-var-requires
 const deepDiff = require('deep-diff').default;
-
-import {Button, Segment} from 'semantic-ui-react';
-
-import { connect } from 'react-redux';
-
-import { updateField } from './actions';
-
-import {Link} from 'react-router-dom';
 
 import './style.css';
 
@@ -40,28 +34,23 @@ interface IProps {
 
 interface IOwnProps {
   resourceType: string;
-  isNew: boolean;
   id: string;
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
-  componentWillMount() {
-    // this.setState({id: '', programmingLanguage: []});
-  }
-
   updateFormValue = (field: string) => (value: any) => {
     this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }
 
-  arrayToObjectById = (arr: any[]) => {
-    return Object.assign({}, ...arr.map((obj) => ({[obj.id] : obj}) ));
-  }
-
-  compareStuff = () => {
-    // console.log(deepDiff(this.props.oldSchema, this.props.schema));
-  }
+  // arrayToObjectById = (arr: any[]) => {
+  //   return Object.assign({}, ...arr.map((obj) => ({[obj.id] : obj}) ));
+  // }
+  //
+  // compareStuff = () => {
+  //   // console.log(deepDiff(this.props.oldSchema, this.props.schema));
+  // }
 
   hasChanged(field: string) {
     if (!this.props.oldData) { return true; }

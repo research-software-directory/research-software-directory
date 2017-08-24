@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button, Popup, Segment } from 'semantic-ui-react';
 
-import { Shorthand } from './Shorthand';
+import { Shorthand } from './shorthand';
 
 interface IProps {
   value: any;

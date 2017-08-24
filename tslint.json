@@ -7,8 +7,10 @@
             {
                 "file": "src/form/components/MarkDownInput.tsx",
                 "method": "render",
-                "comment": "Usage has been approved by our Security Group on 2015-03-12"
+                "comment": "Usage is ok, is markdown output"
             }
-        ]
+        ],
+        "ordered-imports": false,
+        "object-literal-sort-keys": false
     }
 }

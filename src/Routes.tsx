@@ -1,23 +1,14 @@
 import * as React from 'react';
-
-import {
-  Route,
-  Switch
-} from 'react-router-dom';
-
+import { Route, Switch } from 'react-router-dom';
 import { ResourceForm } from './components/form/ResourceForm';
-
+import { Images } from './components/images';
+import { ImpactReports } from './components/impact_reports/ImpactReports';
 import { resourceTypes } from './settings';
 
-import { Images } from './components/images';
-
-import {ImpactReports} from './components/ImpactReports';
-
-const Resource = (type: string, isNew: boolean = false) => ({match}: any) => (
+const Resource = (type: string) => ({match}: any) => (
   <ResourceForm
-    isNew={isNew}
     resourceType={type}
-    id={isNew ? '_new' : `/${type}/${match.params.id}`}
+    id={`/${type}/${match.params.id}`}
   />
 );
 
@@ -30,6 +21,10 @@ const resourceRoute = (resourceType: string) => (
   />
 );
 
+const impactReports = ({match}: any) => (
+  <ImpactReports id={`${match.params.id}`} />
+);
+
 export class Routes extends React.Component<{}, {}> {
   hello = () => <div>Welcome</div>;
   render() {
@@ -38,7 +33,7 @@ export class Routes extends React.Component<{}, {}> {
         <Switch>
           {resourceTypes.map(resourceRoute)}
           <Route exact={true} path="/" component={this.hello}/>
-          <Route exact={true} path="/software/:id/report" component={ImpactReports} />
+          <Route exact={true} path="/software/:id/report" component={impactReports} />
           <Route exact={true} path="/images" component={Images} />
         </Switch>
       </div>

@@ -3,6 +3,7 @@ import {reducer as authReducer} from './components/auth/reducer';
 import {reducer as formReducer} from './components/form/reducer';
 import {reducer as imageReducer} from './components/images/reducer';
 import {reducer as asyncReducer} from './services/async';
+import {reducer as impactReportReducer} from './components/impact_reports/reducer';
 
 import {combineReducers} from 'redux';
 import {IFetchFulfilledAction} from './services/async';
@@ -34,6 +35,6 @@ export const rootReducer = combineReducers({
   data: dataReducer,
   images: imageReducer,
   schema: schemaReducer,
-  toastr: toastrReducer
-
+  toastr: toastrReducer,
+  reports: impactReportReducer
 });
