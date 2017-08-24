@@ -1,11 +1,11 @@
 import {reducer as toastrReducer} from 'react-redux-toastr';
-import {reducer as asyncReducer} from './async';
 import {reducer as authReducer} from './components/auth/reducer';
 import {reducer as formReducer} from './components/form/reducer';
 import {reducer as imageReducer} from './components/images/reducer';
+import {reducer as asyncReducer} from './services/async';
 
 import {combineReducers} from 'redux';
-import {IFetchFulfilledAction} from './async';
+import {IFetchFulfilledAction} from './services/async';
 
 const dataReducer = (state: any = {}, action: any) => {
   switch (action.type) {

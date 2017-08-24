@@ -2,9 +2,9 @@ import { combineEpics } from 'redux-observable';
 
 import { ICreateNewItem } from './actions';
 
-import { resourceTypes } from '../../constants';
+import { resourceTypes } from '../../settings';
 
-import { backend } from '../../async';
+import { backend } from '../../services/async';
 
 import { actions as toastrActions } from 'react-redux-toastr';
 

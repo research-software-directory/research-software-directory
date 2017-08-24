@@ -8,7 +8,7 @@ import { actions as toastrActions } from 'react-redux-toastr';
 
 import createHistory from 'history/createBrowserHistory';
 
-import { accessToken } from '../../async';
+import { accessToken } from '../../services/async';
 
 export const epic = combineEpics(
   (action$: any) => action$.ofType('LOGIN')

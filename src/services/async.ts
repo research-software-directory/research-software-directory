@@ -9,7 +9,7 @@ import Axios, { AxiosResponse } from 'axios';
 import { Action } from 'redux';
 import { Epic } from 'redux-observable';
 import { Observable } from 'rxjs/Rx';
-import { BACKEND_URL } from './constants';
+import { BACKEND_URL } from '../settings';
 
 export const uploadProgress = (id: number, percentage: number) => ({
   id,

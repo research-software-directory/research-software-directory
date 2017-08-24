@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { rootReducer } from './rootReducer';
+import { rootReducer } from '../rootReducer';
 
 export const loadJSONMock = (filename: string) => {
-  const mockPath = path.join(__dirname, 'mock');
+  const mockPath = path.join(__dirname, '..', 'mock');
 
   return JSON.parse(fs.readFileSync(`${mockPath}/${filename}`, 'utf8'));
 };

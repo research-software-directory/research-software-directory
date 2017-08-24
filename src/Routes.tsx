@@ -7,7 +7,7 @@ import {
 
 import { ResourceForm } from './components/form/ResourceForm';
 
-import { resourceTypes } from './constants';
+import { resourceTypes } from './settings';
 
 import { Images } from './components/images';
 

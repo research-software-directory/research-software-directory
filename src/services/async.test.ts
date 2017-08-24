@@ -11,7 +11,7 @@ import * as nock from 'nock';
 
 import Axios from 'axios';
 
-import { BACKEND_URL} from './constants';
+import { BACKEND_URL} from '../settings';
 
 describe('async backend stuff', () => {
   let store: any;

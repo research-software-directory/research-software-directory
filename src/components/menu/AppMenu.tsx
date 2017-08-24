@@ -13,7 +13,7 @@ import * as update from 'immutability-helper';
 
 import { Link } from 'react-router-dom';
 
-import { resourceTypes } from '../../constants';
+import { resourceTypes } from '../../settings';
 
 import { NewItem } from './NewItem';
 

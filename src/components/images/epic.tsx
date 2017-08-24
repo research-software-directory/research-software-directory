@@ -6,7 +6,7 @@ import { loadImages } from './actions';
 
 import { actions as toastrActions } from 'react-redux-toastr';
 
-import { BACKEND_URL } from '../../constants';
+import { BACKEND_URL } from '../../settings';
 
 const image = (action: any) => () => <img alt="image" src={`${BACKEND_URL}/thumbnail/${action.response.filename}`} />;
 

@@ -1,6 +1,6 @@
 import { Action } from 'redux';
-import { createFetchAction, IFetchAction, Method } from '../../async';
-import { BACKEND_URL } from '../../constants';
+import { createFetchAction, IFetchAction, Method } from '../../services/async';
+import { BACKEND_URL } from '../../settings';
 
 export const logIn: Action = { type: 'LOGIN' };
 
