@@ -1,5 +1,5 @@
 class RouteException(Exception):
-    """Raise when there is a problem in a route"""
+    """Raise when there is a general problem in a route"""
     def __init__(self, message, status_code=500, data=None, *args):
         self.message = message
         self.status_code = status_code
