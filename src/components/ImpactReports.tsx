@@ -20,7 +20,7 @@ const mapStateToProps = (state: any, ownProps: IOwnProps): IMappedProps => (
 
 const mapDispatchToProps = {
   createReport: (id: string) => id && null // todo
-}
+};
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 

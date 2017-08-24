@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { App } from './App';
-import { Auth } from './auth/Auth';
+import { Auth } from './components/auth/Auth';
 import { register as registerServiceWorker } from './registerServiceWorker';
 
 import { Provider } from 'react-redux';
@@ -16,9 +16,9 @@ import 'rxjs';
 
 const store = configureStore();
 
-import './reset.css';
+import './assets/reset.css';
 
-import './index.css';
+import './assets/index.css';
 
 ReactDOM.render(
   <Provider store={store}>

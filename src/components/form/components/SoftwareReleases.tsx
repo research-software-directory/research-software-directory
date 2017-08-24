@@ -10,7 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import './SoftwareReleases.css';
 
-import { rawReq } from '../../async';
+import { rawReq } from '../../../async';
 
 interface IProps {
   maxItems?: number;

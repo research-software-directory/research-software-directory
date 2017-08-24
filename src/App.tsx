@@ -7,7 +7,7 @@ import {fetchRootJSON, fetchSchema } from './actions';
 
 import { Routes } from './Routes';
 
-import { AppMenu } from './menu/AppMenu';
+import { AppMenu } from './components/menu/AppMenu';
 
 import { Segment } from 'semantic-ui-react';
 

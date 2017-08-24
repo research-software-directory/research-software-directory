@@ -8,7 +8,7 @@ import { imageUpload, loadImages } from './actions';
 
 import { Button, Icon, Modal, Segment } from 'semantic-ui-react';
 
-import { BACKEND_URL } from '../constants';
+import { BACKEND_URL } from '../../constants';
 
 import './Images.css';
 

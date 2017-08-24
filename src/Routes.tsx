@@ -5,11 +5,13 @@ import {
   Switch
 } from 'react-router-dom';
 
-import { ResourceForm } from './form/ResourceForm';
+import { ResourceForm } from './components/form/ResourceForm';
 
 import { resourceTypes } from './constants';
 
-import { Images } from './images';
+import { Images } from './components/images';
+
+import {ImpactReports} from './components/ImpactReports';
 
 const Resource = (type: string, isNew: boolean = false) => ({match}: any) => (
   <ResourceForm
@@ -34,13 +36,9 @@ export class Routes extends React.Component<{}, {}> {
     return (
       <div>
         <Switch>
+          {resourceTypes.map(resourceRoute)}
           <Route exact={true} path="/" component={this.hello}/>
-            {resourceTypes.map(resourceRoute)}
-            <Route
-              component={(props: any) => <div>{JSON.stringify(props)}</div>}
-              exact={true}
-              path={'/software/:id/report'}
-            />
+          <Route exact={true} path="/software/:id/report" component={ImpactReports} />
           <Route exact={true} path="/images" component={Images} />
         </Switch>
       </div>

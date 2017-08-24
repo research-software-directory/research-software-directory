@@ -1,6 +1,6 @@
 import { combineEpics } from 'redux-observable';
 
-import { GITHUB_AUTH_URL, GITHUB_CLIENT_ID } from '../settings';
+import { GITHUB_AUTH_URL, GITHUB_CLIENT_ID } from '../../settings';
 
 import * as actions from './actions';
 
@@ -8,7 +8,7 @@ import { actions as toastrActions } from 'react-redux-toastr';
 
 import createHistory from 'history/createBrowserHistory';
 
-import { accessToken } from '../async';
+import { accessToken } from '../../async';
 
 export const epic = combineEpics(
   (action$: any) => action$.ofType('LOGIN')

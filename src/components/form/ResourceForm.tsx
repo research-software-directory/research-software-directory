@@ -11,8 +11,9 @@ import { connect } from 'react-redux';
 
 import { updateField } from './actions';
 
+import {Link} from 'react-router-dom';
+
 import './style.css';
-import {Link} from "react-router-dom";
 
 const mapDispatchToProps = {
   updateField
