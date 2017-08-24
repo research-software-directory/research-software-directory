@@ -24,6 +24,7 @@ def get_user_organizations(user, token):
     if req.status_code != 200:
         resp['error'] = resp['message']
         resp['status_code'] = req.status_code
+
     return resp
 
 
@@ -44,6 +45,9 @@ def user_in_organization(token, organization):
     url = 'http://api.github.com/orgs/%s/members/%s?access_token=%s' % (organization, user['login'], token)
     headers = {'Accept': 'application/vnd.github.v3+json '}
     req = requests.get(url, headers=headers)
+    if req['status_code'] == 403:
+        raise Exception('Github rate limit exceeded?')
+    # print(req.status_code)
     return 200 <= req.status_code < 300
 
 

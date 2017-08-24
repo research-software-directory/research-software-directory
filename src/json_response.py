@@ -1,4 +1,3 @@
-import json
 import flask
 from bson import json_util
 

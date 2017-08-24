@@ -137,7 +137,7 @@ def _upload():
     return {'status': 'ok', 'filename': image.filename}, 200
 
 
-@api.route('/generate_report/software/<software_id>', methods=["GET"])
+@api.route('/software/<software_id>/generate_report', methods=["POST"])
 @jsonify
 def _generate_report(software_id):
     id = '/software/' + software_id
@@ -147,9 +147,9 @@ def _generate_report(software_id):
     return {'status': 'ok'}, 200
 
 
-@api.route('/reports/software/<software_id>', methods=["GET"])
+@api.route('/software/<software_id>/reports', methods=["GET"])
 @jsonify
 def _reports(software_id):
     id = '/software/' + software_id
-    reports = load_reports()
-    return reports[id], 200
+    reports = list(db.impact_report.find({'software_id': id}))
+    return reports, 200

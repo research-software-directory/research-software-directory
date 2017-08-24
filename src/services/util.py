@@ -48,4 +48,4 @@ def worker(*args):
     """
     env = os.environ.copy()
     env['FLASK_APP'] = './entry.py'
-    subprocess.Popen(["flask", *args], env=env)
+    return subprocess.Popen(["flask", *args], env=env)
