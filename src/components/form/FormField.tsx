@@ -68,14 +68,15 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
   }
 
   renderMarkDown() {
-    return (
-      <comp.MarkDownInput
-        value={this.props.value || ''}
-        label={this.props.schema.description}
-        onChange={this.props.onChange}
-        className={this.props.hasChanged ? 'dirty' : ''}
-      />
-    );
+    return null;
+    // return (
+      // <comp.MarkDownInput
+        // value={this.props.value || ''}
+        // label={this.props.schema.description}
+        // onChange={this.props.onChange}
+        // className={this.props.hasChanged ? 'dirty' : ''}
+      // />
+    // );
   }
 
   renderMultiEnum() {

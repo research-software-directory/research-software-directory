@@ -4,6 +4,8 @@ import { generateReport, getReports } from './actions';
 import * as JSONPretty from 'react-json-pretty';
 import {Button, Icon} from 'semantic-ui-react';
 
+import 'react-json-pretty/src/JSONPretty.monikai.css';
+
 interface IOwnProps {
   id: string;
 }
@@ -18,7 +20,7 @@ interface IDispatchProps {
 }
 
 interface IState {
-  refreshing: boolean
+  refreshing: boolean;
 }
 
 const sortByField = (field: string, desc: boolean = false) => (a: any, b: any) => {
@@ -26,10 +28,9 @@ const sortByField = (field: string, desc: boolean = false) => (a: any, b: any) =
   if (a[field] > b[field]) { return desc ? -1 : 1; }
 
   return 0;
-}
+};
 
-const mapStateToProps = (state: any, props: IOwnProps): IMappedProps => (
-  props &&
+const mapStateToProps = (state: any): IMappedProps => (
   {
     reports: state.reports.sort(sortByField('time_start', true))
   }
@@ -37,7 +38,7 @@ const mapStateToProps = (state: any, props: IOwnProps): IMappedProps => (
 
 const mapDispatchToProps = { generateReport, getReports };
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect<IMappedProps, IDispatchProps, IOwnProps>(mapStateToProps, mapDispatchToProps);
 
 class ImpactReportsComponent extends React.Component<IOwnProps & IMappedProps & IDispatchProps, IState> {
   refresh = () => {
@@ -71,7 +72,9 @@ class ImpactReportsComponent extends React.Component<IOwnProps & IMappedProps & 
         <Button onClick={this.refresh} icon={true}>
           <Icon name="refresh" />
         </Button>
-        <JSONPretty json={this.props.reports} />
+        <div style={{width: '100%'}}>
+          <JSONPretty json={this.props.reports} />
+        </div>
       </div>
     );
   }
