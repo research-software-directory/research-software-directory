@@ -14,4 +14,18 @@ export const createNewItem = (resourceType: string, id: string, schema: any, his
   type: 'CREATE_NEW_ITEM'
 });
 
+export type IUndoChanges = (resourceType: string, id: string, oldData: any) => {
+  type: 'UNDO_CHANGES';
+  oldData: any;
+  resourceType: string;
+  id: string;
+};
+
+export const undoChanges: IUndoChanges = (resourceType: string, id: string, oldData: any) => ({
+  type: 'UNDO_CHANGES',
+  resourceType,
+  id,
+  oldData
+});
+
 export const saveChanges = { type: 'SAVE_CHANGES' };

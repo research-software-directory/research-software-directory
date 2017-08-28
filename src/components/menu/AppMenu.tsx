@@ -1,4 +1,4 @@
-import { saveChanges } from './actions';
+import { saveChanges, undoChanges, IUndoChanges } from './actions';
 
 import * as React from 'react';
 
@@ -28,12 +28,14 @@ const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (stat
 });
 
 const dispatchToProps = {
-  saveChanges: () => saveChanges
+  saveChanges: () => saveChanges,
+  undoChanges
 };
 
 const connector = connect(mapStateToProps, dispatchToProps );
 
 interface IProps {
+  undoChanges: IUndoChanges;
   data: any;
   numAsyncs: number;
   uploads: any[];
@@ -66,9 +68,25 @@ class AppMenuComponent extends React.Component<IProps, IState> {
     this.setState(initialState);
   }
 
+  undoChanges = (type: string, id: string) => (e: React.FormEvent<HTMLButtonElement>) => {
+    this.props.undoChanges(type, id, this.props.oldData);
+    e.preventDefault();
+  }
+
   menuItem = (type: string) => (item: any) => {
     const oldEntry = (this.props.oldData[type].find((oldItem: any) => item.id === oldItem.id));
     const hasChanged = oldEntry !== item;
+    const undoButton = hasChanged ? (
+      <Button
+        icon={true}
+        inverted={true}
+        style={{float: 'right', fontSize: '60%'}}
+        size="mini"
+        onClick={this.undoChanges(type, item.id)}
+      >
+        <Icon name="reply"  />
+      </Button>
+    ) : null;
 
     return (
         <Menu.Item
@@ -77,7 +95,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
         >
           <Link to={`${item.id}`} style={{display: 'block'}}>
             {item.name}
-            {hasChanged && <Icon name="pencil" style={{float: 'right'}} />}
+            {undoButton}
           </Link>
 
         </Menu.Item>

@@ -31,6 +31,18 @@ const dataReducer = (state: any = {}, action: any) => {
           $unshift: [newItem]
         }
       });
+
+    case 'UNDO_CHANGES':
+      const currentIndex = state[action.resourceType].findIndex((row: any) => row.id === action.id);
+      const originalResource = action.oldData[action.resourceType].find((row: any) => row.id === action.id);
+
+      return update(state, {
+        [action.resourceType]: {
+          [ currentIndex ] : {
+            $set: originalResource
+          }
+        }
+      });
     default: return state;
   }
 };
