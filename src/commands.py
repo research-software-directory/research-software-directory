@@ -2,7 +2,11 @@ import json
 import logging
 import pprint
 import re
-from os import walk
+import os
+import shutil
+import tempfile
+import subprocess
+from src import settings
 
 import click
 
@@ -25,12 +29,12 @@ def init(app):
                 matches = re.match(r'https://github.com/(.*?/.*?)/?$', str(software['codeRepository']))
                 if matches:
                     db['software'][index]['githubid'] = matches.group(1)
-        sync_db()
+        # sync_db()
 
     @app.cli.command('bundleschema')
     def _bundleschemas():
         schema = {}
-        for (_, _, files) in walk('schema'):
+        for (_, _, files) in os.walk('schema'):
             for (filename, file) in [(file, open('schema/'+file)) for file in files]:
                 schema[filename] = json.load(file)
         print (json.dumps(schema))
@@ -61,6 +65,64 @@ def init(app):
             current = current[path]
 
         pprint.pprint(current)
+
+    @app.cli.command('export')
+    @click.argument('filename')
+    def _export(filename):
+        """export database to `filename` (.tar.gz)"""
+        if not shutil.which('mongoexport'):
+            raise IOError('command `mongoexport` not found')
+        if not shutil.which('tar'):
+            raise IOError('command `tar` not found')
+        if not filename or len(filename) < 1:
+            raise IOError("Missing filename")
+        tmp_dir = tempfile.mkdtemp()
+        for table in db.collection_names():
+            output_file = os.path.join(tmp_dir, table+'.json')
+            subprocess.call([
+                'mongoexport',
+                '--db='+settings.DATABASE_NAME,
+                '--collection='+table,
+                '--out='+output_file
+            ])
+        subprocess.call([
+            'tar',
+            'zcf',
+            filename,
+            '-C',
+            tmp_dir,
+            '.'
+        ])
+        shutil.rmtree(tmp_dir)
+
+    @app.cli.command('import')
+    @click.argument('filename')
+    def _import(filename):
+        """import exported `filename` to database"""
+        if not shutil.which('mongoimport'):
+            raise IOError('command `mongoimport` not found')
+        if not shutil.which('tar'):
+            raise IOError('command `tar` not found')
+        if not filename or len(filename) < 1:
+            raise IOError("Missing filename")
+        tmp_dir = tempfile.mkdtemp()
+        subprocess.call([
+            'tar',
+            'zxf',
+            filename,
+            '-C',
+            tmp_dir
+        ])
+        for subdir, dirs, files in os.walk(tmp_dir):
+            for file in files:
+                subprocess.call([
+                    'mongoimport',
+                    '--db='+settings.DATABASE_NAME,
+                    '--file=' + os.path.join(tmp_dir, file)
+                ])
+            break
+
+        shutil.rmtree(tmp_dir)
 
     # @app.cli.command('set_person_github')
     # def _set_person_github():
