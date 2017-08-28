@@ -3,13 +3,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Installation
 - Clone repository
 - Use node version `^8.0`, eg using [nvm](#install-node-using-nvm)
-- install dependencies: `npm install`
+- Install dependencies: `npm install`
 - Run tests `npm run test`
 - Start app in dev server: `npm start`
 
 To build:
 - `npm run build`
 - Will build to `[current directory]/build`
+
+# Settings
+- see `src/settings.ts`
+- requires [backend](https://github.com/NLeSC/research-software-directory-backend)
 
 ### Install node using NVM
 See https://github.com/creationix/nvm#install-script
