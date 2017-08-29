@@ -62,7 +62,7 @@ class ImpactReportsComponent extends React.Component<IOwnProps & IMappedProps & 
   }
   generateButtonIsDisabled = () => {
     return this.state.refreshing ||
-      (this.props.reports && this.props.reports.length > 0 &&  this.props.reports[0].status === 'refreshing');
+      (this.props.reports && this.props.reports.length > 0 &&  this.props.reports[0].status === 'generating');
   }
 
   render() {
