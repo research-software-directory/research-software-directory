@@ -130,6 +130,16 @@ def init(app):
         from src.services.github import update_commits
         update_commits(repo)
 
+    @app.cli.command('report_all')
+    def _report_all():
+        i = 1
+        softwares = db.software.find()
+        for software in softwares:
+            print('(%i / %i) generating report for %s' % (i, softwares.count(), software['id']))
+            generate_impact_report(software['id'])
+            i += 1
+
+
     # @app.cli.command('set_person_github')
     # def _set_person_github():
     #     table = db.table('person')

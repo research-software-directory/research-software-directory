@@ -82,7 +82,7 @@ def get_github_info(software_id, github_id):
     @guard
     def get_github_commit_info(software_id):
         update_commits(software_id)
-        return list(db.commits.find({'software_id': software_id}))
+        return list(db.commit.find({'software_id': software_id}))
 
     return {
         'commits': get_github_commit_info(software_id),

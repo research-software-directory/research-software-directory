@@ -51,7 +51,7 @@ def update_commits(software_id):
     if not software['githubid']:
         raise Exception('software has no github id')
 
-    last_commit = db.commits.find({'software_id': software_id}).sort([('date', -1)]).limit(1)
+    last_commit = db.commit.find({'software_id': software_id}).sort([('date', -1)]).limit(1)
     last_date = '2012-01-01T00:00:00Z' if last_commit.count() == 0 else last_commit[0]['date']
     new_commits = get_commits(software['githubid'], last_date)
 
@@ -67,7 +67,7 @@ def update_commits(software_id):
 
     if len(new_commits) > 0:
         try:
-            db.commits.insert_many([transform(commit) for commit in new_commits], ordered=False)
+            db.commit.insert_many([transform(commit) for commit in new_commits], ordered=False)
         except pymongo.errors.BulkWriteError:
             pass  # no problem, because it is trying to insert duplicate id (last commit already exists)
 
