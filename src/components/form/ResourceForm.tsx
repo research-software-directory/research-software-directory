@@ -44,14 +44,6 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }
 
-  // arrayToObjectById = (arr: any[]) => {
-  //   return Object.assign({}, ...arr.map((obj) => ({[obj.id] : obj}) ));
-  // }
-  //
-  // compareStuff = () => {
-  //   // console.log(deepDiff(this.props.oldSchema, this.props.schema));
-  // }
-
   hasChanged(field: string) {
     if (!this.props.oldData) { return true; }
 
@@ -73,11 +65,20 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     );
   }
 
-  alphabetSort = (a: string, b: string) => a.localeCompare(b);
+  schemaSort = (properties: any) => (a: string, b: string) => {
+    if ('sortIndex' in properties[a] && 'sortIndex' in properties[b]) {
+        return properties[a].sortIndex < properties[b].sortIndex
+          ? -1
+          : properties[a].sortIndex > properties[b].sortIndex ? 1 : 0;
+    }
+    if ('sortIndex' in properties[a]) { return -1; }
+    if ('sortIndex' in properties[b]) { return 1; }
+
+    return a.localeCompare(b);
+  }
 
   renderFields = (schema: any) =>
-    // Object.keys(schema.properties).sort(this.alphabetSort)
-    Object.keys(schema.properties)
+    Object.keys(schema.properties).sort(this.schemaSort(schema.properties))
       .map((field: string) => this.renderField(field))
 
   impactReportButton = () => (
