@@ -1,5 +1,6 @@
 import time
 import src.services.libraries_io as libraries_io
+from src.services.github import update_commits, get_github_repo
 import traceback
 from src.database import db
 
@@ -14,10 +15,28 @@ from src.database import db
 # 1 NLeSC/pyxenon
 # 1 recipy/recipy
 # 1 nlesc-sherlock/spiraljs
+
 def generate_impact_report(id):
     save_stub(id)
     report = get_report_for_software(id)
     save_report(id, report)
+
+
+def format_exception(exception):
+    return {
+        "error": str(exception),
+        "class": exception.__class__.__name__,
+        "traceback": traceback.format_tb(exception.__traceback__),
+    }
+
+
+def guard(func):
+    def func_wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            return format_exception(e)
+    return func_wrapper
 
 
 def get_report_for_software(id):
@@ -25,6 +44,7 @@ def get_report_for_software(id):
     try:
         return {
             'libraries_io': get_libraries_io_info(software['githubid']),
+            'github': get_github_info(id, software['githubid']),
             'time_end': time.time(),
             'status': 'done'
         }
@@ -32,11 +52,7 @@ def get_report_for_software(id):
         return {
             'time_end': time.time(),
             'status': 'failed',
-            'exception':  {
-                "error": str(exception),
-                "class": exception.__class__.__name__,
-                "traceback": traceback.format_tb(exception.__traceback__),
-            }
+            'exception':  format_exception(exception)
         }
 
 
@@ -57,6 +73,24 @@ def save_report(id, report):
     })
 
 
+@guard
+def get_github_info(software_id, github_id):
+    @guard
+    def repo_info(github_id):
+        return get_github_repo(github_id)
+
+    @guard
+    def get_github_commit_info(software_id):
+        update_commits(software_id)
+        return list(db.commits.find({'software_id': software_id}))
+
+    return {
+        'commits': get_github_commit_info(software_id),
+        'repo': get_github_repo(github_id)
+    }
+
+
+@guard
 def get_libraries_io_info(github_id):
     libraries_io_projects = libraries_io.get_projects(github_id)
     if not libraries_io_projects:

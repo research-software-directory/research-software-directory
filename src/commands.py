@@ -124,6 +124,12 @@ def init(app):
 
         shutil.rmtree(tmp_dir)
 
+    @app.cli.command('commits')
+    @click.argument('repo')
+    def _commits(repo):
+        from src.services.github import update_commits
+        update_commits(repo)
+
     # @app.cli.command('set_person_github')
     # def _set_person_github():
     #     table = db.table('person')
