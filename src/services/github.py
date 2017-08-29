@@ -17,8 +17,8 @@ def releases(token, repo):
                 'date':    release['published_at'],
                 'name':    release['name']
             } for release in resp if (
-                release['draft'] is False and
-                release['prerelease'] is False
+                release['draft'] is False
+                # and release['prerelease'] is False
             )
         ]
 
