@@ -1,16 +1,10 @@
 import * as React from 'react';
-
-import { Button, Icon, Input, Loader, Segment } from 'semantic-ui-react';
-
-import ReactDatePicker from 'react-datepicker';
-
 import * as moment from 'moment';
-
-import 'react-datepicker/dist/react-datepicker.css';
+import { rawReq } from '../../../services/async';
+import { Button, Icon, Input, Loader, Segment } from 'semantic-ui-react';
+import { DatePicker } from '../../DatePicker';
 
 import './SoftwareReleases.css';
-
-import { rawReq } from '../../../services/async';
 
 interface IProps {
   maxItems?: number;
@@ -34,14 +28,13 @@ interface IReleaseProps {
 
 const Release = (props: IReleaseProps) => {
   const onChange = (field: string) => (value: string) => props.onChange( { ...props.value, [field]: value } );
-  const onDateChange = (m: moment.Moment) => onChange('date')(m.format('YYYY-MM-DD'));
   const onInputChange = (field: string) => (e: any) => onChange(field)(e.target.value);
 
   return (
     <Segment className="softwareRelease" style={{display: 'flex'}}>
-      <ReactDatePicker
-        onChange={onDateChange}
-        customInput={<Button>{props.value.date} <Icon name="calendar"/></Button>}
+      <DatePicker
+        value={props.value.date}
+        onChange={onChange('date')}
       />
       <Input onChange={onInputChange('version')} type="text" value={props.value.version} placeholder="version"/>
       <Input onChange={onInputChange('doi')} value={props.value.doi} placeholder="doi"/>

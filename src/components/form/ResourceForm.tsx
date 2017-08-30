@@ -4,8 +4,6 @@ import { updateField } from './actions';
 import { Link } from 'react-router-dom';
 import { FormField } from './FormField';
 import { Button, Segment } from 'semantic-ui-react';
-// tslint:disable-next-line:no-require-imports no-var-requires
-const deepDiff = require('deep-diff').default;
 
 import './style.css';
 
@@ -47,7 +45,8 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
   hasChanged(field: string) {
     if (!this.props.oldData) { return true; }
 
-    return !!deepDiff(this.props.data[field] || null, this.props.oldData[field] || null);
+    return this.props.data[field] !== this.props.oldData[field];
+    // return !!deepDiff(this.props.data[field] || null, this.props.oldData[field] || null);
   }
 
   renderField = (field: string): any => {
