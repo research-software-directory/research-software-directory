@@ -4,8 +4,11 @@ from src.database import db
 import pymongo.errors
 
 def releases(token, repo):
-    url = 'https://api.github.com/repos/%s/releases?access_token=%s' % (repo, token)
-    headers = {'Accept': 'application/vnd.github.v3+json'}
+    url = 'https://api.github.com/repos/%s/releases' % repo
+    headers = {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': 'token %s' % token
+    }
     req = requests.get(url, headers=headers)
     resp = req.json()
     if req.status_code != 200:

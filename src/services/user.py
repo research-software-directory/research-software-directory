@@ -6,9 +6,13 @@ from src.settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
 
 from flask import request
 
+
 def get_user(token):
-    url = 'https://api.github.com/user?access_token=%s' % token
-    headers = {'Accept': 'application/vnd.github.v3+json '}
+    url = 'https://api.github.com/user'
+    headers = {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': 'token %s' % token
+    }
     req = requests.get(url, headers=headers)
     resp = req.json()
     if req.status_code != 200:
@@ -17,8 +21,11 @@ def get_user(token):
 
 
 def get_user_organizations(user, token):
-    url = '%s?access_token=%s' % (user['organizations_url'], token)
-    headers = {'Accept': 'application/vnd.github.v3+json '}
+    url = user['organizations_url']
+    headers = {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': 'token %s' % token
+    }
     req = requests.get(url, headers=headers)
     resp = req.json()
     if req.status_code != 200:
@@ -42,8 +49,11 @@ def login(token):
 
 def user_in_organization(token, organization):
     user = get_user(token)
-    url = 'http://api.github.com/orgs/%s/members/%s?access_token=%s' % (organization, user['login'], token)
-    headers = {'Accept': 'application/vnd.github.v3+json '}
+    url = 'http://api.github.com/orgs/%s/members/%s' % (organization, user['login'])
+    headers = {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': 'token %s' % token
+    }
     req = requests.get(url, headers=headers)
     if req.status_code == 403:
         raise Exception('Github rate limit exceeded?')
