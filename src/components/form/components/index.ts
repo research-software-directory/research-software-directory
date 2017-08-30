@@ -5,3 +5,4 @@ export { TextAreaInput }        from './TextAreaInput';
 export { MarkDownInput }        from './MarkDownInput';
 export { ResourceArray }        from './ResourceArray';
 export { SoftwareReleases }     from './SoftwareReleases';
+export { DateInput }            from './DateInput';

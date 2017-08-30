@@ -184,6 +184,16 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     );
   }
 
+  renderDateInput() {
+    return (
+      <comp.DateInput
+        label={this.props.schema.description}
+        value={this.props.value || ''}
+        onChange={this.props.onChange}
+      />
+    );
+  }
+
   render() {
     const field = this.props.schema;
     if (this.props.fieldName === 'releases') {
@@ -192,6 +202,8 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
       return this.renderMarkDown();
     } else if (field.type === 'string' && 'long' in field) {
       return this.renderTextArea();
+    } else if (field.type === 'string' && 'format' in field && field.format === 'date') {
+      return this.renderDateInput();
     } else if (field.type === 'string') {
       return this.renderTextInput();
     } else if (field.type === 'array' && 'items' in field && field.items.enum) {
