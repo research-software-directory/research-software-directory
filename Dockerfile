@@ -1,4 +1,4 @@
-FROM python:3.6.2-alpine3.6
+FROM alpine:3.6
 
 COPY . /src
 
@@ -6,8 +6,18 @@ WORKDIR /src
 
 RUN (apk update)
 
-RUN (apk add zlib zlib-dev jpeg jpeg-dev gcc libc-dev)
+RUN (apk add zlib zlib-dev jpeg jpeg-dev gcc libc-dev python3 python3-dev py3-pip uwsgi uwsgi-http uwsgi-python3 nginx)
 
-RUN (pip install -r requirements.txt)
+RUN (pip3 install -r requirements.txt)
 
-CMD [ "python", "." ]
+CMD [                     \
+  "uwsgi",                \
+  "--plugins",            \
+  "http,python3",         \
+  "--http",               \
+  "0.0.0.0:8080",         \
+  "--wsgi-file entry.py", \
+  "--callable app",       \
+  "--master"              \
+]
+
