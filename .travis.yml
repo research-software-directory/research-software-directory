@@ -5,8 +5,10 @@ node_js:
 cache:
     directories:
           - "node_modules"
-install:
-    - npm install
-script:
-    - npm test
+
+install: npm install
+
+script: echo "Running tests against $(node -v) ..."
+
+script: npm test
 
