@@ -12,6 +12,4 @@ RUN (npm install)
 
 RUN (npm run build)
 
-CMD (npm start)
-
-ENTRYPOINT ["/bin/sh"]
+CMD ['npm', 'start']
