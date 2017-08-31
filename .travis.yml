@@ -18,6 +18,11 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+addons:
+  artifacts:
+    s3_region: "eu-central-1"
+    paths:
+      - $(git ls-files -o build | tr "\n" ":")
 env:
   - COMMIT=${TRAVIS_COMMIT::8}
 
