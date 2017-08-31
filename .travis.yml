@@ -6,8 +6,9 @@ cache:
   - node_modules
 install: npm install
 script: 
+  - export
   - npm test
-  - test $TRAVIS_BRANCH = "master" && npm build
+  - test $TRAVIS_BRANCH = "master" && npm run build
 deploy:
   provider: s3
   access_key_id:
