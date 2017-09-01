@@ -6,7 +6,7 @@ import os
 import shutil
 import tempfile
 import subprocess
-from src import settings
+from src.settings import settings
 
 import click
 
@@ -78,13 +78,15 @@ def init(app):
             raise IOError("Missing filename")
         tmp_dir = tempfile.mkdtemp()
         for table in db.collection_names():
-            output_file = os.path.join(tmp_dir, table+'.json')
-            subprocess.call([
-                'mongoexport',
-                '--db='+settings.DATABASE_NAME,
-                '--collection='+table,
-                '--out='+output_file
-            ])
+            print(table)
+            if table != 'system.indexes':
+                output_file = os.path.join(tmp_dir, table+'.json')
+                subprocess.call([
+                    'mongoexport',
+                    '--db='+settings['DATABASE_NAME'],
+                    '--collection='+table,
+                    '--out='+output_file
+                ])
         subprocess.call([
             'tar',
             'zcf',
@@ -117,7 +119,7 @@ def init(app):
             for file in files:
                 subprocess.call([
                     'mongoimport',
-                    '--db='+settings.DATABASE_NAME,
+                    '--db='+settings['DATABASE_NAME'],
                     '--file=' + os.path.join(tmp_dir, file)
                 ])
             break

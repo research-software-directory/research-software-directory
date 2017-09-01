@@ -1,0 +1,36 @@
+upstream flask {
+     server unix:///tmp/api.sock;
+}
+
+server {
+        listen 127.0.0.1:8001;
+        server_name 127.0.0.1;
+        client_max_body_size 5M;
+        location / {
+                include uwsgi_params;
+                uwsgi_pass flask;
+        }       
+}       
+
+server {
+        listen 8000 default_server;
+        listen [::]:8000 default_server;
+        
+        location ^~ /api/ {
+                proxy_pass http://localhost:8001/;
+        }
+
+        location /index.html {
+		        proxy_pass {STATIC_FILES_URL}/index.html;
+	    }
+
+        location = / {
+                proxy_pass {STATIC_FILES_URL}/index.html;
+        }
+
+        location / {
+#		        return 301 {STATIC_FILES_URL}$request_uri;
+		        proxy_pass {STATIC_FILES_URL}$request_uri;
+	    }
+
+}

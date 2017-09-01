@@ -2,7 +2,7 @@ import requests
 
 from src.exceptions import UnauthorizedException
 
-from src.settings import GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+from src.settings import settings
 
 from flask import request
 
@@ -37,7 +37,7 @@ def get_user_organizations(user, token):
 
 def login(token):
     url = 'https://github.com/login/oauth/access_token?client_id=%s&client_secret=%s&code=%s&accept=json' % \
-          (GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, token)
+          (settings['GITHUB_CLIENT_ID'], settings['GITHUB_CLIENT_SECRET'], token)
     req = requests.get(url)
     import urllib.parse
     query = urllib.parse.parse_qsl(req.text)

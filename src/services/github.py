@@ -1,5 +1,5 @@
 import requests
-from src import settings
+from src.settings import settings
 from src.database import db
 import pymongo.errors
 
@@ -31,7 +31,7 @@ def get_commits(repo, since='2012-01-01T00:00:00Z'):
         url = 'https://api.github.com/repos/%s/commits?per_page=100&page=%i&since=%s' % (repo, page, since)
         headers = {
             'Accept': 'application/vnd.github.v3+json',
-            'Authorization': 'token ' + settings.GITHUB_ACCESS_TOKEN
+            'Authorization': 'token ' + settings['GITHUB_ACCESS_TOKEN']
         }
         req = requests.get(url, headers=headers)
         return req.json()
@@ -78,7 +78,7 @@ def get_github_repo(github_id):
     url = 'https://api.github.com/repos/%s' % github_id
     headers = {
         'Accept': 'application/vnd.github.v3+json',
-        'Authorization': 'token ' + settings.GITHUB_ACCESS_TOKEN
+        'Authorization': 'token ' + settings['GITHUB_ACCESS_TOKEN']
     }
     req = requests.get(url, headers=headers)
     return req.json()

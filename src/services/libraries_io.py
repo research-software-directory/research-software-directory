@@ -4,14 +4,14 @@ import urllib.parse
 
 import requests
 from src.services.util import rate_limit
-from src import settings
+from src.settings import settings
 
 logger = logging.getLogger(__name__)
 
 
 @rate_limit('libraries_io', 60, 60)
 def get_projects(githubid):
-    url = 'https://libraries.io/api/github/%s/projects?api_key=%s' % (githubid, settings.LIBRARIES_IO_API_KEY)
+    url = 'https://libraries.io/api/github/%s/projects?api_key=%s' % (githubid, settings['LIBRARIES_IO_API_KEY'])
     req = requests.get(url)
     if req.status_code == 429:
         logger.error('Libraries IO over API rate limit')
@@ -32,7 +32,7 @@ def get_projects(githubid):
 
 @rate_limit('libraries_io', 60, 60)
 def get_dependencies(project):
-    url = 'https://libraries.io/api/%s/%s/dependents?api_key=%s' % (project['platform'], urllib.parse.quote(project['name']), settings.LIBRARIES_IO_API_KEY)
+    url = 'https://libraries.io/api/%s/%s/dependents?api_key=%s' % (project['platform'], urllib.parse.quote(project['name']), settings['LIBRARIES_IO_API_KEY'])
     req = requests.get(url)
     if (req.status_code == 200):
         info = req.json()

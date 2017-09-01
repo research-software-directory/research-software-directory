@@ -12,7 +12,7 @@ import src.services.user as user
 import src.services.github as github
 import src.constants as constants
 # from src.services.report import load_reports
-
+from src.settings import settings
 from src.services.util import worker
 
 
@@ -42,6 +42,10 @@ def _get_all_data():
 def _schema():
     return collection_to_object(list(db.schema.find())), 200
 
+
+@api.route('/github_auth')
+def _github_auth():
+    return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s' % settings['GITHUB_CLIENT_ID'])
 
 @api.route('/get_access_token/<token>')
 @jsonify
