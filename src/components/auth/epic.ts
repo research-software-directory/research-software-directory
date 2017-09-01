@@ -1,6 +1,6 @@
 import { combineEpics } from 'redux-observable';
 
-import { GITHUB_AUTH_URL, GITHUB_CLIENT_ID } from '../../settings';
+import {BACKEND_URL } from '../../settings';
 
 import * as actions from './actions';
 
@@ -39,7 +39,7 @@ export const epic = combineEpics(
 
   (action$: any) => action$.ofType('GET_AUTH_TOKEN')
     .do(accessToken.clear)
-    .mapTo(actions.redirect(`${GITHUB_AUTH_URL}?client_id=${GITHUB_CLIENT_ID}`)),
+    .mapTo(actions.redirect(`${BACKEND_URL}/github_auth`)),
 
   (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FAILED')
     .map((action: any) =>
