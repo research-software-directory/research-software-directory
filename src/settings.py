@@ -9,7 +9,7 @@ required_settings = [
     "GITHUB_CLIENT_ID",
     "GITHUB_CLIENT_SECRET",
     "DATABASE_HOST",
-    "DATABASE_PORT"
+    "DATABASE_PORT",
     "DATABASE_NAME"
 ]
 
