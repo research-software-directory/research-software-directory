@@ -78,11 +78,12 @@ def init(app):
             raise IOError("Missing filename")
         tmp_dir = tempfile.mkdtemp()
         for table in db.collection_names():
-            print(table)
             if table != 'system.indexes':
                 output_file = os.path.join(tmp_dir, table+'.json')
                 subprocess.call([
                     'mongoexport',
+                    '--host='+settings['DATABASE_HOST'],
+                    '--port='+settings['DATABASE_PORT'],
                     '--db='+settings['DATABASE_NAME'],
                     '--collection='+table,
                     '--out='+output_file
@@ -119,6 +120,8 @@ def init(app):
             for file in files:
                 subprocess.call([
                     'mongoimport',
+                    '--host=' + settings['DATABASE_HOST'],
+                    '--port=' + settings['DATABASE_PORT'],
                     '--db='+settings['DATABASE_NAME'],
                     '--file=' + os.path.join(tmp_dir, file)
                 ])

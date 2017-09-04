@@ -8,7 +8,8 @@ required_settings = [
     "LIBRARIES_IO_API_KEY",
     "GITHUB_CLIENT_ID",
     "GITHUB_CLIENT_SECRET",
-    "DATABASE_URL",
+    "DATABASE_HOST",
+    "DATABASE_PORT"
     "DATABASE_NAME"
 ]
 

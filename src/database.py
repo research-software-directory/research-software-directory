@@ -3,7 +3,7 @@ from src.settings import settings
 from pymongo import MongoClient
 logger = logging.getLogger(__name__)
 
-client = MongoClient(settings['DATABASE_URL'])
+client = MongoClient('mongodb://%s:%s/' % (settings['DATABASE_HOST'], settings['DATABASE_PORT']))
 db = client[settings['DATABASE_NAME']]
 
 # create indexes
