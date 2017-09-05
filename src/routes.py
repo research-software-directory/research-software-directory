@@ -100,7 +100,7 @@ def _github_releases():
 @api.route('/images', methods=["GET"])
 @jsonify
 def _images():
-    return [filename for filename in os.listdir('data/images') if not filename == '.gitkeep'], 200
+    return [filename for filename in os.listdir(settings['DATA_FOLDER']+'/images') if not filename == '.gitkeep'], 200
 
 
 @api.route('/thumbnail/<filename>', methods=["GET"])

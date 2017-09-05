@@ -144,8 +144,21 @@ def init(app):
             generate_impact_report(software['id'])
             i += 1
 
+    @app.cli.command('cleanup')
+    def _cleanup():
+        """Cleanup unused keys (not in schema)"""
+        for resource_type in ['software']:
+            for resource in db[resource_type].find():
+                for key in resource:
+                    if key not in ['id', '@id', '_id', 'schema'] and \
+                            key not in db.schema.find_one({'_id': resource_type})['properties']:
+                        print(key, resource['_id'])
 
-    # @app.cli.command('set_person_github')
+                exit(1)
+
+
+
+            # @app.cli.command('set_person_github')
     # def _set_person_github():
     #     table = db.table('person')
     #     result = table.search(Query().githubUrl.exists())
