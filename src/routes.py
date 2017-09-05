@@ -29,7 +29,7 @@ cors = CORS(api, resources={r"*": {"origins": "*"}})
 
 @api.route('/all', methods=["GET"])
 @jsonify
-@user.require_organization('nlesc')
+# @user.require_organization('nlesc')
 def _get_all_data():
     result = {}
     for resource_type in ['software', 'project', 'person', 'publication', 'organization']:
