@@ -1,4 +1,6 @@
 # research-software-directory-backend
+![TravisCIBadge](https://travis-ci.org/NLeSC/research-software-directory-backend.svg?branch=master)
+
 Backend for the eScience Research Software Directory.
 ### Requirements:
 - Python 3

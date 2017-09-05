@@ -9,7 +9,11 @@ install:
 - pip install -r requirements.txt
 script:
 - PYTHONPATH=`pwd` pytest
-- docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD} && docker build -t ${DOCKER_USERNAME}/rsd-backend . && docker push ${DOCKER_USERNAME}/rsd-backend
+after_success:
+- docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD} &&
+  docker pull ${DOCKER_USERNAME}/rsd-backend
+  docker build -t ${DOCKER_USERNAME}/rsd-backend --cache-from ${DOCKER_USERNAME}/rsd-backend . &&
+  docker push ${DOCKER_USERNAME}/rsd-backend
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
