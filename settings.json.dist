@@ -3,6 +3,7 @@
   "GITHUB_CLIENT_ID": null,
   "GITHUB_CLIENT_SECRET": null,
   "LIBRARIES_IO_API_KEY": null,
-  "DATABASE_URL": "mongodb://127.0.0.1:27017/",
+  "DATABASE_HOST": "127.0.0.1",
+  "DATABASE_PORT": "27017",
   "DATABASE_NAME": "test"
 }

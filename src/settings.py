@@ -28,7 +28,4 @@ for key in settings:
     if key in os.environ:
         settings[key] = os.environ[key]
     if settings[key] is None:
-        raise EnvironmentError("%s not set (add to environment or settings.json)" % key)
-
-
-print(settings)
+        raise EnvironmentError("%s not set (add to environment or settings.remote.json)" % key)
