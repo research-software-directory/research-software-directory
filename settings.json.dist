@@ -1,5 +1,6 @@
 {
   "GITHUB_ACCESS_TOKEN": null,
+  "ZOTERO_ACCESS_TOKEN": null,
   "GITHUB_CLIENT_ID": null,
   "GITHUB_CLIENT_SECRET": null,
   "LIBRARIES_IO_API_KEY": null,

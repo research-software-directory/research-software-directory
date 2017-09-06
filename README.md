@@ -9,7 +9,8 @@ Backend for the eScience Research Software Directory.
 - Mongodb server
 
 ### Configuration:
-- Copy `src/settings.dist.py` to `src/settings.py`
+- Copy `settings.json.dist` to `settings.json` or add as environmental variables
+  (environment is prioritized over `settings.json`)
 
 ### Setup
 ```
@@ -17,16 +18,19 @@ mkvirtualenv rsd -p `which python3`
 pip install -r requirements.txt
 export FLASK_APP=`pwd`/entry.py
 export FLASK_DEBUG=1
-
 ```
 ### Run unit tests
 ```
 PYTHONPATH=`pwd` pytest
 ```
-
 ### Run API server
 ```
 flask run
+```
+### Docker
+```
+docker build -t rsd-backend
+docker run -v data:/data -p 0.0.0.0:80:8000 rsd-backend
 ```
 
 ### export MongoDB data
