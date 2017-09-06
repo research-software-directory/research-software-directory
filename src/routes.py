@@ -109,7 +109,7 @@ def _thumbnail(filename):
     filename = settings['DATA_FOLDER']+'/images/' + filename
     if not os.path.isfile(filename):
         return flask.send_file('data/image-not-found.png')
-    resized_url = '../' + resize(filename, '100x100')
+    resized_url = resize(filename, '100x100')
     return flask.send_file(resized_url)
 
 
@@ -132,7 +132,7 @@ def _upload():
     if "/" in image.filename:
         raise Exception('invalid filename')
 
-    full_path = 'data/images/'+image.filename
+    full_path = settings['DATA_FOLDER']+'/images/'+image.filename
     if os.path.isfile(full_path):
         raise Exception('file exists')
 

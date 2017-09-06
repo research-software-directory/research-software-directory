@@ -32,7 +32,7 @@ def register_blueprints(app):
 
 
 def register_extensions(app):
-    app.config['RESIZE_URL'] = 'data'
+    app.config['RESIZE_URL'] = settings['DATA_FOLDER']
     app.config['RESIZE_ROOT'] = settings['DATA_FOLDER']
     resize.init_app(app)
 
