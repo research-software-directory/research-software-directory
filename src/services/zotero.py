@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 def zotero_sync():
-    req = requests.get('https://api.zotero.org/users/4253992/items?key=%s' % settings['ZOTERO_ACCESS_TOKEN'])
+    req = requests.get('https://api.zotero.org/groups/1689348/items?key=%s' % settings['ZOTERO_ACCESS_TOKEN'])
     result = req.json()
 
     for entry in [entry['data'] for entry in result]:
