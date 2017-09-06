@@ -160,8 +160,7 @@ def _reports(software_id):
     return reports, 200
 
 
-
-@api.route('zotero_sync', methods=["GET"])
+@api.route('/zotero_sync', methods=["GET"])
 @jsonify
 def _zoterotest():
     zotero_sync()
