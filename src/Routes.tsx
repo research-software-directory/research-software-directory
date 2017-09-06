@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ResourceForm } from './components/form/ResourceForm';
 import { Images } from './components/images';
+import { Publications } from './components/Publications';
 import { ImpactReports } from './components/impact_reports/ImpactReports';
 import { resourceTypes } from './settings';
 
@@ -35,6 +36,7 @@ export class Routes extends React.Component<{}, {}> {
           <Route exact={true} path="/" component={this.hello}/>
           <Route exact={true} path="/software/:id/report" component={impactReports} />
           <Route exact={true} path="/images" component={Images} />
+          <Route exact={true} path="/publications" component={Publications} />
         </Switch>
       </div>
     );

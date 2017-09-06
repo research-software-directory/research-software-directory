@@ -1,21 +1,15 @@
+import * as React from 'react';
+import { connect } from 'react-redux';
+import * as update from 'immutability-helper';
+import { resourceTypes } from '../../settings';
 import { saveChanges, undoChanges, IUndoChanges } from './actions';
 
-import * as React from 'react';
-
-import { connect } from 'react-redux';
+import { Button, Divider, Icon, Image, Input, Loader, Menu, Progress } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { NewItem } from './NewItem';
 
 import './AppMenu.css';
-
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Divider, Icon, Image, Input, Loader, Menu, Progress } from 'semantic-ui-react';
-
-import * as update from 'immutability-helper';
-
-import { Link } from 'react-router-dom';
-
-import { resourceTypes } from '../../settings';
-
-import { NewItem } from './NewItem';
 
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
   data:    state.current.data,
@@ -169,6 +163,11 @@ class AppMenuComponent extends React.Component<IProps, IState> {
     this.props.saveChanges();
   }
 
+  avatarClick = () => {
+    // tslint:disable-next-line
+    new Function('z=function(n,t,e){void 0===e&&(e=1),e>1&&t(n,e);for(var r=0;r<n.children.length;r++)z(n.children[r],t,e+1)},z(document.body,function(n,t){!function(n){var t=1;setInterval(function(){t+=1,n.style.transform="rotateZ("+t+"deg)"},10)}(n)})')();
+  }
+
   render() {
       return (
         <Menu
@@ -178,7 +177,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           className="main_menu"
         >
           <Menu.Item>
-            <Image avatar={true} src={this.props.user.avatar_url} />&nbsp;
+            <Image onClick={this.avatarClick} avatar={true} src={this.props.user.avatar_url} />&nbsp;
             {this.props.user.name}
             <Loader inline={true} active={this.props.numAsyncs > 0} />
             <Button
@@ -200,6 +199,10 @@ class AppMenuComponent extends React.Component<IProps, IState> {
             Home
           </Menu.Item>
           {resourceTypes.map(this.resourceTypeMenu)}
+          <Menu.Item name="publications" as={Link} to="/publications" >
+            <Icon name="book" />
+            Publications
+          </Menu.Item>
           <Menu.Item name="image" as={Link} to="/images">
             <Icon name="image" />
             Images

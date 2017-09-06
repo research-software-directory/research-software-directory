@@ -99,10 +99,18 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
   }
   renderMultiResource() {
     const resourceType = this.props.schema.items.resType.split('/').slice(-1)[0];
-    const options = this.props.data[resourceType].map((resource: any) => ({
-      id: resource.id,
-      label: resource.name || resource.id
-    }));
+    const options = this.props.data[resourceType].map((resource: any) => {
+      const opt = {
+        id: resource.id,
+        label: resource.name || resource.id
+      };
+
+      if (resourceType === 'publication') {
+        opt.label = `${resource.DOI && `[${resource.DOI}]` || ''} ${resource.title}`;
+      }
+
+      return opt;
+    });
 
     return (
       <comp.ResourceArray

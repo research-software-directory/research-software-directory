@@ -65,8 +65,8 @@ export class ResourceArray extends React.Component<IProps, {}> {
       const label = option ? option.label : val;
 
       return (
-        <Segment key={key}><Icon name={icon(this.props.resourceType)} /> {label}
-          <Button size="mini" floated="right" icon="close" onClick={this.removeValue(key)} />
+        <Segment key={key}><Icon name={icon(this.props.resourceType)}/> {label}
+          <Button size="mini" floated="right" icon="close" onClick={this.removeValue(key)}/>
         </Segment>
       );
     } else {
@@ -83,7 +83,7 @@ export class ResourceArray extends React.Component<IProps, {}> {
 
   options = () => this.props.options
     .filter((option) => this.props.value.indexOf(option.id) === -1)
-    .map((option) => ({ ...option, value: option.id, icon: icon(this.props.resourceType)}))
+    .map((option) => ({ ...option, value: option.id, icon: icon(this.props.resourceType) }))
 
   render() {
     const input = (!this.props.maxItems || this.props.value.length < this.props.maxItems)

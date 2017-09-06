@@ -46,7 +46,6 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
     if (!this.props.oldData) { return true; }
 
     return this.props.data[field] !== this.props.oldData[field];
-    // return !!deepDiff(this.props.data[field] || null, this.props.oldData[field] || null);
   }
 
   renderField = (field: string): any => {
