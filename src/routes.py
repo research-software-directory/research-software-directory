@@ -14,6 +14,7 @@ import src.constants as constants
 # from src.services.report import load_reports
 from src.settings import settings
 from src.services.util import worker
+from src.services.zotero import zotero_sync
 
 
 def collection_to_object(collection):
@@ -105,18 +106,18 @@ def _images():
 
 @api.route('/thumbnail/<filename>', methods=["GET"])
 def _thumbnail(filename):
-    filename = constants.BASE_PATH + '/data/images/' + filename
+    filename = settings['DATA_FOLDER']+'/images/' + filename
     if not os.path.isfile(filename):
-        return flask.send_file(constants.BASE_PATH + '/data/image-not-found.png')
+        return flask.send_file('data/image-not-found.png')
     resized_url = '../' + resize(filename, '100x100')
     return flask.send_file(resized_url)
 
 
 @api.route('/image/<filename>', methods=["GET"])
 def _image(filename):
-    filename = constants.BASE_PATH + '/data/images/' + filename
+    filename = settings['DATA_FOLDER']+'/images/' + filename
     if not os.path.isfile(filename):
-        return flask.send_file(constants.BASE_PATH + '/data/image-not-found.png')
+        return flask.send_file('data/image-not-found.png')
     return flask.send_file(filename)
 
 
@@ -157,3 +158,10 @@ def _reports(software_id):
     id = '/software/' + software_id
     reports = list(db.impact_report.find({'software_id': id}))
     return reports, 200
+
+
+
+@api.route('zotero_sync', methods=["GET"])
+@jsonify
+def _zoterotest():
+    zotero_sync()

@@ -2,6 +2,7 @@ import logging
 from flask import Flask
 from src.routes import api as api_routes
 from src.extensions import resize
+from src.settings import settings
 import src.commands as commands
 import src.error_handlers as error_handlers
 
@@ -32,7 +33,7 @@ def register_blueprints(app):
 
 def register_extensions(app):
     app.config['RESIZE_URL'] = 'data'
-    app.config['RESIZE_ROOT'] = 'data'
+    app.config['RESIZE_ROOT'] = settings['DATA_FOLDER']
     resize.init_app(app)
 
 

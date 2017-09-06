@@ -157,7 +157,6 @@ def init(app):
                 exit(1)
 
 
-
             # @app.cli.command('set_person_github')
     # def _set_person_github():
     #     table = db.table('person')
