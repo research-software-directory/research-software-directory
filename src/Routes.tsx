@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ResourceForm } from './components/form/ResourceForm';
 import { Images } from './components/images';
-import { Publications } from './components/Publications';
+import { Publications } from './components/publications/Publications';
+import { Publication } from './components/publications/Publication';
 import { ImpactReports } from './components/impact_reports/ImpactReports';
 import { resourceTypes } from './settings';
 
@@ -26,6 +27,10 @@ const impactReports = ({match}: any) => (
   <ImpactReports id={`${match.params.id}`} />
 );
 
+const publication = ({match}: any) => (
+  <Publication id={`/publication/${match.params.id}`} />
+);
+
 export class Routes extends React.Component<{}, {}> {
   hello = () => <div>Welcome</div>;
   render() {
@@ -37,6 +42,7 @@ export class Routes extends React.Component<{}, {}> {
           <Route exact={true} path="/software/:id/report" component={impactReports} />
           <Route exact={true} path="/images" component={Images} />
           <Route exact={true} path="/publications" component={Publications} />
+          <Route exact={true} path="/publication/:id" component={publication} />
         </Switch>
       </div>
     );

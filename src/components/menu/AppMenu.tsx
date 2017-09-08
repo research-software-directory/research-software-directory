@@ -11,6 +11,16 @@ import { NewItem } from './NewItem';
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
 
+const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
+
+const menuField = (item: any, resourceType: string) => {
+  if (resourceType === 'publication') {
+    return `${item.DOI || ''} ${item.title}`;
+  } else {
+    return item.name;
+  }
+};
+
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
   data:    state.current.data,
   numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
@@ -53,7 +63,7 @@ interface IState {
 
 class AppMenuComponent extends React.Component<IProps, IState> {
   componentWillMount() {
-    const initialState = {menu: Object.assign({}, ...resourceTypes.map((type) => ({[type]:
+    const initialState = {menu: Object.assign({}, ...resourceTypesMenu.map((type) => ({[type]:
       {
         open: false,
         search: ''
@@ -88,7 +98,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           className={this.props.routeParams.location.pathname === item.id ? 'active' : ''}
         >
           <Link to={`${item.id}`} style={{display: 'block'}}>
-            {item.name}
+            {menuField(item, type)}
             {undoButton}
           </Link>
 
@@ -119,18 +129,18 @@ class AppMenuComponent extends React.Component<IProps, IState> {
     this.setState(update(this.state, { menu: { [type]: { search: { $set: e.target.value }}}}));
   }
 
-  searchFilter = (search: string) => (item: any) => {
+  searchFilter = (resourceType: string, search: string) => (item: any) => {
     const lowerCase = search.toLowerCase();
 
-    return (item.name.toLowerCase().indexOf(lowerCase) !== -1 ||
-      item.description.toLowerCase().indexOf(lowerCase) !== -1);
+    return (menuField(item, resourceType).toLowerCase().indexOf(lowerCase) !== -1 ||
+      (item.description && item.description.toLowerCase().indexOf(lowerCase) !== -1));
   }
 
   resourceTypeMenu = (type: string) => {
     let subMenu = null;
     if (this.state.menu[type].open) {
       const menuItems = this.props.data[type]
-        .filter(this.searchFilter(this.state.menu[type].search))
+        .filter(this.searchFilter(type, this.state.menu[type].search))
         .map(this.menuItem(type));
 
       subMenu = (
@@ -142,7 +152,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
             onChange={this.onSubmenuSearch(type)}
           />
           <Divider />
-          <NewItem resourceType={type} />
+          {type !== 'publication' && <NewItem resourceType={type} />}
           {menuItems}
         </Menu>
       );
@@ -198,11 +208,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
             <Icon name="home" />
             Home
           </Menu.Item>
-          {resourceTypes.map(this.resourceTypeMenu)}
-          <Menu.Item name="publications" as={Link} to="/publications" >
-            <Icon name="book" />
-            Publications
-          </Menu.Item>
+          {resourceTypesMenu.map(this.resourceTypeMenu)}
           <Menu.Item name="image" as={Link} to="/images">
             <Icon name="image" />
             Images

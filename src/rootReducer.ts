@@ -4,6 +4,7 @@ import {reducer as formReducer} from './components/form/reducer';
 import {reducer as imageReducer} from './components/images/reducer';
 import {reducer as asyncReducer} from './services/async';
 import {reducer as impactReportReducer} from './components/impact_reports/reducer';
+import {reducer as authorPersonReducer} from './components/publications/reducer';
 
 import {combineReducers} from 'redux';
 import {IFetchFulfilledAction} from './services/async';
@@ -36,5 +37,6 @@ export const rootReducer = combineReducers({
   images: imageReducer,
   schema: schemaReducer,
   toastr: toastrReducer,
-  reports: impactReportReducer
+  reports: impactReportReducer,
+  authorPerson: authorPersonReducer
 });
