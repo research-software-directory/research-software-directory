@@ -14,7 +14,7 @@ import src.constants as constants
 # from src.services.report import load_reports
 from src.settings import settings
 from src.services.util import worker
-from src.services.zotero import zotero_sync
+from src.services.zotero import zotero_sync, author_map_suggestion
 
 
 def collection_to_object(collection):
@@ -164,3 +164,15 @@ def _reports(software_id):
 @jsonify
 def _zoterotest():
     zotero_sync()
+    return {'status': 'ok'}, 200
+
+
+@api.route('/author_mapping/publication/<id>', methods=["GET"])
+@jsonify
+def _author_mapping(id):
+    id = '/publication/'+id
+    suggestion = author_map_suggestion(id)
+    return {
+        'id': id,
+        'mapping': suggestion
+    }, 200

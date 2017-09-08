@@ -26,3 +26,4 @@ Werkzeug==0.12.2
 wrapt==1.10.10
 pymongo==3.5.0
 flask_resize==2.0.3
+fuzzywuzzy==0.15.1
