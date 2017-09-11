@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Input, Modal, Segment, TextArea } from 'semantic-ui-react';
+import { Button, Modal, Segment, TextArea } from 'semantic-ui-react';
 
 import * as showdown from 'showdown';
 
@@ -35,7 +35,6 @@ export class MarkDownInput extends React.Component<IProps, IState> {
     return (
         <Segment>
           <p>{this.props.label}</p>
-          <Input name="asd"/>
           <TextArea
             autoHeight={true}
             className={this.props.className || ''}

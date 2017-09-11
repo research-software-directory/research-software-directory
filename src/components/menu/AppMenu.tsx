@@ -179,44 +179,44 @@ class AppMenuComponent extends React.Component<IProps, IState> {
   }
 
   render() {
-      return (
-        <Menu
-          id="main_menu"
-          vertical={true}
-          inverted={true}
-          className="main_menu"
-        >
-          <Menu.Item>
-            <Image onClick={this.avatarClick} avatar={true} src={this.props.user.avatar_url} />&nbsp;
-            {this.props.user.name}
-            <Loader inline={true} active={this.props.numAsyncs > 0} />
-            <Button
-              floated="right"
-              inverted={true}
-              color="red"
-              size="tiny"
-              disabled={this.props.data === this.props.oldData}
-              onClick={this.save}
-            >
-              Save
-            </Button>
-          </Menu.Item>
-          <Menu.Item>
-            <UploadStatus progress={this.props.uploads.length > 0 && this.props.uploads[0].progress || 0} />
-          </Menu.Item>
-          <Menu.Item name="home" as={Link} to="/" >
-            <Icon name="home" />
-            Home
-          </Menu.Item>
-          {resourceTypesMenu.map(this.resourceTypeMenu)}
-          <Menu.Item name="image" as={Link} to="/images">
-            <Icon name="image" />
-            Images
-          </Menu.Item>
-        </Menu>
-      );
-    }
+    return (
+      <Menu
+        id="main_menu"
+        vertical={true}
+        inverted={true}
+        className="main_menu"
+      >
+        <Menu.Item>
+          <Image onClick={this.avatarClick} avatar={true} src={this.props.user.avatar_url} />&nbsp;
+          {this.props.user.name}
+          <Loader inline={true} active={this.props.numAsyncs > 0} />
+          <Button
+            floated="right"
+            inverted={true}
+            color="red"
+            size="tiny"
+            disabled={this.props.data === this.props.oldData}
+            onClick={this.save}
+          >
+            Save
+          </Button>
+        </Menu.Item>
+        <Menu.Item>
+          <UploadStatus progress={this.props.uploads.length > 0 && this.props.uploads[0].progress || 0} />
+        </Menu.Item>
+        <Menu.Item name="home" as={Link} to="/" >
+          <Icon name="home" />
+          Home
+        </Menu.Item>
+        {resourceTypesMenu.map(this.resourceTypeMenu)}
+        <Menu.Item name="image" as={Link} to="/images">
+          <Icon name="image" />
+          Images
+        </Menu.Item>
+      </Menu>
+    );
   }
+}
 
 export const AppMenu = connector(AppMenuComponent);
 

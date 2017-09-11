@@ -77,6 +77,16 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
       />
     );
   }
+  renderSoftwareDescription() {
+    return (
+      <comp.SoftwareDescription
+        value={this.props.value || ''}
+        label={this.props.schema.description}
+        onChange={this.props.onChange}
+        className={this.props.hasChanged ? 'dirty' : ''}
+      />
+    );
+  }
 
   renderMultiEnum() {
     const options = this.schemaEnum().map((option) =>
@@ -206,6 +216,8 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
     const field = this.props.schema;
     if (this.props.fieldName === 'releases') {
       return this.renderSoftwareReleases();
+    } else if (this.props.parentResourceType === 'software' && this.props.fieldName === 'description') {
+      return this.renderSoftwareDescription();
     } else if (field.type === 'string' && 'markdown' in field) {
       return this.renderMarkDown();
     } else if (field.type === 'string' && 'long' in field) {
