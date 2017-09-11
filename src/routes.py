@@ -14,7 +14,8 @@ import src.constants as constants
 # from src.services.report import load_reports
 from src.settings import settings
 from src.services.util import worker
-from src.services.zotero import zotero_sync, author_map_suggestion
+from src.services.zotero import zotero_sync
+from src.services.publication import get_mapping
 
 
 def collection_to_object(collection):
@@ -171,8 +172,15 @@ def _zoterotest():
 @jsonify
 def _author_mapping(id):
     id = '/publication/'+id
-    suggestion = author_map_suggestion(id)
-    return {
-        'id': id,
-        'mapping': suggestion
-    }, 200
+    return get_mapping(id), 200
+
+
+@api.route('/save_author_mapping', methods=["POST"])
+@jsonify
+def _save_mapping():
+    value = flask.request.get_json()
+
+    value.update({'_id': value['id'], 'type': 'saved'})
+    db.publication_creator_person_map.update({'_id': value['_id']}, value, upsert=True)
+
+    return value, 200
