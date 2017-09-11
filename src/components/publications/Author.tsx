@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Segment, Icon } from 'semantic-ui-react';
+import { Segment, Button, Icon } from 'semantic-ui-react';
 
 import { ResourceArray } from '../form/components/ResourceArray';
 
@@ -21,8 +21,15 @@ export class Author extends React.PureComponent<IProps, IState> {
     this.state = {expanded: false};
   }
 
-  toggleExpanded = () => {
-    this.setState({expanded: true});
+  toggleExpanded = (newState: boolean = !this.state.expanded) => () => {
+    this.setState({expanded: newState});
+  }
+
+  onChange = (value: any) => {
+    this.props.onChange(value);
+    if (!value || !value.length) {
+      this.toggleExpanded(false)();
+    }
   }
 
   details = () => {
@@ -35,7 +42,7 @@ export class Author extends React.PureComponent<IProps, IState> {
         <ResourceArray
           label=""
           value={this.props.person ? [this.props.person] : []}
-          onChange={this.props.onChange}
+          onChange={this.onChange}
           options={options}
           resourceType="person"
           addable={false}
@@ -44,11 +51,27 @@ export class Author extends React.PureComponent<IProps, IState> {
     );
   }
 
+  noBubble = (f: any) => (e: any) => { f(e); e.preventDefault(); e.stopPropagation(); };
+
+  foldBackButton = () => (
+    <Button
+      onClick={this.noBubble(this.toggleExpanded())}
+      size="tiny"
+      icon={true}
+    >
+      <Icon name="chevron up" />
+    </Button>
+  )
+
   render() {
     return (
-      <Segment onClick={this.toggleExpanded} key={`${this.props.creator.lastName}${this.props.creator.firstName}`}>
-        {this.props.creator.lastName}, {this.props.creator.firstName}
-        {this.props.person && <Icon style={{float: 'right'}} name="external square" />}
+      <Segment
+        onClick={!this.state.expanded && this.toggleExpanded(true)}
+        key={`${this.props.creator.lastName}${this.props.creator.firstName}`}
+      >
+        {this.props.creator.lastName}, {this.props.creator.firstName} &nbsp;
+        {this.state.expanded && this.foldBackButton()}
+        {this.props.person && <Icon style={{float: 'left'}} name="external square" />}
         {this.state.expanded && this.details()}
       </Segment>
     );

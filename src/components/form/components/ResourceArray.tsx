@@ -59,27 +59,38 @@ export class ResourceArray extends React.Component<IProps, {}> {
     this.props.onChange(oldValue);
   }
 
-  segments = () => this.props.value.map((val, key) => {
-    if (typeof val === 'string') {
-      const option = this.props.options.find((opt: IOption) => opt.id === val);
-      const label = option ? option.label : val;
-
-      return (
-        <Segment key={key}><Icon name={icon(this.props.resourceType)}/> {label}
-          <Button size="mini" floated="right" icon="close" onClick={this.removeValue(key)}/>
-        </Segment>
-      );
-    } else {
-      return (
-        <EditableSegment
-          key={key}
-          value={val}
-          onChange={this.updateValue(key)}
-          onDelete={this.removeValue(key)}
-        />
-      );
+  segments = () => {
+    if (!this.props.value || !this.props.value.length) {
+      return null;
     }
-  })
+    const content = this.props.value.map((val, key) => {
+      if (typeof val === 'string') {
+        const option = this.props.options.find((opt: IOption) => opt.id === val);
+        const label = option ? option.label : val;
+
+        return (
+          <Segment key={key}><Icon name={icon(this.props.resourceType)}/> {label}
+            <Button size="mini" floated="right" icon="close" onClick={this.removeValue(key)}/>
+          </Segment>
+        );
+      } else {
+        return (
+          <EditableSegment
+            key={key}
+            value={val}
+            onChange={this.updateValue(key)}
+            onDelete={this.removeValue(key)}
+          />
+        );
+      }
+    });
+
+    return (
+      <Segment.Group style={{maxWidth: '500px'}}>
+        {content}
+      </Segment.Group>
+    );
+  }
 
   options = () => this.props.options
     .filter((option) => this.props.value.indexOf(option.id) === -1)
@@ -104,10 +115,8 @@ export class ResourceArray extends React.Component<IProps, {}> {
     return (
       <Segment className="ResourceArray">
         <p>{this.props.label}</p>
-        <Segment.Group style={{maxWidth: '500px'}}>
-          {this.segments()}
-        </Segment.Group>
-          {input}
+        {this.segments()}
+        {input}
       </Segment>
     );
   }
