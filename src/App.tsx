@@ -49,12 +49,10 @@ class AppComponent extends React.Component<IProps, {}> {
         const id = locationParts[4];
         if (
           !this.props.data[resourceType] ||
-          !this.props.data[resourceType].find((resource: any) => resource.id === id)
+          !this.props.data[resourceType].find((resource: any) => resource.id === `/${resourceType}/${id}`)
         ) {
-          // resource not found...
-          window.location.href = '/';
 
-          return null;
+          return <div>not found</div>;
         }
       }
 

@@ -52,6 +52,7 @@ class AppMenuComponent extends React.Component<IProps, {}> {
   render() {
     const resourceMenus = resourceTypesMenu.map((type: string) => (
       <ResourceTypeMenu
+        key={type}
         type={type}
         routeParams={this.props.routeParams}
       />
