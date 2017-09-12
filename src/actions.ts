@@ -1,4 +1,4 @@
-import { backend, IFetchAction } from './services/async';
+import { backend } from './services/async';
 
-export const fetchRootJSON: IFetchAction = backend.get('FETCH_ROOT_JSON', 'all');
-export const fetchSchema: IFetchAction = backend.get('FETCH_SCHEMA', 'schema');
+export const fetchRootJSON = () => backend.get('FETCH_ROOT_JSON', 'all');
+export const fetchSchema = () => backend.get('FETCH_SCHEMA', 'schema');

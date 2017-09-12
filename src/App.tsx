@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {connect, Dispatch} from 'react-redux';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Action } from 'redux';
 
 import {fetchRootJSON, fetchSchema } from './actions';
 
@@ -11,24 +10,28 @@ import { AppMenu } from './components/menu/AppMenu';
 
 import { Segment } from 'semantic-ui-react';
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  fetchRootJSON:  (): Action => dispatch(fetchRootJSON),
-  fetchSchema:    (): Action => dispatch(fetchSchema)
-});
+const dispatchToProps = {
+  fetchRootJSON,
+  fetchSchema
+};
 
 const mapStateToProps = (state: any) => ({
   data:   state.data,
   schema: state.schema
 });
 
-const connector = connect(mapStateToProps, mapDispatchToProps );
-
-interface IProps {
+interface IMappedProps {
   data: any;
   schema: any;
-  fetchRootJSON(): Action;
-  fetchSchema(): Action;
 }
+
+interface IDispatchProps {
+  fetchRootJSON: any;
+  fetchSchema: any;
+}
+type IProps = IMappedProps & IDispatchProps;
+
+const connector = connect(mapStateToProps, dispatchToProps);
 
 class AppComponent extends React.Component<IProps, {}> {
   componentWillMount() {
@@ -58,10 +61,10 @@ class AppComponent extends React.Component<IProps, {}> {
       return (
         <BrowserRouter>
           <div style={{display: 'flex'}}>
-              <Route component={this.renderMenu} />
-              <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
-                  <Routes />
-              </Segment>
+            <Route component={this.renderMenu} />
+            <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
+              <Routes />
+            </Segment>
           </div>
         </BrowserRouter>
       );
@@ -72,7 +75,7 @@ class AppComponent extends React.Component<IProps, {}> {
 
   render() {
     return (
-        this.renderAppLoaded()
+      this.renderAppLoaded()
     );
   }
 }

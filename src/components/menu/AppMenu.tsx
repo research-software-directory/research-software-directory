@@ -1,25 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as update from 'immutability-helper';
 import { resourceTypes } from '../../settings';
-import { saveChanges, undoChanges, IUndoChanges } from './actions';
+import { saveChanges } from './actions';
 
-import { Button, Divider, Icon, Image, Input, Loader, Menu, Progress } from 'semantic-ui-react';
+import { Button, Icon, Image, Loader, Menu, Progress } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { NewItem } from './NewItem';
+
+import { ResourceTypeMenu } from './ResourceTypeMenu';
 
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
-
-const menuField = (item: any, resourceType: string) => {
-  if (resourceType === 'publication') {
-    return `${item.DOI || ''} ${item.title}`;
-  } else {
-    return item.name;
-  }
-};
 
 const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
   data:    state.current.data,
@@ -32,14 +24,12 @@ const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (stat
 });
 
 const dispatchToProps = {
-  saveChanges: () => saveChanges,
-  undoChanges
+  saveChanges: () => saveChanges
 };
 
 const connector = connect(mapStateToProps, dispatchToProps );
 
 interface IProps {
-  undoChanges: IUndoChanges;
   data: any;
   numAsyncs: number;
   uploads: any[];
@@ -49,126 +39,7 @@ interface IProps {
   routeParams: any;
   saveChanges(): void;
 }
-
-interface IMenuState {
-  open: boolean;
-  search: string;
-}
-
-interface IState {
-  menu: {
-    [index: string]: IMenuState;
-  };
-}
-
-class AppMenuComponent extends React.Component<IProps, IState> {
-  componentWillMount() {
-    const initialState = {menu: Object.assign({}, ...resourceTypesMenu.map((type) => ({[type]:
-      {
-        open: false,
-        search: ''
-      }
-    }))) };
-    this.setState(initialState);
-  }
-
-  undoChanges = (type: string, id: string) => (e: React.FormEvent<HTMLButtonElement>) => {
-    this.props.undoChanges(type, id, this.props.oldData);
-    e.preventDefault();
-  }
-
-  menuItem = (type: string) => (item: any) => {
-    const oldEntry = (this.props.oldData[type].find((oldItem: any) => item.id === oldItem.id));
-    const hasChanged = oldEntry !== item;
-    const undoButton = hasChanged ? (
-      <Button
-        icon={true}
-        inverted={true}
-        style={{float: 'right', fontSize: '60%'}}
-        size="mini"
-        onClick={this.undoChanges(type, item.id)}
-      >
-        <Icon name="reply"  />
-      </Button>
-    ) : null;
-
-    return (
-        <Menu.Item
-          key={item.id}
-          className={this.props.routeParams.location.pathname === item.id ? 'active' : ''}
-        >
-          <Link to={`${item.id}`} style={{display: 'block'}}>
-            {menuField(item, type)}
-            {undoButton}
-          </Link>
-
-        </Menu.Item>
-    );
-  }
-
-  toggleMenu = (type: string) => () => {
-    this.setState(update(this.state, { menu: { [type]: { open: { $apply: (val: boolean) => !val }}}}));
-  }
-
-  resourceTypeHeader = (type: string) => {
-    return (
-      <Menu.Header
-        style={{cursor: 'pointer', textTransform: 'capitalize'}}
-        onClick={this.toggleMenu(type)}
-      >
-        {type}
-        <Icon
-          name={`chevron ${this.state.menu[type].open ? 'down' : 'up'}`}
-          style={{float: 'right'}}
-        />
-      </Menu.Header>
-    );
-  }
-
-  onSubmenuSearch = (type: string) => (e: any) => {
-    this.setState(update(this.state, { menu: { [type]: { search: { $set: e.target.value }}}}));
-  }
-
-  searchFilter = (resourceType: string, search: string) => (item: any) => {
-    const lowerCase = search.toLowerCase();
-
-    return (menuField(item, resourceType).toLowerCase().indexOf(lowerCase) !== -1 ||
-      (item.description && item.description.toLowerCase().indexOf(lowerCase) !== -1));
-  }
-
-  resourceTypeMenu = (type: string) => {
-    let subMenu = null;
-    if (this.state.menu[type].open) {
-      const menuItems = this.props.data[type]
-        .filter(this.searchFilter(type, this.state.menu[type].search))
-        .map(this.menuItem(type));
-
-      subMenu = (
-        <Menu className="submenu" inverted={true} vertical={true}>
-          <Input
-            className="submenu-search inverted"
-            icon={<Icon name="search" inverted={true}/>}
-            value={this.state.menu[type].search}
-            onChange={this.onSubmenuSearch(type)}
-          />
-          <Divider />
-          {type !== 'publication' && <NewItem resourceType={type} />}
-          {menuItems}
-        </Menu>
-      );
-    }
-
-    return  (
-      <Menu.Item
-        key={type}
-        className={`${this.state.menu[type].open ? 'active' : ''} resource_menu`}
-      >
-        {this.resourceTypeHeader(type)}
-        {subMenu}
-      </Menu.Item>
-    );
-  }
-
+class AppMenuComponent extends React.Component<IProps, {}> {
   save = () => {
     this.props.saveChanges();
   }
@@ -179,6 +50,13 @@ class AppMenuComponent extends React.Component<IProps, IState> {
   }
 
   render() {
+    const resourceMenus = resourceTypesMenu.map((type: string) => (
+      <ResourceTypeMenu
+        type={type}
+        routeParams={this.props.routeParams}
+      />
+    ));
+
     return (
       <Menu
         id="main_menu"
@@ -208,7 +86,7 @@ class AppMenuComponent extends React.Component<IProps, IState> {
           <Icon name="home" />
           Home
         </Menu.Item>
-        {resourceTypesMenu.map(this.resourceTypeMenu)}
+        {resourceMenus}
         <Menu.Item name="image" as={Link} to="/images">
           <Icon name="image" />
           Images
