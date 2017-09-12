@@ -9,7 +9,7 @@ import { configureStore } from './configureStore';
 import * as renderer from 'react-test-renderer';
 import { ReactTestRendererJSON } from 'react-test-renderer';
 
-import { storeMock } from './services/testHelpers';
+import { storeMock } from './testHelpers';
 
 const store = configureStore();
 

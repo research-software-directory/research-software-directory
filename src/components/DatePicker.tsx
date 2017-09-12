@@ -85,8 +85,7 @@ export class DatePicker extends React.Component<IProps, IState> {
   setButtonRef = (component: any) => { this.button = component; };
   setDaypickerRef = (component: any) => { this.daypicker = component; };
   toggleDaypicker = () => {
-    const isOpen = !this.state.daypickerOpen;
-    this.setState({daypickerOpen: isOpen});
+    this.setState({daypickerOpen: !this.state.daypickerOpen});
   }
 
   handleYearMonthChange = (year: number, month: number) => {

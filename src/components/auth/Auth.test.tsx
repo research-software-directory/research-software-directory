@@ -6,7 +6,7 @@ import * as renderer from 'react-test-renderer';
 
 import { Provider } from 'react-redux';
 
-import { storeMock } from '../../services/testHelpers';
+import { storeMock } from '../../testHelpers';
 
 it('should render null without user', () => {
   const state = { auth: { user: null } };
