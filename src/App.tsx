@@ -40,6 +40,21 @@ class AppComponent extends React.Component<IProps, {}> {
 
   renderAppLoaded() {
     if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
+      const locationParts = window.location.href.split('/');
+      if (locationParts.length === 5) {
+        const resourceType = locationParts[3];
+        const id = locationParts[4];
+        if (
+          !this.props.data[resourceType] ||
+          !this.props.data[resourceType].find((resource: any) => resource.id === id)
+        ) {
+          // resource not found...
+          window.location.href = '/';
+
+          return null;
+        }
+      }
+
       return (
         <BrowserRouter>
           <div style={{display: 'flex'}}>

@@ -35,14 +35,21 @@ const dataReducer = (state: any = {}, action: any) => {
     case 'UNDO_CHANGES':
       const currentIndex = state[action.resourceType].findIndex((row: any) => row.id === action.id);
       const originalResource = action.oldData[action.resourceType].find((row: any) => row.id === action.id);
-
-      return update(state, {
-        [action.resourceType]: {
-          [ currentIndex ] : {
-            $set: originalResource
+      if (originalResource) {
+        return update(state, {
+          [action.resourceType]: {
+            [ currentIndex ]: {
+              $set: originalResource
+            }
           }
-        }
-      });
+        });
+      } else { // this is a new resource, remove it
+        return update(state, {
+          [action.resourceType]: {
+            $splice: [[currentIndex, 1]]
+          }
+        });
+      }
     default: return state;
   }
 };

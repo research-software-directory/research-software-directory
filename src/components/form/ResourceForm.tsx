@@ -84,6 +84,10 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
   )
 
   render() {
+    if (!this.props.data) {
+      return null;
+    }
+
     return (
       <div className="main_form">
         {this.props.id}
