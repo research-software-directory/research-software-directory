@@ -152,9 +152,8 @@ def init(app):
                 for key in resource:
                     if key not in ['id', '@id', '_id', 'schema'] and \
                             key not in db.schema.find_one({'_id': resource_type})['properties']:
-                        print(key, resource['_id'])
-
-                exit(1)
+                        print(resource['_id'] + ' ' + key)
+                        db[resource_type].update({'_id' : resource['_id']}, {'$unset': { key: ''}})
 
 
             # @app.cli.command('set_person_github')

@@ -98,6 +98,14 @@ def _github_releases():
         raise exceptions.RouteException("'id' parameter required", 400)
     return github.releases(flask.request.headers.get('token'), id), 200
 
+@api.route('/githubdescription', methods=["GET"])
+@jsonify
+def _github_description():
+    id = flask.request.args.get('id')
+    if not id or id.find('/') == -1:
+        raise exceptions.RouteException("'id' parameter required", 400)
+    return github.description(flask.request.headers.get('token'), id), 200
+
 
 @api.route('/images', methods=["GET"])
 @jsonify

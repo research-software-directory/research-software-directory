@@ -1,3 +1,6 @@
+"""
+initializes database
+"""
 import logging
 from src.settings import settings
 from pymongo import MongoClient

@@ -1,5 +1,5 @@
 # research-software-directory-backend
-![TravisCIBadge](https://travis-ci.org/NLeSC/research-software-directory-backend.svg?branch=master)
+[![TravisCIBadge](https://travis-ci.org/NLeSC/research-software-directory-backend.svg?branch=master)](https://travis-ci.org/NLeSC/research-software-directory-backend)
 
 Backend for the eScience Research Software Directory.
 ### Requirements:

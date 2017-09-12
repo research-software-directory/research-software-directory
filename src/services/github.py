@@ -26,6 +26,21 @@ def releases(token, repo):
         ]
 
 
+def description(token, repo):
+    url = 'https://api.github.com/repos/%s/' % repo
+    headers = {
+        'Accept': 'application/vnd.github.v3+json',
+        'Authorization': 'token %s' % token
+    }
+    req = requests.get(url, headers=headers)
+    resp = req.json()
+    if req.status_code != 200:
+        raise Exception('Github request failed (code: %s) %s' % (req.status_code, resp['message']))
+    else:
+        return "test"
+
+
+
 def get_commits(repo, since='2012-01-01T00:00:00Z'):
     def get_page(page):
         url = 'https://api.github.com/repos/%s/commits?per_page=100&page=%i&since=%s' % (repo, page, since)

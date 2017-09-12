@@ -1,14 +1,17 @@
+"""Flask JSON response module"""
+
 import flask
 from bson import json_util
+
 
 def json_response(json_string, status=200):
     """
     create Flask Response with JSON.
 
-    :param json_string `str` | JSON serializable object
+    :param json_string: `str` | JSON serializable object
     :param status: `int` : HTTP status code
     :returns: Flask `Response` object with application/json mimetype.
-    :raises TypeError when `json_string` not str or JSON serializable
+    :raises TypeError: when `json_string` not str or JSON serializable
     """
     data = json_string if isinstance(json_string, str) else json_util.dumps(json_string)
     return flask.Response(
