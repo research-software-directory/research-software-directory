@@ -3,43 +3,39 @@ import { connect } from 'react-redux';
 import { resourceTypes } from '../../settings';
 import { saveChanges } from './actions';
 
-import { Button, Icon, Image, Loader, Menu, Progress } from 'semantic-ui-react';
+import { Button, Icon, Image, Loader, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import { ResourceTypeMenu } from './ResourceTypeMenu';
 
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
+import {UploadStatus} from './UploadStatus';
+import {withRouter} from 'react-router';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
-const mapStateToProps: (state: any, ownProps: {routeParams: any}) => any = (state: any) => ({
-  data:    state.current.data,
+const mapStateToProps = (state: any) => ({
   numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
-  oldData: state.data,
   schema:  state.schema,
-  uploads: state.async.filter((asyncAction: any) =>
-    asyncAction.type === 'UPLOAD_IMAGE' && asyncAction.progress < 100),
-  user:    state.auth.user
+  user:    state.auth.user,
+  dataDirty: state.current.data !== state.data
 });
 
 const dispatchToProps = {
-  saveChanges: () => saveChanges
+  saveChanges
 };
 
-const connector = connect(mapStateToProps, dispatchToProps );
+const connector = connect(mapStateToProps, dispatchToProps, null, { pure: false} );
 
 interface IProps {
-  data: any;
+  dataDirty: boolean;
   numAsyncs: number;
-  uploads: any[];
-  oldData: any;
   schema: any;
   user: any;
-  routeParams: any;
-  saveChanges(): void;
+  saveChanges: any;
 }
-class AppMenuComponent extends React.Component<IProps, {}> {
+class AppMenuComponent extends React.PureComponent<IProps, {}> {
   save = () => {
     this.props.saveChanges();
   }
@@ -54,7 +50,6 @@ class AppMenuComponent extends React.Component<IProps, {}> {
       <ResourceTypeMenu
         key={type}
         type={type}
-        routeParams={this.props.routeParams}
       />
     ));
 
@@ -74,14 +69,14 @@ class AppMenuComponent extends React.Component<IProps, {}> {
             inverted={true}
             color="red"
             size="tiny"
-            disabled={this.props.data === this.props.oldData}
+            disabled={!this.props.dataDirty}
             onClick={this.save}
           >
             Save
           </Button>
         </Menu.Item>
         <Menu.Item>
-          <UploadStatus progress={this.props.uploads.length > 0 && this.props.uploads[0].progress || 0} />
+          <UploadStatus />
         </Menu.Item>
         <Menu.Item name="home" as={Link} to="/" >
           <Icon name="home" />
@@ -97,15 +92,4 @@ class AppMenuComponent extends React.Component<IProps, {}> {
   }
 }
 
-export const AppMenu = connector(AppMenuComponent);
-
-const UploadStatus = (props: any) => props.progress === 0 ? null : (
-  <Progress
-    percent={props.progress}
-    indicating={true}
-    size="small"
-    style={{margin: 0, padding: 0}}
-    progress={true}
-    inverted={true}
-  />
-);
+export const AppMenu = withRouter(connector(AppMenuComponent));

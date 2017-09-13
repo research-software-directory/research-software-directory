@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import {fetchRootJSON, fetchSchema } from './actions';
 
@@ -33,13 +33,11 @@ type IProps = IMappedProps & IDispatchProps;
 
 const connector = connect(mapStateToProps, dispatchToProps);
 
-class AppComponent extends React.Component<IProps, {}> {
+class AppComponent extends React.PureComponent<IProps, {}> {
   componentWillMount() {
     this.props.fetchRootJSON();
     this.props.fetchSchema();
   }
-
-  renderMenu = (routeParams: any) => <AppMenu routeParams={routeParams} />;
 
   renderAppLoaded() {
     if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
@@ -59,7 +57,7 @@ class AppComponent extends React.Component<IProps, {}> {
       return (
         <BrowserRouter>
           <div style={{display: 'flex'}}>
-            <Route component={this.renderMenu} />
+            <AppMenu />
             <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
               <Routes />
             </Segment>

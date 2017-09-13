@@ -28,4 +28,4 @@ export const undoChanges: IUndoChanges = (resourceType: string, id: string, oldD
   oldData
 });
 
-export const saveChanges = { type: 'SAVE_CHANGES' };
+export const saveChanges = () => ({ type: 'SAVE_CHANGES' });

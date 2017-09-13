@@ -5,8 +5,8 @@
         width: 100%;
     }
     
-    div.ui.menu.submenu>.item>a:hover,
-    div.ui.menu.submenu>.item.active>a {
+    div.ui.menu.submenu>div>.item>a:hover,
+    div.ui.menu.submenu>div>.item.active>a {
         color: white !important;
     }
     
