@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { ReactTestRendererJSON } from 'react-test-renderer';
 
 import { App } from './App';
@@ -13,11 +14,11 @@ it('renders without crashing', () => {
   ReactDOM.render(<Provider store={store}><App /></Provider>, div);
 });
 
-it('renders to null when logged out', () => {
-  const component = renderer.create(
+it('renders loader when logged out', () => {
+  const component = mount(
   <Provider store={store}><App /></Provider>
   );
-  expect(component.toJSON()).toBeNull();
+  component.find('ui text loader');
 });
 
 it('renders main menu with data loaded', () => {

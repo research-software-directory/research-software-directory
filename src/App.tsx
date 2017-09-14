@@ -9,11 +9,6 @@ import { history } from './history';
 import { AppMenu } from './components/menu/AppMenu';
 import { Dimmer, Segment, Loader } from 'semantic-ui-react';
 
-const dispatchToProps = {
-  fetchRootJSON,
-  fetchSchema
-};
-
 const mapStateToProps = (state: any) => ({
   data:   state.data,
   schema: state.schema
@@ -24,12 +19,12 @@ interface IMappedProps {
   schema: any;
 }
 
-interface IDispatchProps {
-  fetchRootJSON: any;
-  fetchSchema: any;
-}
+const dispatchToProps = {
+  fetchRootJSON,
+  fetchSchema
+};
+type IDispatchProps = typeof dispatchToProps;
 type IProps = IMappedProps & IDispatchProps;
-
 const connector = connect(mapStateToProps, dispatchToProps);
 
 class AppComponent extends React.PureComponent<IProps, {}> {
