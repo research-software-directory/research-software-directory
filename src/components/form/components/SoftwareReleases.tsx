@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import { Button, Icon, Input, Segment } from 'semantic-ui-react';
+import { Button, Icon, Input, Segment, Message } from 'semantic-ui-react';
 import { DatePicker } from '../../datepicker/DatePicker';
 
 import './SoftwareReleases.css';
@@ -50,9 +50,19 @@ interface IDispatchProps {
   updateFieldFromBackend: typeof updateFieldFromBackend;
 }
 
-const connector = connect(null, {updateFieldFromBackend});
+interface IMappedProps {
+  fetchAction: any;
+}
 
-export const SoftwareReleases = connector(class extends React.PureComponent<IProps & IDispatchProps, {}> {
+const mapStateToProps = ((state: any, ownProps: IProps) => {
+  const actions = state.async.filter((action: any) => action.actionParams.id === ownProps.id);
+
+  return {fetchAction: actions ? actions.slice(-1)[0] : null };
+});
+
+const connector = connect(mapStateToProps, {updateFieldFromBackend});
+
+export const SoftwareReleases = connector(class extends React.PureComponent<IProps & IDispatchProps & IMappedProps, {}>{
   addNew = () => {
     const newRelease = {
       date: '',
@@ -81,7 +91,7 @@ export const SoftwareReleases = connector(class extends React.PureComponent<IPro
       'releases',
       `githubreleases?id=${this.props.githubid}`,
       (oldValue: any, newValue: any) => {
-        const mergeValue = [...oldValue];
+        const mergeValue = oldValue ? [...oldValue] : [];
         newValue.forEach((item: any) => {
           if (!mergeValue.find((oldRelease: IRelease) => oldRelease.version === item.version)) {
             mergeValue.push({
@@ -109,12 +119,34 @@ export const SoftwareReleases = connector(class extends React.PureComponent<IPro
       );
     });
 
+    const loadStatus = () => {
+      if (this.props.fetchAction && this.props.fetchAction.error) {
+        let content = `Error getting data: ${this.props.fetchAction.error}`;
+
+        if (this.props.fetchAction.response && this.props.fetchAction.response.error) {
+          content += ` (${this.props.fetchAction.response.error})`;
+        }
+
+        return (
+          <Message
+            warning={true}
+            icon="warning sign"
+            header="Error"
+            content={`Error getting data: ${content}`}
+          />
+        );
+      } else {
+        return null;
+      }
+    };
+
     return (
       <Segment>
         {this.props.label} <br />
         <Button onClick={this.onGitHubButton}>
           Load from GitHub ({this.props.githubid}) &nbsp;
         </Button> <br />
+        {loadStatus()}
         <Button icon={true} onClick={this.addNew}><Icon name="plus" /></Button>
         <Segment.Group>{segments}</Segment.Group> <br />
       </Segment>

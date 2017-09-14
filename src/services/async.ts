@@ -165,7 +165,7 @@ export const reducer = (state: any = [], action: any) => {
     } else { // fulfilled or failed
       const index = state.findIndex((asyncAction: any) => asyncAction.id === action.id);
       const newState = [...state];
-      newState[index] = { ...newState[index], status : 'DONE' };
+      newState[index] = { ...newState[index], ...action, status: action.error ? 'FAILED' : 'DONE' };
 
       return newState;
     }
