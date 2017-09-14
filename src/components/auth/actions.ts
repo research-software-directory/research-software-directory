@@ -2,7 +2,7 @@ import { Action } from 'redux';
 import { createFetchAction, IFetchAction, Method } from '../../services/async';
 import { BACKEND_URL } from '../../settings';
 
-export const logIn: Action = { type: 'LOGIN' };
+export const login: () => Action = () => ({ type: 'LOGIN' });
 
 export interface ILoggedIn extends Action { type: 'LOGGED_IN'; user: any; }
 export const loggedIn = (user: any): ILoggedIn => ({ type: 'LOGGED_IN', user });

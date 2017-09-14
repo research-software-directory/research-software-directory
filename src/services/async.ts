@@ -3,6 +3,7 @@
    and create actions of type 'FETCH_TEST' and async its result:
    - FETCH_TEST/FULFILLED or
    - FETCH_TEST/FAILED
+   Hook it up to redux & redux-observable with `reducer` & `epic`
 */
 
 import Axios, { AxiosResponse } from 'axios';
@@ -93,19 +94,6 @@ export const backend = {
     { token: accessToken.get() || '' },
     actionParams
   )
-};
-
-export const rawReq = {
-  get: (params: string) =>
-    Axios.get(
-      `${BACKEND_URL}/${params}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'token': accessToken.get()
-        },
-        responseType: 'json'
-    })
 };
 
 export const fetchEpic: Epic<IFetchAction, {}> = (action$, store: any) =>

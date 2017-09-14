@@ -7,7 +7,7 @@ import { Routes } from './components/Routes';
 import { history } from './history';
 
 import { AppMenu } from './components/menu/AppMenu';
-import { Segment } from 'semantic-ui-react';
+import { Dimmer, Segment, Loader } from 'semantic-ui-react';
 
 const dispatchToProps = {
   fetchRootJSON,
@@ -38,39 +38,45 @@ class AppComponent extends React.PureComponent<IProps, {}> {
     this.props.fetchSchema();
   }
 
-  renderAppLoaded() {
-    if (this.props.data && this.props.data.software && this.props.schema && this.props.schema.software) {
-      const locationParts = window.location.href.split('/');
-      if (locationParts.length === 5) {
-        const resourceType = locationParts[3];
-        const id = locationParts[4];
-        if (
-          !this.props.data[resourceType] ||
-          !this.props.data[resourceType].find((resource: any) => resource.id === `/${resourceType}/${id}`)
-        ) {
+  requestedResourceExists = () => {
+    const locationParts = window.location.href.split('/');
+    if (locationParts.length === 5) {
+      const resourceType = locationParts[3];
+      const id = locationParts[4];
 
-          return <div>not found</div>;
-        }
+      return (
+        this.props.data[resourceType] &&
+        this.props.data[resourceType].find((resource: any) => resource.id === `/${resourceType}/${id}`)
+      );
+    }
+
+    return true; // not a resource
+  }
+
+  dataHasLoaded = () => this.props.data && this.props.data.software && this.props.schema && this.props.schema.software;
+
+  render() {
+    if (this.dataHasLoaded()) {
+      if (!this.requestedResourceExists()) {
+        return <div>not found</div>;
       }
 
       return (
         <ConnectedRouter history={history}>
           <div style={{display: 'flex'}}>
-            <AppMenu />
-            <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
-              <Routes />
+            <AppMenu/>
+            <Segment basic={true} id="main_content">
+              <Routes/>
             </Segment>
           </div>
         </ConnectedRouter>
       );
     }
 
-    return null;
-  }
-
-  render() {
     return (
-      this.renderAppLoaded()
+      <Dimmer active={true}>
+        <Loader>Loading</Loader>
+      </Dimmer>
     );
   }
 }

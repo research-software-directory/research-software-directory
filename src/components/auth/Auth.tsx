@@ -3,13 +3,12 @@
    - Render its child if the user is authenticated, otherwise null
 */
 import * as React from 'react';
-import {connect, Dispatch} from 'react-redux';
-import { Action } from 'redux';
-import { logIn } from './actions';
+import {connect} from 'react-redux';
+import { login } from './actions';
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-  logIn: (): Action => dispatch(logIn)
-});
+const mapDispatchToProps = {
+  login
+};
 
 const mapStateToProps = (state: any) => ({
   user:   state.auth.user
@@ -19,12 +18,12 @@ const connector = connect(mapStateToProps, mapDispatchToProps );
 
 interface IProps {
   user: any;
-  logIn(): Action;
+  login: typeof login;
 }
 
 class AuthComponent extends React.PureComponent<IProps, { }> {
   componentWillMount() {
-    this.props.logIn();
+    this.props.login();
   }
   render() {
     return this.props.user ? React.Children.only(this.props.children) : null;

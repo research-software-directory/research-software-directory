@@ -1,14 +1,10 @@
 import { combineEpics } from 'redux-observable';
-
-import {BACKEND_URL } from '../../settings';
-
-import * as actions from './actions';
-
 import { actions as toastrActions } from 'react-redux-toastr';
 
-import createHistory from 'history/createBrowserHistory';
-
+import * as actions from './actions';
+import { history } from '../../history';
 import { accessToken } from '../../services/async';
+import {BACKEND_URL } from '../../settings';
 
 export const epic = combineEpics(
   (action$: any) => action$.ofType('LOGIN')
@@ -23,7 +19,7 @@ export const epic = combineEpics(
       const query = window.location.search.substr(1);
       const reResult = query.match(/code=(.*?)($|&)/);
       if (reResult) {
-        createHistory().replace('/'); // removes ?code=... from url
+        history.replace('/'); // removes ?code=... from url
 
         return actions.getAccessToken(reResult[1]);
       }
