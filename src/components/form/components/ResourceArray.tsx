@@ -34,7 +34,7 @@ interface IProps {
   onChange(value: any[]): void;
 }
 
-export class ResourceArray extends React.Component<IProps, {}> {
+export class ResourceArray extends React.PureComponent<IProps, {}> {
   addValue = (value: string) => {
     const oldValue = [...this.props.value];
     oldValue.push(value);

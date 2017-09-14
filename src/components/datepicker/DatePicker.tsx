@@ -67,7 +67,7 @@ const YearMonthForm = (props: {year: number, month: number, onChange: any}) => {
   );
 };
 
-export class DatePicker extends React.Component<IProps, IState> {
+export class DatePicker extends React.PureComponent<IProps, IState> {
   button = null;
   daypicker: any;
 

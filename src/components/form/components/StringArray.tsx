@@ -8,7 +8,7 @@ interface IProps {
   onChange?(value: any): void;
 }
 
-export class StringArray extends React.Component<IProps, any> {
+export class StringArray extends React.PureComponent<IProps, any> {
   lastInput: any;
 
   onAdd = (e: any) => {

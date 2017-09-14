@@ -15,7 +15,7 @@ interface IState {
   data: any;
 }
 
-export class EditableSegment extends React.Component<IProps, IState> {
+export class EditableSegment extends React.PureComponent<IProps, IState> {
   componentWillMount() {
     this.setState({
       data: {...this.props.value},

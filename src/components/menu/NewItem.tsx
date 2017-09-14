@@ -40,7 +40,7 @@ interface IState {
   id: string;
 }
 
-class NewItemComponent extends React.Component<IProps & IDispatchProps, IState> {
+class NewItemComponent extends React.PureComponent<IProps & IDispatchProps, IState> {
   componentWillMount() {
     this.setState({open: false, id: ''});
   }

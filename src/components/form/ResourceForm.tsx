@@ -42,7 +42,7 @@ const mapStateToProps  = (state: any, props: IOwnProps) => {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-class ResourceFormComponent extends React.Component<IProps, any> {
+class ResourceFormComponent extends React.PureComponent<IProps, any> {
   updateFormValue = (field: string) => (value: any) => {
     this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }

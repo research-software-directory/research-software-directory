@@ -22,7 +22,7 @@ interface IProps {
   logIn(): Action;
 }
 
-class AuthComponent extends React.Component<IProps, { }> {
+class AuthComponent extends React.PureComponent<IProps, { }> {
   componentWillMount() {
     this.props.logIn();
   }

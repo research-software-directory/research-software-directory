@@ -52,7 +52,7 @@ interface IDispatchProps {
 
 const connector = connect(null, {updateFieldFromBackend});
 
-export const SoftwareReleases = connector(class extends React.Component<IProps & IDispatchProps, {}> {
+export const SoftwareReleases = connector(class extends React.PureComponent<IProps & IDispatchProps, {}> {
   addNew = () => {
     const newRelease = {
       date: '',

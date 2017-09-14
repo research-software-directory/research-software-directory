@@ -7,7 +7,7 @@ interface IProps {
   onChange(value: any): void;
 }
 
-export class Person extends React.Component<IProps, {}> {
+export class Person extends React.PureComponent<IProps, {}> {
   updateField = (field: string) => (e: any) => {
     this.props.onChange({ ...this.props.value, [field]: e.target.value });
   }

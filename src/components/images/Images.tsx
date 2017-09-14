@@ -33,7 +33,7 @@ interface IState {
   openImage: string | null;
 }
 
-class ImagesComponent extends React.Component<IProps, IState> {
+class ImagesComponent extends React.PureComponent<IProps, IState> {
   dropzoneElm: Dropzone;
 
   componentWillMount() {

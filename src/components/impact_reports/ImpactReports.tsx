@@ -40,7 +40,7 @@ const mapDispatchToProps = { generateReport, getReports };
 
 const connector = connect<IMappedProps, IDispatchProps, IOwnProps>(mapStateToProps, mapDispatchToProps);
 
-class ImpactReportsComponent extends React.Component<IOwnProps & IMappedProps & IDispatchProps, IState> {
+class ImpactReportsComponent extends React.PureComponent<IOwnProps & IMappedProps & IDispatchProps, IState> {
   refresh = () => {
     this.setState({refreshing: true});
     this.props.getReports(this.props.id);

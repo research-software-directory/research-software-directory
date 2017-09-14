@@ -8,7 +8,7 @@ interface IProps {
   onChange?(value: any): void;
 }
 
-export class SoftwareDescription extends React.Component<IProps> {
+export class SoftwareDescription extends React.PureComponent<IProps> {
   render() {
     return (
       <div>

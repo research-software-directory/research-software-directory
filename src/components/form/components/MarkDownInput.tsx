@@ -19,7 +19,7 @@ interface IState {
   markdownContent: { __html: string };
 }
 
-export class MarkDownInput extends React.Component<IProps, IState> {
+export class MarkDownInput extends React.PureComponent<IProps, IState> {
   converter = new showdown.Converter({extensions: [showdownEscape]});
   componentWillMount() {
     this.setState({markdownContent: {__html: ''}});

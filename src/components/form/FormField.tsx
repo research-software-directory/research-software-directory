@@ -31,7 +31,7 @@ interface IOwnProps {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
+class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {}> {
   shouldComponentUpdate(nextProps: IProps&IOwnProps) {
     return (nextProps.value !== this.props.value)
         || (nextProps.schema !== this.props.schema)

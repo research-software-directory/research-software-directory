@@ -24,7 +24,7 @@ interface IState {
   search: string;
 }
 
-export class MultiSelect extends React.Component<IProps, IState> {
+export class MultiSelect extends React.PureComponent<IProps, IState> {
   defaults = {
     addable: false,
     multi: false,
