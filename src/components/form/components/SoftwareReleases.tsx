@@ -1,16 +1,18 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import { rawReq } from '../../../services/async';
-import { Button, Icon, Input, Loader, Segment } from 'semantic-ui-react';
+import { Button, Icon, Input, Segment } from 'semantic-ui-react';
 import { DatePicker } from '../../datepicker/DatePicker';
 
 import './SoftwareReleases.css';
+import {updateFieldFromBackend} from '../actions';
+import {connect} from 'react-redux';
 
 interface IProps {
   maxItems?: number;
   label: string;
   value: IRelease[];
   githubid: string;
+  id: string;
   onChange(value: IRelease[]): void;
 }
 
@@ -44,22 +46,13 @@ const Release = (props: IReleaseProps) => {
 
 };
 
-interface IState {
-  githubError: string | null;
-  githubStatus: number;
+interface IDispatchProps {
+  updateFieldFromBackend: typeof updateFieldFromBackend;
 }
 
-const GITHUB_STATUS = {
-  FAILED: 3,
-  FULFILLED: 2,
-  IDLE : 0,
-  LOADING: 1
-};
+const connector = connect(null, {updateFieldFromBackend});
 
-export class SoftwareReleases extends React.Component<IProps, IState> {
-  componentWillMount() {
-    this.setState({githubError: null, githubStatus: GITHUB_STATUS.IDLE});
-  }
+export const SoftwareReleases = connector(class extends React.Component<IProps & IDispatchProps, {}> {
   addNew = () => {
     const newRelease = {
       date: '',
@@ -82,30 +75,26 @@ export class SoftwareReleases extends React.Component<IProps, IState> {
   }
 
   onGitHubButton = () => {
-    // tslint:disable-next-line:no-backbone-get-set-outside-model
-    const req = rawReq.get(`githubreleases?id=${this.props.githubid}`);
-    this.setState({githubError: null, githubStatus: GITHUB_STATUS.LOADING});
-    req.then((value: any) => {
-      this.setState({githubStatus: GITHUB_STATUS.FULFILLED});
-      const newValue = [...this.props.value];
-      value.data.forEach((item: any) => {
-        if (!newValue.find((oldRelease: IRelease) => oldRelease.version === item.version)) {
-          newValue.push({
-            date: moment(item.date).format('YYYY-MM-DD'),
-            doi: '',
-            version: item.version
-          });
-        }
-      });
-      this.props.onChange(newValue);
-    });
-    req.catch((res: any) => {
-      if (res.response && res.response.data) {
-        this.setState({githubError: res.response.data.error, githubStatus: GITHUB_STATUS.FAILED});
-      } else {
-        this.setState({githubError: 'unknown error', githubStatus: GITHUB_STATUS.FAILED});
+    this.props.updateFieldFromBackend(
+      'software',
+      this.props.id,
+      'releases',
+      `githubreleases?id=${this.props.githubid}`,
+      (oldValue: any, newValue: any) => {
+        const mergeValue = [...oldValue];
+        newValue.forEach((item: any) => {
+          if (!mergeValue.find((oldRelease: IRelease) => oldRelease.version === item.version)) {
+            mergeValue.push({
+              date: moment(item.date).format('YYYY-MM-DD'),
+              doi: '',
+              version: item.version
+            });
+          }
+        });
+
+        return mergeValue;
       }
-    });
+    );
   }
 
   render() {
@@ -125,12 +114,10 @@ export class SoftwareReleases extends React.Component<IProps, IState> {
         {this.props.label} <br />
         <Button onClick={this.onGitHubButton}>
           Load from GitHub ({this.props.githubid}) &nbsp;
-          <Loader inline={true} active={this.state.githubStatus === GITHUB_STATUS.LOADING} size="tiny" />
         </Button> <br />
-        {this.state.githubError} <br />
         <Button icon={true} onClick={this.addNew}><Icon name="plus" /></Button>
         <Segment.Group>{segments}</Segment.Group> <br />
       </Segment>
     );
   }
-}
+});

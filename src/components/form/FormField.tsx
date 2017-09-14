@@ -25,6 +25,7 @@ interface IOwnProps {
   schema: any;
   value: any;
   hasChanged: boolean;
+  id: any;
   onChange(value: any): void;
 }
 
@@ -198,6 +199,7 @@ class FormFieldComponent extends React.Component<IProps & IOwnProps & any, {}> {
         value={this.props.value || []}
         onChange={this.props.onChange}
         githubid={this.props.githubid}
+        id={this.props.id}
       />
     );
   }

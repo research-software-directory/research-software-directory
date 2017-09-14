@@ -30,6 +30,7 @@ export interface IFetchAction extends Action {
   url: string;
   headers?: any;
   data?: any;
+  actionParams?: any;
 }
 
 export interface IFetchFulfilledAction extends IFetchAction { status: number; response?: any; }
@@ -41,11 +42,12 @@ export const createFetchAction = (
   method: Method,
   url: string,
   data: any = {},
-  headers: any = {}
+  headers: any = {},
+  actionParams: any = {}
 ): IFetchAction => {
   incrementalID += 1;
 
-  return {id: incrementalID, fetchAction: true, type, method, url, data, headers};
+  return {id: incrementalID, fetchAction: true, type, method, url, data, headers, actionParams};
 };
 
 class Token {
@@ -67,26 +69,29 @@ class Token {
 export const accessToken = new Token();
 
 export const backend = {
-  get: (name: string, params: string): IFetchAction => createFetchAction(
+  get: (name: string, params: string, actionParams?: any): IFetchAction => createFetchAction(
     name,
     Method.GET,
     `${BACKEND_URL}/${params}`,
     {},
-    { token: accessToken.get() || '' }
+    { token: accessToken.get() || '' },
+    actionParams
   ),
-  post: (name: string, params: string, data: any): IFetchAction => createFetchAction(
+  post: (name: string, params: string, data: any, actionParams?: any): IFetchAction => createFetchAction(
     name,
     Method.POST,
     `${BACKEND_URL}/${params}`,
     data,
-    { token: accessToken.get() || '' }
+    { token: accessToken.get() || '' },
+    actionParams
   ),
-  upload: (name: string, file: File): IFetchAction => createFetchAction(
+  upload: (name: string, file: File, actionParams?: any): IFetchAction => createFetchAction(
     name,
     Method.UPLOAD,
     `${BACKEND_URL}/upload`,
     file,
-    { token: accessToken.get() || '' }
+    { token: accessToken.get() || '' },
+    actionParams
   )
 };
 

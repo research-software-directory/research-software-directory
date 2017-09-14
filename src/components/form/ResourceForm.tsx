@@ -7,6 +7,23 @@ import { Button, Segment } from 'semantic-ui-react';
 
 import './style.css';
 
+interface IMappedProps {
+  schema: any;
+  data: any;
+  oldData: any;
+}
+
+interface IDispatchProps {
+  updateField: typeof updateField;
+}
+
+interface IOwnProps {
+  resourceType: string;
+  id: string;
+}
+
+type IProps = IMappedProps & IDispatchProps & IOwnProps;
+
 const mapDispatchToProps = {
   updateField
 };
@@ -23,21 +40,9 @@ const mapStateToProps  = (state: any, props: IOwnProps) => {
   });
 };
 
-interface IProps {
-    schema: any;
-    data: any;
-    oldData: any;
-    updateField: typeof updateField;
-}
-
-interface IOwnProps {
-  resourceType: string;
-  id: string;
-}
-
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
+class ResourceFormComponent extends React.Component<IProps, any> {
   updateFormValue = (field: string) => (value: any) => {
     this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }
@@ -59,6 +64,7 @@ class ResourceFormComponent extends React.Component<IProps & IOwnProps, any> {
         hasChanged={this.hasChanged(field)}
         onChange={this.updateFormValue(field)}
         githubid={this.props.data.githubid}
+        id={this.props.id}
       />
     );
   }
