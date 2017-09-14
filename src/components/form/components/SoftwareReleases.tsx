@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as moment from 'moment';
 import { rawReq } from '../../../services/async';
 import { Button, Icon, Input, Loader, Segment } from 'semantic-ui-react';
-import { DatePicker } from '../../DatePicker';
+import { DatePicker } from '../../datepicker/DatePicker';
 
 import './SoftwareReleases.css';
 

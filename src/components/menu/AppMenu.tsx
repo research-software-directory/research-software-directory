@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { resourceTypes } from '../../settings';
-import { saveChanges } from './actions';
 
 import { Button, Icon, Image, Loader, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { resourceTypes } from '../../settings';
+import { saveChanges } from './actions';
 import { ResourceTypeMenu } from './ResourceTypeMenu';
+import { UploadStatus } from './UploadStatus';
 
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
-import {UploadStatus} from './UploadStatus';
-import {withRouter} from 'react-router';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
@@ -92,4 +91,4 @@ class AppMenuComponent extends React.PureComponent<IProps, {}> {
   }
 }
 
-export const AppMenu = withRouter(connector(AppMenuComponent));
+export const AppMenu = connector(AppMenuComponent);

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
-import {fetchRootJSON, fetchSchema } from './actions';
-
-import { Routes } from './Routes';
+import { fetchRootJSON, fetchSchema } from './actions';
+import { Routes } from './components/Routes';
+import { history } from './history';
 
 import { AppMenu } from './components/menu/AppMenu';
-
 import { Segment } from 'semantic-ui-react';
 
 const dispatchToProps = {
@@ -55,14 +54,14 @@ class AppComponent extends React.PureComponent<IProps, {}> {
       }
 
       return (
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
           <div style={{display: 'flex'}}>
             <AppMenu />
             <Segment basic={true} style={{marginRight: '2em'}} id="main_content">
               <Routes />
             </Segment>
           </div>
-        </BrowserRouter>
+        </ConnectedRouter>
       );
     }
 

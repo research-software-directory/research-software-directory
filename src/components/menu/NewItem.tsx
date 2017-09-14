@@ -6,8 +6,6 @@ import { Button, Icon, Input } from 'semantic-ui-react';
 
 import { createNewItem } from './actions';
 
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-
 import { History } from 'history';
 
 interface IOwnProps {
@@ -15,7 +13,7 @@ interface IOwnProps {
 }
 
 const mapStateToProps: (state: any, ownProps: IOwnProps) => any =
-  (state: any, ownProps: IOwnProps & RouteComponentProps<any>) => ({
+  (state: any, ownProps: IOwnProps) => ({
     data:   state.data[ownProps.resourceType],
     schema: state.schema[ownProps.resourceType]
   });
@@ -105,4 +103,4 @@ class NewItemComponent extends React.Component<IProps & IDispatchProps, IState> 
     }
   }
 
-export const NewItem = withRouter<any>(connector(NewItemComponent));
+export const NewItem = connector(NewItemComponent);

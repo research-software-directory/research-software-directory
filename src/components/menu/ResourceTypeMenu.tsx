@@ -12,7 +12,7 @@ interface IProps {
   type: string;
 }
 
-export class ResourceTypeMenu extends React.Component<IProps, IState> {
+export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
   constructor() {
     super();
     this.state = {open: false, search: ''};

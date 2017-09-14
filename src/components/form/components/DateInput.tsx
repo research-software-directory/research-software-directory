@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Segment } from 'semantic-ui-react';
 
-import { DatePicker } from '../../DatePicker';
+import { DatePicker } from '../../datepicker/DatePicker';
 
 interface IProps {
   label: string;

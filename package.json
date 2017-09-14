@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@types/react-router-redux": "^5.0.8",
         "axios": "^0.16.2",
         "fuse.js": "^3.1.0",
         "history": "^4.7.2",
@@ -19,6 +20,7 @@
         "react-redux-toastr": "^7.1.5",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
+        "react-router-redux": "^5.0.0-alpha.6",
         "redux": "^3.7.2",
         "redux-observable": "^0.16.0",
         "rxjs": "^5.4.3",

@@ -1,17 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import { App } from './App';
-
 import { Provider } from 'react-redux';
-import { configureStore } from './configureStore';
-
 import * as renderer from 'react-test-renderer';
 import { ReactTestRendererJSON } from 'react-test-renderer';
 
+import { App } from './App';
+import { store } from './store';
 import { storeMock } from './testHelpers';
-
-const store = configureStore();
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

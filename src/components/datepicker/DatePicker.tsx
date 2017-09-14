@@ -7,7 +7,7 @@ import 'react-day-picker/lib/style.css';
 
 import { Overlay } from 'react-overlays';
 
-import { ToolTip } from './ToolTip';
+import { ToolTip } from '../ToolTip';
 
 import * as moment from 'moment';
 

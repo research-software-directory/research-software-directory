@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 import { undoChanges } from './actions';
 import { connect } from 'react-redux';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface IOwnProps {
   type: string;
@@ -13,20 +13,22 @@ interface IMappedProps {
   data: any;
   oldData: any;
   schema: any;
+  location: any;
 }
 
 interface IDispatchProps {
   undoChanges: any;
 }
 
-type IProps = IMappedProps & IDispatchProps & IOwnProps & RouteComponentProps<{}>;
+type IProps = IMappedProps & IDispatchProps & IOwnProps;
 
 const dispatchToProps = { undoChanges };
 
 const mapStateToProps = (state: any) => ({
   data:    state.current.data,
   oldData: state.data,
-  schema:  state.schema
+  schema:  state.schema,
+  location: state.route.location
 });
 
 interface IMenuItemProps {
@@ -71,7 +73,7 @@ const MenuItem = (props: IMenuItemProps) => {
   );
 };
 
-class MenuItemsComponent extends React.Component<IProps, {}> {
+class MenuItemsComponent extends React.PureComponent<IProps, {}> {
   undoChanges = (id: string) => (e: React.FormEvent<HTMLButtonElement>) => {
     this.props.undoChanges(this.props.type, id, this.props.oldData);
     e.preventDefault();
@@ -109,6 +111,5 @@ class MenuItemsComponent extends React.Component<IProps, {}> {
   }
 }
 
-const connector = connect<IMappedProps, IDispatchProps, IOwnProps&RouteComponentProps<{}>>(mapStateToProps, dispatchToProps);
-
-export const MenuItems = withRouter<any>(connector(MenuItemsComponent));
+const connector = connect<IMappedProps, IDispatchProps, IOwnProps> (mapStateToProps, dispatchToProps);
+export const MenuItems = connector(MenuItemsComponent);

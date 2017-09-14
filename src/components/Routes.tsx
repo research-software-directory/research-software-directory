@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { ResourceForm } from './components/form/ResourceForm';
-import { Images } from './components/images';
-import { Publications } from './components/publications/Publications';
-import { Publication } from './components/publications/Publication';
-import { ImpactReports } from './components/impact_reports/ImpactReports';
-import { resourceTypes } from './settings';
+import { ResourceForm } from './form/ResourceForm';
+import { Images } from './images';
+import { Publications } from './publications/Publications';
+import { Publication } from './publications/Publication';
+import { ImpactReports } from './impact_reports/ImpactReports';
+import { resourceTypes } from '../settings';
 
 const Resource = (type: string) => ({match}: any) => (
   <ResourceForm
