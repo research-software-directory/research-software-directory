@@ -147,7 +147,7 @@ def init(app):
     @app.cli.command('cleanup')
     def _cleanup():
         """Cleanup unused keys (not in schema)"""
-        for resource_type in ['software']:
+        for resource_type in ['software', 'person', 'project', 'organization']:
             for resource in db[resource_type].find():
                 for key in resource:
                     if key not in ['id', '@id', '_id', 'schema'] and \
@@ -155,8 +155,18 @@ def init(app):
                         print(resource['_id'] + ' ' + key)
                         db[resource_type].update({'_id' : resource['_id']}, {'$unset': { key: ''}})
 
+    @app.cli.command('zotero_test')
+    def _czp():
+        from src.services.zotero import zotero_test
+        zotero_test()
 
-            # @app.cli.command('set_person_github')
+    @app.cli.command('zenodo_test')
+    def _zt():
+        from src.services.zenodo import version_info
+        import pprint
+        pprint.pprint(version_info('NLeSC/eSalsa-MPI'))
+
+                        # @app.cli.command('set_person_github')
     # def _set_person_github():
     #     table = db.table('person')
     #     result = table.search(Query().githubUrl.exists())
