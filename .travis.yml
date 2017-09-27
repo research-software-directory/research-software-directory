@@ -6,10 +6,13 @@ services:
 cache: pip
 install:
 - pip install pytest
+- pip install pytest-cov
 - pip install -r requirements.txt
+- pip install coveralls
 script:
 - PYTHONPATH=`pwd` pytest
 after_success:
+- coveralls
 - docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD} &&
   docker pull ${DOCKER_USERNAME}/rsd-backend &&
   docker build -t ${DOCKER_USERNAME}/rsd-backend --cache-from ${DOCKER_USERNAME}/rsd-backend . &&

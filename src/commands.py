@@ -164,7 +164,11 @@ def init(app):
     def _zt():
         from src.services.zenodo import version_info
         import pprint
-        pprint.pprint(version_info('NLeSC/eSalsa-MPI'))
+        for software in [sw for sw in db['software'].find() if 'githubid' in sw]:
+            print(software['githubid'])
+            print(version_info(software['githubid']))
+            print('\n')
+        # pprint.pprint(version_info('NLeSC/Massive-PotreeConverter'))
 
                         # @app.cli.command('set_person_github')
     # def _set_person_github():
