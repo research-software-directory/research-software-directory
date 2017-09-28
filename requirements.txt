@@ -7,4 +7,4 @@ flask_resize==2.0.3
 fuzzywuzzy==0.15.1
 pyzenodo==0.0.4
 python-dateutil==2.6.1
-pyzotero-1.2.13
+pyzotero==1.2.13
