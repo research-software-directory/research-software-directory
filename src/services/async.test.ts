@@ -16,6 +16,7 @@ import { BACKEND_URL} from '../settings';
 describe('async backend stuff', () => {
   let store: any;
   beforeAll(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000; // travis too slow
     // tslint:disable-next-line:no-require-imports no-var-requires
     Axios.defaults.adapter = require('axios/lib/adapters/http');
     // default adapter uses OPTIONS, not compatible with nock
