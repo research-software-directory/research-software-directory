@@ -6,9 +6,9 @@ settings = {}
 required_settings = [
     "GITHUB_ACCESS_TOKEN",
     "LIBRARIES_IO_API_KEY",
+    "ZOTERO_API_KEY",
     "GITHUB_CLIENT_ID",
     "GITHUB_CLIENT_SECRET",
-    "ZOTERO_ACCESS_TOKEN",
     "DATABASE_HOST",
     "DATABASE_PORT",
     "DATABASE_NAME",

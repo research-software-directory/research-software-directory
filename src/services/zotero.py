@@ -8,24 +8,23 @@ from pyzotero import zotero
 logger = logging.getLogger(__name__)
 
 nlesc_library = '1689348'
-zotero_api_key = 'U4ZsZH026AYwC36eufgoGCXz'
 library_type = 'group'
 
-
 def zotero_sync():
-    req = requests.get('https://api.zotero.org/groups/1689348/items?key=%s' % settings['ZOTERO_ACCESS_TOKEN'])
-    result = req.json()
-
-    for entry in [entry['data'] for entry in result]:
-        publication = entry
-        publication['_id'] = '/publication/' + entry['key']
-        publication['id'] = '/publication/' + entry['key']
-        db.publication.update({'_id': publication['_id']}, publication, upsert=True)
+    pass
+    # req = requests.get('https://api.zotero.org/groups/1689348/items?key=%s' % settings['ZOTERO_ACCESS_TOKEN'])
+    # result = req.json()
+    #
+    # for entry in [entry['data'] for entry in result]:
+    #     publication = entry
+    #     publication['_id'] = '/publication/' + entry['key']
+    #     publication['id'] = '/publication/' + entry['key']
+    #     db.publication.update({'_id': publication['_id']}, publication, upsert=True)
 
 import json
 
 def zotero_test():
-    zot = zotero.Zotero(nlesc_library, library_type, zotero_api_key)
+    zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])
     collections = zot.collections()
     projects_collection = next(filter(lambda x: x['data']['name'] == 'Projects', collections))
     projects = list(filter(lambda x: x['data']['parentCollection'] == projects_collection['key'], collections))
@@ -43,7 +42,7 @@ def get_projects(zotero):
 
 
 def new_projects():
-    zot = zotero.Zotero(nlesc_library, library_type, zotero_api_key)
+    zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])
     projects = get_projects(zot)
     current_keys = [project['zotero_key'] if 'zotero_key' in project else None for project in db.project.find()]
     return [{
@@ -63,7 +62,7 @@ def publication_is_software(publication):
 
 
 def new_publications():
-    zot = zotero.Zotero(nlesc_library, library_type, zotero_api_key)
+    zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])
     results = zot.everything(zot.top())
 
     software = list(filter(lambda x: publication_is_software(x), results))

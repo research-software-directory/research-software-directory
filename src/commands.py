@@ -155,7 +155,7 @@ def init(app):
                         print(resource['_id'] + ' ' + key)
                         db[resource_type].update({'_id' : resource['_id']}, {'$unset': { key: ''}})
 
-    
+
         # pprint.pprint(version_info('NLeSC/Massive-PotreeConverter'))
 
                         # @app.cli.command('set_person_github')
