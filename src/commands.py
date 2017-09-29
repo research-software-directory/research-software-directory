@@ -155,19 +155,7 @@ def init(app):
                         print(resource['_id'] + ' ' + key)
                         db[resource_type].update({'_id' : resource['_id']}, {'$unset': { key: ''}})
 
-    @app.cli.command('zotero_test')
-    def _czp():
-        from src.services.zotero import zotero_test
-        zotero_test()
-
-    @app.cli.command('zenodo_test')
-    def _zt():
-        from src.services.zenodo import version_info
-        import pprint
-        for software in [sw for sw in db['software'].find() if 'githubid' in sw]:
-            print(software['githubid'])
-            print(version_info(software['githubid']))
-            print('\n')
+    
         # pprint.pprint(version_info('NLeSC/Massive-PotreeConverter'))
 
                         # @app.cli.command('set_person_github')

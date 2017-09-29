@@ -192,3 +192,26 @@ def _save_mapping():
     db.publication_creator_person_map.update({'_id': value['_id']}, value, upsert=True)
 
     return value, 200
+
+
+@api.route('/new_projects', methods=['GET'])
+@jsonify
+def _new_projects():
+    from src.services.zotero import new_projects
+    return new_projects(), 200
+
+
+@api.route('/new_publications', methods=['GET'])
+@jsonify
+def _new_publications():
+    from src.services.zotero import new_publications
+    publications, software = new_publications()
+    return publications, 200
+
+
+@api.route('/new_software', methods=['GET'])
+@jsonify
+def _new_software():
+    from src.services.zotero import new_publications
+    publications, software = new_publications()
+    return software, 200
