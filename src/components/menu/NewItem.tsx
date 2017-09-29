@@ -1,15 +1,15 @@
 import * as React from 'react';
-
 import { connect } from 'react-redux';
-
-import { Button, Icon, Input } from 'semantic-ui-react';
-
 import { createNewItem } from './actions';
-
-import { History } from 'history';
+import { Button, Icon, Input } from 'semantic-ui-react';
 
 interface IOwnProps {
   resourceType: string;
+}
+
+interface IMappedProps {
+  schema: any;
+  data: any;
 }
 
 const mapStateToProps: (state: any, ownProps: IOwnProps) => any =
@@ -22,25 +22,16 @@ const dispatchToProps = {
   createNewItem
 };
 
-const connector = connect(mapStateToProps, dispatchToProps );
-
-interface IDispatchProps {
-  createNewItem(resourceType: string, id: string, schema: any, history: History): any;
-}
-
-interface IProps {
-  data: any;
-  schema: any;
-  resourceType: string;
-  history: History;
-}
+type IDispatchProps = typeof dispatchToProps;
+type IProps = IOwnProps & IMappedProps & IDispatchProps;
+const connector = connect<IMappedProps, IDispatchProps>(mapStateToProps, dispatchToProps);
 
 interface IState {
   open: boolean;
   id: string;
 }
 
-class NewItemComponent extends React.PureComponent<IProps & IDispatchProps, IState> {
+class NewItemComponent extends React.PureComponent<IProps, IState> {
   componentWillMount() {
     this.setState({open: false, id: ''});
   }
@@ -58,8 +49,7 @@ class NewItemComponent extends React.PureComponent<IProps & IDispatchProps, ISta
     this.props.createNewItem(
       this.props.resourceType,
       `/${this.props.resourceType}/${this.state.id}`,
-      this.props.schema,
-      this.props.history
+      this.props.schema
     );
   }
 

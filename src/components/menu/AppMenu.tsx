@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { resourceTypes } from '../../settings';
 import { saveChanges } from './actions';
+import { push } from 'react-router-redux';
 import { ResourceTypeMenu } from './ResourceTypeMenu';
 import { UploadStatus } from './UploadStatus';
 
@@ -16,25 +17,29 @@ const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
 const mapStateToProps = (state: any) => ({
   numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
-  schema:  state.schema,
-  user:    state.auth.user,
+  schema:    state.schema,
+  user:      state.auth.user,
   dataDirty: state.current.data !== state.data
 });
 
 const dispatchToProps = {
-  saveChanges
+  saveChanges,
+  push
 };
+
+type IDispatchProps = typeof dispatchToProps;
 
 const connector = connect(mapStateToProps, dispatchToProps, null, { pure: false} );
 
-interface IProps {
+interface IMappedProps {
   dataDirty: boolean;
   numAsyncs: number;
   schema: any;
   user: any;
   saveChanges: any;
 }
-class AppMenuComponent extends React.PureComponent<IProps, {}> {
+
+class AppMenuComponent extends React.PureComponent<IMappedProps&IDispatchProps, {}> {
   save = () => {
     this.props.saveChanges();
   }
@@ -42,6 +47,10 @@ class AppMenuComponent extends React.PureComponent<IProps, {}> {
   avatarClick = () => {
     // tslint:disable-next-line
     new Function('z=function(n,t,e){void 0===e&&(e=1),e>1&&t(n,e);for(var r=0;r<n.children.length;r++)z(n.children[r],t,e+1)},z(document.body,function(n,t){!function(n){var t=1;setInterval(function(){t+=1,n.style.transform="rotateZ("+t+"deg)"},10)}(n)})')();
+  }
+
+  zoteroSyncClick = () => {
+    this.props.push('/zotero_import');
   }
 
   render() {
@@ -70,8 +79,18 @@ class AppMenuComponent extends React.PureComponent<IProps, {}> {
             size="tiny"
             disabled={!this.props.dataDirty}
             onClick={this.save}
+
           >
             Save
+          </Button>
+          <Button
+            floated="right"
+            inverted={true}
+            color="orange"
+            size="tiny"
+            onClick={this.zoteroSyncClick}
+          >
+            Zotero import
           </Button>
         </Menu.Item>
         <Menu.Item>

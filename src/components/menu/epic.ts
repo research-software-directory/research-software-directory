@@ -1,12 +1,9 @@
 import { combineEpics } from 'redux-observable';
-
-import { ICreateNewItem } from './actions';
-
 import { resourceTypes } from '../../settings';
-
-import { backend } from '../../services/async';
-
+import { ICreateNewItem } from './actions';
 import { actions as toastrActions } from 'react-redux-toastr';
+import { push } from 'react-router-redux';
+import { backend } from '../../services/async';
 
 const saveEpic = (action$: any, state: any) => action$.ofType('SAVE_CHANGES').map(() => {
   const store =  state.getState();
@@ -60,9 +57,5 @@ export const epic = combineEpics(
     })
   ),
 
-  (action$: any) => action$.ofType('CREATE_NEW_ITEM').do((action: ICreateNewItem) => {
-    // tslint:disable-next-line:prefer-type-cast
-    if (action.history) { (action.history as any).push(action.id); }
-    // push is not available in History @types, so cast to any
-  }).ignoreElements()
+  (action$: any) => action$.ofType('CREATE_NEW_ITEM').map((action: ICreateNewItem) => { push(action.id); })
 );

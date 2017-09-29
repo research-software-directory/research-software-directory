@@ -5,6 +5,8 @@ import { Images } from './images';
 import { Publications } from './publications/Publications';
 import { Publication } from './publications/Publication';
 import { ImpactReports } from './impact_reports/ImpactReports';
+import {ZoteroImporter} from './zotero_import/ZoteroImporter';
+
 import { resourceTypes } from '../settings';
 
 const Resource = (type: string) => ({match}: any) => (
@@ -31,6 +33,8 @@ const publication = ({match}: any) => (
   <Publication id={`/publication/${match.params.id}`} />
 );
 
+const zoteroImporter = () => <ZoteroImporter />;
+
 export class Routes extends React.Component<{}, {}> {
   hello = () => <div>Welcome</div>;
   render() {
@@ -43,6 +47,8 @@ export class Routes extends React.Component<{}, {}> {
           <Route exact={true} path="/images" component={Images} />
           <Route exact={true} path="/publications" component={Publications} />
           <Route exact={true} path="/publication/:id" component={publication} />
+          <Route exact={true} path="/zotero_import" component={zoteroImporter} />
+
         </Switch>
       </div>
     );

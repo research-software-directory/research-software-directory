@@ -22,7 +22,7 @@ it('should add new item', () => {
   const data = { software: [ {id: 'test', testField: 'testValue'} ] };
   const state = { data };
   const schema = { properties: {a: {type: 'string'}, b: {type: 'array'} } };
-  const result: any = reducer(state, createNewItem('software', 'newid', schema, null));
+  const result: any = reducer(state, createNewItem('software', 'newid', schema));
 
   expect(result.data.software).toHaveLength(2);
   expect(result.data.software[0]).toEqual( { a: '', b: [], id: 'newid', name: 'newid' } );
