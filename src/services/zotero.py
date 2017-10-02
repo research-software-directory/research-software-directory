@@ -43,11 +43,18 @@ def get_projects(zotero):
 def new_projects():
     zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])
     projects = get_projects(zot)
-    current_keys = [project['zotero_key'] if 'zotero_key' in project else None for project in db.project.find()]
-    return [{
-        'zotero_key': project['key'],
-        'name': project['data']['name']
-    } for project in projects if project['key'] not in current_keys]
+    current_keys = [project['project_code'] if 'project_code' in project else None for project in db.project.find()]
+
+    def project_is_new(project):
+        return project['data']['name'].split(' ')[0] not in current_keys
+
+    projects = list(filter(project_is_new, projects))
+    return [
+        {
+            'project_code': project['data']['name'].split(' ')[0],
+            'name': project['data']['name']
+        } for project in projects
+    ]
 
 
 def publication_is_software(publication):

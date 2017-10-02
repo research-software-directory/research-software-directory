@@ -217,8 +217,6 @@ def _new_software():
     return software, 200
 
 
-
-
 @api.route('/project/<id>', methods=['GET'])
 @jsonify
 def _project(id):
