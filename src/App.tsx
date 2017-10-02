@@ -41,7 +41,7 @@ class AppComponent extends React.PureComponent<IProps, {}> {
 
       return (
         this.props.data[resourceType] &&
-        this.props.data[resourceType].find((resource: any) => resource.id === `/${resourceType}/${id}`)
+        this.props.data[resourceType].find((resource: any) => resource.id === id)
       );
     }
 

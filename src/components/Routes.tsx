@@ -12,7 +12,7 @@ import { resourceTypes } from '../settings';
 const Resource = (type: string) => ({match}: any) => (
   <ResourceForm
     resourceType={type}
-    id={`/${type}/${match.params.id}`}
+    id={match.params.id}
   />
 );
 
@@ -30,7 +30,7 @@ const impactReports = ({match}: any) => (
 );
 
 const publication = ({match}: any) => (
-  <Publication id={`/publication/${match.params.id}`} />
+  <Publication id={`${match.params.id}`} />
 );
 
 const zoteroImporter = () => <ZoteroImporter />;

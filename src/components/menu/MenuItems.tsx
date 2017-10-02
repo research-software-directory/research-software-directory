@@ -37,6 +37,7 @@ interface IMenuItemProps {
   active: boolean;
   hasChanged: boolean;
   onUndo: any;
+  type: string;
 }
 
 const label = (type: string) => (item: any) => {
@@ -64,7 +65,7 @@ const MenuItem = (props: IMenuItemProps) => {
     <Menu.Item
       className={props.active ? 'active' : ''}
     >
-      <Link to={`${props.item.id}`} style={{display: 'block'}}>
+      <Link to={`/${props.type}/${props.item.id}`} style={{display: 'block'}}>
         {props.label}
         {undoButton}
       </Link>
@@ -98,6 +99,7 @@ class MenuItemsComponent extends React.PureComponent<IProps, {}> {
             key={item.id}
             item={item}
             label={label(this.props.type)(item)}
+            type={this.props.type}
             active={this.props.location.pathname === item.id}
             hasChanged={hasChanged}
             onUndo={this.undoChanges(item.id)}

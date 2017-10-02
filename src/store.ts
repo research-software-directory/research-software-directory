@@ -12,3 +12,8 @@ export const store = createStore(
   window['__REDUX_DEVTOOLS_EXTENSION__'] && window['__REDUX_DEVTOOLS_EXTENSION__'](),
   applyMiddleware(createEpicMiddleware(rootEpic), routerMiddleware(history))
 );
+
+if (process.env.NODE_ENV === 'development' && window) {
+  // tslint:disable-next-line prefer-type-cast
+  (window as any).store = store;
+}

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Segment, Dimmer, Loader, Header, List, Button} from 'semantic-ui-react';
+import { Segment, Dimmer, Loader, Header, List } from 'semantic-ui-react';
 import { getNewProjects, getNewPublications, getNewSoftware } from './actions';
 import {connect} from 'react-redux';
+import {Project} from './Project';
 
 const dispatchToProps = ({
   getNewProjects,
@@ -32,13 +33,6 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
     this.props.getNewPublications();
   }
 
-  renderProject = (item: any) => (
-    <List.Item icon="lab">
-      {item.name}
-      <Button floated="right" size="tiny">Import</Button>
-    </List.Item>
-  )
-
   renderPublication = (item: any) => {
     const meta = item.meta.creatorSummary ? <b>{item.meta.creatorSummary}</b> : null;
 
@@ -57,7 +51,7 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
 
   renderItem = (type: string, item: any) => {
     switch (type) {
-      case 'projects': return this.renderProject(item);
+      case 'projects': return <Project item={item} />;
       case 'publications': return this.renderPublication(item);
       case 'software': return this.renderSoftware(item);
       default: return null;

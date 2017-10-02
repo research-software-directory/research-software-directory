@@ -7,5 +7,14 @@ import { epic as imageEpic } from './components/images/epic';
 import { epic as menuEpic } from './components/menu/epic';
 import { epic as publicationsEpic } from './components/publications/epic';
 import { epic as formEpic } from './components/form/epic';
+import { epic as zoteroEpic } from './components/zotero_import/epic';
 
-export const rootEpic = combineEpics(fetchEpic, imageEpic, menuEpic, authEpic, publicationsEpic, formEpic);
+export const rootEpic = combineEpics(
+  fetchEpic,
+  imageEpic,
+  menuEpic,
+  authEpic,
+  publicationsEpic,
+  formEpic,
+  zoteroEpic
+);

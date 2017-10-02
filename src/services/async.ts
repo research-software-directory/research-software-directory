@@ -1,9 +1,9 @@
 /* async is used for backend calls, and takes care of redux actions
-   use eg backend.get('FETCH_TEST','test') will get BACKEND_URL/test
+
+   backend.get('FETCH_TEST','test') will get BACKEND_URL/test
    and create actions of type 'FETCH_TEST' and async its result:
    - FETCH_TEST/FULFILLED or
    - FETCH_TEST/FAILED
-   Hook it up to redux & redux-observable with `reducer` & `epic`
 */
 
 import Axios, { AxiosResponse } from 'axios';
@@ -97,7 +97,7 @@ export const backend = {
 };
 
 export const fetchEpic: Epic<IFetchAction, {}> = (action$, store: any) =>
-    action$.filter((action) => action.fetchAction).mergeMap(
+    action$.filter((action) => action.fetchAction && !action.actionParams.blockDefaultEpic).mergeMap(
       (action: IFetchAction): Observable<any> => {
         let req = null;
 

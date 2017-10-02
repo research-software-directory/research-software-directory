@@ -16,7 +16,9 @@ import 'semantic-ui-css/semantic.min.css';
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
 const mapStateToProps = (state: any) => ({
-  numAsyncs: state.async.filter((asyncAction: any) => asyncAction.status !== 'DONE').length,
+  numAsyncs: state.async.filter((asyncAction: any) =>
+    asyncAction.status !== 'DONE' && asyncAction.status !== 'FAILED'
+  ).length,
   schema:    state.schema,
   user:      state.auth.user,
   dataDirty: state.current.data !== state.data
