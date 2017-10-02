@@ -1,0 +1,109 @@
+{
+  "_id": "organization",
+  "required": [
+    "name"
+  ],
+  "id": "/schema/organization",
+  "description": "An organization such as a university, company or foundation.",
+  "type": "object",
+  "#schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "authorOfReport": {
+      "description": "Report that an organization is an author of.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "ID of a report, an URI where the reports's metadata can be resolved, e.g., http://software.esciencecenter.nl/report/guide",
+        "format": "uri"
+      }
+    },
+    "logo": {
+      "description": "URL to an image of the logo of the organization.",
+      "type": "string",
+      "format": "uri"
+    },
+    "tagLine": {
+      "description": "One-sentence description of the organization.",
+      "type": "string"
+    },
+    "involvedIn": {
+      "items": {
+        "format": "uri",
+        "type": "string",
+        "description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+        "resType": "/project"
+      },
+      "type": "array",
+      "description": "Projects that the organization is involved in."
+    },
+    "description": {
+      "type": "string",
+      "description": "Organization description, in Markdown format underneath Frontmatter (---) in Markdown files"
+    },
+    "name": {
+      "description": "Name of the organization.",
+      "type": "string"
+    },
+    "organizationOf": {
+      "items": {
+        "description": "ID of a person, preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven",
+        "type": "string",
+        "format": "uri"
+      },
+      "type": "array",
+      "description": "People that the organization employs."
+    },
+    "ownerOf": {
+      "items": {
+        "type": "string",
+        "description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+        "format": "uri"
+      },
+      "description": "Projects that the organization is the owner of.",
+      "type": "array"
+    },
+    "researchgateUrl": {
+      "description": "Institution ResearchGate profile (e.g. https://www.researchgate.net/institution/Netherlands_eScience_Center).",
+      "type": "string",
+      "format": "uri"
+    },
+    "website": {
+      "format": "uri",
+      "type": "string",
+      "description": "Link to the main website."
+    },
+    "@id": {
+      "format": "uri",
+      "type": "string",
+      "description": "ID of the organization. This is preferably an URI where the organization metadata can be resolved, e.g., http://software.esciencecenter.nl/organization/nlesc"
+    },
+    "userOf": {
+      "items": {
+        "type": "string",
+        "description": "ID of software, preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon",
+        "format": "uri"
+      },
+      "type": "array",
+      "description": "Software that the organization uses."
+    },
+    "twitterUrl": {
+      "description": "Organizational Twitter profile (e.g. https://twitter.com/esciencecenter)",
+      "type": "string",
+      "format": "uri"
+    },
+    "schema": {
+      "format": "uri",
+      "enum": [
+        "http://software.esciencecenter.nl/schema/organization"
+      ],
+      "description": "Fixed property, to validate the JSON object with the current schema.",
+      "type": "string"
+    },
+    "linkedInUrl": {
+      "format": "uri",
+      "type": "string",
+      "description": "Organizational LinkedIn profile (e.g. https://www.linkedin.com/company/netherlands-escience-center)."
+    }
+  },
+  "additionalProperties": false
+}

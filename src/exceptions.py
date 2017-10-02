@@ -11,3 +11,7 @@ class RouteException(Exception):
 class UnauthorizedException(RouteException):
     def __init__(self, message, status_code=401, data=None, *args):
         super().__init__(message, status_code, data, *args)
+
+class NotFoundException(RouteException):
+    def __init__(self, message, status_code=404, data=None, *args):
+        super().__init__(message, status_code, data, *args)

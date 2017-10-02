@@ -1,9 +1,9 @@
 import logging
 
-import requests
-from src.settings import settings
-from src.database import db
 from pyzotero import zotero
+
+from src.services.database import db
+from src.settings import settings
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +21,6 @@ def zotero_sync():
     #     publication['id'] = '/publication/' + entry['key']
     #     db.publication.update({'_id': publication['_id']}, publication, upsert=True)
 
-import json
 
 def zotero_test():
     zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])

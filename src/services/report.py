@@ -1,8 +1,10 @@
 import time
-import src.services.libraries_io as libraries_io
-from src.services.github import update_commits, get_github_repo
 import traceback
-from src.database import db
+
+import src.services.libraries_io as libraries_io
+from src.services.database import db
+from src.services.github import update_commits, get_github_repo
+
 
 # 3 AnalyticalGraphicsInc/cesium
 # 6 interedition/collatex

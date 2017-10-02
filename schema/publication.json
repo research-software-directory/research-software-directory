@@ -1,0 +1,75 @@
+{
+  "_id": "publication",
+  "required": [
+    "@id",
+    "schema",
+    "description",
+    "endorsedBy",
+    "author",
+    "date"
+  ],
+  "additionalProperties": false,
+  "description": "An publication such as a journal article.",
+  "type": "object",
+  "#schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/schema/publication",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Bibliography as text, in Markdown format underneath Frontmatter (---) in Markdown files"
+    },
+    "endorsedBy": {
+      "items": {
+        "type": "string",
+        "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
+        "format": "uri"
+      },
+      "type": "array",
+      "description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization."
+    },
+    "publishedIn": {
+      "type": "string",
+      "description": "Title of the container holding the item (e.g. the book title for a book chapter, the journal title for a journal article). In Citation Style Language (CSL) it is the `container-title` field."
+    },
+    "date": {
+      "format": "date-time",
+      "description": "Date the item was issued/published. In Citation Style Language (CSL) it is the `issued` field.",
+      "type": "string"
+    },
+    "@id": {
+      "format": "uri",
+      "type": "string",
+      "description": "Digital Object Identifiers (DOI) of publication"
+    },
+    "type": {
+      "description": "Type of citation. In Citation Style Language (CSL) it is the `type` field.",
+      "type": "string",
+      "enum": [
+        "proceedings-article",
+        "journal-article"
+      ]
+    },
+    "schema": {
+      "enum": [
+        "http://software.esciencecenter.nl/schema/publication"
+      ],
+      "format": "uri",
+      "type": "string",
+      "description": "Fixed property, to validate the JSON object with the current schema."
+    },
+    "doi": {
+      "format": "uri",
+      "description": "Digital Object Identifiers (DOI) of publication",
+      "type": "string"
+    },
+    "author": {
+      "description": "ID of projects that are responsible for the publication.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+        "format": "uri"
+      }
+    }
+  }
+}

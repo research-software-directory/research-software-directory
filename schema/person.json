@@ -1,0 +1,101 @@
+{
+  "_id": "person",
+  "required": [
+    "name",
+    "affiliation"
+  ],
+  "id": "http://software.esciencecenter.nl/schema/person",
+  "type": "object",
+  "#schema": "http://json-schema.org/draft2-3/schema#",
+  "properties": {
+    "githubUrl": {
+      "format": "uri",
+      "type": "string",
+      "description": "Person's github user profile (e.g. https://github.com/sverhoeven)."
+    },
+    "@id": {
+      "format": "uri",
+      "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+      "type": "string"
+    },
+    "photo": {
+      "format": "uri",
+      "description": "Person's portrait.",
+      "type": "string"
+    },
+    "contactPersonOf": {
+      "type": "array",
+      "description": "Projects or software that a person is contact person of.",
+      "items": {
+        "format": "uri",
+        "description": "ID of a project or software, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
+        "type": "string"
+      }
+    },
+    "researchgateUrl": {
+      "format": "uri",
+      "type": "string",
+      "description": "Personal ResearchGate profile (e.g. https://www.researchgate.net/profile/Stefan_Verhoeven)."
+    },
+    "ownerOf": {
+      "type": "array",
+      "description": "Software that a person is the owner of.",
+      "items": {
+        "format": "uri",
+        "description": "ID of a software package, preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon",
+        "type": "string"
+      }
+    },
+    "description": {
+      "description": "Person description, bio and/or CV, in Markdown format underneath Frontmatter (---) in Markdown files",
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string",
+      "description": "The job title of the person (for example, eScience Research Engineer)."
+    },
+    "name": {
+      "description": "Full name of the person.",
+      "type": "string"
+    },
+    "ORCID": {
+      "format": "uri",
+      "description": "Person's ORCID ID (e.g. http://orcid.org/0000-0002-4510-0385).",
+      "type": "string"
+    },
+    "linkedInUrl": {
+      "type": "string",
+      "description": "Person's LinkedIn profile (e.g. https://www.linkedin.com/in/stefan-verhoeven-15381121).",
+      "format": "uri"
+    },
+    "schema": {
+      "description": "Fixed property, to validate the JSON object with the current schema.",
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "http://software.esciencecenter.nl/schema/person"
+      ]
+    },
+    "twitterUrl": {
+      "format": "uri",
+      "description": "Person's Twitter profile",
+      "type": "string"
+    },
+    "website": {
+      "format": "uri",
+      "type": "string",
+      "description": "Link to the main website."
+    },
+    "email": {
+      "description": "Email address of the person",
+      "type": "string",
+      "format": "email"
+    },
+    "nlescWebsite": {
+      "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/profile/ing.-stefan-verhoeven).",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "additionalProperties": false
+}

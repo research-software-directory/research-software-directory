@@ -1,7 +1,9 @@
-import requests
-from src.settings import settings
-from src.database import db
 import pymongo.errors
+import requests
+
+from src.services.database import db
+from src.settings import settings
+
 
 def releases(token, repo):
     url = 'https://api.github.com/repos/%s/releases' % repo

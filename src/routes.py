@@ -1,21 +1,21 @@
-import flask
-import os
 import hashlib
+import os
 
+import flask
 from flask_cors import CORS
 
-from src.json_response import jsonify
-from src.extensions import resize
-from src.database import db
 import src.exceptions as exceptions
-import src.services.user as user
 import src.services.github as github
-import src.constants as constants
-# from src.services.report import load_reports
-from src.settings import settings
+import src.services.user as user
+from src.extensions import resize
+from src.json_response import jsonify
+from src.services.database import db
+from src.services.publication import get_mapping
+from src.services.schema import schema
 from src.services.util import worker
 from src.services.zotero import zotero_sync
-from src.services.publication import get_mapping
+# from src.services.report import load_reports
+from src.settings import settings
 
 
 def collection_to_object(collection):
@@ -42,7 +42,7 @@ def _get_all_data():
 @api.route('/schema')
 @jsonify
 def _schema():
-    return collection_to_object(list(db.schema.find())), 200
+    return schema, 200
 
 
 @api.route('/github_auth')
@@ -215,3 +215,15 @@ def _new_software():
     from src.services.zotero import new_publications
     publications, software = new_publications()
     return software, 200
+
+
+
+
+@api.route('/project/<id>', methods=['GET'])
+@jsonify
+def _project(id):
+    project = db.project.find_one({'id': id})
+    if project:
+        return project, 200
+    else:
+        raise exceptions.NotFoundException('project not found')

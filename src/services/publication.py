@@ -1,7 +1,8 @@
 import logging
 
-from src.database import db
 from fuzzywuzzy import fuzz
+
+from src.services.database import db
 
 logger = logging.getLogger(__name__)
 
