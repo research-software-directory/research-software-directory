@@ -1,16 +1,11 @@
 import { backend, fetchEpic, reducer } from './async';
-
 import configureMockStore from 'redux-mock-store';
-
 import { createEpicMiddleware } from 'redux-observable';
 
 // tslint:disable-next-line:no-import-side-effect
 import 'rxjs';
-
 import * as nock from 'nock';
-
 import Axios from 'axios';
-
 import { BACKEND_URL} from '../settings';
 
 describe('async backend stuff', () => {
@@ -27,7 +22,6 @@ describe('async backend stuff', () => {
   });
 
   it('epic should go', (done) => {
-    // tslint:disable-next-line:no-backbone-get-set-outside-model
     nock(BACKEND_URL)
       .get('/test')
       .reply(200, { status: 'success' } );
