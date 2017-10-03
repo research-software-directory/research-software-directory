@@ -24,4 +24,4 @@ export const reducer = (state: any = {}, action: actions.ISetMapping) => {
   }
 
   return state;
-}
+};

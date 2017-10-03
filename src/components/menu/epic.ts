@@ -33,7 +33,7 @@ export const epic = combineEpics(
     return [
       toastrActions.add({
         message: 'Changes saved!',
-        options: { timeOut: 3000 },
+        options: { timeOut: 3000, showCloseButton: true },
         position: 'top-center',
         title: 'Done',
         type: 'info'
