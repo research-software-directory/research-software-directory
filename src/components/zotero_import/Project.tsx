@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Button, Input, Label } from 'semantic-ui-react';
+import { List, Button, Input, Icon } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {createNewItem} from '../../shared/resource/actions';
 
@@ -46,7 +46,8 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
   }
 
   toggleOpen = () => {
-    this.setState({open: !this.state.open });
+    // this.setState({open: !this.state.open });
+    this.setState({open: true });
   }
 
   onInputChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -54,7 +55,7 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
   }
 
   idExists = () => {
-    return this.props.projects.find((project: any) => project.id === this.state.id);
+    return !!this.props.projects.find((project: any) => project.id === this.state.id);
   }
 
   createNew = () => {
@@ -68,30 +69,41 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
   }
 
   renderOpen = () => {
-    const buttonDisabled = this.state.id.length < 2 || this.idExists();
+    const buttonDisabled = (this.state.id.length < 2) || this.idExists();
+    const actionButton = (
+      <Button
+        disabled={buttonDisabled}
+        onClick={this.createNew}
+      >OK
+      </Button>
+    );
 
     return (
       <div style={{float: 'right'}}>
-        <Label>ID:</Label>
-        <Input value={this.state.id} floated="right" size="tiny" onChange={this.onInputChange}/>
-        <Button
-          color={buttonDisabled ? 'red' : 'green'}
-          disabled={buttonDisabled}
-          onClick={this.createNew}
-        >OK
-        </Button>
+        <Input
+          label="ID:"
+          value={this.state.id}
+          size="tiny"
+          onChange={this.onInputChange}
+          action={actionButton}
+        />
       </div>
     );
   }
 
   render() {
     return (
-      <List.Item icon="lab">
-        {this.props.item.zotero_key} {this.props.item.name}
-        {!this.state.open && <Button floated="right" size="tiny" onClick={this.toggleOpen}>Import</Button>}
+      <List.Item onClick={this.toggleOpen} style={{cursor: 'pointer'}}>
+        <span>
+          <Icon name="lab" />
+          {this.props.item.name}
+        </span>
+
         {this.state.open && this.renderOpen()}
       </List.Item>
     );
   }
 }
 );
+
+// {!this.state.open && <Button floated="right" size="tiny" onClick={this.toggleOpen}>Import</Button>}

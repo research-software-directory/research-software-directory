@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Segment, Message, Button, Table } from 'semantic-ui-react';
+import { Segment, Message, Table } from 'semantic-ui-react';
 import { Author } from './Author';
-import { setMapping, getMapping, saveMapping } from './actions';
+import {setMapping} from './actions';
 
 interface IOwnProps {
   id: string;
@@ -11,22 +11,16 @@ interface IOwnProps {
 interface IMappedProps {
   people: any;
   publication: any;
-  authorPerson: any;
 }
 
-interface IDispatchProps {
-  setMapping: any;
-  getMapping: any;
-  saveMapping: any;
-}
+type IDispatchProps = typeof dispatchToProps;
 
-const dispatchToProps = { setMapping, getMapping, saveMapping };
+const dispatchToProps = { setMapping };
 
 const mapStateToProps = (state: any, ownProps: IOwnProps) => {
   return ({
     publication: state.current.data.publication.find((publication: any) => publication.id === ownProps.id),
-    people: state.current.data.person,
-    authorPerson: state.authorPerson[ownProps.id]
+    people: state.current.data.person
   });
 };
 
@@ -58,39 +52,24 @@ const propTable = (data: any) => {
 };
 
 class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps & IDispatchProps, {}> {
-  componentWillReceiveProps(newProps: IMappedProps & IOwnProps & IDispatchProps) {
-    if (newProps.id !== this.props.id) {
-      this.props.getMapping(newProps.id);
-    }
+  showAuthorsMessage = () => {
+    return (
+      <Message
+        warning={true}
+        icon="warning sign"
+        header="Authors mapping"
+        content="Authors - People mapping needs review &amp; confirm."
+      />
+    );
   }
 
-  componentWillMount() {
-    this.props.getMapping(this.props.id);
-  }
-  showAuthorsMessage = () => {
-    if (this.props.authorPerson && this.props.authorPerson.type === 'suggestion') {
-      return (
-        <Message
-          warning={true}
-          icon="warning sign"
-          header="Authors mapping"
-          content="Authors - People mapping needs review &amp; confirm."
-        />
-      );
-    } else {
-      return null;
-    }
+  personSelected = (creator: any) => (person: string[]) => { // author returns single value array
+    this.props.setMapping(this.props.publication.id, creator, person[0]);
   }
 
   authors = () => {
-    const onMapping = (creator: any) => (person: string[]) =>
-      this.props.setMapping({ person : person[0], publication: this.props.publication._id, creator });
-
-    return this.props.publication.creators.map((creator: any, idx: number) => {
-      const map = this.props.authorPerson.mapping.find(
-        (row: any) => row.creator.firstName === creator.firstName && row.creator.lastName === creator.lastName
-      );
-      const person = map ? map.person : null;
+    return this.props.publication.authors.map((creator: any, idx: number) => {
+      const person = creator.person || null;
 
       return (
         <Author
@@ -98,24 +77,19 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
           creator={creator}
           person={person}
           people={this.props.people}
-          onChange={onMapping(creator)}
+          onChange={this.personSelected(creator)}
         />
       );
       }
     );
   }
 
-  saveMapping = () => {
-    this.props.saveMapping(this.props.authorPerson);
-  }
-
   render() {
     return (
       <div>
         {this.showAuthorsMessage()}
-        <Button className="red" onClick={this.saveMapping}>Save</Button>
         <Segment.Group>
-          {this.props.authorPerson && this.authors()}
+          {this.authors()}
         </Segment.Group>
         {propTable(this.props.publication)}
       </div>

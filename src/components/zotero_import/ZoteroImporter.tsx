@@ -1,13 +1,16 @@
 import * as React from 'react';
-import { Segment, Dimmer, Loader, Header, List } from 'semantic-ui-react';
+import { Segment, Dimmer, Loader, Header, List, Icon } from 'semantic-ui-react';
 import { getNewProjects, getNewPublications, getNewSoftware } from './actions';
 import {connect} from 'react-redux';
 import {Project} from './Project';
+import {createNewItem} from '../../shared/resource/actions';
+import {transform} from './transform';
 
 const dispatchToProps = ({
   getNewProjects,
   getNewPublications,
-  getNewSoftware
+  getNewSoftware,
+  createNewItem
 });
 
 const mapStateToProps = (state: any) => ({
@@ -33,25 +36,32 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
     this.props.getNewPublications();
   }
 
+  createPublication = (item: any) => () => {
+    this.props.createNewItem('publication', item.key, transform(item) );
+  }
+
   renderPublication = (item: any) => {
     const meta = item.meta.creatorSummary ? <b>{item.meta.creatorSummary}</b> : null;
 
     return (
-      <List.Item>
-        <i>{item.data.itemType}</i>: {meta} {item.data.title}
+      <List.Item key={item.key} onClick={this.createPublication(item)}>
+        <span>
+          <Icon name="book" />
+          <i>{item.data.itemType}</i>: {meta} {item.data.title}
+        </span>
       </List.Item>
     );
   }
 
   renderSoftware = (item: any) => (
-    <List.Item>
+    <List.Item key={item.key}>
       {item.data.title}
     </List.Item>
   )
 
   renderItem = (type: string, item: any) => {
     switch (type) {
-      case 'projects': return <Project item={item} />;
+      case 'projects': return <Project key={item.zotero_key} item={item} />;
       case 'publications': return this.renderPublication(item);
       case 'software': return this.renderSoftware(item);
       default: return null;
@@ -61,12 +71,12 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
   listItems = (type: string) => this.props[type].items.map((item: any) => this.renderItem(type, item));
 
   listContainer = (type: string) => (
-    <Segment>
+    <Segment key={type}>
       <Header>new {type}</Header>
         <Dimmer active={this.props[type].status === 1}>
           <Loader />
         </Dimmer>
-        <List>{this.listItems(type)}</List>
+        <List animated={true} divided={true}>{this.listItems(type)}</List>
     </Segment>
   )
 

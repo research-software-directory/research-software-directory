@@ -9,7 +9,7 @@ const saveEpic = (action$: any, state: any) => action$.ofType('SAVE_CHANGES').ma
   const oldData = store.data;
 
   const changes = {};
-  resourceTypes.forEach((type: string) => {
+  [...resourceTypes, 'publication'].forEach((type: string) => {
     const changedItems: any[] = [];
     currentData[type].forEach((item: any) => {
       if (item !== oldData[type].find((oldItem: any) => oldItem.id === item.id)) {

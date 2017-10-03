@@ -8,9 +8,9 @@ import { reducer as formReducer } from './components/form/reducer';
 import { reducer as imageReducer } from './components/images/reducer';
 import { reducer as asyncReducer } from './services/async';
 import { reducer as impactReportReducer } from './components/impact_reports/reducer';
-import { reducer as authorPersonReducer } from './components/publications/reducer';
 import { reducer as zoteroImportReducer } from './components/zotero_import/reducer';
 
+import { reducer as publicationReducer } from './components/publications/reducer';
 import { reducer as resourceReducer } from './shared/resource/reducer';
 
 import { IFetchFulfilledAction } from './services/async';
@@ -46,9 +46,9 @@ export const rootReducer = reduceReducer(
     schema: schemaReducer,
     toastr: toastrReducer,
     reports: impactReportReducer,
-    authorPerson: authorPersonReducer,
     zotero: zoteroImportReducer
   }),
 
-  resourceReducer
+  resourceReducer,
+  publicationReducer
 );

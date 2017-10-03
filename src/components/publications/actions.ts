@@ -1,5 +1,23 @@
-import { backend } from '../../services/async';
+export enum types {
+  SET_MAPPING = 'SET_MAPPING'
+}
 
-export const setMapping = (payload: any) => ({type: 'SET_AUTHOR_MAPPING', payload});
-export const getMapping = (id: string) => backend.get('GET_AUTHOR_MAPPING', `author_mapping${id}`);
-export const saveMapping = (payload: any) => backend.post('SAVE_AUTHOR_MAPPING', 'save_author_mapping', payload );
+export interface IAuthor {
+  firstName: string;
+  lastName: string;
+  person?: string;
+}
+
+export interface ISetMapping {
+  type: types.SET_MAPPING;
+  id: string;
+  author: IAuthor;
+  person: string;
+}
+
+export const setMapping = (id: string, author: IAuthor, person: string): ISetMapping => ({
+  id,
+  author,
+  person,
+  type: types.SET_MAPPING
+});

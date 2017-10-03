@@ -70,6 +70,7 @@ class NewItemComponent extends React.PureComponent<IProps, IState> {
             <Input
               size="mini"
               type="text"
+              label="id"
               value={this.state.id}
               onChange={this.updateId}
               inverted={true}

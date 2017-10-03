@@ -1,12 +1,12 @@
 import * as React from 'react';
-
 import { Button, Icon, Segment } from 'semantic-ui-react';
-
 import { EditableSegment } from './EditableSegment';
-
 import { MultiSelect} from './MultiSelect';
-
 import './ResourceArray.css';
+
+import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import '../../../assets/style.css';
 
 const icon = (resourceType: string) => {
   switch (resourceType) {
@@ -63,13 +63,14 @@ export class ResourceArray extends React.PureComponent<IProps, {}> {
     if (!this.props.value || !this.props.value.length) {
       return null;
     }
-    const content = this.props.value.map((val, key) => {
+    const content = this.props.value
+      .map((val, key) => {
       if (typeof val === 'string') {
         const option = this.props.options.find((opt: IOption) => opt.id === val);
         const label = option ? option.label : val;
 
         return (
-          <Segment key={key}><Icon name={icon(this.props.resourceType)}/> {label}
+          <Segment key={val}><Icon name={icon(this.props.resourceType)}/> {label}
             <Button size="mini" floated="right" icon="close" onClick={this.removeValue(key)}/>
           </Segment>
         );
@@ -86,9 +87,14 @@ export class ResourceArray extends React.PureComponent<IProps, {}> {
     });
 
     return (
-      <Segment.Group style={{maxWidth: '500px'}}>
-        {content}
-      </Segment.Group>
+        <ReactCSSTransitionGroup
+          transitionName="rt-fade"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+          component={Segment.Group}
+        >
+          {content}
+        </ReactCSSTransitionGroup>
     );
   }
 
