@@ -1,8 +1,6 @@
 import { combineEpics } from 'redux-observable';
 import { resourceTypes } from '../../settings';
-import { ICreateNewItem } from './actions';
 import { actions as toastrActions } from 'react-redux-toastr';
-import { push } from 'react-router-redux';
 import { backend } from '../../services/async';
 
 const saveEpic = (action$: any, state: any) => action$.ofType('SAVE_CHANGES').map(() => {
@@ -55,7 +53,5 @@ export const epic = combineEpics(
       title: 'Error',
       type: 'error'
     })
-  ),
-
-  (action$: any) => action$.ofType('CREATE_NEW_ITEM').map((action: ICreateNewItem) => { push(action.id); })
+  )
 );

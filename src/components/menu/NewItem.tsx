@@ -1,21 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { createNewItem } from './actions';
 import { Button, Icon, Input } from 'semantic-ui-react';
+import {createNewItem} from '../../shared/resource/actions';
 
 interface IOwnProps {
   resourceType: string;
 }
 
 interface IMappedProps {
-  schema: any;
   data: any;
 }
 
 const mapStateToProps: (state: any, ownProps: IOwnProps) => any =
   (state: any, ownProps: IOwnProps) => ({
-    data:   state.data[ownProps.resourceType],
-    schema: state.schema[ownProps.resourceType]
+    data:   state.data[ownProps.resourceType]
   });
 
 const dispatchToProps = {
@@ -48,10 +46,15 @@ class NewItemComponent extends React.PureComponent<IProps, IState> {
     this.setState({id: '', open: false});
     this.props.createNewItem(
       this.props.resourceType,
-      `/${this.props.resourceType}/${this.state.id}`,
-      this.props.schema
+      this.state.id
     );
   }
+
+  idIsValid = () =>
+    this.state.id.length > 1 &&
+    !this.props.data.find(
+      (item: any) => item.id === this.state.id
+    )
 
   render() {
       if (!this.state.open) {
@@ -60,16 +63,10 @@ class NewItemComponent extends React.PureComponent<IProps, IState> {
         );
       } else {
 
-        let idIsValid = true;
-        if (this.state.id === '' || (this.props.data.find(
-          (item: any) => item.id === `/${this.props.resourceType}/${this.state.id}`
-        ))) {
-          idIsValid = false;
-        }
+        const idIsValid = this.idIsValid();
 
         return (
           <div>
-            {`/${this.props.resourceType}/`}
             <Input
               size="mini"
               type="text"

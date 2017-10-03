@@ -1,0 +1,19 @@
+.rt-fade-enter {
+    opacity: 0.01;
+}
+
+.rt-fade-enter.rt-fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.rt-fade-leave {
+    opacity: 1;
+    position:absolute;
+    top:0;
+}
+
+.rt-fade-leave.rt-fade-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
-import { Button, Icon, Input, Segment, Message } from 'semantic-ui-react';
+import { Button, Icon, Input, Segment, Message, Dimmer, Loader } from 'semantic-ui-react';
 import { DatePicker } from '../../datepicker/DatePicker';
 
 import './SoftwareReleases.css';
@@ -148,7 +148,12 @@ export const SoftwareReleases = connector(class extends React.PureComponent<IPro
         </Button> <br />
         {loadStatus()}
         <Button icon={true} onClick={this.addNew}><Icon name="plus" /></Button>
-        <Segment.Group>{segments}</Segment.Group> <br />
+        <Segment.Group>
+          {segments}
+          <Dimmer active={this.props.fetchAction && !this.props.fetchAction.status}>
+            <Loader />
+          </Dimmer>
+        </Segment.Group> <br />
       </Segment>
     );
   }

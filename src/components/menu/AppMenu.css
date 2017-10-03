@@ -42,7 +42,7 @@
         color: red;
     }
     
-    div.ui.menu.main_menu>div.item.resource_menu>div {
+    div.ui.menu.main_menu>div.item.resource_menu>div:first-child {
         padding: 1em 1em;
     }
     

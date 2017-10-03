@@ -1,26 +1,34 @@
 import * as React from 'react';
 import { List, Button, Input, Label } from 'semantic-ui-react';
-import {checkProjectID} from './actions';
 import {connect} from 'react-redux';
+import {createNewItem} from '../../shared/resource/actions';
 
 interface IOwnProps {
   item: any;
 }
+
+interface IMappedProps {
+  projects: any[];
+}
+
+const mapDispatchToProps = ({
+  createNewItem
+});
+
+type IDispatchProps = typeof mapDispatchToProps;
 
 interface IState {
   open: boolean;
   id: string;
 }
 
-const dispatchToProps = {
-  checkID: checkProjectID
-};
+const mapStateToProps = (state: any) => ({
+  projects: state.current.data.project
+});
 
-type IDispatchProps = typeof dispatchToProps;
+const connector = connect<IMappedProps, IDispatchProps, IOwnProps>(mapStateToProps, mapDispatchToProps);
 
-const connector = connect<{}, IDispatchProps, IOwnProps>(null, dispatchToProps);
-
-export const Project = connector(class extends React.Component<IOwnProps&IDispatchProps, IState> {
+export const Project = connector(class extends React.Component<IOwnProps&IMappedProps&IDispatchProps, IState> {
   constructor() {
     super();
     this.state = {open: false, id: ''};
@@ -43,16 +51,31 @@ export const Project = connector(class extends React.Component<IOwnProps&IDispat
     this.setState ({id: this.sanitizeID(e.currentTarget.value)});
   }
 
-  checkID = () => {
-    this.props.checkID(this.state.id);
+  idExists = () => {
+    return this.props.projects.find((project: any) => project.id === this.state.id);
+  }
+
+  createNew = () => {
+  //     this.props.createNewItem(
+  //   'project',
+  //   this.state.id,
+  //   this.props.schema
+  //     );
   }
 
   renderOpen = () => {
+    const buttonDisabled = this.state.id.length < 2 || this.idExists();
+
     return (
       <div style={{float: 'right'}}>
         <Label>ID:</Label>
         <Input value={this.state.id} floated="right" size="tiny" onChange={this.onInputChange}/>
-        <Button onClick={this.checkID} >OK</Button>
+        <Button
+          color={buttonDisabled ? 'red' : 'green'}
+          disabled={buttonDisabled}
+          onClick={this.createNew}
+        >OK
+        </Button>
       </div>
     );
   }

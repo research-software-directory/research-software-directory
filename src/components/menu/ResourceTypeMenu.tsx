@@ -3,6 +3,9 @@ import { Divider, Icon, Input, Menu } from 'semantic-ui-react';
 import { NewItem } from './NewItem';
 import {MenuItems} from './MenuItems';
 
+// tslint:disable-next-line:no-require-imports no-var-requires
+const AnimateHeight = require('react-animate-height').default;
+
 interface IState {
   open: boolean;
   search: string;
@@ -41,19 +44,19 @@ export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
 
   render() {
     let subMenu = null;
-    if (this.state.open) {
+    if (true || this.state.open) {
       subMenu = (
-        <Menu className="submenu" inverted={true} vertical={true}>
-          <Input
-            className="submenu-search inverted"
-            icon={<Icon name="search" inverted={true}/>}
-            value={this.state.search}
-            onChange={this.onSubmenuSearch}
-          />
-          <Divider/>
-          {this.props.type !== 'publication' && <NewItem resourceType={this.props.type}/>}
-          <MenuItems type={this.props.type} search={this.state.search} />
-        </Menu>
+          <Menu className="submenu" inverted={true} vertical={true} >
+            <Input
+              className="submenu-search inverted"
+              icon={<Icon name="search" inverted={true}/>}
+              value={this.state.search}
+              onChange={this.onSubmenuSearch}
+            />
+            <Divider/>
+            {this.props.type !== 'publication' && <NewItem resourceType={this.props.type}/>}
+            <MenuItems type={this.props.type} search={this.state.search} />
+          </Menu>
       );
     }
 
@@ -63,7 +66,12 @@ export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
         className={`${this.state.open ? 'active' : ''} resource_menu`}
       >
         {this.header()}
-        {subMenu}
+        <AnimateHeight
+          duration={1000}
+          height={this.state.open ? 'auto' : 0}
+        >
+          {subMenu}
+        </AnimateHeight>
       </Menu.Item>
     );
   }

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Button, Icon, Menu } from 'semantic-ui-react';
-import { undoChanges } from './actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {undoChanges} from '../../shared/resource/actions';
 
 interface IOwnProps {
   type: string;

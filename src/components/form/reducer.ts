@@ -18,38 +18,7 @@ const dataReducer = (state: any = {}, action: any) => {
               $set : action.value
         } } }
       });
-    case 'CREATE_NEW_ITEM':
-      const newItem: any = {};
-      Object.keys(action.schema.properties).forEach((propName: string) => {
-        newItem[propName] = action.schema.properties[propName].type === 'array' ? [] : '';
-      });
-      newItem.id = action.id;
-      newItem.name = action.id;
 
-      return update(state, {
-        [action.resourceType] : {
-          $unshift: [newItem]
-        }
-      });
-
-    case 'UNDO_CHANGES':
-      const currentIndex = state[action.resourceType].findIndex((row: any) => row.id === action.id);
-      const originalResource = action.oldData[action.resourceType].find((row: any) => row.id === action.id);
-      if (originalResource) {
-        return update(state, {
-          [action.resourceType]: {
-            [ currentIndex ]: {
-              $set: originalResource
-            }
-          }
-        });
-      } else { // this is a new resource, remove it
-        return update(state, {
-          [action.resourceType]: {
-            $splice: [[currentIndex, 1]]
-          }
-        });
-      }
     default: return state;
   }
 };
