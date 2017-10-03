@@ -52,7 +52,8 @@ def new_projects():
     return [
         {
             'project_code': project['data']['name'].split(' ')[0],
-            'name': project['data']['name']
+            'name': project['data']['name'],
+            'zotero_key': project['key']
         } for project in projects
     ]
 
