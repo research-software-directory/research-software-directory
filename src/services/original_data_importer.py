@@ -39,6 +39,7 @@ def import_projects():
         project['project_code'] = find_project_code(project['id'])
         project = remove_id_prefix(project)
         project['@id'] = project['id']
+        project['_id'] = project['id']
         db.project.insert_one(project)
 
 
@@ -53,6 +54,7 @@ def import_software():
     for software in original_data['software']:
         software = remove_id_prefix(software)
         software['@id'] = software['id']
+        software['_id'] = software['id']
         fix_software_githubid(software)
         db.software.insert_one(software)
 
@@ -66,6 +68,7 @@ def import_persons():
     for person in original_data['person']:
         person = remove_id_prefix(person)
         person['@id'] = person['id']
+        person['_id'] = person['id']
         fix_person_github_id(person)
         db.person.insert_one(person)
 
@@ -74,6 +77,7 @@ def import_organizations():
     for organization in original_data['organization']:
         organization = remove_id_prefix(organization)
         organization['@id'] = organization['id']
+        organization['_id'] = organization['id']
         db.organization.insert_one(organization)
 
 
