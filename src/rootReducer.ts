@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import reduceReducer from 'reduce-reducers';
+
+// tslint:disable-next-line no-var-requires no-require-imports
+const reduceReducer = require('reduce-reducers');
 
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import { reducer as authReducer } from './components/auth/reducer';

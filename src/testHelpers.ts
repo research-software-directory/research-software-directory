@@ -20,7 +20,12 @@ const mockedState = () => {
     ...defaultState,
     auth: { user },
     current: { data, schema },
-    data, schema
+    data, schema,
+    route: {
+      location: {
+        pathname: 'dummypath'
+      }
+    }
   };
 };
 

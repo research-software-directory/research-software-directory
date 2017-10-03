@@ -11,7 +11,7 @@ import { storeMock } from './testHelpers';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Provider store={store}><App /></Provider>, div);
+  ReactDOM.render(<Provider store={storeMock()}><App /></Provider>, div);
 });
 
 it('renders loader when logged out', () => {

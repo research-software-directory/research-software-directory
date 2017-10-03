@@ -1,6 +1,8 @@
 import * as update from 'immutability-helper';
 import * as actions from './actions';
-import reduceReducer from 'reduce-reducers';
+
+// tslint:disable-next-line no-var-requires no-require-imports
+const reduceReducer = require('reduce-reducers');
 
 const newItemReducer = (state: any = {}, action: actions.ICreateNewItem) => {
   if (action.type === actions.types.CREATE_NEW_ITEM) {
