@@ -82,7 +82,9 @@ class ResourceFormComponent extends React.PureComponent<IProps, any> {
   }
 
   renderFields = (schema: any) =>
-    Object.keys(schema.properties).sort(this.schemaSort(schema.properties))
+    Object.keys(schema.properties)
+      .filter((property: string) => !schema.properties[property].hidden)
+      .sort(this.schemaSort(schema.properties))
       .map((field: string) => this.renderField(field))
 
   impactReportButton = () => (

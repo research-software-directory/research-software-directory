@@ -38,8 +38,10 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
     return id.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
   }
 
+  projectName = () => this.props.item.name.split(' ').slice(1).join(' ');
+
   componentWillMount() {
-    const projectName = this.props.item.name.split(' ').slice(1).join(' ');
+    const projectName = this.projectName();
     this.setState({id: this.sanitizeID(projectName) });
   }
 
@@ -56,11 +58,13 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
   }
 
   createNew = () => {
-  //     this.props.createNewItem(
-  //   'project',
-  //   this.state.id,
-  //   this.props.schema
-  //     );
+    this.props.createNewItem(
+      'project',
+      this.state.id,
+      { ...this.props.item,
+        name: this.projectName()
+      }
+    );
   }
 
   renderOpen = () => {
