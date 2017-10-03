@@ -8,6 +8,7 @@ import { epic as menuEpic } from './components/menu/epic';
 import { epic as publicationsEpic } from './components/publications/epic';
 import { epic as formEpic } from './components/form/epic';
 import { epic as zoteroEpic } from './components/zotero_import/epic';
+import { epic as resourceEpic } from './shared/resource/epic';
 
 export const rootEpic = combineEpics(
   fetchEpic,
@@ -16,5 +17,6 @@ export const rootEpic = combineEpics(
   authEpic,
   publicationsEpic,
   formEpic,
-  zoteroEpic
+  zoteroEpic,
+  resourceEpic
 );
