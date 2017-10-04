@@ -7,7 +7,7 @@ import { accessToken } from '../../services/async';
 import {BACKEND_URL } from '../../settings';
 
 export const epic = combineEpics(
-  (action$: any) => action$.ofType('LOGIN')
+  (action$: any) => action$.ofType(actions.types.LOGIN)
     .map(() => {
       /* Try to find ACCESS TOKEN in local storage
          If not found, check if url contains ?code=...
@@ -27,17 +27,17 @@ export const epic = combineEpics(
       return actions.getAuthToken;
     }),
 
-  (action$: any) => action$.ofType('REDIRECT')
+  (action$: any) => action$.ofType(actions.types.REDIRECT)
     .do((action: actions.IRedirect) => {
       document.location.href = action.url;
     })
     .ignoreElements(),
 
-  (action$: any) => action$.ofType('GET_AUTH_TOKEN')
+  (action$: any) => action$.ofType(actions.types.GET_AUTH_TOKEN)
     .do(accessToken.clear)
     .mapTo(actions.redirect(`${BACKEND_URL}/github_auth`)),
 
-  (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FAILED')
+  (action$: any) => action$.ofType(actions.types.GET_ACCESS_TOKEN_FAILED)
     .map((action: any) =>
       toastrActions.add({
         message: `${action.response && action.response.error ? `Server response: ${action.response.error}` : ''}`,
@@ -48,17 +48,17 @@ export const epic = combineEpics(
       })
     ),
 
-  (action$: any) => action$.ofType('GET_ACCESS_TOKEN/FULFILLED')
+  (action$: any) => action$.ofType(actions.types.GET_ACCESS_TOKEN_FULFILLED)
     .do ((action: any) => accessToken.set(action.response.access_token) )
     .map((action: any) => actions.loggedIn(action.response.user)),
 
-  (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN/FULFILLED')
+  (action$: any) => action$.ofType(actions.types.VERIFY_ACCESS_TOKEN_FULFILLED)
     .map((action: any) => actions.loggedIn(action.response.user)),
 
-  (action$: any) => action$.ofType('VERIFY_ACCESS_TOKEN/FAILED')
+  (action$: any) => action$.ofType(actions.types.VERIFY_ACCESS_TOKEN_FAILED)
     .mapTo(actions.getAuthToken),
 
-  (action$: any) => action$.ofType('LOGGED_IN')
+  (action$: any) => action$.ofType(actions.types.LOGGED_IN)
     .map((action: actions.ILoggedIn) =>
       toastrActions.add({
         message: `Logged in as ${action.user.name}`,

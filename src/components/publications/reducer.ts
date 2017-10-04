@@ -5,7 +5,7 @@ import {IAuthor} from './actions';
 export const reducer = (state: any = {}, action: actions.ISetMapping) => {
   if (action.type === actions.types.SET_MAPPING) {
     const publications = state.current.data.publication;
-    const publication = publications.find((pub: any) => pub.id = action.id);
+    const publication = publications.find((pub: any) => pub.id === action.id);
     const publicationIndex = publications.indexOf(publication);
     const author = publication.authors.find((auth: IAuthor) =>
       auth.firstName === action.author.firstName &&

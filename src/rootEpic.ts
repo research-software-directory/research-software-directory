@@ -5,7 +5,6 @@ import { fetchEpic } from './services/async';
 import { epic as authEpic } from './components/auth/epic';
 import { epic as imageEpic } from './components/images/epic';
 import { epic as menuEpic } from './components/menu/epic';
-import { epic as publicationsEpic } from './components/publications/epic';
 import { epic as formEpic } from './components/form/epic';
 import { epic as zoteroEpic } from './components/zotero_import/epic';
 import { epic as resourceEpic } from './shared/resource/epic';
@@ -15,7 +14,6 @@ export const rootEpic = combineEpics(
   imageEpic,
   menuEpic,
   authEpic,
-  publicationsEpic,
   formEpic,
   zoteroEpic,
   resourceEpic

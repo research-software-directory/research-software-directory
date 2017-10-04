@@ -44,7 +44,7 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
     const meta = item.meta.creatorSummary ? <b>{item.meta.creatorSummary}</b> : null;
 
     return (
-      <List.Item key={item.key} onClick={this.createPublication(item)}>
+      <List.Item key={item.key} style={{cursor: 'pointer'}} onClick={this.createPublication(item)}>
         <span>
           <Icon name="book" />
           <i>{item.data.itemType}</i>: {meta} {item.data.title}

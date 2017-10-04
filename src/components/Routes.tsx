@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ResourceForm } from './form/ResourceForm';
 import { Images } from './images';
-import { Publications } from './publications/Publications';
 import { Publication } from './publications/Publication';
 import { ImpactReports } from './impact_reports/ImpactReports';
 import {ZoteroImporter} from './zotero_import/ZoteroImporter';
@@ -52,7 +51,6 @@ const routesRender = ({location}: {location: any}) => (
       <Route exact={true} path="/" component={hello}/>
       <Route key={location.pathname} exact={true} path="/software/:id/report" component={impactReports} />
       <Route exact={true} path="/images" component={Images} />
-      <Route exact={true} path="/publications" component={Publications} />
       <Route exact={true} path="/publication/:id" component={publication} />
       <Route exact={true} path="/zotero_import" component={zoteroImporter} />
     </Switch>

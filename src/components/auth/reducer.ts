@@ -1,9 +1,14 @@
-import { ILoggedIn } from './actions';
+import * as actions from './actions';
 
-export const reducer = (state: any = {}, action: ILoggedIn) => {
-    switch (action.type) {
-        case 'LOGGED_IN':
-            return { user: action.user };
-        default: return state;
-    }
-};
+export interface IUser {
+  id: string;
+  avatar_url: string;
+  name: string;
+}
+
+export interface IState {
+  user?: IUser;
+}
+
+export const reducer = (state: IState = {}, action: actions.ILoggedIn) =>
+  action.type === actions.types.LOGGED_IN ? { user: action.user } : state;

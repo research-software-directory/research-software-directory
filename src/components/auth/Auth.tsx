@@ -5,6 +5,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import { login } from './actions';
+import { IUser } from './reducer';
 
 const mapDispatchToProps = {
   login
@@ -14,14 +15,15 @@ const mapStateToProps = (state: any) => ({
   user:   state.auth.user
 });
 
-const connector = connect(mapStateToProps, mapDispatchToProps );
-
-interface IProps {
-  user: any;
-  login: typeof login;
+interface IMappedProps {
+  user: null | IUser;
 }
 
-class AuthComponent extends React.PureComponent<IProps, { }> {
+type IDispatchProps = typeof mapDispatchToProps;
+
+const connector = connect(mapStateToProps, mapDispatchToProps );
+
+class AuthComponent extends React.PureComponent<IMappedProps & IDispatchProps, { }> {
   componentWillMount() {
     this.props.login();
   }

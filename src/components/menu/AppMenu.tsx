@@ -12,6 +12,7 @@ import { UploadStatus } from './UploadStatus';
 
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
+import {IUser} from '../auth/reducer';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
@@ -37,7 +38,7 @@ interface IMappedProps {
   dataDirty: boolean;
   numAsyncs: number;
   schema: any;
-  user: any;
+  user: IUser;
   saveChanges: any;
 }
 
