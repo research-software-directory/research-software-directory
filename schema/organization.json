@@ -1,7 +1,8 @@
 {
   "_id": "organization",
   "required": [
-    "name"
+    "name",
+    "id"
   ],
   "id": "/schema/organization",
   "description": "An organization such as a university, company or foundation.",
@@ -72,8 +73,7 @@
       "type": "string",
       "description": "Link to the main website."
     },
-    "@id": {
-      "format": "uri",
+    "id": {
       "type": "string",
       "description": "ID of the organization. This is preferably an URI where the organization metadata can be resolved, e.g., http://software.esciencecenter.nl/organization/nlesc"
     },

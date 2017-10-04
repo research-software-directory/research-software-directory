@@ -1,54 +1,19 @@
 {
   "_id": "publication",
   "required": [
-    "@id",
+    "id",
     "schema",
     "description",
     "endorsedBy",
-    "author",
+    "authors",
     "date"
   ],
   "additionalProperties": false,
-  "description": "An publication such as a journal article.",
+  "description": "A publication (journal article, video, news item etc).",
   "type": "object",
   "#schema": "http://json-schema.org/draft-04/schema#",
   "id": "/schema/publication",
   "properties": {
-    "description": {
-      "type": "string",
-      "description": "Bibliography as text, in Markdown format underneath Frontmatter (---) in Markdown files"
-    },
-    "endorsedBy": {
-      "items": {
-        "type": "string",
-        "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
-        "format": "uri"
-      },
-      "type": "array",
-      "description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization."
-    },
-    "publishedIn": {
-      "type": "string",
-      "description": "Title of the container holding the item (e.g. the book title for a book chapter, the journal title for a journal article). In Citation Style Language (CSL) it is the `container-title` field."
-    },
-    "date": {
-      "format": "date-time",
-      "description": "Date the item was issued/published. In Citation Style Language (CSL) it is the `issued` field.",
-      "type": "string"
-    },
-    "@id": {
-      "format": "uri",
-      "type": "string",
-      "description": "Digital Object Identifiers (DOI) of publication"
-    },
-    "type": {
-      "description": "Type of citation. In Citation Style Language (CSL) it is the `type` field.",
-      "type": "string",
-      "enum": [
-        "proceedings-article",
-        "journal-article"
-      ]
-    },
     "schema": {
       "enum": [
         "http://software.esciencecenter.nl/schema/publication"
@@ -57,18 +22,60 @@
       "type": "string",
       "description": "Fixed property, to validate the JSON object with the current schema."
     },
+    "date": {
+      "format": "date-time",
+      "description": "Date the item was issued/published. In Citation Style Language (CSL) it is the `issued` field.",
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "description": "id of publication (Zotero key)"
+    },
+    "zotero_key": {
+      "type": "string",
+      "description": "zotero key of publication"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of publication"
+    },
+    "type": {
+      "description": "Type of citation (Zotero type)",
+      "type": "string"
+    },
     "doi": {
       "format": "uri",
       "description": "Digital Object Identifiers (DOI) of publication",
       "type": "string"
     },
-    "author": {
-      "description": "ID of projects that are responsible for the publication.",
+    "url": {
+      "format": "uri",
+      "description": "URL where publication can be found",
+      "type": "string"
+    },
+    "authors": {
+      "description": "IDs of people that are author of publication.",
       "type": "array",
       "items": {
-        "type": "string",
-        "description": "ID of a project, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
-        "format": "uri"
+        "type": "object",
+        "description": "Author",
+        "required": ["firstName", "lastName"],
+        "additionalProperties": false,
+        "properties": {
+          "firstName": {
+            "type" : "string",
+            "description": "first name of author"
+          },
+          "lastName": {
+            "type" : "string",
+            "description": "last name of author"
+          },
+          "person": {
+            "type": "string",
+            "description": "ID of person that author maps to",
+            "resType": "/person"
+          }
+        }
       }
     }
   }
