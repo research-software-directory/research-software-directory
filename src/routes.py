@@ -10,10 +10,8 @@ import src.services.user as user
 from src.extensions import resize
 from src.json_response import jsonify
 from src.services.database import db
-from src.services.publication import get_mapping
 from src.services.schema import schema
 from src.services.util import worker
-from src.services.zotero import zotero_sync
 # from src.services.report import load_reports
 from src.settings import settings
 
@@ -49,6 +47,7 @@ def _schema():
 def _github_auth():
     return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s' % settings['GITHUB_CLIENT_ID'])
 
+
 @api.route('/get_access_token/<token>')
 @jsonify
 def _login(token):
@@ -61,18 +60,6 @@ def _login(token):
 @jsonify
 def _verify_access_token(token):
     return {'user': user.get_user(token)}, 200
-
-# @api.route('/enum/<resource_type>/<field_name>', methods=["POST"])
-# @jsonify
-# @user.require_organization('nlesc')
-# def _post_enum(resource_type, field_name):
-#     value = flask.request.get_json()['value']
-#     if not value:
-#         raise exceptions.RouteException('no value provided', 401)
-#     try:
-#         return database.apiend_to_schema_enum(resource_type, field_name, value), 200
-#     except KeyError:
-#         raise exceptions.RouteException("invalid type/field", 500)
 
 
 @api.route('/update', methods=["POST"])
@@ -167,31 +154,6 @@ def _reports(software_id):
     id = '/software/' + software_id
     reports = list(db.impact_report.find({'software_id': id}))
     return reports, 200
-
-
-@api.route('/zotero_sync', methods=["GET"])
-@jsonify
-def _zoterotest():
-    zotero_sync()
-    return {'status': 'ok'}, 200
-
-
-@api.route('/author_mapping/publication/<id>', methods=["GET"])
-@jsonify
-def _author_mapping(id):
-    id = '/publication/'+id
-    return get_mapping(id), 200
-
-
-@api.route('/save_author_mapping', methods=["POST"])
-@jsonify
-def _save_mapping():
-    value = flask.request.get_json()
-
-    value.update({'_id': value['id'], 'type': 'saved'})
-    db.publication_creator_person_map.update({'_id': value['_id']}, value, upsert=True)
-
-    return value, 200
 
 
 @api.route('/new_projects', methods=['GET'])

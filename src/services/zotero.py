@@ -1,7 +1,6 @@
 import logging
 
 from pyzotero import zotero
-
 from src.services.database import db
 from src.settings import settings
 
@@ -10,32 +9,9 @@ logger = logging.getLogger(__name__)
 nlesc_library = '1689348'
 library_type = 'group'
 
-def zotero_sync():
-    pass
-    # req = requests.get('https://api.zotero.org/groups/1689348/items?key=%s' % settings['ZOTERO_ACCESS_TOKEN'])
-    # result = req.json()
-    #
-    # for entry in [entry['data'] for entry in result]:
-    #     publication = entry
-    #     publication['_id'] = '/publication/' + entry['key']
-    #     publication['id'] = '/publication/' + entry['key']
-    #     db.publication.update({'_id': publication['_id']}, publication, upsert=True)
 
-
-def zotero_test():
-    zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])
+def get_projects(zot):
     collections = zot.collections()
-    projects_collection = next(filter(lambda x: x['data']['name'] == 'Projects', collections))
-    projects = list(filter(lambda x: x['data']['parentCollection'] == projects_collection['key'], collections))
-
-    print(projects[0])
-
-    import pprint
-    pprint.pprint(zot.collection_items(projects[0]['key'])[0])
-    exit(0)
-
-def get_projects(zotero):
-    collections = zotero.collections()
     projects_collection = next(filter(lambda x: x['data']['name'] == 'Projects', collections))
     return list(filter(lambda x: x['data']['parentCollection'] == projects_collection['key'], collections))
 
