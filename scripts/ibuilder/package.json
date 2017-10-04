@@ -1,0 +1,16 @@
+{
+  "name": "ibuilder",
+  "version": "1.0.0",
+  "description": "builds typescript interface from json schema definition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "convert": "node index.js"
+  },
+  "author": "Tom Klaver",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "json-schema-to-typescript": "^4.6.5",
+    "requests": "^0.2.2"
+  }
+}

@@ -8,6 +8,7 @@
         "fuse.js": "^3.1.0",
         "history": "^4.7.2",
         "immutability-helper": "^2.4.0",
+        "json-schema-to-typescript": "^4.6.5",
         "moment": "^2.18.1",
         "prop-types": "^15.6.0",
         "react": "^15.6.2",
@@ -65,9 +66,10 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "npm run schemabuild && react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "lint": "react-scripts lint"
+        "lint": "react-scripts lint",
+        "schemabuild": "cd scripts/ibuilder && npm run convert"
     }
 }
