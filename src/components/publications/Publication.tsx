@@ -4,15 +4,17 @@ import { Segment, Message, Table } from 'semantic-ui-react';
 import { Author } from './Author';
 import {matchNames} from './matchNames';
 import {setMapping} from './actions';
+import {IPublication} from '../../interfaces/publication';
+import {IPerson} from '../../interfaces/person';
 
 interface IOwnProps {
   id: string;
 }
 
 interface IMappedProps {
-  people: any;
-  publication: any;
-  originalPublication: any;
+  people: IPerson[];
+  publication: IPublication;
+  originalPublication: IPublication;
 }
 
 interface IState {
@@ -77,7 +79,7 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
 
   autoMapAuthorPerson = () => {
     matchNames(this.props.people, this.props.publication.authors).forEach((author: any) => {
-      this.props.setMapping(this.props.publication.id, author, author.person_id);
+      this.props.setMapping(this.props.publication.id, author, author.person);
     });
   }
 
@@ -86,7 +88,7 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
   }
 
   componentWillMount() {
-    if (this.props.publication.authors.filter((author: any) => !('person_id' in author)).length) {
+    if (this.props.publication.authors.filter((author: any) => !('person' in author)).length) {
       this.autoMapAuthorPerson();
     }
   }

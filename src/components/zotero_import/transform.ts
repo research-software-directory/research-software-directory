@@ -14,6 +14,7 @@ export const transform = (zoteroRecord: any) =>
     type: zoteroRecord.data.itemType,
     title: zoteroRecord.data.title,
     url: zoteroRecord.data.url,
+    date: zoteroRecord.data.date,
     authors: zoteroRecord.data.creators.map((creator: IZoteroCreator) =>
       ({
         firstName: creator.firstName,

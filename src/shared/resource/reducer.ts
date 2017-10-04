@@ -10,6 +10,9 @@ const newItemReducer = (state: any = {}, action: actions.ICreateNewItem) => {
     const schema = state.schema[action.resourceType];
     Object.keys(schema.properties).forEach((propName: string) => {
       newItem[propName] = schema.properties[propName].type === 'array' ? [] : '';
+      if (schema.properties[propName].enum && schema.properties[propName].enum.length === 1) {
+        newItem[propName] = schema.properties[propName].enum[0];
+      }
     });
     newItem.id = action.id;
     newItem.name = action.id;

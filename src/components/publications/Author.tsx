@@ -3,11 +3,13 @@ import * as React from 'react';
 import { Segment, Button, Icon } from 'semantic-ui-react';
 
 import { ResourceArray } from '../form/components/ResourceArray';
+import {IPerson} from '../../interfaces/person';
+import {IAuthor} from './actions';
 
 interface IProps {
-  people: any;
-  creator: any;
-  person: any;
+  people: IPerson[];
+  creator: IAuthor;
+  person: IPerson;
   onChange: any;
 }
 
@@ -33,9 +35,9 @@ export class Author extends React.PureComponent<IProps, IState> {
   }
 
   details = () => {
-    const options = this.props.people.map((resource: any) => ({
-      id: resource.id,
-      label: resource.name || resource.id
+    const options = this.props.people.map((person) => ({
+      id: person.id,
+      label: person.name || person.id
     }));
 
     return (

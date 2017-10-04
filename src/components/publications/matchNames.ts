@@ -1,4 +1,6 @@
 import * as Fuse from 'fuse.js';
+import {IPerson} from '../../interfaces/person';
+import {IAuthor} from './actions';
 
 const options = {
   shouldSort: true,
@@ -13,7 +15,7 @@ const options = {
   ]
 };
 
-export const matchNames = (people: any[], authors: any[]) => {
+export const matchNames = (people: IPerson[], authors: IAuthor[]) => {
   const _people = people.map((person: any) => {
     const nameParts = person.name.split(' ');
 
@@ -35,7 +37,7 @@ export const matchNames = (people: any[], authors: any[]) => {
 
   _authors.forEach((author, index) => {
     const results = fuseByName.search(author.name);
-    authors[index].person_id = (results.length > 0)
+    authors[index].person = (results.length > 0)
     ? (results[0] as any).item.id
     : null;
   });
