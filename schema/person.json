@@ -2,7 +2,8 @@
   "_id": "person",
   "required": [
     "name",
-    "affiliation"
+    "affiliation",
+    "id"
   ],
   "id": "http://software.esciencecenter.nl/schema/person",
   "type": "object",
@@ -13,7 +14,7 @@
       "type": "string",
       "description": "Person's github user profile (e.g. https://github.com/sverhoeven)."
     },
-    "@id": {
+    "id": {
       "format": "uri",
       "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
       "type": "string"
