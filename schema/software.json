@@ -16,6 +16,19 @@
       "description": "Publications based on software",
       "sortIndex": 0
     },
+    "id": {
+      "format": "uri",
+      "description": "ID of the software.",
+      "type": "string"
+    },
+    "schema": {
+      "description": "Fixed property, to validate the JSON object with the current schema.",
+      "type": "string",
+      "format": "uri",
+      "enum": [
+        "http://software.esciencecenter.nl/schema/software"
+      ]
+    },
     "name": {
       "description": "Human-readable name",
       "type": "string"
@@ -310,23 +323,7 @@
           "Fortran",
           "Java",
           "Python",
-          "aaa",
-          "aaaaaaaaaaaa",
-          "asdadsadsda",
-          "asdasdasddas",
-          "asddd",
-          "asddddddddd",
-          "asdsadadsadsadadsad",
-          "asfsafafsafsfasfas",
-          "fdssdfsdfsdfsdf",
-          "ffffffffffff",
-          "fsdfdsfdsfsdfsdfdsfsdf",
-          "ggggggggg",
-          "hhhhhhhh",
-          "sdfsf",
-          "sfddsfsfsdfsdfd",
-          "testjenie",
-          "tsetset"
+          "YAML"
         ]
       }
     },

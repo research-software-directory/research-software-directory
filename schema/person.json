@@ -9,6 +9,10 @@
   "type": "object",
   "#schema": "http://json-schema.org/draft2-3/schema#",
   "properties": {
+    "name": {
+      "description": "Full name of the person.",
+      "type": "string"
+    },
     "githubUrl": {
       "format": "uri",
       "type": "string",
@@ -24,40 +28,19 @@
       "description": "Person's portrait.",
       "type": "string"
     },
-    "contactPersonOf": {
-      "type": "array",
-      "description": "Projects or software that a person is contact person of.",
-      "items": {
-        "format": "uri",
-        "description": "ID of a project or software, preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics",
-        "type": "string"
-      }
-    },
     "researchgateUrl": {
       "format": "uri",
       "type": "string",
       "description": "Personal ResearchGate profile (e.g. https://www.researchgate.net/profile/Stefan_Verhoeven)."
     },
-    "ownerOf": {
-      "type": "array",
-      "description": "Software that a person is the owner of.",
-      "items": {
-        "format": "uri",
-        "description": "ID of a software package, preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon",
-        "type": "string"
-      }
-    },
     "description": {
       "description": "Person description, bio and/or CV, in Markdown format underneath Frontmatter (---) in Markdown files",
-      "type": "string"
+      "type": "string",
+      "markdown": true
     },
     "jobTitle": {
       "type": "string",
       "description": "The job title of the person (for example, eScience Research Engineer)."
-    },
-    "name": {
-      "description": "Full name of the person.",
-      "type": "string"
     },
     "ORCID": {
       "format": "uri",

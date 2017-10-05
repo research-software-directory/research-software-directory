@@ -6,6 +6,7 @@ from src.services.database import db
 from src.services.import_export import data_import, data_export
 from src.services.original_data_importer import cleanup, import_original
 from src.services.report import generate_impact_report
+from src.services.schema import verify_data
 
 logger = logging.getLogger(__name__)
 
@@ -51,3 +52,7 @@ def init(app):
     @app.cli.command('import_old_data')
     def _import_oringinal():
         import_original()
+
+    @app.cli.command('verify_data')
+    def _verify_data():
+        verify_data()
