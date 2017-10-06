@@ -3,7 +3,7 @@ import shutil
 import subprocess
 import tempfile
 
-from src.services.database import db
+from src.database.database import db
 from src.settings import settings
 
 

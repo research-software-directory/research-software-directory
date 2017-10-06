@@ -2,9 +2,9 @@ import logging
 
 import click
 
-from src.services.database import db
+from src.database.database import db
 from src.services.import_export import data_import, data_export
-from src.services.original_data_importer import cleanup, import_original
+from src.services.original_data_importer import import_original
 from src.services.report import generate_impact_report
 from src.services.schema import verify_data
 
@@ -43,11 +43,6 @@ def init(app):
             print('(%i / %i) generating report for %s' % (i, softwares.count(), software['id']))
             generate_impact_report(software['id'])
             i += 1
-
-    @app.cli.command('cleanup')
-    def _cleanup():
-        """Cleanup unused keys (not in schema)"""
-        cleanup()
 
     @app.cli.command('import_old_data')
     def _import_oringinal():

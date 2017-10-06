@@ -4,6 +4,7 @@ initializes database
 import logging
 from src.settings import settings
 from pymongo import MongoClient
+
 logger = logging.getLogger(__name__)
 
 client = MongoClient('mongodb://%s:%s/' % (settings['DATABASE_HOST'], settings['DATABASE_PORT']))

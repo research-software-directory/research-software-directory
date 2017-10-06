@@ -7,9 +7,9 @@ from flask_cors import CORS
 import src.exceptions as exceptions
 import src.services.github as github
 import src.services.user as user
+from src.database.database import db
 from src.extensions import resize
 from src.json_response import jsonify
-from src.services.database import db
 from src.services.schema import schema
 from src.services.util import worker
 # from src.services.report import load_reports

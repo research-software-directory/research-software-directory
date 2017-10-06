@@ -1,7 +1,8 @@
 import logging
 
 from pyzotero import zotero
-from src.services.database import db
+
+from src.database.database import db
 from src.settings import settings
 
 logger = logging.getLogger(__name__)

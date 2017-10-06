@@ -1,7 +1,7 @@
 import json
 import re
 
-from src.services.database import db
+from src.database.database import db
 
 prefixes = ['/project/', '/software/', '/person/', '/organization/']
 
@@ -64,6 +64,7 @@ def fix_person_github_id(person):
         matches = re.match(r'.*github.com/(.*$)', person['githubUrl'])
         person['github_id'] = matches.group(1)
 
+
 def import_persons():
     for person in original_data['person']:
         person = remove_id_prefix(person)
@@ -86,14 +87,3 @@ def import_original():
     import_software()
     import_persons()
     import_organizations()
-
-
-def cleanup():
-    """Cleanup unused keys (not in schema)"""
-    for resource_type in ['software', 'person', 'project', 'organization']:
-        for resource in db[resource_type].find():
-            for key in resource:
-                if key not in ['id', '@id', '_id', 'schema'] and \
-                        key not in db.schema.find_one({'_id': resource_type})['properties']:
-                    print(resource['_id'] + ' ' + key)
-                    db[resource_type].update({'_id' : resource['_id']}, {'$unset': { key: ''}})
