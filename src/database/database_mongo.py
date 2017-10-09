@@ -9,21 +9,9 @@ logger = logging.getLogger(__name__)
 
 
 class MongoRecord(Record):
-    def __init__(self, data, collection):
-        super(MongoRecord, self).__init__(data)
-        self.collection = collection
+    def __init__(self, data, collection, is_new=False):
+        super(MongoRecord, self).__init__(data, collection, is_new)
         self._id = self.data.pop('_id') if '_id' in self.data else None  # hide mongo _id from data
-
-    def save(self):
-        if not self._id:  # new record
-            if self.data['id']:
-                self.data['_id'] = self.data['id']
-                self.collection.insert(self.data)  # can raise if id exists
-            else:
-                self.data['id'] = str(self.collection.insert(self.data))  # insert updates data with _id
-            self._id = self.data.pop('_id')
-        self.collection.update({'_id': self._id}, self.data)
-        Record.save(self)
 
 
 class MongoCursor(Cursor):  # wraps mongo cursor
@@ -36,25 +24,41 @@ class MongoCursor(Cursor):  # wraps mongo cursor
             yield MongoRecord(resource, self.collection)
 
     def next(self):
-        return self.cursor.next()
+        return MongoRecord(self.cursor.next(), self.collection)
+
+    def count(self):
+        return self.cursor.count()
 
 
 class MongoCollection(Collection):
     def __init__(self, name, db):
-        self.collection = db[name]
+        self._collection = db[name]
 
     def all(self):
-        return MongoCursor(self.collection.find(), self.collection)
+        return MongoCursor(self._collection.find(), self)
 
     def find(self, params):
-        return MongoCursor(self.collection.find(params), self.collection)
+        return MongoCursor(self._collection.find(params), self)
 
     def find_by_id(self, id):
-        return MongoRecord(self.collection.find_one({'id': id}), self.collection)
+        return MongoRecord(self._collection.find_one({'id': id}), self)
 
     def new(self, id=None):
-        new_record = MongoRecord({'id': id}, self.collection)
+        new_record = MongoRecord({'id': id}, self, True)
         return new_record
+
+    def insert(self, record):
+        if record.has_id() and record.data['id']:
+            record.data['_id'] = record.data['id']
+            self._collection.insert(record.data)  # can raise if id exists
+        else:
+            record.data['id'] = str(self._collection.insert(record.data))  # insert updates data with _id
+            self._collection.update({'_id': record.data['_id']}, record.data)  # save `id`
+        record._id = record.data.pop('_id')
+        return record.data['id']
+
+    def update(self, record):
+        pass
 
 
 class MongoDatabase(Database):
@@ -72,9 +76,11 @@ class MongoDatabase(Database):
     def get_collections(self):
         return self.db.collection_names(False)
 
+    def get_pymongo(self):
+        return self.db
+
     def __getattr__(self, item):
         return MongoCollection(item, self.db)
 
 
 db = MongoDatabase(settings['DATABASE_HOST'], settings['DATABASE_PORT'], 'test')
-print(db.get_collections())

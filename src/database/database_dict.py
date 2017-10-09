@@ -11,16 +11,6 @@ def random_id():
     return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(25))
 
 
-class DictRecord(Record):
-    def __init__(self, data, collection):
-        super(DictRecord, self).__init__(data)
-        self.collection = collection
-
-    def save(self):
-        self.collection.insert(self)
-        Record.save(self)
-
-
 class DictCursor(Cursor):
     def __init__(self, data_set, collection):
         self.data_set = data_set
@@ -29,10 +19,13 @@ class DictCursor(Cursor):
 
     def __iter__(self):
         for resource in self.data_set:
-            yield DictRecord(resource, self.collection)
+            yield Record(resource, self.collection)
 
     def next(self):
-        return next(self.data_set_iterator)
+        return Record(next(self.data_set_iterator), self.collection)
+
+    def count(self):
+        return len(self.data_set)
 
 
 class DictCollection(Collection):
@@ -43,33 +36,32 @@ class DictCollection(Collection):
         return DictCursor(self._collection, self)
 
     def find(self, params):
-        return DictCursor(self._collection.find(params), self)
+        def find_filter(record_dict):
+            for key in params:
+                if key not in record_dict or record_dict[key] != params[key]:
+                    return False
+            return True
+
+        return DictCursor(list(filter(find_filter, self._collection)), self)
 
     def find_by_id(self, id):
         for index, item in enumerate(self._collection):
             if item['id'] == id:
-                return item
+                return Record(item, self)
         return None
 
     def new(self, id=None):
-        new_record = DictRecord({'id': id}, self)
+        new_record = Record({'id': id}, self, True)
         return new_record
 
     def insert(self, record):
-        print("inserting")
-        if 'id' not in record:  # or not record['id']:
+        if not record.has_id():
             record['id'] = random_id()
-        self._collection.append(record)
+        self._collection.append(record.data)
         return record['id']
 
     def update(self, record):
-        for index, item in enumerate(self._collection):
-            print(record)
-            if item['id'] == record['id']:
-                self._collection[index] = record
-                return
-        raise Exception('not found...')
-
+        pass  # not needed, records are directly updated
 
 
 class DictDatabase(Database):

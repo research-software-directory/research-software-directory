@@ -21,20 +21,32 @@ class _ChangeDetect:
         return self.data
 
 
-class Record(ABC):
-    def __init__(self, data, is_new=False):
+class Record():
+    def __init__(self, data, collection, is_new=False):
         self.data = data
         self.is_new = is_new
         self.dirty = is_new
+        self.collection = collection
+
+    def is_new(self):
+        return self.is_new
+
+    def has_id(self):
+        return 'id' in self.data and self.data['id'] is not None
+
+    def has_key(self, key):
+        return key in self.data
 
     def _set_dirty(self):
         self.dirty = True
 
     def save(self):
+        if self.is_new:
+            self.collection.insert(self)
+        else:
+            self.collection.update(self)
         self.dirty = False
         self.is_new = False
-        if self.is_new:
-            super
 
     def __str__(self):
         return str(self.data)
@@ -60,6 +72,10 @@ class Cursor(ABC):
 
     @abstractmethod
     def next(self):
+        pass
+
+    @abstractmethod
+    def count(self):
         pass
 
 
