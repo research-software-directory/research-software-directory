@@ -32,8 +32,9 @@ for key in settings:
     # if settings[key] is None:
     #     raise EnvironmentError("%s not set (add to environment or settings.remote.json)" % key)
 
-if not os.path.exists(settings['DATA_FOLDER']):
-    os.makedirs(settings['DATA_FOLDER'])
+if 'DATA_FOLDER' in settings:
+    if not os.path.exists(settings['DATA_FOLDER']):
+        os.makedirs(settings['DATA_FOLDER'])
 
-if not os.path.exists(settings['DATA_FOLDER']+'/images'):
-    os.makedirs(settings['DATA_FOLDER']+'/images')
+    if not os.path.exists(settings['DATA_FOLDER']+'/images'):
+        os.makedirs(settings['DATA_FOLDER']+'/images')
