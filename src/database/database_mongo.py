@@ -3,7 +3,6 @@ import logging
 from pymongo import MongoClient
 
 from src.database.database import Record, Cursor, Collection, Database
-from src.settings import settings
 
 logger = logging.getLogger(__name__)
 
@@ -70,8 +69,6 @@ class MongoCollection(Collection):
 class MongoDatabase(Database):
     def __init__(self, host, port, database_name):
         self.client = MongoClient('mongodb://%s:%s/' % (host, port))
-            # MongoClient('mongodb://%s:%s/' % (settings['DATABASE_HOST'], settings['DATABASE_PORT']))
-        # self.db = self.client[settings['DATABASE_NAME']]
         self.db = self.client[database_name]
         self._create_indexes()
 
@@ -87,6 +84,3 @@ class MongoDatabase(Database):
 
     def __getattr__(self, item):
         return MongoCollection(item, self.db)
-
-
-db = MongoDatabase(settings['DATABASE_HOST'], settings['DATABASE_PORT'], 'test')
