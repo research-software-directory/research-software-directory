@@ -32,7 +32,7 @@ for key in settings:
     # if settings[key] is None:
     #     raise EnvironmentError("%s not set (add to environment or settings.remote.json)" % key)
 
-if 'DATA_FOLDER' in settings:
+if 'DATA_FOLDER' in settings and settings['DATA_FOLDER'] is not None:
     if not os.path.exists(settings['DATA_FOLDER']):
         os.makedirs(settings['DATA_FOLDER'])
 
