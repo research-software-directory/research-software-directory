@@ -29,8 +29,8 @@ except FileNotFoundError:
 for key in settings:
     if key in os.environ:
         settings[key] = os.environ[key]
-    if settings[key] is None:
-        raise EnvironmentError("%s not set (add to environment or settings.remote.json)" % key)
+    # if settings[key] is None:
+    #     raise EnvironmentError("%s not set (add to environment or settings.remote.json)" % key)
 
 if not os.path.exists(settings['DATA_FOLDER']):
     os.makedirs(settings['DATA_FOLDER'])

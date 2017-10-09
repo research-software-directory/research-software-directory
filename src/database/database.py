@@ -114,12 +114,5 @@ class Database(ABC):
     def __getattr__(self, item):
         pass
 
-class Encoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Record):
-            return obj.to_dict()
-        return json.JSONEncoder.default(self, obj)
-
-
-def dumps(data):
-    return json.dumps(data, cls=Encoder)
+    def __getitem__(self, item):
+        return self.__getattr__(item)

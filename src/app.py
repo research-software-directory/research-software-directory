@@ -2,7 +2,7 @@ import logging
 from flask import Flask
 
 from src.database.database_mongo import MongoDatabase
-# from src.routes import api as api_routes
+from src.routes import get_routes
 from src.extensions import resize
 from src.service_controller import ServiceController
 from src.settings import settings
@@ -39,8 +39,9 @@ def register_error_handlers(app):
 
 
 def register_blueprints(app):
-    # app.register_blueprint(api_routes)
-    pass
+    routes = get_routes(service_controller, db)
+    app.register_blueprint(routes)
+
 
 def register_extensions(app):
     app.config['RESIZE_URL'] = settings['DATA_FOLDER']
@@ -51,8 +52,10 @@ def register_extensions(app):
 def register_commands(app):
     commands.init(app, service_controller, db)
 
+
 def setup_service_controller(app):
     app['test'] = 5
+
 
 if __name__ == "__main__":
     app = create_app()
