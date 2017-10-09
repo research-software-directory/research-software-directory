@@ -29,6 +29,12 @@ class MongoCursor(Cursor):  # wraps mongo cursor
     def count(self):
         return self.cursor.count()
 
+    def sort(self, *args, **kwargs):
+        self.cursor = self.cursor.sort(*args, **kwargs)
+
+    def limit(self, *args, **kwargs):
+        self.cursor = self.cursor.limit(*args, **kwargs)
+
 
 class MongoCollection(Collection):
     def __init__(self, name, db):

@@ -27,6 +27,13 @@ class DictCursor(Cursor):
     def count(self):
         return len(self.data_set)
 
+    def sort(self, *args, **kwargs):
+        return self
+
+    def limit(self, count):
+        self.data_set = self.data_set[:count]
+        return self
+
 
 class DictCollection(Collection):
     def __init__(self, name, db):
@@ -68,5 +75,10 @@ class DictDatabase(Database):
     def __init__(self, data=None):
         self.db = data or {}
 
+    def get_collections(self):
+        return list(self.db.keys())
+
     def __getattr__(self, item):
+        if item not in self.db:
+            self.db[item] = []
         return DictCollection(item, self.db)

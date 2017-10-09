@@ -107,9 +107,12 @@ class Collection(ABC):
 
 class Database(ABC):
     @abstractmethod
-    def __getattr__(self, item):
+    def get_collections(self):
         pass
 
+    @abstractmethod
+    def __getattr__(self, item):
+        pass
 
 class Encoder(json.JSONEncoder):
     def default(self, obj):

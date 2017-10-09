@@ -1,19 +1,41 @@
 from src.database.database_dict import DictDatabase
 from src.services import github
+from src.settings import settings
 import pytest
 
 
-@pytest.fixture(autouse=True)
-def zen():
-    return github.GithubService('123', '123')
+if settings['GITHUB_ACCESS_TOKEN']:
+    @pytest.fixture(autouse=True)
+    def db():
+        return DictDatabase({
+            'software': [
+                {
+                    'id': 'research-software-directory-backend',
+                    'githubid': 'nlesc/research-software-directory-backend'
+                }
+            ]
+        })
 
-def test_rate_limit(zen):
-   print (zen)
+    @pytest.fixture(autouse=True)
+    def service(db):
+        return github.GithubService(db, settings['GITHUB_ACCESS_TOKEN'])
 
-   # db = DictDatabase({'software' : [{'id': 'asd', 'a': '123'}, {'id': 'dsa', 'a': '123'}]})
-   # db.software.insert({'id': 'new'})
-   # print(list(db.software.all()))
+    def test_service_exists(service):
+        assert service is not None
 
+    def test_get_github_repo(service):
+        repo = service.get_github_repo('nlesc/research-software-directory-backend')
+        assert repo['name'] == 'research-software-directory-backend'
 
+    def test_update_commits_fails_for_unknown_repo(service):
+        with pytest.raises(Exception) as excinfo:
+            service.update_commits('asdaddasfdfsdfds')
+        assert 'not found' in str(excinfo)
 
-   # raise(1)
+    def test_update_commits(service, db):
+        service.update_commits('research-software-directory-backend')
+        assert db.commit.all().count() > 68
+
+    def test_releases(service):
+        releases = service.releases('NLeSC/DiVE')
+        assert len(releases) >= 4

@@ -1,18 +1,16 @@
-import pymongo.errors
 import requests
 
 
 class GithubService:
-    def __init__(self, token, db):
+    def __init__(self, db, token):
         self.access_token = token
         self.db = db
 
-    @staticmethod
-    def releases(token, repo):
+    def releases(self, repo):
         url = 'https://api.github.com/repos/%s/releases' % repo
         headers = {
             'Accept': 'application/vnd.github.v3+json',
-            'Authorization': 'token %s' % token
+            'Authorization': 'token %s' % self.access_token
         }
         req = requests.get(url, headers=headers)
         resp = req.json()
@@ -52,6 +50,10 @@ class GithubService:
                 'Authorization': 'token ' + self.access_token
             }
             req = requests.get(url, headers=headers)
+            if req.status_code == 404:
+                raise Exception('GitHub repo not found: %s' % repo)
+            if req.status_code != 200:
+                raise Exception('Error getting commits for GitHub repo %s' % repo)
             return req.json()
     
         result = []
@@ -66,7 +68,7 @@ class GithubService:
         return result
     
     def update_commits(self, software_id):
-        software = self.db.software.find_one({'_id': software_id})
+        software = self.db.software.find_by_id(software_id)
         if not software:
             raise Exception('software not found (%s)' % software_id)
         if not software['githubid']:
@@ -87,11 +89,13 @@ class GithubService:
             }
     
         if len(new_commits) > 0:
-            try:
-                self.db.commit.insert_many([transform(commit) for commit in new_commits], ordered=False)
-            except pymongo.errors.BulkWriteError:
-                pass  # no problem, because it is trying to insert duplicate id (last commit already exists)
-    
+            for commit_data in new_commits:
+                try:
+                    commit = self.db.commit.new(transform(commit_data))
+                    commit.save()
+                except Exception as e:
+                    print(e)
+
     def get_github_repo(self, github_id):
         url = 'https://api.github.com/repos/%s' % github_id
         headers = {

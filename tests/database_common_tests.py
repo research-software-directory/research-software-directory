@@ -12,6 +12,11 @@ def test_find_by_id(db):
     assert project.data == project1
 
 
+def test_access_empty_collection(db):
+    some_collection = db.some_collection
+    assert some_collection is not None
+
+
 def test_direct_update(db):
     project = db.project.find_by_id('dict')
     project['newprop'] = 5
