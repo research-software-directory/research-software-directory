@@ -8,3 +8,4 @@ fuzzywuzzy==0.15.1
 pyzenodo==0.0.4
 python-dateutil==2.6.1
 pyzotero==1.2.13
+jsonschema==2.6.0
