@@ -46,7 +46,10 @@ class MongoCollection(Collection):
         return MongoCursor(self._collection.find(params), self)
 
     def find_by_id(self, id):
-        return MongoRecord(self._collection.find_one({'id': id}), self)
+        try:
+            return MongoRecord(self._collection.find_one({'id': id}), self)
+        except TypeError:
+            return None
 
     def new(self, id_or_data=None):
         if isinstance(id_or_data, str) or id_or_data is None:

@@ -20,4 +20,4 @@ if settings.get('DATABASE_HOST') and settings.get('DATABASE_PORT'):
         raw_db.client.drop_database(test_db_name)
 
 
-    from tests.database.database_common_tests import *
+    from tests.unit.database.database_common_tests import *
