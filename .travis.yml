@@ -12,6 +12,7 @@ install:
 script:
 - PYTHONPATH=`pwd` pytest --cov=src
 after_success:
+- export
 - coveralls
 - docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD} &&
   docker pull ${DOCKER_USERNAME}/rsd-backend &&
