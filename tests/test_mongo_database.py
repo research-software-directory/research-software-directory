@@ -6,7 +6,7 @@ import pytest
 
 test_db_name = 'TESTING_DB'
 
-if 'DATABASE_HOST' in settings and 'DATABASE_PORT' in settings:
+if settings.get('DATABASE_HOST') and settings.get('DATABASE_PORT'):
     @pytest.fixture(autouse=True)
     def db():
         database = MongoDatabase(settings['DATABASE_HOST'], settings['DATABASE_PORT'], test_db_name)
