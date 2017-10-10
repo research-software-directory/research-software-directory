@@ -1,7 +1,20 @@
 """Flask JSON response module"""
 
 import flask
-from bson import json_util
+import json
+
+from src.database.database import Record
+
+
+class Encoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Record):
+            return obj.to_dict()
+        return json.JSONEncoder.default(self, obj)
+
+
+def dumps(data):
+    return json.dumps(data, cls=Encoder)
 
 
 def json_response(json_string, status=200):
@@ -13,7 +26,7 @@ def json_response(json_string, status=200):
     :returns: Flask `Response` object with application/json mimetype.
     :raises TypeError: when `json_string` not str or JSON serializable
     """
-    data = json_string if isinstance(json_string, str) else json_util.dumps(json_string)
+    data = json_string if isinstance(json_string, str) else dumps(json_string)
     return flask.Response(
         response=data,
         status=status,
@@ -32,3 +45,5 @@ class jsonify(object):
     def __call__(self, *args, **kwargs):
         data, *status_code = self.f(*args, **kwargs)
         return json_response(data, status_code[0]) if status_code else json_response(data)
+
+

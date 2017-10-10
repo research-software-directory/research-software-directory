@@ -1,5 +1,6 @@
-from src.services import util
 import time
+
+from src.helpers import util
 
 
 def test_rate_limit():
