@@ -1,7 +1,6 @@
 import requests
 from src.exceptions import UnauthorizedException
 from flask import request
-#              (settings['GITHUB_CLIENT_ID'], settings['GITHUB_CLIENT_SECRET'], token)
 
 
 class UserService:

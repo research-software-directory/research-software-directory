@@ -33,3 +33,6 @@ if settings.get('ZOTERO_API_KEY'):
             assert len(projects) == data['total_zotero_projects'] - 1  # one was saved before
         else:
             assert len(projects) > 1
+
+    def test_get_new_publications_no_crash(service):
+        service.new_publications()
