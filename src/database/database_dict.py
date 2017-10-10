@@ -57,8 +57,11 @@ class DictCollection(Collection):
                 return Record(item, self)
         return None
 
-    def new(self, id=None):
-        new_record = Record({'id': id}, self, True)
+    def new(self, id_or_data=None):
+        if isinstance(id_or_data, str) or id_or_data is None:
+            new_record = Record({'id': id_or_data}, self, True)
+        else:
+            new_record = Record(id_or_data, self, True)
         return new_record
 
     def insert(self, record):

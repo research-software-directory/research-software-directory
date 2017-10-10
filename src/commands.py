@@ -41,10 +41,10 @@ def init(app, service_controller, db):
     #         generate_impact_report(software['id'])
     #         i += 1
 
-    # @app.cli.command('import_old_data')
-    # def _import_oringinal():
-    #     import_original()
-    #
+    @app.cli.command('import_old_data')
+    def _import_oringinal():
+        service_controller.original_data_importer.import_original()
+
     @app.cli.command('verify_data')
     def _verify_data():
         service_controller.schema.verify_data()

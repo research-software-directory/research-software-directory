@@ -1,8 +1,7 @@
+import pytest
+
 from src.database.database_mongo import MongoDatabase
 from src.settings import settings
-from tests.database_common_tests import project1, project2
-
-import pytest
 
 test_db_name = 'TESTING_DB'
 
@@ -21,4 +20,4 @@ if settings.get('DATABASE_HOST') and settings.get('DATABASE_PORT'):
         raw_db.client.drop_database(test_db_name)
 
 
-    from tests.database_common_tests import *
+    from tests.database.database_common_tests import *

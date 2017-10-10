@@ -1,6 +1,9 @@
 from src.services.github import GithubService
 from src.services.import_export import ImportExportService
+from src.services.original_data_importer import OriginalDataImporterService
 from src.services.schema import SchemaService
+from src.services.user import UserService
+from src.services.zotero import ZoteroService
 
 
 class CachedProperty(object):
@@ -43,3 +46,18 @@ class ServiceController:
     @CachedProperty
     def schema(self):
         return SchemaService(self.db)
+
+    @CachedProperty
+    def original_data_importer(self):
+        return OriginalDataImporterService(self.db)
+
+    @CachedProperty
+    def user(self):
+        return UserService(self.settings['GITHUB_CLIENT_ID'], self.settings['GITHUB_CLIENT_SECRET'])
+
+    @CachedProperty
+    def zotero(self):
+        return ZoteroService(self.db, self.settings['ZOTERO_API_KEY'])
+
+
+

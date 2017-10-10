@@ -5,16 +5,15 @@ import flask
 from flask_cors import CORS
 
 import src.exceptions as exceptions
-import src.services.github as github
-import src.services.user as user
 from src.extensions import resize
+from src.helpers.util import worker
 from src.json_response import jsonify
-from src.services.util import worker
 # from src.services.report import load_reports
 from src.settings import settings
 
 
 def get_routes(service_controller, db):
+    user = service_controller.user
 
     def collection_to_object(collection):
         result = {}
@@ -22,10 +21,8 @@ def get_routes(service_controller, db):
             result[resource['_id']] = resource
         return result
 
-
     api = flask.Blueprint("api", __name__)
     cors = CORS(api, resources={r"*": {"origins": "*"}})
-
 
     @api.route('/all', methods=["GET"])
     @jsonify
@@ -36,17 +33,14 @@ def get_routes(service_controller, db):
             result[resource_type] = list(db[resource_type].all())
         return result, 200
 
-
     @api.route('/schema')
     @jsonify
     def _schema():
         return service_controller.schema.schema, 200
 
-
     @api.route('/github_auth')
     def _github_auth():
         return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s' % settings['GITHUB_CLIENT_ID'])
-
 
     @api.route('/get_access_token/<token>')
     @jsonify
@@ -55,12 +49,10 @@ def get_routes(service_controller, db):
         res['user'] = user.get_user(res['access_token'])
         return res, 200
 
-
     @api.route('/verify_access_token/<token>')
     @jsonify
     def _verify_access_token(token):
         return {'user': user.get_user(token)}, 200
-
 
     @api.route('/update', methods=["POST"])
     @jsonify
@@ -71,11 +63,16 @@ def get_routes(service_controller, db):
             raise exceptions.RouteException('no value provided', 401)
 
         for resource_type in value:
-            for resource in value[resource_type]:
-                db[resource_type].update({'_id': resource['id'], 'id': resource['id']}, resource, upsert=True)
+            for resource_data in value[resource_type]:
+                record = db[resource_type].find_by_id(resource_data['id'])
+                if not record:
+                    record = db[resource_type].new(resource_data)
+                else:
+                    record.data.update(resource_data)
+                record.save()
+                # db[resource_type].update({'_id': resource['id'], 'id': resource['id']}, resource, upsert=True)
 
         return {'status': 'ok'}, 200
-
 
     @api.route('/githubreleases', methods=["GET"])
     @jsonify
@@ -83,7 +80,8 @@ def get_routes(service_controller, db):
         id = flask.request.args.get('id')
         if not id or id.find('/') == -1:
             raise exceptions.RouteException("'id' parameter required", 400)
-        return service_controller.github.releases(flask.request.headers.get('token'), id), 200
+        # return service_controller.github.releases(flask.request.headers.get('token'), id), 200
+        return service_controller.github.releases(id), 200
 
     @api.route('/githubdescription', methods=["GET"])
     @jsonify
@@ -91,12 +89,13 @@ def get_routes(service_controller, db):
         id = flask.request.args.get('id')
         if not id or id.find('/') == -1:
             raise exceptions.RouteException("'id' parameter required", 400)
-        return service_controller.github.description(flask.request.headers.get('token'), id), 200
+        return service_controller.github.description(id), 200
 
     @api.route('/images', methods=["GET"])
     @jsonify
     def _images():
-        return [filename for filename in os.listdir(settings['DATA_FOLDER']+'/images') if not filename == '.gitkeep'], 200
+        return [filename for
+                filename in os.listdir(settings['DATA_FOLDER']+'/images') if not filename == '.gitkeep'], 200
 
     @api.route('/thumbnail/<filename>', methods=["GET"])
     def _thumbnail(filename):
@@ -152,21 +151,18 @@ def get_routes(service_controller, db):
     @api.route('/new_projects', methods=['GET'])
     @jsonify
     def _new_projects():
-        from src.services.zotero import new_projects
-        return new_projects(), 200
+        return service_controller.zotero.new_projects(), 200
 
     @api.route('/new_publications', methods=['GET'])
     @jsonify
     def _new_publications():
-        from src.services.zotero import new_publications
-        publications, software = new_publications()
+        publications, software = service_controller.zotero.new_publications()
         return publications, 200
 
     @api.route('/new_software', methods=['GET'])
     @jsonify
     def _new_software():
-        from src.services.zotero import new_publications
-        publications, software = new_publications()
+        publications, software = service_controller.zotero.new_publications()
         return software, 200
 
     @api.route('/project/<id>', methods=['GET'])

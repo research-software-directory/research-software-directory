@@ -19,7 +19,10 @@ for setting in required_settings:
     settings[setting] = None
 
 try:
-    with open('settings.json') as settings_file:
+    import os
+    this_dir = os.path.dirname(os.path.abspath(__file__))
+    settings_file_name = os.path.join(this_dir, '..', 'settings.json')
+    with open(settings_file_name) as settings_file:
         data = json.load(settings_file)
         for key in settings:
             settings[key] = data[key] if key in data else None

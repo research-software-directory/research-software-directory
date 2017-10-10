@@ -1,9 +1,9 @@
 import logging
-
 import urllib.parse
 
 import requests
-from src.services.util import rate_limit
+
+from src.helpers.util import rate_limit
 from src.settings import settings
 
 logger = logging.getLogger(__name__)
