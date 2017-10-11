@@ -74,8 +74,8 @@ class GithubService:
         if not software['githubid']:
             raise Exception('software has no github id')
     
-        last_commit = self.db.commit.find({'software_id': software_id}).sort([('date', -1)]).limit(1)
-        last_date = '2012-01-01T00:00:00Z' if last_commit.count() == 0 else last_commit[0]['date']
+        last_commit_cursor = self.db.commit.find({'software_id': software_id}).sort([('date', -1)]).limit(1)
+        last_date = '2012-01-01T00:00:00Z' if last_commit_cursor.count() == 0 else last_commit_cursor.next()['date']
         new_commits = self.get_commits(software['githubid'], last_date)
     
         def transform(commit):
