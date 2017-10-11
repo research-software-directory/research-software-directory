@@ -30,9 +30,11 @@ class MongoCursor(Cursor):  # wraps mongo cursor
 
     def sort(self, *args, **kwargs):
         self.cursor = self.cursor.sort(*args, **kwargs)
+        return self
 
     def limit(self, *args, **kwargs):
         self.cursor = self.cursor.limit(*args, **kwargs)
+        return self
 
 
 class MongoCollection(Collection):
