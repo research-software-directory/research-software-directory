@@ -95,7 +95,7 @@ class ImpactReportService:
         @guard
         def get_github_commit_info(software_id):
             self.github_service.update_commits(software_id)
-            return list(self.db.commit.find({'software_id': id}))
+            return list(self.db.commit.find({'software_id': software_id}))
 
         return {
             'commits': get_github_commit_info(software_id),
