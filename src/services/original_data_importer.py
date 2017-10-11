@@ -45,10 +45,13 @@ class OriginalDataImporterService:
 
     @staticmethod
     def fix_software_githubid(software):
-        if 'githubid' not in software and 'codeRepository' in software:
-            matches = re.match(r'https://github.com/(.*?/.*?)/?$', str(software['codeRepository']))
-            if matches:
-                software['githubid'] = matches.group(1)
+        if 'githubid' not in software:
+            if 'codeRepository' in software:
+                matches = re.match(r'https://github.com/(.*?/.*?)/?$', str(software['codeRepository']))
+                if matches:
+                    software['githubid'] = matches.group(1)
+            else:
+                software['githubid'] = None
 
     def import_software(self):
         for software_data in self.original_data['software']:
