@@ -135,16 +135,15 @@ def get_routes(service_controller, db):
     @api.route('/software/<software_id>/generate_report', methods=["POST"])
     @jsonify
     def _generate_report(software_id):
-        if not db.software.find_by_id(id):
-            raise Exception("Resource %s not found" % id)
-        worker('impact_report', id)
+        if not db.software.find_by_id(software_id):
+            raise Exception("Resource %s not found" % software_id)
+        worker('impact_report', software_id)
         return {'status': 'ok'}, 200
 
     @api.route('/software/<software_id>/reports', methods=["GET"])
     @jsonify
     def _reports(software_id):
-        id = software_id
-        reports = list(db.impact_report.find({'software_id': id}))
+        reports = list(db.impact_report.find({'software_id': software_id}))
         return reports, 200
 
     @api.route('/new_projects', methods=['GET'])
