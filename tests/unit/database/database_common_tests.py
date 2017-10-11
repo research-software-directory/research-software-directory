@@ -21,7 +21,7 @@ def test_direct_update(db):
     project = db.project.find_by_id('dict')
     project['newprop'] = 5
     project.save()
-    assert db.project.all().next().data == project.data
+    assert db.project.find_by_id('dict').data['newprop'] == 5
 
 
 def test_insert_no_id(db):

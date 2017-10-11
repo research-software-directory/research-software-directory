@@ -15,11 +15,7 @@ payload_one_new_software = {"software":[{"publications":[], "id": "newsw", "sche
 
 @pytest.fixture(autouse=True)
 def db():
-    return DictDatabase({
-        'software': [
-            {'id': 'example'}
-        ]
-    })
+    return DictDatabase(initial_data.copy())
 
 
 @pytest.fixture(autouse=True)
@@ -34,6 +30,7 @@ def get(app):
         response = client.get(url, headers={'Token': settings.get('GITHUB_ACCESS_TOKEN') or ''})
         return json.loads(response.data.decode('utf-8'))
     return _get
+
 
 @pytest.fixture(autouse=True)
 def post(app):

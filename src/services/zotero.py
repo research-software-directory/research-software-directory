@@ -1,6 +1,5 @@
 import logging
 from pyzotero import zotero
-from src.settings import settings
 
 logger = logging.getLogger(__name__)
 
@@ -12,16 +11,15 @@ class ZoteroService:
     def __init__(self, db, api_key):
         self.db = db
         self.api_key = api_key
+        self.client = zotero.Zotero(nlesc_library, library_type, self.api_key)
 
-    @staticmethod
-    def get_projects(zot):
-        collections = zot.collections()
+    def get_projects(self):
+        collections = self.client.collections()
         projects_collection = next(filter(lambda x: x['data']['name'] == 'Projects', collections))
         return list(filter(lambda x: x['data']['parentCollection'] == projects_collection['key'], collections))
 
     def new_projects(self):
-        zot = zotero.Zotero(nlesc_library, library_type, self.api_key)
-        projects = self.get_projects(zot)
+        projects = self.get_projects()
         current_keys = [project.data['project_code'] if 'project_code' in project.data else None for project in self.db.project.all()]
 
         def project_is_new(project):
@@ -47,8 +45,7 @@ class ZoteroService:
         return False
 
     def new_publications(self):
-        zot = zotero.Zotero(nlesc_library, library_type, settings['ZOTERO_API_KEY'])
-        results = zot.everything(zot.top())
+        results = self.client.everything(self.client.top())
 
         software = list(filter(lambda x: self.publication_is_software(x), results))
         publications = [result for result in results if result not in software]

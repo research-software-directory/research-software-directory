@@ -1,5 +1,7 @@
 from src.services.github import GithubService
+from src.services.impact_report import ImpactReportService
 from src.services.import_export import ImportExportService
+from src.services.libraries_io import LibrariesIOService
 from src.services.original_data_importer import OriginalDataImporterService
 from src.services.schema import SchemaService
 from src.services.user import UserService
@@ -59,5 +61,10 @@ class ServiceController:
     def zotero(self):
         return ZoteroService(self.db, self.settings['ZOTERO_API_KEY'])
 
+    @CachedProperty
+    def libraries_io(self):
+        return LibrariesIOService(self.settings['LIBRARIES_IO_API_KEY'])
 
-
+    @CachedProperty
+    def impact_report(self):
+        return ImpactReportService(self.db, self.github, self.libraries_io)

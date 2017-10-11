@@ -16,8 +16,7 @@ if settings.get('ZOTERO_API_KEY'):
         return ZoteroService(db, settings['ZOTERO_API_KEY'])
 
     def test_get_projects(service):
-        zot = zotero.Zotero(nlesc_library, library_type, service.api_key)
-        projects = service.get_projects(zot)
+        projects = service.get_projects()
         data['total_zotero_projects'] = len(projects) #  saves extra request for testing
         data['first_zotero_project'] = projects[0]
         assert len(projects) > 50

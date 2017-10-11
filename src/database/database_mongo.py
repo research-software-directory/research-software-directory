@@ -69,7 +69,9 @@ class MongoCollection(Collection):
         return record.data['id']
 
     def update(self, record):
-        pass
+        record.data['_id'] = record._id
+        self._collection.update({'_id': record.data['_id']}, record.data)
+        record.data.pop('_id')
 
 
 class MongoDatabase(Database):

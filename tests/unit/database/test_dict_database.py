@@ -8,7 +8,7 @@ from tests.unit.database.database_common_tests import *
 def db():
     return DictDatabase({
         'project': [
-            project1, project2
+            project1.copy(), project2.copy()
         ]
     })
 
