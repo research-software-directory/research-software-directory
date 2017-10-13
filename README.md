@@ -23,6 +23,8 @@ In zotero:
 * Click sync button ![Instruction](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step1.png)
 * Netherlands eScience Center should appear under `Group Libraries`.
 
+### Adding items
+#### Publication
 To add a publication by DOI:
 * Click `Netherlands eScience Center` in `Group Libraries`.
 * Find your project in `Projects`
@@ -30,6 +32,7 @@ To add a publication by DOI:
 * Enter one or more DOI(s), seperated with a space.
 * Add tag `domain` or `escience`
 
+#### Software
 Add software:
 * Get a DOI for software via [Zenodo](https://zenodo.org/).
 * Add software to project by its DOI (Zotero DOI import works through Crossref.org, it can take a couple of hours after
@@ -40,6 +43,16 @@ Link publications and software:
 * Click publication or software
 * Click `Related` -> `Add`
 * Click related software/publication
+
+#### Other items
+Zotero supports the following types:
+`Artwork`, `Audio Recording`, `Bill`, `Blogpost`, `Book`, `Book Section`, `Case`, `Computer Program`, `Conference Paper`, `Dictionary Entry`, `Document`, `Email`, `Encyclopedia Article`, `Film`, `Forum Post`, `Hearing`, `Instant Message`, `Interview`, `Journal Article`, `Letter`, `Magazine Article`, `Manuscript`, `Map`, `Newspaper Article`, `Note`, `Patent`, `Podcast`, `Presentation`, `Radio Broadcast`, `Report`, `Statute`, `Thesis`, `TV Broadcast`, `Video Recording`, `Webpage`
+Workflows for other types:
+- Conference poster: use `Presentation`, add `type: Poster`
+- Dataset: use `Journal Article`, add `extra: { itemType: 'dataset' }`
+- Manuscript: use `Manuscript`, add `extra: { submittedAt: date, submittedTo: journal }`
+- Software paper: use `Journal Article`, add `extra: { itemType: 'software' }`
+If you still have an item that doesn't fit, please contact Tom Klaver and we'll find a Workflow and add it to this guide.
 
 ## Example: eSalsa
 ![esalsa_example](https://raw.githubusercontent.com/Tommos0/files/master/esalsa_example.png)
