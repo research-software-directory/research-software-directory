@@ -1,4 +1,15 @@
 # Publications / Software
+=================
+  * [Keep your output up to date](#keep-your-output-up-to-date)
+  * [End report](#end-report)
+  * [Zotero](#zotero)
+     * [Adding items](#adding-items)
+        * [Publication](#publication)
+        * [Software](#software)
+        * [Other items](#other-items)
+  * [Example: eSalsa](#example-esalsa)
+  * [Projects](#projects)
+
 ## Keep your output up to date
 It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, conference papers or anything else that can be considered project output. Any output that you can’t add to Zotero? Give your feedback to Willem van Hage and Tom Klaver!
 
