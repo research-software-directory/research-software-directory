@@ -1,5 +1,4 @@
 # Publications / Software
-=================
   * [Keep your output up to date](#keep-your-output-up-to-date)
   * [End report](#end-report)
   * [Zotero](#zotero)
