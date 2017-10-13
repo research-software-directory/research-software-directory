@@ -2,13 +2,14 @@ import * as React from 'react';
 import { List, Button, Input, Icon } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {createNewItem} from '../../shared/resource/actions';
+import {IProject} from '../../interfaces/project';
 
 interface IOwnProps {
   item: any;
 }
 
 interface IMappedProps {
-  projects: any[];
+  projects: IProject[];
 }
 
 const mapDispatchToProps = ({

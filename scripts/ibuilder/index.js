@@ -27,16 +27,14 @@ const processTSResult = (resource, tsCode) => {
 }
 
 const localPath = path.join(__dirname, '..', '..', '..', 'research-software-directory-backend', 'schema');
-if (fs.existsSync(localPath)) {
-    console.log('reading from local path ' + localPath);
-    resources.forEach(resource =>
-        fs.readFile(path.join(localPath, `${resource}.json`), (err, data) => processTSResult(resource, data) )
-    );
-} else {
-    resources.forEach(resource => request({
-            url: BASE_URL + `/${resource}.json`
-        }, (error, response, body) => {
-            processTSResult(resource, body);
-        }
-    ));
-}
+const localPathExists = fs.existsSync(localPath);
+if (localPathExists) { console.log('reading from local path ' + localPath); }
+
+resources.forEach(resource => {
+        localPathExists
+            ? fs.readFile(path.join(localPath, `${resource}.json`), (err, data) =>
+                processTSResult(resource, data) )
+            : request({url: BASE_URL + `/${resource}.json`}, (error, response, body) =>
+                processTSResult(resource, body) )
+    }
+);

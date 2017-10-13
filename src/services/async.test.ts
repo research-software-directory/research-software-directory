@@ -35,9 +35,10 @@ describe('async backend stuff', () => {
       expect(store.getActions()[1].type).toBe('test/FULFILLED');
       expect(store.getActions()[1].response.status).toBe('success');
       expect(store.getActions()[1].status).toBe(200);
+      console.log(5);
       done();
-    }, 200);
-    console.log(5);
+    }, 400);
+    console.log(6);
   });
 
   it('reducer should work', () => {

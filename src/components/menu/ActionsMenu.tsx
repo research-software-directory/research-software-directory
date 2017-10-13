@@ -16,17 +16,12 @@ export class ActionsMenu extends React.PureComponent<{}, IState> {
     this.setState({open: !this.state.open});
   }
 
-  // noinspection TsLint
-  test = function *() {
-    yield 'test';
-  };
-
-  header = () => console.log(this.test()) || (
+  header = () => (
     <Menu.Header
       style={{cursor: 'pointer', textTransform: 'capitalize'}}
       onClick={this.toggleMenu}
     >
-      Actions {this.test()}
+      Actions
       <Icon
         name={`chevron ${this.state.open ? 'down' : 'up'}`}
         style={{float: 'right'}}
