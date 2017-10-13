@@ -28,6 +28,7 @@ To add a publication by DOI:
 * Find your project in `Projects`
 * Click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png)
 * Enter one or more DOI(s), seperated with a space.
+* Add tag `domain` or `escience`
 
 Add software:
 * Get a DOI for software via [Zenodo](https://zenodo.org/).
