@@ -1,5 +1,5 @@
 import * as Fuse from 'fuse.js';
-import {IPerson} from '../../interfaces/person';
+import {IPerson} from '../../interfaces/resources/person';
 import {IAuthor} from './actions';
 
 const options = {

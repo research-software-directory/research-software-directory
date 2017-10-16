@@ -13,6 +13,7 @@
         "ordered-imports": false,
         "object-literal-sort-keys": false,
         "no-backbone-get-set-outside-model": false,
-        "prefer-type-cast": false
+        "prefer-type-cast": false,
+        "no-http-string": false
     }
 }

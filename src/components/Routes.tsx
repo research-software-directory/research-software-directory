@@ -10,8 +10,9 @@ import { resourceTypes } from '../settings';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import '../assets/style.css';
+import {IResourceType} from '../interfaces/resource';
 
-const Resource = (type: string) => ({match}: any) => (
+const Resource = (type: IResourceType) => ({match}: any) => (
   <ResourceForm
     resourceType={type}
     id={match.params.id}
@@ -19,7 +20,7 @@ const Resource = (type: string) => ({match}: any) => (
   />
 );
 
-const resourceRoute = (resourceType: string) => (
+const resourceRoute = (resourceType: IResourceType) => (
   <Route
     key={resourceType}
     exact={true}

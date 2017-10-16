@@ -4,13 +4,16 @@ import { updateField } from './actions';
 import { Link } from 'react-router-dom';
 import { FormField } from './FormField';
 import { Button, Segment } from 'semantic-ui-react';
+import {ISchema} from '../../interfaces/json-schema';
 
 import './style.css';
+import {IResource, IResourceType} from '../../interfaces/resource';
+import {ISoftware} from '../../interfaces/resources/software';
 
 interface IMappedProps {
-  schema: any;
-  data: any;
-  oldData: any;
+  schema: ISchema;
+  data: IResource;
+  oldData: IResource;
 }
 
 interface IDispatchProps {
@@ -18,7 +21,7 @@ interface IDispatchProps {
 }
 
 interface IOwnProps {
-  resourceType: string;
+  resourceType: IResourceType;
   id: string;
 }
 
@@ -53,17 +56,25 @@ class ResourceFormComponent extends React.PureComponent<IProps, any> {
     return this.props.data[field] !== this.props.oldData[field];
   }
 
+  getGithubID = () => {
+    if ((this.props.data as ISoftware).githubid) {
+      return (this.props.data as ISoftware).githubid;
+    } else {
+      return '';
+    }
+  }
+
   renderField = (field: string): any => {
     return (
       <FormField
         key={field}
         fieldName={field}
         parentResourceType={this.props.resourceType}
-        schema={this.props.schema[this.props.resourceType].properties[field]}
+        property={this.props.schema[this.props.resourceType].properties[field]}
         value={this.props.data[field]}
         hasChanged={this.hasChanged(field)}
         onChange={this.updateFormValue(field)}
-        githubid={this.props.data.githubid}
+        githubid={this.getGithubID()}
         id={this.props.id}
       />
     );

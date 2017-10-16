@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import * as update from 'immutability-helper';
 
-import * as actions from './actions';
+// import * as actions from './actions';
 
 const dataReducer = (state: any = {}, action: any) => {
   switch (action.type) {
@@ -27,17 +27,17 @@ const schemaReducer = (state: any = {}, action: any) => {
   switch (action.type) {
     case 'FETCH_SCHEMA/FULFILLED':
       return action.response;
-    case actions.ADD_TO_SCHEMA_ENUM:
-      return update(state, {
-        [action.resourceType]: {
-          properties: {
-            [action.field]: {
-              items: {
-                enum: {
-                  $push: [action.value]
-                }
-        } } } }
-      });
+    // case actions.ADD_TO_SCHEMA_ENUM:
+    //   return update(state, {
+    //     [action.resourceType]: {
+    //       properties: {
+    //         [action.field]: {
+    //           items: {
+    //             enum: {
+    //               $push: [action.value]
+    //             }
+    //     } } } }
+    //   });
 
     default: return state;
   }

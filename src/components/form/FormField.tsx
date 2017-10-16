@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { addToSchemaEnum } from './actions';
+// import { addToSchemaEnum } from './actions';
 import * as comp from './components';
+import {
+  IProperty, isAnyOfProperty, isArrayProperty, isEnumProperty, isLinkProperty, isStringProperty
+} from '../../interfaces/json-schema';
 
 const mapDispatchToProps = {
-  addToSchemaEnum
+  // addToSchemaEnum
 };
 
 const mapStateToProps: (state: any, props: IOwnProps) => any = (state: any) => {
@@ -13,81 +16,59 @@ const mapStateToProps: (state: any, props: IOwnProps) => any = (state: any) => {
   });
 };
 
-interface IProps {
+interface IMappedProps {
   data: any;
-  addToSchemaEnum: typeof addToSchemaEnum;
+  // addToSchemaEnum: typeof addToSchemaEnum;
 }
 
 interface IOwnProps {
   fieldName: string;
   githubid?: string;
   parentResourceType: string;
-  schema: any;
+  property: IProperty;
   value: any;
   hasChanged: boolean;
-  id: any;
+  id: string;
   onChange(value: any): void;
 }
 
-const connector = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect<IMappedProps, {}, IOwnProps>(mapStateToProps, mapDispatchToProps);
 
-class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {}> {
-  shouldComponentUpdate(nextProps: IProps&IOwnProps) {
+class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {}> {
+  shouldComponentUpdate(nextProps: IMappedProps&IOwnProps) {
     return (nextProps.value !== this.props.value)
-        || (nextProps.schema !== this.props.schema)
+        || (nextProps.property !== this.props.property)
         || (nextProps.githubid !== this.props.githubid);
   }
 
   onNewOption = (option: comp.IOption) => {
-    this.props.addToSchemaEnum(this.props.parentResourceType, this.props.fieldName, option.value as string );
+    return false && option;
+    // this.props.addToSchemaEnum(this.props.parentResourceType, this.props.fieldName, option.value as string );
   }
 
   schemaEnum(): string[] {
-    return (this.props.schema.type === 'array') ? (this.props.schema.items.enum || []) : (this.props.schema.enum || []);
+    if (isEnumProperty(this.props.property)) {
+      return this.props.property.enum;
+    } else if (isArrayProperty(this.props.property) && isEnumProperty(this.props.property.items)) {
+      return this.props.property.items.enum;
+    }
+
+    return [];
   }
 
-  renderTextInput() {
-    return (
-      <comp.TextInput
-        value={this.props.value || ''}
-        label={this.props.schema.description}
-        onChange={this.props.onChange}
-        className={this.props.hasChanged ? 'dirty' : ''}
-      />
-    );
-  }
+  defaultProps = (isArray = false) => ({
+    value: this.props.value || (isArray ? [] : ''),
+    label: this.props.property.description || '',
+    onChange: this.props.onChange,
+    className: this.props.hasChanged ? 'dirty' : ''
+  })
 
-  renderTextArea() {
-    return (
-      <comp.TextAreaInput
-        value={this.props.value || ''}
-        label={this.props.schema.description}
-        onChange={this.props.onChange}
-        className={this.props.hasChanged ? 'dirty' : ''}
-      />
-    );
-  }
-
-  renderMarkDown() {
-    return (
-      <comp.MarkDownInput
-        value={this.props.value || ''}
-        label={this.props.schema.description}
-        onChange={this.props.onChange}
-        className={this.props.hasChanged ? 'dirty' : ''}
-      />
-    );
-  }
-  renderSoftwareDescription() {
-    return (
-      <comp.SoftwareDescription
-        value={this.props.value || ''}
-        label={this.props.schema.description}
-        onChange={this.props.onChange}
-        className={this.props.hasChanged ? 'dirty' : ''}
-      />
-    );
-  }
+  renderTextInput           = () => <comp.TextInput            {...this.defaultProps()} />;
+  renderTextArea            = () => <comp.TextAreaInput        {...this.defaultProps()} />;
+  renderMarkDown            = () => <comp.MarkDownInput        {...this.defaultProps()} />;
+  renderSoftwareDescription = () => <comp.SoftwareDescription  {...this.defaultProps()} />;
+  renderDateInput           = () => <comp.DateInput            {...this.defaultProps()} />;
+  renderMultiString         = () => <comp.StringArray          {...this.defaultProps(true)} />;
 
   renderMultiEnum() {
     const options = this.schemaEnum().map((option) =>
@@ -95,13 +76,11 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
 
     return (
       <comp.MultiSelect
-        label={this.props.schema.description}
-        value={this.props.value || []}
+        {...this.defaultProps(true)}
         options={options}
         multi={true}
         search={true}
         addable={true}
-        onChange={this.props.onChange}
         onNewOption={this.onNewOption}
       />
 
@@ -109,7 +88,8 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
 
   }
   renderMultiResource() {
-    const resourceType = this.props.schema.items.resType.split('/').slice(-1)[0];
+    if (!(isArrayProperty(this.props.property) && isLinkProperty(this.props.property.items))) { return null; }
+    const resourceType = this.props.property.items.resType.split('/').slice(-1)[0];
     const options = this.props.data[resourceType].map((resource: any) => {
       const opt = {
         id: resource.id,
@@ -125,9 +105,7 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
 
     return (
       <comp.ResourceArray
-        label={this.props.schema.description}
-        value={this.props.value || []}
-        onChange={this.props.onChange}
+        {...this.defaultProps(true)}
         options={options}
         resourceType={resourceType}
         addable={false}
@@ -137,9 +115,10 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
 
   changeSingle = (func: (val: any) => void) => (val: any[]) => func(val ? val[0] : '');
   renderSingleResourceOrSimple() {
-    let resourceType;
-    for (const type of this.props.schema.anyOf) {
-        if ('resType' in type) { resourceType = type.resType; }
+    if (!isAnyOfProperty(this.props.property)) { return null; }
+    let resourceType = '';
+    for (const subProperty of this.props.property.anyOf) {
+        if (isLinkProperty(subProperty)) { resourceType = subProperty.resType; }
     }
     resourceType = resourceType.split('/').slice(-1)[0];
     const options = this.props.data[resourceType].map((resource: any) => ({
@@ -149,7 +128,7 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
 
     return (
       <comp.ResourceArray
-        label={this.props.schema.description}
+        label={this.props.property.description || ''}
         value={this.props.value ? [this.props.value] : []}
         onChange={this.changeSingle(this.props.onChange)}
         options={options}
@@ -160,9 +139,10 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
     );
   }
   renderMultiResourceOrSimple() {
-    let resourceType;
-    for (const type of this.props.schema.items.anyOf) {
-        if ('resType' in type) { resourceType = type.resType; }
+    if (!(isArrayProperty(this.props.property) && isAnyOfProperty(this.props.property.items))) { return null; }
+    let resourceType = '';
+    for (const subProperty of this.props.property.items.anyOf) {
+        if (isLinkProperty(subProperty)) { resourceType = subProperty.resType; }
     }
     resourceType = resourceType.split('/').slice(-1)[0];
     const options = this.props.data[resourceType].map((resource: any) => ({
@@ -172,9 +152,7 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
 
     return (
       <comp.ResourceArray
-        label={this.props.schema.description}
-        value={this.props.value || []}
-        onChange={this.props.onChange}
+        {...this.defaultProps(true)}
         options={options}
         resourceType={resourceType}
         addable={true}
@@ -182,64 +160,42 @@ class FormFieldComponent extends React.PureComponent<IProps & IOwnProps & any, {
     );
   }
 
-  renderMultiString() {
-    return (
-      <comp.StringArray
-        label={this.props.schema.description}
-        value={this.props.value || []}
-        onChange={this.props.onChange}
-      />
-    );
-  }
-
   renderSoftwareReleases() {
     return (
       <comp.SoftwareReleases
-        label={this.props.schema.description}
-        value={this.props.value || []}
-        onChange={this.props.onChange}
-        githubid={this.props.githubid}
+        {...this.defaultProps(true)}
+        githubid={this.props.githubid || ''}
         id={this.props.id}
       />
     );
   }
 
-  renderDateInput() {
-    return (
-      <comp.DateInput
-        label={this.props.schema.description}
-        value={this.props.value || ''}
-        onChange={this.props.onChange}
-      />
-    );
-  }
-
   render() {
-    const field = this.props.schema;
+    const property = this.props.property;
     if (this.props.fieldName === 'releases') {
       return this.renderSoftwareReleases();
     } else if (this.props.parentResourceType === 'software' && this.props.fieldName === 'description') {
       return this.renderSoftwareDescription();
-    } else if (field.type === 'string' && 'markdown' in field) {
+    } else if (isStringProperty(property) && 'markdown' in property) {
       return this.renderMarkDown();
-    } else if (field.type === 'string' && 'long' in field) {
+    } else if (isStringProperty(property) && 'long' in property) {
       return this.renderTextArea();
-    } else if (field.type === 'string' && 'format' in field && field.format === 'date') {
+    } else if (isStringProperty(property) && 'format' in property && property.format === 'date') {
       return this.renderDateInput();
-    } else if (field.type === 'string') {
+    } else if (isStringProperty(property)) {
       return this.renderTextInput();
-    } else if (field.type === 'array' && 'items' in field && field.items.enum) {
+    } else if (isArrayProperty(property) && isEnumProperty(property.items)) {
       return this.renderMultiEnum();
-    } else if (field.type === 'array' && 'items' in field && 'resType' in field.items) {
+    } else if (isArrayProperty(property) && isLinkProperty(property.items)) {
       return this.renderMultiResource();
-    } else if (field.type === 'array' && 'items' in field && 'anyOf' in field.items) {
+    } else if (isArrayProperty(property) && isAnyOfProperty(property.items)) {
       return this.renderMultiResourceOrSimple();
-    } else if (field.type === 'array' && (!('items' in field) || !('enum' in field.items))) {
+    } else if (isArrayProperty(property)) {
       return this.renderMultiString();
-    } else if ('anyOf' in field) {
+    } else if (isAnyOfProperty(property)) {
       return this.renderSingleResourceOrSimple();
     } else {
-      return (<div>Unable to render field ({this.props.fieldName}): {JSON.stringify(field)}</div>);
+      return (<div>Unable to render field ({this.props.fieldName}): {JSON.stringify(property)}</div>);
     }
   }
 

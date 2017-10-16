@@ -4,8 +4,8 @@ import { Segment, Message, Table } from 'semantic-ui-react';
 import { Author } from './Author';
 import {matchNames} from './matchNames';
 import {setMapping} from './actions';
-import {IPublication} from '../../interfaces/publication';
-import {IPerson} from '../../interfaces/person';
+import {IPublication} from '../../interfaces/resources/publication';
+import {IPerson} from '../../interfaces/resources/person';
 
 interface IOwnProps {
   id: string;
