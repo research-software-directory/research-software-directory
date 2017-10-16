@@ -63,6 +63,7 @@ Workflows for other types:
 > `itemType: dataset`
 - Manuscript: use `Manuscript`, add `extra`:
  > `submittedAt: date`
+ 
  > `submittedTo: journal`
 - Software paper: use `Journal Article`, add `extra`
 > `itemType: software`
