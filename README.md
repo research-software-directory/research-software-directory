@@ -61,8 +61,11 @@ Workflows for other types:
 - Conference poster: use `Presentation`, add `type: Poster`
 - Dataset: In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field:
 > `itemType: dataset`
-- Manuscript: use `Manuscript`, add `extra: { submittedAt: date, submittedTo: journal }`
-- Software paper: use `Journal Article`, add `extra: { itemType: 'software' }`
+- Manuscript: use `Manuscript`, add `extra`:
+ > `submittedAt: date`
+ > `submittedTo: journal`
+- Software paper: use `Journal Article`, add `extra`
+> `itemType: software`
 If you still have an item that doesn't fit, please contact Tom Klaver and we'll find a Workflow and add it to this guide.
 
 ## Example: eSalsa
