@@ -66,6 +66,7 @@ Workflows for other types:
  > `submittedTo: journal`
 - Software paper: use `Journal Article`, add `extra`
 > `itemType: software`
+
 If you still have an item that doesn't fit, please contact Tom Klaver and we'll find a Workflow and add it to this guide.
 
 ## Example: eSalsa
