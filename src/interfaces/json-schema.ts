@@ -16,7 +16,7 @@ interface IBaseProperty {
   // type?: string;
 }
 
-interface IAnyOfProperty extends IBaseProperty {
+export interface IAnyOfProperty extends IBaseProperty {
   anyOf: IProperty[];
 }
 
@@ -47,7 +47,7 @@ interface IEnumProperty extends IBaseProperty {
 }
 
 export function isEnumProperty(property: any): property is IEnumProperty {
-  return 'type' in property && property.type === 'string' && 'enum' in property;
+  return 'enum' in property;
 }
 
 interface IStringProperty extends IBaseProperty {
@@ -58,7 +58,7 @@ interface IStringProperty extends IBaseProperty {
 }
 
 export function isStringProperty(property: any): property is IStringProperty {
-  return 'type' in property && !isEnumProperty(property) && !isLinkProperty(property);
+  return 'type' in property && !isArrayProperty(property) && !isEnumProperty(property) && !isLinkProperty(property);
 }
 
 interface ILinkProperty extends IBaseProperty {

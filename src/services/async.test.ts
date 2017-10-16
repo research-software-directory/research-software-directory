@@ -1,7 +1,7 @@
 import { backend, fetchEpic, reducer } from './async';
 import configureMockStore from 'redux-mock-store';
 import { createEpicMiddleware } from 'redux-observable';
-
+// tslint:disable:no-console
 // tslint:disable-next-line:no-import-side-effect
 import 'rxjs';
 import * as nock from 'nock';

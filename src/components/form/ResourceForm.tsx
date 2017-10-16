@@ -56,13 +56,7 @@ class ResourceFormComponent extends React.PureComponent<IProps, any> {
     return this.props.data[field] !== this.props.oldData[field];
   }
 
-  getGithubID = () => {
-    if ((this.props.data as ISoftware).githubid) {
-      return (this.props.data as ISoftware).githubid;
-    } else {
-      return '';
-    }
-  }
+  getGithubID = () => (this.props.data as ISoftware).githubid || '';
 
   renderField = (field: string): any => {
     return (

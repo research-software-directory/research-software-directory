@@ -70,23 +70,22 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
   renderDateInput           = () => <comp.DateInput            {...this.defaultProps()} />;
   renderMultiString         = () => <comp.StringArray          {...this.defaultProps(true)} />;
 
-  renderMultiEnum() {
+  renderEnum(multi: boolean = true) {
     const options = this.schemaEnum().map((option) =>
-          ({ label: option, value: option, key: option}));
+      ({label: option, value: option, key: option}));
 
     return (
       <comp.MultiSelect
         {...this.defaultProps(true)}
         options={options}
-        multi={true}
+        multi={multi}
         search={true}
         addable={true}
         onNewOption={this.onNewOption}
       />
-
     );
-
   }
+
   renderMultiResource() {
     if (!(isArrayProperty(this.props.property) && isLinkProperty(this.props.property.items))) { return null; }
     const resourceType = this.props.property.items.resType.split('/').slice(-1)[0];
@@ -116,15 +115,9 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
   changeSingle = (func: (val: any) => void) => (val: any[]) => func(val ? val[0] : '');
   renderSingleResourceOrSimple() {
     if (!isAnyOfProperty(this.props.property)) { return null; }
-    let resourceType = '';
-    for (const subProperty of this.props.property.anyOf) {
-        if (isLinkProperty(subProperty)) { resourceType = subProperty.resType; }
-    }
-    resourceType = resourceType.split('/').slice(-1)[0];
-    const options = this.props.data[resourceType].map((resource: any) => ({
-      id: resource.id,
-      label: resource.name || resource.id
-    }));
+    const resourceType = this.getAnyOfResourceType(this.props.property.anyOf)
+      .split('/').slice(-1)[0];
+    const options = this.getOptions(resourceType);
 
     return (
       <comp.ResourceArray
@@ -138,17 +131,22 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
       />
     );
   }
+
+  getAnyOfResourceType(anyOfProperty: any[]) {
+    for (const subProperty of anyOfProperty) {
+      if (isLinkProperty(subProperty)) {
+        return subProperty.resType;
+      }
+    }
+
+    return '';
+  }
+
   renderMultiResourceOrSimple() {
     if (!(isArrayProperty(this.props.property) && isAnyOfProperty(this.props.property.items))) { return null; }
-    let resourceType = '';
-    for (const subProperty of this.props.property.items.anyOf) {
-        if (isLinkProperty(subProperty)) { resourceType = subProperty.resType; }
-    }
-    resourceType = resourceType.split('/').slice(-1)[0];
-    const options = this.props.data[resourceType].map((resource: any) => ({
-      id: resource.id,
-      label: resource.name || resource.id
-    }));
+    const resourceType = this.getAnyOfResourceType(this.props.property.items.anyOf)
+      .split('/').slice(-1)[0];
+    const options = this.getOptions(resourceType);
 
     return (
       <comp.ResourceArray
@@ -158,6 +156,13 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
         addable={true}
       />
     );
+  }
+
+  getOptions(resourceType: string) {
+    return this.props.data[resourceType].map((resource: any) => ({
+      id: resource.id,
+      label: resource.name || resource.id
+    }));
   }
 
   renderSoftwareReleases() {
@@ -172,6 +177,7 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
 
   render() {
     const property = this.props.property;
+
     if (this.props.fieldName === 'releases') {
       return this.renderSoftwareReleases();
     } else if (this.props.parentResourceType === 'software' && this.props.fieldName === 'description') {
@@ -182,10 +188,12 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
       return this.renderTextArea();
     } else if (isStringProperty(property) && 'format' in property && property.format === 'date') {
       return this.renderDateInput();
+    } else if (isEnumProperty(property)) {
+      return this.renderEnum(false);
     } else if (isStringProperty(property)) {
       return this.renderTextInput();
     } else if (isArrayProperty(property) && isEnumProperty(property.items)) {
-      return this.renderMultiEnum();
+      return this.renderEnum(true);
     } else if (isArrayProperty(property) && isLinkProperty(property.items)) {
       return this.renderMultiResource();
     } else if (isArrayProperty(property) && isAnyOfProperty(property.items)) {

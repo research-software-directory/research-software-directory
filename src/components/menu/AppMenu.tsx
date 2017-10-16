@@ -20,7 +20,6 @@ const mapStateToProps = (state: any) => ({
   numAsyncs: state.async.filter((asyncAction: any) =>
     asyncAction.status !== 'DONE' && asyncAction.status !== 'FAILED'
   ).length,
-  schema:    state.schema,
   user:      state.auth.user,
   dataDirty: state.current.data !== state.data
 });
@@ -37,7 +36,6 @@ const connector = connect(mapStateToProps, dispatchToProps, null, { pure: false}
 interface IMappedProps {
   dataDirty: boolean;
   numAsyncs: number;
-  schema: any;
   user: IUser;
   saveChanges: any;
 }

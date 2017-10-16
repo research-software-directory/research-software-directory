@@ -47,7 +47,6 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
   }
 
   toggleOpen = () => {
-    // this.setState({open: !this.state.open });
     this.setState({open: true });
   }
 

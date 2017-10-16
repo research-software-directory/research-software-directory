@@ -3,6 +3,8 @@ import { Button, Icon, Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {undoChanges} from '../../shared/resource/actions';
+import {IResource} from '../../interfaces/resource';
+import {ISchema} from '../../interfaces/json-schema';
 
 interface IOwnProps {
   type: string;
@@ -10,10 +12,10 @@ interface IOwnProps {
 }
 
 interface IMappedProps {
-  data: any;
-  oldData: any;
-  schema: any;
-  location: any;
+  data: { [key: string]: IResource[] };
+  oldData: { [key: string]: IResource[] };
+  schema: { [key: string]: ISchema[] };
+  location: Location;
 }
 
 interface IDispatchProps {
@@ -32,7 +34,7 @@ const mapStateToProps = (state: any) => ({
 });
 
 interface IMenuItemProps {
-  item: any;
+  item: IResource;
   label: string;
   active: boolean;
   hasChanged: boolean;
@@ -80,18 +82,18 @@ class MenuItemsComponent extends React.PureComponent<IProps, {}> {
     e.preventDefault();
   }
 
-  searchFilter = (search: string) => (item: any) => {
+  searchFilter = (search: string) => (item: IResource) => {
     const lowerCase = search.toLowerCase();
 
     return (label(this.props.type)(item).toLowerCase().indexOf(lowerCase) !== -1 ||
-      (item.description && item.description.toLowerCase().indexOf(lowerCase) !== -1));
+      ('description' in item && (item as any).description.toLowerCase().indexOf(lowerCase) !== -1));
   }
 
   render() {
     const items = this.props.data[this.props.type]
       .filter(this.searchFilter(this.props.search))
-      .map((item: any) => {
-        const oldEntry = (this.props.oldData[this.props.type].find((oldItem: any) => item.id === oldItem.id));
+      .map((item) => {
+        const oldEntry = (this.props.oldData[this.props.type].find((oldItem) => item.id === oldItem.id));
         const hasChanged = oldEntry !== item;
 
         return (
