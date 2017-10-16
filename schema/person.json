@@ -1,11 +1,11 @@
 {
-  "_id": "person",
   "required": [
     "name",
     "affiliation",
-    "id"
+    "id",
+    "schema"
   ],
-  "id": "http://software.esciencecenter.nl/schema/person",
+  "id": "person",
   "type": "object",
   "#schema": "http://json-schema.org/draft2-3/schema#",
   "properties": {
@@ -55,9 +55,8 @@
     "schema": {
       "description": "Fixed property, to validate the JSON object with the current schema.",
       "type": "string",
-      "format": "uri",
       "enum": [
-        "http://software.esciencecenter.nl/schema/person"
+        "person"
       ]
     },
     "twitterUrl": {

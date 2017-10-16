@@ -1,9 +1,11 @@
 {
   "_id": "software",
   "required": [
-    "name"
+    "name",
+    "id",
+    "schema"
   ],
-  "id": "http://software.esciencecenter.nl/schema/software",
+  "id": "software",
   "type": "object",
   "#schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -24,9 +26,8 @@
     "schema": {
       "description": "Fixed property, to validate the JSON object with the current schema.",
       "type": "string",
-      "format": "uri",
       "enum": [
-        "http://software.esciencecenter.nl/schema/software"
+        "software"
       ]
     },
     "name": {
@@ -58,7 +59,6 @@
           "reference": "person"
         },
         {
-          "format": "uri",
           "type": "string",
           "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
           "resType": "/person"
@@ -83,7 +83,6 @@
           {
             "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /person/s.verhoeven.",
             "type": "string",
-            "format": "uri",
             "resType": "/organization"
           }
         ]

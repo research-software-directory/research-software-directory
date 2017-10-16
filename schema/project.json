@@ -1,9 +1,10 @@
 {
-  "_id": "project",
   "required": [
-    "name"
+    "name",
+    "id",
+    "schema"
   ],
-  "id": "/schema/project",
+  "id": "project",
   "type": "object",
   "#schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -82,9 +83,8 @@
     },
     "schema": {
       "enum": [
-        "http://software.esciencecenter.nl/schema/project"
+        "project"
       ],
-      "format": "uri",
       "type": "string",
       "description": "Fixed property, to validate the JSON object with the current schema."
     },

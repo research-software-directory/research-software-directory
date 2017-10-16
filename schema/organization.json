@@ -1,10 +1,10 @@
 {
-  "_id": "organization",
   "required": [
     "name",
-    "id"
+    "id",
+    "schema"
   ],
-  "id": "/schema/organization",
+  "id": "organization",
   "description": "An organization such as a university, company or foundation.",
   "type": "object",
   "#schema": "http://json-schema.org/draft-04/schema#",
@@ -92,9 +92,8 @@
       "format": "uri"
     },
     "schema": {
-      "format": "uri",
       "enum": [
-        "http://software.esciencecenter.nl/schema/organization"
+        "organization"
       ],
       "description": "Fixed property, to validate the JSON object with the current schema.",
       "type": "string"

@@ -1,5 +1,4 @@
 {
-  "_id": "publication",
   "required": [
     "id",
     "schema",
@@ -12,13 +11,12 @@
   "description": "A publication (journal article, video, news item etc).",
   "type": "object",
   "#schema": "http://json-schema.org/draft-04/schema#",
-  "id": "/schema/publication",
+  "id": "publication",
   "properties": {
     "schema": {
       "enum": [
-        "http://software.esciencecenter.nl/schema/publication"
+        "publication"
       ],
-      "format": "uri",
       "type": "string",
       "description": "Fixed property, to validate the JSON object with the current schema."
     },
