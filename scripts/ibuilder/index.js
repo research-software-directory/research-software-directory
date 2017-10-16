@@ -7,17 +7,17 @@ String.prototype.capitalize = function() { return this.charAt(0).toUpperCase() +
 
 const tsLintDisable = '// tslint:disable\n';
 const regexpExport = /\nexport.*?\n/;
-const BASE_URL = 'https://raw.githubusercontent.com/NLeSC/research-software-directory-backend/master/property';
-const API_RESOURCE_URL = 'https://api.github.com/repos/NLeSC/research-software-directory-backend/contents/property';
+const BASE_URL = 'https://raw.githubusercontent.com/NLeSC/research-software-directory-backend/master/schema';
+const API_RESOURCE_URL = 'https://api.github.com/repos/NLeSC/research-software-directory-backend/contents/schema';
 const localPath = path.join(__dirname, '..', '..', '..', 'research-software-directory-backend', 'schema');
-const localPathExists = fs.existsSync(localPath);
+const localPathExists = fs.existsSync(localPath) && false;
 const outputPath = path.join(__dirname, '..', '..', 'src', 'interfaces');
 
 let resourceInterface = '';
 
 if (localPathExists) { console.log('reading from local path ' + localPath); }
 
-const jsonRequest = url => new Promise((resolve, reject) =>
+const jsonRequest = url => console.log(url) || new Promise((resolve, reject) =>
     request({
         url: url,
         headers: {'user-agent': 'node/requests'}
