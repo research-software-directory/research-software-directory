@@ -26,6 +26,7 @@ If there are any publications not in the end report, please add them to!
 * Go to [Netherlands eScience group](https://www.zotero.org/groups/1689348/netherlands_escience_center)
 * Click `join`
 * [Download Zotero](https://www.zotero.org/download/)
+* Install Zotero
 
 In zotero:
 * Go to `edit`/`Preferences`/`Sync`
