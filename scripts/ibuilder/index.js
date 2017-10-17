@@ -26,8 +26,13 @@ const jsonRequest = url => new Promise((resolve, reject) =>
     )
 );
 
-const getSchemaFilenamesFromGithub = () =>
-    jsonRequest(API_RESOURCE_URL).then(resp => console.log(resp) || resp.map(file => file.name));
+const getSchemaFilenamesFromGithub = () => {
+    let url = API_RESOURCE_URL;
+    if (process.env['GITHUB_ACCESS_TOKEN']) {
+        url = `${url}?access_token=${process.env['GITHUB_ACCESS_TOKEN']}`;
+    }
+    jsonRequest(url).then(resp => resp.map(file => file.name));
+}
 const getLocalSchemaFilenames = () => fs.readdir(localPath);
 
 const processTSResult = async (resource, schema) => {
@@ -44,7 +49,7 @@ const processTSResult = async (resource, schema) => {
     }
 }
 
-const process = async () => {
+const processSchemas = async () => {
     const resourceFilenames = localPathExists ? await getLocalSchemaFilenames() : await getSchemaFilenamesFromGithub();
     const resources = resourceFilenames.map(fileName => ({name: fileName.slice(0,-5), fileName}));
 
@@ -68,4 +73,4 @@ const process = async () => {
     console.log('wrote interface resource.ts');
 }
 
-process();
+processSchemas();
