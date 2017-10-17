@@ -34,6 +34,7 @@ In zotero:
 * Netherlands eScience Center should appear under `Group Libraries`.
 
 ### Adding items
+Items can be added by DOI (preferred), or manually if there is no DOI. Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
 #### Publication
 To add a publication by DOI:
 * Click `Netherlands eScience Center` in `Group Libraries`.
