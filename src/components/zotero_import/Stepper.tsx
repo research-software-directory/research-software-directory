@@ -66,7 +66,7 @@ class StepperComponent extends React.PureComponent<IMappedProps&IDispatchProps, 
   renderPublication = () => {
     const publication = this.findPublication(this.state.currentID);
     if (publication) {
-      return <Publication id={publication.id} />
+      return <Publication id={publication.id} />;
     } else {
       return null;
     }
