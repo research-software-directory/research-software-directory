@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import { Button, Icon, Dropdown } from 'semantic-ui-react';
 
-import * as DayPicker from 'react-day-picker';
+// tslint:disable-next-line
+const DayPicker = require('react-day-picker');
 import 'react-day-picker/lib/style.css';
 
 import { Overlay } from 'react-overlays';
