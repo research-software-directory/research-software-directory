@@ -47,6 +47,7 @@ Add software:
 * Get a DOI for software via [Zenodo](https://zenodo.org/).
 * Add software to project by its DOI (Zotero DOI import works through Crossref.org, it can take a couple of hours after
 creating a Zenodo DOI before it is available).
+* Change the item type to `computer program`.
 * If you really want to add software without a DOI, then add it manually, only `Title` field and the GitHub URL under `URL`.
 
 Link publications and software:
@@ -60,13 +61,17 @@ Zotero supports the following types:
 Workflows for other types:
 - Conference poster: use `Presentation`, add `type: Poster`
 - Dataset: In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field:
-> `itemType: dataset`
+> `itemType: Dataset`
 - Manuscript: use `Manuscript`, add `extra`:
  > `submittedAt: date`
  
  > `submittedTo: journal`
-- Software paper: use `Journal Article`, add `extra`
-> `itemType: software`
+- Software paper:
+  a software paper is a paper that is published in a software journal and described the software and not so much scientific questions answered by the software.
+use `Journal Article`, add under `extra`:
+> `itemType: Software`
+- Workshop: Add as `presentation`, use `type: Workshop`
+- Lecture: Add as `presentation`, use `type: Lecture`
 
 If you still have an item that doesn't fit, please contact Tom Klaver and we'll find a Workflow and add it to this guide.
 
