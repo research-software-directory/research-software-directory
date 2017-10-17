@@ -10,13 +10,19 @@ export interface ICreateNewItem extends Action {
   resourceType: string;
   fields: object;
   id: string;
+  navigateTo: boolean;
 }
 
-export const createNewItem = (resourceType: string, id: string, fields?: any): ICreateNewItem => ({
+export const createNewItem = ( resourceType: string,
+                               id: string,
+                               fields?: object,
+                               navigateTo?: boolean
+): ICreateNewItem => ({
   id,
   resourceType,
   fields: fields || {},
-  type: types.CREATE_NEW_ITEM
+  type: types.CREATE_NEW_ITEM,
+  navigateTo: navigateTo || false
 });
 
 export interface IUndoChanges extends Action {

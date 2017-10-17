@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {Project} from './Project';
 import {createNewItem} from '../../shared/resource/actions';
 import {transform} from './transform';
+import {Link} from 'react-router-dom';
 
 const dispatchToProps = ({
   getNewProjects,
@@ -70,12 +71,19 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
 
   listItems = (type: string) => this.props[type].items.map((item: any) => this.renderItem(type, item));
 
+  buttonPublicationStepper = () => this.props.publications.items.length > 0 && (
+      <Link to="/publication_stepper">
+        Step through publications
+      </Link>
+  )
+
   listContainer = (type: string) => (
     <Segment key={type}>
       <Header>new {type}</Header>
         <Dimmer active={this.props[type].status === 1}>
           <Loader />
         </Dimmer>
+        {type === 'publications' && this.buttonPublicationStepper()}
         <List animated={true} divided={true}>{this.listItems(type)}</List>
     </Segment>
   )

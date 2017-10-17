@@ -77,20 +77,23 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
     );
   }
 
-  autoMapAuthorPerson = () => {
-    matchNames(this.props.people, this.props.publication.authors).forEach((author: any) => {
-      this.props.setMapping(this.props.publication.id, author, author.person);
-    });
+  autoMapAuthorPerson = (props = this.props) => {
+    if (props.publication.authors.filter((author: any) => !('person' in author)).length) {
+      matchNames(props.people, props.publication.authors).forEach((author: any) => {
+        props.setMapping(props.publication.id, author, author.person);
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps: IMappedProps & IOwnProps & IDispatchProps) {
     this.setState({noMap : !nextProps.originalPublication});
+    if (nextProps.id !== this.props.id) {
+      this.autoMapAuthorPerson(nextProps);
+    }
   }
 
   componentWillMount() {
-    if (this.props.publication.authors.filter((author: any) => !('person' in author)).length) {
-      this.autoMapAuthorPerson();
-    }
+    this.autoMapAuthorPerson();
   }
 
   personSelected = (creator: any) => (person: string[]) => { // Author returns single value array
@@ -117,6 +120,9 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
   render() {
     return (
       <div>
+        <h1>
+          {this.props.publication.title}
+        </h1>
         {this.state.noMap && this.showAuthorsMessage()}
         <Segment.Group>
           {this.authors()}

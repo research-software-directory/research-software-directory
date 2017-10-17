@@ -11,6 +11,7 @@ import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import '../assets/style.css';
 import {IResourceType} from '../interfaces/resource';
+import {Stepper} from './zotero_import/Stepper';
 
 const Resource = (type: IResourceType) => ({match}: any) => (
   <ResourceForm
@@ -37,9 +38,7 @@ const publication = ({match}: any) => (
   <Publication id={`${match.params.id}`} />
 );
 
-const zoteroImporter = () => <ZoteroImporter />;
-
-const hello = () => <div>Welcome</div>;
+const makeFunction = (component: JSX.Element) => () => component;
 
 const routesRender = ({location}: {location: any}) => (
   <ReactCSSTransitionGroup
@@ -49,11 +48,12 @@ const routesRender = ({location}: {location: any}) => (
   >
     <Switch key={location.pathname} location={location}>
       {resourceTypes.map(resourceRoute)}
-      <Route exact={true} path="/" component={hello}/>
+      <Route exact={true} path="/" component={makeFunction(<div>Welcome</div>)}/>
       <Route key={location.pathname} exact={true} path="/software/:id/report" component={impactReports} />
       <Route exact={true} path="/images" component={Images} />
       <Route exact={true} path="/publication/:id" component={publication} />
-      <Route exact={true} path="/zotero_import" component={zoteroImporter} />
+      <Route exact={true} path="/zotero_import" component={makeFunction(<ZoteroImporter />)} />
+      <Route exact={true} path="/publication_stepper" component={makeFunction(<Stepper />)} />
     </Switch>
   </ReactCSSTransitionGroup>
 );
