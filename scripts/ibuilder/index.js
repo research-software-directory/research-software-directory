@@ -63,9 +63,9 @@ const processSchemas = async () => {
     await Promise.all(resources.map(async resource => {
         const schema = localPathExists
             ? JSON.parse(await fs.readFile(path.join(localPath, resource.fileName)))
-            : await jsonRequest(`${BASE_URL}/${resource.fileName}`);
+            : await jsonRequest(`${BASE_URL}/${resource.fileName}`)
 
-        return await processTSResult(resource, schema);
+        await processTSResult(resource, schema);
     }));
 
     resourceInterface += `export type IResource = ` +
