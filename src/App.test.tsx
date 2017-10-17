@@ -28,11 +28,13 @@ it('renders main menu with data loaded', () => {
 
   const comp = component.toJSON();
   expect (comp).not.toBeNull();
-  expect (comp.type).toBe('div');
+  if (comp) {
+    expect(comp.type).toBe('div');
 
-  expect(comp.children).not.toBeNull();
-  if (comp.children) {
-    const firstChild: ReactTestRendererJSON = comp.children[0] as ReactTestRendererJSON;
-    expect(firstChild.props.id).toBe('main_menu');
+    expect(comp.children).not.toBeNull();
+    if (comp.children) {
+      const firstChild: ReactTestRendererJSON = comp.children[0] as ReactTestRendererJSON;
+      expect(firstChild.props.id).toBe('main_menu');
+    }
   }
 });

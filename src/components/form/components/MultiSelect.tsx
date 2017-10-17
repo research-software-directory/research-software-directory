@@ -44,8 +44,8 @@ export class MultiSelect extends React.PureComponent<IProps, IState> {
     return e;
   }
 
-  onSearchChange = (e: any, search: string) => {
-    this.setState({search});
+  onSearchChange = (e: any, data: { searchQuery: string }) => {
+    this.setState({search: data.searchQuery});
 
     return e;
   }

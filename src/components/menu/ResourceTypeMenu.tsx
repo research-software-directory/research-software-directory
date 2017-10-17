@@ -36,7 +36,7 @@ export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
     >
       {this.props.type}
       <Icon
-        name={`chevron ${this.state.open ? 'down' : 'up'}`}
+        name={this.state.open ? 'chevron down' : 'chevron up'}
         style={{float: 'right'}}
       />
     </Menu.Header>

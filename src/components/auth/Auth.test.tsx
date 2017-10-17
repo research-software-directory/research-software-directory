@@ -24,5 +24,7 @@ it('should contents with user', () => {
   const result = component.toJSON();
 
   expect(result).not.toBeNull();
-  expect(result.props.id).toBe('dummy');
+  if (result) {
+    expect(result.props.id).toBe('dummy');
+  }
 });

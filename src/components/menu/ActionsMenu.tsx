@@ -23,7 +23,7 @@ export class ActionsMenu extends React.PureComponent<{}, IState> {
     >
       Actions
       <Icon
-        name={`chevron ${this.state.open ? 'down' : 'up'}`}
+        name={this.state.open ? 'chevron down' : 'chevron up'}
         style={{float: 'right'}}
       />
     </Menu.Header>
