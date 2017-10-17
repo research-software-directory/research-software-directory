@@ -2,8 +2,10 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import { ReactTestRendererJSON } from 'react-test-renderer';
+import * as Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
 
 import { App } from './App';
 import { store } from './store';

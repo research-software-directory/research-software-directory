@@ -37,6 +37,7 @@
     "devDependencies": {
         "@nlesc/react-scripts": "https://registry.npmjs.org/@nlesc/react-scripts/-/react-scripts-0.3.0-dev1.tgz",
         "@types/enzyme": "^3.1.0",
+        "@types/enzyme-adapter-react-16": "^1.0.0",
         "@types/history": "^4.6.1",
         "@types/immutability-helper": "^2.0.15",
         "@types/nock": "^8.2.1",
@@ -57,6 +58,7 @@
         "@types/showdown": "^1.7.1",
         "@types/sinon": "^2.3.6",
         "enzyme": "^3.1.0",
+        "enzyme-adapter-react-16": "^1.0.2",
         "nock": "^9.0.22",
         "react-test-renderer": "^16.0.0",
         "reduce-reducers": "^0.1.2",

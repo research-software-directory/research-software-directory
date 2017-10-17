@@ -73,10 +73,10 @@ export class DatePicker extends React.PureComponent<IProps, IState> {
   daypicker: any;
 
   componentWillMount() {
-    this.state = {
+    this.setState({
       daypickerOpen: false,
       currentDate: this.props.value || '2011-01-01'
-    };
+    });
   }
 
   onDateChange = (m: Date) => {
