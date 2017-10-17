@@ -17,21 +17,28 @@ let resourceInterface = '';
 
 if (localPathExists) { console.log('reading from local path ' + localPath); }
 
-const jsonRequest = url => new Promise((resolve, reject) =>
-    request({
-        url: url,
-        headers: {'user-agent': 'node/requests'}
-    }, (error, response, body) =>
-        resolve(JSON.parse(body))
-    )
+const jsonRequest = url => new Promise(resolve => {
+        console.log(`getting ${url}...`);
+        return request({
+                url: url,
+                headers: {'user-agent': 'node/requests'}
+            }, (error, response, body) => {
+                if (error) { throw(error); }
+                if (!response) { throw('empty response') }
+                if (response.statusCode !== 200) { throw 'status code '+response.statusCode }
+                resolve(JSON.parse(body))
+            }
+        )
+    }
 );
 
-const getSchemaFilenamesFromGithub = () => {
+const getSchemaFilenamesFromGithub = async() => {
     let url = API_RESOURCE_URL;
     if (process.env['GITHUB_ACCESS_TOKEN']) {
         url = `${url}?access_token=${process.env['GITHUB_ACCESS_TOKEN']}`;
     }
-    jsonRequest(url).then(resp => resp.map(file => file.name));
+    const resp = await jsonRequest(url);
+    return resp.map(file => file.name);
 }
 const getLocalSchemaFilenames = () => fs.readdir(localPath);
 
@@ -51,7 +58,7 @@ const processTSResult = async (resource, schema) => {
 
 const processSchemas = async () => {
     const resourceFilenames = localPathExists ? await getLocalSchemaFilenames() : await getSchemaFilenamesFromGithub();
-    const resources = resourceFilenames.map(fileName => ({name: fileName.slice(0,-5), fileName}));
+    const resources = resourceFilenames.map(fileName => ({name: fileName.slice(0, -5), fileName}));
 
     await Promise.all(resources.map(async resource => {
         const schema = localPathExists
@@ -66,11 +73,9 @@ const processSchemas = async () => {
     resourceInterface += 'export type IResourceType = ' +
         resources.map(resource => `'${resource.name}'`).join(' | ') + ';\n';
 
-
     await fs.writeFile(path.join(outputPath, 'resource.ts'), resourceInterface);
-
 
     console.log('wrote interface resource.ts');
 }
 
-processSchemas();
+processSchemas().catch(error => setTimeout(() => { throw error; }));
