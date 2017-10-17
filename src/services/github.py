@@ -80,7 +80,7 @@ class GithubService:
     
         def transform(commit):
             return {
-                '_id':          commit['sha'],
+                'id':           commit['sha'],
                 'parents':      [parent['sha'] for parent in commit['parents']],
                 'author':       commit['committer']['login'] if commit['committer'] else '?',
                 'message':      commit['commit']['message'],

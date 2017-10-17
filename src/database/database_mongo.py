@@ -15,25 +15,25 @@ class MongoRecord(Record):
 
 class MongoCursor(Cursor):  # wraps mongo cursor
     def __init__(self, cursor, collection):
-        self.cursor = cursor
-        self.collection = collection
+        self._cursor = cursor
+        self._collection = collection
 
     def __iter__(self):
-        for resource in self.cursor:
-            yield MongoRecord(resource, self.collection)
+        for resource in self._cursor:
+            yield MongoRecord(resource, self._collection)
 
     def next(self):
-        return MongoRecord(self.cursor.next(), self.collection)
+        return MongoRecord(self._cursor.next(), self._collection)
 
     def count(self):
-        return self.cursor.count()
+        return self._cursor.count()
 
     def sort(self, *args, **kwargs):
-        self.cursor = self.cursor.sort(*args, **kwargs)
+        self._cursor = self._cursor.sort(*args, **kwargs)
         return self
 
     def limit(self, *args, **kwargs):
-        self.cursor = self.cursor.limit(*args, **kwargs)
+        self._cursor = self._cursor.limit(*args, **kwargs)
         return self
 
 

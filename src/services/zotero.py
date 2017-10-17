@@ -35,19 +35,21 @@ class ZoteroService:
         ]
 
     @staticmethod
-    def publication_is_software(publication):
-        if publication['data']['itemType'] == 'computerProgram':
-            return True
-        if '//zenodo.org/record/' in publication['data']['url']:
-            return True
-        if '//github.com/' in publication['data']['url']:
-            return True
-        return False
+    def _publication_is_software(publication):
+        return (publication['data']['itemType'] == 'computerProgram'
+                or '//zenodo.org/record/' in publication['data']['url']
+                or '//github.com/' in publication['data']['url'])
+
+    @staticmethod
+    def _publication_has_collection(publication):
+        return len(publication['data']['collections']) > 0
 
     def new_publications(self):
         results = self.client.everything(self.client.top())
 
-        software = list(filter(lambda x: self.publication_is_software(x), results))
+        results = list(filter(lambda x: self._publication_has_collection(x), results))
+
+        software = list(filter(lambda x: self._publication_is_software(x), results))
         publications = [result for result in results if result not in software]
 
         current_software_keys = [
