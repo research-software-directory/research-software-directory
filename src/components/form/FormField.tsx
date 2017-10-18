@@ -34,7 +34,7 @@ interface IOwnProps {
 
 const connector = connect<IMappedProps, {}, IOwnProps>(mapStateToProps, mapDispatchToProps);
 
-class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {}> {
+class FormFieldComponent extends React.Component<IMappedProps & IOwnProps, {}> {
   shouldComponentUpdate(nextProps: IMappedProps&IOwnProps) {
     return (nextProps.value !== this.props.value)
         || (nextProps.property !== this.props.property)
@@ -56,19 +56,19 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
     return [];
   }
 
-  defaultProps = (isArray = false) => ({
+  defaultFieldProps = (isArray = false) => ({
     value: this.props.value || (isArray ? [] : ''),
     label: this.props.property.description || '',
     onChange: this.props.onChange,
     className: this.props.hasChanged ? 'dirty' : ''
   })
 
-  renderTextInput           = () => <comp.TextInput            {...this.defaultProps()} />;
-  renderTextArea            = () => <comp.TextAreaInput        {...this.defaultProps()} />;
-  renderMarkDown            = () => <comp.MarkDownInput        {...this.defaultProps()} />;
-  renderSoftwareDescription = () => <comp.SoftwareDescription  {...this.defaultProps()} />;
-  renderDateInput           = () => <comp.DateInput            {...this.defaultProps()} />;
-  renderMultiString         = () => <comp.StringArray          {...this.defaultProps(true)} />;
+  renderTextInput           = () => <comp.TextInput            {...this.defaultFieldProps()} />;
+  renderTextArea            = () => <comp.TextAreaInput        {...this.defaultFieldProps()} />;
+  renderMarkDown            = () => <comp.MarkDownInput        {...this.defaultFieldProps()} />;
+  renderSoftwareDescription = () => <comp.SoftwareDescription  {...this.defaultFieldProps()} />;
+  renderDateInput           = () => <comp.DateInput            {...this.defaultFieldProps()} />;
+  renderMultiString         = () => <comp.StringArray          {...this.defaultFieldProps(true)} />;
 
   renderEnum(multi: boolean = true) {
     const options = this.schemaEnum().map((option) =>
@@ -76,7 +76,7 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
 
     return (
       <comp.MultiSelect
-        {...this.defaultProps(true)}
+        {...this.defaultFieldProps(true)}
         options={options}
         multi={multi}
         search={true}
@@ -104,7 +104,7 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
 
     return (
       <comp.ResourceArray
-        {...this.defaultProps(true)}
+        {...this.defaultFieldProps(true)}
         options={options}
         resourceType={resourceType}
         addable={false}
@@ -150,7 +150,7 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
 
     return (
       <comp.ResourceArray
-        {...this.defaultProps(true)}
+        {...this.defaultFieldProps(true)}
         options={options}
         resourceType={resourceType}
         addable={true}
@@ -168,7 +168,7 @@ class FormFieldComponent extends React.PureComponent<IMappedProps & IOwnProps, {
   renderSoftwareReleases() {
     return (
       <comp.SoftwareReleases
-        {...this.defaultProps(true)}
+        {...this.defaultFieldProps(true)}
         githubid={this.props.githubid || ''}
         id={this.props.id}
       />

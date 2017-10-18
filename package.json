@@ -68,7 +68,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "npm run schemabuild && react-scripts build",
-        "test": "react-scripts test --env=jsdom",
+        "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
+        "testcoverage": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --coverage",
         "eject": "react-scripts eject",
         "lint": "react-scripts lint",
         "schemabuild": "cd scripts/ibuilder && npm install && npm run convert"
