@@ -5,6 +5,11 @@ import { routerMiddleware } from 'react-router-redux';
 import { rootEpic } from './rootEpic';
 import { rootReducer} from './rootReducer';
 import { history } from './history';
+import {IFetchAction, IFetchFailedAction, IFetchFulfilledAction} from './services/async';
+import {IUser} from './components/auth/reducer';
+import {ISchema} from './interfaces/json-schema';
+import {ToastrState} from 'react-redux-toastr';
+import {IResource} from './interfaces/resource';
 
 export const store = createStore(
   rootReducer,
@@ -16,4 +21,31 @@ export const store = createStore(
 if (process.env.NODE_ENV === 'development' && window) {
   // tslint:disable-next-line prefer-type-cast
   (window as any).store = store;
+}
+
+// tslint:disable:prefer-array-literal
+export interface IData {
+  [key: string]: IResource[];
+}
+
+interface IZoteroItem {
+  status: number;
+  items: any[];
+  error: string | null;
+}
+
+export interface IStoreState {
+  route: { location: Location };
+  async: Array<(IFetchAction | IFetchFailedAction | IFetchFulfilledAction) & {progress?: number}>;
+  auth: { user: IUser | null };
+  current: {
+    data: IData;
+    schema: { [key: string]: ISchema };
+  };
+  data: IData;
+  schema: { [key: string]: ISchema };
+  images: any[];
+  toastr: ToastrState;
+  reports: any[];
+  zotero: { [key: string]: IZoteroItem };
 }

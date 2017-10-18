@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {undoChanges} from '../../shared/resource/actions';
 import {IResource} from '../../interfaces/resource';
 import {ISchema} from '../../interfaces/json-schema';
+import {IData, IStoreState} from '../../store';
 
 interface IOwnProps {
   type: string;
@@ -12,9 +13,9 @@ interface IOwnProps {
 }
 
 interface IMappedProps {
-  data: { [key: string]: IResource[] };
-  oldData: { [key: string]: IResource[] };
-  schema: { [key: string]: ISchema[] };
+  data: IData;
+  oldData: IData;
+  schema: { [key: string]: ISchema };
   location: Location;
 }
 
@@ -26,12 +27,14 @@ type IProps = IMappedProps & IDispatchProps & IOwnProps;
 
 const dispatchToProps = { undoChanges };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IStoreState) => ({
   data:    state.current.data,
   oldData: state.data,
   schema:  state.schema,
   location: state.route.location
 });
+
+
 
 interface IMenuItemProps {
   item: IResource;

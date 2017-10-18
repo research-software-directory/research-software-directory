@@ -11,8 +11,9 @@ import { Button, Icon, Modal, Segment } from 'semantic-ui-react';
 import { BACKEND_URL } from '../../settings';
 
 import './Images.css';
+import {IStoreState} from '../../store';
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IStoreState) => ({
   images: state.images
 });
 

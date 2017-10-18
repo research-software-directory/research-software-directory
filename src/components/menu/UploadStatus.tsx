@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {Progress} from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import {IStoreState} from '../../store';
 
 interface IUploadStatusProps {
   progress: number;
 }
 
-const uploadStatusStateToProps = (state: any) => {
+const uploadStatusStateToProps = (state: IStoreState) => {
   const uploads = state.async.filter((asyncAction: any) =>
     asyncAction.type === 'UPLOAD_IMAGE' && asyncAction.progress < 100);
 

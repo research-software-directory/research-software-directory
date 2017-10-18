@@ -13,10 +13,11 @@ import { UploadStatus } from './UploadStatus';
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
 import {IUser} from '../auth/reducer';
+import {IStoreState} from '../../store';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IStoreState) => ({
   numAsyncs: state.async.filter((asyncAction: any) =>
     asyncAction.status !== 'DONE' && asyncAction.status !== 'FAILED'
   ).length,

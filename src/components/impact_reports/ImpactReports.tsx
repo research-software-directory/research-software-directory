@@ -5,6 +5,7 @@ import * as JSONPretty from 'react-json-pretty';
 import {Button, Icon} from 'semantic-ui-react';
 
 import 'react-json-pretty/src/JSONPretty.monikai.css';
+import {IStoreState} from '../../store';
 
 interface IOwnProps {
   id: string;
@@ -30,7 +31,7 @@ const sortByField = (field: string, desc: boolean = false) => (a: any, b: any) =
   return 0;
 };
 
-const mapStateToProps = (state: any): IMappedProps => (
+const mapStateToProps = (state: IStoreState): IMappedProps => (
   {
     reports: state.reports.sort(sortByField('time_start', true))
   }

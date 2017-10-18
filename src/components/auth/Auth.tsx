@@ -6,12 +6,13 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import { login } from './actions';
 import { IUser } from './reducer';
+import {IStoreState} from '../../store';
 
 const mapDispatchToProps = {
   login
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IStoreState) => ({
   user:   state.auth.user
 });
 

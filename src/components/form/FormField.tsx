@@ -5,12 +5,13 @@ import * as comp from './components';
 import {
   IProperty, isAnyOfProperty, isArrayProperty, isEnumProperty, isLinkProperty, isStringProperty
 } from '../../interfaces/json-schema';
+import {IStoreState} from '../../store';
 
 const mapDispatchToProps = {
   // addToSchemaEnum
 };
 
-const mapStateToProps: (state: any, props: IOwnProps) => any = (state: any) => {
+const mapStateToProps = (state: IStoreState) => {
   return ({
     data: state.current.data
   });
