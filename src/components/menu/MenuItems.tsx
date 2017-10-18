@@ -34,8 +34,6 @@ const mapStateToProps = (state: IStoreState) => ({
   location: state.route.location
 });
 
-
-
 interface IMenuItemProps {
   item: IResource;
   label: string;
