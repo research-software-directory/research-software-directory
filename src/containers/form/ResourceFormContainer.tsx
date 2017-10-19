@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { updateField } from './actions';
 
 import '../../components/form/style.css';
-import {IResourceType} from '../../interfaces/resource';
-import {ResourceForm} from '../../components/form/ResourceForm';
+import { IResourceType } from '../../interfaces/resource';
+import { ResourceForm } from '../../components/form/ResourceForm';
 
 interface IOwnProps {
   resourceType: IResourceType;

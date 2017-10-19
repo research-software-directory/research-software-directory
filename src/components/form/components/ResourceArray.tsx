@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Icon, Segment } from 'semantic-ui-react';
 import { EditableSegment } from './EditableSegment';
-import { MultiSelect} from './MultiSelect';
+import { MultiSelect } from './MultiSelect';
 import './ResourceArray.css';
 
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';

@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Segment, Button, Icon } from 'semantic-ui-react';
 
 import { ResourceArray } from '../form/components/ResourceArray';
-import {IPerson} from '../../interfaces/resources/person';
-import {IAuthor} from './actions';
+import { IPerson } from '../../interfaces/resources/person';
+import { IAuthor } from './actions';
 
 interface IProps {
   people: IPerson[];

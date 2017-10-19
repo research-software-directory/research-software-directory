@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Segment, Button } from 'semantic-ui-react';
-import {getNewPublications} from './actions';
-import {transform} from './transform';
-import {createNewItem} from '../../containers/shared/resource/actions';
-import {IPublication} from '../../interfaces/resources/publication';
-import {Publication} from '../publications/Publication';
+import { getNewPublications } from './actions';
+import { transform } from './transform';
+import { createNewItem } from '../../containers/shared/resource/actions';
+import { IPublication } from '../../interfaces/resources/publication';
+import { Publication } from '../publications/Publication';
 
 interface IMappedProps {
   zoteroPublications: any;

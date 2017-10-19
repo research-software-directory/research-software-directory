@@ -10,7 +10,7 @@ import 'react-day-picker/lib/style.css';
 
 import { Button, Icon } from 'semantic-ui-react';
 
-import {YearMonthForm} from './YearMonthForm';
+import { YearMonthForm } from './YearMonthForm';
 
 interface IProps {
   value: string;

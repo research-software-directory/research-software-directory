@@ -4,14 +4,14 @@ import { ResourceFormContainer } from './containers/form/ResourceFormContainer';
 import { Images } from './components/images';
 import { Publication } from './components/publications/Publication';
 import { ImpactReports } from './components/impact_reports/ImpactReports';
-import {ZoteroImporter} from './components/zotero_import/ZoteroImporter';
+import { ZoteroImporter } from './components/zotero_import/ZoteroImporter';
 
 import { resourceTypes } from './settings';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './assets/style.css';
-import {IResourceType} from './interfaces/resource';
-import {Stepper} from './components/zotero_import/Stepper';
+import { IResourceType } from './interfaces/resource';
+import { Stepper } from './components/zotero_import/Stepper';
 
 const Resource = (type: IResourceType) => ({match}: any) => (
   <ResourceFormContainer

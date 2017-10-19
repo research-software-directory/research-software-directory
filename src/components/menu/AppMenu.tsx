@@ -12,8 +12,8 @@ import { UploadStatus } from './UploadStatus';
 
 import './AppMenu.css';
 import 'semantic-ui-css/semantic.min.css';
-import {IUser} from '../../containers/auth/reducer';
-import {IStoreState} from '../../containers/store';
+import { IUser } from '../../containers/auth/reducer';
+import { IStoreState } from '../../containers/store';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 

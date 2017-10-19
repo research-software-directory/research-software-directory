@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Segment, Dimmer, Loader, Header, List, Icon } from 'semantic-ui-react';
 import { getNewProjects, getNewPublications, getNewSoftware } from './actions';
-import {connect} from 'react-redux';
-import {Project} from './Project';
-import {createNewItem} from '../../containers/shared/resource/actions';
-import {transform} from './transform';
-import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Project } from './Project';
+import { createNewItem } from '../../containers/shared/resource/actions';
+import { transform } from './transform';
+import { Link } from 'react-router-dom';
 
 const dispatchToProps = ({
   getNewProjects,
