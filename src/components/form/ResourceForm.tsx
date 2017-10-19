@@ -4,11 +4,11 @@ import { updateField } from './actions';
 import { Link } from 'react-router-dom';
 import { FormField } from './FormField';
 import { Button, Segment } from 'semantic-ui-react';
-import {ISchema} from '../../interfaces/json-schema';
+import { ISchema } from '../../interfaces/json-schema';
 
 import './style.css';
-import {IResource, IResourceType} from '../../interfaces/resource';
-import {ISoftware} from '../../interfaces/resources/software';
+import { IResource, IResourceType } from '../../interfaces/resource';
+import { ISoftware } from '../../interfaces/resources/software';
 
 interface IMappedProps {
   schema: ISchema;

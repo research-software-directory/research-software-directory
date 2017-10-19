@@ -4,8 +4,8 @@ import { Button, Icon, Input, Segment, Message, Dimmer, Loader } from 'semantic-
 import { DatePicker } from '../../datepicker/DatePicker';
 
 import './SoftwareReleases.css';
-import {updateFieldFromBackend} from '../actions';
-import {connect} from 'react-redux';
+import { updateFieldFromBackend } from '../actions';
+import { connect } from 'react-redux';
 
 interface IProps {
   maxItems?: number;

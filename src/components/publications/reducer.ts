@@ -1,6 +1,6 @@
 import * as actions from './actions';
 import * as update from 'immutability-helper';
-import {IAuthor} from './actions';
+import { IAuthor } from './actions';
 
 export const reducer = (state: any = {}, action: actions.ISetMapping) => {
   if (action.type === actions.types.SET_MAPPING) {

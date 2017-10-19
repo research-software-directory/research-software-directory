@@ -1,7 +1,7 @@
 import { combineEpics } from 'redux-observable';
 import * as actions from './actions';
 import { push } from 'react-router-redux';
-import {ICreateNewItem} from './actions';
+import { ICreateNewItem } from './actions';
 
 export const epic = combineEpics(
   (action$: any) => action$

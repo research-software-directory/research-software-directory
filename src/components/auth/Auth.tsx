@@ -3,10 +3,10 @@
    - Render its child if the user is authenticated, otherwise null
 */
 import * as React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { login } from './actions';
 import { IUser } from './reducer';
-import {IStoreState} from '../../store';
+import { IStoreState } from '../../store';
 
 const mapDispatchToProps = {
   login

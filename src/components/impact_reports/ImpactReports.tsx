@@ -2,10 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { generateReport, getReports } from './actions';
 import * as JSONPretty from 'react-json-pretty';
-import {Button, Icon} from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 import 'react-json-pretty/src/JSONPretty.monikai.css';
-import {IStoreState} from '../../store';
+import { IStoreState } from '../../store';
 
 interface IOwnProps {
   id: string;
@@ -56,8 +56,8 @@ class ImpactReportsComponent extends React.PureComponent<IOwnProps & IMappedProp
   newReportClick = () => {
     this.setState({refreshing: true});
     this.props.generateReport(this.props.id);
-    setTimeout(() =>
-      this.props.getReports(this.props.id),
+    setTimeout(
+      () => this.props.getReports(this.props.id),
       500
     );
   }

@@ -6,7 +6,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import 'rxjs';
 import * as nock from 'nock';
 import Axios from 'axios';
-import { BACKEND_URL} from '../settings';
+import { BACKEND_URL } from '../settings';
 
 describe('async backend stuff', () => {
   let store: any;

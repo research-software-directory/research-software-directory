@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Divider, Icon, Input, Menu } from 'semantic-ui-react';
 import { NewItem } from './NewItem';
-import {MenuItems} from './MenuItems';
+import { MenuItems } from './MenuItems';
 
 // tslint:disable-next-line:no-require-imports no-var-requires
 const AnimateHeight = require('react-animate-height').default;

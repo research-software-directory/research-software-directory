@@ -4,7 +4,7 @@ import { actions as toastrActions } from 'react-redux-toastr';
 import * as actions from './actions';
 import { history } from '../../history';
 import { accessToken } from '../../services/async';
-import {BACKEND_URL } from '../../settings';
+import { BACKEND_URL } from '../../settings';
 
 export const epic = combineEpics(
   (action$: any) => action$.ofType(actions.types.LOGIN)

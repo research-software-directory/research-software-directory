@@ -8,7 +8,7 @@ import { history } from './history';
 
 import { AppMenu } from './components/menu/AppMenu';
 import { Dimmer, Segment, Loader } from 'semantic-ui-react';
-import {IStoreState} from './store';
+import { IStoreState } from './store';
 
 const mapStateToProps = (state: IStoreState) => ({
   data:   state.data,

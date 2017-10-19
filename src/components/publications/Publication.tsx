@@ -2,10 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Segment, Message, Table } from 'semantic-ui-react';
 import { Author } from './Author';
-import {matchNames} from './matchNames';
-import {setMapping} from './actions';
-import {IPublication} from '../../interfaces/resources/publication';
-import {IPerson} from '../../interfaces/resources/person';
+import { matchNames } from './matchNames';
+import { setMapping } from './actions';
+import { IPublication } from '../../interfaces/resources/publication';
+import { IPerson } from '../../interfaces/resources/person';
 
 interface IOwnProps {
   id: string;
@@ -21,9 +21,9 @@ interface IState {
   noMap: boolean;
 }
 
-type IDispatchProps = typeof dispatchToProps;
-
 const dispatchToProps = { setMapping };
+
+type IDispatchProps = typeof dispatchToProps;
 
 const mapStateToProps = (state: any, ownProps: IOwnProps) => {
   return ({

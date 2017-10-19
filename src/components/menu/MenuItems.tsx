@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {undoChanges} from '../../shared/resource/actions';
-import {IResource} from '../../interfaces/resource';
-import {ISchema} from '../../interfaces/json-schema';
-import {IData, IStoreState} from '../../store';
+import { undoChanges } from '../../shared/resource/actions';
+import { IResource } from '../../interfaces/resource';
+import { ISchema } from '../../interfaces/json-schema';
+import { IData, IStoreState } from '../../store';
 
 interface IOwnProps {
   type: string;

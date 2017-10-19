@@ -1,4 +1,4 @@
-import {backend} from '../../services/async';
+import { backend } from '../../services/async';
 
 // export const ADD_TO_SCHEMA_ENUM = 'ADD_TO_SCHEMA_ENUM';
 // export interface IAddToSchemaEnum { type: 'ADD_TO_SCHEMA_ENUM'; resourceType: string; field: string; value: string; }

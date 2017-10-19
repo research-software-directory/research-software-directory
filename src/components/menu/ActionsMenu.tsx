@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Divider, Icon, Menu } from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface IState {
   open: boolean;

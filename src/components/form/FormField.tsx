@@ -5,7 +5,7 @@ import * as comp from './components';
 import {
   IProperty, isAnyOfProperty, isArrayProperty, isEnumProperty, isLinkProperty, isStringProperty
 } from '../../interfaces/json-schema';
-import {IStoreState} from '../../store';
+import { IStoreState } from '../../store';
 
 const mapDispatchToProps = {
   // addToSchemaEnum

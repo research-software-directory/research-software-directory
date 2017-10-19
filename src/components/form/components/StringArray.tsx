@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button, Input, Segment} from 'semantic-ui-react';
+import { Button, Input, Segment } from 'semantic-ui-react';
 
 interface IProps {
   value: any[];
