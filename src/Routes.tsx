@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { ResourceForm } from './form/ResourceForm';
-import { Images } from './images';
-import { Publication } from './publications/Publication';
-import { ImpactReports } from './impact_reports/ImpactReports';
-import {ZoteroImporter} from './zotero_import/ZoteroImporter';
+import { ResourceFormContainer } from './containers/form/ResourceFormContainer';
+import { Images } from './components/images';
+import { Publication } from './components/publications/Publication';
+import { ImpactReports } from './components/impact_reports/ImpactReports';
+import {ZoteroImporter} from './components/zotero_import/ZoteroImporter';
 
-import { resourceTypes } from '../settings';
+import { resourceTypes } from './settings';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import '../assets/style.css';
-import {IResourceType} from '../interfaces/resource';
-import {Stepper} from './zotero_import/Stepper';
+import './assets/style.css';
+import {IResourceType} from './interfaces/resource';
+import {Stepper} from './components/zotero_import/Stepper';
 
 const Resource = (type: IResourceType) => ({match}: any) => (
-  <ResourceForm
+  <ResourceFormContainer
     resourceType={type}
     id={match.params.id}
     key={match.params.id}

@@ -1,51 +1,22 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { updateField } from './actions';
 import { Link } from 'react-router-dom';
 import { FormField } from './FormField';
 import { Button, Segment } from 'semantic-ui-react';
-import {ISchema} from '../../interfaces/json-schema';
+import { ISchema } from '../../interfaces/json-schema';
 
 import './style.css';
-import {IResource, IResourceType} from '../../interfaces/resource';
-import {ISoftware} from '../../interfaces/resources/software';
+import { IResource, IResourceType, ISoftware } from '../../interfaces/resource';
 
-interface IMappedProps {
+interface IProps {
   schema: ISchema;
   data: IResource;
   oldData: IResource;
-}
-
-interface IDispatchProps {
-  updateField: typeof updateField;
-}
-
-interface IOwnProps {
   resourceType: IResourceType;
   id: string;
+  updateField(resourceType: string, id: string, field: string, value: any): any;
 }
 
-type IProps = IMappedProps & IDispatchProps & IOwnProps;
-
-const mapDispatchToProps = {
-  updateField
-};
-
-const mapStateToProps  = (state: any, props: IOwnProps) => {
-  return ({
-    data: state.current.data[props.resourceType].find(
-      (resource: any) => resource.id === `${props.id}`
-    ),
-    oldData: state.data[props.resourceType].find(
-      (resource: any) => resource.id === `${props.id}`
-    ),
-    schema: state.current.schema
-  });
-};
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-class ResourceFormComponent extends React.PureComponent<IProps, any> {
+export class ResourceForm extends React.PureComponent<IProps, {}> {
   updateFormValue = (field: string) => (value: any) => {
     this.props.updateField(this.props.resourceType, this.props.id, field, value);
   }
@@ -110,5 +81,3 @@ class ResourceFormComponent extends React.PureComponent<IProps, any> {
     );
   }
 }
-
-export const ResourceForm = connector(ResourceFormComponent);

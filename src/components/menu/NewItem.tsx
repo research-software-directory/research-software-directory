@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon, Input } from 'semantic-ui-react';
-import {createNewItem} from '../../shared/resource/actions';
+import {createNewItem} from '../../containers/shared/resource/actions';
 
 interface IOwnProps {
   resourceType: string;

@@ -1,19 +1,21 @@
 {
-    "extends": [
-        "@nlesc/tslint-config-react-app"
+  "extends": [
+    "@nlesc/tslint-config-react-app"
+  ],
+  "rules": {
+    "react-no-dangerous-html": [
+      true,
+      {
+        "file": "src/form/components/MarkDownInput.tsx",
+        "method": "render",
+        "comment": "Usage is ok, is markdown output"
+      }
     ],
-    "rules" : {
-        "react-no-dangerous-html": [true,
-            {
-                "file": "src/form/components/MarkDownInput.tsx",
-                "method": "render",
-                "comment": "Usage is ok, is markdown output"
-            }
-        ],
-        "ordered-imports": false,
-        "object-literal-sort-keys": false,
-        "no-backbone-get-set-outside-model": false,
-        "prefer-type-cast": false,
-        "no-http-string": false
-    }
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-backbone-get-set-outside-model": false,
+    "prefer-type-cast": false,
+    "no-http-string": false,
+    "export-name": false
+  }
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Segment, Button } from 'semantic-ui-react';
 import {getNewPublications} from './actions';
 import {transform} from './transform';
-import {createNewItem} from '../../shared/resource/actions';
+import {createNewItem} from '../../containers/shared/resource/actions';
 import {IPublication} from '../../interfaces/resources/publication';
 import {Publication} from '../publications/Publication';
 

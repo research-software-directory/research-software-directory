@@ -1,6 +1,5 @@
-import { reducer } from './reducer';
-
-import * as actions from './actions';
+import { reducer } from 'src/containers/form/reducer';
+import * as actions from '../../../containers/form/actions';
 
 // it('should add value to property enums', () => {
 //   const property = { software: { properties: { example: { items: { enum: ['first']}}}}};

@@ -4,12 +4,12 @@ import { routerMiddleware } from 'react-router-redux';
 
 import { rootEpic } from './rootEpic';
 import { rootReducer} from './rootReducer';
-import { history } from './history';
-import {IFetchAction, IFetchFailedAction, IFetchFulfilledAction} from './services/async';
-import {IUser} from './components/auth/reducer';
-import {ISchema} from './interfaces/json-schema';
+import { history } from '../history';
+import {IFetchAction, IFetchFailedAction, IFetchFulfilledAction} from '../services/async';
+import {IUser} from './auth/reducer';
+import {ISchema} from '../interfaces/json-schema';
 import {ToastrState} from 'react-redux-toastr';
-import {IResource} from './interfaces/resource';
+import {IResource} from '../interfaces/resource';
 
 export const store = createStore(
   rootReducer,

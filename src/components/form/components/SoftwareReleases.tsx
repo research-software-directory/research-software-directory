@@ -4,7 +4,7 @@ import { Button, Icon, Input, Segment, Message, Dimmer, Loader } from 'semantic-
 import { DatePicker } from '../../datepicker/DatePicker';
 
 import './SoftwareReleases.css';
-import {updateFieldFromBackend} from '../actions';
+import {updateFieldFromBackend} from '../../../containers/form/actions';
 import {connect} from 'react-redux';
 
 interface IProps {

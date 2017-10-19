@@ -5,7 +5,7 @@ import * as JSONPretty from 'react-json-pretty';
 import {Button, Icon} from 'semantic-ui-react';
 
 import 'react-json-pretty/src/JSONPretty.monikai.css';
-import {IStoreState} from '../../store';
+import {IStoreState} from '../../containers/store';
 
 interface IOwnProps {
   id: string;

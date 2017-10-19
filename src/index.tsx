@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import ReduxToastr from 'react-redux-toastr';
 
 import { App } from './App';
-import { store } from './store';
-import { Auth } from './components/auth/Auth';
+import { store } from './containers/store';
+import { AuthContainer } from './containers/auth/index';
 
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import './assets/reset.css';
@@ -17,9 +17,9 @@ import './assets/index.css';
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <Auth>
+      <AuthContainer>
         <App />
-      </Auth>
+      </AuthContainer>
       <ReduxToastr
         timeOut={4000}
         newestOnTop={false}

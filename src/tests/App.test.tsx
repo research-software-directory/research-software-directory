@@ -7,8 +7,8 @@ import { ReactTestRendererJSON } from 'react-test-renderer';
 import * as Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
-import { App } from './App';
-import { store } from './store';
+import { App } from '../App';
+import { store } from '../containers/store';
 import { storeMock } from './testHelpers';
 
 it('renders without crashing', () => {

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
 import { fetchRootJSON, fetchSchema } from './actions';
-import { Routes } from './components/Routes';
+import { Routes } from './Routes';
 import { history } from './history';
 
 import { AppMenu } from './components/menu/AppMenu';
 import { Dimmer, Segment, Loader } from 'semantic-ui-react';
-import {IStoreState} from './store';
+import {IStoreState} from './containers/store';
 
 const mapStateToProps = (state: IStoreState) => ({
   data:   state.data,

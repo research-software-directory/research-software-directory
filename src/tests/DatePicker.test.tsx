@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { mount, configure } from 'enzyme';
-import { DatePicker } from './DatePicker';
+import { DatePicker } from '../components/datepicker/DatePicker';
 
 import * as Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });

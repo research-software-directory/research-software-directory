@@ -8,6 +8,8 @@
         "allowJs": true,
         "jsx": "react",
         "moduleResolution": "node",
+        "baseUrl": ".",
+        "typeRoots": ["node_modules/@types"],
         "rootDir": "src",
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
@@ -16,6 +18,11 @@
         "noUnusedParameters": true,
         "strict": true,
         "suppressImplicitAnyIndexErrors": true
+//        "paths": {
+//            "*": [
+//                "*"
+//            ]
+//        }
     },
     "exclude": [
         "node_modules",
