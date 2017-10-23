@@ -17,7 +17,9 @@ For most completed projects, a list of publications can be found in the end repo
 * Find project in [Sharepoint](https://nlesc.sharepoint.com/sites/operations/Shared%20Documents/Projectportfolio)
 * `Project` / `E - End documents` / `Wetenschappelijk en financieel report` (Scientific and financial report).
 
-If there are any publications not in the end report, please add them to!
+If there are any publications not in the end report, please add them too!
+
+*If you cannot find an end report, check with Noura if it is available somewhere else.*
 
 ## Zotero
 *Note: Use the **offline** version of Zotero, the web client functionality is very limited, can't add by DOI etc.*
