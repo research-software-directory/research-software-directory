@@ -186,8 +186,8 @@ Since the projects in Zotero are not searchable, find your project below:
 | 27011308    | BiographyNed/eHumanities                                     | Jisk
 | 27011307    | VLBPII/Green Genetics                                        | Lars
 | 27011306    | Food Ontologies                                              | Stefan
-| 27011305    | eEcology                                                     | Christiaan
+| 27011305    | eEcology                                                     | Stefan
 | 27011304    | Biomarker Boosting/ Cognition                                | Elena
 | 27011303    | eSALSA/eClimate                                              | Ben
-| 27011302    | eChemistry/Metabolite ID                                     | Stefan
+| 27011302    | eChemistry/Metabolite ID                                     | Lars
 | 27011301    | eAstronomy                                                   | Rob
