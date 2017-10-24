@@ -37,6 +37,10 @@ In zotero:
 * Click sync button ![Instruction](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step1.png)
 * Netherlands eScience Center should appear under `Group Libraries`.
 
+### Open project
+* Click  `Netherlands eScience Center` / `Group Libraries`.
+* Zotero projects are not searchable; it's easiest to find the project id at [the bottom of this document](#projects), and use it to find your project.
+
 ### Adding items
 Items can be added by DOI (preferred), or manually if there is no DOI. Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
 #### Publication
