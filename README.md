@@ -24,6 +24,7 @@ If there are any publications not in the end report, please add them too!
 ## Zotero
 *Note: Use the **offline** version of Zotero, the web client functionality is very limited, can't add by DOI etc.*
 * [Create account](https://www.zotero.org/user/register/)
+*Note: if you use Lastpass and register, it will **not** popup and ask to save the password, so save it beforehand!*
 * Login
 * Go to [Netherlands eScience group](https://www.zotero.org/groups/1689348/netherlands_escience_center)
 * Click `join`
