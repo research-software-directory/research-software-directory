@@ -10,7 +10,7 @@
   * [Projects](#projects)
 
 ## Keep your output up to date
-It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, conference papers or anything else that can be considered project output. Any output that you can’t add to Zotero? Give your feedback to Willem van Hage and Tom Klaver!
+It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output. Any output that you can’t add to Zotero? Give your feedback to Willem van Hage and Tom Klaver!
 
 ## End report
 For most completed projects, a list of publications can be found in the end report:
@@ -45,6 +45,7 @@ To add a publication by DOI:
 * Click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png)
 * Enter one or more DOI(s), seperated with a space.
 * Add tag `domain` or `escience`
+*If you have papers that are not directly connected to a project, but which are linked to the eScience Center, please add them to the `Miscellaneous` folder (on the same level as `Projects`*
 
 #### Software
 Add software:
@@ -52,12 +53,7 @@ Add software:
 * Add software to project by its DOI (Zotero DOI import works through Crossref.org, it can take a couple of hours after
 creating a Zenodo DOI before it is available).
 * Change the item type to `computer program`.
-* If you really want to add software without a DOI, then add it manually, only `Title` field and the GitHub URL under `URL`.
-
-Link publications and software:
-* Click publication or software
-* Click `Related` -> `Add`
-* Click related software/publication
+* Registering with a DOI is preferred, however sometimes it may not be worth the effort if it is for instance very experimental and you're sure it will not be cited. But we still consider this to be project output; anything with a GitHub repository can be added: add a `computer program` item manually, make sure to fill `Title` field and the GitHub URL under `URL`.
 
 #### Other items
 Zotero supports the following types:
