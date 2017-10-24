@@ -22,23 +22,25 @@ describe('async backend stuff', () => {
   });
 
   it('epic should go', (done) => {
-    console.log(1);
     nock(BACKEND_URL)
       .get('/test')
       .reply(200, { status: 'success' } );
-    console.log(2);
     store.dispatch(backend.get('test', 'test'));
-    console.log(3);
-    setTimeout(() => {
-      console.log(4);
-      expect(store.getActions()).toHaveLength(2);
-      expect(store.getActions()[1].type).toBe('test/FULFILLED');
-      expect(store.getActions()[1].response.status).toBe('success');
-      expect(store.getActions()[1].status).toBe(200);
-      console.log(5);
-      done();
-    }, 400);
-    console.log(6);
+    setTimeout(
+      () => {
+        console.log(1);
+        expect(store.getActions()).toHaveLength(2);
+        console.log(2);
+        expect(store.getActions()[1].type).toBe('test/FULFILLED');
+        console.log(3);
+        expect(store.getActions()[1].response.status).toBe('success');
+        console.log(4);
+        expect(store.getActions()[1].status).toBe(200);
+        console.log(5);
+        done();
+      },
+      400
+    );
   });
 
   it('reducer should work', () => {
@@ -50,5 +52,4 @@ describe('async backend stuff', () => {
     expect(state).toHaveLength(1);
     expect(state[0].status).toBe('DONE');
   });
-
 });
