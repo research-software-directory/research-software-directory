@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Segment, Message, Table } from 'semantic-ui-react';
+import { Segment, Message } from 'semantic-ui-react';
 import { Author } from './Author';
 import { matchNames } from './matchNames';
 import { IPublication } from '../../interfaces/resources/publication';
 import { IPerson } from '../../interfaces/resources/person';
 import { IAuthor } from '../../containers/publications/actions';
+import { PropsTable } from '../PropsTable';
 
 interface IProps {
   id: string;
@@ -18,38 +19,13 @@ interface IState {
   noMap: boolean;
 }
 
-const propTable = (data: any) => {
-  const propTableRow = (key: string, value: string) => (
-    <Table.Row key={key}>
-      <Table.Cell>{key}</Table.Cell>
-      <Table.Cell>{value}</Table.Cell>
-    </Table.Row>
-  );
-
-  const propTableRows = Object.keys(data).map((key: string) =>
-    propTableRow(key, JSON.stringify(data[key])));
-
-  return (
-    <Table celled={true} striped={true}>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell colSpan={2}>Raw Data</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {propTableRows}
-      </Table.Body>
-    </Table>
-  );
-};
-
 export class Publication extends React.PureComponent<IProps, IState> {
   constructor() {
     super();
     this.state = {noMap: false};
   }
 
-  showAuthorsMessage = () => {
+  authorsMessage = () => {
     return (
       <Message
         warning={true}
@@ -61,6 +37,7 @@ export class Publication extends React.PureComponent<IProps, IState> {
   }
 
   autoMapAuthorPerson = (props = this.props) => {
+    /* try to map props.publication.authors each to an existing person (props.people) */
     if (props.publication.authors.filter((author: any) => !('person' in author)).length) {
       matchNames(props.people, props.publication.authors).forEach((author: any) => {
         props.setMapping(props.publication.id, author, author.person);
@@ -69,7 +46,7 @@ export class Publication extends React.PureComponent<IProps, IState> {
   }
 
   componentWillReceiveProps(nextProps: IProps) {
-    this.setState({noMap : !nextProps.originalPublication});
+    this.setState({noMap : !nextProps.originalPublication}); // publication was saved before
     if (nextProps.id !== this.props.id) {
       this.autoMapAuthorPerson(nextProps);
     }
@@ -96,8 +73,7 @@ export class Publication extends React.PureComponent<IProps, IState> {
           onChange={this.personSelected(creator)}
         />
       );
-      }
-    );
+    });
   }
 
   render() {
@@ -106,11 +82,11 @@ export class Publication extends React.PureComponent<IProps, IState> {
         <h1>
           {this.props.publication.title}
         </h1>
-        {this.state.noMap && this.showAuthorsMessage()}
+        {this.state.noMap && this.authorsMessage()}
         <Segment.Group>
           {this.authors()}
         </Segment.Group>
-        {propTable(this.props.publication)}
+        <PropsTable data={this.props.publication} />
       </div>
     );
   }
