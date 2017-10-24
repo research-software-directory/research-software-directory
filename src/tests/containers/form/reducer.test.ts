@@ -1,4 +1,4 @@
-import { reducer } from 'src/containers/form/reducer';
+import { reducer } from '../../../containers/form/reducer';
 import * as actions from '../../../containers/form/actions';
 
 // it('should add value to property enums', () => {

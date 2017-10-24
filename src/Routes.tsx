@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ResourceFormContainer } from './containers/form/ResourceFormContainer';
-import { Images } from './components/images';
-import { Publication } from './components/publications/Publication';
-import { ImpactReports } from './components/impact_reports/ImpactReports';
-import { ZoteroImporter } from './components/zotero_import/ZoteroImporter';
+import { ImagesContainer } from './containers/images/ImagesContainer';
+import { PublicationContainer } from './containers/publications/PublicationContainer';
+import { ImpactReportsContainer } from './containers/impact_reports/ImpactReportsContainer';
+import { ZoteroImporterContainer } from './containers/zotero_import/ZoteroImporterContainer';
 
 import { resourceTypes } from './settings';
 import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './assets/style.css';
 import { IResourceType } from './interfaces/resource';
-import { Stepper } from './components/zotero_import/Stepper';
+import { StepperContainer } from './containers/zotero_import/StepperContainer';
 
 const Resource = (type: IResourceType) => ({match}: any) => (
   <ResourceFormContainer
@@ -31,11 +31,11 @@ const resourceRoute = (resourceType: IResourceType) => (
 );
 
 const impactReports = ({match}: any) => (
-  <ImpactReports id={`${match.params.id}`} />
+  <ImpactReportsContainer id={`${match.params.id}`} />
 );
 
 const publication = ({match}: any) => (
-  <Publication id={`${match.params.id}`} />
+  <PublicationContainer id={`${match.params.id}`} />
 );
 
 const makeFunction = (component: JSX.Element) => () => component;
@@ -50,10 +50,10 @@ const routesRender = ({location}: {location: any}) => (
       {resourceTypes.map(resourceRoute)}
       <Route exact={true} path="/" component={makeFunction(<div>Welcome</div>)}/>
       <Route key={location.pathname} exact={true} path="/software/:id/report" component={impactReports} />
-      <Route exact={true} path="/images" component={Images} />
+      <Route exact={true} path="/images" component={ImagesContainer} />
       <Route exact={true} path="/publication/:id" component={publication} />
-      <Route exact={true} path="/zotero_import" component={makeFunction(<ZoteroImporter />)} />
-      <Route exact={true} path="/publication_stepper" component={makeFunction(<Stepper />)} />
+      <Route exact={true} path="/zotero_import" component={makeFunction(<ZoteroImporterContainer />)} />
+      <Route exact={true} path="/publication_stepper" component={makeFunction(<StepperContainer />)} />
     </Switch>
   </ReactCSSTransitionGroup>
 );

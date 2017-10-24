@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { login } from './actions';
 import { IUser } from './reducer';
-import { IStoreState } from '../store';
-import { Auth } from '../../components/auth/Auth';
+import { Auth } from '../../components/Auth';
+import { IStoreState } from '../../interfaces/misc';
 
 interface IStateProps {
   user: null | IUser;

@@ -1,28 +1,12 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-// import { addToSchemaEnum } from './actions';
 import * as comp from './components';
 import {
   IProperty, isAnyOfProperty, isArrayProperty, isEnumProperty, isLinkProperty, isStringProperty
 } from '../../interfaces/json-schema';
-import { IStoreState } from '../../containers/store';
+import { IData } from '../../interfaces/misc';
 
-const mapDispatchToProps = {
-  // addToSchemaEnum
-};
-
-const mapStateToProps = (state: IStoreState) => {
-  return ({
-    data: state.current.data
-  });
-};
-
-interface IMappedProps {
-  data: any;
-  // addToSchemaEnum: typeof addToSchemaEnum;
-}
-
-interface IOwnProps {
+interface IProps {
+  data: IData;
   fieldName: string;
   githubid?: string;
   parentResourceType: string;
@@ -33,10 +17,8 @@ interface IOwnProps {
   onChange(value: any): void;
 }
 
-const connector = connect<IMappedProps, {}, IOwnProps>(mapStateToProps, mapDispatchToProps);
-
-class FormFieldComponent extends React.Component<IMappedProps & IOwnProps, {}> {
-  shouldComponentUpdate(nextProps: IMappedProps&IOwnProps) {
+export class FormField extends React.Component<IProps, {}> {
+  shouldComponentUpdate(nextProps: IProps) {
     return (nextProps.value !== this.props.value)
         || (nextProps.property !== this.props.property)
         || (nextProps.githubid !== this.props.githubid);
@@ -209,5 +191,3 @@ class FormFieldComponent extends React.Component<IMappedProps & IOwnProps, {}> {
   }
 
 }
-
-export const FormField = connector(FormFieldComponent);

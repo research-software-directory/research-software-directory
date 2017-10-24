@@ -1,6 +1,6 @@
 import * as Fuse from 'fuse.js';
 import { IPerson } from '../../interfaces/resources/person';
-import { IAuthor } from './actions';
+import { IAuthor } from '../../containers/publications/actions';
 
 const options = {
   shouldSort: true,

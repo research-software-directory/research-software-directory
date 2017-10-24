@@ -1,46 +1,17 @@
 import * as React from 'react';
-import { Button, Icon, Menu } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { undoChanges } from '../../containers/shared/resource/actions';
-import { IResource } from '../../interfaces/resource';
 import { ISchema } from '../../interfaces/json-schema';
-import { IData, IStoreState } from '../../containers/store';
+import { IResource } from '../../interfaces/resource';
+import { IData } from '../../interfaces/misc';
+import { MenuItem } from './MenuItem';
 
-interface IOwnProps {
+interface IProps {
   type: string;
   search: string;
-}
-
-interface IMappedProps {
   data: IData;
   oldData: IData;
   schema: { [key: string]: ISchema };
   location: Location;
-}
-
-interface IDispatchProps {
-  undoChanges: any;
-}
-
-type IProps = IMappedProps & IDispatchProps & IOwnProps;
-
-const dispatchToProps = { undoChanges };
-
-const mapStateToProps = (state: IStoreState) => ({
-  data:    state.current.data,
-  oldData: state.data,
-  schema:  state.schema,
-  location: state.route.location
-});
-
-interface IMenuItemProps {
-  item: IResource;
-  label: string;
-  active: boolean;
-  hasChanged: boolean;
-  onUndo: any;
-  type: string;
+  undoChanges(resourceType: string, id: string): any;
 }
 
 const label = (type: string) => (item: any) => {
@@ -51,35 +22,9 @@ const label = (type: string) => (item: any) => {
   }
 };
 
-const MenuItem = (props: IMenuItemProps) => {
-  const undoButton = props.hasChanged ? (
-    <Button
-      icon={true}
-      inverted={true}
-      style={{float: 'right', fontSize: '60%'}}
-      size="mini"
-      onClick={props.onUndo}
-    >
-      <Icon name="reply"  />
-    </Button>
-  ) : null;
-
-  return (
-    <Menu.Item
-      className={props.active ? 'active' : ''}
-    >
-      <Link to={`/${props.type}/${props.item.id}`} style={{display: 'block'}}>
-        {props.label}
-        {undoButton}
-      </Link>
-
-    </Menu.Item>
-  );
-};
-
-class MenuItemsComponent extends React.PureComponent<IProps, {}> {
+export class MenuItems extends React.PureComponent<IProps, {}> {
   undoChanges = (id: string) => (e: React.FormEvent<HTMLButtonElement>) => {
-    this.props.undoChanges(this.props.type, id, this.props.oldData);
+    this.props.undoChanges(this.props.type, id);
     e.preventDefault();
   }
 
@@ -115,6 +60,3 @@ class MenuItemsComponent extends React.PureComponent<IProps, {}> {
     );
   }
 }
-
-const connector = connect<IMappedProps, IDispatchProps, IOwnProps> (mapStateToProps, dispatchToProps);
-export const MenuItems = connector(MenuItemsComponent);

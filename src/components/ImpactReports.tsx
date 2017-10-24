@@ -1,47 +1,20 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { generateReport, getReports } from './actions';
 import * as JSONPretty from 'react-json-pretty';
 import { Button, Icon } from 'semantic-ui-react';
-
 import 'react-json-pretty/src/JSONPretty.monikai.css';
-import { IStoreState } from '../../containers/store';
 
-interface IOwnProps {
+interface IProps {
   id: string;
-}
-
-interface IMappedProps {
   reports: any[];
-}
-
-interface IDispatchProps {
-  generateReport: typeof generateReport;
-  getReports: typeof getReports;
+  generateReport(id: string): any;
+  getReports(id: string): any;
 }
 
 interface IState {
   refreshing: boolean;
 }
 
-const sortByField = (field: string, desc: boolean = false) => (a: any, b: any) => {
-  if (a[field] < b[field]) { return desc ? 1 : -1; }
-  if (a[field] > b[field]) { return desc ? -1 : 1; }
-
-  return 0;
-};
-
-const mapStateToProps = (state: IStoreState): IMappedProps => (
-  {
-    reports: state.reports.sort(sortByField('time_start', true))
-  }
-);
-
-const mapDispatchToProps = { generateReport, getReports };
-
-const connector = connect<IMappedProps, IDispatchProps, IOwnProps>(mapStateToProps, mapDispatchToProps);
-
-class ImpactReportsComponent extends React.PureComponent<IOwnProps & IMappedProps & IDispatchProps, IState> {
+export class ImpactReports extends React.PureComponent<IProps, IState> {
   refresh = () => {
     this.setState({refreshing: true});
     this.props.getReports(this.props.id);
@@ -56,8 +29,8 @@ class ImpactReportsComponent extends React.PureComponent<IOwnProps & IMappedProp
   newReportClick = () => {
     this.setState({refreshing: true});
     this.props.generateReport(this.props.id);
-    setTimeout(() =>
-      this.props.getReports(this.props.id),
+    setTimeout(
+      () => this.props.getReports(this.props.id),
       500
     );
   }
@@ -80,5 +53,3 @@ class ImpactReportsComponent extends React.PureComponent<IOwnProps & IMappedProp
     );
   }
 }
-
-export const ImpactReports = connector(ImpactReportsComponent);

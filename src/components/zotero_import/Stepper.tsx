@@ -1,33 +1,24 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Segment, Button } from 'semantic-ui-react';
-import { getNewPublications } from './actions';
 import { transform } from './transform';
-import { createNewItem } from '../../containers/shared/resource/actions';
 import { IPublication } from '../../interfaces/resources/publication';
-import { Publication } from '../publications/Publication';
+import { PublicationContainer } from '../../containers/publications/PublicationContainer';
 
-interface IMappedProps {
+interface IProps {
   zoteroPublications: any;
   publications: IPublication[];
+  getNewPublications(): any;
+  createNewItem(resourceType: string,
+                id: string,
+                fields?: object,
+                navigateTo?: boolean): any;
 }
 
 interface IState {
   currentID: number;
 }
 
-const dispatchToProps = { getNewPublications, createNewItem };
-
-type IDispatchProps = typeof dispatchToProps;
-
-const mapStateToProps = (state: any) => ({
-    zoteroPublications: state.zotero.publications.items,
-    publications: state.current.data.publication
-});
-
-const connector = connect<IMappedProps, IDispatchProps>(mapStateToProps, dispatchToProps);
-
-class StepperComponent extends React.PureComponent<IMappedProps&IDispatchProps, IState> {
+export class Stepper extends React.PureComponent<IProps, IState> {
   constructor() {
     super();
     this.state = {currentID: 0};
@@ -41,7 +32,7 @@ class StepperComponent extends React.PureComponent<IMappedProps&IDispatchProps, 
     }
   }
 
-  componentWillReceiveProps(nextProps: IMappedProps&IDispatchProps) {
+  componentWillReceiveProps(nextProps: IProps) {
     if (this.props.zoteroPublications !== nextProps.zoteroPublications) {
       this.importPublication(0, nextProps);
     }
@@ -66,7 +57,7 @@ class StepperComponent extends React.PureComponent<IMappedProps&IDispatchProps, 
   renderPublication = () => {
     const publication = this.findPublication(this.state.currentID);
     if (publication) {
-      return <Publication id={publication.id} />;
+      return <PublicationContainer id={publication.id} />;
     } else {
       return null;
     }
@@ -96,5 +87,3 @@ class StepperComponent extends React.PureComponent<IMappedProps&IDispatchProps, 
     );
   }
 }
-
-export const Stepper = connector(StepperComponent);

@@ -1,28 +1,8 @@
 import * as React from 'react';
-
-import { connect } from 'react-redux';
-
 import * as Dropzone from 'react-dropzone';
-
-import { imageUpload, loadImages } from './actions';
-
 import { Button, Icon, Modal, Segment } from 'semantic-ui-react';
-
 import { BACKEND_URL } from '../../settings';
-
 import './Images.css';
-import { IStoreState } from '../../containers/store';
-
-const mapStateToProps = (state: IStoreState) => ({
-  images: state.images
-});
-
-const dispatchToProps = {
-  imageUpload,
-  loadImages
-};
-
-const connector = connect(mapStateToProps, dispatchToProps);
 
 interface IProps {
   images: string[];
@@ -34,7 +14,7 @@ interface IState {
   openImage: string | null;
 }
 
-class ImagesComponent extends React.PureComponent<IProps, IState> {
+export class Images extends React.PureComponent<IProps, IState> {
   dropzoneElm: Dropzone;
 
   componentWillMount() {
@@ -111,5 +91,3 @@ class ImagesComponent extends React.PureComponent<IProps, IState> {
     );
   }
 }
-
-export const Images = connector(ImagesComponent);

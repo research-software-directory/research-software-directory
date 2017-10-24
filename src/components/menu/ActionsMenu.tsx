@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Divider, Icon, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import * as classNames from 'classnames';
 
 interface IState {
   open: boolean;
@@ -14,7 +15,7 @@ export class ActionsMenu extends React.PureComponent<{}, IState> {
 
   toggleMenu = () => {
     this.setState({open: !this.state.open});
-  }
+  };
 
   header = () => (
     <Menu.Header
@@ -27,7 +28,7 @@ export class ActionsMenu extends React.PureComponent<{}, IState> {
         style={{float: 'right'}}
       />
     </Menu.Header>
-  )
+  );
 
   render() {
     let subMenu = null;
@@ -42,7 +43,7 @@ export class ActionsMenu extends React.PureComponent<{}, IState> {
 
     return (
       <Menu.Item
-        className={`${this.state.open ? 'active' : ''} resource_menu`}
+        className={classNames('resource_menu', {active: this.state.open})}
       >
         {this.header()}
         {subMenu}

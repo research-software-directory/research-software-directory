@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Progress } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { IStoreState } from '../../containers/store';
+import { IStoreState } from '../../interfaces/misc';
 
 interface IUploadStatusProps {
   progress: number;

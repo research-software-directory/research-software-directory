@@ -1,47 +1,26 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 
 import { Button, Icon, Image, Loader, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { IUser } from '../../containers/auth/reducer';
 import { resourceTypes } from '../../settings';
-import { saveChanges } from './actions';
-import { push } from 'react-router-redux';
 import { ResourceTypeMenu } from './ResourceTypeMenu';
-import { UploadStatus } from './UploadStatus';
+import { UploadStatus } from '../../containers/menu/UploadStatus';
 
 import './AppMenu.css';
-import 'semantic-ui-css/semantic.min.css';
-import { IUser } from '../../containers/auth/reducer';
-import { IStoreState } from '../../containers/store';
 
 const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
 
-const mapStateToProps = (state: IStoreState) => ({
-  numAsyncs: state.async.filter((asyncAction: any) =>
-    asyncAction.status !== 'DONE' && asyncAction.status !== 'FAILED'
-  ).length,
-  user:      state.auth.user,
-  dataDirty: state.current.data !== state.data
-});
-
-const dispatchToProps = {
-  saveChanges,
-  push
-};
-
-type IDispatchProps = typeof dispatchToProps;
-
-const connector = connect(mapStateToProps, dispatchToProps, null, { pure: false} );
-
-interface IMappedProps {
+interface IProps {
   dataDirty: boolean;
   numAsyncs: number;
   user: IUser;
-  saveChanges: any;
+  push(url: string): any;
+  saveChanges(): any;
 }
 
-class AppMenuComponent extends React.PureComponent<IMappedProps&IDispatchProps, {}> {
+export class AppMenu extends React.PureComponent<IProps, {}> {
   save = () => {
     this.props.saveChanges();
   }
@@ -111,5 +90,3 @@ class AppMenuComponent extends React.PureComponent<IMappedProps&IDispatchProps, 
     );
   }
 }
-
-export const AppMenu = connector(AppMenuComponent);

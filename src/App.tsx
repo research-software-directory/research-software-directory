@@ -6,9 +6,11 @@ import { fetchRootJSON, fetchSchema } from './actions';
 import { Routes } from './Routes';
 import { history } from './history';
 
-import { AppMenu } from './components/menu/AppMenu';
+import { AppMenuContainer } from './containers/menu/AppMenuContainer';
 import { Dimmer, Segment, Loader } from 'semantic-ui-react';
-import { IStoreState } from './containers/store';
+import { IStoreState } from './interfaces/misc';
+
+import 'semantic-ui-css/semantic.min.css';
 
 const mapStateToProps = (state: IStoreState) => ({
   data:   state.data,
@@ -60,7 +62,7 @@ class AppComponent extends React.PureComponent<IProps, {}> {
       return (
         <ConnectedRouter history={history}>
           <div style={{display: 'flex'}}>
-            <AppMenu/>
+            <AppMenuContainer/>
             <Segment basic={true} id="main_content">
               <Routes/>
             </Segment>

@@ -3,7 +3,7 @@
    - Render its child if the user is authenticated, otherwise null
 */
 import * as React from 'react';
-import { IUser } from '../../containers/auth/reducer';
+import { IUser } from '../containers/auth/reducer';
 
 interface IProps {
   user: null | IUser;

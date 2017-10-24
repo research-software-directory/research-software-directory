@@ -1,39 +1,22 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Segment, Message, Table } from 'semantic-ui-react';
 import { Author } from './Author';
 import { matchNames } from './matchNames';
-import { setMapping } from './actions';
 import { IPublication } from '../../interfaces/resources/publication';
 import { IPerson } from '../../interfaces/resources/person';
+import { IAuthor } from '../../containers/publications/actions';
 
-interface IOwnProps {
+interface IProps {
   id: string;
-}
-
-interface IMappedProps {
   people: IPerson[];
   publication: IPublication;
   originalPublication: IPublication;
+  setMapping(id: string, author: IAuthor, person: string): any;
 }
 
 interface IState {
   noMap: boolean;
 }
-
-const dispatchToProps = { setMapping };
-
-type IDispatchProps = typeof dispatchToProps;
-
-const mapStateToProps = (state: any, ownProps: IOwnProps) => {
-  return ({
-    publication: state.current.data.publication.find((publication: any) => publication.id === ownProps.id),
-    originalPublication: state.data.publication.find((publication: any) => publication.id === ownProps.id),
-    people: state.current.data.person
-  });
-};
-
-const connector = connect<IMappedProps, IDispatchProps, IOwnProps>(mapStateToProps, dispatchToProps);
 
 const propTable = (data: any) => {
   const propTableRow = (key: string, value: string) => (
@@ -60,7 +43,7 @@ const propTable = (data: any) => {
   );
 };
 
-class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps & IDispatchProps, IState> {
+export class Publication extends React.PureComponent<IProps, IState> {
   constructor() {
     super();
     this.state = {noMap: false};
@@ -85,7 +68,7 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
     }
   }
 
-  componentWillReceiveProps(nextProps: IMappedProps & IOwnProps & IDispatchProps) {
+  componentWillReceiveProps(nextProps: IProps) {
     this.setState({noMap : !nextProps.originalPublication});
     if (nextProps.id !== this.props.id) {
       this.autoMapAuthorPerson(nextProps);
@@ -132,5 +115,3 @@ class PublicationsComponent extends React.PureComponent<IMappedProps & IOwnProps
     );
   }
 }
-
-export const Publication = connector(PublicationsComponent);

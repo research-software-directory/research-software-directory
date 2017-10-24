@@ -1,11 +1,7 @@
 import * as React from 'react';
-
 import { combineEpics } from 'redux-observable';
-
-import { loadImages } from './actions';
-
 import { actions as toastrActions } from 'react-redux-toastr';
-
+import { loadImages } from './actions';
 import { BACKEND_URL } from '../../settings';
 
 const image = (action: any) => () => <img alt="image" src={`${BACKEND_URL}/thumbnail/${action.response.filename}`} />;

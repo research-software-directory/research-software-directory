@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Divider, Icon, Input, Menu } from 'semantic-ui-react';
-import { NewItem } from './NewItem';
-import { MenuItems } from './MenuItems';
+import { NewItemContainer } from '../../containers/menu/NewItemContainer';
+import { MenuItemsContainer } from '../../containers/menu/MenuItemsContainer';
+import  * as classNames from 'classnames';
 
 // tslint:disable-next-line:no-require-imports no-var-requires
 const AnimateHeight = require('react-animate-height').default;
@@ -54,8 +55,8 @@ export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
               onChange={this.onSubmenuSearch}
             />
             <Divider/>
-            {this.props.type !== 'publication' && <NewItem resourceType={this.props.type}/>}
-            <MenuItems type={this.props.type} search={this.state.search} />
+            {this.props.type !== 'publication' && <NewItemContainer resourceType={this.props.type}/>}
+            <MenuItemsContainer type={this.props.type} search={this.state.search} />
           </Menu>
       );
     }
@@ -63,7 +64,7 @@ export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
     return (
       <Menu.Item
         key={this.props.type}
-        className={`${this.state.open ? 'active' : ''} resource_menu`}
+        className={classNames('resource_menu', {active: this.state.open})}
       >
         {this.header()}
         <AnimateHeight

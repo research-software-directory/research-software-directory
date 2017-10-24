@@ -1,35 +1,23 @@
 import * as React from 'react';
 import { List, Button, Input, Icon } from 'semantic-ui-react';
-import { connect } from 'react-redux';
-import { createNewItem } from '../../containers/shared/resource/actions';
 import { IProject } from '../../interfaces/resources/project';
 
-interface IOwnProps {
+interface IProps {
   item: any;
-}
-
-interface IMappedProps {
   projects: IProject[];
+  createNewItem(resourceType: string,
+                id: string,
+                fields?: object,
+                navigateTo?: boolean): any;
+
 }
-
-const mapDispatchToProps = ({
-  createNewItem
-});
-
-type IDispatchProps = typeof mapDispatchToProps;
 
 interface IState {
   open: boolean;
   id: string;
 }
 
-const mapStateToProps = (state: any) => ({
-  projects: state.current.data.project
-});
-
-const connector = connect<IMappedProps, IDispatchProps, IOwnProps>(mapStateToProps, mapDispatchToProps);
-
-export const Project = connector(class extends React.Component<IOwnProps&IMappedProps&IDispatchProps, IState> {
+export class Project extends React.Component<IProps, IState> {
   constructor() {
     super();
     this.state = {open: false, id: ''};
@@ -104,6 +92,3 @@ export const Project = connector(class extends React.Component<IOwnProps&IMapped
     );
   }
 }
-);
-
-// {!this.state.open && <Button floated="right" size="tiny" onClick={this.toggleOpen}>Import</Button>}

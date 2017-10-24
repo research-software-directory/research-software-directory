@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { FormField } from './FormField';
+import { FormFieldContainer } from '../../containers/form/FormFieldContainer';
 import { Button, Segment } from 'semantic-ui-react';
 import { ISchema } from '../../interfaces/json-schema';
 
@@ -31,7 +31,7 @@ export class ResourceForm extends React.PureComponent<IProps, {}> {
 
   renderField = (field: string): any => {
     return (
-      <FormField
+      <FormFieldContainer
         key={field}
         fieldName={field}
         parentResourceType={this.props.resourceType}

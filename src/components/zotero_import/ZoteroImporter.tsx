@@ -1,36 +1,23 @@
 import * as React from 'react';
 import { Segment, Dimmer, Loader, Header, List, Icon } from 'semantic-ui-react';
-import { getNewProjects, getNewPublications, getNewSoftware } from './actions';
-import { connect } from 'react-redux';
-import { Project } from './Project';
-import { createNewItem } from '../../containers/shared/resource/actions';
+import { ProjectContainer } from '../../containers/zotero_import/ProjectContainer';
 import { transform } from './transform';
 import { Link } from 'react-router-dom';
 
-const dispatchToProps = ({
-  getNewProjects,
-  getNewPublications,
-  getNewSoftware,
-  createNewItem
-});
-
-const mapStateToProps = (state: any) => ({
-  projects: state.zotero.projects,
-  publications: state.zotero.publications,
-  software: state.zotero.software
-});
-
-interface IStateProps {
+interface IProps {
   projects: any;
   publications: any;
   software: any;
+  getNewProjects(): any;
+  getNewPublications(): any;
+  getNewSoftware(): any;
+  createNewItem(resourceType: string,
+                id: string,
+                fields?: object,
+                navigateTo?: boolean): any;
 }
 
-type IDispatchProps = typeof dispatchToProps;
-
-const connector = connect(mapStateToProps, dispatchToProps);
-
-export const ZoteroImporter = connector(class extends React.PureComponent<IDispatchProps & IStateProps> {
+export class ZoteroImporter extends React.PureComponent<IProps> {
   componentWillMount() {
     this.props.getNewProjects();
     this.props.getNewSoftware();
@@ -62,7 +49,7 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
 
   renderItem = (type: string, item: any) => {
     switch (type) {
-      case 'projects': return <Project key={item.zotero_key} item={item} />;
+      case 'projects': return <ProjectContainer key={item.zotero_key} item={item} />;
       case 'publications': return this.renderPublication(item);
       case 'software': return this.renderSoftware(item);
       default: return null;
@@ -95,4 +82,4 @@ export const ZoteroImporter = connector(class extends React.PureComponent<IDispa
       </Segment.Group>
     );
   }
-});
+}
