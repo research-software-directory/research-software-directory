@@ -10,7 +10,7 @@
   * [Projects](#projects)
 
 ## Keep your output up to date
-It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output. Any output that you can’t add to Zotero? Give your feedback to Willem van Hage and Tom Klaver!
+It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output. Any output that you don't know how to add to Zotero? Check the [closed issues](https://github.com/NLeSC/rsd-instruction/issues?utf8=%E2%9C%93&q=), or [add a new one](https://github.com/NLeSC/rsd-instruction/issues/new) if it is not yet listed.
 
 ## End report
 For most completed projects, a list of publications can be found in the end report:
