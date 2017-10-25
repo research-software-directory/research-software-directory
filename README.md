@@ -43,6 +43,11 @@ In zotero:
 
 ### Adding items
 Items can be added by DOI (preferred), or manually if there is no DOI. Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
+#### Dates
+Please refrain from using date ranges (eg. no `4-5th december 2013`), and just use a single date (the first day of the range).
+To differentiate days from months, please use `yyyy-mm-dd`, or `mm-dd-yyyy`. If the year is last it will be parsed as `mm-dd-yyyy` and zotero will also show it as such, so **`dd-mm-yyyy` will not parse correctly**.
+If the day is unknown, use `mm yyyy`, eg `05 2014` for May 2014.
+
 #### Publication
 To add a publication by DOI:
 * Click `Netherlands eScience Center` in `Group Libraries`.
