@@ -86,7 +86,7 @@ use `Journal Article`, add under `extra`:
 - Workshop: Add as `presentation`, use `type: Workshop`
 - Lecture: Add as `presentation`, use `type: Lecture`
 
-If you still have an item that doesn't fit, please contact Tom Klaver (or open an issue in this GitHub repository) and we'll find a Workflow and add it to this guide.
+If you still have an item that doesn't fit, please [open an issue in this GitHub repository](https://github.com/NLeSC/rsd-instruction/issues/new) and we'll figure it out & update this document.
 
 ## Example: eSalsa
 ![esalsa_example](https://raw.githubusercontent.com/Tommos0/files/master/esalsa_example.png)
