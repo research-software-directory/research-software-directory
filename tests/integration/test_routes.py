@@ -56,4 +56,8 @@ def test_update_with_one_new(post, db):
     assert status_code == 200
     software = list(db.software.all())
     assert len(software) == 2
+    assert software[1].data['createdAt'] > 0
+    del software[1].data['createdAt']
+    assert software[1].data['updatedAt'] > 0
+    del software[1].data['updatedAt']
     assert software[1].data == payload_one_new_software['software'][0]
