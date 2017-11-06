@@ -9,8 +9,12 @@ class SchemaService:
         self.db = db
         self.schema = {}
         for (_, _, files) in os.walk('schema'):
-            for (filename, file) in [(file, open('schema/' + file)) for file in files]:
-                self.schema[filename.split('.')[0]] = json.load(file)
+            for (filename, file) in [(filename, open('schema/' + filename)) for filename in files]:
+                base_schema = json.load(file)
+                properties = json.load(open('schema/properties/' + filename))
+                for prop_name in properties:
+                    base_schema['properties'][prop_name].update(properties[prop_name])
+                self.schema[filename.split('.')[0]] = base_schema
 
     def verify_data(self, fix=True):
         for software in self.db.software.all():

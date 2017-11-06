@@ -1,0 +1,11 @@
+{
+  "createdAt": {
+    "editable": false
+  },
+  "updatedAt": {
+    "editable": false
+  },
+  "description": {
+    "markdown": true
+  }
+}

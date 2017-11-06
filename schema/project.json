@@ -8,6 +8,16 @@
   "type": "object",
   "#schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "createdAt": {
+      "description": "Timestamp resource was created at",
+      "type": "integer",
+      "minimum": 0
+    },
+    "updatedAt": {
+      "description": "Timestamp resource was last updated at",
+      "type": "integer",
+      "minimum": 0
+    },
     "project_code": {
       "type": "string",
       "description": "eScience project code"
