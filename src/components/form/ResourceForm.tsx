@@ -59,6 +59,7 @@ export class ResourceForm extends React.PureComponent<IProps, {}> {
 
   renderFields = (schema: any) =>
     Object.keys(schema.properties)
+      .filter((property: string) => schema.properties[property].editable !== false)
       .filter((property: string) => !schema.properties[property].hidden)
       .sort(this.schemaSort(schema.properties))
       .map((field: string) => this.renderField(field))
