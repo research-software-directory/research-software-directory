@@ -1,6 +1,7 @@
 import * as Fuse from 'fuse.js';
 import { IPerson } from '../../interfaces/resources/person';
 import { IAuthor } from '../../containers/publications/actions';
+import { splitNames } from '../../services/util';
 
 const options = {
   shouldSort: true,
@@ -17,13 +18,13 @@ const options = {
 
 export const matchNames = (people: IPerson[], authors: IAuthor[]) => {
   const _people = people.map((person: any) => {
-    const nameParts = person.name.split(' ');
+    const nameParts = splitNames(person.name);
 
     return {
       id: person.id,
       name: person.name,
       firstName: nameParts[0],
-      lastName: nameParts[nameParts.length - 1]
+      lastName: nameParts[1]
     };
   });
 

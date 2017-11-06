@@ -86,7 +86,7 @@ export class Publication extends React.PureComponent<IProps, IState> {
         <Segment.Group>
           {this.authors()}
         </Segment.Group>
-        <PropsTable data={this.props.publication} />
+        <PropsTable title="Raw Data" data={this.props.publication} />
       </div>
     );
   }

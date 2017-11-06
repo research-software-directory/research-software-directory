@@ -32,6 +32,7 @@ export interface IFetchAction extends Action {
   headers?: any;
   data?: any;
   actionParams?: any;
+  promise?: Promise<any>;
 }
 
 export interface IFetchFulfilledAction extends IFetchAction { status: number; response?: any; }

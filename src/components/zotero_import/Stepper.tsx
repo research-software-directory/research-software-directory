@@ -1,3 +1,7 @@
+/* Stepper steps through new Publications from Zotero, and adds them one at a time
+   uses Publication (PublicationContainer), which maps author <-> RSD person.
+ */
+
 import * as React from 'react';
 import { Segment, Button } from 'semantic-ui-react';
 import { transform } from './transform';

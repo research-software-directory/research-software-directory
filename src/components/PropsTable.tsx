@@ -5,9 +5,10 @@ interface IProps {
   data: {
     [key: string]: any;
   };
+  title: string | undefined;
 }
 
-export const PropsTable = ({data}: IProps) => {
+export const PropsTable = ({data, title}: IProps) => {
   const propTableRow = (key: string, value: string) => (
     <Table.Row key={key}>
       <Table.Cell>{key}</Table.Cell>
@@ -15,18 +16,19 @@ export const PropsTable = ({data}: IProps) => {
     </Table.Row>
   );
 
-  const propTableRows = Object.keys(data).map((key: string) =>
-    propTableRow(key, JSON.stringify(data[key])));
+  const propsTableRows = Object.keys(data).map(key =>
+    propTableRow(key, JSON.stringify(data[key]))
+  );
 
   return (
     <Table celled={true} striped={true}>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell colSpan={2}>Raw Data</Table.HeaderCell>
+          <Table.HeaderCell colSpan={2}>{title || ''}</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {propTableRows}
+        {propsTableRows}
       </Table.Body>
     </Table>
   );
