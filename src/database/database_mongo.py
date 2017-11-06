@@ -39,6 +39,8 @@ class MongoCursor(Cursor):  # wraps mongo cursor
 
 class MongoCollection(Collection):
     def __init__(self, name, db):
+        self._collection_name = name
+        self._db = db
         self._collection = db[name]
 
     def all(self):
@@ -70,8 +72,15 @@ class MongoCollection(Collection):
         record._id = record.data.pop('_id')
         return record.data['id']
 
+    def make_history_item(self, record):
+        original = self._collection.find_one({'_id': record.data['_id']})
+        original['original_id'] = original['_id']
+        del original['_id']
+        self._db['%s_history' % self._collection_name].insert(original)
+
     def update(self, record):
-        record.data['_id'] = record._id
+        record.data['_id'] = record._id  # restore mongo _id
+        self.make_history_item(record)
         self._collection.update({'_id': record.data['_id']}, record.data)
         record.data.pop('_id')
 

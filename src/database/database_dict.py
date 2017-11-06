@@ -27,7 +27,7 @@ class DictCursor(Cursor):
     def count(self):
         return len(self.data_set)
 
-    def sort(self, *args, **kwargs):
+    def sort(self, *args, **kwargs):  # todo: implement sort
         return self
 
     def limit(self, count):

@@ -1,4 +1,5 @@
 import json
+import time
 from abc import ABC, abstractmethod
 import logging
 
@@ -22,8 +23,11 @@ class Record():
 
     def save(self):
         if self.is_new:
+            self.data['createdAt'] = int(round(time.time()))
+            self.data['updatedAt'] = int(round(time.time()))
             self.collection.insert(self)
         else:
+            self.data['updatedAt'] = int(round(time.time()))
             self.collection.update(self)
         self.is_new = False
 
