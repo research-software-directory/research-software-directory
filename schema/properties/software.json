@@ -8,5 +8,8 @@
   "description": {
     "markdown": true,
     "long": true
+  },
+  "id": {
+    "editable": false
   }
 }

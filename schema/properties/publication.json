@@ -4,5 +4,8 @@
   },
   "updatedAt": {
     "editable": false
+  },
+  "id": {
+    "editable": false
   }
 }
