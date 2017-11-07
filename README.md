@@ -191,7 +191,7 @@ Since the projects in Zotero are not searchable, find your project below:
 | 27012102    | eVisualization of Big Data                                   | Maarten
 | 27012101    | Massive Point Clouds for eSciences                           | tefan
 | 27011311    | Water management/eWaterCycle                                 | Niels
-| 27011309    | Life Sciences/TraIT                                          | Elena
+| 27011309    | Life Sciences/TraIT                                          | Lars
 | 27011308    | BiographyNed/eHumanities                                     | Jisk
 | 27011307    | VLBPII/Green Genetics                                        | Lars
 | 27011306    | Food Ontologies                                              | Stefan
