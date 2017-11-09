@@ -76,6 +76,7 @@ class ZoteroService:
         if matches:
             try:
                 zen = zenodo.Zenodo()
+                software['data']['doi'] = matches.group(1)
                 record = zen.find_record_by_doi(matches.group(1))
                 if record:
                     for rel in record.data['metadata']['related_identifiers']:
