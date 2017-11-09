@@ -58,7 +58,8 @@ const processTSResult = async (resource, schema) => {
 
 const processSchemas = async () => {
     const resourceFilenames = localPathExists ? await getLocalSchemaFilenames() : await getSchemaFilenamesFromGithub();
-    const resources = resourceFilenames.map(fileName => ({name: fileName.slice(0, -5), fileName}));
+    const resources = resourceFilenames.filter(fileName => fileName.indexOf('.json') !== -1)
+        .map(fileName => ({name: fileName.slice(0, -5), fileName}));
 
     await Promise.all(resources.map(async resource => {
         const schema = localPathExists
