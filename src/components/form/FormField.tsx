@@ -63,7 +63,7 @@ export class FormField extends React.Component<IProps, {}> {
         options={options}
         multi={multi}
         search={true}
-        addable={true}
+        addable={false}
         onNewOption={this.onNewOption}
       />
     );
@@ -71,7 +71,7 @@ export class FormField extends React.Component<IProps, {}> {
 
   renderMultiResource() {
     if (!(isArrayProperty(this.props.property) && isLinkProperty(this.props.property.items))) { return null; }
-    const resourceType = this.props.property.items.resType.split('/').slice(-1)[0];
+    const resourceType = this.props.property.items.resType;
     const options = this.props.data[resourceType].map((resource: any) => {
       const opt = {
         id: resource.id,

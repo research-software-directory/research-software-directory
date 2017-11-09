@@ -3,6 +3,7 @@ import { Segment, Dimmer, Loader, Header, List, Icon } from 'semantic-ui-react';
 import { ProjectContainer } from '../../containers/zotero_import/ProjectContainer';
 import { transform } from './transform';
 import { Link } from 'react-router-dom';
+import { SoftwareContainer } from '../../containers/zotero_import/SoftwareContainer';
 
 interface IProps {
   projects: any;
@@ -51,7 +52,7 @@ export class ZoteroImporter extends React.PureComponent<IProps> {
     switch (type) {
       case 'projects': return <ProjectContainer key={item.zotero_key} item={item} />;
       case 'publications': return this.renderPublication(item);
-      case 'software': return this.renderSoftware(item);
+      case 'software': return <SoftwareContainer key={item.zotero_key} item={item} />;
       default: return null;
     }
   }

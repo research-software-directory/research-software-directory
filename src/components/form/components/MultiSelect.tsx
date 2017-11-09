@@ -76,6 +76,15 @@ export class MultiSelect extends React.PureComponent<IProps, IState> {
   }
 
   options = () => {
+    // if (isArray(this.props.value)) {
+    //   const valuesNotInOptions = this.props.value.filter(
+    //     (value: string) => !this.props.options.find((option) => option.value === value)
+    //   ).map((value: string) =>
+    //     {
+    //
+    //     }
+    //   )
+    // }
     return this.props.options.map((option: IOption) =>
       ({ text: option.label, key: option.value, value: option.value, icon: option.icon }));
   }

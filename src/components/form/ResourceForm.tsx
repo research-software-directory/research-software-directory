@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FormFieldContainer } from '../../containers/form/FormFieldContainer';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Header } from 'semantic-ui-react';
 import { ISchema } from '../../interfaces/json-schema';
 
 import './style.css';
@@ -65,7 +65,14 @@ export class ResourceForm extends React.PureComponent<IProps, {}> {
       .map((field: string) => this.renderField(field))
 
   impactReportButton = () => (
-    <Link to={`${this.props.id}/report/`}><Button>Impact reports</Button></Link>
+    <Button
+      primary={true}
+      content="Impact report"
+      icon="line chart"
+      labelPosition="left"
+      as={Link}
+      to={`${this.props.id}/report/`}
+    />
   )
 
   render() {
@@ -75,9 +82,14 @@ export class ResourceForm extends React.PureComponent<IProps, {}> {
 
     return (
       <div className="main_form">
-        {this.props.id}
-        {this.props.resourceType === 'software' && this.impactReportButton()}
-        <Segment.Group>{this.renderFields(this.props.schema[this.props.resourceType])}</Segment.Group>
+        <Segment.Group>
+          <Segment secondary={true}>
+            <Segment basic={true} floated="right">
+              {this.props.resourceType === 'software' && this.impactReportButton()}
+            </Segment>
+            <Header>{this.props.id}</Header>
+          </Segment>
+          {this.renderFields(this.props.schema[this.props.resourceType])}</Segment.Group>
       </div>
     );
   }

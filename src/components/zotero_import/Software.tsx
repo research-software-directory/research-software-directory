@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { List, Button, Input, Icon } from 'semantic-ui-react';
-import { IProject } from '../../interfaces/resources/project';
+import { ISoftware } from '../../interfaces/resources/software';
 
 interface IProps {
-  item: any; // project to be imported
-  projects: IProject[]; // current projects
+  item: any; // software to be imported
+  software: ISoftware[]; // current software
   createNewItem(resourceType: string,
                 id: string,
                 fields?: object,
@@ -17,7 +17,7 @@ interface IState {
   id: string;
 }
 
-export class Project extends React.Component<IProps, IState> {
+export class Software extends React.Component<IProps, IState> {
   constructor() {
     super();
     this.state = {open: false, id: ''};
@@ -27,11 +27,11 @@ export class Project extends React.Component<IProps, IState> {
     return id.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
   }
 
-  projectName = () => this.props.item.name.split(' ').slice(1).join(' ');
+  softwareName = () => this.props.item.data.title;
 
   componentWillMount() {
-    const projectName = this.projectName();
-    this.setState({id: this.sanitizeID(projectName) });
+    const softwareName = this.softwareName();
+    this.setState({id: this.sanitizeID(softwareName) });
   }
 
   toggleOpen = () => {
@@ -43,15 +43,24 @@ export class Project extends React.Component<IProps, IState> {
   }
 
   idExists = () => {
-    return !!this.props.projects.find((project: any) => project.id === this.state.id);
+    return !!this.props.software.find((software: any) => software.id === this.state.id);
+  }
+
+  softwareWithSameGithubID = () => {
+    return this.props.software.find(
+      (software: any) =>
+        software.githubid &&
+        this.props.item.data.githubid &&
+        software.githubid.toLowerCase() === this.props.item.data.githubid.toLowerCase()
+    );
   }
 
   createNew = () => {
     this.props.createNewItem(
-      'project',
+      'software',
       this.state.id,
       { ...this.props.item,
-        name: this.projectName()
+        name: this.softwareName()
       }
     );
   }
@@ -65,6 +74,15 @@ export class Project extends React.Component<IProps, IState> {
       >OK
       </Button>
     );
+
+    const software = this.softwareWithSameGithubID();
+    if (software) {
+      return (
+        <div>
+          Software with same github ID exists
+        </div>
+      );
+    }
 
     return (
       <div style={{float: 'right'}}>
@@ -84,7 +102,7 @@ export class Project extends React.Component<IProps, IState> {
       <List.Item onClick={this.toggleOpen} style={{cursor: 'pointer'}}>
         <span>
           <Icon name="lab" />
-          {this.props.item.name}
+          {this.props.item.data.title}
         </span>
 
         {this.state.open && this.renderOpen()}
