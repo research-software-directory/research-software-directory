@@ -22,6 +22,7 @@ class SchemaService:
                 self.schema[filename.split('.')[0]] = base_schema
 
     def verify_data(self, fix=True):
+        valid = True
         for resource_type in ['software', 'project', 'person', 'organization']:
             for resource in self.db[resource_type].all():
                 try:
@@ -47,5 +48,4 @@ class SchemaService:
                     print(e.message)
                     print('\n')
 
-
-
+        return valid
