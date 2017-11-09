@@ -22,11 +22,10 @@
     "publications": {
       "items": {
         "type": "string",
-        "resType": "/publication"
+        "resType": "publication"
       },
       "type": "array",
-      "description": "Publications based on software",
-      "sortIndex": 0
+      "description": "Publications based on software"
     },
     "id": {
       "format": "uri",
@@ -50,9 +49,8 @@
       "sortIndex": 10
     },
     "doi": {
-      "format": "uri",
       "type": "string",
-      "description": "URL of a relevant DOI (e.g. http://dx.doi.org/10.5281/zenodo.35415)."
+      "description": "Main DOI (e.g. 10.5281/zenodo.35415)."
     },
     "tagLine": {
       "description": "One-sentence description of the software.",
@@ -70,19 +68,17 @@
         },
         {
           "type": "string",
-          "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
-          "resType": "/person"
+          "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., s.verhoeven.",
+          "resType": "person"
         }
       ],
       "description": "Contact person of the project."
     },
     "description": {
-      "description": "Full description of the software, in Markdown format underneath Frontmatter (---) in Markdown files",
-      "type": "string",
-      "markdown": true,
-      "long": true
+      "description": "Full description of the software, in Markdown format",
+      "type": "string"
     },
-    "user": {
+    "usingOrganization": {
       "type": "array",
       "description": "Entities that use the software.",
       "items": {
@@ -91,19 +87,11 @@
             "reference": "organization"
           },
           {
-            "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /person/s.verhoeven.",
+            "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., s.verhoeven.",
             "type": "string",
-            "resType": "/organization"
+            "resType": "organization"
           }
         ]
-      }
-    },
-    "dependencyOf": {
-      "description": "Other software that this software is a dependency of.",
-      "type": "array",
-      "items": {
-        "description": "e.g. internal software as URI (/software/xenon) or external software package name (D5, Elasticsearch, AngularJS, Spark, Hadoop), etc.",
-        "type": "string"
       }
     },
     "technologyTag": {
@@ -113,16 +101,6 @@
       },
       "type": "array",
       "description": "Keywords of related or relevant technologies."
-    },
-    "endorsedBy": {
-      "items": {
-        "format": "uri",
-        "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc",
-        "type": "string",
-        "resType": "/organization"
-      },
-      "type": "array",
-      "description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization."
     },
     "owner": {
       "description": "Entity that is the copyright holder of the software (usually NLeSC and project partners).",
@@ -134,19 +112,11 @@
           },
           {
             "format": "uri",
-            "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /person/s.verhoeven.",
+            "description": "ID of the organization. e.g., nlesc.",
             "type": "string",
             "resType": "organization"
           }
         ]
-      }
-    },
-    "dependency": {
-      "description": "Dependencies to run or compile the current software.",
-      "type": "array",
-      "items": {
-        "description": "e.g. internal software as URI (/software/xenon) or external software package name (D3, Elasticsearch, AngularJS, Spark, Hadoop), etc.",
-        "type": "string"
       }
     },
     "status": {
@@ -169,10 +139,7 @@
         "enum": [
           "Big Data Analytics",
           "Efficient Computing",
-          "Optimized Data Handling",
-          "ddddddddd",
-          "ggggg",
-          "sd"
+          "Optimized Data Handling"
         ],
         "type": "string"
       }
@@ -185,9 +152,9 @@
           },
           {
             "type": "string",
-            "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., /person/s.verhoeven.",
+            "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., s.verhoeven.",
             "format": "uri",
-            "resType": "/person"
+            "resType": "person"
           }
         ]
       },
@@ -218,8 +185,7 @@
           "Reproducible Research",
           "Scientific Visualization",
           "Statistical Inference",
-          "Text Mining",
-          "This is a new option"
+          "Text Mining"
         ]
       }
     },
@@ -234,6 +200,16 @@
       "items": {
         "description": "e.g. apache-2.0, gpl-3.0, etc. See https://developer.github.com/v3/licenses/",
         "type": "string"
+      }
+    },
+    "dependsOn": {
+      "type": "array",
+      "description": "Other software that this software depends on",
+      "items": {
+        "format": "uri",
+        "description": "ID of the software",
+        "type": "string",
+        "resType": "software"
       }
     },
     "discipline": {
@@ -255,7 +231,7 @@
       "description": "Link to the repository where the un-compiled, human readable code and related code is located (github, SVN, CodePlex).",
       "format": "uri"
     },
-    "usedIn": {
+    "usedInProject": {
       "description": "Projects the software is used in.",
       "type": "array",
       "items": {
@@ -265,30 +241,38 @@
           },
           {
             "format": "uri",
-            "description": "ID of the project. This is preferably an URI where the project's metadata can be resolved, e.g., /project/emetabolomics.",
+            "description": "ID of the project. e.g., emetabolomics.",
             "type": "string",
-            "resType": "/project"
+            "resType": "project"
           }
         ]
       }
     },
-    "badges": {
-      "description": "List of badges",
+    "outputOfProject": {
+      "description": "Projects the software is output of.",
       "type": "array",
       "items": {
-        "description": "Single badge",
-        "type": "string"
+        "anyOf": [
+          {
+            "reference": "project"
+          },
+          {
+            "format": "uri",
+            "description": "ID of the project. e.g., emetabolomics.",
+            "type": "string",
+            "resType": "project"
+          }
+        ]
       }
     },
     "startDate": {
       "description": "Start date of development.",
       "type": "string",
-      "format": "date",
-      "sortIndex": 1
+      "format": "date"
     },
     "involvedOrganization": {
       "type": "array",
-      "description": "Organizations that developing this software or have a large stake in the software.",
+      "description": "Organizations that have been developing this software or have a large stake in the software.",
       "items": {
         "anyOf": [
           {
@@ -296,19 +280,17 @@
           },
           {
             "type": "string",
-            "description": "ID of the project. This is preferably an URI where the project's metadata can be resolved, e.g., /project/emetabolomics.",
-            "format": "uri",
-            "resType": "/organization"
+            "description": "ID of the organization",
+            "resType": "organization"
           }
         ]
       }
     },
     "contributingOrganization": {
       "items": {
-        "format": "uri",
         "type": "string",
-        "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc",
-        "resType": "/organization"
+        "description": "ID of the organization",
+        "resType": "organization"
       },
       "type": "array",
       "description": "Organizations that have contributed to this entry, e.g. software made by, or contributed to (either financially or otherwise) by this organisation; Used for grouping items on the website per organization."
@@ -320,19 +302,29 @@
         "description": "e.g. C, C++, Java, Python, R, JavaScript, PHP, TypeScript, etc. See https://github.com/github/linguist",
         "type": "string",
         "enum": [
-          "000000001",
-          "11111111",
-          "12312333333333",
-          "12345",
-          "21321313123",
-          "3dfsdfsdfsdfsdfsdfs",
           "C",
           "C++",
-          "C--",
           "Fortran",
           "Java",
           "Python",
-          "YAML"
+          "YAML",
+          "Perl",
+          "JavaScript",
+          "TypeScript",
+          "R",
+          "MATLAB",
+          "FORTRAN",
+          "CUDA",
+          "HTML",
+          "Cython",
+          "Ruby",
+          "C#",
+          "OpenCL",
+          "Erlang",
+          "Go",
+          "Haskell",
+          "Lisp",
+          "PHP"
         ]
       }
     },
@@ -354,11 +346,6 @@
     "nlescWebsite": {
       "type": "string",
       "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/technology/software/xenon).",
-      "format": "uri"
-    },
-    "logo": {
-      "type": "string",
-      "description": "URL to an image of the logo of the organization.",
       "format": "uri"
     },
     "releases": {

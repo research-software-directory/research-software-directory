@@ -2,6 +2,7 @@ import json
 import os
 
 from jsonschema import validate, ValidationError
+from jsonschema._utils import find_additional_properties
 
 
 def add_properties(base_schema, filename):
@@ -21,18 +22,30 @@ class SchemaService:
                 self.schema[filename.split('.')[0]] = base_schema
 
     def verify_data(self, fix=True):
-        valid = True
-        for software in self.db.software.all():
-            try:
-                validate(software.data, self.schema['software'])
-            except ValidationError as e:
-                valid = False
-                if fix and str(e.message) == "None is not of type 'array'":
-                    print('fixing None to []')
-                    software[e.path[0]] = []
-                    software.save()
+        for resource_type in ['software', 'project', 'person', 'organization']:
+            for resource in self.db[resource_type].all():
+                try:
+                    validate(resource.data, self.schema[resource_type])
+                except ValidationError as e:
+                    valid = False
+                    if fix and str(e.message) == "None is not of type 'array'":
+                        print('fixing None to []')
+                        resource[e.path[0]] = []
+                        resource.save()
+                    elif fix and str(e.message) == "None is not of type 'string'":
+                        print('fixing None to ""')
+                        resource[e.path[0]] = ''
+                        resource.save()
+                    elif fix and str(e.message).find("Additional properties are not allowed") != -1:
+                        props = find_additional_properties(resource.data, self.schema[resource_type])
+                        print('removing additional props')
+                        for prop in list(props):
+                            del resource.data[prop]
+                        resource.save()
 
-                print('in %s: %s' % (software['id'], ' -> '.join(str(path_elm) for path_elm in e.path)))
-                print(e.message)
-                print('\n')
-        return valid
+                    print('in %s/%s: %s' % (resource_type, resource['id'], ' -> '.join(str(path_elm) for path_elm in e.path)))
+                    print(e.message)
+                    print('\n')
+
+
+

@@ -1,7 +1,6 @@
 {
   "required": [
     "name",
-    "affiliation",
     "id",
     "schema"
   ],
@@ -23,14 +22,14 @@
       "description": "Full name of the person.",
       "type": "string"
     },
-    "githubUrl": {
+    "githubid": {
       "format": "uri",
       "type": "string",
-      "description": "Person's github user profile (e.g. https://github.com/sverhoeven)."
+      "description": "Person's github username (e.g. sverhoeven)."
     },
     "id": {
       "format": "uri",
-      "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
+      "description": "ID of the person. e.g., s.verhoeven.",
       "type": "string"
     },
     "photo": {
@@ -44,9 +43,8 @@
       "description": "Personal ResearchGate profile (e.g. https://www.researchgate.net/profile/Stefan_Verhoeven)."
     },
     "description": {
-      "description": "Person description, bio and/or CV, in Markdown format underneath Frontmatter (---) in Markdown files",
-      "type": "string",
-      "markdown": true
+      "description": "Person description, bio and/or CV, in Markdown format",
+      "type": "string"
     },
     "jobTitle": {
       "type": "string",

@@ -83,7 +83,7 @@ class ImpactReportService:
             'status': 'generating'
         }).next()
         report.data.update(report_data)
-        print(report)
+        # print(report)
         report.save()
 
     @guard

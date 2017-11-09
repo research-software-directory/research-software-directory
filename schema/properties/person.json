@@ -1,4 +1,7 @@
 {
+  "name": {
+    "sortIndex": 10
+  },
   "createdAt": {
     "editable": false
   },
@@ -6,6 +9,14 @@
     "editable": false
   },
   "id": {
+    "editable": false
+  },
+  "description": {
+    "markdown": true,
+    "long": true,
+    "sortIndex": 25
+  },
+  "schema": {
     "editable": false
   }
 }

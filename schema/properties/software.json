@@ -1,4 +1,88 @@
 {
+  "name": {
+    "sortIndex": 10
+  },
+  "githubid": {
+    "sortIndex": 20
+  },
+  "doi": {
+    "sortIndex": 21
+  },
+  "startDate": {
+    "sortIndex": 22
+  },
+  "contactPerson": {
+    "sortIndex": 30
+  },
+  "contributor": {
+    "sortIndex": 31
+  },
+  "outputOfProject": {
+    "sortIndex": 35
+  },
+  "usedInProject": {
+    "sortIndex": 36
+  },
+  "involvedOrganization": {
+    "sortIndex": 47
+  },
+  "contributingOrganization": {
+    "sortIndex": 45
+  },
+  "usingOrganization": {
+    "sortIndex": 61
+  },
+  "owner": {
+    "sortIndex": 40
+  },
+  "dependsOn": {
+    "sortIndex": 70
+  },
+  "publications": {
+    "sortIndex": 80
+  },
+  "tagLine": {
+    "sortIndex": 24
+  },
+  "competence": {
+    "sortIndex": 80
+  },
+  "discipline": {
+    "sortIndex": 81
+  },
+  "expertise": {
+    "sortIndex": 82
+  },
+  "programmingLanguage": {
+    "sortIndex": 90
+  },
+  "technologyTag": {
+    "sortIndex": 100
+  },
+  "supportLevel": {
+    "sortIndex": 120
+  },
+  "status": {
+    "sortIndex": 110
+  },
+  "nlescWebsite": {
+    "sortIndex": 130
+  },
+  "website": {
+    "sortIndex": 140
+  },
+  "downloadUrl": {
+    "sortIndex": 155
+  },
+  "documentationUrl": {
+    "sortIndex": 160
+  },
+  "codeRepository": {
+    "sortIndex": 150
+  },
+  "releases": {
+    "sortIndex": 170
+  },
   "createdAt": {
     "editable": false
   },
@@ -7,9 +91,13 @@
   },
   "description": {
     "markdown": true,
-    "long": true
+    "long": true,
+    "sortIndex": 25
   },
   "id": {
+    "editable": false
+  },
+  "schema": {
     "editable": false
   }
 }

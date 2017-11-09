@@ -10,5 +10,11 @@
   },
   "id": {
     "editable": false
+  },
+  "schema": {
+    "editable": false
+  },
+  "publications": {
+    "editable": false
   }
 }

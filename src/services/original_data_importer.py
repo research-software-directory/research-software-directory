@@ -1,3 +1,4 @@
+import requests
 import json
 import re
 
@@ -64,7 +65,7 @@ class OriginalDataImporterService:
     def fix_person_github_id(person):
         if 'githubid' not in person and 'githubUrl' in person:
             matches = re.match(r'.*github.com/(.*$)', person['githubUrl'])
-            person['github_id'] = matches.group(1)
+            person['githubid'] = matches.group(1)
 
     def import_people(self):
         for person_data in self.original_data['person']:
@@ -84,3 +85,16 @@ class OriginalDataImporterService:
         self.import_software()
         self.import_people()
         self.import_organizations()
+
+    def set_descriptions(self):
+        # update description for each resource from old site repository
+        for resource_type in ['software', 'project', 'person', 'organization']:
+            for resource in list(iter(self.db[resource_type].all())):
+                url = 'https://raw.githubusercontent.com/NLeSC/software.esciencecenter.nl/gh-pages/_%s/%s.md' %\
+                      (resource_type, resource['id'])
+                req = requests.get(url)
+                if req.status_code == 200:
+                    regex = re.compile('\n---\n')
+                    print('%s/%s' % (resource_type, resource['id']))
+                    resource['description'] = regex.split(req.text)[1]
+                    resource.save()

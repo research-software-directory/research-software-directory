@@ -44,3 +44,7 @@ def init(app, service_controller, db):
     @app.cli.command('verify_data')
     def _verify_data():
         service_controller.schema.verify_data()
+
+    @app.cli.command('set_descriptions')
+    def _descriptions():
+        service_controller.original_data_importer.set_descriptions()

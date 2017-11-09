@@ -81,7 +81,7 @@
           "person": {
             "type": "string",
             "description": "ID of person that author maps to",
-            "resType": "/person"
+            "resType": "person"
           }
         }
       }

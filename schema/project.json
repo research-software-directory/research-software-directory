@@ -22,15 +22,13 @@
       "type": "string",
       "description": "eScience project code"
     },
-    "publication": {
+    "publications": {
       "items": {
-        "format": "uri",
-        "description": "ID of DOI (e.g. http://dx.doi.org/10.5281/zenodo.35415). Should also be available as Markdown file in `_publication/` directory.",
         "type": "string",
-        "resType": "/publication"
+        "resType": "publication"
       },
-      "description": "Publications of project as a list of Digital Object Identifiers (DOI)",
-      "type": "array"
+      "type": "array",
+      "description": "Publications based on software"
     },
     "tagLine": {
       "type": "string",
@@ -56,7 +54,7 @@
           "format": "uri",
           "type": "string",
           "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
-          "resType": "/person"
+          "resType": "person"
         }
       ]
     },
@@ -70,7 +68,7 @@
             "type": "string",
             "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
             "format": "uri",
-            "resType": "/person"
+            "resType": "person"
           }
         ]
       },
@@ -87,7 +85,7 @@
           "format": "uri",
           "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
           "type": "string",
-          "resType": "/person"
+          "resType": "person"
         }
       ]
     },
@@ -123,7 +121,7 @@
             "description": "ID of the person. This is preferably an URI where the person's metadata can be resolved, e.g., http://software.esciencecenter.nl/person/s.verhoeven.",
             "type": "string",
             "format": "uri",
-            "resType": "/person"
+            "resType": "person"
           }
         ]
       },
@@ -140,7 +138,7 @@
             "description": "ID of the software. This is preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon.",
             "type": "string",
             "format": "uri",
-            "resType": "/software"
+            "resType": "software"
           }
         ]
       },
@@ -162,7 +160,7 @@
             "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., http://software.esciencecenter.nl/organization/nlesc.",
             "type": "string",
             "format": "uri",
-            "resType": "/organization"
+            "resType": "organization"
           }
         ]
       },
@@ -176,11 +174,11 @@
     "endDate": {
       "type": "string",
       "description": "Project's official end date.",
-      "format": "date-time"
+      "format": "date"
     },
     "description": {
       "type": "string",
-      "description": "Technical project description, in Markdown format underneath Frontmatter (---) in Markdown files"
+      "description": "Technical project description, in Markdown format"
     },
     "endorsedBy": {
       "type": "array",
@@ -189,11 +187,11 @@
         "format": "uri",
         "type": "string",
         "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
-        "resType": "/organization"
+        "resType": "organization"
       }
     },
     "startDate": {
-      "format": "date-time",
+      "format": "date",
       "type": "string",
       "description": "Project's official start date."
     },
@@ -217,7 +215,7 @@
     },
     "id": {
       "format": "uri",
-      "description": "ID of the project. This is preferably an URI where the project's metadata can be resolved, e.g., http://software.esciencecenter.nl/project/emetabolomics.",
+      "description": "ID of the project. e.g. emetabolomics.",
       "type": "string",
       "hidden": true
     },
