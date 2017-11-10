@@ -49,7 +49,7 @@ export class FormField extends React.Component<IProps, {}> {
   renderTextInput           = () => <comp.TextInput            {...this.defaultFieldProps()} />;
   renderTextArea            = () => <comp.TextAreaInput        {...this.defaultFieldProps()} />;
   renderMarkDown            = () => <comp.MarkDownInput        {...this.defaultFieldProps()} />;
-  renderSoftwareDescription = () => <comp.SoftwareDescription  {...this.defaultFieldProps()} />;
+  renderSoftwareDescription = () => <comp.MarkDownInput        {...this.defaultFieldProps()} />;
   renderDateInput           = () => <comp.DateInput            {...this.defaultFieldProps()} />;
   renderMultiString         = () => <comp.StringArray          {...this.defaultFieldProps(true)} />;
 
