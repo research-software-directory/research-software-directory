@@ -10,9 +10,9 @@ import * as actions from '../../../containers/shared/resource/actions';
 
 it('should update values', () => {
   const data = { software: [ {id: 'test', testField: 'testValue'} ] };
-  const state = { data };
+  const state = { current: { data } };
   const result: any = reducer(state, actions.updateField('software', 'test', 'testField', 'updatedValue'));
-  expect(result.data.software[0].testField).toBe('updatedValue');
+  expect(result.current.data.software[0].testField).toBe('updatedValue');
 });
 
 // it('should add new item', () => {

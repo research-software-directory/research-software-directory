@@ -42,17 +42,11 @@ export class ZoteroImporter extends React.PureComponent<IProps> {
     );
   }
 
-  renderSoftware = (item: any) => (
-    <List.Item key={item.key}>
-      {item.data.title}
-    </List.Item>
-  )
-
   renderItem = (type: string, item: any) => {
     switch (type) {
       case 'projects': return <ProjectContainer key={item.zoteroKey} item={item} />;
       case 'publications': return this.renderPublication(item);
-      case 'software': return <SoftwareContainer key={item.zoteroKey} item={item} />;
+      case 'software': return <SoftwareContainer key={item.key} item={item} />;
       default: return null;
     }
   }
