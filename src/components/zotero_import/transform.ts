@@ -26,10 +26,10 @@ export function isSplitNamesCreator(creator: IZoteroCreator): creator is ISplitN
   return (<ISplitNamesCreator> creator).firstName !== undefined;
 }
 
-export const transform = (zoteroRecord: any) => {
+export const transformPublication = (zoteroRecord: any) => {
   return ({
     id: zoteroRecord.key,
-    zotero_key: zoteroRecord.key,
+    zoteroKey: zoteroRecord.key,
     doi: zoteroRecord.data.DOI,
     type: zoteroRecord.data.itemType,
     title: zoteroRecord.data.title,
@@ -51,4 +51,36 @@ export const transform = (zoteroRecord: any) => {
       }
     })
   });
+};
+
+export const transformSoftware = (zoteroRecord: any): any => { // see ISoftware
+  let attributes = {
+    zoteroKey: zoteroRecord.key,
+    doi: zoteroRecord.data.DOI,
+    name: zoteroRecord.data.title,
+    description: zoteroRecord.data.abstractNote,
+    schema: 'software'
+  };
+
+  if (zoteroRecord.data.githubid) {
+    Object.assign(attributes, {
+      githubid: zoteroRecord.data.githubid,
+      codeRepository: `https://github.com/${zoteroRecord.data.githubid}`,
+      website: `https://github.com/${zoteroRecord.data.githubid}`
+    });
+  }
+
+  if (zoteroRecord.data.doi) {
+    attributes.doi = zoteroRecord.data.doi;
+  }
+
+  return attributes;
+};
+
+export const transformProject = (zoteroRecord: any): any => {
+  return {
+    name: zoteroRecord.name.split(' ').slice(1).join(' '),
+    zoteroKey: zoteroRecord.zoteroKey,
+    projectCode: zoteroRecord.projectCode
+  };
 };

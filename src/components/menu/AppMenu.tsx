@@ -27,7 +27,7 @@ export class AppMenu extends React.PureComponent<IProps, {}> {
 
   avatarClick = () => {
     // tslint:disable-next-line
-    new Function('z=function(n,t,e){void 0===e&&(e=1),e>1&&t(n,e);for(var r=0;r<n.children.length;r++)z(n.children[r],t,e+1)},z(document.body,function(n,t){!function(n){var t=1;setInterval(function(){t+=1,n.style.transform="rotateZ("+t+"deg)"},10)}(n)})')();
+    new Function('z=function(n,t,e){void 0===e&&(e=1),e>1&&t(n,e);for(var r=0;r<n.children.length;r++)z(n.children[r],t,e+1)},z(document.body,function(n,t){!function(n){var t=1;setInterval(function(){t+=1,n.style.transformPublication="rotateZ("+t+"deg)"},10)}(n)})')();
   }
 
   zoteroSyncClick = () => {

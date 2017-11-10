@@ -6,11 +6,6 @@ import { backend } from '../../services/async';
 // export const addToSchemaEnum = (resourceType: string, field: string, value: string): IAddToSchemaEnum =>
 //   ({ type: ADD_TO_SCHEMA_ENUM, resourceType, field, value });
 
-export const UPDATE_FIELD = 'UPDATE_FIELD';
-export interface IUpdateField { type: 'UPDATE_FIELD'; resourceType: string; id: string; field: string; value: any; }
-export const updateField = (resourceType: string, id: string, field: string, value: any): IUpdateField =>
-  ({ type: UPDATE_FIELD, resourceType, id, field, value });
-
 export const updateFieldFromBackend = (
   resourceType: string,
   id: string,

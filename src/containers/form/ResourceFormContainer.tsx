@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { updateField } from './actions';
-
+import { updateField } from '../shared/resource/actions';
 import '../../components/form/style.css';
 import { IResourceType } from '../../interfaces/resource';
 import { ResourceForm } from '../../components/form/ResourceForm';

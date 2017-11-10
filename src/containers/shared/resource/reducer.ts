@@ -4,6 +4,26 @@ import * as actions from './actions';
 // tslint:disable-next-line no-var-requires no-require-imports
 const reduceReducer = require('reduce-reducers');
 
+const updateItemReducer = (state: any = {}, action: actions.IUpdateField) => {
+  switch (action.type) {
+    case actions.types.UPDATE_FIELD:
+      const rowIndex = state.current.data[action.resourceType].findIndex((row: any) => row.id === action.id);
+
+      return update(state, {
+        current: {
+          data: {
+            [action.resourceType] : {
+              [ rowIndex ] : {
+                [action.field] : {
+                  $set: action.value
+        } } } } }
+      });
+
+    default:
+      return state;
+  }
+};
+
 const newItemReducer = (state: any = {}, action: actions.ICreateNewItem) => {
   if (action.type === actions.types.CREATE_NEW_ITEM) {
     let newItem: any = {};
@@ -57,4 +77,4 @@ const undoChangesReducer = (state: any = {}, action: actions.IUndoChanges) => {
   return state;
 };
 
-export const reducer = reduceReducer(newItemReducer, undoChangesReducer);
+export const reducer = reduceReducer(newItemReducer, undoChangesReducer, updateItemReducer);

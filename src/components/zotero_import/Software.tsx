@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { List, Button, Input, Icon } from 'semantic-ui-react';
+import { List, Button, Input, Icon, Message } from 'semantic-ui-react';
 import { ISoftware } from '../../interfaces/resources/software';
+import { transformSoftware } from './transform';
 
 interface IProps {
   item: any; // software to be imported
@@ -9,7 +10,10 @@ interface IProps {
                 id: string,
                 fields?: object,
                 navigateTo?: boolean): any;
-
+  updateField(resourceType: string,
+              id: string,
+              field: string,
+              value: any): any;
 }
 
 interface IState {
@@ -24,7 +28,8 @@ export class Software extends React.Component<IProps, IState> {
   }
 
   sanitizeID = (id: string) => {
-    return id.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
+    const regexpVersions = /(: )?(v|V)?(\d|\.)*$/;
+    return id.toLowerCase().replace(regexpVersions, '').trim().replace(/[^a-zA-Z0-9]+/g, '-');
   }
 
   softwareName = () => this.props.item.data.title;
@@ -42,9 +47,15 @@ export class Software extends React.Component<IProps, IState> {
     this.setState ({id: this.sanitizeID(e.currentTarget.value)});
   }
 
+  zoteroKeyExists = () => {
+    return !!this.props.software.find((software: any) => software.zoteroKey === this.props.item.key);
+  }
+
   idExists = () => {
     return !!this.props.software.find((software: any) => software.id === this.state.id);
   }
+
+  isDisabled = () => this.zoteroKeyExists() || this.idExists() || (this.state.id.length < 2);
 
   softwareWithSameGithubID = () => {
     return this.props.software.find(
@@ -59,30 +70,36 @@ export class Software extends React.Component<IProps, IState> {
     this.props.createNewItem(
       'software',
       this.state.id,
-      { ...this.props.item,
-        name: this.softwareName()
-      }
+      transformSoftware(this.props.item)
     );
   }
 
   renderOpen = () => {
-    const buttonDisabled = (this.state.id.length < 2) || this.idExists();
+    if (!this.idExists()) {
+      const software = this.softwareWithSameGithubID();
+      if (software) {
+        return (
+          <Message>
+            Software with same github ID exists.
+            <Button
+              disabled={this.isDisabled()}
+              onClick={() => this.props.updateField('software', software.id, 'zoteroKey', this.props.item.key)}
+              primary={true}
+            >
+              Update zoteroKey on {software.id}
+            </Button>
+          </Message>
+        );
+      }
+    }
+
     const actionButton = (
       <Button
-        disabled={buttonDisabled}
+        disabled={this.isDisabled()}
         onClick={this.createNew}
       >OK
       </Button>
     );
-
-    const software = this.softwareWithSameGithubID();
-    if (software) {
-      return (
-        <div>
-          Software with same github ID exists
-        </div>
-      );
-    }
 
     return (
       <div style={{float: 'right'}}>

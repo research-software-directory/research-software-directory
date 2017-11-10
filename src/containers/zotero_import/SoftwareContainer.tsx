@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { createNewItem } from '../shared/resource/actions';
+import { createNewItem, updateField } from '../shared/resource/actions';
 import { IStoreState } from '../../interfaces/misc';
 import { Software } from '../../components/zotero_import/Software';
 
 const mapDispatchToProps = ({
-  createNewItem
+  createNewItem,
+  updateField
 });
 
 const mapStateToProps = (state: IStoreState) => ({

@@ -2,7 +2,8 @@ import { Action } from 'redux';
 
 export enum types {
   CREATE_NEW_ITEM = 'CREATE_NEW_ITEM',
-  UNDO_CHANGES    = 'UNDO_CHANGES'
+  UNDO_CHANGES    = 'UNDO_CHANGES',
+  UPDATE_FIELD    = 'UPDATE_FIELD'
 }
 
 export interface ICreateNewItem extends Action {
@@ -36,3 +37,7 @@ export const undoChanges = (resourceType: string, id: string): IUndoChanges => (
   resourceType,
   id
 });
+
+export interface IUpdateField { type: 'UPDATE_FIELD'; resourceType: string; id: string; field: string; value: any; }
+export const updateField = (resourceType: string, id: string, field: string, value: any): IUpdateField =>
+  ({ type: types.UPDATE_FIELD, resourceType, id, field, value });

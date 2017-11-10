@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Segment, Dimmer, Loader, Header, List, Icon } from 'semantic-ui-react';
 import { ProjectContainer } from '../../containers/zotero_import/ProjectContainer';
-import { transform } from './transform';
+import { transformPublication } from './transform';
 import { Link } from 'react-router-dom';
 import { SoftwareContainer } from '../../containers/zotero_import/SoftwareContainer';
 
@@ -26,7 +26,7 @@ export class ZoteroImporter extends React.PureComponent<IProps> {
   }
 
   createPublication = (item: any) => () => {
-    this.props.createNewItem('publication', item.key, transform(item) );
+    this.props.createNewItem('publication', item.key, transformPublication(item) );
   }
 
   renderPublication = (item: any) => {
@@ -50,9 +50,9 @@ export class ZoteroImporter extends React.PureComponent<IProps> {
 
   renderItem = (type: string, item: any) => {
     switch (type) {
-      case 'projects': return <ProjectContainer key={item.zotero_key} item={item} />;
+      case 'projects': return <ProjectContainer key={item.zoteroKey} item={item} />;
       case 'publications': return this.renderPublication(item);
-      case 'software': return <SoftwareContainer key={item.zotero_key} item={item} />;
+      case 'software': return <SoftwareContainer key={item.zoteroKey} item={item} />;
       default: return null;
     }
   }

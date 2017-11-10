@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { List, Button, Input, Icon } from 'semantic-ui-react';
 import { IProject } from '../../interfaces/resources/project';
+import { transformProject } from './transform';
 
 interface IProps {
   item: any; // project to be imported
@@ -50,9 +51,7 @@ export class Project extends React.Component<IProps, IState> {
     this.props.createNewItem(
       'project',
       this.state.id,
-      { ...this.props.item,
-        name: this.projectName()
-      }
+      transformProject(this.props.item)
     );
   }
 

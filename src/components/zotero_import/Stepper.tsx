@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import { Segment, Button } from 'semantic-ui-react';
-import { transform } from './transform';
+import { transformPublication } from './transform';
 import { IPublication } from '../../interfaces/resources/publication';
 import { PublicationContainer } from '../../containers/publications/PublicationContainer';
 
@@ -46,7 +46,7 @@ export class Stepper extends React.PureComponent<IProps, IState> {
     this.setState({currentID: id});
     const item = props.zoteroPublications[id];
     if (!this.findPublication(id)) {
-      this.props.createNewItem('publication', item.key, transform(item), false);
+      this.props.createNewItem('publication', item.key, transformPublication(item), false);
     }
   }
 
@@ -55,7 +55,7 @@ export class Stepper extends React.PureComponent<IProps, IState> {
   findPublication = (id: number) => {
     const zoteroItem = this.props.zoteroPublications[id];
 
-    return zoteroItem && this.props.publications.find((pub) => pub.zotero_key === zoteroItem.key);
+    return zoteroItem && this.props.publications.find((pub) => pub.zoteroKey === zoteroItem.key);
   }
 
   renderPublication = () => {

@@ -1,4 +1,4 @@
-import { updateField } from './actions';
+import { updateField } from '../shared/resource/actions';
 
 export const epic =
   (action$: any, store: any) => action$.ofType('UPDATE_FIELD_FROM_URL/FULFILLED').map((action: any) => {
