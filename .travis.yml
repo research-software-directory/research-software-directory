@@ -6,7 +6,7 @@ cache:
   - node_modules
 install: npm install
 script:
-- export
+- npm run schemabuild
 - REACT_APP_BACKEND="" npm test
 - test $TRAVIS_BRANCH = "master" && npm run build
 deploy:

@@ -1,7 +1,11 @@
 {
     "name": "research-software-directory-admin",
-    "version": "0.1.0",
-    "private": true,
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NLeSC/research-software-directory-admin"
+    },
     "dependencies": {
         "axios": "^0.16.2",
         "classnames": "^2.2.5",
@@ -13,7 +17,7 @@
         "prop-types": "^15.6.0",
         "react": "^16.0.0",
         "react-addons-css-transition-group": "^15.6.2",
-        "react-animate-height": "^0.10.6",
+        "react-animate-height": "^0.10.8",
         "react-day-picker": "^6.2.1",
         "react-dom": "^16.0.0",
         "react-dropzone": "^4.2.0",

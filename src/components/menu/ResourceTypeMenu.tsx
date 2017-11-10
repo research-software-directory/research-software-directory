@@ -4,8 +4,7 @@ import { NewItemContainer } from '../../containers/menu/NewItemContainer';
 import { MenuItemsContainer } from '../../containers/menu/MenuItemsContainer';
 import  * as classNames from 'classnames';
 
-// tslint:disable-next-line:no-require-imports no-var-requires
-const AnimateHeight = require('react-animate-height').default;
+import AnimateHeight from 'react-animate-height';
 
 interface IState {
   open: boolean;

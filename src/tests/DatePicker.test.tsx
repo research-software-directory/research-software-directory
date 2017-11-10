@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { mount, configure } from 'enzyme';
-import { DatePicker } from '../components/datepicker/DatePicker';
+import {mount, configure} from 'enzyme';
+import {DatePicker} from '../components/datepicker/DatePicker';
 
 import * as Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
+
+configure({adapter: new Adapter()});
 
 const doNothing = () => null;
 
@@ -15,7 +16,8 @@ describe('<Datepicker />', () => {
       <DatePicker
         value="2015-01-01"
         onChange={doNothing}
-      />, div);
+      />,
+      div);
   });
 
   if (document) {
