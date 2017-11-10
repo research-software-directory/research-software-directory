@@ -9,6 +9,10 @@
     list-style-position: inside;
 }
 
+.markdown li {
+    line-height: 2.0em;
+}
+
 .markdown p {
     margin-top: .5em;
     margin-bottom: .5em;
