@@ -28,7 +28,7 @@
         "resType": "publication"
       },
       "type": "array",
-      "description": "Publications based on software"
+      "description": "Publication output of the project"
     },
     "tagLine": {
       "type": "string",
@@ -135,7 +135,7 @@
             "$reference": "software"
           },
           {
-            "description": "ID of the software. This is preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon.",
+            "description": "ID of the software.",
             "type": "string",
             "format": "uri",
             "resType": "software"
@@ -143,6 +143,16 @@
         ]
       },
       "description": "Software used in the project.",
+      "type": "array"
+    },
+    "softwareOutput": {
+      "items": {
+        "description": "ID of the software. This is preferably an URI where the software's metadata can be resolved, e.g., http://software.esciencecenter.nl/software/xenon.",
+        "type": "string",
+        "format": "uri",
+        "resType": "software"
+      },
+      "description": "Software developed in this project.",
       "type": "array"
     },
     "website": {
@@ -179,16 +189,6 @@
     "description": {
       "type": "string",
       "description": "Technical project description, in Markdown format"
-    },
-    "endorsedBy": {
-      "type": "array",
-      "description": "Organizations that endorse this entry, e.g. software made by, owned by, or used by the this organization; Used for grouping items on the website per organization.",
-      "items": {
-        "format": "uri",
-        "type": "string",
-        "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., /organization/nlesc.",
-        "resType": "organization"
-      }
     },
     "startDate": {
       "format": "date",
