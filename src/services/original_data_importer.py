@@ -39,7 +39,7 @@ class OriginalDataImporterService:
 
     def import_projects(self):
         for project_data in self.original_data['project']:
-            project_data['project_code'] = self.find_project_code(project_data['id'])
+            project_data['projectCode'] = self.find_project_code(project_data['id'])
             project_data = self.remove_id_prefix(project_data)
             project = self.db.project.new(project_data)
             project.save()

@@ -18,7 +18,7 @@
       "type": "integer",
       "minimum": 0
     },
-    "project_code": {
+    "projectCode": {
       "type": "string",
       "description": "eScience project code"
     },
@@ -219,7 +219,7 @@
       "type": "string",
       "hidden": true
     },
-    "zotero_key": {
+    "zoteroKey": {
       "description": "Zotero key for the project",
       "type": "string"
     },

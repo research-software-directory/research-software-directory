@@ -39,7 +39,7 @@
       "type": "string",
       "description": "id of publication (Zotero key)"
     },
-    "zotero_key": {
+    "zoteroKey": {
       "type": "string",
       "description": "zotero key of publication"
     },

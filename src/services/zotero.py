@@ -26,7 +26,7 @@ class ZoteroService:
 
     def new_projects(self):
         projects = self.get_projects()
-        current_keys = [project.data.get('project_code') for project in self.db.project.all()]
+        current_keys = [project.data.get('projectCode') for project in self.db.project.all()]
 
         def project_is_new(project):
             # projects in Zotero as "[code] [name]"
@@ -35,9 +35,9 @@ class ZoteroService:
         projects = list(filter(project_is_new, projects))
         return [
             {
-                'project_code': project['data']['name'].split(' ')[0],
+                'projectCode': project['data']['name'].split(' ')[0],
                 'name': project['data']['name'],
-                'zotero_key': project['key']
+                'zoteroKey': project['key']
             } for project in projects
         ]
 
@@ -100,10 +100,10 @@ class ZoteroService:
         publications = [result for result in results if result not in software]  # rest is publication
 
         current_software_keys = [
-            software.data.get('zotero_key') for software in self.db.software.all()
+            software.data.get('zoteroKey') for software in self.db.software.all()
         ]
         current_publication_keys = [
-            publication.data.get('zotero_key') for publication in self.db.publication.all()
+            publication.data.get('zoteroKey') for publication in self.db.publication.all()
         ]
 
         # filter away all items already imported

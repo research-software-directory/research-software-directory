@@ -24,7 +24,7 @@ if settings.get('ZOTERO_API_KEY'):
     def test_get_new_projects(service, db):
         if 'first_zotero_project' in data:
             new_project_data = {'id': 'dummy',
-                                'project_code': data['first_zotero_project']['data']['name'].split(' ')[0]}
+                                'projectCode': data['first_zotero_project']['data']['name'].split(' ')[0]}
             new_project = db.project.new(new_project_data)
             new_project.save()
         projects = service.new_projects()

@@ -348,6 +348,10 @@
       "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/technology/software/xenon).",
       "format": "uri"
     },
+    "zoteroKey": {
+      "description": "Zotero key of the software",
+      "type": "string"
+    },
     "releases": {
       "description": "Releases of the software (versioning)",
       "type": "array",
