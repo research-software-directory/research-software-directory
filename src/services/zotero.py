@@ -114,17 +114,17 @@ class ZoteroService:
             results = self.client.everything(self.client.top())  # fetch everything from zotero
             results = list(filter(lambda x: self._publication_has_collection(x), results))  # filter items w/ collection
             cache.data['software'] = list(filter(lambda x: self._publication_is_software(x), results))  # filter software
-            cache.data['publications'] = [result for result in results if result not in cache['software']]  # rest is publication
+            cache.data['publications'] = [result for result in results if result not in cache.data['software']]  # rest is publication
 
         # filter away all items already imported
-        cache['publications'] = list(filter(lambda x: x['key'] not in current_publication_keys, cache['publications']))
-        cache['software'] = list(filter(lambda x: x['key'] not in current_software_keys, cache['software']))
+        cache.data['publications'] = list(filter(lambda x: x['key'] not in current_publication_keys, cache.data['publications']))
+        cache.data['software'] = list(filter(lambda x: x['key'] not in current_software_keys, cache.data['software']))
 
         if cache.data['version'] != current_library_version:
             # add github ID from URL or by looking up DOI in zenodo
-            cache['software'] = [self.update_software_fields(sw) for sw in cache['software']]
+            cache.data['software'] = [self.update_software_fields(sw) for sw in cache.data['software']]
 
-        cache['version'] = current_library_version
+        cache.data['version'] = current_library_version
         cache.save(False)
 
         return cache.data['publications'], cache.data['software']
