@@ -3,6 +3,7 @@ import { Button, Icon, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { IResource } from '../../interfaces/resource';
 import * as classNames from 'classnames';
+import { ISoftware } from '../../interfaces/resources/software';
 
 interface IProps {
   item: IResource;
@@ -31,6 +32,7 @@ export const MenuItem = (props: IProps) => {
       className={classNames({active : props.active})}
     >
       <Link to={`/${props.type}/${props.item.id}`} style={{display: 'block'}}>
+        {(props.type === 'software' && !(props.item as ISoftware).tagLine) && <Icon color="red" name="warning" />}
         {props.label}
         {undoButton}
       </Link>
