@@ -33,6 +33,14 @@ def get_routes(service_controller, db):
             result[resource_type] = list(db[resource_type].all())
         return result, 200
 
+    @api.route('/<resource_type>/<id>', methods=["GET"])
+    @jsonify
+    def _get_software(resource_type, id):
+        resource = db[resource_type].find_by_id(id)
+        if not resource:
+            raise exceptions.NotFoundException('resource not found')
+        return db[resource_type].find_by_id(id).data, 200
+
     @api.route('/schema')
     @jsonify
     def _schema():
