@@ -43,22 +43,38 @@ In zotero:
 * Click  `Netherlands eScience Center` / `Group Libraries`.
 * Zotero projects are not searchable; it's easiest to find the project id at [the bottom of this document](#projects), and use it to find your project.
 
+If you have papers that are not directly connected to a project, but which are linked to the eScience Center, please add them to the `Miscellaneous` folder (on the same level as `Projects`
+
 ### Adding items
-Items can be added by DOI (preferred), or manually if there is no DOI. Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
+Items can be added by DOI (preferred), or manually if there is no DOI.
+
+1. Synchronize with the Zotero server (top right of the window, the reload button)
+2. Create a new item:
+   * If you have a DOI, click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png). Enter one or more DOI(s), seperated with a space. 
+   * Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
+3. Check if the metadata in the `Info` tab is correct.
+   * In the right-hand panel, select the `Info` tab
+   * Check the `itemType` and `type`.
+   * Depending on the item (see the list below) fill in the `extra` field.
+4. To distiguish our `domain` and `escience` output, please add a tag:
+   * In the right-hand panel, select the `Tags` tab
+   * Add a tag `domain` or `escience`
+5. After adding you items, synchronize with the Zotero server again.
 
 #### About dates
 Please refrain from using date ranges (eg. no `4-5th december 2013`), and just use a single date (the first day of the range).
 To differentiate days from months, please use `yyyy-mm-dd`, or `mm-dd-yyyy`. If the year is last it will be parsed as `mm-dd-yyyy` and zotero will also show it as such, so **`dd-mm-yyyy` will not parse correctly**.
 If the day is unknown, use `mm yyyy`, eg `05 2014` for May 2014.
 
-#### Publication
-To add a publication by DOI:
-* Click `Netherlands eScience Center` in `Group Libraries`.
-* Find your project in `Projects`
-* Click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png)
-* Enter one or more DOI(s), seperated with a space.
-* Add tag `domain` or `escience`
-*If you have papers that are not directly connected to a project, but which are linked to the eScience Center, please add them to the `Miscellaneous` folder (on the same level as `Projects`*
+### Types of output
+Below is a list of types, with a short description.
+Please do not use any of the other types available in Zotero.
+If you have an item that doesn't fit, please [open an issue in this GitHub repository](https://github.com/NLeSC/rsd-instruction/issues/new) and we'll figure it out & update this document.
+
+#### Journal papers
+These are peer reviewed papers, and typically have a DOI already.
+If you do not have a DOI yet, for instance, when the paper is under submission or in preparation, add it as a `Manuscript` first.
+Once you have a DOI, add the paper as `Journal paper` and remove the manuscript entry.
 
 #### Software
 Add software:
@@ -68,25 +84,21 @@ creating a Zenodo DOI before it is available).
 * Change the item type to `computer program`.
 * Registering with a DOI is preferred, however sometimes it may not be worth the effort if it is for instance very experimental and you're sure it will not be cited. But we still consider this to be project output; anything with a GitHub repository can be added: add a `computer program` item manually, make sure to fill `Title` field and the GitHub URL under `URL`.
 
-#### Other items
-Zotero supports the following types:
-`Artwork`, `Audio Recording`, `Bill`, `Blogpost`, `Book`, `Book Section`, `Case`, `Computer Program`, `Conference Paper`, `Dictionary Entry`, `Document`, `Email`, `Encyclopedia Article`, `Film`, `Forum Post`, `Hearing`, `Instant Message`, `Interview`, `Journal Article`, `Letter`, `Magazine Article`, `Manuscript`, `Map`, `Newspaper Article`, `Note`, `Patent`, `Podcast`, `Presentation`, `Radio Broadcast`, `Report`, `Statute`, `Thesis`, `TV Broadcast`, `Video Recording`, `Webpage`
-Workflows for other types:
-- Conference poster: use `Presentation`, add `type: Poster`
-- Dataset: In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field:
+#### Datasets
+In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field:
 > `itemType: Dataset`
-- Manuscript: use `Manuscript`, add `extra`:
- > `submittedAt: date`
- 
- > `submittedTo: journal`
-- Software paper:
-  a software paper is a paper that is published in a software journal and described the software and not so much scientific questions answered by the software.
-use `Journal Article`, add under `extra`:
-> `itemType: Software`
-- Workshop: Add as `presentation`, use `type: Workshop`
-- Lecture: Add as `presentation`, use `type: Lecture`
 
-If you still have an item that doesn't fit, please [open an issue in this GitHub repository](https://github.com/NLeSC/rsd-instruction/issues/new) and we'll figure it out & update this document.
+#### Conference poster or presentation
+Use itemType `Presentation`, add `type: Poster` for posters.
+
+#### Workshop or lecture
+Use itemType `Presentation`, add `type: Workshop` or `type: Lecture`
+
+#### Manuscript
+These are peer reviewed publications in submission, under review, or in preparation.
+Use itemType `Manuscript`, add `extra`:
+- `submittedAt: date`
+- `submittedTo: journal`
 
 ## Example: eSalsa
 ![esalsa_example](https://raw.githubusercontent.com/Tommos0/files/master/esalsa_example.png)
