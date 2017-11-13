@@ -93,23 +93,36 @@ class ZoteroService:
         return software
 
     def new_publications(self):
-        results = self.client.everything(self.client.top())  # fetch everything from zotero
+        current_library_version = self.client.last_modified_version()
+        try:
+            cache = next(iter(self.db.zotero_cache.all()))
+        except StopIteration:
+            cache = self.db.zotero_cache.new()
+            cache.data['version'] = 0
+            cache.data['software'] = []
+            cache.data['publications'] = []
+        if cache.data['version'] != current_library_version:
+            logger.log(logging.INFO, 'Zotero cache is dirty')
+            results = self.client.everything(self.client.top())  # fetch everything from zotero
+            results = list(filter(lambda x: self._publication_has_collection(x), results))  # filter items w/ collection
+            software = list(filter(lambda x: self._publication_is_software(x), results))  # filter software
+            publications = [result for result in results if result not in software]  # rest is publication
 
-        results = list(filter(lambda x: self._publication_has_collection(x), results))  # filter items w/ collection
-        software = list(filter(lambda x: self._publication_is_software(x), results))  # filter software
-        publications = [result for result in results if result not in software]  # rest is publication
+            current_software_keys = [
+                software.data.get('zoteroKey') for software in self.db.software.all()
+            ]
+            current_publication_keys = [
+                publication.data.get('zoteroKey') for publication in self.db.publication.all()
+            ]
 
-        current_software_keys = [
-            software.data.get('zoteroKey') for software in self.db.software.all()
-        ]
-        current_publication_keys = [
-            publication.data.get('zoteroKey') for publication in self.db.publication.all()
-        ]
+            # filter away all items already imported
+            publications = list(filter(lambda x: x['key'] not in current_publication_keys, publications))
+            software = list(filter(lambda x: x['key'] not in current_software_keys, software))
 
-        # filter away all items already imported
-        publications = list(filter(lambda x: x['key'] not in current_publication_keys, publications))
-        software = list(filter(lambda x: x['key'] not in current_software_keys, software))
-
-        # add github ID from URL or by looking up DOI in zenodo
-        software = [self.update_software_fields(sw) for sw in software]
-        return publications, software
+            # add github ID from URL or by looking up DOI in zenodo
+            software = [self.update_software_fields(sw) for sw in software]
+            cache.data['version'] = current_library_version
+            cache.data['software'] = software
+            cache.data['publications'] = publications
+            cache.save()
+        return cache.data['publications'], cache.data['software']
