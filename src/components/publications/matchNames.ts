@@ -28,11 +28,28 @@ export const matchNames = (people: IPerson[], authors: IAuthor[]) => {
     };
   });
 
-  const _authors = authors.map((author: any) => ({
-    name: `${author.firstName} ${author.lastName}`,
-    firstName: author.firstName,
-    lastName: author.lastName
-  }));
+  const splitNameWithComma = (name: string) => {
+    const authorParts = name.split(',');
+    return ({
+      name: `${authorParts[1]} ${authorParts[0]}`,
+      firstName: authorParts[1],
+      lastName: authorParts[0]
+    });
+  };
+
+  const _authors = authors.map((author: any) => {
+    if (author.firstName.indexOf(',') !== -1) {
+      return splitNameWithComma(author.firstName);
+    }
+    if (author.lastName.indexOf(',') !== -1) {
+      return splitNameWithComma(author.lastName);
+    }
+    return ({
+      name: `${author.firstName} ${author.lastName}`,
+      firstName: author.firstName,
+      lastName: author.lastName
+    });
+  });
 
   const fuseByName = new Fuse(_people, options);
 
