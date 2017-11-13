@@ -41,7 +41,7 @@ export class FormField extends React.Component<IProps, {}> {
 
   defaultFieldProps = (isArray = false) => ({
     value: this.props.value || (isArray ? [] : ''),
-    label: this.props.property.description || '',
+    label: this.props.property.htmlDescription || this.props.property.description || '',
     onChange: this.props.onChange,
     className: this.props.hasChanged ? 'dirty' : ''
   })

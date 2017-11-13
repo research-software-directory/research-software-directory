@@ -12,6 +12,7 @@ export type IProperty = IArrayProperty | ILinkProperty | IStringProperty | IRefe
 
 interface IBaseProperty {
   description?: string;
+  htmlDescription?: string;
   sortIndex?: number;
   // type?: string;
 }

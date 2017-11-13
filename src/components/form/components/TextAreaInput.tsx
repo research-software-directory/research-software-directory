@@ -13,7 +13,7 @@ export const TextAreaInput = (props: IProps) => {
 
   return (
     <Segment>
-      <p>{props.label}</p>
+      <p dangerouslySetInnerHTML={{__html: props.label}}/>
       <TextArea autoHeight={true} className={props.className || ''} value={props.value} onChange={onChange} />
     </Segment>
   );

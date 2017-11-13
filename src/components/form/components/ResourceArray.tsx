@@ -120,7 +120,7 @@ export class ResourceArray extends React.PureComponent<IProps, {}> {
 
     return (
       <Segment className="ResourceArray">
-        <p>{this.props.label}</p>
+        <p dangerouslySetInnerHTML={{__html: this.props.label}}/>
         {this.segments()}
         {input}
       </Segment>

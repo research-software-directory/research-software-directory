@@ -93,7 +93,7 @@ export class MultiSelect extends React.PureComponent<IProps, IState> {
 
     return (
       <Segment>
-        <p>{this.props.label}</p>
+        <p dangerouslySetInnerHTML={{__html: this.props.label}}/>
         {this.addButton()}
         <Dropdown
           placeholder="Select"

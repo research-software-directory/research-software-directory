@@ -58,8 +58,8 @@ export class StringArray extends React.PureComponent<IProps, any> {
   render() {
     return (
       <Segment>
-        {this.props.label}<br />
-          {this.inputs()}
+        <p dangerouslySetInnerHTML={{__html: this.props.label}}/>
+        {this.inputs()}
         <Input onChange={this.onAdd} value="" />
       </Segment>
     );

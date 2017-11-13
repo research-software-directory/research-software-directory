@@ -13,7 +13,7 @@ export const TextInput = (props: IProps) => {
 
   return (
     <Segment>
-      <p>{props.label}</p>
+      <p dangerouslySetInnerHTML={{__html: props.label}}/>
       <Input className={props.className || ''} value={props.value} onChange={onChange} />
     </Segment>
   );

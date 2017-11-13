@@ -12,7 +12,7 @@ interface IProps {
 
 export const DateInput = (props: IProps) => (
   <Segment>
-    {props.label} <br />
+    <p dangerouslySetInnerHTML={{__html: props.label}}/>
     <DatePicker {...props} />
   </Segment>
 );

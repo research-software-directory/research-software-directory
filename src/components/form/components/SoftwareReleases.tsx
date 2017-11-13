@@ -142,7 +142,7 @@ export const SoftwareReleases = connector(class extends React.PureComponent<IPro
 
     return (
       <Segment>
-        {this.props.label} <br />
+        <p dangerouslySetInnerHTML={{__html: this.props.label}}/>
         <Button onClick={this.onGitHubButton}>
           Load from GitHub ({this.props.githubid}) &nbsp;
         </Button> <br />
