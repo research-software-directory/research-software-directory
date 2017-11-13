@@ -5,11 +5,18 @@
      * [Open project](#open-project)
      * [Adding items](#adding-items)
         * [About dates](#about-dates)
-        * [Publication](#publication)
+     * [Types of output](#types-of-output)
+        * [Journal papers](#journal-papers)
         * [Software](#software)
-        * [Other items](#other-items)
+        * [Datasets](#datasets)
+        * [Conference poster or presentation](#conference-poster-or-presentation)
+        * [Workshop or lecture](#workshop-or-lecture)
+        * [Presentation](#presentation)
+        * [Manuscript](#manuscript)
+        * [Other types](#other-types)
   * [Example: eSalsa](#example-esalsa)
   * [Projects](#projects)
+
 
 ## Keep your output up to date
 It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output. Any output that you don't know how to add to Zotero? Check the [closed issues](https://github.com/NLeSC/rsd-instruction/issues?utf8=%E2%9C%93&q=), or [add a new one](https://github.com/NLeSC/rsd-instruction/issues/new) if it is not yet listed.
@@ -21,7 +28,7 @@ For most completed projects, a list of publications can be found in the end repo
 
 If there are any publications not in the end report, please add them too!
 
-*If you cannot find an end report, check with Noura if it is available somewhere else.*
+*If you cannot find an end report and the project is finished, please report it to Noura.*
 
 ## Zotero
 *Note: Use the **offline** version of Zotero, the web client functionality is very limited, can't add by DOI etc.*
@@ -33,7 +40,7 @@ If there are any publications not in the end report, please add them too!
 * [Download Zotero](https://www.zotero.org/download/)
 * Install Zotero
 
-In zotero:
+In Zotero:
 * Go to `edit`/`Preferences`/`Sync`
 * Enter username & password -> OK
 * Click sync button ![Instruction](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step1.png)
@@ -94,11 +101,18 @@ Use itemType `Presentation`, add `type: Poster` for posters.
 #### Workshop or lecture
 Use itemType `Presentation`, add `type: Workshop` or `type: Lecture`
 
+#### Presentation
+Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations. If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
+
 #### Manuscript
 These are peer reviewed publications in submission, under review, or in preparation.
 Use itemType `Manuscript`, add `extra`:
 - `submittedAt: date`
 - `submittedTo: journal`
+
+#### Other types
+Please choose the most appropriate type from
+`Blogpost`, `Book`, `Book Section`, `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio Broadcast`, `Thesis`, `TV Broadcast`, `Video Recording`, `Webpage`.
 
 ## Example: eSalsa
 ![esalsa_example](https://raw.githubusercontent.com/Tommos0/files/master/esalsa_example.png)
