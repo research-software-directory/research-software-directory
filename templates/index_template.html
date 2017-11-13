@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NLeSC | All Software | Template</title>
+</head>
+
+<body>
+
+<div class="layout" id="data_display">
+    <title>All software id's:</title>
+    <br>
+    <table>
+    {% for id in template_data %}
+       <tr>
+            <td><a href="software/{{id}}">{{id}}</a></td>
+       </tr>
+    {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

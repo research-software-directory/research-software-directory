@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NLeSC | Software Page | Template</title>
+</head>
+
+<body>
+
+<div class="layout" id="data_display">
+    <title>All software id's:</title>
+    <br>
+    <a href="/">Go back</a>
+    <br>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>{{template_data.name}}</td>
+        </tr>
+        <tr>
+            <td>tagLine</td>
+            <td>{{template_data.tagLine}}</td>
+        </tr>
+        <tr>
+            <td>codeRepository</td>
+            <td>{{template_data.codeRepository}}</td>
+        </tr>
+        <tr>
+            <td>website</td>
+            <td>{{template_data.website}}</td>
+        </tr>
+        <tr>
+            <td>downloadUrl</td>
+            <td>{{template_data.downloadUrl}}</td>
+        </tr>
+        <tr>
+            <td>documentationUrl</td>
+            <td>{{template_data.documentationUrl}}</td>
+        </tr>
+        <tr>
+            <td>doi</td>
+            <td>{{template_data.doi}}</td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>programmingLanguage</td>
+            <td>
+                {% for programmingLanguage in template_data.programmingLanguage %}
+                  <li>{{ programmingLanguage }}</li>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>owner</td>
+            <td>
+                {% for owner in template_data.owner %}
+                  <li>{{ owner }}</li>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
