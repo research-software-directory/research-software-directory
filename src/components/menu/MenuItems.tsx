@@ -22,6 +22,10 @@ const label = (type: string) => (item: any) => {
   }
 };
 
+const sortByLabel = (type: string) => (a: any, b: any) => {
+  return label(type)(a).localeCompare(label(type)(b));
+};
+
 export class MenuItems extends React.PureComponent<IProps, {}> {
   undoChanges = (id: string) => (e: React.FormEvent<HTMLButtonElement>) => {
     this.props.undoChanges(this.props.type, id);
@@ -38,6 +42,7 @@ export class MenuItems extends React.PureComponent<IProps, {}> {
   render() {
     const items = this.props.data[this.props.type]
       .filter(this.searchFilter(this.props.search))
+      .sort(sortByLabel(this.props.type))
       .map((item) => {
         const oldEntry = (this.props.oldData[this.props.type].find((oldItem) => item.id === oldItem.id));
         const hasChanged = oldEntry !== item;
