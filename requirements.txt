@@ -1,3 +1,6 @@
 Flask
 Requests
 Jsonify
+Urllib3
+Chardet
+Certifi
