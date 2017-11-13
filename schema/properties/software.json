@@ -1,15 +1,18 @@
 {
   "name": {
     "sortIndex": 10,
-    "htmlDescription": "Human readable <b>name</b>"
+    "htmlDescription": "Human readable <b>name</b>",
+    "editable": false
   },
   "githubid": {
     "sortIndex": 20,
-    "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)"
+    "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)",
+    "editable": false
   },
   "doi": {
     "sortIndex": 21,
-    "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415)."
+    "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415).",
+    "editable": false
   },
   "startDate": {
     "sortIndex": 22,
