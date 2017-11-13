@@ -373,6 +373,16 @@
           }
         }
       }
+    },
+    "relatedSoftware": {
+      "description": "related software.",
+      "type": "array",
+      "items": {
+        "format": "uri",
+        "description": "ID of the software. e.g., emetabolomics.",
+        "type": "string",
+        "resType": "software"
+      }
     }
   },
   "additionalProperties": false
