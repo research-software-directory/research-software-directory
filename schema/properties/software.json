@@ -1,36 +1,45 @@
 {
   "name": {
-    "sortIndex": 10
+    "sortIndex": 10,
+    "htmlDescription": "Human readable <b>name</b>"
   },
   "githubid": {
-    "sortIndex": 20
+    "sortIndex": 20,
+    "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)"
   },
   "doi": {
-    "sortIndex": 21
+    "sortIndex": 21,
+    "htmlDescription": "Main <b>DOI<b> (e.g. 10.5281/zenodo.35415)."
   },
   "startDate": {
-    "sortIndex": 22
+    "sortIndex": 22,
+    "htmlDescription": "<b>Start date</b> of development."
   },
   "tagLine": {
-    "sortIndex": 24
+    "sortIndex": 24,
+    "htmlDescription": "<b>Software statement</b>."
   },
   "description": {
     "markdown": true,
     "long": true,
-    "sortIndex": 25
+    "sortIndex": 25,
+    "htmlDescription": "<b>What</b> does it do?"
   },
   "contactPerson": {
-    "sortIndex": 30
+    "sortIndex": 30,
+    "htmlDescription": "<b>Contact person</b> of the software?"
   },
   "contributor": {
-    "sortIndex": 31
+    "sortIndex": 31,
+    "htmlDescription": "<b>Contributor</b> to the software?"
   },
   "outputOfProject": {
     "sortIndex": 35,
     "editable": false
   },
   "usedInProject": {
-    "sortIndex": 36
+    "sortIndex": 36,
+    "htmlDescription": "<b>Projects</b> the software is used in."
   },
   "involvedOrganization": {
     "sortIndex": 47,
@@ -41,7 +50,8 @@
     "editable": false
   },
   "usingOrganization": {
-    "sortIndex": 61
+    "sortIndex": 61,
+    "htmlDescription": "<b>Organizations</b> that use the software."
   },
   "owner": {
     "sortIndex": 40,
@@ -52,22 +62,28 @@
     "editable": false
   },
   "publications": {
-    "sortIndex": 80
+    "sortIndex": 75,
+    "htmlDescription": "<b>Publications</b> based on software."
   },
   "competence": {
-    "sortIndex": 80
+    "sortIndex": 80,
+    "htmlDescription": "NLeSC core <b>competences</b> associated to the software."
   },
   "discipline": {
-    "sortIndex": 81
+    "sortIndex": 81,
+    "htmlDescription": "NLeSC <b>disciplines</b> associated to the software."
   },
   "expertise": {
-    "sortIndex": 82
+    "sortIndex": 82,
+    "htmlDescription": "NLeSC <b>expertises</b> associated to the software."
   },
   "programmingLanguage": {
-    "sortIndex": 90
+    "sortIndex": 90,
+    "htmlDescription": "<b>Programming languages</b> used in the software or supported by the software.."
   },
   "technologyTag": {
-    "sortIndex": 100
+    "sortIndex": 100,
+    "htmlDescription": "<b>Keywords of</b> related or relevant <b>technologies.</b>"
   },
   "supportLevel": {
     "sortIndex": 120,
@@ -85,14 +101,17 @@
     "sortIndex": 140,
     "editable": false
   },
+  "codeRepository": {
+    "sortIndex": 150,
+    "htmlDescription": "Link to the <b>repository</b> where the un-compiled, human readable <b>code</b> and related code is located (github, SVN, CodePlex)."
+  },
   "downloadUrl": {
-    "sortIndex": 155
+    "sortIndex": 155,
+    "htmlDescription": "Link to <b>download page</b> (e.g. Github releases, PyPi, npm, jcenter)."
   },
   "documentationUrl": {
-    "sortIndex": 160
-  },
-  "codeRepository": {
-    "sortIndex": 150
+    "sortIndex": 160,
+    "htmlDescription": "Link to the <b>documentation</b> pages."
   },
   "releases": {
     "sortIndex": 170,
