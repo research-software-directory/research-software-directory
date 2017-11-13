@@ -11,6 +11,14 @@
   "startDate": {
     "sortIndex": 22
   },
+  "tagLine": {
+    "sortIndex": 24
+  },
+  "description": {
+    "markdown": true,
+    "long": true,
+    "sortIndex": 25
+  },
   "contactPerson": {
     "sortIndex": 30
   },
@@ -18,31 +26,33 @@
     "sortIndex": 31
   },
   "outputOfProject": {
-    "sortIndex": 35
+    "sortIndex": 35,
+    "editable": false
   },
   "usedInProject": {
     "sortIndex": 36
   },
   "involvedOrganization": {
-    "sortIndex": 47
+    "sortIndex": 47,
+    "editable": false
   },
   "contributingOrganization": {
-    "sortIndex": 45
+    "sortIndex": 45,
+    "editable": false
   },
   "usingOrganization": {
     "sortIndex": 61
   },
   "owner": {
-    "sortIndex": 40
+    "sortIndex": 40,
+    "editable": false
   },
   "dependsOn": {
-    "sortIndex": 70
+    "sortIndex": 70,
+    "editable": false
   },
   "publications": {
     "sortIndex": 80
-  },
-  "tagLine": {
-    "sortIndex": 24
   },
   "competence": {
     "sortIndex": 80
@@ -60,16 +70,20 @@
     "sortIndex": 100
   },
   "supportLevel": {
-    "sortIndex": 120
+    "sortIndex": 120,
+    "editable": false
   },
   "status": {
-    "sortIndex": 110
+    "sortIndex": 110,
+    "editable": false
   },
   "nlescWebsite": {
-    "sortIndex": 130
+    "sortIndex": 130,
+    "editable": false
   },
   "website": {
-    "sortIndex": 140
+    "sortIndex": 140,
+    "editable": false
   },
   "downloadUrl": {
     "sortIndex": 155
@@ -81,18 +95,14 @@
     "sortIndex": 150
   },
   "releases": {
-    "sortIndex": 170
+    "sortIndex": 170,
+    "editable": false
   },
   "createdAt": {
     "editable": false
   },
   "updatedAt": {
     "editable": false
-  },
-  "description": {
-    "markdown": true,
-    "long": true,
-    "sortIndex": 25
   },
   "id": {
     "editable": false
