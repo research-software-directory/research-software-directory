@@ -80,7 +80,8 @@ class MongoCollection(Collection):
 
     def update(self, record):
         record.data['_id'] = record._id  # restore mongo _id
-        self.make_history_item(record)
+        if record.save_history:
+            self.make_history_item(record)
         self._collection.update({'_id': record.data['_id']}, record.data)
         record.data.pop('_id')
 

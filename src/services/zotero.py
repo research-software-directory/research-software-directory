@@ -124,5 +124,5 @@ class ZoteroService:
             cache.data['version'] = current_library_version
             cache.data['software'] = software
             cache.data['publications'] = publications
-            cache.save()
+            cache.save(False)
         return cache.data['publications'], cache.data['software']

@@ -11,6 +11,7 @@ class Record():
         self.data = data
         self.is_new = is_new
         self.collection = collection
+        self.save_history = True
 
     def is_new(self):
         return self.is_new
@@ -21,7 +22,8 @@ class Record():
     def has_key(self, key):
         return key in self.data
 
-    def save(self):
+    def save(self, save_history=True):
+        self.save_history = save_history
         if self.is_new:
             self.data['createdAt'] = int(round(time.time()))
             self.data['updatedAt'] = int(round(time.time()))
