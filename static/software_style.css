@@ -31,5 +31,16 @@ h2              { font-size: 1.2em; }
 }
 .software_documentationUrl {
 }
-.software_doi {
+.software_technologyTag {
+}
+.software_involvedOrganization {
+}
+.software_startDate {
+}
+.software_description {
+}
+.software_description img {
+    width: 300px;
+}
+.software_contactPerson {
 }

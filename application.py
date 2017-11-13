@@ -1,6 +1,6 @@
-import json
 import flask
 import requests
+import markdown
 
 app = flask.Flask(__name__)
 
@@ -15,7 +15,9 @@ def index():
 def software_product_page_template(software_id):
     url = "http://admin.research-software.nl/api/software/%s" % software_id
     software_dictionary = requests.get(url).json()
-    return flask.render_template('software_template.html', template_data = software_dictionary)
+    description = software_dictionary.get("description")
+    descriptionMarkup = flask.Markup(markdown.markdown(description))
+    return flask.render_template('software_template.html', template_data = software_dictionary, descriptionMarkup = descriptionMarkup)
 
 if __name__ == '__main__':
     app.run(debug=True)

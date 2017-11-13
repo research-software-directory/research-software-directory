@@ -12,6 +12,9 @@
     <div class="software_name">{{template_data.name}}</div>
     <a href="/">Go back</a>
     <div class="software_tagLine">{{template_data.tagLine}}</div>
+    <div class="software_startDate">{{template_data.startDate}}</div>
+    <div class="software_description">{{descriptionMarkup}}</div>
+    <div class="software_contactPerson">{{template_data.contactPerson}}</div>
     <div class="software_codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
     <div class="software_website"><a href={{template_data.website}} target="_blank">website</a></div>
     <div class="software_downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
@@ -30,6 +33,22 @@
         <ul>
             {% for owner in template_data.owner %}
               <li>{{ owner }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="software_involvedOrganization">
+        involvedOrganization(s):
+        <ul>
+            {% for involvedOrganization in template_data.involvedOrganization %}
+              <li>{{ involvedOrganization }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="software_technologyTag">
+        technologyTag(s):
+        <ul>
+            {% for technologyTag in template_data.technologyTag %}
+              <li>{{ technologyTag }}</li>
             {% endfor %}
         </ul>
     </div>
