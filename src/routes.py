@@ -1,5 +1,7 @@
 import hashlib
 import os
+from random import randint
+import time
 
 import flask
 from flask_cors import CORS
@@ -10,7 +12,6 @@ from src.helpers.util import worker
 from src.json_response import jsonify
 # from src.services.report import load_reports
 from src.settings import settings
-
 
 def get_routes(service_controller, db):
     user = service_controller.user
@@ -33,9 +34,25 @@ def get_routes(service_controller, db):
             result[resource_type] = list(db[resource_type].all())
         return result, 200
 
+    @api.route('/software', methods=["GET"])
+    @jsonify
+    def _get_software():
+        resources = list(db['software'].all())
+        result = [{
+            'id': software.data.get('id'),
+            'name': software.data.get('name'),
+            'tagLine': software.data.get('tagLine'),
+            'discipline': software.data.get('discipline'),
+            'expertise': software.data.get('expertise'),
+            'mentions': randint(0, 50),
+            'commits': randint(0, 3000),
+            'lastUpdate': int(time.time()) - randint(0, 3600*24*365)
+        } for software in resources]
+        return result, 200
+
     @api.route('/<resource_type>/<id>', methods=["GET"])
     @jsonify
-    def _get_software(resource_type, id):
+    def _get_resource(resource_type, id):
         resource = db[resource_type].find_by_id(id)
         if not resource:
             raise exceptions.NotFoundException('resource not found')
