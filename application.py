@@ -50,7 +50,7 @@ def get_data():
 def get_gems():
     url = "http://admin.research-software.nl/api/software"
     all_software_dictionary = requests.get(url).json()
-    gems_json = flask.json.dumps(all_software_dictionary, sort_keys = False, indent = 4)
+    gems_json = flask.json.dumps(all_software_dictionary[:6], sort_keys = False, indent = 4)
     return "var gems = " + gems_json
 
 @app.template_filter('strftime')
