@@ -11,7 +11,7 @@ function plot_commits(data) {
             nticks: 12
             }
         }
-    Plotly.newPlot(plotid, data, layout, {displayModeBar: false})
+    Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true})
     }
 
 plot_commits(commitsData);
