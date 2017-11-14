@@ -20,10 +20,9 @@ app = flask.Flask(__name__)
 def index():
     url = "http://admin.research-software.nl/api/software"
     all_software_dictionary = requests.get(url).json()
-    template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
+    #template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     random_integer = random.randint(1,100)
-    return flask.render_template('index_template.html', template_data = all_software_dictionary,
-                                                        template_data_json = template_data_json,
+    return flask.render_template('index_template.html', template_data= all_software_dictionary,
                                                         random_integer = str(random_integer))
 
 @app.route('/software/<software_id>')
@@ -41,6 +40,13 @@ def get_data():
     all_software_dictionary = requests.get(url).json()
     template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     return "var ALL_DATA = "+template_data_json
+
+@app.route('/dynamic/gems.js')
+def get_gems():
+    url = "http://admin.research-software.nl/api/software"
+    all_software_dictionary = requests.get(url).json()
+    gems_json = flask.json.dumps(all_software_dictionary, sort_keys = False, indent = 4)
+    return "var gems = " + gems_json
 
 @app.template_filter('strftime')
 def strftime(millis):

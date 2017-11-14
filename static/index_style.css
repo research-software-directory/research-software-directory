@@ -25,6 +25,12 @@
     width: 100%;
     visibility:hidden;
 }
+.gems{
+    position:relative;
+    float:left;
+    border-style:solid;
+    border-width: 1px;
+}
 .layout.filter{
     padding: 20px;
     position: relative;

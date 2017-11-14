@@ -8,6 +8,7 @@
 
 
     <script type="text/javascript" src="/dynamic/data.js"></script>
+    <script type="text/javascript" src="/dynamic/gems.js"></script>
 
 </head>
 <body>
@@ -35,7 +36,6 @@
 
 
 <div class="layout" id="data_gems">
-
 
 </div>
 
@@ -71,6 +71,13 @@
         if($("#input").val()=="Search for software, people, technologies, etc."){
           $("#input").val("")
         }    
+     });
+
+     $(document).ready(function(){
+        // fill gems div
+        for (var i = 0; i <gems.length; i++){
+          $("#data_gems").append("<div class='gems' id="+gems[i]['id'].replace(/\s+/g, '')+">"+gems[i]+"</div>")
+        }
      });
 
      $("#search").submit(function (event){
