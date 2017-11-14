@@ -1,6 +1,7 @@
 import flask
 import requests
 import markdown
+import datetime
 
 app = flask.Flask(__name__)
 
@@ -17,6 +18,12 @@ def software_product_page_template(software_id):
     description = software_dictionary.get("description")
     descriptionMarkup = flask.Markup(markdown.markdown(description))
     return flask.render_template('software_template.html', template_data = software_dictionary, descriptionMarkup = descriptionMarkup)
+
+@app.template_filter('strftime')
+def strftime(millis):
+    format = "%Y-%m-%d %H:%M:%S"
+    result = datetime.datetime.fromtimestamp(millis / 1e3).strftime(format)
+    return result
 
 if __name__ == '__main__':
     app.run(debug=True)

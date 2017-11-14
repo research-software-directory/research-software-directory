@@ -1,32 +1,32 @@
-.software_name {
+.name {
     font-size: 2em;
     padding-top: 20px;
 }
-.software_contributor {
+.contributor {
     font-weight: bold;
 }
-.software_tagLine {
+.tagLine {
     font-style: italic;
     padding-top: 20px;
 }
-.software_codeRepository {
+.codeRepository {
 }
-.software_website {
+.website {
 }
-.software_downloadUrl {
+.downloadUrl {
 }
-.software_documentationUrl {
+.documentationUrl {
 }
-.software_technologyTag {
+.technologyTag {
 }
-.software_involvedOrganization {
+.involvedOrganization {
 }
-.software_startDate {
+.startDate {
 }
-.software_description {
+.description {
 }
-.software_description img {
+.description img {
     width: 300px;
 }
-.software_contactPerson {
+.contactPerson {
 }
