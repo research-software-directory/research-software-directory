@@ -53,5 +53,11 @@
 .box_right {
 	display: inline-block;
 }
+.morecontent span {
+    display: none;
+}
+.morelink {
+	display: inline-block;
+}
 
 /* ids */
