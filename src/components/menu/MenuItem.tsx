@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { IResource } from '../../interfaces/resource';
 import * as classNames from 'classnames';
 import { ISoftware } from '../../interfaces/resources/software';
+import {IProject} from '../../interfaces/resources/project';
 
 interface IProps {
   item: IResource;
@@ -33,6 +34,7 @@ export const MenuItem = (props: IProps) => {
     >
       <Link to={`/${props.type}/${props.item.id}`} style={{display: 'block'}}>
         {(props.type === 'software' && !(props.item as ISoftware).tagLine) && <Icon color="red" name="warning" />}
+        {(props.type === 'project' && !(props.item as IProject).zoteroKey) && <Icon color="red" name="warning" />}
         {props.label}
         {undoButton}
       </Link>

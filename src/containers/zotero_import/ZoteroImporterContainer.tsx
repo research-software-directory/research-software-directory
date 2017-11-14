@@ -13,7 +13,7 @@ const dispatchToProps = ({
 const mapStateToProps = (state: any) => ({
   projects: state.zotero.projects,
   publications: state.zotero.publications,
-  software: state.zotero.software
+  software: state.zotero.software,
 });
 
 const connector = connect(mapStateToProps, dispatchToProps);

@@ -4,6 +4,7 @@ import {
   IProperty, isAnyOfProperty, isArrayProperty, isEnumProperty, isLinkProperty, isStringProperty
 } from '../../interfaces/json-schema';
 import { IData } from '../../interfaces/misc';
+import { IProject } from '../../interfaces/resources/project';
 
 interface IProps {
   data: IData;
@@ -69,6 +70,13 @@ export class FormField extends React.Component<IProps, {}> {
     );
   }
 
+  capLength = (s: string, i: number) => {
+    if (s.length > i) {
+      return `${s.slice(0, i)}...`;
+    }
+    return s;
+  }
+
   renderMultiResource() {
     if (!(isArrayProperty(this.props.property) && isLinkProperty(this.props.property.items))) { return null; }
     const resourceType = this.props.property.items.resType;
@@ -79,7 +87,13 @@ export class FormField extends React.Component<IProps, {}> {
       };
 
       if (resourceType === 'publication') {
-        opt.label = `${resource.DOI && `[${resource.DOI}]` || ''} ${resource.title}`;
+        const project = (this.props.data.project as IProject[]).find(
+          (proj) => resource.original.collections.indexOf(proj.zoteroKey) !== -1
+        );
+        if (project) {
+          opt.label = project.name + ' ' + opt.label;
+        }
+        opt.label = `${project && `[${this.capLength(project.name, 25)}] ` || ''} ${resource.title}`;
       }
 
       return opt;
