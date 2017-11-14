@@ -33,7 +33,8 @@ export const MenuItem = (props: IProps) => {
       className={classNames({active : props.active})}
     >
       <Link to={`/${props.type}/${props.item.id}`} style={{display: 'block'}}>
-        {(props.type === 'software' && !(props.item as ISoftware).tagLine) && <Icon color="red" name="warning" />}
+        {(props.type === 'software' && !(props.item as ISoftware).zoteroKey) && <Icon color="red" name="warning" />}
+        {(props.type === 'software' && !(props.item as ISoftware).tagLine) && <Icon color="yellow" name="warning" />}
         {(props.type === 'project' && !(props.item as IProject).zoteroKey) && <Icon color="red" name="warning" />}
         {props.label}
         {undoButton}
