@@ -84,12 +84,21 @@ If you do not have a DOI yet, for instance, when the paper is under submission o
 Once you have a DOI, add the paper as `Journal paper` and remove the manuscript entry.
 
 #### Software
-Add software:
+For software, there are two separate cases:
+1. Software that is written by us, or that has a clear separate repository
+2. External software that we made a (significant) contribution to
+Other cases, like bug fixes or minor features, do not have to be added to the RSD.
+
+*Case 1:*
 * Get a DOI for software via [Zenodo](https://zenodo.org/).
-* Add software to project by its DOI (Zotero DOI import works through Crossref.org, it can take a couple of hours after
-creating a Zenodo DOI before it is available).
+* Add software to project by its DOI (Zotero DOI import works through Crossref.org, it can take a couple of hours after creating a Zenodo DOI before it is available).
 * Change the item type to `computer program`.
 * Registering with a DOI is preferred, however sometimes it may not be worth the effort if it is for instance very experimental and you're sure it will not be cited. But we still consider this to be project output; anything with a GitHub repository can be added: add a `computer program` item manually, make sure to fill `Title` field and the GitHub URL under `URL`.
+
+*Case 2:*
+* If the program already has a DOI, consider using that. Possibily, the software can do a new release, and can get a separate DOI for that version.
+* Add a `computer program` item manually, make sure to fill `Title` field and the GitHub URL under `URL`.
+* Add `itemType: feature` to the `Extra` field on the `Info` tab.
 
 #### Datasets
 In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field:
