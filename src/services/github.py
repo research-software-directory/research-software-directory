@@ -92,7 +92,7 @@ class GithubService:
             for commit_data in new_commits:
                 try:
                     commit = self.db.commit.new(transform(commit_data))
-                    commit.save()
+                    commit.save(False)
                 except Exception as e:
                     print(e)
 

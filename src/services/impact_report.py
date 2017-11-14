@@ -75,7 +75,7 @@ class ImpactReportService:
         }
         report = self.db.impact_report.new(data)
         print(report.data)
-        report.save()
+        report.save(False)
 
     def save_report(self, id, report_data):
         report = self.db.impact_report.find({
@@ -84,7 +84,7 @@ class ImpactReportService:
         }).next()
         report.data.update(report_data)
         # print(report)
-        report.save()
+        report.save(False)
 
     @guard
     def get_github_info(self, software_id, github_id):
