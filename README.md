@@ -110,7 +110,7 @@ Possibily, the software can do a new release, and can get a separate DOI for tha
 * Also on the `Info` tab, Add `type: feature` to the `Extra` field.
 
 #### Datasets
-In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field: `itemType: Dataset`.
+Set `Item type` to `Journal Article`.  In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field: `itemType: Dataset`.
 _Note that this is inconsistent with the naming scheme in this manual. Datasets will be a new feature in an upcomming Zetore release_
 
 #### Conference poster or presentation
