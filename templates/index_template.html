@@ -11,8 +11,8 @@
 <div class="layout" id="data_display">
     <div class="index_title">All software</div>
     <ul>
-    {% for id in template_data %}
-       <li><a href="software/{{id}}">{{id}}</a> </li>
+    {% for template_datum in template_data %}
+       <li><a href="software/{{template_datum.get('id')}}">{{template_datum.get('name')}}</a>: {{template_datum.get('tagLine')}}</li>
     {% endfor %}
     </ul>
 </div>
