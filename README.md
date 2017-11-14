@@ -1,5 +1,6 @@
 # Adding your project output to Zotero
   * [Keep your output up to date](#keep-your-output-up-to-date)
+  * [Questions](#questions)
   * [End report](#end-report)
   * [Zotero](#zotero)
      * [Open project](#open-project)
@@ -17,9 +18,11 @@
   * [Example: eSalsa](#example-esalsa)
   * [Projects](#projects)
 
-
 ## Keep your output up to date
-It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output. Any output that you don't know how to add to Zotero? Check the [closed issues](https://github.com/NLeSC/rsd-instruction/issues?utf8=%E2%9C%93&q=), or [add a new one](https://github.com/NLeSC/rsd-instruction/issues/new) if it is not yet listed.
+It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output.
+
+## Questions
+Unclear what to do with your Zotero entry? You can add the tag `FIXME`, and we will have a look at it. If your question is not directly related to an entry, check the [closed issues](https://github.com/NLeSC/rsd-instruction/issues?utf8=%E2%9C%93&q=), or [add a new one](https://github.com/NLeSC/rsd-instruction/issues/new) if it is not yet listed
 
 ## End report
 For most completed projects, a list of publications can be found in the end report:
