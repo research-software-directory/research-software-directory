@@ -18,9 +18,25 @@
 
 <div class="search_bar">
     <form id="search" action="">
-        <input type='text' class="search_form" id="input" value="e.g. distributed computing...">
+        <input type='text' class="search_form" id="input" value="Search for software, people, technologies, etc.">
         <input type="submit" class="search_form" id="submit" value="search" >
     </form>
+</div>
+
+
+<div class="layout" id="filter">
+  <input type="checkbox">Big data</input><br>
+  <input type="checkbox">Cloud computing</input><br>
+  <input type="checkbox">Image processing</input><br>
+  <input type="checkbox">Visualisation</input><br>
+  <input type="checkbox">Text analysis and NLP</input><br>
+  <input type="checkbox">Real time data analysis</input><br>
+  <input type="checkbox">Interoperability and linked data</input>
+</div>
+
+
+<div class="layout" id="data_gems">
+
 </div>
 
 <div class="layout" id="data_display">
@@ -36,15 +52,31 @@
 
 <script language="Javascript">
     function search_algo(dict, search_key){
-
-      
-
-      return true
+      for (var term in dict['discipline']){
+        if (term.indexOf(search_key) !== -1){
+            return true
+        }
+      }
+      for (var term in dict['expertise']){
+        if (term.indexOf(search_key) !== -1){
+            return true
+        }
+      }
+      if (dict['tagLine'].indexOf(search_key)!==-1){
+        return true
+      }
     }
+
+     $("#input").on("click", function(){
+        if($("#input").val()=="Search for software, people, technologies, etc."){
+          $("#input").val("")
+        }        
+     });
 
      $("#search").submit(function (event){
         event.preventDefault(); 
         console.log("Search query:",search.input.value)
+        $(".search_results").empty()
         results_list = "<ul>"
         for (var i = 0; i <ALL_DATA.length; i++){
             hit = search_algo(ALL_DATA[i], search.input.value)
