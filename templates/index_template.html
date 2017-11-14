@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='index_style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='index_style.css')+"?v="+random_integer }}">
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <title>NLeSC | All Software</title>
 
@@ -10,15 +10,18 @@
         var ALL_DATA =  {{template_data_json|safe}}
 
      function search_data(){
-       for (var dict in ALL_DATA){}{
-            alert(dict)
+       for (var i = 0; i <ALL_DATA.length; i++){
+
         }
       }
     </script>
 </head>
 <body>
 
-<div class="search_bar" style="position:relative; float:center; margin-bottom:30px;">
+<div class="search_results">test
+</div>
+
+<div class="search_bar">
     <form id="search" onsubmit="search_data()">
         <input type='text' class="search_form" id="input" value="e.g. distributed computing...">
         <input type="submit" class="search_form" value="search" >

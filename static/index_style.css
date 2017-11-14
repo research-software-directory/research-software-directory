@@ -1,3 +1,24 @@
 .index_title {
     font-size: 2em;
 }
+.search_bar {
+    position:relative;
+    float:top;
+    margin-bottom:70px;
+    width:100%;
+}
+.search_form {
+    height:30px;
+    font-size:16pt;
+    position:relative;
+    float:left;
+}
+.search_form.input {
+    width:200px;
+}
+.search_results{
+    position: relative;
+    float: above;
+    width: 100%;
+    visibility:hidden;
+}
