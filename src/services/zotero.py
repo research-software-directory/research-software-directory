@@ -16,6 +16,9 @@ class ZoteroService:
         self.api_key = api_key
         self.client = zotero.Zotero(nlesc_library, library_type, self.api_key)
 
+    def list_projects(self):
+        print(self.get_projects())
+
     def get_projects(self):
         # All folders are collections, so both 'Projects' and all Projects themselves
         collections = self.client.collections()  # get all collections

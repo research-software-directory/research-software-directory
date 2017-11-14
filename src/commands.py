@@ -48,3 +48,7 @@ def init(app, service_controller, db):
     @app.cli.command('set_descriptions')
     def _descriptions():
         service_controller.original_data_importer.set_descriptions()
+
+    @app.cli.command('list_projects')
+    def _projects():
+        service_controller.zotero.list_projects()

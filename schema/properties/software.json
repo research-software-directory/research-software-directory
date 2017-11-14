@@ -1,18 +1,15 @@
 {
   "name": {
     "sortIndex": 10,
-    "htmlDescription": "Human readable <b>name</b>",
-    "editable": false
+    "htmlDescription": "Human readable <b>name</b>"
   },
   "githubid": {
     "sortIndex": 20,
-    "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)",
-    "editable": false
+    "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)"
   },
   "doi": {
     "sortIndex": 21,
-    "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415).",
-    "editable": false
+    "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415)."
   },
   "startDate": {
     "sortIndex": 22,
@@ -37,8 +34,7 @@
     "htmlDescription": "<b>Contributor</b> to the software?"
   },
   "outputOfProject": {
-    "sortIndex": 35,
-    "editable": false
+    "sortIndex": 35
   },
   "usedInProject": {
     "sortIndex": 36,
@@ -50,7 +46,7 @@
   },
   "contributingOrganization": {
     "sortIndex": 45,
-    "editable": false
+    "htmlDescription": "In <b>collaboration</b> with <b>Organizations</b>."
   },
   "usingOrganization": {
     "sortIndex": 61,

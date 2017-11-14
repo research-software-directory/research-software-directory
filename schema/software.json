@@ -144,6 +144,27 @@
         "type": "string"
       }
     },
+    "tags": {
+      "type": "array",
+      "description": "Tags associated with software.",
+      "items": {
+        "enum": [
+          "Visualization",
+          "Image processing",
+          "Machine learning",
+          "Text analysis & natural language processing",
+          "Real time data analysis",
+          "Optimized data handling",
+          "Big data",
+          "Inter-operability & linked data",
+          "Multi-scale & multi model simulations",
+          "High performance computing",
+          "GPU",
+          "Workflow technologies"
+        ],
+        "type": "string"
+      }
+    },
     "contributor": {
       "items": {
         "anyOf": [
