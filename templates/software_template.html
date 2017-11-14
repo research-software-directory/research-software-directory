@@ -23,19 +23,67 @@
             </div>
 
             <div id="body">
-                <div class="software_name">{{template_data.name}}</div>
-                <div class="software_contributor">By {{", ".join(template_data.contributor)}}</div>
-                <div class="software_involvedOrganization">{{", ".join(template_data.involvedOrganization)}}</div>
-                <div class="software_startDate">{{template_data.startDate}}</div>
-                <div class="software_tagLine">{{template_data.tagLine}}</div>
-                <div class="software_description">{{descriptionMarkup}}</div>
-                <div class="software_contactPerson">{{template_data.contactPerson}}</div>
-                <div class="software_codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
-                <div class="software_website"><a href={{template_data.website}} target="_blank">website</a></div>
-                <div class="software_downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
-                <div class="software_documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
-                <div class="software_doi">{{template_data.doi}}</div>
-                <div class="software_programmingLanguage">
+                {% if template_data.name %}
+                <div class="name">{{template_data.name}}</div>
+                {% endif %}
+                {% if template_data.contributor %}
+                <div class="contributor">By {{", ".join(template_data.contributor)}}</div>
+                {% endif %}
+                {% if template_data.contributingOrganization %}
+                <div class="contributingOrganization">{{", ".join(template_data.contributingOrganization)}}</div>
+                {% endif %}
+                {% if template_data.startDate %}
+                <div class="startDate">{{template_data.startDate}}</div>
+                {% endif %}
+                {% if template_data.tagLine %}
+                <div class="tagLine">{{template_data.tagLine}}</div>
+                {% endif %}
+                {% if template_data.description %}
+                <div class="description">{{descriptionMarkup}}</div>
+                {% endif %}
+                {% if template_data.contactPerson %}
+                <div class="contactPerson">contactPerson: {{template_data.contactPerson}}</div>
+                {% endif %}
+                {% if template_data.codeRepository %}
+                <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
+                {% endif %}
+                {% if template_data.website %}
+                <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
+                {% endif %}
+                {% if template_data.downloadUrl %}
+                <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
+                {% endif %}
+                {% if template_data.documentationUrl %}
+                <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
+                {% endif %}
+                {% if template_data.doi %}
+                <div class="doi">{{template_data.doi}}</div>
+                {% endif %}
+
+                {% if template_data.license %}
+                <div class="license">license(s): {{", ".join(template_data.license)}}</div>
+                {% endif %}
+                {% if template_data.competence %}
+                <div class="competence">competence(s): {{", ".join(template_data.competence)}}</div>
+                {% endif %}
+                {% if template_data.discipline %}
+                <div class="discipline">discipline(s): {{", ".join(template_data.discipline)}}</div>
+                {% endif %}
+                {% if template_data.expertise %}
+                <div class="expertise">expertise(s): {{", ".join(template_data.expertise)}}</div>
+                {% endif %}
+                {% if template_data.status %}
+                <div class="status">status: {{template_data.status}}</div>
+                {% endif %}
+                {% if template_data.createdAt %}
+                <div class="createdAt">createdAt: {{template_data.createdAt|strftime}}</div>
+                {% endif %}
+                {% if template_data.updatedAt %}
+                <div class="updatedAt">updatedAt: {{template_data.updatedAt|strftime}}</div>
+                {% endif %}
+
+                {% if template_data.programmingLanguage %}
+                <div class="programmingLanguage">
                     programmingLanguage(s):
                     <ul>
                         {% for programmingLanguage in template_data.programmingLanguage %}
@@ -43,7 +91,19 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="software_owner">
+                {% endif %}
+                {% if template_data.involvedOrganization %}
+                <div class="involvedOrganization">
+                    involvedOrganization(s):
+                    <ul>
+                        {% for involvedOrganization in template_data.involvedOrganization %}
+                          <li>{{ involvedOrganization }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if template_data.owner %}
+                <div class="owner">
                     owner(s):
                     <ul>
                         {% for owner in template_data.owner %}
@@ -51,7 +111,9 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="software_technologyTag">
+                {% endif %}
+                {% if template_data.technologyTag %}
+                <div class="technologyTag">
                     technologyTag(s):
                     <ul>
                         {% for technologyTag in template_data.technologyTag %}
@@ -59,6 +121,7 @@
                         {% endfor %}
                     </ul>
                 </div>
+                {% endif %}
             </div>
 
             <div id="footer">
