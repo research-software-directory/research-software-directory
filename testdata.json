@@ -1,0 +1,5136 @@
+[
+  {
+    "libraries_io": [
+      {
+        "name": "noodles",
+        "rank": 7,
+        "forks": 3,
+        "stars": 7,
+        "dependencies": [],
+        "platform": "Pypi"
+      }
+    ],
+    "status": "done",
+    "createdAt": 1510652950,
+    "software_id": "noodles",
+    "id": "5a0abc167f64b221d05df149",
+    "updatedAt": 1510652956,
+    "github": {
+      "commits": [
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b907d9e289e6f945944e1ec09198fec48ab321f8"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixed typo in setup.py",
+          "author": "?",
+          "updatedAt": 1510652955,
+          "id": "c7ddeb008189790f1178b53f70bc8a59b3d925d1",
+          "date": "2017-11-14T09:40:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9ef51f29b745c6758b7953141ef84c5046399ac3"
+          ],
+          "createdAt": 1510652955,
+          "message": "raise version",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b907d9e289e6f945944e1ec09198fec48ab321f8",
+          "date": "2017-11-13T14:10:35Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e4e0d9968b12dd1aacabe9d5aa317660130586fa"
+          ],
+          "createdAt": 1510652955,
+          "message": "set soba term output to dumb",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9ef51f29b745c6758b7953141ef84c5046399ac3",
+          "date": "2017-11-13T14:04:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1b992382bd658dea9463057e0ae741b0ee1012d7",
+            "95beadaae06c568fa43b63f1d8245b68ce7fdf71"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' into soba",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e4e0d9968b12dd1aacabe9d5aa317660130586fa",
+          "date": "2017-11-13T13:58:20Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "16b5f64a07292075e3decd84150f61f20cde2f21"
+          ],
+          "createdAt": 1510652955,
+          "message": "Add Zenodo DOI badge to readme",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "95beadaae06c568fa43b63f1d8245b68ce7fdf71",
+          "date": "2017-11-10T11:50:33Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d4d7c45945540d929d2c6dfdcdf1807ece48bdf7"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix version number",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "16b5f64a07292075e3decd84150f61f20cde2f21",
+          "date": "2017-09-26T15:00:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ffc557d63a9776581d578487c7889f53b5a2bcbe"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix license in documentation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d4d7c45945540d929d2c6dfdcdf1807ece48bdf7",
+          "date": "2017-09-26T15:00:14Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f1a5c80344e28d343327a1457f107afa359f12fe"
+          ],
+          "createdAt": 1510652955,
+          "message": "grouped documentation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ffc557d63a9776581d578487c7889f53b5a2bcbe",
+          "date": "2017-09-26T14:57:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ac2144cfa8d5cfc188ecb16c95836b9802a6b1ea"
+          ],
+          "createdAt": 1510652955,
+          "message": "fine tune prime number notebook",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f1a5c80344e28d343327a1457f107afa359f12fe",
+          "date": "2017-09-26T13:19:45Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "165d9671015137779510cf3e31a501f0a777785f"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix some markdown in prime-number example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ac2144cfa8d5cfc188ecb16c95836b9802a6b1ea",
+          "date": "2017-09-25T21:29:30Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8bca436a39975345387a3f639725f6aa53331240"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix requirements.txt for readthedocs",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "165d9671015137779510cf3e31a501f0a777785f",
+          "date": "2017-09-25T21:21:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "55f8d0c680ff835985495dada11da43d32144542",
+            "b6285bc03c0359beab82651994d242a04b0bc0e8"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #68 from NLeSC/documentation\n\nDocumentation",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "8bca436a39975345387a3f639725f6aa53331240",
+          "date": "2017-09-25T21:19:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6563f7e7b26c7be1a0bb7522434a21e81cbabdf0"
+          ],
+          "createdAt": 1510652955,
+          "message": "add nbsphinx to requirements.txt",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b6285bc03c0359beab82651994d242a04b0bc0e8",
+          "date": "2017-09-25T21:17:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "24b739306e76971113ca05d5851072b23cad3db5"
+          ],
+          "createdAt": 1510652955,
+          "message": "add notebook on prime numbers",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6563f7e7b26c7be1a0bb7522434a21e81cbabdf0",
+          "date": "2017-09-25T21:11:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "93b15f9c6baacef0b6d923c3ce629ad2ad33016a"
+          ],
+          "createdAt": 1510652955,
+          "message": "export get_workflow function and use it in workflow plotting routine",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "55f8d0c680ff835985495dada11da43d32144542",
+          "date": "2017-09-25T20:56:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "734328370d95efa3ee89213d41e385b3db7e9ba3"
+          ],
+          "createdAt": 1510652955,
+          "message": "Fix integration of ipython notebook \"An interactive introduction\" into sphyinx documentation #49",
+          "author": "ridderl",
+          "updatedAt": 1510652955,
+          "id": "24b739306e76971113ca05d5851072b23cad3db5",
+          "date": "2017-09-20T16:19:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "469ae6ca2b3e38f945af1530f54adca6f7fb43db",
+            "aa1b3ba043a1e263666996bf392b6fdc1b7f32de"
+          ],
+          "createdAt": 1510652955,
+          "message": "merge changes",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "734328370d95efa3ee89213d41e385b3db7e9ba3",
+          "date": "2017-09-20T09:44:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e5c42c6a4a872ad851bed27339a948f0b9f04847"
+          ],
+          "createdAt": 1510652955,
+          "message": "sphinx notebook link added",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "469ae6ca2b3e38f945af1530f54adca6f7fb43db",
+          "date": "2017-09-20T09:40:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f8cb7477cc964eba402563db2ee5ba53ff0ce304"
+          ],
+          "createdAt": 1510652955,
+          "message": "Adden 'an'",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "e5c42c6a4a872ad851bed27339a948f0b9f04847",
+          "date": "2017-09-20T09:39:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "52872a760397621aa6f761f26bf8f8db6ad29a6d"
+          ],
+          "createdAt": 1510652955,
+          "message": "Some background on the exceptions occurring when inspecting built-in functions.",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "f8cb7477cc964eba402563db2ee5ba53ff0ce304",
+          "date": "2017-09-20T09:39:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "66fce7b4fea5a06418aa304a88cc9732b1aad586"
+          ],
+          "createdAt": 1510652955,
+          "message": "Fixed spelling error",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "52872a760397621aa6f761f26bf8f8db6ad29a6d",
+          "date": "2017-09-20T09:39:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dd0c3745b45eacbe70da88af96ebec6be5ba8b1c"
+          ],
+          "createdAt": 1510652955,
+          "message": "nbsphinx added to conf.py extensions and notebook added to toc in index.rst",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "66fce7b4fea5a06418aa304a88cc9732b1aad586",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "460f8be2bb9a7a7430992b97fc921e8fae33c074"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 9: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "dd0c3745b45eacbe70da88af96ebec6be5ba8b1c",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "70a9b7cfddac37b89ceb7bebdc451121f3f495f8"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 8: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "460f8be2bb9a7a7430992b97fc921e8fae33c074",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2f0d8a8cfd424053637789ac46a6ca7d0a0097c7"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 7: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "70a9b7cfddac37b89ceb7bebdc451121f3f495f8",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "edab7db762a1f0cb2fe5dd9591e510183bab7dbf"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 6: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "2f0d8a8cfd424053637789ac46a6ca7d0a0097c7",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f5a6b3b52958772f6abd61cf4e322362ead4d2ab"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 5: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "edab7db762a1f0cb2fe5dd9591e510183bab7dbf",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "00a656acd6d552373f3f37d36b70141e8ec42315"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 4 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "f5a6b3b52958772f6abd61cf4e322362ead4d2ab",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "508b1b392022ef477e85427bcb1eaf668ef4a34c"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 3 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "00a656acd6d552373f3f37d36b70141e8ec42315",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "fe1dc2cfa71c8cf8581340d40fda71427472c323"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 3 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "508b1b392022ef477e85427bcb1eaf668ef4a34c",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0e86166d6ad7a2960d8731aa4c0fc0b0a17adf7d"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 2 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "fe1dc2cfa71c8cf8581340d40fda71427472c323",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8d555b89eff6e589278d844a65459fb3bbb8149d"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixed syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "0e86166d6ad7a2960d8731aa4c0fc0b0a17adf7d",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ab7307f3fbeba2386e9d71c86f1509a674781f42"
+          ],
+          "createdAt": 1510652955,
+          "message": "link to notebook replaced by hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "8d555b89eff6e589278d844a65459fb3bbb8149d",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "37b36863497b0a41f312f2241ec2092213e381d5"
+          ],
+          "createdAt": 1510652955,
+          "message": "local link to notebook added",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "ab7307f3fbeba2386e9d71c86f1509a674781f42",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "03163fc6c3f2aea6c0fca63e30d7ec8e1552ed06"
+          ],
+          "createdAt": 1510652955,
+          "message": "Some clarification wrt the disk location of the call graph produced.",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "37b36863497b0a41f312f2241ec2092213e381d5",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6978f247fb49968a01fd093434b29a35497c52a1"
+          ],
+          "createdAt": 1510652955,
+          "message": "pygraphviz highlighted like draw_workflow",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "03163fc6c3f2aea6c0fca63e30d7ec8e1552ed06",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5fa3aefa2c274aa67e71e2324cc19e7cac3941f5"
+          ],
+          "createdAt": 1510652955,
+          "message": "srt syntax errors in url fixed",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "6978f247fb49968a01fd093434b29a35497c52a1",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f3e07a5d34dd2018272505b1c5a9886d8d5cb4a0"
+          ],
+          "createdAt": 1510652955,
+          "message": "Clarifications wrt the installation and import of pygraphviz",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "5fa3aefa2c274aa67e71e2324cc19e7cac3941f5",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2aa0ef332f49472d6bda5f94cb76ca7e7ce938a"
+          ],
+          "createdAt": 1510652955,
+          "message": "url link fixed in introduction",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "f3e07a5d34dd2018272505b1c5a9886d8d5cb4a0",
+          "date": "2017-09-20T09:37:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "93b15f9c6baacef0b6d923c3ce629ad2ad33016a"
+          ],
+          "createdAt": 1510652955,
+          "message": "Introduction expended with assumed knowledge statement, and typo fixed in ofttimes",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "b2aa0ef332f49472d6bda5f94cb76ca7e7ce938a",
+          "date": "2017-09-20T09:36:20Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ce7b09462a631aea999042aeab2db25d78c6c98a",
+            "c98ca299a8d7b3fce60a23f79aa0445f5fb2b41b"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #66 from benvanwerkhoven/master\n\nconverted first steps and poetry tutorial to notebook",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "93b15f9c6baacef0b6d923c3ce629ad2ad33016a",
+          "date": "2017-09-20T07:43:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9d3eb202b06bf19b1b9527ece92e51bce68436d8"
+          ],
+          "createdAt": 1510652955,
+          "message": "add graphviz",
+          "author": "benvanwerkhoven",
+          "updatedAt": 1510652955,
+          "id": "c98ca299a8d7b3fce60a23f79aa0445f5fb2b41b",
+          "date": "2017-09-20T07:34:10Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "55ddf8a8789bfd5eabc44a326c07a0c0c774b7a8"
+          ],
+          "createdAt": 1510652955,
+          "message": "converted first steps and poetry tutorial to notebook",
+          "author": "benvanwerkhoven",
+          "updatedAt": 1510652955,
+          "id": "9d3eb202b06bf19b1b9527ece92e51bce68436d8",
+          "date": "2017-09-19T15:15:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "31d786635e4efb501acd7514fda4fffaa8258ca4"
+          ],
+          "createdAt": 1510652955,
+          "message": "sphinx notebook link added",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "aa1b3ba043a1e263666996bf392b6fdc1b7f32de",
+          "date": "2017-09-19T12:51:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "71f26ba3a18f82547474cf0852584633d519f2fd"
+          ],
+          "createdAt": 1510652955,
+          "message": "Adden 'an'",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "31d786635e4efb501acd7514fda4fffaa8258ca4",
+          "date": "2017-09-19T12:41:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "27d62b3759ce5a95d6dce3b9d81df4139e0155c6"
+          ],
+          "createdAt": 1510652955,
+          "message": "Some background on the exceptions occurring when inspecting built-in functions.",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "71f26ba3a18f82547474cf0852584633d519f2fd",
+          "date": "2017-09-19T12:40:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e8f6361bc4defe131c104eb0be98793d27e70538",
+            "55ddf8a8789bfd5eabc44a326c07a0c0c774b7a8"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #64 from benvanwerkhoven/master\n\nadd skiptest when msgpack not installed and test without it",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "ce7b09462a631aea999042aeab2db25d78c6c98a",
+          "date": "2017-09-19T10:49:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b465d0781f6c63ec039f9c10cd6097a095dd21d3",
+            "2d9dd606a71e7a168a28a6eb724b4ee3f1c48903"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of github.com:benvanwerkhoven/noodles",
+          "author": "benvanwerkhoven",
+          "updatedAt": 1510652955,
+          "id": "55ddf8a8789bfd5eabc44a326c07a0c0c774b7a8",
+          "date": "2017-09-19T10:05:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e8f6361bc4defe131c104eb0be98793d27e70538"
+          ],
+          "createdAt": 1510652955,
+          "message": "add skiptest when msgpack not installed and test without it",
+          "author": "benvanwerkhoven",
+          "updatedAt": 1510652955,
+          "id": "b465d0781f6c63ec039f9c10cd6097a095dd21d3",
+          "date": "2017-09-19T10:05:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d0c9a701acd5fcdecc8cce2db11e84746e83eae8",
+            "e8f6361bc4defe131c104eb0be98793d27e70538"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #1 from NLeSC/master\n\nupdates",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "2d9dd606a71e7a168a28a6eb724b4ee3f1c48903",
+          "date": "2017-09-19T10:00:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8a00c5ae940d5f9023ceb1e1353558bf2ed1f97d",
+            "d9e0fe016995f4ed4e4c8150d5d20421c39fb890"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'documentation' of github.com:NLeSC/noodles into documentation",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "27d62b3759ce5a95d6dce3b9d81df4139e0155c6",
+          "date": "2017-09-19T09:56:13Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c3fb4a449b33805779f106df738a108d07ce771b"
+          ],
+          "createdAt": 1510652955,
+          "message": "Fixed spelling error",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "8a00c5ae940d5f9023ceb1e1353558bf2ed1f97d",
+          "date": "2017-09-19T09:55:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5c39745e0a1a6a6226d8412d44699cfd1c8f85e0",
+            "53aeb6956509012a2f96a50d43f37eada7bf973d"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of github.com:nlesc/noodles",
+          "author": "ridderl",
+          "updatedAt": 1510652955,
+          "id": "e8f6361bc4defe131c104eb0be98793d27e70538",
+          "date": "2017-09-18T21:15:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "67d899c44ff86f69fbbdd297b6790ee4a8679f9c"
+          ],
+          "createdAt": 1510652955,
+          "message": "Adding cross-references in eating.rst (#63)",
+          "author": "ridderl",
+          "updatedAt": 1510652955,
+          "id": "5c39745e0a1a6a6226d8412d44699cfd1c8f85e0",
+          "date": "2017-09-18T21:08:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bad81bf760032a34f456f193cbe1773f4fec4169"
+          ],
+          "createdAt": 1510652955,
+          "message": "nbsphinx added to conf.py extensions and notebook added to toc in index.rst",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "d9e0fe016995f4ed4e4c8150d5d20421c39fb890",
+          "date": "2017-09-18T14:36:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7ea31ae616f532dc7c5e52f84a27a68cd8168d54"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 9: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "bad81bf760032a34f456f193cbe1773f4fec4169",
+          "date": "2017-09-18T14:27:27Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4c35da67e45ee3be604641a73022584db7401fbb"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 8: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "7ea31ae616f532dc7c5e52f84a27a68cd8168d54",
+          "date": "2017-09-18T14:24:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5b9013194d896da285c1e64a76b7961c1b8b91a9"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 7: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "4c35da67e45ee3be604641a73022584db7401fbb",
+          "date": "2017-09-18T14:18:39Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ede5248a1f784fe6d5419b02900ecdb6be76ad48"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 6: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "5b9013194d896da285c1e64a76b7961c1b8b91a9",
+          "date": "2017-09-18T14:17:53Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7bd1a236fe73d94be46e0bd6c7a9af3512865ec6",
+            "67d899c44ff86f69fbbdd297b6790ee4a8679f9c"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of github.com:NLeSC/noodles",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "53aeb6956509012a2f96a50d43f37eada7bf973d",
+          "date": "2017-09-18T14:16:28Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "eea8bed006442c1ced90aa48525fa11e5174e12e"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7bd1a236fe73d94be46e0bd6c7a9af3512865ec6",
+          "date": "2017-09-18T14:16:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "916989ff1e9e8870d38840ded10bfbc7e26aef1f"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 5: syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "ede5248a1f784fe6d5419b02900ecdb6be76ad48",
+          "date": "2017-09-18T14:15:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0ab8346476d0a2bd5e7c79498501834535012934"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 4 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "916989ff1e9e8870d38840ded10bfbc7e26aef1f",
+          "date": "2017-09-18T14:14:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d2d52ad232eb252ae509dc876242e8064165a86f"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 3 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "0ab8346476d0a2bd5e7c79498501834535012934",
+          "date": "2017-09-18T14:13:44Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f474b7a122978cfb9f567ebfa3490d42482d603d"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 3 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "d2d52ad232eb252ae509dc876242e8064165a86f",
+          "date": "2017-09-18T14:11:45Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "eea8bed006442c1ced90aa48525fa11e5174e12e"
+          ],
+          "createdAt": 1510652955,
+          "message": "Include all docstrings in development documentation",
+          "author": "ridderl",
+          "updatedAt": 1510652955,
+          "id": "67d899c44ff86f69fbbdd297b6790ee4a8679f9c",
+          "date": "2017-09-18T14:10:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5aa0439b226f991b88f5184b3e26430cf9cbf54e"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix 2 syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "f474b7a122978cfb9f567ebfa3490d42482d603d",
+          "date": "2017-09-18T14:08:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "62a1062437c150a12f0ba5c00cbbb336e6c16a8a"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixed syntax typos in hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "5aa0439b226f991b88f5184b3e26430cf9cbf54e",
+          "date": "2017-09-18T14:08:02Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ad64e53e10ffcec7ff6a8e26578c05d04c920da6"
+          ],
+          "createdAt": 1510652955,
+          "message": "link to notebook replaced by hyperlink",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "62a1062437c150a12f0ba5c00cbbb336e6c16a8a",
+          "date": "2017-09-18T14:06:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8a994a214e14d875ef1f716701108e03c8d876da",
+            "c3fb4a449b33805779f106df738a108d07ce771b"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'documentation' of github.com:NLeSC/noodles into documentation",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "ad64e53e10ffcec7ff6a8e26578c05d04c920da6",
+          "date": "2017-09-18T14:03:16Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8fa7677388048fa4e8f2ca50c520754b0037634d"
+          ],
+          "createdAt": 1510652955,
+          "message": "local link to notebook added",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "8a994a214e14d875ef1f716701108e03c8d876da",
+          "date": "2017-09-18T14:03:09Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f4622dc2681e1cc2672d0a4021c5e895dd2244c9"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix lifting of OrderedDict bug",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "eea8bed006442c1ced90aa48525fa11e5174e12e",
+          "date": "2017-09-18T13:59:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d0822fac7ed9addc2a7d45379ea0bcbc2ad6e8e7"
+          ],
+          "createdAt": 1510652955,
+          "message": "add readthedocs.yml",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f4622dc2681e1cc2672d0a4021c5e895dd2244c9",
+          "date": "2017-09-18T13:33:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bd5862319ed824c8e03bb73f8ef4ccc8c099da62",
+            "2ccde27142ee735f381df9a063366ae18ac69a71"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of github.com:NLeSC/noodles",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d0822fac7ed9addc2a7d45379ea0bcbc2ad6e8e7",
+          "date": "2017-09-18T13:33:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2730bb178281a10f99e3d1b30e068527579f339"
+          ],
+          "createdAt": 1510652955,
+          "message": "lifting test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "bd5862319ed824c8e03bb73f8ef4ccc8c099da62",
+          "date": "2017-09-18T13:33:27Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2730bb178281a10f99e3d1b30e068527579f339"
+          ],
+          "createdAt": 1510652955,
+          "message": "Remove non-existing member \"numpy\" from automodule noodles.serial",
+          "author": "ridderl",
+          "updatedAt": 1510652955,
+          "id": "2ccde27142ee735f381df9a063366ae18ac69a71",
+          "date": "2017-09-18T13:20:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5510bb5fe4b054b64314968baa12b74f3a36debd"
+          ],
+          "createdAt": 1510652955,
+          "message": "Some clarification wrt the disk location of the call graph produced.",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "c3fb4a449b33805779f106df738a108d07ce771b",
+          "date": "2017-09-18T13:07:24Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "20fb976389e0cd686f948a11162f098e8d55b9f2",
+            "8fa7677388048fa4e8f2ca50c520754b0037634d"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'documentation' of github.com:NLeSC/noodles into documentation",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "5510bb5fe4b054b64314968baa12b74f3a36debd",
+          "date": "2017-09-18T12:52:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b17e7721cabdf951e20cb33131193b45f03a2796"
+          ],
+          "createdAt": 1510652955,
+          "message": "pygraphviz highlighted like draw_workflow",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "20fb976389e0cd686f948a11162f098e8d55b9f2",
+          "date": "2017-09-18T12:52:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b68b8e7c0c61abd6c806a3406e0d9f524633b7af",
+            "b17e7721cabdf951e20cb33131193b45f03a2796"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'documentation' of github.com:NLeSC/noodles into documentation",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "8fa7677388048fa4e8f2ca50c520754b0037634d",
+          "date": "2017-09-18T12:47:53Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bfc358b92a8bd89da42fe8b44ac2c3e788ffc9c5"
+          ],
+          "createdAt": 1510652955,
+          "message": "srt syntax errors in url fixed",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "b68b8e7c0c61abd6c806a3406e0d9f524633b7af",
+          "date": "2017-09-18T12:47:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bfc358b92a8bd89da42fe8b44ac2c3e788ffc9c5"
+          ],
+          "createdAt": 1510652955,
+          "message": "Clarifications wrt the installation and import of pygraphviz",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "b17e7721cabdf951e20cb33131193b45f03a2796",
+          "date": "2017-09-18T12:42:54Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3adb18e09df133239a37766f8b7b5ad2620837e9"
+          ],
+          "createdAt": 1510652955,
+          "message": "url link fixed in introduction",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "bfc358b92a8bd89da42fe8b44ac2c3e788ffc9c5",
+          "date": "2017-09-18T11:50:32Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4803a3dd9ae5f8ac7271e4a5abab84e2a68271fe",
+            "b5333e6304c6ffd5e39f49d77a5d1f211f8a496a"
+          ],
+          "createdAt": 1510652955,
+          "message": "merging commits",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "3adb18e09df133239a37766f8b7b5ad2620837e9",
+          "date": "2017-09-18T11:46:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2730bb178281a10f99e3d1b30e068527579f339"
+          ],
+          "createdAt": 1510652955,
+          "message": "Introduction expended with assumed knowledge statement, and typo fixed in ofttimes",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "4803a3dd9ae5f8ac7271e4a5abab84e2a68271fe",
+          "date": "2017-09-18T11:40:14Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "14478cb9a72d9dfcd44ee97ab745ec6c622bdd32"
+          ],
+          "createdAt": 1510652955,
+          "message": "expanded with assumed knowledge + typo\n\nSentence added with a statement about assumed knowledge in this tutorial\r\nTypo fixed in third alinea: ofttimes",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "b2730bb178281a10f99e3d1b30e068527579f339",
+          "date": "2017-09-18T11:29:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1fa837e0eb6d5b8603b0bc91e4212f5af5dbe430",
+            "90bb24b53e5afecfdc35f61945e99ac5807ff02a"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'vincentdocedits' of github.com:NLeSC/noodles into vincentdocedits",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "b5333e6304c6ffd5e39f49d77a5d1f211f8a496a",
+          "date": "2017-09-18T11:21:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "14478cb9a72d9dfcd44ee97ab745ec6c622bdd32"
+          ],
+          "createdAt": 1510652955,
+          "message": "Introduction expended with assumed knowledge statement, and typo fixed in ofttimes",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "1fa837e0eb6d5b8603b0bc91e4212f5af5dbe430",
+          "date": "2017-09-18T11:17:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2c474086090c569738ba98e8b32e533565639c55"
+          ],
+          "createdAt": 1510652955,
+          "message": "move draw_workflow to submodule",
+          "author": "HannoSpreeuw",
+          "updatedAt": 1510652955,
+          "id": "14478cb9a72d9dfcd44ee97ab745ec6c622bdd32",
+          "date": "2017-09-18T11:11:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d0c9a701acd5fcdecc8cce2db11e84746e83eae8"
+          ],
+          "createdAt": 1510652955,
+          "message": "Introduction expended with assumed knowledge statement, and typo fixed in ofttimes",
+          "author": "vincentvanhees",
+          "updatedAt": 1510652955,
+          "id": "90bb24b53e5afecfdc35f61945e99ac5807ff02a",
+          "date": "2017-09-18T11:06:02Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a01533248631ca6a2a60720036da8d7edd1c3259"
+          ],
+          "createdAt": 1510652955,
+          "message": "include draw_workflow in package distribution",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2c474086090c569738ba98e8b32e533565639c55",
+          "date": "2017-09-18T09:29:50Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d0c9a701acd5fcdecc8cce2db11e84746e83eae8"
+          ],
+          "createdAt": 1510652955,
+          "message": "ConstRef object",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "a01533248631ca6a2a60720036da8d7edd1c3259",
+          "date": "2017-07-06T08:04:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6c60a38963ba200421558f9c8e5e90505954628e"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix codacy issues",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d0c9a701acd5fcdecc8cce2db11e84746e83eae8",
+          "date": "2017-06-16T13:33:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "812a54fed1c0dbb9ea8811853dff6992de774382"
+          ],
+          "createdAt": 1510652955,
+          "message": "add `maybe` method for exception handling",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6c60a38963ba200421558f9c8e5e90505954628e",
+          "date": "2017-06-16T13:07:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "500d37262ae5393b29e5173a7c3970a4fc72f852"
+          ],
+          "createdAt": 1510652955,
+          "message": "gather_all for iterators, add tests for different flavours of gather",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "812a54fed1c0dbb9ea8811853dff6992de774382",
+          "date": "2017-06-16T09:42:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6b82fcdb2e8e618d26c7f025e9e6ac0f4844c63e"
+          ],
+          "createdAt": 1510652955,
+          "message": "expose intermediate results to user",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "500d37262ae5393b29e5173a7c3970a4fc72f852",
+          "date": "2017-06-16T09:15:16Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7f4aab0efc7b803303e3aa40642578e39428f7b9"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove key from dumb term output",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6b82fcdb2e8e618d26c7f025e9e6ac0f4844c63e",
+          "date": "2017-06-02T14:04:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0cbe47fae7004d11e8e1f06e9b06c151ecaadf86"
+          ],
+          "createdAt": 1510652955,
+          "message": "show complicated example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7f4aab0efc7b803303e3aa40642578e39428f7b9",
+          "date": "2017-06-02T14:03:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5e2f9cb639fc083ffff2690103fa6b9341d7a4c6",
+            "9149cdb48acf8555f702f578c687969ba754ee3c"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' into display",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0cbe47fae7004d11e8e1f06e9b06c151ecaadf86",
+          "date": "2017-06-02T13:58:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3b185ac548b6b30a00f27171871075f6a2e79066"
+          ],
+          "createdAt": 1510652955,
+          "message": "new function `gather_dict`, which takes kwargs and creates a promise of a dict",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9149cdb48acf8555f702f578c687969ba754ee3c",
+          "date": "2017-05-29T10:51:48Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ff7c890b4446e8316c68b070802758dfc92d59df"
+          ],
+          "createdAt": 1510652955,
+          "message": "removed xenon from travis testing",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3b185ac548b6b30a00f27171871075f6a2e79066",
+          "date": "2017-05-17T07:45:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "37ec5e0dac85f4bb27e7aa261c11fe744fbd3a11",
+            "a94de6fbbcde2a4b59a1b954e45dcbb577e07647"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of github.com:NLeSC/noodles",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ff7c890b4446e8316c68b070802758dfc92d59df",
+          "date": "2017-05-17T07:19:10Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9f0193998aad08691d54b6a9023f665672bdcc66"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix .travis.yml",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "37ec5e0dac85f4bb27e7aa261c11fe744fbd3a11",
+          "date": "2017-05-17T07:18:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "24fbfc0a1e8e383d4e0c6ccae81255c198e07940"
+          ],
+          "createdAt": 1510652955,
+          "message": "very verbose dumb terminal",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5e2f9cb639fc083ffff2690103fa6b9341d7a4c6",
+          "date": "2017-05-16T13:24:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9f0193998aad08691d54b6a9023f665672bdcc66"
+          ],
+          "createdAt": 1510652955,
+          "message": "dumb-term display made very explicit",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "24fbfc0a1e8e383d4e0c6ccae81255c198e07940",
+          "date": "2017-05-16T13:18:43Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9f0193998aad08691d54b6a9023f665672bdcc66",
+            "ed74f33f23eabef328e8afca9cdb5528c0b586bc"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #55 from NLeSC/arnikz-doc\n\nFix 2nd example & update text in the intro",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "a94de6fbbcde2a4b59a1b954e45dcbb577e07647",
+          "date": "2017-04-22T08:38:43Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9f0193998aad08691d54b6a9023f665672bdcc66"
+          ],
+          "createdAt": 1510652955,
+          "message": "Fix 2nd example & update text in the intro",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "ed74f33f23eabef328e8afca9cdb5528c0b586bc",
+          "date": "2017-04-21T20:04:14Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "454f3ca8df31236258870bf5a929b6ae5be48365",
+            "508f3dea28e870c09202fffec81af4cf4b0ec749"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #51 from NLeSC/issue50\n\nIssue50",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "9f0193998aad08691d54b6a9023f665672bdcc66",
+          "date": "2017-02-22T09:58:33Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e769c6e1b04c50f18cf4172f4c507a2606471910"
+          ],
+          "createdAt": 1510652955,
+          "message": "update setup.py and .travis.yml to work with pytest and pytest-cov",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "508f3dea28e870c09202fffec81af4cf4b0ec749",
+          "date": "2017-02-22T09:55:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e9d0ebf686e56cff3a5506d0bbef625942da45f9"
+          ],
+          "createdAt": 1510652955,
+          "message": "experiment with docker-compose, integration test with slurm-docker still not functioning",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e769c6e1b04c50f18cf4172f4c507a2606471910",
+          "date": "2017-02-22T09:32:44Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6a4aede0a02fe3839e4544fea52ed650e02f94b9"
+          ],
+          "createdAt": 1510652955,
+          "message": "another nose job",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e9d0ebf686e56cff3a5506d0bbef625942da45f9",
+          "date": "2017-02-22T09:28:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "454f3ca8df31236258870bf5a929b6ae5be48365"
+          ],
+          "createdAt": 1510652955,
+          "message": "moved to pytest, worked on integration test setup",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6a4aede0a02fe3839e4544fea52ed650e02f94b9",
+          "date": "2017-02-02T15:59:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d3de84e99c322894362859b68c1794bf43f2ddf2"
+          ],
+          "createdAt": 1510652955,
+          "message": "enable the `queue` option in RemoteJobConfig in Xenon",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "454f3ca8df31236258870bf5a929b6ae5be48365",
+          "date": "2016-11-29T16:58:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9e9bdeff1b5be39fdfbb1a95f8694c5fb0908007"
+          ],
+          "createdAt": 1510652955,
+          "message": "add `log_level` option to XenonKeeper",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d3de84e99c322894362859b68c1794bf43f2ddf2",
+          "date": "2016-11-29T15:39:05Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "eeb5f1508624bd8d1d590fdea78ec8b20494f30c"
+          ],
+          "createdAt": 1510652955,
+          "message": "docs",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9e9bdeff1b5be39fdfbb1a95f8694c5fb0908007",
+          "date": "2016-11-29T08:34:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c3b4aabe18d4a3d791b13c22bdd6f26c341e8a52"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove dead space",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "eeb5f1508624bd8d1d590fdea78ec8b20494f30c",
+          "date": "2016-11-24T10:30:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b02a5258506828bc59ed3e4163f3472671b05a72"
+          ],
+          "createdAt": 1510652955,
+          "message": "missing link in readme",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c3b4aabe18d4a3d791b13c22bdd6f26c341e8a52",
+          "date": "2016-11-23T17:38:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8e0c9a5088254bb4bab038e087c63b1dd79ac9cc"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove stale test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b02a5258506828bc59ed3e4163f3472671b05a72",
+          "date": "2016-11-23T17:34:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "419f70ee5fbc0375e40e8eb9663f210d1644a96c"
+          ],
+          "createdAt": 1510652955,
+          "message": "two new badges",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8e0c9a5088254bb4bab038e087c63b1dd79ac9cc",
+          "date": "2016-11-23T17:31:50Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "cba1806f624590b776ab2d63c78e6167af38fb65"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "419f70ee5fbc0375e40e8eb9663f210d1644a96c",
+          "date": "2016-11-23T17:27:47Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ce17235eebc0e77e46b8a355837ab763af278738"
+          ],
+          "createdAt": 1510652955,
+          "message": "small fixes",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "cba1806f624590b776ab2d63c78e6167af38fb65",
+          "date": "2016-11-23T17:18:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d3b89329de7f8fe355e550e5c2052f7f32415bba"
+          ],
+          "createdAt": 1510652955,
+          "message": "styling",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ce17235eebc0e77e46b8a355837ab763af278738",
+          "date": "2016-11-23T17:09:05Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a3e557b2e057da483c958a18137d1189f37e3b8b"
+          ],
+          "createdAt": 1510652955,
+          "message": "ea example styling",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d3b89329de7f8fe355e550e5c2052f7f32415bba",
+          "date": "2016-11-23T16:38:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5820c1e6b216fd42e1abda0fa89ea11b1eda7aad"
+          ],
+          "createdAt": 1510652955,
+          "message": "intregration test styling",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "a3e557b2e057da483c958a18137d1189f37e3b8b",
+          "date": "2016-11-23T16:36:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ae272e110bda95329f38c1b802567fa481596239"
+          ],
+          "createdAt": 1510652955,
+          "message": "restore boil after faulty commit",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5820c1e6b216fd42e1abda0fa89ea11b1eda7aad",
+          "date": "2016-11-23T16:34:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "727f862137219e7a84c7f49ec30ac0c54d607008"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix style errors in examples",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ae272e110bda95329f38c1b802567fa481596239",
+          "date": "2016-11-23T16:31:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9f9a400b94fd9b45bdff92d1399155cce3305a3b"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove very old attempt at central logging system",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "727f862137219e7a84c7f49ec30ac0c54d607008",
+          "date": "2016-11-23T16:23:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dc2d6f4c84cb8a234873bb03f042da0c686012b0"
+          ],
+          "createdAt": 1510652955,
+          "message": "change loop in has_scheduled_methods",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9f9a400b94fd9b45bdff92d1399155cce3305a3b",
+          "date": "2016-11-23T16:17:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "28f7f30c9af6afcffd2209a557088ea825471eb1"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove unnecessary lambdas",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "dc2d6f4c84cb8a234873bb03f042da0c686012b0",
+          "date": "2016-11-23T16:15:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9478b6e35ec6f8a729fa8ec483137eea2a7dec94"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove cosmology example for now",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "28f7f30c9af6afcffd2209a557088ea825471eb1",
+          "date": "2016-11-23T16:11:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "952c5c0ed1e72b6eaf111c8378c7790a1b71bfdb"
+          ],
+          "createdAt": 1510652955,
+          "message": "make decoder staticmethod",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9478b6e35ec6f8a729fa8ec483137eea2a7dec94",
+          "date": "2016-11-23T16:10:39Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "53153cde6ffc4fac1c19785c981c52aef27a1c53"
+          ],
+          "createdAt": 1510652955,
+          "message": "clean run/xenon/dynamic_pool",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "952c5c0ed1e72b6eaf111c8378c7790a1b71bfdb",
+          "date": "2016-11-23T16:03:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "652388a5f888c4accc32e69cc45f9350911d01da"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove lambda/eval feature",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "53153cde6ffc4fac1c19785c981c52aef27a1c53",
+          "date": "2016-11-23T16:02:09Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "63d1c45f3e1ec26cc738db0bfee78a5c9a81448f"
+          ],
+          "createdAt": 1510652955,
+          "message": "rename sum to my_sum in example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "652388a5f888c4accc32e69cc45f9350911d01da",
+          "date": "2016-11-23T15:51:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f9e0d50fdbe60d05883db861e60f0a34786c83a2"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix class decorator example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "63d1c45f3e1ec26cc738db0bfee78a5c9a81448f",
+          "date": "2016-11-23T15:49:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "40d19eb2615d7dbb892c98a6b9012bcc7786c9ef"
+          ],
+          "createdAt": 1510652955,
+          "message": "pep8 on examples/ea/ea.py",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f9e0d50fdbe60d05883db861e60f0a34786c83a2",
+          "date": "2016-11-23T15:44:21Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "917b535d26537f506c0c2a727768bb6f0026c564"
+          ],
+          "createdAt": 1510652955,
+          "message": "add codacy to travis",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "40d19eb2615d7dbb892c98a6b9012bcc7786c9ef",
+          "date": "2016-11-23T15:24:15Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7845a87e3007049debdb43517bdf3878a88715c8"
+          ],
+          "createdAt": 1510652955,
+          "message": "add find_first to main namespace",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "917b535d26537f506c0c2a727768bb6f0026c564",
+          "date": "2016-11-23T14:51:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f2c4f2f9661bb171a581b3e5350393719ab1d433"
+          ],
+          "createdAt": 1510652955,
+          "message": "added find_first function, tag docstrings to show scheduled functions.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7845a87e3007049debdb43517bdf3878a88715c8",
+          "date": "2016-11-23T14:36:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "617e94c86cb0c257b17dbd467622786b793436e9"
+          ],
+          "createdAt": 1510652955,
+          "message": "restrict travis to master and devel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f2c4f2f9661bb171a581b3e5350393719ab1d433",
+          "date": "2016-11-23T12:57:48Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e689f5dee7da0d7a8f1be122998d9123e3f91582"
+          ],
+          "createdAt": 1510652955,
+          "message": "enable travis",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "617e94c86cb0c257b17dbd467622786b793436e9",
+          "date": "2016-11-23T12:54:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7bea220d15d7794aaa0366c99b324b91169273e3"
+          ],
+          "createdAt": 1510652955,
+          "message": "quote and unquote, testing in test_conditionals",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e689f5dee7da0d7a8f1be122998d9123e3f91582",
+          "date": "2016-11-21T16:03:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4b400c0d60f68fef038c1f775999583b91d9ca45"
+          ],
+          "createdAt": 1510652955,
+          "message": "some work on config files",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7bea220d15d7794aaa0366c99b324b91169273e3",
+          "date": "2016-11-21T10:27:46Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "21df38c246a9251006bb23145a9438219c943e1d"
+          ],
+          "createdAt": 1510652955,
+          "message": "msgpack is working for process runner!",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4b400c0d60f68fef038c1f775999583b91d9ca45",
+          "date": "2016-10-27T15:45:06Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7a4210ac0b88939d8c768cc89df33fadb94e85ca"
+          ],
+          "createdAt": 1510652955,
+          "message": "tests are working again",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "21df38c246a9251006bb23145a9438219c943e1d",
+          "date": "2016-10-27T15:11:10Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f1d04a65aa709f0a06f98cee17428ab76ba22d0c"
+          ],
+          "createdAt": 1510652955,
+          "message": "harmonize remote worker io, getting rid of assumption in code that keys are uuids",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7a4210ac0b88939d8c768cc89df33fadb94e85ca",
+          "date": "2016-10-27T14:30:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f90d0007e498c9f5da1b5bafbd5d2208bbfc0193"
+          ],
+          "createdAt": 1510652955,
+          "message": "started formalising remote worker IO, msgpack support",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f1d04a65aa709f0a06f98cee17428ab76ba22d0c",
+          "date": "2016-10-27T13:32:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9e802e8a7c87aece4aa4aedb444693ef6414ed6f"
+          ],
+          "createdAt": 1510652955,
+          "message": "add test for global prov",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f90d0007e498c9f5da1b5bafbd5d2208bbfc0193",
+          "date": "2016-10-26T15:00:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "83b43605a292781db3336784272e8473348bd31b"
+          ],
+          "createdAt": 1510652955,
+          "message": "started work on global prov keys",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9e802e8a7c87aece4aa4aedb444693ef6414ed6f",
+          "date": "2016-10-26T13:35:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3946f0a6f2a9df9d34eae79b1f35e4e817ef2258"
+          ],
+          "createdAt": 1510652955,
+          "message": "add ujson to deps for better tinydb performance.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "83b43605a292781db3336784272e8473348bd31b",
+          "date": "2016-10-20T12:17:06Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8bff4c64f3d61c3923eb0cb5f5420f5fe6487508"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove some superfluous stuff from config.py",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3946f0a6f2a9df9d34eae79b1f35e4e817ef2258",
+          "date": "2016-10-20T12:16:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "95c9a9403ff22fbac389d03d7b5fb4406328d92c"
+          ],
+          "createdAt": 1510652955,
+          "message": "restore optional deref, JPype crashes the JVM intermittently",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8bff4c64f3d61c3923eb0cb5f5420f5fe6487508",
+          "date": "2016-10-19T16:29:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d928bd4661cb4cd2130ba47038c2d937864e40e2"
+          ],
+          "createdAt": 1510652955,
+          "message": "changed license to Apache",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "95c9a9403ff22fbac389d03d7b5fb4406328d92c",
+          "date": "2016-10-19T16:21:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "43cd780c965d8b6232c1a789ad440c99992bbb09"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove drawing workflow from test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d928bd4661cb4cd2130ba47038c2d937864e40e2",
+          "date": "2016-10-18T16:34:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1748ab9337541ec9e7f1ea3e9b130012db7d7a07"
+          ],
+          "createdAt": 1510652955,
+          "message": "some new dependencies for numpy serialisation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "43cd780c965d8b6232c1a789ad440c99992bbb09",
+          "date": "2016-10-18T16:33:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dbe784a6d544ecadc67e690c9d112b9f3274104f"
+          ],
+          "createdAt": 1510652955,
+          "message": "serialisation of arrays to hdf5",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1748ab9337541ec9e7f1ea3e9b130012db7d7a07",
+          "date": "2016-10-18T16:30:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "439e81f2f8beb297f3d9eef85fefc36bc4f6faeb"
+          ],
+          "createdAt": 1510652955,
+          "message": "serialisation for bound methods",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "dbe784a6d544ecadc67e690c9d112b9f3274104f",
+          "date": "2016-10-18T15:22:32Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6859f5dd9bdaeb3543722a5709c191b83a8b5786"
+          ],
+          "createdAt": 1510652955,
+          "message": "removed autostorable",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "439e81f2f8beb297f3d9eef85fefc36bc4f6faeb",
+          "date": "2016-10-18T14:06:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "aa6de12c494d67979523ea2ebfead7060dedf2d3"
+          ],
+          "createdAt": 1510652955,
+          "message": "do away with <magic>, just derive from Storabel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6859f5dd9bdaeb3543722a5709c191b83a8b5786",
+          "date": "2016-10-18T13:51:13Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9055185bdf3469c3811f323e046ed1aa58fe08d5"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix <magic> serialiser #2",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "aa6de12c494d67979523ea2ebfead7060dedf2d3",
+          "date": "2016-10-18T12:38:20Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "54470a2f28abab4617544e87bd4792ec5db875d7"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix <magic> serialiser",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9055185bdf3469c3811f323e046ed1aa58fe08d5",
+          "date": "2016-10-18T11:42:35Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9f62dfcf045e6524ec57bff8b8951cd4a585c14d"
+          ],
+          "createdAt": 1510652955,
+          "message": "changed -init and -finish to need string arg",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "54470a2f28abab4617544e87bd4792ec5db875d7",
+          "date": "2016-10-18T10:16:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1226102f67da245b7698587aa467a1e426b642bc"
+          ],
+          "createdAt": 1510652955,
+          "message": "<magic> serialisation for objects that define `__setstate__` and `__getstate__`",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9f62dfcf045e6524ec57bff8b8951cd4a585c14d",
+          "date": "2016-10-18T10:12:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dd7f33dd85a07c78a683fcf917ff9a7add33a653",
+            "7fdf410e6a758e7da52d6aea8d5cd77d9b11f4bb"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' into devel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1226102f67da245b7698587aa467a1e426b642bc",
+          "date": "2016-09-22T09:38:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8b4b82b91856f1f1c411320f3099918deaff8f05"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix numpy serialisation tests, restore option for .npy files behaviour",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "dd7f33dd85a07c78a683fcf917ff9a7add33a653",
+          "date": "2016-09-22T09:33:47Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "45908d31e224b8eca30ed6a0762aa87c6ce8231e",
+            "be9023469ab66675979dbe559507bb5dfd9bfef9"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel' of github.com:NLeSC/noodles into devel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8b4b82b91856f1f1c411320f3099918deaff8f05",
+          "date": "2016-09-22T09:12:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2bd6cc879910fc284fcaa4b8134a2e182dd49626"
+          ],
+          "createdAt": 1510652955,
+          "message": "changed numpy serialisation to give base64 string, needs to go to hdf5 storage",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "45908d31e224b8eca30ed6a0762aa87c6ce8231e",
+          "date": "2016-09-22T09:12:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0442faec7472568997ed5981b4ed51ff31e7ac96"
+          ],
+          "createdAt": 1510652955,
+          "message": "add optional automatic namedtuple serialisation, not 100% reliable, tests wether object is tuple and has `_fields` attribute.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7fdf410e6a758e7da52d6aea8d5cd77d9b11f4bb",
+          "date": "2016-09-02T13:37:02Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9dd602071884d3165790e574e63b391e2a5d05e8"
+          ],
+          "createdAt": 1510652955,
+          "message": "add namedtuple serialisation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0442faec7472568997ed5981b4ed51ff31e7ac96",
+          "date": "2016-09-02T13:02:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bf18672b6234476f7b4e71885f5c5efd5e45067d"
+          ],
+          "createdAt": 1510652955,
+          "message": "version 0.2.1, updated version number",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9dd602071884d3165790e574e63b391e2a5d05e8",
+          "date": "2016-08-22T12:03:57Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dbc6614ffcd10d401680ea7299e8e8cad135ad29"
+          ],
+          "createdAt": 1510652955,
+          "message": "version 0.2.0",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "bf18672b6234476f7b4e71885f5c5efd5e45067d",
+          "date": "2016-08-22T11:56:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "aeaade328429eb6b13fb54e09df8da195cbbdcaa",
+            "be9023469ab66675979dbe559507bb5dfd9bfef9"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #38 from NLeSC/devel\n\nUsing provenance is now optional, also if using Xenon.",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "dbc6614ffcd10d401680ea7299e8e8cad135ad29",
+          "date": "2016-08-22T11:23:47Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "975cbadddcf1d63ab8af8f6d5cd4a9c37b2b1a78",
+            "385fc15696790b4ad89ab85c8ff712cfc691cafa"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #36 from NLeSC/fix_dependencies\n\nFix dependencies",
+          "author": "web-flow",
+          "updatedAt": 1510652955,
+          "id": "be9023469ab66675979dbe559507bb5dfd9bfef9",
+          "date": "2016-08-22T11:19:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5426e564ccca2a50f328c8914476bd1f6a68406c"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixes issue #31",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "aeaade328429eb6b13fb54e09df8da195cbbdcaa",
+          "date": "2016-08-22T11:19:07Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bc0ec0089ecdec35247437ef6fbc16e4361e31ae"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove very old and unused `lib` folder",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5426e564ccca2a50f328c8914476bd1f6a68406c",
+          "date": "2016-08-22T09:24:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a372ae32ab7fa07969fd3899a6106692eef29b68"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove superfluous patches",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "bc0ec0089ecdec35247437ef6fbc16e4361e31ae",
+          "date": "2016-08-22T09:22:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "345402f6858e087b9d1dc47c0db2a75e56c419da",
+            "975cbadddcf1d63ab8af8f6d5cd4a9c37b2b1a78"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel' of github.com:NLeSC/noodles into devel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2bd6cc879910fc284fcaa4b8134a2e182dd49626",
+          "date": "2016-08-22T09:20:35Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "41038a029dbbe81d954d380eb94952e90b39b206"
+          ],
+          "createdAt": 1510652955,
+          "message": "mod xenon test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "345402f6858e087b9d1dc47c0db2a75e56c419da",
+          "date": "2016-08-22T09:20:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "41038a029dbbe81d954d380eb94952e90b39b206"
+          ],
+          "createdAt": 1510652955,
+          "message": "Defer xenon.init to the XenonKeeper() constructor",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "975cbadddcf1d63ab8af8f6d5cd4a9c37b2b1a78",
+          "date": "2016-08-08T14:07:07Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a063d386af3318c67f3062b6162e0e649923ed89"
+          ],
+          "createdAt": 1510652955,
+          "message": "Fixed tests with optional dependencies",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "385fc15696790b4ad89ab85c8ff712cfc691cafa",
+          "date": "2016-08-08T13:55:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "41038a029dbbe81d954d380eb94952e90b39b206"
+          ],
+          "createdAt": 1510652955,
+          "message": "Added docker-py as testing dependency",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "a063d386af3318c67f3062b6162e0e649923ed89",
+          "date": "2016-08-08T13:22:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a372ae32ab7fa07969fd3899a6106692eef29b68"
+          ],
+          "createdAt": 1510652955,
+          "message": "almost fixes soba, exit is a bit ugly",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1b992382bd658dea9463057e0ae741b0ee1012d7",
+          "date": "2016-08-03T14:28:09Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5246a34f5d3772670c20917bd8e31b079a98e63c"
+          ],
+          "createdAt": 1510652955,
+          "message": " added noodles.run.xenon to setup.py",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "a372ae32ab7fa07969fd3899a6106692eef29b68",
+          "date": "2016-08-02T09:32:32Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0c9287b623ab4e9999488a09e3fa27e0c94fed07"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixed example/run-on-das.py, exit is not clean but it works",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "41038a029dbbe81d954d380eb94952e90b39b206",
+          "date": "2016-07-22T12:38:14Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5246a34f5d3772670c20917bd8e31b079a98e63c"
+          ],
+          "createdAt": 1510652955,
+          "message": "add displaying function to tutorial",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0c9287b623ab4e9999488a09e3fa27e0c94fed07",
+          "date": "2016-07-22T12:29:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3e9955056a0d2a7916698bfe48c6e527ceda4c57"
+          ],
+          "createdAt": 1510652955,
+          "message": "Xenon runner now works with provenance",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5246a34f5d3772670c20917bd8e31b079a98e63c",
+          "date": "2016-07-22T08:48:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c092ea394a583b88045b45b28aecca0c4c7a5fa5"
+          ],
+          "createdAt": 1510652955,
+          "message": "new Xenon runner seems to be working",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3e9955056a0d2a7916698bfe48c6e527ceda4c57",
+          "date": "2016-07-20T08:00:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0556f5e1504636fa87b351b9d0b00b5fa9fc6944",
+            "c7e74272ede0ec73cca4020f9f94a55be2c57957"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' into devel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c092ea394a583b88045b45b28aecca0c4c7a5fa5",
+          "date": "2016-07-18T16:40:24Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3f0d4c628e1419a267da67201de5dbe8c9a822ed"
+          ],
+          "createdAt": 1510652955,
+          "message": "implements solution, a dynamic worker pool, need a way to test this....",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0556f5e1504636fa87b351b9d0b00b5fa9fc6944",
+          "date": "2016-07-18T16:28:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "912cefa82c9eba31b2289b2e6355a69c6de3a355"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix files.Path serialiser, second time",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c7e74272ede0ec73cca4020f9f94a55be2c57957",
+          "date": "2016-07-11T14:16:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2fa433f70d0527c39a00f5dc4eeb9f3c162cf45f"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix files.Path serialiser",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "912cefa82c9eba31b2289b2e6355a69c6de3a355",
+          "date": "2016-07-11T14:08:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b3e4c7c52903f9a56fd0b6e2aa585fd15c213bc0"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3f0d4c628e1419a267da67201de5dbe8c9a822ed",
+          "date": "2016-07-11T13:30:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "fbee13a55adc5f2165db609886bcda86fc9a981b"
+          ],
+          "createdAt": 1510652955,
+          "message": "make prov optional module, including tests",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b3e4c7c52903f9a56fd0b6e2aa585fd15c213bc0",
+          "date": "2016-07-11T09:08:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b924fe9041b7fce807bafe227d1e59f26bebd450"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "fbee13a55adc5f2165db609886bcda86fc9a981b",
+          "date": "2016-07-08T16:47:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2fa433f70d0527c39a00f5dc4eeb9f3c162cf45f"
+          ],
+          "createdAt": 1510652955,
+          "message": "more documentation to xenon",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b924fe9041b7fce807bafe227d1e59f26bebd450",
+          "date": "2016-07-07T12:43:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e223c57cf0cc2a9b7b3c25e081424baccd2553dd"
+          ],
+          "createdAt": 1510652955,
+          "message": "add display to prov runner",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2fa433f70d0527c39a00f5dc4eeb9f3c162cf45f",
+          "date": "2016-07-06T19:52:15Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9b6df8f3d438b5c7c4e2bd22408e59f1c93b7db4"
+          ],
+          "createdAt": 1510652955,
+          "message": "update introduction notebook",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e223c57cf0cc2a9b7b3c25e081424baccd2553dd",
+          "date": "2016-07-06T12:01:27Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "41861896fb8e04e3237ea8b3289e581ef6963653"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9b6df8f3d438b5c7c4e2bd22408e59f1c93b7db4",
+          "date": "2016-07-06T11:51:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b0397dec8f119eddd6e49e0ad7fc84e6df3feca8"
+          ],
+          "createdAt": 1510652955,
+          "message": "improved error handling ever so slighly",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "41861896fb8e04e3237ea8b3289e581ef6963653",
+          "date": "2016-07-05T14:23:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6a6408fec5ab9d48063d29823ec39b201c2f8c97"
+          ],
+          "createdAt": 1510652955,
+          "message": "Added stacktrace to exception.\n\n* Added test to check",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "b0397dec8f119eddd6e49e0ad7fc84e6df3feca8",
+          "date": "2016-07-05T13:25:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1b2f5e4485f324a19834531d50010a86b260c86c"
+          ],
+          "createdAt": 1510652955,
+          "message": "Added AnnotatedValue to allow return values with message.",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "6a6408fec5ab9d48063d29823ec39b201c2f8c97",
+          "date": "2016-07-05T12:55:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3c7858b7f87bc3071e1dcc94e61e23a9318f64c3"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix failing test and add fibonacci test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1b2f5e4485f324a19834531d50010a86b260c86c",
+          "date": "2016-07-04T15:04:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "374c3ca6517977adc097eb30950650e91db129f8"
+          ],
+          "createdAt": 1510652955,
+          "message": "fibonacci recursion test is working!",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3c7858b7f87bc3071e1dcc94e61e23a9318f64c3",
+          "date": "2016-07-04T14:02:47Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "45d07fb3ba9218445efe41618f40046a8633f9ad"
+          ],
+          "createdAt": 1510652955,
+          "message": "assorted updates",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "374c3ca6517977adc097eb30950650e91db129f8",
+          "date": "2016-07-04T09:00:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b321a10f08b1c27f37e66a675bc2884ff7d5e526"
+          ],
+          "createdAt": 1510652955,
+          "message": "pep8ified",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "45d07fb3ba9218445efe41618f40046a8633f9ad",
+          "date": "2016-06-24T18:05:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8858fd49e8e3e8609c81bbe6c5b9ccb2f5244416"
+          ],
+          "createdAt": 1510652955,
+          "message": "job caching now works on running jobs, translation example expanded.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b321a10f08b1c27f37e66a675bc2884ff7d5e526",
+          "date": "2016-06-20T16:42:54Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "89a093765af9c136b1eec1d18c8d1a0d74041026"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix some bugs",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8858fd49e8e3e8609c81bbe6c5b9ccb2f5244416",
+          "date": "2016-06-20T08:45:13Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5bb5c3c8eb1fddfde3ce90d438a8a22e2fe5f707"
+          ],
+          "createdAt": 1510652955,
+          "message": "new tutorial notebook",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "89a093765af9c136b1eec1d18c8d1a0d74041026",
+          "date": "2016-06-15T08:53:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1cb88627ab23668e31bf1b61024644cce07cc7a8"
+          ],
+          "createdAt": 1510652955,
+          "message": "restored Storable to previous state",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5bb5c3c8eb1fddfde3ce90d438a8a22e2fe5f707",
+          "date": "2016-06-08T14:23:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "07979765326cd750f476f7916c5ffbe61d2bae16"
+          ],
+          "createdAt": 1510652955,
+          "message": "support for optional provenance, using schedule_hint",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1cb88627ab23668e31bf1b61024644cce07cc7a8",
+          "date": "2016-06-08T10:30:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4bcf61b3801a24079423e4a5f8f5c09b316463ef"
+          ],
+          "createdAt": 1510652955,
+          "message": "job/result data stored in tinydb with runners run_with_prov, restart and duplicate skipping now feasible",
+          "author": "?",
+          "updatedAt": 1510652955,
+          "id": "07979765326cd750f476f7916c5ffbe61d2bae16",
+          "date": "2016-06-07T21:46:30Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "daf4cb5f5145435dfb4fbabaf06b96d0397bd410"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4bcf61b3801a24079423e4a5f8f5c09b316463ef",
+          "date": "2016-06-06T09:50:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8e682d5ab845d379579af799289f41df5aba1fc6"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "daf4cb5f5145435dfb4fbabaf06b96d0397bd410",
+          "date": "2016-06-04T21:37:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f91a28991244f60214f279a2c8444ee0663af614"
+          ],
+          "createdAt": 1510652955,
+          "message": "provenance in tinydb",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8e682d5ab845d379579af799289f41df5aba1fc6",
+          "date": "2016-06-03T13:12:10Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9c4ba9cc9dd772f3f96ee75ba7167ad9466d331b",
+            "b965f20fd72ddf891164de6939b75d09202aad8f"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge pull request #26 from NLeSC/pyxenon_integration\n\nUsing latest release of pyxenon",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f91a28991244f60214f279a2c8444ee0663af614",
+          "date": "2016-05-30T12:42:07Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3da4cac6fddee9d5a21e29168a38ffdd03528037",
+            "c3ed4659219f547b275e7132eef6a544ddb91da3"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'pyxenon_integration' of github.com:NLeSC/noodles into pyxenon_integration",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "b965f20fd72ddf891164de6939b75d09202aad8f",
+          "date": "2016-05-30T12:36:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "09d5baec197d1579e8770bf63847bdc5ccda7d3a"
+          ],
+          "createdAt": 1510652955,
+          "message": "Using JPype threads",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "3da4cac6fddee9d5a21e29168a38ffdd03528037",
+          "date": "2016-05-30T12:35:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "09d5baec197d1579e8770bf63847bdc5ccda7d3a",
+            "9c4ba9cc9dd772f3f96ee75ba7167ad9466d331b"
+          ],
+          "createdAt": 1510652955,
+          "message": "pull request #23, resolve merge conflicts",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c3ed4659219f547b275e7132eef6a544ddb91da3",
+          "date": "2016-05-30T11:17:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3820874cb02145b53290b86018bfb0993d08c5de"
+          ],
+          "createdAt": 1510652955,
+          "message": "object lifting using `lift`, tuple unpacking using `unpack`, msgpack support",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9c4ba9cc9dd772f3f96ee75ba7167ad9466d331b",
+          "date": "2016-05-30T11:10:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ed9ec194fdd4f9c1356094cbd68956ce68fa3bb7"
+          ],
+          "createdAt": 1510652955,
+          "message": "Removed requirements, updated README",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "09d5baec197d1579e8770bf63847bdc5ccda7d3a",
+          "date": "2016-05-30T09:52:27Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ca7e20b1365409bdc2e4983c783329d9840113f3"
+          ],
+          "createdAt": 1510652955,
+          "message": "Moved pyxenon out of requirments",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "ed9ec194fdd4f9c1356094cbd68956ce68fa3bb7",
+          "date": "2016-05-30T09:40:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0d35c24e8c0f2e5c40aabb80826b8f38cd6850e7"
+          ],
+          "createdAt": 1510652955,
+          "message": "little clean-up",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3820874cb02145b53290b86018bfb0993d08c5de",
+          "date": "2016-05-25T15:25:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1aaff9b8087e521663681b51d40656cba1e5344d"
+          ],
+          "createdAt": 1510652955,
+          "message": "added lift function, creating promised object out of object containing promises",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0d35c24e8c0f2e5c40aabb80826b8f38cd6850e7",
+          "date": "2016-05-25T15:15:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1aaff9b8087e521663681b51d40656cba1e5344d"
+          ],
+          "createdAt": 1510652955,
+          "message": "Anticipating the merge of the jpype branch of pyxenon",
+          "author": "blootsvoets",
+          "updatedAt": 1510652955,
+          "id": "ca7e20b1365409bdc2e4983c783329d9840113f3",
+          "date": "2016-05-25T12:26:12Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b24b74222e21a5311a69b7eaa0a263e722f4ee4d"
+          ],
+          "createdAt": 1510652955,
+          "message": "removed noodles.run.local in favour of new style runners",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1aaff9b8087e521663681b51d40656cba1e5344d",
+          "date": "2016-05-23T09:47:45Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7c471ccfcd85b3b6ea957698b1d4bca482aa4b83"
+          ],
+          "createdAt": 1510652955,
+          "message": "updated xenon and numpy tests to skip when imports fail",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b24b74222e21a5311a69b7eaa0a263e722f4ee4d",
+          "date": "2016-05-23T09:35:32Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1d97d05457d4005ca08d18a9959ac9cc06ed427d"
+          ],
+          "createdAt": 1510652955,
+          "message": "exceptions within worker threads are forwarded to scheduler",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7c471ccfcd85b3b6ea957698b1d4bca482aa4b83",
+          "date": "2016-05-20T20:20:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3cf014368b73cde39ad4030f01e0c324b9cb482a"
+          ],
+          "createdAt": 1510652955,
+          "message": "expanded static sum example with dynamic example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1d97d05457d4005ca08d18a9959ac9cc06ed427d",
+          "date": "2016-05-10T09:59:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7f5a9415f358c9a2706f6701e72d65b2a9470c3c"
+          ],
+          "createdAt": 1510652955,
+          "message": "and tests",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3cf014368b73cde39ad4030f01e0c324b9cb482a",
+          "date": "2016-05-10T08:49:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "fc49daafd6159fa4a3e33011599b598cea9ca59f"
+          ],
+          "createdAt": 1510652955,
+          "message": "tail-call elimination and brokers",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7f5a9415f358c9a2706f6701e72d65b2a9470c3c",
+          "date": "2016-05-10T08:48:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "07c9b40e83b9bc74116e31c1a046a236d8519d16"
+          ],
+          "createdAt": 1510652955,
+          "message": "gitignore",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "fc49daafd6159fa4a3e33011599b598cea9ca59f",
+          "date": "2016-04-22T11:55:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "80240581a1ed57964ec7fba8e5a5dfdb589a9a93"
+          ],
+          "createdAt": 1510652955,
+          "message": "getting closer to broker interface",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "07c9b40e83b9bc74116e31c1a046a236d8519d16",
+          "date": "2016-04-22T11:55:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "41e28c39fda50b49e8ad63ade4ae197b64cc0f63"
+          ],
+          "createdAt": 1510652955,
+          "message": "another typo",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "80240581a1ed57964ec7fba8e5a5dfdb589a9a93",
+          "date": "2016-04-04T16:22:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b4ba7e2cf19e0fe7fc21eb779415901b1f968a5f"
+          ],
+          "createdAt": 1510652955,
+          "message": "typos",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "41e28c39fda50b49e8ad63ade4ae197b64cc0f63",
+          "date": "2016-04-04T16:18:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4f88c827795ef498411f501858be2521b308d1f8"
+          ],
+          "createdAt": 1510652955,
+          "message": "refactor code into xenon.py",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b4ba7e2cf19e0fe7fc21eb779415901b1f968a5f",
+          "date": "2016-04-04T13:24:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e0de9da1db92dc122fcc7d9bfca1a6242e04174a"
+          ],
+          "createdAt": 1510652955,
+          "message": "better xenon runner in run-on-das example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4f88c827795ef498411f501858be2521b308d1f8",
+          "date": "2016-04-04T13:14:48Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "331ad5c6b85f8e1c9875f0d7c0dd4d0bebf296db"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix issue #23",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e0de9da1db92dc122fcc7d9bfca1a6242e04174a",
+          "date": "2016-04-04T10:09:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "687e7d830f8033ec8ee2b6f182cc37c919f9d7c8"
+          ],
+          "createdAt": 1510652955,
+          "message": "some homework on udon",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "331ad5c6b85f8e1c9875f0d7c0dd4d0bebf296db",
+          "date": "2016-03-31T07:43:37Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4e932a1f829daedd6d4dc571c5944d45dda78d8d"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "687e7d830f8033ec8ee2b6f182cc37c919f9d7c8",
+          "date": "2016-03-30T05:56:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2a55440498be35ccefc6a369cf60a15c6656b287"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4e932a1f829daedd6d4dc571c5944d45dda78d8d",
+          "date": "2016-03-29T17:03:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "58f503ca6c662d8dd31a3cfe285d7b1383f7e600"
+          ],
+          "createdAt": 1510652955,
+          "message": "thought of new application for functional reactive programming",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2a55440498be35ccefc6a369cf60a15c6656b287",
+          "date": "2016-03-29T06:03:44Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2072243180b5a2e60b3447fba568b171e39b0cf"
+          ],
+          "createdAt": 1510652955,
+          "message": "xenon/slurm test on DAS5 runs succesfully.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "58f503ca6c662d8dd31a3cfe285d7b1383f7e600",
+          "date": "2016-03-23T12:50:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "588370dd466380bb755681284cea01f9683d0cce"
+          ],
+          "createdAt": 1510652955,
+          "message": "disabled numpy for the moment",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b2072243180b5a2e60b3447fba568b171e39b0cf",
+          "date": "2016-03-23T12:14:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "15fb6f9b763d4a18b770ce7fc2e4fa0a4d8994bb"
+          ],
+          "createdAt": 1510652955,
+          "message": "new documentation subject",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "588370dd466380bb755681284cea01f9683d0cce",
+          "date": "2016-03-23T10:36:07Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "464ff236974fd8717cfdd0e1ab989d34bafe9f66"
+          ],
+          "createdAt": 1510652955,
+          "message": "xenon test is back in buisness",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "15fb6f9b763d4a18b770ce7fc2e4fa0a4d8994bb",
+          "date": "2016-03-21T16:36:39Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b9e5f26f50e95fd3d00b86d9095793e8b5eccffa"
+          ],
+          "createdAt": 1510652955,
+          "message": "Removed inversion of the call graph for dependency calculation in favour of is_node_ready function",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "464ff236974fd8717cfdd0e1ab989d34bafe9f66",
+          "date": "2016-03-14T09:55:26Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "aa635a9a3c04ee22165426a454049b2784249742",
+            "9b9a296bb68dbdef8291814ae2249aedef2c8507"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel' of https://github.com/NLeSC/noodles into devel",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "b9e5f26f50e95fd3d00b86d9095793e8b5eccffa",
+          "date": "2016-03-14T08:55:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2f6abbaaf40585f429b4b4c39b85b7f0bb1ead38"
+          ],
+          "createdAt": 1510652955,
+          "message": "started on broker layer, work in progress",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9b9a296bb68dbdef8291814ae2249aedef2c8507",
+          "date": "2016-03-14T06:29:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "168dd52c6f7128f3f96aafa78d462945035a47dc"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix setup.py",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2f6abbaaf40585f429b4b4c39b85b7f0bb1ead38",
+          "date": "2016-03-11T13:43:54Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "71aacd0fc3eecbd07b7d7f425e219c1159faa372"
+          ],
+          "createdAt": 1510652955,
+          "message": "version one up",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "168dd52c6f7128f3f96aafa78d462945035a47dc",
+          "date": "2016-03-11T13:25:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b8ec88ae92c3f48197f1b7df116b713800d9f5b6"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix SerPath and add files.registry",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "71aacd0fc3eecbd07b7d7f425e219c1159faa372",
+          "date": "2016-03-11T13:04:16Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "076c5bf21349a4bb577cb28110cdf4d12a928063"
+          ],
+          "createdAt": 1510652955,
+          "message": "added Path helper object in noodles.files",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b8ec88ae92c3f48197f1b7df116b713800d9f5b6",
+          "date": "2016-03-11T12:59:21Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9de787c83f501127458f46e1da7fb531f2021194"
+          ],
+          "createdAt": 1510652955,
+          "message": "get better output in Soba",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "076c5bf21349a4bb577cb28110cdf4d12a928063",
+          "date": "2016-03-07T17:25:30Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b7df664d6a515af97f7a919275e69e7e769860ba",
+            "58c55f39397f2922b716032b9442496a4c28fb77"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel' of github.com:NLeSC/noodles into devel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9de787c83f501127458f46e1da7fb531f2021194",
+          "date": "2016-03-07T15:42:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "75496641bc92d261b05d873fe5bf4c8bc39f91ca"
+          ],
+          "createdAt": 1510652955,
+          "message": "soba example: non-directional exclusion graph",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b7df664d6a515af97f7a919275e69e7e769860ba",
+          "date": "2016-03-07T15:42:10Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "58c55f39397f2922b716032b9442496a4c28fb77"
+          ],
+          "createdAt": 1510652955,
+          "message": "Updated eating tutorial",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "aa635a9a3c04ee22165426a454049b2784249742",
+          "date": "2016-03-07T09:25:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "94d50332001e15e870fff35e146f8782ab877436"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix autostorable for explicit use",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "75496641bc92d261b05d873fe5bf4c8bc39f91ca",
+          "date": "2016-02-24T18:03:21Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "055cba57609dda3f93d7569a41f6be5fd9752870"
+          ],
+          "createdAt": 1510652955,
+          "message": "inverse_deep_map function added for decoding independent of json.decode",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "94d50332001e15e870fff35e146f8782ab877436",
+          "date": "2016-02-24T15:40:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "fffa3af0624221fce59717232a289e897cb32dab"
+          ],
+          "createdAt": 1510652955,
+          "message": "Implemented self-adaptive sigma scheme",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "58c55f39397f2922b716032b9442496a4c28fb77",
+          "date": "2016-02-23T16:15:13Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1a0fef07543fa70eab83e52cc86efdbc55a6065f",
+            "055cba57609dda3f93d7569a41f6be5fd9752870"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'ea-example' of https://github.com/NLeSC/noodles into ea-example",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "fffa3af0624221fce59717232a289e897cb32dab",
+          "date": "2016-02-23T13:07:33Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9d305cdc6e9b6e27049fee32317a8d429ab94636"
+          ],
+          "createdAt": 1510652955,
+          "message": "made crossover into a one-liner",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "1a0fef07543fa70eab83e52cc86efdbc55a6065f",
+          "date": "2016-02-23T13:06:54Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9d305cdc6e9b6e27049fee32317a8d429ab94636"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "055cba57609dda3f93d7569a41f6be5fd9752870",
+          "date": "2016-02-23T12:29:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e5044b02fa466a2f396b3c097957b19f8677a053"
+          ],
+          "createdAt": 1510652955,
+          "message": "ea",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9d305cdc6e9b6e27049fee32317a8d429ab94636",
+          "date": "2016-02-23T11:44:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ea65cacf92b0c0d68ab05ad31a2740f50a996af9",
+            "df942cd342c63fcf4f2317980a80ec11d75a2544"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel' into ea-example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e5044b02fa466a2f396b3c097957b19f8677a053",
+          "date": "2016-02-23T09:49:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "85b4dbd8ec9bcc8dc61f63be14262cf0bd6a3ff2"
+          ],
+          "createdAt": 1510652955,
+          "message": "added output of the last generation",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "ea65cacf92b0c0d68ab05ad31a2740f50a996af9",
+          "date": "2016-02-23T09:40:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "81c18c7dfe2304342bff4d7e4891fe7cb9e502fa"
+          ],
+          "createdAt": 1510652955,
+          "message": "Working version of the ea examples",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "85b4dbd8ec9bcc8dc61f63be14262cf0bd6a3ff2",
+          "date": "2016-02-23T09:36:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "416bf6cd9c3d61fea1c7e7213092148884571fbb"
+          ],
+          "createdAt": 1510652955,
+          "message": "Added ea example. Not in full working condition. Code runs, but does not produce the correct output",
+          "author": "bpmweel",
+          "updatedAt": 1510652955,
+          "id": "81c18c7dfe2304342bff4d7e4891fe7cb9e502fa",
+          "date": "2016-02-23T08:53:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6ead607051ce4a4ae76edaa3495e940b1022e421"
+          ],
+          "createdAt": 1510652955,
+          "message": "xenon testing is getting there, version 15.08 of slurm sadly not supported by Xenon.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "df942cd342c63fcf4f2317980a80ec11d75a2544",
+          "date": "2016-02-19T18:47:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1126c3530b4de051cf2f7f0491e9a420e48b48c3"
+          ],
+          "createdAt": 1510652955,
+          "message": "ready for intermediate merge with master",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6ead607051ce4a4ae76edaa3495e940b1022e421",
+          "date": "2016-02-19T10:22:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "de071916d4758d0b327f1da8e7623b5dd2b58370"
+          ],
+          "createdAt": 1510652955,
+          "message": "docker integration testing",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1126c3530b4de051cf2f7f0491e9a420e48b48c3",
+          "date": "2016-02-16T22:02:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e5b8bbaa788800ac70134cf05dd57de9813bd2f8"
+          ],
+          "createdAt": 1510652955,
+          "message": "getting docker-testing xenon to work",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "de071916d4758d0b327f1da8e7623b5dd2b58370",
+          "date": "2016-02-12T06:36:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "77418001097b0d7bf5058da1ac9f556d88c5aa27"
+          ],
+          "createdAt": 1510652955,
+          "message": "added display of warnings in Boil (and display.simple)",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e5b8bbaa788800ac70134cf05dd57de9813bd2f8",
+          "date": "2016-02-11T14:13:13Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d1c31d4cd1d3d3ed9ea83cbc59587c43c7551c98"
+          ],
+          "createdAt": 1510652955,
+          "message": "new Dockerfile for testing remote situations",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "77418001097b0d7bf5058da1ac9f556d88c5aa27",
+          "date": "2016-02-09T16:00:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f369085642065e952aba1168b24d9e113d083ab7"
+          ],
+          "createdAt": 1510652955,
+          "message": "refactor of data model, added hack to dereference the end-result a bit more robustly",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d1c31d4cd1d3d3ed9ea83cbc59587c43c7551c98",
+          "date": "2016-02-08T14:43:50Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5bd3c81dd156526953684c4377824288c40f4bd4"
+          ],
+          "createdAt": 1510652955,
+          "message": "undeleted files",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f369085642065e952aba1168b24d9e113d083ab7",
+          "date": "2016-02-08T10:17:21Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "780298c6424097689c11dd6a387a7f44c5eec6b5"
+          ],
+          "createdAt": 1510652955,
+          "message": "boil update",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5bd3c81dd156526953684c4377824288c40f4bd4",
+          "date": "2016-02-08T07:57:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ef5b660ab0991968903117aab77a6077072c24db"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "780298c6424097689c11dd6a387a7f44c5eec6b5",
+          "date": "2016-02-05T17:25:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f2b891b6ceda061904ce63003229d03442634e1b"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix?",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ef5b660ab0991968903117aab77a6077072c24db",
+          "date": "2016-02-05T09:57:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5350c36ea7eb7c666de9c949670cdcc85b38145f"
+          ],
+          "createdAt": 1510652955,
+          "message": "test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f2b891b6ceda061904ce63003229d03442634e1b",
+          "date": "2016-02-05T09:31:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "416bf6cd9c3d61fea1c7e7213092148884571fbb"
+          ],
+          "createdAt": 1510652955,
+          "message": "test",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5350c36ea7eb7c666de9c949670cdcc85b38145f",
+          "date": "2016-02-05T09:28:18Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "042f9610af9fbbb53fb5eec52d674502a390a7f5"
+          ],
+          "createdAt": 1510652955,
+          "message": "docs",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "416bf6cd9c3d61fea1c7e7213092148884571fbb",
+          "date": "2016-02-05T09:04:46Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "410a27a83fc221b4e6559884335d157b10045413"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix worker",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "042f9610af9fbbb53fb5eec52d674502a390a7f5",
+          "date": "2016-02-04T16:34:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c19f4cce79f7fe0874fcf450deee83b5e8cd764d"
+          ],
+          "createdAt": 1510652955,
+          "message": "bugfix in Storable serialisation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "410a27a83fc221b4e6559884335d157b10045413",
+          "date": "2016-02-04T09:44:46Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d2e163e9e8b32a5b4c4e9ca1be2399b2b1154e9e"
+          ],
+          "createdAt": 1510652955,
+          "message": "boil example working within parameters: graceful exit, error message forwarding, configurable progress report, fixed bug in scheduler",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c19f4cce79f7fe0874fcf450deee83b5e8cd764d",
+          "date": "2016-02-02T10:32:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "58bb59d4152fa7eac9dfcebb73f93d1e04c57909"
+          ],
+          "createdAt": 1510652955,
+          "message": "graceful exit under errors",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d2e163e9e8b32a5b4c4e9ca1be2399b2b1154e9e",
+          "date": "2016-02-01T23:56:53Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "63949cdf0c51953141073923d58f18759d6b13d5"
+          ],
+          "createdAt": 1510652955,
+          "message": "sensible information printer, and primitive error handling",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "58bb59d4152fa7eac9dfcebb73f93d1e04c57909",
+          "date": "2016-02-01T15:46:33Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "779245c557e67c8a1c7bb4b6352a9828dcf2a9d0"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "63949cdf0c51953141073923d58f18759d6b13d5",
+          "date": "2016-02-01T06:19:50Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "93a1c725412b41b7eb8ef7c27050d81323b3aba1"
+          ],
+          "createdAt": 1510652955,
+          "message": "new example: the boil building tool",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "779245c557e67c8a1c7bb4b6352a9828dcf2a9d0",
+          "date": "2016-01-31T16:30:12Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "97bc5608adf0dd81f593fa0b8810f554d430b0af"
+          ],
+          "createdAt": 1510652955,
+          "message": "more documentation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "93a1c725412b41b7eb8ef7c27050d81323b3aba1",
+          "date": "2016-01-29T12:22:05Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8ebca2ae1e61d8efafba788e18944e38dad723e7"
+          ],
+          "createdAt": 1510652955,
+          "message": "further refactoring...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "97bc5608adf0dd81f593fa0b8810f554d430b0af",
+          "date": "2016-01-28T21:34:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "cac21e73632079a75b5d3ea7a2005cfc0a7ea59c"
+          ],
+          "createdAt": 1510652955,
+          "message": "everything works again",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8ebca2ae1e61d8efafba788e18944e38dad723e7",
+          "date": "2016-01-28T19:47:06Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "25730313b20460c8727a4c7e7912a644c4317bcb"
+          ],
+          "createdAt": 1510652955,
+          "message": "the new serialisation scheme seems to work nicely now.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "cac21e73632079a75b5d3ea7a2005cfc0a7ea59c",
+          "date": "2016-01-28T15:34:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "eb7163c556b1cc6c335178a962ec42de3482808a"
+          ],
+          "createdAt": 1510652955,
+          "message": "numpy serialiser",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "25730313b20460c8727a4c7e7912a644c4317bcb",
+          "date": "2016-01-28T13:36:54Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c93dee2a50f237b0436424ff79ad932df1100dd3"
+          ],
+          "createdAt": 1510652955,
+          "message": "big overhoal in the serialisation code",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "eb7163c556b1cc6c335178a962ec42de3482808a",
+          "date": "2016-01-27T21:37:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f603ca14b906b2f8bf8f521d661e947c329997ab"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixing more autostorable",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c93dee2a50f237b0436424ff79ad932df1100dd3",
+          "date": "2016-01-26T15:46:16Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1ac7a4a6c7ae271867f7ecc90076fd94a100a11e"
+          ],
+          "createdAt": 1510652955,
+          "message": "testing",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f603ca14b906b2f8bf8f521d661e947c329997ab",
+          "date": "2016-01-26T13:41:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "419e9bc9d32123e6a4874ad54f40373ed1a526ec"
+          ],
+          "createdAt": 1510652955,
+          "message": "testing",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1ac7a4a6c7ae271867f7ecc90076fd94a100a11e",
+          "date": "2016-01-26T13:39:33Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d8aa4a983c1c1dac72f0d7d7494d2d5199be796a"
+          ],
+          "createdAt": 1510652955,
+          "message": "test on autostorable improved",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "419e9bc9d32123e6a4874ad54f40373ed1a526ec",
+          "date": "2016-01-26T13:25:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "78b30c91914cff4fb5a1fef4165631bbdbe3939d"
+          ],
+          "createdAt": 1510652955,
+          "message": "test on autostorable",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d8aa4a983c1c1dac72f0d7d7494d2d5199be796a",
+          "date": "2016-01-26T13:10:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4781983c6f537b22298af03a3240033d18fb3874"
+          ],
+          "createdAt": 1510652955,
+          "message": "worker.py output",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "78b30c91914cff4fb5a1fef4165631bbdbe3939d",
+          "date": "2016-01-26T10:48:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7b369a3e5819b48fd4ea65419adf23e378b851bf"
+          ],
+          "createdAt": 1510652955,
+          "message": "worker.py output",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4781983c6f537b22298af03a3240033d18fb3874",
+          "date": "2016-01-26T10:44:17Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6ae8d3fe91c7113fdb0b24dac2e19a08e4525969"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix StorableRef",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7b369a3e5819b48fd4ea65419adf23e378b851bf",
+          "date": "2016-01-26T10:30:57Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3454a817333053b0f9e71c4c3096bb72e8c5c49d"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixes the almost-dict-bug",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6ae8d3fe91c7113fdb0b24dac2e19a08e4525969",
+          "date": "2016-01-26T08:22:04Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2477378a3b557e9e7ea0bb7cf10ee36faac4849f",
+            "cb4e873e0486862fdd1f7b4405c7b3315144e4ae"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of gitlab.pyadf.org:e-science/workflow-engine",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3454a817333053b0f9e71c4c3096bb72e8c5c49d",
+          "date": "2016-01-25T15:45:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "01d3b993feebb5e3f66281bd651387f4710ef9f1"
+          ],
+          "createdAt": 1510652955,
+          "message": "implemented deep_map, a function that treats data recursively, allowing for more robust JSON encoding.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2477378a3b557e9e7ea0bb7cf10ee36faac4849f",
+          "date": "2016-01-25T15:44:16Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7a3b776cbe165e811c1c4a73debf093d6bb90cf4"
+          ],
+          "createdAt": 1510652955,
+          "message": "change the test a bit",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "01d3b993feebb5e3f66281bd651387f4710ef9f1",
+          "date": "2016-01-25T13:06:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7348ce94293812750cd53798c9b92a9c2a84a13e"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixed issue of dict-childs returning as dicts",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "cb4e873e0486862fdd1f7b4405c7b3315144e4ae",
+          "date": "2016-01-22T14:02:21Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d34b27465e3a4c8230ceaf265a0783903002bb8c"
+          ],
+          "createdAt": 1510652955,
+          "message": "capture stdout in init",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7348ce94293812750cd53798c9b92a9c2a84a13e",
+          "date": "2016-01-22T10:27:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7a3b776cbe165e811c1c4a73debf093d6bb90cf4"
+          ],
+          "createdAt": 1510652955,
+          "message": "debug",
+          "author": "?",
+          "updatedAt": 1510652955,
+          "id": "d34b27465e3a4c8230ceaf265a0783903002bb8c",
+          "date": "2016-01-22T10:15:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "424c9b3985a72c00b44e4de8b96b8e35831b4cc1"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix bugs in PickleString and PickleFile, added test for pickles",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7a3b776cbe165e811c1c4a73debf093d6bb90cf4",
+          "date": "2016-01-21T17:33:49Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e018c26f8282068ff837f79639ffa454a1a3ed57"
+          ],
+          "createdAt": 1510652955,
+          "message": "PickleFile and PickleString store objects by pickles.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "424c9b3985a72c00b44e4de8b96b8e35831b4cc1",
+          "date": "2016-01-21T16:49:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0ee33c8723e866178093d686e53054a3428eb62f"
+          ],
+          "createdAt": 1510652955,
+          "message": "Added a shorthand for running on many processes. The jobs get scheduled to a random worker, so no fairness is guaranteed.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e018c26f8282068ff837f79639ffa454a1a3ed57",
+          "date": "2016-01-20T15:42:35Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "81808969ae763ac5a755bcaeeb62ea9d17f534a4"
+          ],
+          "createdAt": 1510652955,
+          "message": "Implemented init/finish functions for the process and xenon workers. See test_globals for an example.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0ee33c8723e866178093d686e53054a3428eb62f",
+          "date": "2016-01-20T13:25:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9a6a64b37a3ebc8f1bd0d783f408034a8fc429f3"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix storable.files",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "81808969ae763ac5a755bcaeeb62ea9d17f534a4",
+          "date": "2016-01-19T15:24:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f40c6c40940ddc4b325685d99b3c4fb38d10e4b2",
+            "4143f96d534c06169be45b396976efd78114dd13"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel'",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9a6a64b37a3ebc8f1bd0d783f408034a8fc429f3",
+          "date": "2016-01-19T11:07:28Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "fd4910040f240f5301523ae2c019f9b6602c9b9a"
+          ],
+          "createdAt": 1510652955,
+          "message": "added __getitem__ interface to PromisedObject",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4143f96d534c06169be45b396976efd78114dd13",
+          "date": "2016-01-19T11:07:06Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "075917c1b57222d7f87fdbf3fe3c9c6967699e66"
+          ],
+          "createdAt": 1510652955,
+          "message": "hybrid selector now takes job as argument; removed fireworks; added test for lambda",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "fd4910040f240f5301523ae2c019f9b6602c9b9a",
+          "date": "2016-01-15T10:45:32Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b56f6ce9062221f658fbcd38ea9bb2aac83c736c",
+            "075917c1b57222d7f87fdbf3fe3c9c6967699e66"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'devel'\n\nBugfix:\n    - now forwarding stderr of remote workers to local stderr\n    - tutorial.py actually exists now\n\nFeatures:\n    - class methods can be scheduled now if the class is Storable\n    and decorated with @has_scheduled_methods.\n    - NumpyData class, saves numpy data to binary file, passing filename\n    by JSON.\n    - Lambda class, stores a lambda function as a string to be\n    evaluated, allowing bits of code to be moved around.\n\nExtra:\n    - Cosmology example (still needs to be expanded)",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f40c6c40940ddc4b325685d99b3c4fb38d10e4b2",
+          "date": "2016-01-12T15:00:18Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7e4eddf80d724b2465a25181618e8726a1201ad1"
+          ],
+          "createdAt": 1510652955,
+          "message": "added test for method scheduling",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "075917c1b57222d7f87fdbf3fe3c9c6967699e66",
+          "date": "2016-01-12T14:46:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4b77e0b91a89aa4ff1af3b1866e185fb55b888d6"
+          ],
+          "createdAt": 1510652955,
+          "message": "started on Dockerfile..., not yet ready",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7e4eddf80d724b2465a25181618e8726a1201ad1",
+          "date": "2016-01-12T10:14:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ea895722b2d973ff7052468ddbaa2acc72b935ca"
+          ],
+          "createdAt": 1510652955,
+          "message": "added example from cosmology, mainly for testing numpy data storage",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4b77e0b91a89aa4ff1af3b1866e185fb55b888d6",
+          "date": "2016-01-11T13:41:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b5d9ef5afcfefbe7efeb2b017d24277436a608d1"
+          ],
+          "createdAt": 1510652955,
+          "message": "move has_decorated_methods from test to decorator.py",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ea895722b2d973ff7052468ddbaa2acc72b935ca",
+          "date": "2016-01-05T15:06:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "91d41758c00171e0235709099aa21bec14e4ad6b"
+          ],
+          "createdAt": 1510652955,
+          "message": "classes that contain scheduled method need to be decorated with additional has_decorated_methods decorator",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b5d9ef5afcfefbe7efeb2b017d24277436a608d1",
+          "date": "2016-01-05T15:05:06Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2285df3ed6346393322679051655ae2f279f5fb"
+          ],
+          "createdAt": 1510652955,
+          "message": "stderr is now read from process and xenon workers, redirected to skeleton logger class",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "91d41758c00171e0235709099aa21bec14e4ad6b",
+          "date": "2016-01-05T13:02:27Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "77cc5c94682666ee1c69d40ca9cd2a2068a63f12"
+          ],
+          "createdAt": 1510652955,
+          "message": "added StorableRef as go-in-between to allow handling of disk-stored data transparently",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b2285df3ed6346393322679051655ae2f279f5fb",
+          "date": "2016-01-05T12:17:20Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "acdec41a1415a8e9b4635ed2ac178e104530eab4"
+          ],
+          "createdAt": 1510652955,
+          "message": "add tutorial module",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "77cc5c94682666ee1c69d40ca9cd2a2068a63f12",
+          "date": "2015-12-17T09:33:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "acdec41a1415a8e9b4635ed2ac178e104530eab4"
+          ],
+          "createdAt": 1510652955,
+          "message": "cleanup",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b56f6ce9062221f658fbcd38ea9bb2aac83c736c",
+          "date": "2015-12-16T16:43:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "23f495637399254fc4f9c1928652481e4d29f117"
+          ],
+          "createdAt": 1510652955,
+          "message": "much much more documentation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "acdec41a1415a8e9b4635ed2ac178e104530eab4",
+          "date": "2015-12-16T16:18:17Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "efa9f75d29487362d173c739a44371f5f3663523"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "23f495637399254fc4f9c1928652481e4d29f117",
+          "date": "2015-12-15T18:06:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f2f47a01d06379fb955873d6a8dbf4bd1e097a04"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "efa9f75d29487362d173c739a44371f5f3663523",
+          "date": "2015-12-15T18:04:39Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "eda903b8ab6340720b13b042a687abcdb0508643"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f2f47a01d06379fb955873d6a8dbf4bd1e097a04",
+          "date": "2015-12-15T18:02:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2cb11006e713af816d27d71292239f0124f4bae6"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixing readme",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "eda903b8ab6340720b13b042a687abcdb0508643",
+          "date": "2015-12-15T17:57:54Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8c985c930086154f5d0ba392f8be0f092b200665"
+          ],
+          "createdAt": 1510652955,
+          "message": "remove README.md",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2cb11006e713af816d27d71292239f0124f4bae6",
+          "date": "2015-12-15T17:56:18Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b4cfd8efd9cbca7d1c2bd61c4fd5f5a9445bf193"
+          ],
+          "createdAt": 1510652955,
+          "message": "working towards release 0.1",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8c985c930086154f5d0ba392f8be0f092b200665",
+          "date": "2015-12-15T17:55:13Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e471f8976dadb83a8504a5972f015544fd97906d"
+          ],
+          "createdAt": 1510652955,
+          "message": "made worker.sh script and xenon worker location independent, got everything running on DAS-5",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b4cfd8efd9cbca7d1c2bd61c4fd5f5a9445bf193",
+          "date": "2015-12-15T17:08:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b4d4a3e4211f44b0e5862ebba9f62ed114c52b56"
+          ],
+          "createdAt": 1510652955,
+          "message": "setup.py",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e471f8976dadb83a8504a5972f015544fd97906d",
+          "date": "2015-12-15T12:21:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7147450de2813ef8a8ab1cb3c0a7dcbf01834541"
+          ],
+          "createdAt": 1510652955,
+          "message": "Xenon online worker",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b4d4a3e4211f44b0e5862ebba9f62ed114c52b56",
+          "date": "2015-12-15T11:38:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "354eaf10c26d171ade0bb4010b370b7bceea0675"
+          ],
+          "createdAt": 1510652955,
+          "message": "added preliminary dev-install instructions",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7147450de2813ef8a8ab1cb3c0a7dcbf01834541",
+          "date": "2015-12-14T15:11:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dbda477c172d1bdf48e6cbd88fead64f52cd59f7"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix some bugs that surfaced with the process worker",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "354eaf10c26d171ade0bb4010b370b7bceea0675",
+          "date": "2015-12-14T13:06:02Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "23fad07f56dd9409ee622fa44c825dae5eedb563"
+          ],
+          "createdAt": 1510652955,
+          "message": "most primitive command-line worker works, nothing can stop us now!",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "dbda477c172d1bdf48e6cbd88fead64f52cd59f7",
+          "date": "2015-12-09T17:26:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "803f684052a7b4a42c7acf3bb4f55cae4df8e003"
+          ],
+          "createdAt": 1510652955,
+          "message": "text console design (very important)",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "23fad07f56dd9409ee622fa44c825dae5eedb563",
+          "date": "2015-12-08T22:08:08Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c7d083cb0734cbca167354175d528dcee1010967"
+          ],
+          "createdAt": 1510652955,
+          "message": "further work on remote runner",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "803f684052a7b4a42c7acf3bb4f55cae4df8e003",
+          "date": "2015-12-08T16:50:33Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7da68b4cd6f6613fab1ecd79c9678ca1c145e769"
+          ],
+          "createdAt": 1510652955,
+          "message": "started xenon worker, based on NLeSC/pyxenon module",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c7d083cb0734cbca167354175d528dcee1010967",
+          "date": "2015-12-07T16:38:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c9dac60b4fcef4eb090b8d1f929e8ca2795e5e76"
+          ],
+          "createdAt": 1510652955,
+          "message": "to 100% nosetest coverage",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "7da68b4cd6f6613fab1ecd79c9678ca1c145e769",
+          "date": "2015-12-07T15:32:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "52ab7a4c62ddf9f01c8883013bd30670305aa961"
+          ],
+          "createdAt": 1510652955,
+          "message": "storable class working and safely reimported from json",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c9dac60b4fcef4eb090b8d1f929e8ca2795e5e76",
+          "date": "2015-12-07T13:28:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5504d5ed81b4ab3cfbb2334d73393f34a23bcea7"
+          ],
+          "createdAt": 1510652955,
+          "message": "storable class",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "52ab7a4c62ddf9f01c8883013bd30670305aa961",
+          "date": "2015-11-27T14:29:01Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "820587b073432398e4715b3fadcb4c5e62c5524e"
+          ],
+          "createdAt": 1510652955,
+          "message": "more docs",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5504d5ed81b4ab3cfbb2334d73393f34a23bcea7",
+          "date": "2015-11-27T11:20:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9614fb281e8f320801673cc7921e380a27e5e090"
+          ],
+          "createdAt": 1510652955,
+          "message": "more docs",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "820587b073432398e4715b3fadcb4c5e62c5524e",
+          "date": "2015-11-25T15:03:38Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2b7ff5f1a2c4898fb61333caf0e55a8dbb83137d"
+          ],
+          "createdAt": 1510652955,
+          "message": "fixed code style issues (using flake8)",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9614fb281e8f320801673cc7921e380a27e5e090",
+          "date": "2015-11-25T14:34:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2532261f037077394b40230ee50bdda1c68a782"
+          ],
+          "createdAt": 1510652955,
+          "message": "add `__all__` to `__init__.py` and supply run_hybrid shortcut",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2b7ff5f1a2c4898fb61333caf0e55a8dbb83137d",
+          "date": "2015-11-25T13:40:10Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "514dc84e78c5db795f5163325b9b19c52dd85ba1"
+          ],
+          "createdAt": 1510652955,
+          "message": "simplify hybrid threaded worker",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b2532261f037077394b40230ee50bdda1c68a782",
+          "date": "2015-11-25T12:45:12Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "67eb6571a30c5605a0462c7f8b0cd196f73c5907",
+            "9bf1d9050b8edc06bb9cc9b08f42c8e2f8c29a15"
+          ],
+          "createdAt": 1510652955,
+          "message": "merge with jhdev",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "514dc84e78c5db795f5163325b9b19c52dd85ba1",
+          "date": "2015-11-25T12:41:14Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "299f1c0531a9003ec7473e89980debae6950dcc3"
+          ],
+          "createdAt": 1510652955,
+          "message": "hybrid workers are working",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9bf1d9050b8edc06bb9cc9b08f42c8e2f8c29a15",
+          "date": "2015-11-25T12:37:53Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "152324db5d67e969a47d9891ca4d4b5278a46d0f"
+          ],
+          "createdAt": 1510652955,
+          "message": "getting grips on coroutines",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "299f1c0531a9003ec7473e89980debae6950dcc3",
+          "date": "2015-11-24T14:54:23Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "658f3704d7a8986e7f0b881a25ae3c3c7c437c92"
+          ],
+          "createdAt": 1510652955,
+          "message": "working on hybrid worker",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "152324db5d67e969a47d9891ca4d4b5278a46d0f",
+          "date": "2015-11-24T11:08:17Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ba1b21f707577d71703f402840b446b301988bf3"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "67eb6571a30c5605a0462c7f8b0cd196f73c5907",
+          "date": "2015-11-20T10:08:36Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "658f3704d7a8986e7f0b881a25ae3c3c7c437c92"
+          ],
+          "createdAt": 1510652955,
+          "message": "deepcopy on all ordinary arguments, throw exception if promised object is being deepcopied.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ba1b21f707577d71703f402840b446b301988bf3",
+          "date": "2015-11-19T14:03:32Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5793a695f2ea44d282956eafeeaa089f07eab769"
+          ],
+          "createdAt": 1510652955,
+          "message": "new runners work, synchronous and concurrent code separated, got rid of all locks",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "658f3704d7a8986e7f0b881a25ae3c3c7c437c92",
+          "date": "2015-11-18T13:58:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "914c8a5aabd3e5bf74ace66bb5f308d2f8427549"
+          ],
+          "createdAt": 1510652955,
+          "message": "new co-routine based runners in progress",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5793a695f2ea44d282956eafeeaa089f07eab769",
+          "date": "2015-11-18T12:37:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6a7b0ef8b07804c8d9bfc5eb78add9c4fb00eb85"
+          ],
+          "createdAt": 1510652955,
+          "message": "removing fireworks runner from ``__init__.py``",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "914c8a5aabd3e5bf74ace66bb5f308d2f8427549",
+          "date": "2015-11-17T09:49:49Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4cd61526460bea9f42173e63a4e61340b9207f40",
+            "3f42e7a6510c83df49c95fce14c8d17f96d670c2"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of gitlab.pyadf.org:e-science/workflow-engine",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6a7b0ef8b07804c8d9bfc5eb78add9c4fb00eb85",
+          "date": "2015-11-17T09:15:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a10fa8d42879d8a022a9efa34ca3711e4fa4a54a"
+          ],
+          "createdAt": 1510652955,
+          "message": "some more tests",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4cd61526460bea9f42173e63a4e61340b9207f40",
+          "date": "2015-11-17T09:15:21Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "51401f16150bc3a6e3d6a78224ac1c9b2ac9f639"
+          ],
+          "createdAt": 1510652955,
+          "message": "testing runfireworks",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "3f42e7a6510c83df49c95fce14c8d17f96d670c2",
+          "date": "2015-11-16T17:44:52Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a10fa8d42879d8a022a9efa34ca3711e4fa4a54a"
+          ],
+          "createdAt": 1510652955,
+          "message": "Retreiving data from mongodb",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "51401f16150bc3a6e3d6a78224ac1c9b2ac9f639",
+          "date": "2015-11-13T16:40:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5d669e4d5bdc84aa084b3e848cc2f4858b96cc6b"
+          ],
+          "createdAt": 1510652955,
+          "message": "NoodleTask",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "a10fa8d42879d8a022a9efa34ca3711e4fa4a54a",
+          "date": "2015-11-13T08:40:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9bc6078cceb4eefd6785a31323f2e981382ea571"
+          ],
+          "createdAt": 1510652955,
+          "message": "added json test and increased coverage",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5d669e4d5bdc84aa084b3e848cc2f4858b96cc6b",
+          "date": "2015-11-12T16:09:49Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "50997c9ff7ab045c47dad72998565c81a30c9158"
+          ],
+          "createdAt": 1510652955,
+          "message": "introducing recursive call to fireworks",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "9bc6078cceb4eefd6785a31323f2e981382ea571",
+          "date": "2015-11-12T08:41:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "16b2efc0211c96936357d4c1096b2d305d43a94b"
+          ],
+          "createdAt": 1510652955,
+          "message": "more docs!",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "50997c9ff7ab045c47dad72998565c81a30c9158",
+          "date": "2015-11-11T15:35:11Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e31983dc2590e0b3d08b8cb64b77d61cbf12b21d"
+          ],
+          "createdAt": 1510652955,
+          "message": "...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "16b2efc0211c96936357d4c1096b2d305d43a94b",
+          "date": "2015-11-11T14:02:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f6476796fdff7761445a9ae5bfd77ac2dd6a172a"
+          ],
+          "createdAt": 1510652955,
+          "message": "renamed engine to noodles",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e31983dc2590e0b3d08b8cb64b77d61cbf12b21d",
+          "date": "2015-11-11T14:00:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4a5eee1c163b6ddbd158f7fea633dc6073c5c4ae"
+          ],
+          "createdAt": 1510652955,
+          "message": "initialised sphinx documentation",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f6476796fdff7761445a9ae5bfd77ac2dd6a172a",
+          "date": "2015-11-11T12:54:45Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "af70efcd7590abc49f102d62e85e98aae8dde8cc"
+          ],
+          "createdAt": 1510652955,
+          "message": "importable objects are now stored by module and name, and imported when read back from json",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4a5eee1c163b6ddbd158f7fea633dc6073c5c4ae",
+          "date": "2015-11-11T12:28:14Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2587189ac2de2b70188598e182bce6af5187c8e",
+            "701e8e070696d1c94829c1dc3f06377c319f97de"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'jhdev'",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "af70efcd7590abc49f102d62e85e98aae8dde8cc",
+          "date": "2015-11-11T10:19:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "758ef7734c04360a90fd75ab9ce5b6a281596c12"
+          ],
+          "createdAt": 1510652955,
+          "message": "json now also loading, and returning runnable workflow",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "701e8e070696d1c94829c1dc3f06377c319f97de",
+          "date": "2015-11-11T10:16:56Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9c7c44eddbaed45b24420bf3859d6361259a5039"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix style",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "758ef7734c04360a90fd75ab9ce5b6a281596c12",
+          "date": "2015-11-10T22:32:09Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "dd3a06508df2a21994d048f1f3c123c7ce78a673"
+          ],
+          "createdAt": 1510652955,
+          "message": "json writer works, changed some functions and objects to support the json writer",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9c7c44eddbaed45b24420bf3859d6361259a5039",
+          "date": "2015-11-10T22:20:50Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "16a4a635c79a576e95d226f0419a0ba36266a852",
+            "c35501af2c68e48ab6aa35e58381a4331249c24a"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge branch 'master' of gitlab.pyadf.org:e-science/workflow-engine",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "b2587189ac2de2b70188598e182bce6af5187c8e",
+          "date": "2015-11-10T17:47:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7a0e70dad15fff0ffbce51dc990dfff04b498e54"
+          ],
+          "createdAt": 1510652955,
+          "message": "fabric must be included",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "16a4a635c79a576e95d226f0419a0ba36266a852",
+          "date": "2015-11-10T17:47:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "2ebfb636ce3ae2d941989d3f41419baa5de1764e",
+            "c35501af2c68e48ab6aa35e58381a4331249c24a"
+          ],
+          "createdAt": 1510652955,
+          "message": "Merge remote-tracking branch 'origin/master' into jhdev",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "dd3a06508df2a21994d048f1f3c123c7ce78a673",
+          "date": "2015-11-10T09:29:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "7a0e70dad15fff0ffbce51dc990dfff04b498e54"
+          ],
+          "createdAt": 1510652955,
+          "message": "change some comments",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c35501af2c68e48ab6aa35e58381a4331249c24a",
+          "date": "2015-11-10T09:25:03Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "426ba46ec32b71f3cb08ac5057e6b27383fe566c"
+          ],
+          "createdAt": 1510652955,
+          "message": "prototyping fireworks backend",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "7a0e70dad15fff0ffbce51dc990dfff04b498e54",
+          "date": "2015-11-09T17:45:15Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "889d93aca3f7b3f9501dfc6aa744ce4a5b7d28fa"
+          ],
+          "createdAt": 1510652955,
+          "message": "revamping data model",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "2ebfb636ce3ae2d941989d3f41419baa5de1764e",
+          "date": "2015-11-09T08:24:49Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "889d93aca3f7b3f9501dfc6aa744ce4a5b7d28fa"
+          ],
+          "createdAt": 1510652955,
+          "message": "some comments",
+          "author": "felipeZ",
+          "updatedAt": 1510652955,
+          "id": "426ba46ec32b71f3cb08ac5057e6b27383fe566c",
+          "date": "2015-11-06T17:08:30Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "27f54d802b884159ab9eaa0b0bbd6bde7d19592c"
+          ],
+          "createdAt": 1510652955,
+          "message": "split datamodel.py into several smaller files",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "889d93aca3f7b3f9501dfc6aa744ce4a5b7d28fa",
+          "date": "2015-11-06T14:13:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "c99f4bb2c345f45d5127df1f8a02020ad968fdf2"
+          ],
+          "createdAt": 1510652955,
+          "message": "more fireworks",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "27f54d802b884159ab9eaa0b0bbd6bde7d19592c",
+          "date": "2015-11-06T09:19:29Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5b2e094999144e39400e979a08af92828e9368a8"
+          ],
+          "createdAt": 1510652955,
+          "message": "nested workflows in parallel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "c99f4bb2c345f45d5127df1f8a02020ad968fdf2",
+          "date": "2015-11-04T21:55:42Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a18cbc9467ce965d9d83b8a2ab85ad613021e568"
+          ],
+          "createdAt": 1510652955,
+          "message": "nested workflows now working on single-thread runner",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5b2e094999144e39400e979a08af92828e9368a8",
+          "date": "2015-11-04T19:51:20Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "18274afce24454098b48cee0d9821dd26f6aea8c"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix readme #3",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "a18cbc9467ce965d9d83b8a2ab85ad613021e568",
+          "date": "2015-11-04T14:10:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "f00d355573065e881c695317fc171426156aa5d8"
+          ],
+          "createdAt": 1510652955,
+          "message": "image in Readme #2",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "18274afce24454098b48cee0d9821dd26f6aea8c",
+          "date": "2015-11-04T14:05:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "6f8f9cf8be0d2b37b520a2f85068c9c3bf6f8db4"
+          ],
+          "createdAt": 1510652955,
+          "message": "image in Readme",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f00d355573065e881c695317fc171426156aa5d8",
+          "date": "2015-11-04T14:04:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "e1469684eab1e3a2a7c21ddbd09f4a9378a36446"
+          ],
+          "createdAt": 1510652955,
+          "message": "further work on fw",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "6f8f9cf8be0d2b37b520a2f85068c9c3bf6f8db4",
+          "date": "2015-11-04T10:56:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b1fb266609423ea4be83488a4fedbffe1f3bef66"
+          ],
+          "createdAt": 1510652955,
+          "message": "started on fireworks backend",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "e1469684eab1e3a2a7c21ddbd09f4a9378a36446",
+          "date": "2015-11-02T11:44:55Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "4a457451eaa21836fa2de7cb3b1d1dc742266ecf"
+          ],
+          "createdAt": 1510652955,
+          "message": "added more documentation to datamodel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b1fb266609423ea4be83488a4fedbffe1f3bef66",
+          "date": "2015-10-26T15:03:47Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a8dccf22df8ad5afd3ecec84164c3b2cfa6620b7"
+          ],
+          "createdAt": 1510652955,
+          "message": "added @wraps decorator in `schedule`",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "4a457451eaa21836fa2de7cb3b1d1dc742266ecf",
+          "date": "2015-10-26T10:55:50Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b2c84905619fabda4f85562f9c59ede5e48d4020"
+          ],
+          "createdAt": 1510652955,
+          "message": "added docstring to bind-function",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "a8dccf22df8ad5afd3ecec84164c3b2cfa6620b7",
+          "date": "2015-10-26T10:31:40Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "8017436e7bdff6917758adbd84db70269999df21"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix .gitignore",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b2c84905619fabda4f85562f9c59ede5e48d4020",
+          "date": "2015-10-24T13:47:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "94d54e43e30d3faaccd5ec2a3de24af2d7a2d58a"
+          ],
+          "createdAt": 1510652955,
+          "message": "testing response to unknown method",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "8017436e7bdff6917758adbd84db70269999df21",
+          "date": "2015-10-23T21:50:00Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "bff889c5273866f9b78540788a8e07c6ba49e01c"
+          ],
+          "createdAt": 1510652955,
+          "message": "workflow plans now also function as classes, allowing __getattr__ __setattr__ and __call__ operations.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "94d54e43e30d3faaccd5ec2a3de24af2d7a2d58a",
+          "date": "2015-10-23T21:09:19Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "afd13f8ed8eab45e9d1223ff9b5413036950faa9"
+          ],
+          "createdAt": 1510652955,
+          "message": "big overhoal, used inspect.signature in stead of _pluck_argments",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "bff889c5273866f9b78540788a8e07c6ba49e01c",
+          "date": "2015-10-20T07:17:22Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "a23a8d4323c5f344bb450053e828d17a617502c4"
+          ],
+          "createdAt": 1510652955,
+          "message": "added test for parallel execution using time.sleep",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "afd13f8ed8eab45e9d1223ff9b5413036950faa9",
+          "date": "2015-10-16T12:35:34Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "0e6623483804efb927ea717e89a0a0a0c6ed9c83"
+          ],
+          "createdAt": 1510652955,
+          "message": "added a parallel runner, using normal python threads",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "a23a8d4323c5f344bb450053e828d17a617502c4",
+          "date": "2015-10-16T12:22:20Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "1d1fed4a2eb93c0d1afc207b16a87ac315409eb0"
+          ],
+          "createdAt": 1510652955,
+          "message": "primitive runner added, modified example2 to give a quintessential answer...",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "0e6623483804efb927ea717e89a0a0a0c6ed9c83",
+          "date": "2015-10-15T15:34:31Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "b34bf798e0000ded2a0494f3b40d1dabbadab855"
+          ],
+          "createdAt": 1510652955,
+          "message": "added simple test for workflow merging",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "1d1fed4a2eb93c0d1afc207b16a87ac315409eb0",
+          "date": "2015-10-15T07:28:45Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "63c6ececb27cdc3d158a3c4a4077413973863dde"
+          ],
+          "createdAt": 1510652955,
+          "message": "removed svg graph and static folder",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "b34bf798e0000ded2a0494f3b40d1dabbadab855",
+          "date": "2015-10-14T16:12:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "9496601b159ecc4d442b2331e1c0d7882c7a10df"
+          ],
+          "createdAt": 1510652955,
+          "message": "major refactor of prototype, added tests using `nose`.",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "63c6ececb27cdc3d158a3c4a4077413973863dde",
+          "date": "2015-10-14T16:10:58Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5695718af263a6d3708d0678f5d04ebe60b27925"
+          ],
+          "createdAt": 1510652955,
+          "message": "add example graph",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "9496601b159ecc4d442b2331e1c0d7882c7a10df",
+          "date": "2015-10-13T08:02:41Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "5aa54884f70fda260dcf25b5c79538f7799750a9"
+          ],
+          "createdAt": 1510652955,
+          "message": "added LGPL",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5695718af263a6d3708d0678f5d04ebe60b27925",
+          "date": "2015-10-12T16:17:57Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "ca3c77c80c8c3cac06a1ba130f46f208fb37d23d"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix example",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "5aa54884f70fda260dcf25b5c79538f7799750a9",
+          "date": "2015-10-12T16:06:07Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "d57ea0c99f9983ff7217b023b3d0d88daede35ae"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix Readme",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "ca3c77c80c8c3cac06a1ba130f46f208fb37d23d",
+          "date": "2015-10-12T15:58:59Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "3d55862e52d8141c31f6a27cea08777925ba5399",
+            "f26a9470c4e4e44074c5dd564ac3cfde7e8ba59c"
+          ],
+          "createdAt": 1510652955,
+          "message": "added provisionary datamodel",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "d57ea0c99f9983ff7217b023b3d0d88daede35ae",
+          "date": "2015-10-12T15:56:43Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [],
+          "createdAt": 1510652955,
+          "message": "initial commit",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "3d55862e52d8141c31f6a27cea08777925ba5399",
+          "date": "2015-10-12T15:55:51Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [
+            "70eadd676de0d5b7611f39112258a4614c5d8d1b"
+          ],
+          "createdAt": 1510652955,
+          "message": "fix README.md indent",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "f26a9470c4e4e44074c5dd564ac3cfde7e8ba59c",
+          "date": "2015-10-12T15:47:25Z"
+        },
+        {
+          "software_id": "noodles",
+          "parents": [],
+          "createdAt": 1510652955,
+          "message": "initial commit",
+          "author": "jhidding",
+          "updatedAt": 1510652955,
+          "id": "70eadd676de0d5b7611f39112258a4614c5d8d1b",
+          "date": "2015-10-12T15:47:34Z"
+        }
+      ],
+      "repo": {
+        "contributors_url": "https://api.github.com/repos/NLeSC/noodles/contributors",
+        "open_issues": 28,
+        "hooks_url": "https://api.github.com/repos/NLeSC/noodles/hooks",
+        "private": false,
+        "releases_url": "https://api.github.com/repos/NLeSC/noodles/releases{/id}",
+        "size": 4719,
+        "languages_url": "https://api.github.com/repos/NLeSC/noodles/languages",
+        "svn_url": "https://github.com/NLeSC/noodles",
+        "branches_url": "https://api.github.com/repos/NLeSC/noodles/branches{/branch}",
+        "milestones_url": "https://api.github.com/repos/NLeSC/noodles/milestones{/number}",
+        "url": "https://api.github.com/repos/NLeSC/noodles",
+        "ssh_url": "git@github.com:NLeSC/noodles.git",
+        "tags_url": "https://api.github.com/repos/NLeSC/noodles/tags",
+        "watchers_count": 8,
+        "statuses_url": "https://api.github.com/repos/NLeSC/noodles/statuses/{sha}",
+        "open_issues_count": 28,
+        "has_pages": true,
+        "html_url": "https://github.com/NLeSC/noodles",
+        "downloads_url": "https://api.github.com/repos/NLeSC/noodles/downloads",
+        "updated_at": "2017-11-13T15:04:22Z",
+        "has_issues": true,
+        "forks_url": "https://api.github.com/repos/NLeSC/noodles/forks",
+        "events_url": "https://api.github.com/repos/NLeSC/noodles/events",
+        "pulls_url": "https://api.github.com/repos/NLeSC/noodles/pulls{/number}",
+        "forks": 3,
+        "has_wiki": true,
+        "blobs_url": "https://api.github.com/repos/NLeSC/noodles/git/blobs{/sha}",
+        "fork": false,
+        "assignees_url": "https://api.github.com/repos/NLeSC/noodles/assignees{/user}",
+        "teams_url": "https://api.github.com/repos/NLeSC/noodles/teams",
+        "mirror_url": null,
+        "stargazers_count": 8,
+        "default_branch": "master",
+        "deployments_url": "https://api.github.com/repos/NLeSC/noodles/deployments",
+        "contents_url": "https://api.github.com/repos/NLeSC/noodles/contents/{+path}",
+        "notifications_url": "https://api.github.com/repos/NLeSC/noodles/notifications{?since,all,participating}",
+        "subscribers_count": 8,
+        "keys_url": "https://api.github.com/repos/NLeSC/noodles/keys{/key_id}",
+        "homepage": "http://nlesc.github.io/noodles",
+        "full_name": "NLeSC/noodles",
+        "collaborators_url": "https://api.github.com/repos/NLeSC/noodles/collaborators{/collaborator}",
+        "stargazers_url": "https://api.github.com/repos/NLeSC/noodles/stargazers",
+        "subscribers_url": "https://api.github.com/repos/NLeSC/noodles/subscribers",
+        "merges_url": "https://api.github.com/repos/NLeSC/noodles/merges",
+        "watchers": 8,
+        "compare_url": "https://api.github.com/repos/NLeSC/noodles/compare/{base}...{head}",
+        "network_count": 3,
+        "pushed_at": "2017-11-14T09:41:08Z",
+        "permissions": {
+          "push": false,
+          "admin": false,
+          "pull": true
+        },
+        "description": "Computational workflow engine, making distributed computing in Python easy!",
+        "git_commits_url": "https://api.github.com/repos/NLeSC/noodles/git/commits{/sha}",
+        "clone_url": "https://github.com/NLeSC/noodles.git",
+        "id": 45391130,
+        "commits_url": "https://api.github.com/repos/NLeSC/noodles/commits{/sha}",
+        "name": "noodles",
+        "issue_events_url": "https://api.github.com/repos/NLeSC/noodles/issues/events{/number}",
+        "labels_url": "https://api.github.com/repos/NLeSC/noodles/labels{/name}",
+        "issue_comment_url": "https://api.github.com/repos/NLeSC/noodles/issues/comments{/number}",
+        "forks_count": 3,
+        "has_projects": true,
+        "owner": {
+          "site_admin": false,
+          "following_url": "https://api.github.com/users/NLeSC/following{/other_user}",
+          "repos_url": "https://api.github.com/users/NLeSC/repos",
+          "events_url": "https://api.github.com/users/NLeSC/events{/privacy}",
+          "type": "Organization",
+          "id": 1705862,
+          "subscriptions_url": "https://api.github.com/users/NLeSC/subscriptions",
+          "gravatar_id": "",
+          "followers_url": "https://api.github.com/users/NLeSC/followers",
+          "avatar_url": "https://avatars0.githubusercontent.com/u/1705862?v=4",
+          "starred_url": "https://api.github.com/users/NLeSC/starred{/owner}{/repo}",
+          "login": "NLeSC",
+          "url": "https://api.github.com/users/NLeSC",
+          "organizations_url": "https://api.github.com/users/NLeSC/orgs",
+          "gists_url": "https://api.github.com/users/NLeSC/gists{/gist_id}",
+          "html_url": "https://github.com/NLeSC",
+          "received_events_url": "https://api.github.com/users/NLeSC/received_events"
+        },
+        "has_downloads": true,
+        "subscription_url": "https://api.github.com/repos/NLeSC/noodles/subscription",
+        "issues_url": "https://api.github.com/repos/NLeSC/noodles/issues{/number}",
+        "comments_url": "https://api.github.com/repos/NLeSC/noodles/comments{/number}",
+        "git_refs_url": "https://api.github.com/repos/NLeSC/noodles/git/refs{/sha}",
+        "trees_url": "https://api.github.com/repos/NLeSC/noodles/git/trees{/sha}",
+        "created_at": "2015-11-02T11:42:22Z",
+        "archived": false,
+        "language": "Python",
+        "organization": {
+          "site_admin": false,
+          "following_url": "https://api.github.com/users/NLeSC/following{/other_user}",
+          "repos_url": "https://api.github.com/users/NLeSC/repos",
+          "events_url": "https://api.github.com/users/NLeSC/events{/privacy}",
+          "type": "Organization",
+          "id": 1705862,
+          "subscriptions_url": "https://api.github.com/users/NLeSC/subscriptions",
+          "gravatar_id": "",
+          "followers_url": "https://api.github.com/users/NLeSC/followers",
+          "avatar_url": "https://avatars0.githubusercontent.com/u/1705862?v=4",
+          "starred_url": "https://api.github.com/users/NLeSC/starred{/owner}{/repo}",
+          "login": "NLeSC",
+          "url": "https://api.github.com/users/NLeSC",
+          "organizations_url": "https://api.github.com/users/NLeSC/orgs",
+          "gists_url": "https://api.github.com/users/NLeSC/gists{/gist_id}",
+          "html_url": "https://github.com/NLeSC",
+          "received_events_url": "https://api.github.com/users/NLeSC/received_events"
+        },
+        "archive_url": "https://api.github.com/repos/NLeSC/noodles/{archive_format}{/ref}",
+        "git_url": "git://github.com/NLeSC/noodles.git",
+        "git_tags_url": "https://api.github.com/repos/NLeSC/noodles/git/tags{/sha}"
+      }
+    },
+    "time_end": 1510652955.82342,
+    "time_start": 1510652950.2826138
+  }
+]
+
