@@ -1,4 +1,11 @@
 /* tags */
+html {
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+	height: 100%;
+}
 body {
     font-family: "Times New Roman", Georgia, Serif;
     background: #ffffff;
@@ -6,6 +13,7 @@ body {
     left: 0px;
     margin: 0px;
     padding: 0px;
+	height: 100%;
 }
 a {
 	color: black;
@@ -14,8 +22,12 @@ a {
 /* classes */
 
 /* ids */
+#layout_container {
+	height: 100%;
+    min-height: 100%;
+    position: relative;
+}
 #header {
-	position: relative;
 	top: 0px;
 	left: 0px;
 	background-color: #808080;
@@ -38,7 +50,7 @@ a {
 }
 #footer {
 	position: relative;
-	top: 0px;
+	bottom: 0px;
 	left: 0px;
 	background-color: #808080;
 	width: 100%;
@@ -57,4 +69,12 @@ a {
 	position: absolute;
 	top: 20px;
 	right: 20px;
+}
+#body {
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+	padding: 0px;
+	width: 800px;
+	min-height: calc(100% - 160px);
 }

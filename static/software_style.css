@@ -1,8 +1,13 @@
 .software_name {
     font-size: 2em;
+    padding-top: 20px;
+}
+.software_contributor {
+    font-weight: bold;
 }
 .software_tagLine {
     font-style: italic;
+    padding-top: 20px;
 }
 .software_codeRepository {
 }
@@ -24,11 +29,4 @@
     width: 300px;
 }
 .software_contactPerson {
-}
-
-#body {
-	position: relative;
-    margin: auto;
-	width: 800px;
-	padding: 20px
 }
