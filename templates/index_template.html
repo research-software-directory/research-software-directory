@@ -32,14 +32,22 @@
     </ul>
 </div>
 
+
+
 <script language="Javascript">
+    function search_algo(dict, search_key){
+
+      
+
+      return true
+    }
+
      $("#search").submit(function (event){
         event.preventDefault(); 
         console.log("Search query:",search.input.value)
         results_list = "<ul>"
         for (var i = 0; i <ALL_DATA.length; i++){
-            // if any off the terms are in the list of "discipline" and "expertise"
-            hit = true // if else false
+            hit = search_algo(ALL_DATA[i], search.input.value)
             if(hit==true){
               results_list += "<li>Commits:"+ALL_DATA[i]['commits']+" Name:"+ ALL_DATA[i]['name']+" Tagline:"+ ALL_DATA[i]['tagLine']+"</li>"              
             }
