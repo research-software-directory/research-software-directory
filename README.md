@@ -193,7 +193,7 @@ Since the projects in Zotero are not searchable, find your project below:
 | 27015G02    | Algorithmic Geo-visualization: from Theory to Practice       | Carlos
 | 27015G01    | e-MUSC - Enhancing Multiscale Computing                      | Lourens
 | 27015911    | Real-time detection of neutrinos from the distant Universe   | Ben
-| 27015910    | Improving Open-Source Photogrammetric Workflows              | Willem
+| 27015910    | Improving Open-Source Photogrammetric Workflows              | Elena
 | 27015602    | Diagnosis of active epilepsy in resource-poor setting        | Vincent
 | 27015601    | Enabling Dynamic Services                                    | Niels
 | 27015001    | Detecting anomalous behaviour in the Amsterdam Arena         | Sonja
