@@ -110,7 +110,7 @@ In order to distinguish dataset items from regular journal articles inside Zoter
 _Note that this is inconsistent with the naming scheme in this manual. Datasets will be a new feature in an upcomming Zetore release_
 
 #### Conference poster or presentation
-Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poster` or `Conference presentation`.
+Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poster` or `Conference Presentation`.
 
 #### Workshop or lecture
 Use `Item Type` `Presentation`, set the field `Type` to `Workshop` or `Lecture`
