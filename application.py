@@ -32,8 +32,13 @@ def software_product_page_template(software_id):
     software_dictionary = requests.get(url).json()
     description = software_dictionary.get("description")
     descriptionMarkup = flask.Markup(markdown.markdown(description))
+    return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary, descriptionMarkup=descriptionMarkup)
+
+@app.route('/dynamic/<software_id>/commitsData.js')
+def get_commits_data(software_id):
+    software_id = software_id;
     commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r')))
-    return flask.render_template('software_template.html', template_data=software_dictionary, descriptionMarkup=descriptionMarkup, commits_data=commits_data)
+    return "var commitsData = " + str(commits_data)
 
 @app.template_filter('strftime')
 def strftime(millis):

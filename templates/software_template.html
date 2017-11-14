@@ -8,10 +8,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{url_for('static', filename='read_more.js')}}"></script>
+        <script type="text/javascript" src="/dynamic/{{software_id}}/commitsData.js"></script>
         <title>NLeSC | {{template_data.name}}</title>
-        <script language="JavaScript">
-            var commitsData =  {{commits_data|safe}}
-        </script>
     </head>
 
     <body>
