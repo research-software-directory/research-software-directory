@@ -98,8 +98,8 @@ Registering with a DOI is preferred, however sometimes it may not be worth the e
 *Case 1:*
 * Get a DOI for software via [Zenodo](https://zenodo.org/). Anything with a GitHub repository can be added. If that is not possible, you can upload a (zip) file of the source code or repository instead.
 * Wait until the DOI has been synchronized through Crossref.org (It can take a couple of hours after creating a Zenodo DOI before it is available).
-* Add software to project by its DOI .
-* On the `Info` tab, make sure that the `Item Type` is set to `Computer Program`.
+* Add software to project by its DOI.
+* On the `Info` tab, make sure that the `Item Type` is set to `Computer Program`. _NOTE: The DOI should now have (automagically) appeared at the `Extra` field_
 
 *Case 2:*
 If the program already has a DOI, consider using that.
