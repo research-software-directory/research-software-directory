@@ -172,7 +172,6 @@
     "highlighted": {
       "type": "boolean",
       "description": "Highlighted on software site."
-      }
     },
     "contributor": {
       "items": {

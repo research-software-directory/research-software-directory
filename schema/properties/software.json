@@ -17,7 +17,7 @@
   },
   "tagLine": {
     "sortIndex": 24,
-    "htmlDescription": "One-sentence tagline."
+    "htmlDescription": "One-sentence tagline, shown on RSD overview page"
   },
   "statement": {
     "sortIndex": 25,
@@ -82,11 +82,11 @@
   },
   "programmingLanguage": {
     "sortIndex": 90,
-    "htmlDescription": "<b>Programming languages</b> used in the software or supported by the software.."
+    "htmlDescription": "<b>Programming languages</b> used in the software or supported by the software."
   },
   "tags": {
     "sortIndex": 95,
-    "htmlDescription": "relevant <b>tags</b>"
+    "htmlDescription": "Relevant <b>tags</b>, used for filtering on the RSD overview page."
   },
   "technologyTag": {
     "sortIndex": 100,
