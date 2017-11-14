@@ -12,7 +12,7 @@
         * [Datasets](#datasets)
         * [Conference poster or presentation](#conference-poster-or-presentation)
         * [Workshop, lecture, or demonstration](#workshop-lecture-or-demonstration)
-        * [Other presentation](#presentation)
+        * [Other presentations](#other-presentations)
         * [Manuscript](#manuscript)
         * [Other types](#other-types)
   * [Example: eSalsa](#example-esalsa)
