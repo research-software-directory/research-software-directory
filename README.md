@@ -59,10 +59,10 @@ Items can be added by DOI (preferred), or manually if there is no DOI.
 2. Create a new item:
    * If you have a DOI, click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png). Enter one or more DOI(s), seperated with a space. 
    * Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
-3. Check if the metadata in the `Info` tab is correct.
+3. Check if the metadata in the `Info` tab is correct:
    * In the right-hand panel, select the `Info` tab
-   * Check the `itemType` and `type`.
-   * Depending on the item (see the list below) fill in the `extra` field.
+   * Check the `Item Type` (top of the list)
+   * Depending on the item (see the list below) fill in the `extra` field (near the bottom of the list)
 4. To distiguish our `domain` and `escience` output, please add a tag:
    * In the right-hand panel, select the `Tags` tab
    * Add a tag `domain` or `escience`
@@ -75,7 +75,7 @@ If the day is unknown, use `mm yyyy`, eg `05 2014` for May 2014.
 
 ### Types of output
 Below is a list of types, with a short description.
-Please do not use any of the other types available in Zotero.
+These types correspond to the `Item Type` in Zotero, please do not use any of the other types available.
 If you have an item that doesn't fit, please [open an issue in this GitHub repository](https://github.com/NLeSC/rsd-instruction/issues/new) and we'll figure it out & update this document.
 
 #### Journal papers
@@ -84,25 +84,40 @@ If you do not have a DOI yet, for instance, when the paper is under submission o
 Once you have a DOI, add the paper as `Journal paper` and remove the manuscript entry.
 
 #### Software
-Add software:
-* Get a DOI for software via [Zenodo](https://zenodo.org/).
-* Add software to project by its DOI (Zotero DOI import works through Crossref.org, it can take a couple of hours after
-creating a Zenodo DOI before it is available).
-* Change the item type to `computer program`.
-* Registering with a DOI is preferred, however sometimes it may not be worth the effort if it is for instance very experimental and you're sure it will not be cited. But we still consider this to be project output; anything with a GitHub repository can be added: add a `computer program` item manually, make sure to fill `Title` field and the GitHub URL under `URL`.
+For software, there are two separate cases:
+1. Software that is written by us, and that has a clear separate repository. We have (or can get) a DOI for the software.
+2. External software that we made a (significant) contribution to, or software we cannot (or do not want) to get a separate DOI for.
+Other cases, like bug fixes or minor features, do not have to be added to the RSD.
+
+Registering with a DOI is preferred, however sometimes it may not be worth the effort if it is for instance very experimental and you're sure it will not be cited. 
+
+*Case 1:*
+* Get a DOI for software via [Zenodo](https://zenodo.org/). Anything with a GitHub repository can be added. If that is not possible, you can upload a (zip) file of the source code or repository instead.
+* Wait until the DOI has been synchronized through Crossref.org (It can take a couple of hours after creating a Zenodo DOI before it is available).
+* Add software to project by its DOI .
+* On the `Info` tab, make sure that the `Item Type` is set to `Computer Program`.
+
+*Case 2:*
+If the program already has a DOI, consider using that.
+Possibily, the software can do a new release, and can get a separate DOI for that version.
+
+* add a new item with `Computer Program` as `Item Type`.
+* On the `Info` tab, fill in the `Title` field  and set the `URL` to the Github URL.
+* Also on the `Info` tab, Add `type: feature` to the `Extra` field.
 
 #### Datasets
-In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field:
-> `itemType: Dataset`
+In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field: `itemType: Dataset`.
+_Note that this is inconsistent with the naming scheme in this manual. Datasets will be a new feature in an upcomming Zetore release_
 
 #### Conference poster or presentation
-Use itemType `Presentation`, add `type: Poster` for posters.
+Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poster` or `Conference presentation`.
 
 #### Workshop or lecture
-Use itemType `Presentation`, add `type: Workshop` or `type: Lecture`
+Use `Item Type` `Presentation`, set the field `Type` to `Workshop` or `Lecture`
 
 #### Presentation
 Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations. If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
+Use `Item Type` `Presentation`.
 
 #### Manuscript
 These are peer reviewed publications in submission, under review, or in preparation.
@@ -113,6 +128,7 @@ Use itemType `Manuscript`, add `extra`:
 #### Other types
 Please choose the most appropriate type from
 `Blogpost`, `Book`, `Book Section`, `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio Broadcast`, `Thesis`, `TV Broadcast`, `Video Recording`, `Webpage`.
+And make a best-efford at filling out the other metadata on the `Info` tab.
 
 ## Example: eSalsa
 ![esalsa_example](https://raw.githubusercontent.com/Tommos0/files/master/esalsa_example.png)
