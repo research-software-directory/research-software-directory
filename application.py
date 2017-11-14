@@ -38,5 +38,9 @@ def strftime(millis):
     result = datetime.datetime.fromtimestamp(millis / 1e3).strftime(format)
     return result
 
+@app.template_filter('checkcontributor')
+def checkcontributor(contributor):
+    return [c if isinstance(c, str) else c['name'] for c in contributor]
+
 if __name__ == '__main__':
     app.run(debug=True)
