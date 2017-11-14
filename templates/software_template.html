@@ -1,58 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='software_style.css') }}">
-    <title>NLeSC | {{template_data.name}}</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='common_style.css')}}">
+        <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='software_style.css')}}">
+        <title>NLeSC | {{template_data.name}}</title>
+    </head>
 
-<body>
+    <body>
 
-<div class="layout" id="data_display">
-    <div class="software_name">{{template_data.name}}</div>
-    <a href="/">Go back</a>
-    <div class="software_tagLine">{{template_data.tagLine}}</div>
-    <div class="software_startDate">{{template_data.startDate}}</div>
-    <div class="software_description">{{descriptionMarkup}}</div>
-    <div class="software_contactPerson">{{template_data.contactPerson}}</div>
-    <div class="software_codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
-    <div class="software_website"><a href={{template_data.website}} target="_blank">website</a></div>
-    <div class="software_downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
-    <div class="software_documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
-    <div class="software_doi">{{template_data.doi}}</div>
-    <div class="software_programmingLanguage">
-        programmingLanguage(s):
-        <ul>
-            {% for programmingLanguage in template_data.programmingLanguage %}
-              <li>{{ programmingLanguage }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="software_owner">
-        owner(s):
-        <ul>
-            {% for owner in template_data.owner %}
-              <li>{{ owner }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="software_involvedOrganization">
-        involvedOrganization(s):
-        <ul>
-            {% for involvedOrganization in template_data.involvedOrganization %}
-              <li>{{ involvedOrganization }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="software_technologyTag">
-        technologyTag(s):
-        <ul>
-            {% for technologyTag in template_data.technologyTag %}
-              <li>{{ technologyTag }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+        <div id="header">
+            <div id="header_logo">
+                <a href="https://www.esciencecenter.nl" target="_blank">
+                    <img src="{{url_for('static', filename='logo.png')}}">
+                </a>
+            </div>
+            <div id="header_links">
+                <a href="/">Find software</a>
+                <a href="/">About the platform</a>
+            </div>
+        </div>
 
-</body>
+        <div id="body">
+            <div class="software_name">{{template_data.name}}</div>
+            <div class="software_tagLine">{{template_data.tagLine}}</div>
+            <div class="software_startDate">{{template_data.startDate}}</div>
+            <div class="software_description">{{descriptionMarkup}}</div>
+            <div class="software_contactPerson">{{template_data.contactPerson}}</div>
+            <div class="software_codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
+            <div class="software_website"><a href={{template_data.website}} target="_blank">website</a></div>
+            <div class="software_downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
+            <div class="software_documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
+            <div class="software_doi">{{template_data.doi}}</div>
+            <div class="software_programmingLanguage">
+                programmingLanguage(s):
+                <ul>
+                    {% for programmingLanguage in template_data.programmingLanguage %}
+                      <li>{{ programmingLanguage }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="software_owner">
+                owner(s):
+                <ul>
+                    {% for owner in template_data.owner %}
+                      <li>{{ owner }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="software_involvedOrganization">
+                involvedOrganization(s):
+                <ul>
+                    {% for involvedOrganization in template_data.involvedOrganization %}
+                      <li>{{ involvedOrganization }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="software_technologyTag">
+                technologyTag(s):
+                <ul>
+                    {% for technologyTag in template_data.technologyTag %}
+                      <li>{{ technologyTag }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div id="footer">
+            <div id="footer_logo">
+                <a href="https://www.esciencecenter.nl" target="_blank">
+                    <img src="{{url_for('static', filename='logo.png')}}">
+                </a>
+            </div>
+            <div id="footer_links">
+                <a href="/">Find software</a>
+                <a href="/">About the platform</a>
+            </div>
+        </div>
+
+    </body>
 </html>

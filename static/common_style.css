@@ -1,0 +1,60 @@
+/* tags */
+body {
+    font-family: "Times New Roman", Georgia, Serif;
+    background: #ffffff;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+a {
+	color: black;
+}
+
+/* classes */
+
+/* ids */
+#header {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	background-color: #808080;
+	width: 100%;
+	height: 80px;
+}
+#header_logo {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+#header_logo img {
+	width: 198px;
+	height: 33px;
+}
+#header_links {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+#footer {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	background-color: #808080;
+	width: 100%;
+	height: 80px;
+}
+#footer_logo {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+#footer_logo img {
+	width: 198px;
+	height: 33px;
+}
+#footer_links {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
