@@ -10,7 +10,7 @@
         * [Software](#software)
         * [Datasets](#datasets)
         * [Conference poster or presentation](#conference-poster-or-presentation)
-        * [Workshop or lecture](#workshop-or-lecture)
+        * [Workshop, lecture, or demonstration](#workshop-lecture-or-demonstration)
         * [Presentation](#presentation)
         * [Manuscript](#manuscript)
         * [Other types](#other-types)
@@ -112,8 +112,8 @@ _Note that this is inconsistent with the naming scheme in this manual. Datasets 
 #### Conference poster or presentation
 Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poster` or `Conference Presentation`.
 
-#### Workshop or lecture
-Use `Item Type` `Presentation`, set the field `Type` to `Workshop` or `Lecture`
+#### Workshop, lecture, or demonstration
+Use `Item Type` `Presentation`, set the field `Type` to `Workshop`, `Lecture`, or `Demonstration`.
 
 #### Presentation
 Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations. If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
