@@ -1,6 +1,7 @@
 import flask
 import requests
 import markdown
+import random
 
 app = flask.Flask(__name__)
 
@@ -17,7 +18,10 @@ def index():
     url = "http://admin.research-software.nl/api/software"
     all_software_dictionary = requests.get(url).json()
     template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
-    return flask.render_template('index_template.html', template_data = all_software_dictionary, template_data_json = template_data_json)
+    random_integer = random.randint(1,100)
+    return flask.render_template('index_template.html', template_data = all_software_dictionary,
+                                                        template_data_json = template_data_json,
+                                                        random_integer = str(random_integer))
 
 @app.route('/software/<software_id>')
 def software_product_page_template(software_id):
