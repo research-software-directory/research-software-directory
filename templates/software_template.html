@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='common_style.css')}}">
         <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='software_style.css')}}">
+        <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='read_more_style.css')}}">
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='read_more.js')}}"></script>
         <title>NLeSC | {{template_data.name}}</title>
         <script language="JavaScript">
             var commitsData =  {{commits_data|safe}}
@@ -38,34 +41,44 @@
                 {% if template_data.startDate %}
                 <div class="startDate">{{template_data.startDate}}</div>
                 {% endif %}
-                {% if template_data.name %}
-                <div class="software_commitsPlot" id="commitsPlot">Commits:</div>
-                {% endif %}
                 {% if template_data.tagLine %}
                 <div class="tagLine">{{template_data.tagLine}}</div>
                 {% endif %}
+
+                <div class="box">
+                    <div class="box_left">
+                        {% if template_data.codeRepository %}
+                        <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
+                        {% endif %}
+                        {% if template_data.website %}
+                        <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
+                        {% endif %}
+                        {% if template_data.downloadUrl %}
+                        <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
+                        {% endif %}
+                        {% if template_data.documentationUrl %}
+                        <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="box_right">
+                        {% if template_data.name %}
+                        <div class="software_commitsPlot" id="commitsPlot"></div>
+                        {% endif %}
+                    </div>
+                </div>
+
                 {% if template_data.description %}
                 <div class="description">{{descriptionMarkup}}</div>
                 {% endif %}
                 {% if template_data.contactPerson %}
                 <div class="contactPerson">contactPerson: {{template_data.contactPerson}}</div>
                 {% endif %}
-                {% if template_data.codeRepository %}
-                <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
-                {% endif %}
-                {% if template_data.website %}
-                <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
-                {% endif %}
-                {% if template_data.downloadUrl %}
-                <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
-                {% endif %}
-                {% if template_data.documentationUrl %}
-                <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
-                {% endif %}
+
+                <div class="divider"></div>
+
                 {% if template_data.doi %}
                 <div class="doi">{{template_data.doi}}</div>
                 {% endif %}
-
                 {% if template_data.license %}
                 <div class="license">license(s): {{", ".join(template_data.license)}}</div>
                 {% endif %}
@@ -78,6 +91,9 @@
                 {% if template_data.expertise %}
                 <div class="expertise">expertise(s): {{", ".join(template_data.expertise)}}</div>
                 {% endif %}
+
+                <div class="divider"></div>
+
                 {% if template_data.status %}
                 <div class="status">status: {{template_data.status}}</div>
                 {% endif %}
@@ -87,6 +103,8 @@
                 {% if template_data.updatedAt %}
                 <div class="updatedAt">updatedAt: {{template_data.updatedAt|strftime}}</div>
                 {% endif %}
+
+                <div class="divider"></div>
 
                 {% if template_data.programmingLanguage %}
                 <div class="programmingLanguage">

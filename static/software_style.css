@@ -1,3 +1,6 @@
+/* tags */
+
+/* classes */
 .name {
     font-size: 2em;
     padding-top: 20px;
@@ -35,3 +38,26 @@
 .contactPerson {
 }
 
+.divider {
+     border-top: 1px solid #000000;
+     padding: 5px;
+}
+.box {
+	background-color: #dddddd;
+    padding: 20px;
+    margin: auto;
+}
+.box_left {
+	display: inline-block;
+}
+.box_right {
+	display: inline-block;
+}
+.morecontent span {
+    display: none;
+}
+.morelink {
+	display: inline-block;
+}
+
+/* ids */

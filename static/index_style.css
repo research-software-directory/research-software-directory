@@ -1,5 +1,5 @@
 .index_title {
-    font-size: 2em;
+    font-size: 4em;
 }
 .search_bar {
     position:relative;
@@ -8,17 +8,28 @@
     width:100%;
 }
 .search_form {
-    height:30px;
     font-size:16pt;
     position:relative;
-    float:left;
+    float:top;
 }
 .search_form.input {
-    width:200px;
+    width:500px;
+    height: 30px;
+}
+.search_form.submit{
+    height: 30px;
 }
 .search_results{
     position: relative;
-    float: above;
+    float: bottom;
     width: 100%;
     visibility:hidden;
+}
+.layout.filter{
+    padding: 20px;
+    position: relative;
+    float: left;
+    text-align: left;
+    border-style: solid;
+    border-width: 1px;
 }
