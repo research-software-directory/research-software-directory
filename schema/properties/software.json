@@ -84,6 +84,10 @@
     "sortIndex": 90,
     "htmlDescription": "<b>Programming languages</b> used in the software or supported by the software.."
   },
+  "tags": {
+    "sortIndex": 95,
+    "htmlDescription": "relevant <b>tags</b>"
+  },
   "technologyTag": {
     "sortIndex": 100,
     "htmlDescription": "<b>Keywords of</b> related or relevant <b>technologies.</b>"
