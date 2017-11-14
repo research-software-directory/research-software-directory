@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { IResource } from '../../interfaces/resource';
 import * as classNames from 'classnames';
 import { ISoftware } from '../../interfaces/resources/software';
-import {IProject} from '../../interfaces/resources/project';
+import { IProject } from '../../interfaces/resources/project';
 
 interface IProps {
   item: IResource;
