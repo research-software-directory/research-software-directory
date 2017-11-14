@@ -6,12 +6,12 @@
      * [Adding items](#adding-items)
         * [About dates](#about-dates)
      * [Types of output](#types-of-output)
-        * [Journal papers](#journal-papers)
+        * [Papers](#journal-papers)
         * [Software](#software)
         * [Datasets](#datasets)
         * [Conference poster or presentation](#conference-poster-or-presentation)
         * [Workshop, lecture, or demonstration](#workshop-lecture-or-demonstration)
-        * [Presentation](#presentation)
+        * [Other presentation](#presentation)
         * [Manuscript](#manuscript)
         * [Other types](#other-types)
   * [Example: eSalsa](#example-esalsa)
@@ -78,10 +78,11 @@ Below is a list of types, with a short description.
 These types correspond to the `Item Type` in Zotero, please do not use any of the other types available.
 If you have an item that doesn't fit, please [open an issue in this GitHub repository](https://github.com/NLeSC/rsd-instruction/issues/new) and we'll figure it out & update this document.
 
-#### Journal papers
+#### Papers
 These are peer reviewed papers, and typically have a DOI already.
-If you do not have a DOI yet, for instance, when the paper is under submission or in preparation, add it as a `Manuscript` first.
-Once you have a DOI, add the paper as `Journal paper` and remove the manuscript entry.
+If you do not have a DOI yet, for instance, when the paper is under submission or in preparation, add it as a [Manuscript](#manuscript) first.
+Once you have a DOI, add the paper as `Journal Article` or `Conference Paper` and remove the manuscript entry.
+Depending on the domain, there may be differences between the two categories, please chose the one most representative for your paper.
 
 #### Software
 For software, there are two separate cases:
@@ -115,7 +116,7 @@ Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poste
 #### Workshop, lecture, or demonstration
 Use `Item Type` `Presentation`, set the field `Type` to `Workshop`, `Lecture`, or `Demonstration`.
 
-#### Presentation
+#### Other Presentations
 Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations. If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
 Use `Item Type` `Presentation`.
 
