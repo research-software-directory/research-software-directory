@@ -17,12 +17,16 @@
   },
   "tagLine": {
     "sortIndex": 24,
+    "htmlDescription": "One-sentence tagline."
+  },
+  "statement": {
+    "sortIndex": 25,
     "htmlDescription": "<b>Software statement</b>."
   },
   "description": {
     "markdown": true,
     "long": true,
-    "sortIndex": 25,
+    "sortIndex": 26,
     "htmlDescription": "<b>What</b> does it do?"
   },
   "contactPerson": {
