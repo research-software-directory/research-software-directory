@@ -35,6 +35,9 @@
                 {% if template_data.startDate %}
                 <div class="startDate">{{template_data.startDate}}</div>
                 {% endif %}
+                {% if template_data.name %}
+                <div class="software_commitsPlot" id="commitsPlot">Commits:</div>
+                {% endif %}
                 {% if template_data.tagLine %}
                 <div class="tagLine">{{template_data.tagLine}}</div>
                 {% endif %}
@@ -137,5 +140,9 @@
             </div>
         </div>
 
+    <script src="{{ url_for('static',filename='plotly-latest.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='plots.js') }}"></script>
+
     </body>
 </html>
+

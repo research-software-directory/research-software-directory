@@ -23,6 +23,10 @@
 }
 .startDate {
 }
+.software_commitsPlot {
+    height: 150px;
+    width: 500px;
+}
 .description {
 }
 .description img {
@@ -30,3 +34,4 @@
 }
 .contactPerson {
 }
+
