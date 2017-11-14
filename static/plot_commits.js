@@ -9,9 +9,11 @@ function plot_commits(data) {
             ticks: 'outside',
             tickangle: 30,
             nticks: 12
-            }
+            },
+		paper_bgcolor: "rgba(0,0,0,0)",
+		plot_bgcolor: "rgba(0,0,0,0)"
         }
-    Plotly.newPlot(plotid, data, layout, {displayModeBar: false})
+    Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true})
     }
 
 plot_commits(commitsData);
