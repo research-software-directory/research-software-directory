@@ -264,17 +264,10 @@
       "description": "Projects the software is used in.",
       "type": "array",
       "items": {
-        "anyOf": [
-          {
-            "reference": "project"
-          },
-          {
-            "format": "uri",
-            "description": "ID of the project. e.g., emetabolomics.",
-            "type": "string",
-            "resType": "project"
-          }
-        ]
+        "format": "uri",
+        "description": "ID of the project. e.g., emetabolomics.",
+        "type": "string",
+        "resType": "project"
       }
     },
     "outputOfProject": {

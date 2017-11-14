@@ -17,7 +17,7 @@
   },
   "tagLine": {
     "sortIndex": 24,
-    "htmlDescription": "One-sentence tagline, shown on RSD overview page"
+    "htmlDescription": "One-sentence <b>tagline</b>, shown on RSD overview page"
   },
   "statement": {
     "sortIndex": 25,
