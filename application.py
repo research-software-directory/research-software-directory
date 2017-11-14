@@ -40,6 +40,13 @@ def get_commits_data(software_id):
     commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r')))
     return "var commitsData = " + str(commits_data)
 
+@app.route('/dynamic/data.js')
+def get_data():
+    url = "http://admin.research-software.nl/api/software"
+    all_software_dictionary = requests.get(url).json()
+    template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
+    return "var ALL_DATA = "+template_data_json
+
 @app.template_filter('strftime')
 def strftime(millis):
     format = "%Y-%m-%d %H:%M:%S"

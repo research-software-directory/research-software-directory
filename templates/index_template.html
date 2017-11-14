@@ -6,14 +6,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <title>NLeSC | All Software</title>
 
-    <script language="JavaScript">
-      var ALL_DATA =  {{template_data_json|safe}}
-    </script>
+
+    <script type="text/javascript" src="/dynamic/data.js"></script>
+
 </head>
 <body>
 
 <div class="search_results">
-
 </div>
 
 <div class="search_bar">
@@ -24,7 +23,7 @@
 </div>
 
 
-<div class="layout" id="filter">
+<div class="layout" id="filter" style="border-style: solid; border-width: 1px; width:270px;">
   <input type="checkbox">Big data</input><br>
   <input type="checkbox">Cloud computing</input><br>
   <input type="checkbox">Image processing</input><br>
@@ -36,6 +35,7 @@
 
 
 <div class="layout" id="data_gems">
+
 
 </div>
 
@@ -70,7 +70,7 @@
      $("#input").on("click", function(){
         if($("#input").val()=="Search for software, people, technologies, etc."){
           $("#input").val("")
-        }        
+        }    
      });
 
      $("#search").submit(function (event){
