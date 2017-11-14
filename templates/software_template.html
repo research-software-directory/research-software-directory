@@ -5,6 +5,9 @@
         <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='common_style.css')}}">
         <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='software_style.css')}}">
         <title>NLeSC | {{template_data.name}}</title>
+        <script language="JavaScript">
+            var commitsData =  {{commits_data|safe}}
+        </script>
     </head>
 
     <body>
@@ -141,7 +144,7 @@
         </div>
 
     <script src="{{ url_for('static',filename='plotly-latest.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='plots.js') }}"></script>
+    <script src="{{ url_for('static',filename='plot_commits.js') }}"></script>
 
     </body>
 </html>

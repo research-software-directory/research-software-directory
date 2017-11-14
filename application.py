@@ -3,6 +3,8 @@ import requests
 import markdown
 import random
 import datetime
+import json
+import plot_commits
 
 app = flask.Flask(__name__)
 
@@ -30,7 +32,8 @@ def software_product_page_template(software_id):
     software_dictionary = requests.get(url).json()
     description = software_dictionary.get("description")
     descriptionMarkup = flask.Markup(markdown.markdown(description))
-    return flask.render_template('software_template.html', template_data = software_dictionary, descriptionMarkup = descriptionMarkup)
+    commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r')))
+    return flask.render_template('software_template.html', template_data=software_dictionary, descriptionMarkup=descriptionMarkup, commits_data=commits_data)
 
 @app.template_filter('strftime')
 def strftime(millis):
