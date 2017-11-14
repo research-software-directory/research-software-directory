@@ -1,0 +1,13 @@
+.search_bar {
+    position : static;
+    width : 50px;
+}
+.search_form {
+    height:30px;
+    font-size:16pt;
+    position:relative;
+    float:left;
+}
+.search_form.input {
+    width:200px;
+}
