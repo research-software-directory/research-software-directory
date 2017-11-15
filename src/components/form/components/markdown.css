@@ -50,3 +50,12 @@
     background-color: rgba(255, 255, 255, 0.1);
     padding: 2em;
 }
+
+.markdown_input_label ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.markdown_input_label li {
+    line-height: 2.0em;
+}

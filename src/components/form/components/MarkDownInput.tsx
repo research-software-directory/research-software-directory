@@ -34,7 +34,7 @@ export class MarkDownInput extends React.PureComponent<IProps, IState> {
   render() {
     return (
         <Segment>
-          <p dangerouslySetInnerHTML={{__html: this.props.label}}/>
+          <p className="markdown_input_label" dangerouslySetInnerHTML={{__html: this.props.label}}/>
           <TextArea
             autoHeight={true}
             className={this.props.className || ''}
