@@ -5,10 +5,11 @@ function plot_commits(data) {
         margin: {l:20,r:50,b:50,t:20},
         xaxis: {
             type: 'date',
-            autotick: true,
+            autotick: false,
             ticks: 'outside',
-            tickangle: 30,
-            nticks: 12
+            tick0: '2000-01-15',
+            dtick: 'M12',
+            tickformat: "%Y"
             },
 		paper_bgcolor: "rgba(0,0,0,0)",
 		plot_bgcolor: "rgba(0,0,0,0)"
