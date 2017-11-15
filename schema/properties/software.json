@@ -1,4 +1,12 @@
 {
+  "highlighted": {
+    "sortIndex": 5,
+    "htmlDescription": "<b>Highlighted</b> on software site (RSD)"
+  },
+  "published": {
+    "sortIndex": 6,
+    "htmlDescription": "<b>Published</b> on software site (RSD)"
+  },
   "name": {
     "sortIndex": 10,
     "htmlDescription": "Human readable <b>name</b>"

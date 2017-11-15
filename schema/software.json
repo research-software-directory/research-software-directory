@@ -173,6 +173,10 @@
       "type": "boolean",
       "description": "Highlighted on software site."
     },
+    "published": {
+      "type": "boolean",
+      "description": "Published on RSD site."
+    },
     "contributor": {
       "items": {
         "anyOf": [
