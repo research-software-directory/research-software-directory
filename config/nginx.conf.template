@@ -3,8 +3,8 @@ upstream flask {
 }
 
 server {
-        listen 127.0.0.1:8000;
-        server_name 127.0.0.1;
+        listen 0.0.0.0:8000;
+        server_name 0.0.0.0;
         client_max_body_size 5M;
         location / {
                 include uwsgi_params;
