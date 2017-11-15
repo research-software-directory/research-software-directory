@@ -82,6 +82,10 @@
       "type": "string",
       "format": "email"
     },
+    "organization": {
+      "description": "Organization of the person",
+      "type": "string"
+    },
     "nlescWebsite": {
       "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/profile/ing.-stefan-verhoeven).",
       "type": "string",

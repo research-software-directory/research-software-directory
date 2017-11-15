@@ -409,6 +409,14 @@
         "type": "string",
         "resType": "software"
       }
+    },
+    "testimonial": {
+      "type": "string",
+      "description": "Testimonial / recommendation (e.g. 'Noodles, the best thing since sliced bread')"
+    },
+    "testimonialBy": {
+      "type": "string",
+      "description": "Testimonial written by (e.g. 'Stefan Verhoeven, Netherlands eScience Center')"
     }
   },
   "additionalProperties": false
