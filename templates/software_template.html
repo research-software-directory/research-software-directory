@@ -68,7 +68,27 @@
                 </div>
 
                 {% if template_data.statement %}
-                <div class="statement">{{statementMarkup}}</div>
+                <div class="statement">
+                    <div class="subtitle">Why {{template_data.name}}?</div>
+                    {{statementMarkup}}
+                </div>
+                {% endif %}
+
+                <div class="divider"></div>
+
+                {% if template_data.involvedOrganization %}
+                <div class="involvedOrganization">
+                    <div class="subtitle">In collaboration with</div>
+                    <div class="float_container">
+                        {% for involvedOrganization in template_data.involvedOrganization %}
+                        {% if organisation_logos[involvedOrganization] %}
+                        <div class="float_item"><img src="{{url_for('static', filename='logos/'+organisation_logos[involvedOrganization])}}"></div>
+                        {% else %}
+                        <div class="float_item">{{involvedOrganization}}</div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
                 {% endif %}
 
                 <div class="divider"></div>
@@ -93,23 +113,6 @@
                 {% endif %}
                 {% if template_data.updatedAt %}
                 <div class="updatedAt">updatedAt: {{template_data.updatedAt|strftime}}</div>
-                {% endif %}
-
-                <div class="divider"></div>
-
-                {% if template_data.involvedOrganization %}
-                <div class="involvedOrganization">
-                    <div class="subtitle">In collaboration with</div>
-                    <div class="float_container">
-                        {% for involvedOrganization in template_data.involvedOrganization %}
-                        {% if organisation_logos[involvedOrganization] %}
-                        <div class="float_item"><img src="{{url_for('static', filename='logos/'+organisation_logos[involvedOrganization])}}"></div>
-                        {% else %}
-                        <div class="float_item">{{involvedOrganization}}</div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
                 {% endif %}
 
                 <div class="divider"></div>
