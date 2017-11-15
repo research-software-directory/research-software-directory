@@ -11,7 +11,7 @@
 }
 .subtitle{
     font-size: 1.5em;
-    font-weight: bold;
+    text-align: center;
 }
 .contributor {
     font-weight: bold;
@@ -67,13 +67,16 @@
 }
 
 .divider {
-     border-top: 1px solid #000000;
+     border-top: 1px solid #dddddd;
      padding: 5px;
+     margin-top: 10px;
+     margin-bottom: 10px;
 }
 .box {
 	background-color: #dddddd;
     padding: 20px;
-    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .box_left {
 	display: inline-block;
