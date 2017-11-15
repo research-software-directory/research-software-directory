@@ -18,7 +18,7 @@
             <div id="header">
                 <div id="header_logo">
                     <a href="https://www.esciencecenter.nl" target="_blank">
-                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
+                        <img src="{{url_for('static', filename='logos/nlesc.jpg')}}">
                     </a>
                 </div>
                 <div id="header_links">
@@ -90,15 +90,6 @@
                 {% if template_data.expertise %}
                 <div class="expertise">expertise(s): {{", ".join(template_data.expertise)}}</div>
                 {% endif %}
-
-                <div class="divider"></div>
-
-                {% if template_data.status %}
-                <div class="status">status: {{template_data.status}}</div>
-                {% endif %}
-                {% if template_data.createdAt %}
-                <div class="createdAt">createdAt: {{template_data.createdAt|strftime}}</div>
-                {% endif %}
                 {% if template_data.updatedAt %}
                 <div class="updatedAt">updatedAt: {{template_data.updatedAt|strftime}}</div>
                 {% endif %}
@@ -107,7 +98,7 @@
 
                 {% if template_data.involvedOrganization %}
                 <div class="involvedOrganization">
-                    <div class="subtitle">Used by researchers at</div>
+                    <div class="subtitle">Developed in collaboration with</div>
                     <div class="float_container">
                         {% for involvedOrganization in template_data.involvedOrganization %}
                         {% if organisation_logos[involvedOrganization] %}
@@ -157,7 +148,7 @@
             <div id="footer">
                 <div id="footer_logo">
                     <a href="https://www.esciencecenter.nl" target="_blank">
-                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
+                        <img src="{{url_for('static', filename='logos/nlesc.jpg')}}">
                     </a>
                 </div>
                 <div id="footer_links">
