@@ -416,7 +416,16 @@
     },
     "testimonialBy": {
       "type": "string",
-      "description": "Testimonial written by (e.g. 'Stefan Verhoeven, Netherlands eScience Center')"
+      "description": "Testimonial written by (e.g. 'John Doe, University of Harderwijk')"
+    },
+    "blogPosts": {
+      "description": "Blog posts about the software.",
+      "type": "array",
+      "items": {
+        "format": "uri",
+        "description": "URL where post is located.",
+        "type": "string"
+      }
     }
   },
   "additionalProperties": false
