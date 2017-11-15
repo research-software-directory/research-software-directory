@@ -40,8 +40,10 @@ a {
 	left: 20px;
 }
 #header_logo img {
-	width: 198px;
+	width: auto;
 	height: 33px;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 #header_links {
 	position: absolute;
@@ -62,8 +64,10 @@ a {
 	left: 20px;
 }
 #footer_logo img {
-	width: 198px;
+	width: auto;
 	height: 33px;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 #footer_links {
 	position: absolute;
