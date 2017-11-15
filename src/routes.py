@@ -46,7 +46,9 @@ def get_routes(service_controller, db):
             'expertise': software.data.get('expertise'),
             'mentions': randint(0, 50),
             'commits': randint(0, 3000),
-            'lastUpdate': int(time.time()) - randint(0, 3600*24*365)
+            'lastUpdate': int(time.time()) - randint(0, 3600*24*365),
+            'highlighted': software.data.get('highlighted') or False,
+            'published': software.data.get('published') or False
         } for software in resources]
         return result, 200
 
