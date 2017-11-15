@@ -6,7 +6,7 @@ import datetime
 import json
 import plot_commits
 
-app = flask.Flask(__name__)
+app = application = flask.Flask(__name__)
 
 #def json_dumps(json_object):
 #    json_dump = flask.json.dumps(json_object,
