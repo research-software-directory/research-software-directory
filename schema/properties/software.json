@@ -11,6 +11,16 @@
     "sortIndex": 10,
     "htmlDescription": "Human readable <b>name</b>"
   },
+  "tagLine": {
+    "sortIndex": 11,
+    "htmlDescription": "One-sentence <b>tagline</b>, shown on RSD overview page"
+  },
+  "statement": {
+    "sortIndex": 12,
+    "markdown": true,
+    "long": true,
+    "htmlDescription": "<p><b>Software statement</b> (in Markdown). <br />For <i>(users)</i> that <i>(need)</i>, <i>(name of software)</i> is the <i>(point of differentiation)</i> among all <i>(frame of reference)</i> because <i>(support your claim)</i></p> Example software statement Xenon: <br /><i>For distributed computing developers that would like to use different file transfer protocols and scheduling systems on remote machines, without having to learn and implement many different APIs, Xenon provides an easy-to-use interface that is successfully used in many eScience tools and projects.</i>"
+  },
   "githubid": {
     "sortIndex": 20,
     "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)"
@@ -21,19 +31,13 @@
   },
   "startDate": {
     "sortIndex": 22,
-    "htmlDescription": "<b>Start date</b> of development."
-  },
-  "tagLine": {
-    "sortIndex": 24,
-    "htmlDescription": "One-sentence <b>tagline</b>, shown on RSD overview page"
-  },
-  "statement": {
-    "sortIndex": 25,
-    "htmlDescription": "<b>Software statement</b>."
+    "htmlDescription": "<b>Start date</b> of development.",
+    "editable": false
   },
   "description": {
     "markdown": true,
     "long": true,
+    "editable": false,
     "sortIndex": 26,
     "htmlDescription": "<b>What</b> does it do?"
   },
@@ -74,11 +78,13 @@
   },
   "publications": {
     "sortIndex": 75,
-    "htmlDescription": "<b>Publications</b> based on software."
+    "htmlDescription": "<b>Publications</b> based on software.",
+    "editable": false
   },
   "competence": {
     "sortIndex": 80,
-    "htmlDescription": "NLeSC core <b>competences</b> associated to the software."
+    "htmlDescription": "NLeSC core <b>competences</b> associated to the software.",
+    "editable": false
   },
   "discipline": {
     "sortIndex": 81,
@@ -86,7 +92,8 @@
   },
   "expertise": {
     "sortIndex": 82,
-    "htmlDescription": "NLeSC <b>expertises</b> associated to the software."
+    "htmlDescription": "NLeSC <b>expertises</b> associated to the software.",
+    "editable": false
   },
   "programmingLanguage": {
     "sortIndex": 90,
@@ -115,6 +122,10 @@
   "website": {
     "sortIndex": 140,
     "editable": false
+  },
+  "mainUrl": {
+    "sortIndex": 145,
+    "htmlDescription": "<b>Main link</b>, URL behind the big button on software page."
   },
   "codeRepository": {
     "sortIndex": 150,
