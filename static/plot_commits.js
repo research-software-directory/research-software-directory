@@ -2,7 +2,7 @@ function plot_commits(data) {
     var plotid = document.getElementById("commitsPlot");
     var layout = {
         autosize: true,
-        margin: {l:20,r:50,b:50,t:20},
+        margin: {l:20,r:50,b:40,t:20},
         xaxis: {
             type: 'date',
             autotick: false,
@@ -17,7 +17,16 @@ function plot_commits(data) {
     Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true});
     var update = {
         "marker.color": "rgb(100,100,100)"
-    };
+        };
     Plotly.restyle(plotid, update);
-}
-plot_commits(commitsData);
+    }
+
+
+var statid = document.getElementById("commitsStat");
+if ('error' in commitsData) {
+    statid.innerHTML = commitsData['error'];
+    }
+else {
+    plot_commits(commitsData['plot']);
+    statid.innerHTML = commitsData['total'] + ' commits | Last update: ' + commitsData['last'];
+    }
