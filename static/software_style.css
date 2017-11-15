@@ -2,7 +2,7 @@
 
 /* classes */
 .name {
-    font-size: 2em;
+    font-size: 3em;
     padding-top: 20px;
 }
 .contributor {
@@ -65,6 +65,7 @@
     width: 300px;
 }
 .contactPerson {
+    text-decoration: underline;
 }
 
 .divider {

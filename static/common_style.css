@@ -21,12 +21,15 @@ a {
 
 /* classes */
 .title{
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
 }
 .subtitle{
-    font-size: 1.5em;
+    font-size: 2em;
     text-align: center;
+}
+.subsubtitle{
+    font-size: 1.5em;
 }
 
 /* ids */
