@@ -1,3 +1,7 @@
+.main_form textarea {
+    min-height: 150px;
+}
+
 .markdown ol {
     list-style-type: decimal;
     list-style-position: inside;
