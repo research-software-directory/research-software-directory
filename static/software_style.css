@@ -77,11 +77,14 @@
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    height: 150px;
 }
 .box_left {
+    float: left;
 	display: inline-block;
 }
 .box_right {
+    float: right;
 	display: inline-block;
 }
 .morecontent span {

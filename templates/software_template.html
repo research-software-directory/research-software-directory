@@ -69,12 +69,12 @@
                 {% if template_data.description %}
                 <div class="description">{{descriptionMarkup}}</div>
                 {% endif %}
-                {% if template_data.contactPerson %}
-                <div class="contactPerson">contactPerson: {{template_data.contactPerson}}</div>
-                {% endif %}
 
                 <div class="divider"></div>
 
+                {% if template_data.contactPerson %}
+                <div class="contactPerson">contactPerson: {{template_data.contactPerson}}</div>
+                {% endif %}
                 {% if template_data.doi %}
                 <div class="doi">DOI: <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a></div>
                 {% endif %}
