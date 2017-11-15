@@ -5,6 +5,7 @@
   * [Zotero](#zotero)
      * [Open project](#open-project)
      * [Adding items](#adding-items)
+        * [About names](#about-names)
         * [About dates](#about-dates)
      * [Types of output](#types-of-output)
         * [Papers](#journal-papers)
@@ -59,6 +60,7 @@ If you have papers that are not directly connected to a project, but which are l
 
 ### Adding items
 Items can be added by DOI (preferred), or manually if there is no DOI.
+Most entry boxes supply a dropdown menu with suggestions after typing a few letters.
 
 1. Synchronize with the Zotero server (top right of the window, the reload button)
 2. Create a new item:
@@ -72,6 +74,12 @@ Items can be added by DOI (preferred), or manually if there is no DOI.
    * In the right-hand panel, select the `Tags` tab
    * Add a tag `domain` or `escience`
 5. After adding you items, synchronize with the Zotero server again.
+
+#### About names
+Please check if the names are entered correctly.
+We are using the `firstname`, `lastname` format, where each is in its own input field.
+You can switch between signle and two field entry by pressing the small button next to the names.
+Prefixes (`de`, `van der`, etc.) should be included in the lastname so for `Jan de Groot` use lastname `de Groot`.
 
 #### About dates
 Please refrain from using date ranges (eg. no `4-5th december 2013`), and just use a single date (the first day of the range).
