@@ -25,10 +25,6 @@
 ## Keep your output up to date
 It is essential that we can always show our up to date output. Please make sure to regularly add new software, publications, talks, news items, presentations, conference papers or anything else that can be considered project output.
 
-## Questions
-Unclear what to do with your Zotero entry? You can add the tag `FIXME`, and we will have a look at it. If your question is not directly related to an entry, check the [closed issues](https://github.com/NLeSC/rsd-instruction/issues?utf8=%E2%9C%93&q=), or [add a new one](https://github.com/NLeSC/rsd-instruction/issues/new) if it is not yet listed
-
-## End report
 For most completed projects, a list of publications can be found in the end report:
 * Find project in [Sharepoint](https://nlesc.sharepoint.com/sites/operations/Shared%20Documents/Projectportfolio)
 * `Project` / `E - End documents` / `Wetenschappelijk en financieel report` (Scientific and financial report).
@@ -36,6 +32,9 @@ For most completed projects, a list of publications can be found in the end repo
 If there are any publications not in the end report, please add them too!
 
 *If you cannot find an end report and the project is finished, please report it to Noura.*
+
+## Questions
+Unclear what to do with your Zotero entry? You can add the tag `FIXME`, and we will have a look at it. If your question is not directly related to an entry, check the [closed issues](https://github.com/NLeSC/rsd-instruction/issues?utf8=%E2%9C%93&q=), or [add a new one](https://github.com/NLeSC/rsd-instruction/issues/new) if it is not yet listed
 
 ## Zotero
 *Note: Use the **offline** version of Zotero, the web client functionality is very limited, can't add by DOI etc.*
@@ -61,25 +60,25 @@ If you have papers that are not directly connected to a project, but which are l
 
 ### Adding items
 Items can be added by DOI (preferred), or manually if there is no DOI.
-Most entry boxes supply a dropdown menu with suggestions after typing a few letters.
+Most entry boxes in Zotero supply a drop down menu with suggestions after typing a few letters.
 
 1. Synchronize with the Zotero server (top right of the window, the reload button)
 2. Create a new item:
-   * If you have a DOI, click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png). Enter one or more DOI(s), seperated with a space. 
+   * If you have a DOI, click `Add item(s) by Identifier` ![Instruction2](https://raw.githubusercontent.com/NLeSC/TEAM/master/RSD/images/step2.png). Enter one or more DOI(s), separated with a space.
    * Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
 3. Check if the metadata in the `Info` tab is correct:
    * In the right-hand panel, select the `Info` tab
    * Check the `Item Type` (top of the list)
    * Depending on the item (see the list below) fill in the `Type` (near the top of the list) and/or `Extra` (near the bottom of the list) fields.
-4. To distiguish our `domain` and `escience` output, please add a tag:
+4. To distinguish our `domain` and `escience` output, please add a tag:
    * In the right-hand panel, select the `Tags` tab
    * Add a tag `domain` or `escience`
 5. After adding you items, synchronize with the Zotero server again.
 
 #### About names
-Please check if the names are entered correctly.
+Please check if the names are entered correctly in for instance the `Author` or `Programmer` fields.
 We are using the `firstname`, `lastname` format, where each is in its own input field.
-You can switch between signle and two field entry by pressing the small button next to the names.
+You can switch between single and two field entry by pressing the small button next to the names.
 Prefixes (`de`, `van der`, etc.) should be included in the lastname so for `Jan de Groot` use lastname `de Groot`.
 
 #### About dates
@@ -104,29 +103,27 @@ Depending on the domain, there may be differences between the two categories, pl
 For software, there are two separate cases:
 1. Software that is written by us, and that has a clear separate repository. We have (or can get) a DOI for the software.
 2. External software that we made a (significant) contribution to, or software we cannot (or do not want) to get a separate DOI for.
+
 Other cases, like bug fixes or minor features, do not have to be added to the RSD.
 
-Registering with a DOI is preferred, however sometimes it may not be worth the effort if it is for instance very experimental and you're sure it will not be cited. 
-
 *Case 1:*
+
 * Get a DOI for software via [Zenodo](https://zenodo.org/). Anything with a GitHub repository can be added. If that is not possible, you can upload a (zip) file of the source code or repository instead.
 * Wait until the DOI has been synchronized through Crossref.org (It can take a couple of hours after creating a Zenodo DOI before it is available).
 * Add software to project by its DOI.
 * On the `Info` tab, make sure that the `Item Type` is set to `Computer Program`. _NOTE: The DOI should now have (automagically) appeared at the `Extra` field_
 
 *Case 2:*
-If the program already has a DOI, consider using that.
-Possibily, the software can do a new release, and can get a separate DOI for that version.
 
 * add a new item with `Computer Program` as `Item Type`.
 * On the `Info` tab, fill in the `Title` field  and set the `URL` to the Github URL.
-* Also on the `Info` tab, Add `type: feature` to the `Extra` field.
+* Also on the `Info` tab, Add `Type: feature` to the `Extra` field.
 
 #### Datasets
-Set `Item type` to `Journal Article`.
-In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field: `itemType: Dataset`.
+Datasets will be a new feature in an upcomming Zetore release. For now, set `Item Type` to `Journal Article`.
+In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `Extra` field: `itemType: Dataset`.
 
-_Note that this is inconsistent with the naming scheme in this manual. Datasets will be a new feature in an upcomming Zetore release_
+_Note that this is inconsistent with the naming scheme in this manual._
 
 #### Conference poster or presentation
 Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poster` or `Conference Presentation`.
@@ -135,12 +132,13 @@ Use `Item Type` `Presentation`, set the field `Type` to either `Conference Poste
 Use `Item Type` `Presentation`, set the field `Type` to `Workshop`, `Lecture`, or `Demonstration`.
 
 #### Other Presentations
-Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations. If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
+Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations.
+If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
 Use `Item Type` `Presentation`.
 
 #### Manuscript
 These are peer reviewed publications in submission, under review, or in preparation.
-Use itemType `Manuscript`, add `extra`:
+Use `Item Type` `Manuscript`, add to the `Extra` field:
 - `submittedAt: date`
 - `submittedTo: journal`
 
@@ -148,22 +146,21 @@ Use itemType `Manuscript`, add `extra`:
 If you have scientific output that has not been peer reviewed, use `Item Type` `Report`.
 For instance: reports, white papers, etc.
 
-If available, add the DOI to the `Extra` field.
+If available, add the DOI to the `Extra` field as `DOI: `
 
 #### Thesis
 A PhD, Master, or Bachelor thesis.
 Set `Item Type` to `Thesis` and fill in `Bachelor`, `Master`, `PhD` in the `Type` field.
-If relevant, enter `Supervisor:` and or `Promotor:` `Co-promotor:` with the apropriate name to the `Extra` field.
+If relevant, enter `Supervisor:` and or `Promotor:` `Co-promotor:` with the appropriate name to the `Extra` field.
 
 #### Other types
-Please choose the most appropriate type from
-`Blogpost`, `Book`, `Book Section`, `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio Broadcast`, `TV Broadcast`, `Video Recording`, `Webpage`.
-And make a best-efford at filling out the other metadata on the `Info` tab.
+Please choose the most appropriate type from `Blogpost`, `Book`, `Book Section`, `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio Broadcast`, `TV Broadcast`, `Video Recording`, `Webpage`.
+And make a best-effort at filling out the other metadata on the `Info` tab.
 
 ### Linking output
-
+For the RSD we would like to show the links between projects, people, papers, software, and data.
 Output is already linked to projects via the folders in the Zotero library, and it is also linked to persons via the `Author` metadata.
-However, presentations and publications are often about a specific piece of software or dataset, and we need to enter this link manually.
+However, for presentations and publications covering a specific piece of software or dataset we need to enter this link manually.
 1. Select the item, `Computer Program` or dataset (which is a `Journal Article` with `Extra` set to `itemType: Dataset`)
 2. In the right hand panel, select the `Related` tab
 3. Press the `Add` button
