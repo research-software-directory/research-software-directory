@@ -19,7 +19,7 @@
     "sortIndex": 12,
     "markdown": true,
     "long": true,
-    "htmlDescription": "<p><b>Software statement</b> (in Markdown). <br />For <i>(users)</i> that <i>(need)</i>, <i>(name of software)</i> is the <i>(point of differentiation)</i> among all <i>(frame of reference)</i> because <i>(support your claim)</i></p> Example software statement Xenon: <br /><i>For distributed computing developers that would like to use different file transfer protocols and scheduling systems on remote machines, without having to learn and implement many different APIs, Xenon provides an easy-to-use interface that is successfully used in many eScience tools and projects.</i>"
+    "htmlDescription": "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
   },
   "githubid": {
     "sortIndex": 20,
