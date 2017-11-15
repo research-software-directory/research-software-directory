@@ -14,9 +14,9 @@ def date2ym(date):
     else:
         return None
 
-def bin_commits_data(json_data):
+def bin_commits_data(commit_data):
     binned_commits = {}
-    for commit in json_data['github']['commits']:
+    for commit in commit_data:
         d = date2ym(commit['date'][:7])
         binned_commits[d] = binned_commits.get(d, 0) + 1
     x = []
@@ -25,12 +25,18 @@ def bin_commits_data(json_data):
     for ym in range(current_ym - 60, current_ym):
         x.append(ym2date(ym))
         y.append(binned_commits[ym] if ym in binned_commits else 0)
-    data = [{
-        'mode': 'lines',
-        'x': x,
-        'y': y,
-        'line': {'shape': 'spline'},
-        'fill': 'tonexty'}]
+    total_commits = len(commit_data)
+    last_commit = commit_data[0]['date'][:10]
+    data = {
+        'plot': [{
+            'mode': 'lines',
+            'x': x,
+            'y': y,
+            'line': {'shape': 'spline'},
+            'fill': 'tonexty'}],
+        'total': total_commits,
+        'last': last_commit
+        }
     return data
 
 

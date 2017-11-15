@@ -56,6 +56,9 @@
     height: 150px;
     width: 500px;
 }
+.software_commitsStat {
+    float: right;
+}
 .description {
 }
 .description img {

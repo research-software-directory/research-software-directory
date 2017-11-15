@@ -38,15 +38,17 @@ def software_product_page_template(software_id):
 def get_commits_data(software_id):
     url = "http://admin.research-software.nl/api/software/%s/report" % software_id
     report_dictionary = requests.get(url).json()
-    print(report_dictionary)
     if 'github' in report_dictionary:
-        if isinstance(report_dictionary['github']['commits'], list):
-            commits_data = plot_commits.bin_commits_data(report_dictionary)
+        commits = report_dictionary['github']['commits']
+        if isinstance(commits, list):
+            commits_data = plot_commits.bin_commits_data(commits)
         else:
-            commits_data = report_dictionary['github']['commits']
-            print(commits_data)
+            commits_data = commits
     else:
-        commits_data = {}
+        commits_data = {'error': '%s: %s' % (
+            str(report_dictionary['exception']['class']),
+            str(report_dictionary['exception']['error'])
+            )}
     return "var commitsData = " + str(commits_data)
 
 @app.route('/dynamic/data.js')
