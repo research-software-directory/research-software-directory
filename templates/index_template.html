@@ -11,7 +11,6 @@
 
 
     <script type="text/javascript" src="/dynamic/data.js"></script>
-    <script type="text/javascript" src="/dynamic/gems.js"></script>
 
 </head>
 <body>
@@ -48,7 +47,7 @@
 
 <div id="box_2">
   <div id="title_bar_left">Filter</div>
-  <div class="layout" id="filter">
+  <div id="filter">
     <input type="checkbox">Big data</input><br>
     <input type="checkbox">Cloud computing</input><br>
     <input type="checkbox">Image processing</input><br>
@@ -60,8 +59,7 @@
 </div>
 
 <div id="box_3"> 
-  <div id="title_bar_right"></div>   
-
+  <div id="title_bar_right"></div>  
   <div class="layout" id="data_display">   
   </div>
 </div>
@@ -93,17 +91,17 @@
 
      $(document).ready(function(){
         // fill gems div        
-        for (var i = 0; i <gems.length; i++){
-          var toolTipText = '<b>'+gems[i]['name']+'</b><br><br>'+gems[i]['tagLine']+'<br><br>Commits : '+gems[i]['commits']+'<br> Mentions : '+gems[i]['mentions'];
-          $("#data_gems").append("<div class='gems' id="+i+"><a href='/software/"+gems[i]['id']+"'><img class='gem_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb"+i+".jpg'></img></a></div>") // name, tagline, mentions, commits
+        for (var i = 0; i < ALL_DATA.length; i++){
+          var toolTipText = '<b>'+ALL_DATA[i]['name']+'</b><br><br>'+ALL_DATA[i]['tagLine']+'<br><br>Commits : '+ALL_DATA[i]['commits']+'<br> Mentions : '+ALL_DATA[i]['mentions'];
+          var appendHtml = "<div class='product' id="+i+"><a href='/software/"+ALL_DATA[i]['id']+"'><img class='product_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>";
+          if (ALL_DATA[i]['highlighted']) {
+            $("#data_gems").append(appendHtml) // name, tagline, mentions, commits
+          } else {
+            $("#data_display").append(appendHtml) // name, tagline, mentions, commits
+          }
             
         }
 
-        for (var i = 0; i <ALL_DATA.length; i++){
-          var toolTipText = '<b>'+ALL_DATA[i]['name']+'</b><br><br>'+ALL_DATA[i]['tagLine']+'<br><br>Commits : '+ALL_DATA[i]['commits']+'<br> Mentions : '+ALL_DATA[i]['mentions'];
-          $("#data_display").append("<div class='others' id="+i+"><a href='/software/"+ALL_DATA[i]['id']+"'><img class='gem_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>") // name, tagline, mentions, commits
-            
-        }
         // a
         // activate Bootstrap4 on the tooltips
         $(function () {

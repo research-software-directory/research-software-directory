@@ -58,13 +58,6 @@ def get_data():
     template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     return "var ALL_DATA = "+template_data_json
 
-@app.route('/dynamic/gems.js')
-def get_gems():
-    url = "http://admin.research-software.nl/api/software"
-    all_software_dictionary = requests.get(url).json()
-    gems_json = flask.json.dumps(all_software_dictionary[:6], sort_keys = False, indent = 4)
-    return "var gems = " + gems_json
-
 @app.template_filter('strftime')
 def strftime(millis):
     format = "%Y-%m-%d %H:%M:%S"
