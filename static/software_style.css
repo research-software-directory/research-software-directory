@@ -5,6 +5,14 @@
     font-size: 2em;
     padding-top: 20px;
 }
+.title{
+    font-size: 2em;
+    font-weight: bold;
+}
+.subtitle{
+    font-size: 1.5em;
+    font-weight: bold;
+}
 .contributor {
     font-weight: bold;
 }
@@ -27,15 +35,22 @@
 }
 .float_container {
     height: 100px;
+    width: 100%;
+    margin: auto;
 }
 .float_item {
     position: relative;
     float: left;
-    width: 250px;
-    height: 100px;
+    width: 33%;
+    height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
 }
 .float_item img {
-    height: 50px;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
 }
 .startDate {
 }
