@@ -69,7 +69,7 @@ Most entry boxes supply a dropdown menu with suggestions after typing a few lett
 3. Check if the metadata in the `Info` tab is correct:
    * In the right-hand panel, select the `Info` tab
    * Check the `Item Type` (top of the list)
-   * Depending on the item (see the list below) fill in the `extra` field (near the bottom of the list)
+   * Depending on the item (see the list below) fill in the `Type` (near the top of the list) and/or `Extra` (near the bottom of the list) fields.
 4. To distiguish our `domain` and `escience` output, please add a tag:
    * In the right-hand panel, select the `Tags` tab
    * Add a tag `domain` or `escience`
@@ -87,15 +87,17 @@ To differentiate days from months, please use `yyyy-mm-dd`, or `mm-dd-yyyy`. If 
 If the day is unknown, use `mm yyyy`, eg `05 2014` for May 2014.
 
 ### Types of output
-Below is a list of types, with a short description.
-These types correspond to the `Item Type` in Zotero, please do not use any of the other types available.
+Below is a list of output we would like to keep track of, with a short description.
+Pick the one that best describes your output, and fill out the metadata required.
+By default Zotero shows a much larger list of metadata, please fill out the others entries as good as possible.
+
 If you have an item that doesn't fit, please [open an issue in this GitHub repository](https://github.com/NLeSC/rsd-instruction/issues/new) and we'll figure it out & update this document.
 
 #### Papers
 These are peer reviewed papers, and typically have a DOI already.
 If you do not have a DOI yet, for instance, when the paper is under submission or in preparation, add it as a [Manuscript](#manuscript) first.
 Once you have a DOI, add the paper as `Journal Article` or `Conference Paper` and remove the manuscript entry.
-Depending on the domain, there may be differences between the two categories, please chose the one most representative for your paper.
+Depending on the domain, there may be differences between the two categories, please choose the one most representative for your paper.
 
 #### Software
 For software, there are two separate cases:
@@ -120,7 +122,9 @@ Possibily, the software can do a new release, and can get a separate DOI for tha
 * Also on the `Info` tab, Add `type: feature` to the `Extra` field.
 
 #### Datasets
-Set `Item type` to `Journal Article`.  In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field: `itemType: Dataset`.
+Set `Item type` to `Journal Article`.
+In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `extra` field: `itemType: Dataset`.
+
 _Note that this is inconsistent with the naming scheme in this manual. Datasets will be a new feature in an upcomming Zetore release_
 
 #### Conference poster or presentation
@@ -140,11 +144,13 @@ Use itemType `Manuscript`, add `extra`:
 - `submittedTo: journal`
 
 #### Report
-Scientific output that has not been peer reviewed. For instance: reports, white papers, etc.
+If you have scientific output that has not been peer reviewed, use `Item Type` `Report`.
+For instance: reports, white papers, etc.
+
 If available, add the DOI to the `Extra` field.
 
 #### Thesis
-PhD, Master, or Bachelor thesis.
+A PhD, Master, or Bachelor thesis.
 Set `Item Type` to `Thesis` and fill in `Bachelor`, `Master`, `PhD` in the `Type` field.
 If relevant, enter `Supervisor:` and or `Promotor:` `Co-promotor:` with the apropriate name to the `Extra` field.
 
