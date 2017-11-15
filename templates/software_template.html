@@ -90,15 +90,6 @@
                 {% if template_data.expertise %}
                 <div class="expertise">expertise(s): {{", ".join(template_data.expertise)}}</div>
                 {% endif %}
-
-                <div class="divider"></div>
-
-                {% if template_data.status %}
-                <div class="status">status: {{template_data.status}}</div>
-                {% endif %}
-                {% if template_data.createdAt %}
-                <div class="createdAt">createdAt: {{template_data.createdAt|strftime}}</div>
-                {% endif %}
                 {% if template_data.updatedAt %}
                 <div class="updatedAt">updatedAt: {{template_data.updatedAt|strftime}}</div>
                 {% endif %}
