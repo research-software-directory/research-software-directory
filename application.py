@@ -68,7 +68,7 @@ def get_gems():
 @app.template_filter('strftime')
 def strftime(millis):
     format = "%Y-%m-%d %H:%M:%S"
-    result = datetime.datetime.fromtimestamp(millis / 1e3).strftime(format)
+    result = datetime.datetime.fromtimestamp(millis).strftime(format)
     return result
 
 @app.template_filter('checkcontributor')
