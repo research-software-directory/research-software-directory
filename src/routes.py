@@ -13,6 +13,18 @@ from src.json_response import jsonify
 # from src.services.report import load_reports
 from src.settings import settings
 
+def unpack_person(entry, db):
+    if isinstance(entry, str):
+        person = db['person'].find_by_id(entry)
+        return {
+            'id': person.data.get('id'),
+            'name': person.data.get('name'),
+            'website': person.data.get('website'),
+            'email': person.data.get('email')
+        }
+    else:
+        return entry
+
 def get_routes(service_controller, db):
     user = service_controller.user
 
@@ -67,7 +79,12 @@ def get_routes(service_controller, db):
         resource = db[resource_type].find_by_id(id)
         if not resource:
             raise exceptions.NotFoundException('resource not found')
-        return db[resource_type].find_by_id(id).data, 200
+        if resource_type == 'software':
+            for idx, contributor in enumerate(resource['contributor']):
+                resource.data['contributor'][idx] = unpack_person(contributor, db)
+            resource.data['contactPerson'] = unpack_person(resource.data['contactPerson'], db)
+
+        return resource.data, 200
 
     @api.route('/schema')
     @jsonify
