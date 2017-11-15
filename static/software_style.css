@@ -43,14 +43,18 @@
     float: left;
     width: 33%;
     height: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: auto;
+    margin: 0px;;
+    top: 15px;
 }
 .float_item img {
-    max-width: 100%;
+    max-width: 90%;
     max-height: 100%;
+    position: absolute;
     margin: auto;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
