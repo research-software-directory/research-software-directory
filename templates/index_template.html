@@ -45,21 +45,40 @@
  <div class="layout" id="data_gems"></div>
 </div>
 
-<div id="box_2">
+<div id="box_2a">
   <div id="title_bar_left">Filter</div>
   <div id="filter">
-    <input type="checkbox">Big data</input><br>
-    <input type="checkbox">Cloud computing</input><br>
-    <input type="checkbox">Image processing</input><br>
-    <input type="checkbox">Visualisation</input><br>
-    <input type="checkbox">Text analysis and NLP</input><br>
-    <input type="checkbox">Real time data analysis</input><br>
-    <input type="checkbox">Interoperability and linked data</input>
+  <form id="filter_form">
+    <input type="checkbox" value="big_data">Big data</input><br>
+    <input type="checkbox" value="cloud_computing">Cloud computing</input><br>
+    <input type="checkbox" value="image_processing">Image processing</input><br>
+    <input type="checkbox" value="visualisation">Visualisation</input><br>
+    <input type="checkbox" value="text_analysis">Text analysis and NLP</input><br>
+    <input type="checkbox" value="realtime_data_analysis">Real time data analysis</input><br>
+    <input type="checkbox" value="interop_linked_data">Interoperability and linked data</input>
+  </form>
   </div>
 </div>
 
+<div id="box_2b">
+  <div id="title_bar_left">News</div>
+  <div id="mentions">
+    <h2>Mentions</h2>
+    <ul>
+      <li>...</li>
+    </ul>
+  </div>
+  <div id="releases">
+    <h2>Releases</h2>
+    <ul>
+      <li>...</li>
+    </ul>
+  </div>
+</div>
+
+
 <div id="box_3"> 
-  <div id="title_bar_right"></div>  
+  <div id="title_bar_right">All projects</div>  
   <div class="layout" id="data_display">   
   </div>
 </div>
@@ -67,6 +86,7 @@
 
 <script language="Javascript">
     function search_algo(dict, search_key){
+      search_key = search_key.toLowerCase();
       for (var term in dict['discipline']){
         if (term.indexOf(search_key) !== -1){
             return true
@@ -124,6 +144,16 @@
         $(".search_results").append(results_list)
         $(".search_results").css("visibility", "visible")
       });
+
+     $("#filter").click(function (event){
+        //event.preventDefault(); 
+        console.log("Filter selection:")
+        $('input[type=checkbox').each(function(){
+            console.log($(this).val()+" checked:"+$(this).prop('checked'))
+        })
+      });
+
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
