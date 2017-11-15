@@ -1,5 +1,6 @@
 .index_title {
-    font-size: 4em;
+    font-size: 3em;
+    text-align:center;
 }
 .search_bar {
     position:relative;
@@ -9,15 +10,18 @@
 }
 .search_form {
     font-size:16pt;
-    position:relative;
-    float:top;
+    margin-left:30%
 }
-.search_form.input {
+#input.search_form {
     width:500px;
     height: 30px;
+    position:relative;
+    float:left;
 }
-.search_form.submit{
+#submit.search_form{
     height: 30px;
+    position: relative;
+    float:left;
 }
 .search_results{
     position: relative;
@@ -33,17 +37,33 @@
     position:relative;
     float:left;
 }
-.gems.data_gems{
-    margin-bottom:50px;
+#data_gems.layout{
+    margin-bottom:70px;
+    position:relative; 
+    float:left;
 }
-.gems.data_layout{
-    width: 100%;
+#data_display.layout{
+    text-align:left;
 }
-.layout.filter{
+#filter.layout{
     padding: 20px;
     position: relative;
     float: left;
     text-align: left;
     border-style: solid;
     border-width: 1px;
+    width:250px;
+}
+#box_1{
+    width:100%;
+    height:500px;
+    position: relative;
+    float:top;
+    margin-top: 100px;
+}
+#box_2{
+    width:100%;
+    height:1000px;
+    position: relative;
+    float:top;
 }

@@ -13,8 +13,6 @@
 </head>
 <body>
 
-<div class="search_results">
-</div>
 
 <div class="search_bar">
     <form id="search" action="">
@@ -23,30 +21,35 @@
     </form>
 </div>
 
-
-<div class="layout" id="filter" style="border-style: solid; border-width: 1px; width:270px; position:relative; float:left;">
-  <input type="checkbox">Big data</input><br>
-  <input type="checkbox">Cloud computing</input><br>
-  <input type="checkbox">Image processing</input><br>
-  <input type="checkbox">Visualisation</input><br>
-  <input type="checkbox">Text analysis and NLP</input><br>
-  <input type="checkbox">Real time data analysis</input><br>
-  <input type="checkbox">Interoperability and linked data</input>
+<div class="search_results">
 </div>
 
+<div id="box_1">
+  <div class="layout" id="filter">
+    <input type="checkbox">Big data</input><br>
+    <input type="checkbox">Cloud computing</input><br>
+    <input type="checkbox">Image processing</input><br>
+    <input type="checkbox">Visualisation</input><br>
+    <input type="checkbox">Text analysis and NLP</input><br>
+    <input type="checkbox">Real time data analysis</input><br>
+    <input type="checkbox">Interoperability and linked data</input>
+  </div>
 
-<div class="layout" id="data_gems" style="margin-bottom:50px;position:relative; float:left;">
+
+  <div class="layout" id="data_gems">
+  </div>
 </div>
 
-<div class="layout" id="data_display">
-    <div class="index_title">All software</div>
-    <ul>
-    {% for template_datum in template_data %}
-       <li><a href="software/{{template_datum.get('id')}}">{{template_datum.get('name')}}</a>: {{template_datum.get('tagLine')}}</li>
-    {% endfor %}
-    </ul>
+<div id="box_2">
+  <div class="index_title">All software</div>
+  <div class="layout" id="data_display">      
+      <ul>
+      {% for template_datum in template_data %}
+         <li><a href="software/{{template_datum.get('id')}}">{{template_datum.get('name')}}</a>: {{template_datum.get('tagLine')}}</li>
+      {% endfor %}
+      </ul>
+  </div>
 </div>
-
 
 
 <script language="Javascript">
