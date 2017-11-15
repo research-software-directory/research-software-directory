@@ -14,6 +14,7 @@
         * [Workshop, lecture, or demonstration](#workshop-lecture-or-demonstration)
         * [Other presentations](#other-presentations)
         * [Manuscript](#manuscript)
+        * [Report](#report)
         * [Thesis](#Thesis)
         * [Other types](#other-types)
   * [Example: eSalsa](#example-esalsa)
@@ -123,14 +124,19 @@ Use `Item Type` `Presentation`, set the field `Type` to `Workshop`, `Lecture`, o
 #### Other Presentations
 Please add presentations if they are external, e.g. not presentations held at the eScience Center or at project partners' locations. If you want to publish the slides this can be done at [Zenodo](www.zenodo.org) or [Figshare](www.figshare.com); both will provide a DOI and online viewer.
 Use `Item Type` `Presentation`.
+
 #### Manuscript
 These are peer reviewed publications in submission, under review, or in preparation.
 Use itemType `Manuscript`, add `extra`:
 - `submittedAt: date`
 - `submittedTo: journal`
 
+#### Report
+Scientific output that has not been peer reviewed. For instance: reports, white papers, etc.
+If available, add the DOI to the `Extra` field.
+
 #### Thesis
-PhD or Master thesis.
+PhD, Master, or Bachelor thesis.
 Set `Item Type` to `Thesis` and fill in `Bachelor`, `Master`, `PhD` in the `Type` field.
 If relevant, enter `Supervisor:` and or `Promotor:` `Co-promotor:` with the apropriate name to the `Extra` field.
 
