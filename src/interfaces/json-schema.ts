@@ -51,6 +51,14 @@ export function isEnumProperty(property: any): property is IEnumProperty {
   return 'enum' in property;
 }
 
+interface IBooleanProperty extends IBaseProperty {
+  type: 'boolean';
+}
+
+export function isBooleanProperty(property: any): property is IBooleanProperty {
+  return 'type' in property && property.type === 'boolean';
+}
+
 interface IStringProperty extends IBaseProperty {
   type: 'string';
   format?: string;
@@ -59,7 +67,11 @@ interface IStringProperty extends IBaseProperty {
 }
 
 export function isStringProperty(property: any): property is IStringProperty {
-  return 'type' in property && !isArrayProperty(property) && !isEnumProperty(property) && !isLinkProperty(property);
+  return 'type' in property &&
+    !isArrayProperty(property) &&
+    !isEnumProperty(property) &&
+    !isLinkProperty(property) &&
+    !isBooleanProperty(property);
 }
 
 interface ILinkProperty extends IBaseProperty {

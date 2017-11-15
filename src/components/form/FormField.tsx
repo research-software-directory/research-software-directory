@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as comp from './components';
 import {
-  IProperty, isAnyOfProperty, isArrayProperty, isEnumProperty, isLinkProperty, isStringProperty
+  IProperty, isAnyOfProperty, isArrayProperty, isBooleanProperty, isEnumProperty, isLinkProperty, isStringProperty
 } from '../../interfaces/json-schema';
 import { IData } from '../../interfaces/misc';
 import { IProject } from '../../interfaces/resources/project';
@@ -48,6 +48,7 @@ export class FormField extends React.Component<IProps, {}> {
   })
 
   renderTextInput           = () => <comp.TextInput            {...this.defaultFieldProps()} />;
+  renderBooleanInput        = () => <comp.BooleanInput         {...this.defaultFieldProps()} />;
   renderTextArea            = () => <comp.TextAreaInput        {...this.defaultFieldProps()} />;
   renderMarkDown            = () => <comp.MarkDownInput        {...this.defaultFieldProps()} />;
   renderSoftwareDescription = () => <comp.MarkDownInput        {...this.defaultFieldProps()} />;
@@ -187,6 +188,8 @@ export class FormField extends React.Component<IProps, {}> {
       return this.renderDateInput();
     } else if (isEnumProperty(property)) {
       return this.renderEnum(false);
+    } else if (isBooleanProperty(property)) {
+      return this.renderBooleanInput();
     } else if (isStringProperty(property)) {
       return this.renderTextInput();
     } else if (isArrayProperty(property) && isEnumProperty(property.items)) {
