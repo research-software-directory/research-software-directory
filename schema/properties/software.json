@@ -105,7 +105,8 @@
   },
   "technologyTag": {
     "sortIndex": 100,
-    "htmlDescription": "<b>Keywords of</b> related or relevant <b>technologies.</b>"
+    "htmlDescription": "<b>Keywords of</b> related or relevant <b>technologies.</b>",
+    "editable": false
   },
   "supportLevel": {
     "sortIndex": 120,
