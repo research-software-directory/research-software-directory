@@ -75,7 +75,7 @@
      $(document).ready(function(){
         // fill gems div
         for (var i = 0; i <gems.length; i++){
-          $("#data_gems").append("<div class='gems' id="+gems[i]['id'].replace(/\s+/g, '')+">"+gems[i]+"</div>")
+          $("#data_gems").append("<div class='gems' id="+gems[i]['id'].replace(/\s+/g, '')+">"+JSON.stringify(gems[i], null, 4)+"</div>")
         }
      });
 

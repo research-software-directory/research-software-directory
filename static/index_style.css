@@ -26,10 +26,18 @@
     visibility:hidden;
 }
 .gems{
-    position:relative;
-    float:left;
+    width:200px;
+    height:300px;
     border-style:solid;
     border-width: 1px;
+    position:relative;
+    float:left;
+}
+.gems.data_gems{
+    margin-bottom:50px;
+}
+.gems.data_layout{
+    width: 100%;
 }
 .layout.filter{
     padding: 20px;
