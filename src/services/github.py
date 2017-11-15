@@ -72,7 +72,7 @@ class GithubService:
         if not software:
             raise Exception('software not found (%s)' % software_id)
         if not software['githubid']:
-            raise Exception('software has no github id')
+            raise Exception('github id unknown')
     
         last_commit_cursor = self.db.commit.find({'software_id': software_id}).sort([('date', -1)]).limit(1)
         last_date = '2012-01-01T00:00:00Z' if last_commit_cursor.count() == 0 else last_commit_cursor.next()['date']
