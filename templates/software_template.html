@@ -69,14 +69,14 @@
                 {% if template_data.description %}
                 <div class="description">{{descriptionMarkup}}</div>
                 {% endif %}
-                {% if template_data.contactPerson %}
-                <div class="contactPerson">contactPerson: {{template_data.contactPerson}}</div>
-                {% endif %}
 
                 <div class="divider"></div>
 
+                {% if template_data.contactPerson %}
+                <div class="contactPerson">contactPerson: {{template_data.contactPerson}}</div>
+                {% endif %}
                 {% if template_data.doi %}
-                <div class="doi">{{template_data.doi}}</div>
+                <div class="doi">DOI: <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a></div>
                 {% endif %}
                 {% if template_data.license %}
                 <div class="license">license(s): {{", ".join(template_data.license)}}</div>
@@ -107,7 +107,7 @@
 
                 {% if template_data.involvedOrganization %}
                 <div class="involvedOrganization">
-                    <div class="subtitle">Used by researchers at:</div>
+                    <div class="subtitle">Used by researchers at</div>
                     <div class="float_container">
                         {% for involvedOrganization in template_data.involvedOrganization %}
                         {% if organisation_logos[involvedOrganization] %}
