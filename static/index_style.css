@@ -12,16 +12,17 @@
     font-size:16pt;
 }
 #input.search_form {
-    width:500px;
-    height: 30px;
-    margin-left:30%;
+    width:600px;
+    height: 35px;
     position:relative;
-    float:left;
+    float:right;
 }
 #submit.search_form{
     height: 35px;
     position: relative;
-    float:left;
+    float:right;
+    background-color: #000000;
+    color: #FFFFFF
 }
 .search_results{
     position: relative;
@@ -31,52 +32,108 @@
 }
 .gems{
     background-color: #dddddd;
-    margin-left:5px;
+    margin-left:20px;
+    margin-top:15px;
     width:300px;
     height:250px;
     border-right-style:solid;
     border-right-width: 15px;
     border-right-color: white;  
-    flex-grow: 0;
-    flex-shrink: 0;
+    /*flex-grow: 0;
+    flex-shrink: 0;*/
+}
+
+.others{
+    background-color: #dddddd;
+    margin-left:20px;
+    margin-top:15px;
+    width:300px;
+    height:250px;
+    border-right-style:solid;
+    border-right-width: 15px;
+    border-right-color: white;  
+    /*flex-grow: 0;
+    flex-shrink: 0;*/
+}
+
+.gem_thumb{
+    width:300px;
+    height:250px;    
+}
+
+#title_bar_left{
+    position: relative;
+    float: left;
+    width: 75%;
+    background-color: #676a70;
+    padding-left:10px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: #FFFFFF;
+    font-size: 18pt;
+    height: 27pt;
+    vertical-align: center;
+}
+
+#title_bar_right{
+    position: relative;
+    float: right;
+    width: 75%;
+    background-color: #676a70;
+    padding-left:10px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: #FFFFFF;
+    font-size: 18pt;
+    height: 27pt;
+    vertical-align: center;
 }
 #data_gems.layout{
-    width: 80%;
-    overflow-x:scroll;
-    overflow-y:hidden;
-    margin-left:10%;
+    max-width: 75%;
+    overflow-x:none;
+    overflow-y:none;
+    margin-left:25%;
     margin-bottom:30px;
     position:relative; 
     float:left;
-    height:250px;    
+    height:500px;    
     vertical-align: top;  
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
-    /*white-space:nowrap;*/ 
+    justify-content: space-evenly;
+    /*white-space:nowrap;*/
 }
 #data_display.layout{
-    text-align:left;
-    margin-left: 225px;
+    max-width: 75%;
+    margin-left:10%;
+    text-align:left;    
+    position: relative;
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-evenly;
 }
 #filter.layout{
     position: relative;
     float: left;
     text-align: left;
-    border-top-style: solid;
-    border-top-width: 40px;
     padding-top: 20px;
     width:225px;
     height:300px;
 }
 #box_1{
+    margin-bottom:60px;
     width: 100%;
-    height:250px;
+    height:550px;
     position: relative;
     float: left;
 }
 #box_2{
+    width:225px;
+}
+#box_3{
     width:100%;
     height:1000px;
-    position: relative;
-    float: left;
 }
