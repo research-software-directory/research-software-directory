@@ -6,7 +6,7 @@ import datetime
 import json
 import plot_commits
 
-app = flask.Flask(__name__)
+app = application = flask.Flask(__name__)
 
 #def json_dumps(json_object):
 #    json_dump = flask.json.dumps(json_object,
@@ -31,12 +31,18 @@ def software_product_page_template(software_id):
     software_dictionary = requests.get(url).json()
     description = software_dictionary.get("description")
     descriptionMarkup = flask.Markup(markdown.markdown(description))
-    return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary, descriptionMarkup=descriptionMarkup)
+    organisation_logos = {"nlesc":"nlesc.png", "vua":"VU.png", "utwente":"uTwente.png", "radboud.university.nijmegen":"radbout.png"}
+    return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary, descriptionMarkup=descriptionMarkup, organisation_logos=organisation_logos)
 
 @app.route('/dynamic/<software_id>/commitsData.js')
 def get_commits_data(software_id):
-    software_id = software_id;
-    commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r')))
+    url = "http://admin.research-software.nl/api/software/%s/report" % software_id
+    report_dictionary = requests.get(url).json()
+    print(report_dictionary)
+    if 'github' in report_dictionary:
+        commits_data = plot_commits.bin_commits_data(report_dictionary)
+    else:
+        commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r'))[0])
     return "var commitsData = " + str(commits_data)
 
 @app.route('/dynamic/data.js')

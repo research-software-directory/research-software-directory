@@ -18,7 +18,7 @@
             <div id="header">
                 <div id="header_logo">
                     <a href="https://www.esciencecenter.nl" target="_blank">
-                        <img src="{{url_for('static', filename='logo.png')}}">
+                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
                     </a>
                 </div>
                 <div id="header_links">
@@ -105,22 +105,29 @@
 
                 <div class="divider"></div>
 
+                {% if template_data.involvedOrganization %}
+                <div class="involvedOrganization">
+                    <div class="subtitle">Used by researchers at:</div>
+                    <div class="float_container">
+                        {% for involvedOrganization in template_data.involvedOrganization %}
+                        {% if organisation_logos[involvedOrganization] %}
+                        <div class="float_item"><img src="{{url_for('static', filename='logos/'+organisation_logos[involvedOrganization])}}"></div>
+                        {% else %}
+                        <div class="float_item">{{involvedOrganization}}</div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="divider"></div>
+
                 {% if template_data.programmingLanguage %}
                 <div class="programmingLanguage">
                     programmingLanguage(s):
                     <ul>
                         {% for programmingLanguage in template_data.programmingLanguage %}
                           <li>{{ programmingLanguage }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-                {% if template_data.involvedOrganization %}
-                <div class="involvedOrganization">
-                    involvedOrganization(s):
-                    <ul>
-                        {% for involvedOrganization in template_data.involvedOrganization %}
-                          <li>{{ involvedOrganization }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -150,7 +157,7 @@
             <div id="footer">
                 <div id="footer_logo">
                     <a href="https://www.esciencecenter.nl" target="_blank">
-                        <img src="{{url_for('static', filename='logo.png')}}">
+                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
                     </a>
                 </div>
                 <div id="footer_links">
