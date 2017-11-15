@@ -18,6 +18,7 @@
         * [Report](#report)
         * [Thesis](#Thesis)
         * [Other types](#other-types)
+     * [Linking output](#linking-output)
   * [Example: eSalsa](#example-esalsa)
   * [Projects](#projects)
 
@@ -158,6 +159,18 @@ If relevant, enter `Supervisor:` and or `Promotor:` `Co-promotor:` with the apro
 Please choose the most appropriate type from
 `Blogpost`, `Book`, `Book Section`, `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio Broadcast`, `TV Broadcast`, `Video Recording`, `Webpage`.
 And make a best-efford at filling out the other metadata on the `Info` tab.
+
+### Linking output
+
+Output is already linked to projects via the folders in the Zotero library, and it is also linked to persons via the `Author` metadata.
+However, presentations and publications are often about a specific piece of software or dataset, and we need to enter this link manually.
+1. Select the item, `Computer Program` or dataset (which is a `Journal Article` with `Extra` set to `itemType: Dataset`)
+2. In the right hand panel, select the `Related` tab
+3. Press the `Add` button
+4. Select the related output from the pop up window.
+5. Press `Ok`
+6. Sync the Zotero library
+
 
 ## Example: eSalsa
 ![esalsa_example](https://raw.githubusercontent.com/Tommos0/files/master/esalsa_example.png)
