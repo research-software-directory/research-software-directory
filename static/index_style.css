@@ -51,7 +51,7 @@
     position: relative;
     float: left;
     width: 100%;
-    background-color: #676a70;
+    background-color: #32363d;
     padding-left:10px;
     margin-top:20px;
     margin-bottom:20px;
@@ -105,7 +105,12 @@
     position: relative;
     float: right;
 }
-#box_2{
+#box_2a{
+    width:25%;
+    position: relative;
+    float: left;
+}
+#box_2b{
     width:25%;
     position: relative;
     float: left;
