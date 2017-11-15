@@ -12,8 +12,11 @@ function plot_commits(data) {
             },
 		paper_bgcolor: "rgba(0,0,0,0)",
 		plot_bgcolor: "rgba(0,0,0,0)"
-        }
-    Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true})
-    }
-
+        };
+    Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true});
+    var update = {
+        "marker.color": "rgb(100,100,100)"
+    };
+    Plotly.restyle(plotid, update);
+}
 plot_commits(commitsData);
