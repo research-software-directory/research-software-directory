@@ -40,9 +40,13 @@ def get_commits_data(software_id):
     report_dictionary = requests.get(url).json()
     print(report_dictionary)
     if 'github' in report_dictionary:
-        commits_data = plot_commits.bin_commits_data(report_dictionary)
+        if isinstance(report_dictionary['github']['commits'], list):
+            commits_data = plot_commits.bin_commits_data(report_dictionary)
+        else:
+            commits_data = report_dictionary['github']['commits']
+            print(commits_data)
     else:
-        commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r'))[0])
+        commits_data = {}
     return "var commitsData = " + str(commits_data)
 
 @app.route('/dynamic/data.js')

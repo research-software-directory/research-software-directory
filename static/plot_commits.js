@@ -1,5 +1,4 @@
-function plot_commits(data) {
-    var plotid = document.getElementById("commitsPlot");
+function plot_commits(data, plotid) {
     var layout = {
         autosize: true,
         margin: {l:20,r:50,b:50,t:20},
@@ -17,7 +16,14 @@ function plot_commits(data) {
     Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true});
     var update = {
         "marker.color": "rgb(100,100,100)"
-    };
+        };
     Plotly.restyle(plotid, update);
-}
-plot_commits(commitsData);
+    }
+
+var plotid = document.getElementById("commitsPlot");
+if ('error' in commitsData) {
+    plotid.innerHTML = commitsData['error'];
+    }
+else {
+    plot_commits(commitsData, plotid);
+    }
