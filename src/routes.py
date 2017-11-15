@@ -44,6 +44,7 @@ def get_routes(service_controller, db):
             'tagLine': software.data.get('tagLine'),
             'discipline': software.data.get('discipline'),
             'expertise': software.data.get('expertise'),
+            'tags': software.data.get('tags'),
             'mentions': randint(0, 50),
             'commits': randint(0, 3000),
             'lastUpdate': int(time.time()) - randint(0, 3600*24*365),
