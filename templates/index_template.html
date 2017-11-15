@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='index_style.css')+"?v="+random_integer }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='index_style.css')}}">
+    <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='common_style.css')}}">
+    <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='software_style.css')}}">
+    <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='read_more_style.css')}}">
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <title>NLeSC | All Software</title>
 
@@ -13,8 +16,18 @@
 </head>
 <body>
 
-<div class="search_results">
-</div>
+            <div id="header">
+                <div id="header_logo">
+                    <a href="https://www.esciencecenter.nl" target="_blank">
+                        <img src="{{url_for('static', filename='logo.png')}}">
+                    </a>
+                </div>
+                <div id="header_links">
+                    <a href="/">Find software</a>
+                    <a href="/">About the platform</a>
+                </div>
+            </div>
+
 
 <div class="search_bar">
     <form id="search" action="">
@@ -23,30 +36,34 @@
     </form>
 </div>
 
-
-<div class="layout" id="filter" style="border-style: solid; border-width: 1px; width:270px; position:relative; float:left;">
-  <input type="checkbox">Big data</input><br>
-  <input type="checkbox">Cloud computing</input><br>
-  <input type="checkbox">Image processing</input><br>
-  <input type="checkbox">Visualisation</input><br>
-  <input type="checkbox">Text analysis and NLP</input><br>
-  <input type="checkbox">Real time data analysis</input><br>
-  <input type="checkbox">Interoperability and linked data</input>
+<div class="search_results">
 </div>
 
-
-<div class="layout" id="data_gems" style="margin-bottom:50px;position:relative; float:left;">
+<div id="box_1">
+ <div class="layout" id="data_gems">
+  </div>
 </div>
 
-<div class="layout" id="data_display">
-    <div class="index_title">All software</div>
-    <ul>
-    {% for template_datum in template_data %}
-       <li><a href="software/{{template_datum.get('id')}}">{{template_datum.get('name')}}</a>: {{template_datum.get('tagLine')}}</li>
-    {% endfor %}
-    </ul>
+<div id="box_2">
+  <div class="layout" id="filter">
+    <input type="checkbox">Big data</input><br>
+    <input type="checkbox">Cloud computing</input><br>
+    <input type="checkbox">Image processing</input><br>
+    <input type="checkbox">Visualisation</input><br>
+    <input type="checkbox">Text analysis and NLP</input><br>
+    <input type="checkbox">Real time data analysis</input><br>
+    <input type="checkbox">Interoperability and linked data</input>
+  </div>
+  
+  <div class="layout" id="data_display">   
+  <div class="index_title">All software</div>   
+      <ul>
+      {% for template_datum in template_data %}
+         <li><a href="software/{{template_datum.get('id')}}">{{template_datum.get('name')}}</a>: {{template_datum.get('tagLine')}}</li>
+      {% endfor %}
+      </ul>
+  </div>
 </div>
-
 
 
 <script language="Javascript">
