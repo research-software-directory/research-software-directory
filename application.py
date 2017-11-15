@@ -31,7 +31,7 @@ def software_product_page_template(software_id):
     software_dictionary = requests.get(url).json()
     description = software_dictionary.get("description")
     descriptionMarkup = flask.Markup(markdown.markdown(description))
-    organisation_logos = {"nlesc":"nlesc.png", "vua":"vu.png", "utwente":"uTwente.png"}
+    organisation_logos = {"nlesc":"nlesc.png", "vua":"vu.png", "utwente":"uTwente.png", "radboud.university.nijmegen":"radbout.png"}
     return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary, descriptionMarkup=descriptionMarkup, organisation_logos=organisation_logos)
 
 @app.route('/dynamic/<software_id>/commitsData.js')
