@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Segment, Dimmer, Loader, Header, List, Icon } from 'semantic-ui-react';
 import { ProjectContainer } from '../../containers/zotero_import/ProjectContainer';
-import { transformPublication } from './transform';
+// import { transformPublication } from './transform';
 import { Link } from 'react-router-dom';
 import { SoftwareContainer } from '../../containers/zotero_import/SoftwareContainer';
 
@@ -25,8 +25,8 @@ export class ZoteroImporter extends React.PureComponent<IProps> {
     this.props.getNewPublications();
   }
 
-  createPublication = (item: any) => () => {
-    this.props.createNewItem('publication', item.key, transformPublication(item) );
+  createPublication = (_: any) => () => {
+    // this.props.createNewItem('publication', item.key, transformPublication(item) );
   }
 
   renderPublication = (item: any) => {
