@@ -35,8 +35,13 @@ def software_product_page_template(software_id):
 
 @app.route('/dynamic/<software_id>/commitsData.js')
 def get_commits_data(software_id):
-    software_id = software_id;
-    commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r')))
+    url = "http://admin.research-software.nl/api/software/%s/report" % software_id
+    report_dictionary = requests.get(url).json()
+    print(report_dictionary)
+    if 'github' in report_dictionary:
+        commits_data = plot_commits.bin_commits_data(report_dictionary)
+    else:
+        commits_data = plot_commits.bin_commits_data(json.load(open('testdata.json','r'))[0])
     return "var commitsData = " + str(commits_data)
 
 @app.route('/dynamic/data.js')

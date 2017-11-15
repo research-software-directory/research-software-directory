@@ -14,7 +14,7 @@ def date2ym(date):
 
 def bin_commits_data(json_data):
     binned_commits = {}
-    for commit in json_data[0]['github']['commits']:
+    for commit in json_data['github']['commits']:
         d = date2ym(commit['date'][:7])
         if d in binned_commits:
             binned_commits[d] += 1
