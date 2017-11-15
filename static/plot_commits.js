@@ -28,5 +28,5 @@ if ('error' in commitsData) {
     }
 else {
     plot_commits(commitsData['plot']);
-    statid.innerHTML = commitsData['total'] + ' commits | Last update: ' + commitsData['last'];
+    statid.innerHTML = '<b>' + commitsData['total'] + '</b> commits | Last update: <b>' + commitsData['last'] + '</b>';
     }

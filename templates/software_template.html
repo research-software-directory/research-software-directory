@@ -9,7 +9,7 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{{url_for('static', filename='read_more.js')}}"></script>
         <script type="text/javascript" src="/dynamic/{{software_id}}/commitsData.js"></script>
-        <title>NLeSC | {{template_data.name}}</title>
+        <title>Research Software Directory | {{template_data.name}}</title>
     </head>
 
     <body>
@@ -39,9 +39,6 @@
                 {% endif %}
                 {% if template_data.contributingOrganization %}
                 <div class="contributingOrganization">{{", ".join(template_data.contributingOrganization)}}</div>
-                {% endif %}
-                {% if template_data.startDate %}
-                <div class="startDate">{{template_data.startDate}}</div>
                 {% endif %}
                 {% if template_data.tagLine %}
                 <div class="tagLine">{{template_data.tagLine}}</div>
@@ -102,7 +99,7 @@
 
                 {% if template_data.involvedOrganization %}
                 <div class="involvedOrganization">
-                    <div class="subtitle">Developed in collaboration with</div>
+                    <div class="subtitle">In collaboration with</div>
                     <div class="float_container">
                         {% for involvedOrganization in template_data.involvedOrganization %}
                         {% if organisation_logos[involvedOrganization] %}
