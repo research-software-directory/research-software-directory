@@ -89,7 +89,7 @@ def get_routes(service_controller, db):
 
     @api.route('/update', methods=["POST"])
     @jsonify
-    @user.require_organization('nlesc')
+    # @user.require_organization('nlesc')
     def _post_update():
         value = flask.request.get_json()
         if not value:
