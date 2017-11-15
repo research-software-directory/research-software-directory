@@ -65,6 +65,7 @@ export class AppMenu extends React.PureComponent<IProps, {}> {
             Save
           </Button>
           <Button
+            disabled={true}
             floated="right"
             inverted={true}
             color="orange"
@@ -82,10 +83,10 @@ export class AppMenu extends React.PureComponent<IProps, {}> {
           Home
         </Menu.Item>
         {resourceMenus}
-        <Menu.Item name="image" as={Link} to="/images">
-          <Icon name="image" />
-          Images
-        </Menu.Item>
+        {/*<Menu.Item name="image" as={Link} to="/images">*/}
+          {/*<Icon name="image" />*/}
+          {/*Images*/}
+        {/*</Menu.Item>*/}
       </Menu>
     );
   }

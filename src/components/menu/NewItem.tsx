@@ -21,7 +21,7 @@ export class NewItem extends React.PureComponent<IProps, IState> {
   }
 
   open = () => {
-    this.setState({open: true});
+    // this.setState({open: true});
   }
 
   updateId = (e: any) => {
@@ -45,7 +45,7 @@ export class NewItem extends React.PureComponent<IProps, IState> {
   render() {
     if (!this.state.open) {
       return (
-        <Button size="mini" onClick={this.open}>+ New</Button>
+        <Button size="mini" disabled={true} onClick={this.open}>+ New</Button>
       );
     } else {
 
