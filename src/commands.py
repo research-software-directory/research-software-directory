@@ -52,3 +52,7 @@ def init(app, service_controller, db):
     @app.cli.command('list_projects')
     def _projects():
         service_controller.zotero.list_projects()
+
+    @app.cli.command('zotero_sync_publications')
+    def _zotero_publications():
+        service_controller.zotero.sync_publications()

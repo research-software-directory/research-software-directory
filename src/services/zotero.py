@@ -95,7 +95,7 @@ class ZoteroService:
 
         return software
 
-    def new_publications(self):
+    def new_publications(self):  # todo: make only for software, use last_modified etc.
         current_library_version = self.client.last_modified_version()
         current_software_keys = [
             software.data.get('zoteroKey') for software in self.db.software.all()
@@ -131,3 +131,10 @@ class ZoteroService:
         cache.save(False)
 
         return cache.data['publications'], cache.data['software']
+
+
+    def sync_publications(self):
+        print(self.client.items(limit=1))
+
+
+        print('publications')

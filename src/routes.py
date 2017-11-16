@@ -25,6 +25,19 @@ def unpack_person(entry, db):
     else:
         return entry
 
+def unpack_organization(entry, db):
+    if isinstance(entry, str):
+        organization = db['organization'].find_by_id(entry)
+        return {
+            'id': organization.data.get('id'),
+            'name': organization.data.get('name'),
+            'website': organization.data.get('website'),
+            'logo': organization.data.get('logo')
+        }
+    else:
+        return entry
+
+
 def get_routes(service_controller, db):
     user = service_controller.user
 
@@ -83,6 +96,8 @@ def get_routes(service_controller, db):
             for idx, contributor in enumerate(resource['contributor']):
                 resource.data['contributor'][idx] = unpack_person(contributor, db)
             resource.data['contactPerson'] = unpack_person(resource.data['contactPerson'], db)
+            for idx, organization in enumerate(resource['contributingOrganization']):
+                resource.data['contributingOrganization'][idx] = unpack_organization(organization, db)
 
         return resource.data, 200
 
