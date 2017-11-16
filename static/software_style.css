@@ -118,6 +118,9 @@
     width: 90%;
     margin: auto;
 }
+.mention_button {
+    cursor:pointer;
+}
 .mention_text {
     display: none;
 }
