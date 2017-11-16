@@ -113,5 +113,11 @@
     flex-basis: 33%;
     flex-shrink: 0;
 }
-
+.mentions {
+    width: 90%;
+    margin: auto;
+}
+.mention_text {
+    display: none;
+}
 /* ids */
