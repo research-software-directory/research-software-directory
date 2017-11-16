@@ -27,6 +27,7 @@ a {
 .subtitle{
     font-size: 2em;
     text-align: center;
+    padding-bottom: 6px;
 }
 .subsubtitle{
     font-size: 1.5em;
