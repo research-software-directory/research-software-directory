@@ -112,9 +112,14 @@ def get_routes(service_controller, db):
                 all_publications = list(db['zotero_publication'].all())
                 related = filter(lambda x: has_relation(resource.data['zoteroKey'], x), all_publications)
                 for item in related:
-                    if not item['data']['itemType'] in resource.data['mentions']:
-                        resource.data['mentions'][item['data']['itemType']] = []
-                    resource.data['mentions'][item['data']['itemType']].append(item)
+                    item_type = item['data']['itemType']
+                    if 'extra' in item['data']:
+                        extra_field = item['data']['extra'].lower()
+                        if 'itemtype: dataset' in extra_field or 'itemtype:dataset' in extra_field:
+                            item_type = 'dataset'
+                    if item_type not in resource.data['mentions']:
+                        resource.data['mentions'][item_type] = []
+                    resource.data['mentions'][item_type].append(item)
 
         return resource.data, 200
 
