@@ -359,7 +359,9 @@
           "Go",
           "Haskell",
           "Lisp",
-          "PHP"
+          "PHP",
+          "SPARQL",
+          "SQL"
         ]
       }
     },

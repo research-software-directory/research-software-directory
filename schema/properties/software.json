@@ -1,4 +1,7 @@
 {
+  "blogPosts": {
+    "editable": false
+  },
   "highlighted": {
     "sortIndex": 5,
     "htmlDescription": "<b>Highlighted</b> on software site (RSD)"
