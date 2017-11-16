@@ -1,262 +1,219 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='common_style.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='software_style.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='read_more_style.css')}}">
-        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-        <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='software_scripts.js')}}"></script>
-        <script type="text/javascript" src="/dynamic/{{software_id}}/commitsData.js"></script>
-        <title>Research Software Directory | {{template_data.name}}</title>
-    </head>
+{% extends "layout_template.html" %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='software_style.css')}}">
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{url_for('static', filename='software_scripts.js')}}"></script>
+<script type="text/javascript" src="/dynamic/{{software_id}}/commitsData.js"></script>
+{% endblock %}
+{% block title %}
+{{template_data.name}}
+{% endblock %}
+{% block content %}
+{% if template_data.name %}
+<div class="name">{{template_data.name}}</div>
+{% endif %}
+{% if template_data.contributor %}
+<div class="by">By {{", ".join(template_data.contributor|listNames)}}</div>
+{% endif %}
+{% if template_data.contributingOrganization %}
+<div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|listNames)}}</div>
+{% endif %}
+{% if template_data.shortStatement %}
+<div class="shortStatement">{{template_data.shortStatement}}</div>
+{% endif %}
 
-    <body>
+<div class="box">
+    <div class="box_left">
+        {% if template_data.codeRepository %}
+        <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
+        {% endif %}
+        {% if template_data.website %}
+        <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
+        {% endif %}
+        {% if template_data.downloadUrl %}
+        <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
+        {% endif %}
+        {% if template_data.documentationUrl %}
+        <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
+        {% endif %}
+    </div>
+    <div class="box_right">
+        {% if template_data.name %}
+        <div class="software_commitsPlot" id="commitsPlot"></div>
+        <div class="software_commitsStat" id="commitsStat"></div>
+        {% endif %}
+    </div>
+</div>
 
-        <div id="layout_container">
-            <div id="header">
-                <div id="header_logo">
-                    <a href="https://www.esciencecenter.nl" target="_blank">
-                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
-                    </a>
-                </div>
-                <div id="header_text">
-                    Research Software Directory
-                </div>
-                <div id="header_links">
-                    <a href="/rsd">Get your own RSD</a>
-                    <a href="/about">About the platform</a>
-                </div>
-            </div>
+{% if template_data.statement %}
+<div class="statement">
+    <div class="subtitle">Why {{template_data.name}}?</div>
+    {{statementMarkup}}
+</div>
+{% endif %}
 
-            <div id="body">
-                {% if template_data.name %}
-                <div class="name">{{template_data.name}}</div>
-                {% endif %}
-                {% if template_data.contributor %}
-                <div class="by">By {{", ".join(template_data.contributor|listNames)}}</div>
-                {% endif %}
-                {% if template_data.contributingOrganization %}
-                <div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|listNames)}}</div>
-                {% endif %}
-                {% if template_data.shortStatement %}
-                <div class="shortStatement">{{template_data.shortStatement}}</div>
-                {% endif %}
+<div class="divider"></div>
 
-                <div class="box">
-                    <div class="box_left">
-                        {% if template_data.codeRepository %}
-                        <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
-                        {% endif %}
-                        {% if template_data.website %}
-                        <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
-                        {% endif %}
-                        {% if template_data.downloadUrl %}
-                        <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
-                        {% endif %}
-                        {% if template_data.documentationUrl %}
-                        <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
-                        {% endif %}
-                    </div>
-                    <div class="box_right">
-                        {% if template_data.name %}
-                        <div class="software_commitsPlot" id="commitsPlot"></div>
-                        <div class="software_commitsStat" id="commitsStat"></div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                {% if template_data.statement %}
-                <div class="statement">
-                    <div class="subtitle">Why {{template_data.name}}?</div>
-                    {{statementMarkup}}
-                </div>
-                {% endif %}
-
-                <div class="divider"></div>
-
-                {% if template_data.contributingOrganization %}
-                <div class="contributingOrganization">
-                    <div class="subtitle">In collaboration with</div>
-                    <div class="flex_container">
-                        {% for contributingOrganization in template_data.contributingOrganization %}
-                        <div class="flex_item">
-                        {% if contributingOrganization.website %}
-                            <a href="{{contributingOrganization.website}}" target="_blank">
-                        {% endif %}
-                        {% if organisation_logos[contributingOrganization.id] %}
-                                <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
-                        {% else %}
-                                {{contributingOrganization.name}}
-                        {% endif %}
-                        {% if contributingOrganization.website %}
-                            </a>
-                        {% endif %}
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
-                <div class="divider"></div>
-
-                <div class="creators">
-                    <div class="subtitle">Creators</div>
-                    {% if template_data.contactPerson %}
-                    <span class="creators_left">
-                        <div class="subsubtitle">Contact person</div>
-                        <div class="contactPerson">
-                            {% if template_data.contactPerson.website %}
-                            <a href="{{template_data.contactPerson.website}}" target="_blank">
-                               {{template_data.contactPerson.name}}
-                            </a>
-                            {% else %}
-                               {{template_data.contactPerson.name}}
-                            {% endif %}
-                        </div>
-                        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">{{template_data.contactPerson.email}}</div>
-                    </span>
-                    {% endif %}
-                    {% if template_data.contributor %}
-                    <span class="creators_right">
-                        <div class="subsubtitle">Contributors</div>
-                        <div class="flex_container">
-                            {% for contributor in template_data.contributor %}
-                            {% if contributor.name != template_data.contactPerson.name %}
-                            <div class="contributor flex_item">
-                                {% if contributor.linkedInUrl %}
-                                <a href="{{contributor.linkedInUrl}}" target="_blank">
-                                   {{contributor.name}}
-                                </a>
-                                {% else %}
-                                   {{contributor.name}}
-                                {% endif %}
-                                {% if contributor.affiliation %}
-                                <br>
-                                {{contributor.affiliation}}
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                    </span>
-                </div>
-
-                {% if template_data.mentions %}
-                    <div class="divider"></div>
-
-                    <div class="mentions">
-                        <div class="subtitle">Mentions</div>
-                        <div class="divider"></div>
-                        {% for key, value in template_data.mentions.items() %}
-                        <div class="mention">
-                            <div class="mention_button">
-                                <div class="subsubtitle">{{mention_types.get(key, key)}} ({{value|length}})</div>
-                            </div>
-                            <div class="mention_text">
-                                <ul>
-                                {% for item in value %}
-                                    <li>
-                                    {% if item.data.url %}
-                                        <a href="{{item.data.url}}" target="_blank">
-                                        {{item.data.title}}
-                                        </a>
-                                    {% else %}
-                                        {{item.data.title}}
-                                    {% endif %}
-                                    </li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="divider"></div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
-                {% if template_data.testimonial %}
-                    <div class="testimonial">"{{template_data.testimonial}}"</div>
-                    <div class="testimonialby">- {{template_data.testimonialBy}}</div>
-                {% endif %}
-
-                <div class="divider"></div>
-
-                <div class="otherDetails">
-                    <div class="flex_container">
-                    {% if template_data.doi %}
-                        <div class="flex_item">
-                            <b>DOI</b>
-                            <br>
-                            <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a>
-                        </div>
-                    {% endif %}
-                    {% if template_data.updatedAt %}
-                        <div class="flex_item">
-                            <b>updatedAt</b>
-                            <br>
-                            {{template_data.updatedAt|strftime}}
-                        </div>
-                    {% endif %}
-                    {% if template_data.license %}
-                        <div class="flex_item">
-                            <b>License</b>
-                            <br>
-                            {{", ".join(template_data.license)}}
-                        </div>
-                    {% endif %}
-                    {% if template_data.competence %}
-                        <div class="flex_item">
-                            <b>Competence</b>
-                            <br>
-                            {{", ".join(template_data.competence)}}
-                        </div>
-                    {% endif %}
-                    {% if template_data.discipline %}
-                        <div class="flex_item">
-                            <b>discipline</b>
-                            <br>
-                            {{", ".join(template_data.discipline)}}
-                        </div>
-                    {% endif %}
-                    {% if template_data.programmingLanguage %}
-                        <div class="flex_item">
-                            <b>programmingLanguage</b>
-                            <br>
-                            {{", ".join(template_data.programmingLanguage)}}
-                        </div>
-                    {% endif %}
-                    {% if template_data.technologyTag %}
-                        <div class="flex_item">
-                            <b>technologyTag</b>
-                            <br>
-                            {{", ".join(template_data.technologyTag)}}
-                        </div>
-                    {% endif %}
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="footer">
-                <div id="footer_text">
-                    The Research Software Directory aims to promote the impact, the exchange and the re-use of best practices and to prevent fragmentation and duplication of research software.
-                </div>
-                <div id="footer_logo">
-                    <a href="https://www.esciencecenter.nl" target="_blank">
-                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
-                    </a>
-                </div>
-                <div id="footer_links">
-                    <a href="/rsd">Get your own RSD</a>
-                    <a href="/about">About the platform</a>
-                </div>
-            </div>
+{% if template_data.contributingOrganization %}
+<div class="contributingOrganization">
+    <div class="subtitle">In collaboration with</div>
+    <div class="flex_container">
+        {% for contributingOrganization in template_data.contributingOrganization %}
+        <div class="flex_item">
+        {% if contributingOrganization.website %}
+            <a href="{{contributingOrganization.website}}" target="_blank">
+        {% endif %}
+        {% if organisation_logos[contributingOrganization.id] %}
+                <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
+        {% else %}
+                {{contributingOrganization.name}}
+        {% endif %}
+        {% if contributingOrganization.website %}
+            </a>
+        {% endif %}
         </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 
-    <script src="{{ url_for('static',filename='plot_commits.js') }}"></script>
+<div class="divider"></div>
 
-    </body>
-</html>
+<div class="creators">
+    <div class="subtitle">Creators</div>
+    {% if template_data.contactPerson %}
+    <span class="creators_left">
+        <div class="subsubtitle">Contact person</div>
+        <div class="contactPerson">
+            {% if template_data.contactPerson.website %}
+            <a href="{{template_data.contactPerson.website}}" target="_blank">
+               {{template_data.contactPerson.name}}
+            </a>
+            {% else %}
+               {{template_data.contactPerson.name}}
+            {% endif %}
+        </div>
+        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">{{template_data.contactPerson.email}}</div>
+    </span>
+    {% endif %}
+    {% if template_data.contributor %}
+    <span class="creators_right">
+        <div class="subsubtitle">Contributors</div>
+        <div class="flex_container">
+            {% for contributor in template_data.contributor %}
+            {% if contributor.name != template_data.contactPerson.name %}
+            <div class="contributor flex_item">
+                {% if contributor.linkedInUrl %}
+                <a href="{{contributor.linkedInUrl}}" target="_blank">
+                   {{contributor.name}}
+                </a>
+                {% else %}
+                   {{contributor.name}}
+                {% endif %}
+                {% if contributor.affiliation %}
+                <br>
+                {{contributor.affiliation}}
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    </span>
+</div>
 
+{% if template_data.mentions %}
+    <div class="divider"></div>
+
+    <div class="mentions">
+        <div class="subtitle">Mentions</div>
+        <div class="divider"></div>
+        {% for key, value in template_data.mentions.items() %}
+        <div class="mention">
+            <div class="mention_button">
+                <div class="subsubtitle">{{mention_types.get(key, key)}} ({{value|length}})</div>
+            </div>
+            <div class="mention_text">
+                <ul>
+                {% for item in value %}
+                    <li>
+                    {% if item.data.url %}
+                        <a href="{{item.data.url}}" target="_blank">
+                        {{item.data.title}}
+                        </a>
+                    {% else %}
+                        {{item.data.title}}
+                    {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="divider"></div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if template_data.testimonial %}
+    <div class="testimonial">"{{template_data.testimonial}}"</div>
+    <div class="testimonialby">- {{template_data.testimonialBy}}</div>
+{% endif %}
+
+<div class="divider"></div>
+
+<div class="otherDetails">
+    <div class="flex_container">
+    {% if template_data.doi %}
+        <div class="flex_item">
+            <b>DOI</b>
+            <br>
+            <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a>
+        </div>
+    {% endif %}
+    {% if template_data.updatedAt %}
+        <div class="flex_item">
+            <b>updatedAt</b>
+            <br>
+            {{template_data.updatedAt|strftime}}
+        </div>
+    {% endif %}
+    {% if template_data.license %}
+        <div class="flex_item">
+            <b>License</b>
+            <br>
+            {{", ".join(template_data.license)}}
+        </div>
+    {% endif %}
+    {% if template_data.competence %}
+        <div class="flex_item">
+            <b>Competence</b>
+            <br>
+            {{", ".join(template_data.competence)}}
+        </div>
+    {% endif %}
+    {% if template_data.discipline %}
+        <div class="flex_item">
+            <b>discipline</b>
+            <br>
+            {{", ".join(template_data.discipline)}}
+        </div>
+    {% endif %}
+    {% if template_data.programmingLanguage %}
+        <div class="flex_item">
+            <b>programmingLanguage</b>
+            <br>
+            {{", ".join(template_data.programmingLanguage)}}
+        </div>
+    {% endif %}
+    {% if template_data.technologyTag %}
+        <div class="flex_item">
+            <b>technologyTag</b>
+            <br>
+            {{", ".join(template_data.technologyTag)}}
+        </div>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
