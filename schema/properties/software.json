@@ -13,13 +13,13 @@
   },
   "tagLine": {
     "sortIndex": 11,
-    "htmlDescription": "One-sentence <b>tagline</b>: In max. 6 words explain what your software does"
+    "htmlDescription": "<p>One-sentence <b>tagline</b>: In max. 6 words explain what your software does<p><p>Example for Xenon:</p><p><i>Easy access to compute and storage</i></p>"
   },
   "shortStatement": {
     "sortIndex": 12,
     "markdown": true,
     "long": true,
-    "htmlDescription": "Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves."
+    "htmlDescription": "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
   },
   "statement": {
     "sortIndex": 13,
