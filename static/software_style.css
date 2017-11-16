@@ -93,6 +93,16 @@
     float: right;
 	display: inline-block;
 }
+.box_mainlink {
+	background-color: #000000;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 25px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2em;
+}
 .morecontent span {
     display: none;
 }
