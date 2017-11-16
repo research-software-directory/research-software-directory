@@ -148,7 +148,7 @@
                     <div class="subtitle">Mentions</div>
                     {% for key, value in template_data.mentions.items() %}
                         <div class="divider"></div>
-                        <div class="mention">{{key}} ({{value|length}})</div>
+                        <div class="mention">{{mention_types.get(key, key)}} ({{value|length}})</div>
                         {% for item in value %}
                             <div class="mention_content">{{item.data.title}}</div>
                         {% endfor %}
