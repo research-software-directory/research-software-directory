@@ -70,9 +70,9 @@ def strftime(millis):
     result = datetime.datetime.fromtimestamp(millis).strftime(format)
     return result
 
-@app.template_filter('checkcontributor')
-def checkcontributor(contributor):
-    return [c if isinstance(c, str) else c['name'] for c in contributor]
+@app.template_filter('listNames')
+def listNames(contributors):
+    return [c['name'] for c in contributors]
 
 if __name__ == '__main__':
     app.run(debug=True)
