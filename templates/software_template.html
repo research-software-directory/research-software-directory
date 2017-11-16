@@ -115,7 +115,9 @@
                                {{template_data.contactPerson.name}}
                             {% endif %}
                         </div>
-                        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">{{template_data.contactPerson.email}}</div>
+                        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
+                        <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
+                        </div>
                     </span>
                     {% endif %}
                     {% if template_data.contributor %}
