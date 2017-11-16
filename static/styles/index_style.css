@@ -11,6 +11,10 @@
 .search_form {
     font-size:16pt;
 }
+
+#body {
+	width: 100%;
+}
 #input.search_form {
     width:800px;
     height: 35px;

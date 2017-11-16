@@ -104,6 +104,7 @@ a {
 	padding-left: 10px;
 }
 #body {
+    overflow: auto;
     margin: 0px;
     margin-left: auto;
     margin-right: auto;
