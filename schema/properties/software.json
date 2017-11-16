@@ -13,13 +13,13 @@
   },
   "tagLine": {
     "sortIndex": 11,
-    "htmlDescription": "One-sentence <b>tagline</b>, shown on RSD overview page (max 6 words)"
+    "htmlDescription": "One-sentence <b>tagline</b>: In max. 6 words explain what your software does"
   },
   "shortStatement": {
     "sortIndex": 12,
     "markdown": true,
     "long": true,
-    "htmlDescription": "Short <b>software statement</b>, shown on RSD software page (max 30 words)"
+    "htmlDescription": "Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves."
   },
   "statement": {
     "sortIndex": 13,

@@ -9,7 +9,7 @@ db.software.find().snapshot().forEach(
             },
             {
                 $set: {
-                    usingOrganization: elem.user
+                    shortStatement: elem.tagLine
                 }
             }
         );
