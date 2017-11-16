@@ -37,12 +37,6 @@
     </form>
 </div>
 
-<div id="box_0">
-  <div id="title_bar_right">Search results</div>
-
-  <div class="layout" id="search_results"></div>
-</div>
-
 <div id="container_right">
   <div id="box_1">
    <div id="title_bar_right">Highlights</div>
@@ -51,6 +45,7 @@
 
   <div id="box_3"> 
     <div id="title_bar_right">Projects</div>  
+    <div class="layout" id="search_results"></div>
     <div class="layout" id="data_display">   
     </div>
   </div>
@@ -97,7 +92,7 @@
 <script language="Javascript">
     function search_algo(search_key){
       search_key = search_key.toLowerCase();
-      results_list = "<ul>"
+      count = 0;
         for (var i = 0; i <ALL_DATA.length; i++){
           dict = ALL_DATA[i];
           hit = false;
@@ -127,11 +122,11 @@
             }
             if(hit){
               $("#"+ALL_DATA[i]['id']+".product").css("display", "block")
-              results_list += "<li>Commits:"+ALL_DATA[i]['commits']+" Name:"+ ALL_DATA[i]['name']+" Tagline:"+ ALL_DATA[i]['tagLine']+"</li>"              
+              count += 1             
             }
-            
+          
       }
-      results_list+= "</ul>"
+      results_list = "There are "+count+" search results for the keyword <b>"+search_key+"</b>"
       return results_list
     }
 
@@ -190,8 +185,8 @@
           $("#box_1").css("display", "none")
           /*$("#box_0").css("display", "block")*/
           $('input:checkbox:checked').prop('checked', false);
-          /*$("#search_results").append(results_list)
-          $("#search_results").css("visibility", "visible")*/
+          $("#search_results.layout").append(results_list)
+          $("#search_results.layout").css("display", "block")
         }else if( $("input[type=submit][clicked=true]").val()==='reset'){
           $("*.product").css("display", "block")
         }
