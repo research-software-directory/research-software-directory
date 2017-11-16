@@ -7,7 +7,7 @@
         <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='read_more_style.css')}}">
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
-        <!–– <script type="text/javascript" src="{{url_for('static', filename='read_more.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='software_scripts.js')}}"></script>
         <script type="text/javascript" src="/dynamic/{{software_id}}/commitsData.js"></script>
         <title>Research Software Directory | {{template_data.name}}</title>
     </head>
@@ -145,14 +145,23 @@
                     <div class="divider"></div>
 
                     <div class="mentions">
-                    <div class="subtitle">Mentions</div>
-                    {% for key, value in template_data.mentions.items() %}
+                        <div class="subtitle">Mentions</div>
                         <div class="divider"></div>
-                        <div class="mention">{{mention_types.get(key, key)}} ({{value|length}})</div>
-                        {% for item in value %}
-                            <div class="mention_content">{{item.data.title}}</div>
+                        {% for key, value in template_data.mentions.items() %}
+                        <div class="mention">
+                            <div class="mention_button">
+                                <div class="subsubtitle">{{mention_types.get(key, key)}} ({{value|length}})</div>
+                            </div>
+                            <div class="mention_text">
+                                <ul>
+                                    {% for item in value %}
+                                    <li>{{item.data.title}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="divider"></div>
+                        </div>
                         {% endfor %}
-                    {% endfor %}
                     </div>
                 {% endif %}
 

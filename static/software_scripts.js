@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+    $(".mention_button").each(function() {
+        $(this).on("click", function() {
+            $(this).next().toggle("slow");
+        });
+    });
+
     // Configure/customize these variables.
     var showChar = 100;  // How many characters are shown by default
     var ellipsestext = "...";
@@ -6,7 +13,7 @@ $(document).ready(function() {
     var lesstext = "Show less";
 
 
-    $('.description').each(function() {
+    $('.readmore').each(function() {
         var content = $(this).text();
 
         if(content.length > showChar) {
