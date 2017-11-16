@@ -102,19 +102,24 @@ function search_algo(search_key){
     }
   });
 
- $("#filter").click(function (event){
-    //event.preventDefault();
-    $("#box_1").css("display", "none")
-    console.log("Filter selection:")
-    $('input[type=checkbox').each(function(){
-        //console.log($(this).val()+" checked:"+$(this).prop('checked'))
-        if ($(this).prop('checked')){
-          if($(this).val()=='highlights'){
-            $("*.product").css("display", "block")
-            $('#box_0').css("display", "none")
-            $('#box_1').css("display", "block")
-          }
+$("#filter").click(function (event){
+  //event.preventDefault(); 
+  $("#box_1").css("display", "none")
+  console.log("Filter selection:")
+  var search_key = ""
+  var highlights_selected = false
+  $('input[type=checkbox').each(function(){
+      //console.log($(this).val()+" checked:"+$(this).prop('checked'))
+      if ($(this).prop('checked')){              
+        if($(this).val()=='highlights'){
+          $("*.product").css("display", "block")
+          $('#box_0').css("display", "none")
+          $('#box_1').css("display", "block")
+          highlights_selected = true
         }
-    })
+      search_key += $(this).val()
+      }
+  })
+  results_list = search_algo(search_key)
+});
 
-  });
