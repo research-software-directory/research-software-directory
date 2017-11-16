@@ -33,6 +33,7 @@
     <form id="search" action="">
         <input type='text' class="search_form" id="input" value="Search for software, people, technologies, etc.">
         <input type="submit" class="search_form" id="submit" value="search" >
+        <input type="submit" class="search_form" id="reset" value="reset" >
     </form>
 </div>
 
@@ -81,7 +82,7 @@
 
 
 <div id="box_3"> 
-  <div id="title_bar_right">All projects</div>  
+  <div id="title_bar_right">Projects</div>  
   <div class="layout" id="data_display">   
   </div>
 </div>
@@ -119,8 +120,10 @@
               hit=true
             }
             if(hit){
+              $("#"+ALL_DATA[i]['id']+".product").css("display", "block")
               results_list += "<li>Commits:"+ALL_DATA[i]['commits']+" Name:"+ ALL_DATA[i]['name']+" Tagline:"+ ALL_DATA[i]['tagLine']+"</li>"              
             }
+            
       }
       results_list+= "</ul>"
       return results_list
@@ -145,19 +148,19 @@
         default_number_all_projects = 200    
         project_count = 0
         for (var i = 0; i < ALL_DATA.length; i++){
-          var toolTipText = '<b>'+ALL_DATA[i]['name']+'</b><br><br>'+ALL_DATA[i]['tagLine']+'<br><br>Commits : '+ALL_DATA[i]['commits']+'<br> Mentions : '+ALL_DATA[i]['mentions'];
-          var appendHtml = "<div class='product' id="+i+"><a href='/software/"+ALL_DATA[i]['id']+"'>"+ALL_DATA[i]['id']+"<img class='product_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>";
+          var toolDate = new Date()
+          toolDate.setSeconds(parseInt(ALL_DATA[i]['lastUpdate']))
+          var formattedDate = toolDate.toDateString();
+          var toolTipText = '<b>'+ALL_DATA[i]['name']+'</b><br><br>'+ALL_DATA[i]['tagLine']+'<br><br>Commits : '+ALL_DATA[i]['commits']+'<br> Mentions : '+ALL_DATA[i]['mentions'] +'<br><br>Last updated:'+formattedDate;
+          var appendHtml = "<div class='product' id="+ALL_DATA[i]['id']+"><a href='/software/"+ALL_DATA[i]['id']+"'><b>"+ALL_DATA[i]['id']+"</b><img class='product_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>";
           if (ALL_DATA[i]['highlighted']) {
             $("#data_gems").append(appendHtml) // name, tagline, mentions, commits
-          } else {
-            if(project_count<default_number_all_projects){
-              $("#data_display").append(appendHtml) // name, tagline, mentions, commits
-              project_count += 1
-            }            
+          }
+          if(project_count<default_number_all_projects){
+            $("#data_display").append(appendHtml) // name, tagline, mentions, commits
+          project_count += 1                      
           }            
         }
-        $("#data_display").append("<span id='more_projects'>MORE PROJECTS</h2></span>")
-
         // a
         // activate Bootstrap4 on the tooltips
         $(function () {
@@ -165,17 +168,27 @@
         });
      });
 
-     $("#search").submit(function (event){
-        event.preventDefault(); 
-        console.log("Search query:",search.input.value)
-        $("#search_results").empty()
-        results_list = search_algo(search.input.value)
+      $("form input[type=submit]").click(function() {
+          $("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
+          $(this).attr("clicked", "true");
+      });
 
-        $("#box_1").css("display", "none")
-        $("#box_0").css("display", "block")
-        $('input:checkbox:checked').prop('checked', false);
-        $("#search_results").append(results_list)
-        $("#search_results").css("visibility", "visible")
+     $("#search").on("submit", function (event){
+        event.preventDefault();        
+        console.log($("#reset").attr("clicked")) 
+        if( $("input[type=submit][clicked=true]").val()=='search'){
+          $("*.product").css("display", "none")
+          $("#search_results").empty()
+          results_list = search_algo(search.input.value)
+
+          $("#box_1").css("display", "none")
+          $("#box_0").css("display", "block")
+          $('input:checkbox:checked').prop('checked', false);
+          $("#search_results").append(results_list)
+          $("#search_results").css("visibility", "visible")
+        }else if( $("input[type=submit][clicked=true]").val()==='reset'){
+          $("*.product").css("display", "block")
+        }
       });
 
      $("#filter").click(function (event){
@@ -185,6 +198,7 @@
             //console.log($(this).val()+" checked:"+$(this).prop('checked'))
             if ($(this).prop('checked')){
               if($(this).val()=='highlights'){
+                $("*.product").css("display", "block")
                 $('#box_0').css("display", "none")
                 $('#box_1').css("display", "block")
               }

@@ -12,13 +12,13 @@
     font-size:16pt;
 }
 #input.search_form {
-    width:600px;
+    width:800px;
     height: 35px;
     position:relative;
     float:right;
     color: #676a70;
 }
-#submit.search_form{
+#submit.search_form, #reset.search_form {
     height: 35px;
     position: relative;
     float:right;
@@ -32,7 +32,7 @@
     visibility:hidden;
 }
 .product{
-    background-color: #dddddd;
+    background-color: #a2a2a2;
     margin-left:20px;
     margin-top:15px;
     width:300px;
