@@ -1,16 +1,14 @@
-<<<<<<< HEAD
 {% extends "layout_template.html" %}
 {% block head %}
 {{super()}}
 <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='software_style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='read_more_style.css')}}">
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{url_for('static', filename='software_scripts.js')}}"></script>
 <script type="text/javascript" src="/dynamic/{{software_id}}/commitsData.js"></script>
 {% endblock %}
-{% block title %}
-{{template_data.name}}
-{% endblock %}
+{% block title %}{{template_data.name}}{% endblock %}
 {% block content %}
 {% if template_data.name %}
 <div class="name">{{template_data.name}}</div>
@@ -114,49 +112,6 @@
                 </a>
                 {% else %}
                    {{contributor.name}}
-                {% endif %}
-                {% if contributor.affiliation %}
-                <br>
-                {{contributor.affiliation}}
-                {% endif %}
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-    {% endif %}
-    </span>
-</div>
-
-{% if template_data.mentions %}
-    <div class="divider"></div>
-
-    <div class="mentions">
-        <div class="subtitle">Mentions</div>
-        <div class="divider"></div>
-        {% for key, value in template_data.mentions.items() %}
-        <div class="mention">
-            <div class="mention_button">
-                <div class="subsubtitle">{{mention_types.get(key, key)}} ({{value|length}})</div>
-            </div>
-            <div class="mention_text">
-                <ul>
-                {% for item in value %}
-                    <li>
-                    {% if item.data.url %}
-                        <a href="{{item.data.url}}" target="_blank">
-                        {{item.data.title}}
-                        </a>
-                    {% else %}
-                        {{item.data.title}}
-                    {% endif %}
-                    </li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div class="divider"></div>
-        </div>
-        {% endfor %}
-    </div>
                 {% endif %}
                 {% if contributor.affiliation %}
                 <br>
