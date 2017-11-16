@@ -16,13 +16,14 @@
     height: 35px;
     position:relative;
     float:right;
+    color: #dddddd;
 }
 #submit.search_form{
     height: 35px;
     position: relative;
     float:right;
     background-color: #000000;
-    color: #FFFFFF
+    color: #FFFFFF;
 }
 .search_results{
     position: relative;
