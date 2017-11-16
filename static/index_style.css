@@ -102,7 +102,7 @@
     padding-left:20px;
     padding-top: 20px;
     font-size: 15pt;
-    width:100%;
+    width:90%;
     height:300px;
 }
 #box_0{
@@ -115,25 +115,41 @@
 }
 #box_1{
     margin-bottom:60px;
-    width: 75%;
+    width: 100%;
     position: relative;
     float: right;
 }
 #box_2a{
-    width:25%;
-    position: relative;
-    float: left;
+    width:100%;
+    /*position: absolute;
+    top: 150px;
+    left: 5px;*/
+    /*position: relative;
+    float: left;*/
 }
 #box_2b{
-    width:25%;
-    position: relative;
-    float: left;
+    width:100%;
+    /*position: absolute;
+    top: 500px;
+    left:5px;*/
+    /*position: relative;
+    float: left;*/
 }
 #box_3{
-    width:75%;
+    width:100%;
     /*max-height:1000px;*/ 
     position: relative;
-    float: right;       
+    float: right; 
+}
+#container_left{
+    width: 25%;
+    position:relative;
+    float:left;    
+}
+#container_right{
+    width:75%;
+    position:relative;
+    float:right;    
 }
 input[type=checkbox]
 {
