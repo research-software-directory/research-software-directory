@@ -65,7 +65,7 @@
     font-size: 1.2em;
     font-style: italic;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 10px;
 }
 .testimonialby {
@@ -74,9 +74,9 @@
 }
 .divider {
     border-top: 1px solid #dddddd;
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 0px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 .box {
 	background-color: #dddddd;
@@ -124,6 +124,10 @@
 .mentions {
     width: 90%;
     margin: auto;
+}
+.mentions .divider {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 .mention_button {
     cursor:pointer;
