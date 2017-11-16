@@ -119,6 +119,8 @@ Other cases, like bug fixes or minor features, do not have to be added to the RS
 * On the `Info` tab, fill in the `Title` field  and set the `URL` to the Github URL.
 * Also on the `Info` tab, Add `Type: feature` to the `Extra` field.
 
+**It is not necessary to fill out any other fields for software, all metadata is maintained in the RSD admin tool**
+
 #### Datasets
 Datasets will be a new feature in an upcomming Zetore release. For now, set `Item Type` to `Journal Article`.
 In order to distinguish dataset items from regular journal articles inside Zotero, the following should be added on a separate line into the `Extra` field: `itemType: Dataset`.
