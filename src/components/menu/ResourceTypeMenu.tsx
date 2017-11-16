@@ -54,7 +54,7 @@ export class ResourceTypeMenu extends React.PureComponent<IProps, IState> {
               onChange={this.onSubmenuSearch}
             />
             <Divider/>
-            {this.props.type !== 'publication' && <NewItemContainer resourceType={this.props.type}/>}
+            {this.props.type === 'false_hide_me' && <NewItemContainer resourceType={this.props.type}/>}
             <MenuItemsContainer type={this.props.type} search={this.state.search} />
           </Menu>
       );
