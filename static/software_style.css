@@ -100,10 +100,12 @@
 	display: inline-block;
 }
 .creators_left {
-    float: left;
+    display: inline-block;
     width: 33%;
 }
 .creators_right {
+    display: inline-block;
+    vertical-align:top;
     width: 66%;
 }
 .creators .flex_container {

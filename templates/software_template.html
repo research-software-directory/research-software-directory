@@ -104,7 +104,7 @@
                 <div class="creators">
                     <div class="subtitle">Creators</div>
                     {% if template_data.contactPerson %}
-                    <div class="creators_left">
+                    <span class="creators_left">
                         <div class="subsubtitle">Contact person</div>
                         <div class="contactPerson">
                             {% if template_data.contactPerson.website %}
@@ -116,10 +116,10 @@
                             {% endif %}
                         </div>
                         <div class="contactEmail">{{template_data.contactPerson.email}}</div>
-                    </div>
+                    </span>
                     {% endif %}
                     {% if template_data.contributor %}
-                    <div class="creators_right">
+                    <span class="creators_right">
                         <div class="subsubtitle">Contributors</div>
                         <div class="flex_container">
                             {% for contributor in template_data.contributor %}
@@ -141,7 +141,7 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                    </div>
+                    </span>
                 </div>
 
                 {% if template_data.mentions %}
