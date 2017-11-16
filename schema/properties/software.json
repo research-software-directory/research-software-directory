@@ -13,10 +13,16 @@
   },
   "tagLine": {
     "sortIndex": 11,
-    "htmlDescription": "One-sentence <b>tagline</b>, shown on RSD overview page"
+    "htmlDescription": "One-sentence <b>tagline</b>, shown on RSD overview page (max 6 words)"
+  },
+  "shortStatement": {
+    "sortIndex": 12,
+    "markdown": true,
+    "long": true,
+    "htmlDescription": "Short <b>software statement</b>, shown on RSD software page (max 30 words)"
   },
   "statement": {
-    "sortIndex": 12,
+    "sortIndex": 13,
     "markdown": true,
     "long": true,
     "htmlDescription": "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"

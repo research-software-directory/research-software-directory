@@ -56,6 +56,10 @@
       "description": "One-sentence description of the software.",
       "type": "string"
     },
+    "shortStatement": {
+      "description": "Short software statement.",
+      "type": "string"
+    },
     "statement": {
       "description": "Software statement.",
       "type": "string"
