@@ -157,9 +157,17 @@
                             </div>
                             <div class="mention_text">
                                 <ul>
-                                    {% for item in value %}
-                                    <li>{{item.data.title}}</li>
-                                    {% endfor %}
+                                {% for item in value %}
+                                    <li>
+                                    {% if item.data.url %}
+                                        <a href="{{item.data.url}}" target="_blank">
+                                        {{item.data.title}}
+                                        </a>
+                                    {% else %}
+                                        {{item.data.title}}
+                                    {% endif %}
+                                    </li>
+                                {% endfor %}
                                 </ul>
                             </div>
                             <div class="divider"></div>
