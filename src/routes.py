@@ -98,7 +98,22 @@ def get_routes(service_controller, db):
             resource.data['contactPerson'] = unpack_person(resource.data['contactPerson'], db)
             for idx, organization in enumerate(resource['contributingOrganization']):
                 resource.data['contributingOrganization'][idx] = unpack_organization(organization, db)
-
+            resource.data['mentions'] = {}
+            if 'zoteroKey' in resource.data:
+                def has_relation(key, publication):
+                    if 'dc:relation' in publication['data']['relations']:
+                        relations = publication['data']['relations']['dc:relation']
+                        for relation in relations:
+                            if relation[-8::] == key:
+                                return True
+                    return False
+                all_publications = list(db['zotero_publication'].all())
+                related = filter(lambda x: has_relation(resource.data['zoteroKey'], x), all_publications)
+                for item in related:
+                    if not item['data']['itemType'] in resource.data['mentions']:
+                        resource.data['mentions'][item['data']['itemType']] = []
+                    resource.data['mentions'][item['data']['itemType']].append(item)
+                        
         return resource.data, 200
 
     @api.route('/schema')

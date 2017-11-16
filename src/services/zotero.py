@@ -134,7 +134,19 @@ class ZoteroService:
 
 
     def sync_publications(self):
-        print(self.client.items(limit=1))
+        publications = self.client.item_versions()
+        to_update = []
+        for key, version in publications.items():
+            pub = self.db['zotero_publication'].find({'key': key})
+            if not pub or pub.count() == 0 or next(iter(pub))['version'] < version:
+                to_update.append(key)
 
+        for n in range(0, len(to_update), 50):
+            print('%s / %s synced' % (n, len(to_update)))
+            results = self.client.items(itemKey=','.join(to_update[n:n+50]))
+            for result in results:
+                pub = self.db['zotero_publication'].find({'key': result['key']})
+                pub = self.db['zotero_publication'].new() if pub.count() == 0 else next(iter(pub))
+                pub.data.update(result)
+                pub.save()
 
-        print('publications')
