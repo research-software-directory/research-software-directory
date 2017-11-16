@@ -116,6 +116,11 @@
     flex-basis: 33%;
     flex-shrink: 0;
 }
+.contactEmail img {
+    width: 10px;
+    height: 10px;
+    padding-right: 6px;
+}
 .mentions {
     width: 90%;
     margin: auto;
