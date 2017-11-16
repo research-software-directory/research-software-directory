@@ -93,21 +93,28 @@
       results_list = "<ul>"
         for (var i = 0; i <ALL_DATA.length; i++){
           dict = ALL_DATA[i];
-          console.log(dict)
           hit = false;
-            for (var term in dict['discipline']){
-              console.log(term)
+            for (var j =0; j < dict['discipline'].length; j++){
+              term = dict['discipline'][j]
               if (term.toLowerCase().indexOf(search_key) !== -1){
                   hit=true
                   break;
               }
             }            
-            for (var term in dict['expertise']){
+            for (var j = 0; j < dict['expertise'].length; j++){
+              term = dict['expertise'][j]
               if (term.toLowerCase().indexOf(search_key) !== -1){
                   hit=true
                   break;
               }
             }
+            for (var j = 0; j < dict['tags'].length; j++){
+              term = dict['tags'][j]
+              if (term.toLowerCase().indexOf(search_key) !== -1){
+                  hit=true
+                  break;
+              }
+            }            
             if (dict['tagLine'].toLowerCase().indexOf(search_key)!==-1){
               hit=true
             }
