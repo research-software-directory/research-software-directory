@@ -37,9 +37,6 @@
                 {% if template_data.contributor %}
                 <div class="by">By {{", ".join(template_data.contributor|checkcontributor)}}</div>
                 {% endif %}
-                {% if template_data.contributingOrganization %}
-                <div class="contributingOrganization">{{", ".join(template_data.contributingOrganization)}}</div>
-                {% endif %}
                 {% if template_data.tagLine %}
                 <div class="tagLine">{{template_data.tagLine}}</div>
                 {% endif %}
@@ -76,16 +73,24 @@
 
                 <div class="divider"></div>
 
-                {% if template_data.involvedOrganization %}
-                <div class="involvedOrganization">
+                {% if template_data.contributingOrganization %}
+                <div class="contributingOrganization">
                     <div class="subtitle">In collaboration with</div>
-                    <div class="float_container">
-                        {% for involvedOrganization in template_data.involvedOrganization %}
-                        {% if organisation_logos[involvedOrganization] %}
-                        <div class="float_item"><img src="{{url_for('static', filename='logos/'+organisation_logos[involvedOrganization])}}"></div>
-                        {% else %}
-                        <div class="float_item">{{involvedOrganization}}</div>
+                    <div class="flex_container">
+                        {% for contributingOrganization in template_data.contributingOrganization %}
+                        <div class="flex_item">
+                        {% if contributingOrganization.website %}
+                            <a href="{{contributingOrganization.website}}" target="_blank">
                         {% endif %}
+                        {% if organisation_logos[contributingOrganization.id] %}
+                                <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
+                        {% else %}
+                                {{contributingOrganization.name}}
+                        {% endif %}
+                        {% if contributingOrganization.website %}
+                            </a>
+                        {% endif %}
+                        </div>
                         {% endfor %}
                     </div>
                 </div>

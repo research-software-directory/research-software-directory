@@ -22,15 +22,20 @@
 }
 .technologyTag {
 }
-.involvedOrganization {
+.contributingOrganization {
     margin: auto;
 }
-.float_container {
-    height: 100px;
-    width: 100%;
-    margin: auto;
+.flex_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
 }
-.float_item {
+.flex_item {
+    flex-basis: 33%;
+    flex-shrink: 0;
     position: relative;
     float: left;
     width: 33%;
@@ -38,7 +43,7 @@
     margin: 0px;;
     top: 15px;
 }
-.float_item img {
+.flex_item img {
     max-width: 90%;
     max-height: 100%;
     position: absolute;
