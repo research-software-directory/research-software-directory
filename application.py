@@ -3,7 +3,6 @@ import requests
 import markdown
 import random
 import datetime
-import json
 import plot_commits
 
 app = application = flask.Flask(__name__)
@@ -29,6 +28,8 @@ def index():
 def software_product_page_template(software_id):
     url = "http://admin.research-software.nl/api/software/%s" % software_id
     software_dictionary = requests.get(url).json()
+    if ("error" in software_dictionary):
+        return flask.redirect("/", code=302)
     statement = software_dictionary.get("statement", '')
     statementMarkup = flask.Markup(markdown.markdown(statement))
     organisation_logos = {"astron":"astron.gif","cbs-knaw":"cbs-knaw.png","commit":"commit.png","cwi":"cwi.png","dans":"dans.jpg","deltares":"deltares.jpe","dtl":"dtl.png","fugro":"fugro.png","geodan":"geodan.gif","huygens":"huygens.png","icl":"icl.jpg","ign":"ign.jpg","jhu":"jhu.png","knir":"knir.png","knmi":"knmi.png","leiden-university":"leiden-university.png","lumc":"lumc.png","meertens":"meertens.png","monetdb":"monetdb.png","nfi":"nfi.gif","nikhef":"nikhef.jpg","nlesc":"nlesc.png","ntu":"ntu.gif","oracle":"oracle.png","potree":"potree.png","radboud.university.nijmegen":"radboud.university.nijmegen.png","rijkswaterstaat":"rijkswaterstaat.png","spinlab":"spinlab.jpg","surfsara":"surfsara.png","tno":"tno.jpg","tu-delft":"tu-delft.png","university.of.groningen":"university.of.groningen.png","university.of.southampton":"university.of.southampton.svg","upv":"upv.png","utwente":"utwente.png","uu":"uu.svg","uva":"uva.jpg","vua":"vua.png","wur":"wur.jpg"}
@@ -39,6 +40,10 @@ def software_product_page_template(software_id):
         'bookSection': 'Book section'
         }
     return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary, statementMarkup=statementMarkup, organisation_logos=organisation_logos, mention_types=mention_types)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return flask.redirect("/", code=302)
 
 @app.route('/dynamic/<software_id>/commitsData.js')
 def get_commits_data(software_id):
