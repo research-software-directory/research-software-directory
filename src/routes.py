@@ -103,6 +103,8 @@ def get_routes(service_controller, db):
                 def has_relation(key, publication):
                     if 'dc:relation' in publication['data']['relations']:
                         relations = publication['data']['relations']['dc:relation']
+                        if isinstance(relations, str):
+                            relations = [relations]
                         for relation in relations:
                             if relation[-8::] == key:
                                 return True
@@ -113,7 +115,7 @@ def get_routes(service_controller, db):
                     if not item['data']['itemType'] in resource.data['mentions']:
                         resource.data['mentions'][item['data']['itemType']] = []
                     resource.data['mentions'][item['data']['itemType']].append(item)
-                        
+
         return resource.data, 200
 
     @api.route('/schema')
