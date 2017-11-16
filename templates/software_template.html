@@ -116,6 +116,18 @@
 
                 <div class="divider"></div>
 
+                <div class="mentions">
+                    <div class="subtitle">Mentions</div>
+                </div>
+
+                {% if template_data.testimonial %}
+                    <div class="divider"></div>
+                    <div class="testimonial">"{{template_data.testimonial}}"</div>
+                    <div class="testimonialby">- {{template_data.testimonialBy}}</div>
+                {% endif %}
+
+                <div class="divider"></div>
+
                 {% if template_data.doi %}
                 <div class="doi">DOI: <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a></div>
                 {% endif %}
