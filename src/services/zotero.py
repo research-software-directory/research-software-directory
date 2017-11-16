@@ -21,7 +21,7 @@ class ZoteroService:
 
     def get_projects(self):
         # All folders are collections, so both 'Projects' and all Projects themselves
-        collections = self.client.collections()  # get all collections
+        collections = self.client.everything(self.client.collections())  # get all collections
         # get the 'Projects' collection
         projects_collection = next(filter(lambda x: x['data']['name'] == 'Projects', collections))
         # Projects are all collections with 'Projects' as parent collection
