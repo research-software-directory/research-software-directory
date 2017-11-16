@@ -5,7 +5,7 @@
     font-size: 3em;
     padding-top: 20px;
 }
-.contributor {
+.by {
     font-weight: bold;
 }
 .tagLine {
@@ -67,7 +67,9 @@
 .contactPerson {
     text-decoration: underline;
 }
-
+.contributor {
+    text-decoration: underline;
+}
 .divider {
      border-top: 1px solid #dddddd;
      padding: 5px;

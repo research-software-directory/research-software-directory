@@ -35,7 +35,7 @@
                 <div class="name">{{template_data.name}}</div>
                 {% endif %}
                 {% if template_data.contributor %}
-                <div class="contributor">By {{", ".join(template_data.contributor|checkcontributor)}}</div>
+                <div class="by">By {{", ".join(template_data.contributor|checkcontributor)}}</div>
                 {% endif %}
                 {% if template_data.contributingOrganization %}
                 <div class="contributingOrganization">{{", ".join(template_data.contributingOrganization)}}</div>
@@ -99,6 +99,13 @@
                     <div class="subsubtitle">Contact person</div>
                     <div class="contactPerson">{{template_data.contactPerson.name}}</div>
                     <div class="contactEmail">{{template_data.contactPerson.email}}</div>
+                    {% endif %}
+                    </br>
+                    {% if template_data.contributor %}
+                    <div class="subsubtitle">Contributors</div>
+                    {% for contributor in template_data.contributor %}
+                        <div class="contributor">{{contributor.name}}</div>
+                    {% endfor %}
                     {% endif %}
                 </div>
 
