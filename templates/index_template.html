@@ -142,11 +142,11 @@
 
      $(document).ready(function(){
         // fill gems div    
-        default_number_all_projects = 6    
+        default_number_all_projects = 200    
         project_count = 0
         for (var i = 0; i < ALL_DATA.length; i++){
           var toolTipText = '<b>'+ALL_DATA[i]['name']+'</b><br><br>'+ALL_DATA[i]['tagLine']+'<br><br>Commits : '+ALL_DATA[i]['commits']+'<br> Mentions : '+ALL_DATA[i]['mentions'];
-          var appendHtml = "<div class='product' id="+i+"><a href='/software/"+ALL_DATA[i]['id']+"'><img class='product_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>";
+          var appendHtml = "<div class='product' id="+i+"><a href='/software/"+ALL_DATA[i]['id']+"'>"+ALL_DATA[i]['id']+"<img class='product_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>";
           if (ALL_DATA[i]['highlighted']) {
             $("#data_gems").append(appendHtml) // name, tagline, mentions, commits
           } else {
@@ -156,7 +156,7 @@
             }            
           }            
         }
-        $("#data_display").append("<span id='more_projects'><h2 >MORE PROJECTS</h2></span>")
+        $("#data_display").append("<span id='more_projects'>MORE PROJECTS</h2></span>")
 
         // a
         // activate Bootstrap4 on the tooltips

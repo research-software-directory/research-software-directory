@@ -131,7 +131,7 @@
 }
 #box_3{
     width:75%;
-    height:1000px; 
+    /*max-height:1000px;*/ 
     position: relative;
     float: right;       
 }
@@ -152,5 +152,7 @@ input[type=checkbox]
   display: inline;
 }
 #more_projects{
-    
+    position: absolute;
+    margin-left: -50%;
+    margin-top: 90%;
 }
