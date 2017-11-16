@@ -285,6 +285,8 @@ Since the projects in Zotero are not searchable, find your project below:
 ## GEMs
 For the gems (as far as they are not covered by a project):
 
+| Software        | Reponsible for end report content   |
+| --------------- | ----------------------------------- |
 | Noodles | Johan
 | Kernel Tuner | Ben v W. 
 | SPOT | Faruk 
