@@ -17,6 +17,7 @@ export class Person extends React.PureComponent<IProps, {}> {
     <div>
       <Input value={this.props.value.name || ''} placeholder="name" onChange={this.updateField('name')} />
       <Input value={this.props.value.url || ''} placeholder="URL" onChange={this.updateField('url')}/>
+      <Input value={this.props.value.email || ''} placeholder="Email" onChange={this.updateField('email')}/>
       <Input
         value={this.props.value.organization || ''}
         placeholder="Organization"
