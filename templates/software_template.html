@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "layout_template.html" %}
 {% block head %}
 {{super()}}
@@ -95,7 +96,9 @@
                {{template_data.contactPerson.name}}
             {% endif %}
         </div>
-        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">{{template_data.contactPerson.email}}</div>
+        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
+        <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
+        </div>
     </span>
     {% endif %}
     {% if template_data.contributor %}
@@ -111,6 +114,49 @@
                 </a>
                 {% else %}
                    {{contributor.name}}
+                {% endif %}
+                {% if contributor.affiliation %}
+                <br>
+                {{contributor.affiliation}}
+                {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    </span>
+</div>
+
+{% if template_data.mentions %}
+    <div class="divider"></div>
+
+    <div class="mentions">
+        <div class="subtitle">Mentions</div>
+        <div class="divider"></div>
+        {% for key, value in template_data.mentions.items() %}
+        <div class="mention">
+            <div class="mention_button">
+                <div class="subsubtitle">{{mention_types.get(key, key)}} ({{value|length}})</div>
+            </div>
+            <div class="mention_text">
+                <ul>
+                {% for item in value %}
+                    <li>
+                    {% if item.data.url %}
+                        <a href="{{item.data.url}}" target="_blank">
+                        {{item.data.title}}
+                        </a>
+                    {% else %}
+                        {{item.data.title}}
+                    {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="divider"></div>
+        </div>
+        {% endfor %}
+    </div>
                 {% endif %}
                 {% if contributor.affiliation %}
                 <br>
