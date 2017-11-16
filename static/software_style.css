@@ -129,10 +129,20 @@
     margin-top: 8px;
     margin-bottom: 8px;
 }
+.mentions .subsubtitle {
+    padding-bottom: 0px;
+}
 .mention_button {
     cursor:pointer;
 }
 .mention_text {
     display: none;
 }
+.otherDetails .flex_item {
+    padding: 20px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
 /* ids */

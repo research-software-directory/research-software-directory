@@ -175,57 +175,60 @@
 
                 <div class="divider"></div>
 
-                {% if template_data.doi %}
-                <div class="doi">DOI: <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a></div>
-                {% endif %}
-                {% if template_data.license %}
-                <div class="license">license(s): {{", ".join(template_data.license)}}</div>
-                {% endif %}
-                {% if template_data.competence %}
-                <div class="competence">competence(s): {{", ".join(template_data.competence)}}</div>
-                {% endif %}
-                {% if template_data.discipline %}
-                <div class="discipline">discipline(s): {{", ".join(template_data.discipline)}}</div>
-                {% endif %}
-                {% if template_data.expertise %}
-                <div class="expertise">expertise(s): {{", ".join(template_data.expertise)}}</div>
-                {% endif %}
-                {% if template_data.updatedAt %}
-                <div class="updatedAt">updatedAt: {{template_data.updatedAt|strftime}}</div>
-                {% endif %}
+                <div class="otherDetails">
+                    <div class="flex_container">
+                    {% if template_data.doi %}
+                        <div class="flex_item">
+                            <b>DOI</b>
+                            <br>
+                            <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a></div>
+                        </div>
+                    {% endif %}
+                    {% if template_data.updatedAt %}
+                        <div class="flex_item">
+                            <b>updatedAt</b>
+                            <br>
+                            {{template_data.updatedAt|strftime}}
+                        </div>
+                    {% endif %}
+                    {% if template_data.license %}
+                        <div class="flex_item">
+                            <b>License</b>
+                            <br>
+                            {{", ".join(template_data.license)}}
+                        </div>
+                    {% endif %}
+                    {% if template_data.competence %}
+                        <div class="flex_item">
+                            <b>Competence</b>
+                            <br>
+                            {{", ".join(template_data.competence)}}
+                        </div>
+                    {% endif %}
+                    {% if template_data.discipline %}
+                        <div class="flex_item">
+                            <b>discipline</b>
+                            <br>
+                            {{", ".join(template_data.discipline)}}
+                        </div>
+                    {% endif %}
+                    {% if template_data.programmingLanguage %}
+                        <div class="flex_item">
+                            <b>programmingLanguage</b>
+                            <br>
+                            {{", ".join(template_data.programmingLanguage)}}
+                        </div>
+                    {% endif %}
+                    {% if template_data.technologyTag %}
+                        <div class="flex_item">
+                            <b>technologyTag</b>
+                            <br>
+                            {{", ".join(template_data.technologyTag)}}
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
 
-                <div class="divider"></div>
-
-                {% if template_data.programmingLanguage %}
-                <div class="programmingLanguage">
-                    programmingLanguage(s):
-                    <ul>
-                        {% for programmingLanguage in template_data.programmingLanguage %}
-                          <li>{{ programmingLanguage }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-                {% if template_data.owner %}
-                <div class="owner">
-                    owner(s):
-                    <ul>
-                        {% for owner in template_data.owner %}
-                          <li>{{ owner }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
-                {% if template_data.technologyTag %}
-                <div class="technologyTag">
-                    technologyTag(s):
-                    <ul>
-                        {% for technologyTag in template_data.technologyTag %}
-                          <li>{{ technologyTag }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
             </div>
 
             <div id="footer">
