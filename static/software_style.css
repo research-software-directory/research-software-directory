@@ -36,22 +36,10 @@
 .flex_item {
     flex-basis: 33%;
     flex-shrink: 0;
-    position: relative;
-    float: left;
-    width: 33%;
-    height: 50px;
-    margin: 0px;;
-    top: 15px;
 }
 .flex_item img {
     max-width: 90%;
     max-height: 100%;
-    position: absolute;
-    margin: auto;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
 }
@@ -70,10 +58,8 @@
     width: 300px;
 }
 .contactPerson {
-    text-decoration: underline;
 }
 .contributor {
-    text-decoration: underline;
 }
 .testimonial {
     font-size: 1.5em;
@@ -111,6 +97,21 @@
 }
 .morelink {
 	display: inline-block;
+}
+.creators_left {
+    float: left;
+    width: 33%;
+}
+.creators_right {
+    width: 66%;
+}
+.creators .flex_container {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.creators .flex_item {
+    flex-basis: 33%;
+    flex-shrink: 0;
 }
 
 /* ids */

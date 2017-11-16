@@ -101,17 +101,44 @@
                 <div class="creators">
                     <div class="subtitle">Creators</div>
                     {% if template_data.contactPerson %}
-                    <div class="subsubtitle">Contact person</div>
-                    <div class="contactPerson">{{template_data.contactPerson.name}}</div>
-                    <div class="contactEmail">{{template_data.contactPerson.email}}</div>
+                    <div class="creators_left">
+                        <div class="subsubtitle">Contact person</div>
+                        <div class="contactPerson">
+                            {% if template_data.contactPerson.website %}
+                            <a href="{{template_data.contactPerson.website}}" target="_blank">
+                               {{template_data.contactPerson.name}}
+                            </a>
+                            {% else %}
+                               {{template_data.contactPerson.name}}
+                            {% endif %}
+                        </div>
+                        <div class="contactEmail">{{template_data.contactPerson.email}}</div>
+                    </div>
                     {% endif %}
-                    </br>
                     {% if template_data.contributor %}
-                    <div class="subsubtitle">Contributors</div>
-                    {% for contributor in template_data.contributor %}
-                        <div class="contributor">{{contributor.name}}</div>
-                    {% endfor %}
+                    <div class="creators_right">
+                        <div class="subsubtitle">Contributors</div>
+                        <div class="flex_container">
+                            {% for contributor in template_data.contributor %}
+                            {% if contributor.name != template_data.contactPerson.name %}
+                            <div class="contributor flex_item">
+                                {% if contributor.linkedInUrl %}
+                                <a href="{{contributor.linkedInUrl}}" target="_blank">
+                                   {{contributor.name}}
+                                </a>
+                                {% else %}
+                                   {{contributor.name}}
+                                {% endif %}
+                                {% if contributor.affiliation %}
+                                <br>
+                                {{contributor.affiliation}}
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     {% endif %}
+                    </div>
                 </div>
 
                 {% if template_data.mentions %}
