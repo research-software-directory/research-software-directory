@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='common_style.css')}}">
+        <title>Research Software Directory | About</title>
+    </head>
+
+    <body>
+
+        <div id="layout_container">
+            <div id="header">
+                <div id="header_logo">
+                    <a href="https://www.esciencecenter.nl" target="_blank">
+                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
+                    </a>
+                </div>
+                <div id="header_text">
+                    Research Software Directory
+                </div>
+                <div id="header_links">
+                    <a href="/rsd">Get your own RSD</a>
+                    <a href="/about">About the platform</a>
+                </div>
+            </div>
+
+            <div id="body">
+                <div class="title">Get your own Research Software Directory</div>
+                Text...
+            </div>
+
+            <div id="footer">
+                <div id="footer_text">
+                    The Research Software Directory aims to promote the impact, the exchange and the re-use of best practices and to prevent fragmentation and duplication of research software.
+                </div>
+                <div id="footer_logo">
+                    <a href="https://www.esciencecenter.nl" target="_blank">
+                        <img src="{{url_for('static', filename='logos/nlesc.png')}}">
+                    </a>
+                </div>
+                <div id="footer_links">
+                    <a href="/rsd">Get your own RSD</a>
+                    <a href="/about">About the platform</a>
+                </div>
+            </div>
+        </div>
+
+    <script src="{{ url_for('static',filename='plot_commits.js') }}"></script>
+
+    </body>
+</html>
+

@@ -41,6 +41,14 @@ def software_product_page_template(software_id):
         }
     return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary, statementMarkup=statementMarkup, organisation_logos=organisation_logos, mention_types=mention_types)
 
+@app.route('/about')
+def about_template():
+    return flask.render_template('about_template.html')
+
+@app.route('/rsd')
+def rsd_template():
+    return flask.render_template('rsd_template.html')
+
 @app.errorhandler(404)
 def page_not_found(e):
     return flask.redirect("/", code=302)
