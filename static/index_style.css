@@ -25,16 +25,22 @@
     background-color: #000000;
     color: #FFFFFF;
 }
-#search_results{
+#search_results.layout{
     position: relative;
-    float: bottom;
-    width: 100%;
-    visibility:hidden;
+    float: right;
+    background-color: #32363d;
+    color:white;
+    font-size: 17pt;
+    text-align: center;
+    vertical-align: center;
+    width: 75%;
+    height:34pt;
+    display:none;
 }
 .product{
     background-color: #a2a2a2;
     margin-left:20px;
-    margin-top:15px;
+    margin-top:30px;
     width:300px;
     height:250px;
     border-right-style:solid;
@@ -81,7 +87,6 @@
     overflow-y:none;
     max-width: 100%;
     margin-left:10pt;
-    margin-bottom:30px;
     position:relative; 
     float:right;
     /*height:500px;*/    
@@ -93,7 +98,8 @@
     /*white-space:nowrap;*/
 }
 #data_display.layout{
-    text-align:center
+    text-align:center;
+    margin-bottom:40px;
 }
 #filter{
     position: relative;
@@ -104,14 +110,6 @@
     font-size: 15pt;
     width:90%;
     height:300px;
-}
-#box_0{
-    margin-bottom:60px;
-    width: 75%;
-    min-height:350px;
-    position: relative;
-    float: right;
-    display:none;
 }
 #box_1{
     margin-bottom:60px;
