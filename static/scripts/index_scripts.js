@@ -96,6 +96,8 @@ function search_algo(search_key){
       $("#search_results.layout").append(results_list)
       $("#search_results.layout").css("display", "block")
     }else if( $("input[type=submit][clicked=true]").val()==='reset'){
+      $("#search_results.layout").empty()
+      $("#search_results.layout").css("display", "none")
       $("*.product").css("display", "block")
     }
   });
