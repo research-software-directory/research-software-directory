@@ -64,15 +64,18 @@
 .testimonial {
     font-size: 1.5em;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 .testimonialby {
     text-align: center;
+    margin-bottom: 20px;
 }
 .divider {
-     border-top: 1px solid #dddddd;
-     padding: 5px;
-     margin-top: 10px;
-     margin-bottom: 10px;
+    border-top: 1px solid #dddddd;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .box {
 	background-color: #dddddd;
