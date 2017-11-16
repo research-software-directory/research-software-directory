@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $(".mention_button").each(function() {
         $(this).on("click", function() {
-            $(this).next().toggle("slow");
+            $(this).next().slideToggle();
         });
     });
 
