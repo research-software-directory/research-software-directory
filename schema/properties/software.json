@@ -73,7 +73,8 @@
   },
   "usingOrganization": {
     "sortIndex": 61,
-    "htmlDescription": "<b>Organizations</b> that use the software."
+    "htmlDescription": "<b>Organizations</b> that use the software.",
+    "editable": false
   },
   "owner": {
     "sortIndex": 40,
