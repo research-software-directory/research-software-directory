@@ -63,8 +63,11 @@ a {
 }
 #header_links {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 30px;
+	right: 30px;
+}
+#header_links a {
+	padding-left: 10px;
 }
 #footer {
 	position: relative;
@@ -91,8 +94,11 @@ a {
 }
 #footer_links {
 	position: absolute;
-	top: 20px;
-	right: 40px;
+	top: 30px;
+	right: 30px;
+}
+#footer_links a {
+	padding-left: 10px;
 }
 #body {
     margin: 0px;
