@@ -114,11 +114,20 @@
                     {% endif %}
                 </div>
 
-                <div class="divider"></div>
+                {% if template_data.mentions %}
+                    <div class="divider"></div>
 
-                <div class="mentions">
+                    <div class="mentions">
                     <div class="subtitle">Mentions</div>
-                </div>
+                    {% for key, value in template_data.mentions.items() %}
+                        <div class="divider"></div>
+                        <div class="mention">{{key}} ({{value|length}})</div>
+                        {% for item in value %}
+                            <div class="mention_content">{{item.data.title}}</div>
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                {% endif %}
 
                 {% if template_data.testimonial %}
                     <div class="divider"></div>
