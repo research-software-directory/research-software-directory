@@ -16,26 +16,26 @@ from src.settings import settings
 def unpack_person(entry, db):
     if isinstance(entry, str):
         person = db['person'].find_by_id(entry)
-        return {
-            'id': person.data.get('id'),
-            'name': person.data.get('name'),
-            'website': person.data.get('website'),
-            'email': person.data.get('email')
-        }
-    else:
-        return entry
+        if person:
+            return {
+                'id': person.data.get('id'),
+                'name': person.data.get('name'),
+                'website': person.data.get('website'),
+                'email': person.data.get('email')
+            }
+    return entry
 
 def unpack_organization(entry, db):
     if isinstance(entry, str):
         organization = db['organization'].find_by_id(entry)
-        return {
-            'id': organization.data.get('id'),
-            'name': organization.data.get('name'),
-            'website': organization.data.get('website'),
-            'logo': organization.data.get('logo')
-        }
-    else:
-        return entry
+        if organization:
+            return {
+                'id': organization.data.get('id'),
+                'name': organization.data.get('name'),
+                'website': organization.data.get('website'),
+                'logo': organization.data.get('logo')
+            }
+    return entry
 
 
 def get_routes(service_controller, db):
