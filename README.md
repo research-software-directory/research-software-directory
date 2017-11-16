@@ -281,3 +281,17 @@ Since the projects in Zotero are not searchable, find your project below:
 | 27011303    | eSALSA/eClimate                                              | Ben
 | 27011302    | eChemistry/Metabolite ID                                     | Lars
 | 27011301    | eAstronomy                                                   | Rob
+
+## GEMs
+For the gems (as far as they are not covered by a project):
+
+| Noodles | Johan
+| Kernel Tuner | Ben v W. 
+| SPOT | Faruk 
+| Xenon | Jason
+| McFly | Christiaan
+| ReGIS | Carlos
+| PyCWL | Lourens 
+
+
+
