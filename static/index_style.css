@@ -92,6 +92,9 @@
     justify-content:flex-end;
     /*white-space:nowrap;*/
 }
+#data_display.layout{
+    text-align:center
+}
 #filter{
     position: relative;
     float: left;
@@ -147,4 +150,7 @@ input[type=checkbox]
   font-size: 100%;
   padding-left:10px;
   display: inline;
+}
+#more_projects{
+    
 }
