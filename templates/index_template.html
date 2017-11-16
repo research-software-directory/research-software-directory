@@ -1,34 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='index_style.css')}}">
-    <link rel= "stylesheet" type= "text/css" href= "{{url_for('static', filename='common_style.css')}}">
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <title>NLeSC | All Software</title>
-
-
-    <script type="text/javascript" src="/dynamic/data.js"></script>
-
-</head>
-<body>
-
-    <div id="header">
-        <div id="header_logo">
-            <a href="https://www.esciencecenter.nl" target="_blank">
-                <img src="{{url_for('static', filename='logos/nlesc.png')}}">
-            </a>
-        </div>
-        <div id="header_text">
-            Research Software Directory
-        </div>
-        <div id="header_links">
-            <a href="/rsd">Get your own RSD</a>
-            <a href="/about">About the platform</a>
-        </div>
-    </div>
-
+{% extends "layout_template.html" %}
+{% block head %}
+{{super()}}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index_style.css')}}">
+<script type="text/javascript" src="/dynamic/data.js"></script>
+{% endblock %}
+{% block title %}
+Browse All Software
+{% endblock %}
+{% block content %}
 <div class="search_bar">
     <form id="search" action="">
         <input type='text' class="search_form" id="input" value="Search for software, people, technologies, etc.">
@@ -84,136 +63,8 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<script language="Javascript">
-    function search_algo(search_key){
-      search_key = search_key.toLowerCase();
-      count = 0;
-        for (var i = 0; i <ALL_DATA.length; i++){
-          dict = ALL_DATA[i];
-          hit = false;
-            for (var j =0; j < dict['discipline'].length; j++){
-              term = dict['discipline'][j]
-              if (term.toLowerCase().indexOf(search_key) !== -1){
-                  hit=true
-                  break;
-              }
-            }            
-            for (var j = 0; j < dict['expertise'].length; j++){
-              term = dict['expertise'][j]
-              if (term.toLowerCase().indexOf(search_key) !== -1){
-                  hit=true
-                  break;
-              }
-            }
-            for (var j = 0; j < dict['tags'].length; j++){
-              term = dict['tags'][j]
-              if (term.toLowerCase().indexOf(search_key) !== -1){
-                  hit=true
-                  break;
-              }
-            }            
-            if (dict['tagLine'].toLowerCase().indexOf(search_key)!==-1){
-              hit=true
-            }
-            if(hit){
-              $("#"+ALL_DATA[i]['id']+".product").css("display", "block")
-              count += 1             
-            }
-          
-      }
-      results_list = "There are "+count+" search results for the keyword <b>"+search_key+"</b>"
-      return results_list
-    }
-
-     $("#input").on("focusin", function(){
-        if($("#input").val()=="Search for software, people, technologies, etc."){
-          $("#input").val("")
-          $("#input").css('color', '#000000');
-        }    
-     });
-     $("#input").on("focusout", function(){
-        if($("#input").val()==""){
-          $("#input").val("Search for software, people, technologies, etc.")
-          $("#input").css('color', '#676a70');
-        }
-     });
-
-
-     $(document).ready(function(){
-        // fill gems div    
-        default_number_all_projects = 200    
-        project_count = 0
-        for (var i = 0; i < ALL_DATA.length; i++){
-          var toolDate = new Date()
-          toolDate.setSeconds(parseInt(ALL_DATA[i]['lastUpdate']))
-          var formattedDate = toolDate.toDateString();
-          var toolTipText = '<b>'+ALL_DATA[i]['name']+'</b><br><br>'+ALL_DATA[i]['tagLine']+'<br><br>Commits : '+ALL_DATA[i]['commits']+'<br> Mentions : '+ALL_DATA[i]['mentions'] +'<br><br>Last updated:'+formattedDate;
-          var appendHtml = "<div class='product' id="+ALL_DATA[i]['id']+"><a href='/software/"+ALL_DATA[i]['id']+"'><b>"+ALL_DATA[i]['id']+"</b><img class='product_thumb' data-placement='left' data-toggle='tooltip' data-html='true' title='" + toolTipText + "' src='static/images/thumb_default.jpg'></img></a></div>";
-          if (ALL_DATA[i]['highlighted']) {
-            $("#data_gems").append(appendHtml) // name, tagline, mentions, commits
-          }
-          if(project_count<default_number_all_projects){
-            $("#data_display").append(appendHtml) // name, tagline, mentions, commits
-          project_count += 1                      
-          }            
-        }
-        // a
-        // activate Bootstrap4 on the tooltips
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip();
-        });
-     });
-
-      $("form input[type=submit]").click(function() {
-          $("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
-          $(this).attr("clicked", "true");
-      });
-
-     $("#search").on("submit", function (event){
-        event.preventDefault();        
-        console.log($("#reset").attr("clicked")) 
-        if( $("input[type=submit][clicked=true]").val()=='search'){
-          $("*.product").css("display", "none")
-          /*$("#search_results").empty()*/
-          results_list = search_algo(search.input.value)
-
-          $("#box_1").css("display", "none")
-          /*$("#box_0").css("display", "block")*/
-          $('input:checkbox:checked').prop('checked', false);
-          $("#search_results.layout").append(results_list)
-          $("#search_results.layout").css("display", "block")
-        }else if( $("input[type=submit][clicked=true]").val()==='reset'){
-          $("*.product").css("display", "block")
-        }
-      });
-
-     $("#filter").click(function (event){
-        //event.preventDefault(); 
-        $("#box_1").css("display", "none")
-        console.log("Filter selection:")
-        $('input[type=checkbox').each(function(){
-            //console.log($(this).val()+" checked:"+$(this).prop('checked'))
-            if ($(this).prop('checked')){
-              if($(this).val()=='highlights'){
-                $("*.product").css("display", "block")
-                $('#box_0').css("display", "none")
-                $('#box_1').css("display", "block")
-              }
-            }
-        })
-
-      });
-
-
-</script>
-
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</body>
-</html>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/index_scripts.js') }}"></script>
+{% endblock %}

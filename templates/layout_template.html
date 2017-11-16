@@ -4,7 +4,7 @@
         {% block head %}
         <title>Research Software Directory | {% block title %}{% endblock %}</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='common_style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles/common_style.css')}}">
         {% endblock %}
     </head>
 
@@ -45,8 +45,6 @@
                 </div>
             </div>
         </div>
-
-    <script src="{{ url_for('static',filename='plot_commits.js') }}"></script>
 
     </body>
 </html>
