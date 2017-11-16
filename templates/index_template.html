@@ -36,7 +36,10 @@
     </form>
 </div>
 
-<div class="search_results">
+<div id="box_0">
+  <div id="title_bar_right">Search results</div>
+
+  <div class="layout" id="search_results"></div>
 </div>
 
 <div id="box_1">
@@ -48,13 +51,14 @@
   <div id="title_bar_left">Filter</div>
   <div id="filter">
   <form id="filter_form">
-    <input type="checkbox" value="big data">Big data</input><br>
-    <input type="checkbox" value="cloud computing">Cloud computing</input><br>
-    <input type="checkbox" value="image processing">Image processing</input><br>
-    <input type="checkbox" value="visualisation">Visualisation</input><br>
-    <input type="checkbox" value="text analysis">Text analysis and NLP</input><br>
-    <input type="checkbox" value="realtime data analysis">Real time data analysis</input><br>
-    <input type="checkbox" value="interoperability and linked_data">Interoperability and linked data</input>
+    <input type="checkbox" value="highlights"/><span class="checkboxtext"><b>Highlights</b></span><br>
+    <input type="checkbox" value="big data"/><span class="checkboxtext">Big data</span><br>
+    <input type="checkbox" value="cloud computing"/><span class="checkboxtext">Cloud computing</span><br>
+    <input type="checkbox" value="image processing"/><span class="checkboxtext">Image processing</span><br>
+    <input type="checkbox" value="visualisation"/><span class="checkboxtext">Visualisation</span><br>
+    <input type="checkbox" value="text analysis"/><span class="checkboxtext">Text analysis and NLP</span><br>
+    <input type="checkbox" value="realtime data analysis"/><span class="checkboxtext">Real time data analysis</span><br>
+    <input type="checkbox" value="interoperability and linked_data"/><span class="checkboxtext">Interoperability and linked data</span>
   </form>
   </div>
 </div>
@@ -84,21 +88,35 @@
 
 
 <script language="Javascript">
-    function search_algo(dict, search_key){
+    function search_algo(search_key){
       search_key = search_key.toLowerCase();
-      for (var term in dict['discipline']){
-        if (term.indexOf(search_key) !== -1){
-            return true
-        }
+      results_list = "<ul>"
+        for (var i = 0; i <ALL_DATA.length; i++){
+          dict = ALL_DATA[i];
+          console.log(dict)
+          hit = false;
+            for (var term in dict['discipline']){
+              console.log(term)
+              if (term.toLowerCase().indexOf(search_key) !== -1){
+                  hit=true
+                  break;
+              }
+            }            
+            for (var term in dict['expertise']){
+              if (term.toLowerCase().indexOf(search_key) !== -1){
+                  hit=true
+                  break;
+              }
+            }
+            if (dict['tagLine'].toLowerCase().indexOf(search_key)!==-1){
+              hit=true
+            }
+            if(hit){
+              results_list += "<li>Commits:"+ALL_DATA[i]['commits']+" Name:"+ ALL_DATA[i]['name']+" Tagline:"+ ALL_DATA[i]['tagLine']+"</li>"              
+            }
       }
-      for (var term in dict['expertise']){
-        if (term.indexOf(search_key) !== -1){
-            return true
-        }
-      }
-      if (dict['tagLine'].indexOf(search_key)!==-1){
-        return true
-      }
+      results_list+= "</ul>"
+      return results_list
     }
 
      $("#input").on("focusin", function(){
@@ -110,7 +128,7 @@
      $("#input").on("focusout", function(){
         if($("#input").val()==""){
           $("#input").val("Search for software, people, technologies, etc.")
-          $("#input").css('color', '#dddddd');
+          $("#input").css('color', '#676a70');
         }
      });
 
@@ -124,8 +142,7 @@
             $("#data_gems").append(appendHtml) // name, tagline, mentions, commits
           } else {
             $("#data_display").append(appendHtml) // name, tagline, mentions, commits
-          }
-            
+          }            
         }
 
         // a
@@ -138,25 +155,29 @@
      $("#search").submit(function (event){
         event.preventDefault(); 
         console.log("Search query:",search.input.value)
-        $(".search_results").empty()
-        results_list = "<ul>"
-        for (var i = 0; i <ALL_DATA.length; i++){
-            hit = search_algo(ALL_DATA[i], search.input.value)
-            if(hit==true){
-              results_list += "<li>Commits:"+ALL_DATA[i]['commits']+" Name:"+ ALL_DATA[i]['name']+" Tagline:"+ ALL_DATA[i]['tagLine']+"</li>"              
-            }
-        }
-        results_list+= "</ul>"
-        $(".search_results").append(results_list)
-        $(".search_results").css("visibility", "visible")
+        $("#search_results").empty()
+        results_list = search_algo(search.input.value)
+
+        $("#box_1").css("display", "none")
+        $("#box_0").css("display", "block")
+        $('input:checkbox:checked').prop('checked', false);
+        $("#search_results").append(results_list)
+        $("#search_results").css("visibility", "visible")
       });
 
      $("#filter").click(function (event){
         //event.preventDefault(); 
         console.log("Filter selection:")
         $('input[type=checkbox').each(function(){
-            console.log($(this).val()+" checked:"+$(this).prop('checked'))
+            //console.log($(this).val()+" checked:"+$(this).prop('checked'))
+            if ($(this).prop('checked')){
+              if($(this).val()=='highlights'){
+                $('#box_0').css("display", "none")
+                $('#box_1').css("display", "block")
+              }
+            }
         })
+
       });
 
 
