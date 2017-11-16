@@ -56,7 +56,8 @@
     "htmlDescription": "<b>Contributor</b> to the software?"
   },
   "outputOfProject": {
-    "sortIndex": 35
+    "sortIndex": 35,
+    "editable": false
   },
   "usedInProject": {
     "sortIndex": 36,
