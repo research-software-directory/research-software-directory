@@ -22,7 +22,7 @@ export class ZoteroImporter extends React.PureComponent<IProps> {
   componentWillMount() {
     this.props.getNewProjects();
     this.props.getNewSoftware();
-    this.props.getNewPublications();
+    // this.props.getNewPublications();
   }
 
   createPublication = (_: any) => () => {
