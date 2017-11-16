@@ -1,4 +1,4 @@
-function search_algo(search_key){
+function search_algo(search_key, stype){
   search_key = search_key.toLowerCase();
   count = 0;
     for (var i = 0; i <ALL_DATA.length; i++){
@@ -29,8 +29,10 @@ function search_algo(search_key){
           hit=true
         }
         if(hit){
-          $("#"+ALL_DATA[i]['id']+".product").css("display", "block")
+            $("#"+ALL_DATA[i]['id']+".product").css("display", "block")
           count += 1
+        }else if(stype=="filter"){
+          $("#"+ALL_DATA[i]['id']+".product").css("display", "none")
         }
 
   }
@@ -88,7 +90,7 @@ function search_algo(search_key){
     if( $("input[type=submit][clicked=true]").val()=='search'){
       $("*.product").css("display", "none")
       /*$("#search_results").empty()*/
-      results_list = search_algo(search.input.value)
+      results_list = search_algo(search.input.value, stype="filter")
 
       $("#box_1").css("display", "none")
       /*$("#box_0").css("display", "block")*/
@@ -117,9 +119,13 @@ $("#filter").click(function (event){
           $('#box_1').css("display", "block")
           highlights_selected = true
         }
-      search_key += $(this).val()
+      search_key += $(this).val()+" "
       }
   })
-  results_list = search_algo(search_key)
+  console.log(search_key)
+  if (highlights_selected==false){
+    $("#box_1").css("display", "none")
+  }
+  results_list = search_algo(search_key, stype="filter")
 });
 
