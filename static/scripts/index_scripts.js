@@ -1,34 +1,46 @@
 function search_algo(search_key, stype){
   search_key = search_key.toLowerCase();
   count = 0;
+  search_key_split = search_key.trim().split(" ");
+  console.log(search_key_split)
     for (var i = 0; i <ALL_DATA.length; i++){
       dict = ALL_DATA[i];
       hit = false;
+      hit_count = 0
         for (var j =0; j < dict['discipline'].length; j++){
           term = dict['discipline'][j]
-          if (term.toLowerCase().indexOf(search_key) !== -1){
-              hit=true
-              break;
-          }
+          for (var idx in search_key_split){
+            if (term.toLowerCase().indexOf(search_key_split[idx]) !== -1){
+                hit_count += 1
+                break;
+            }
+         }
         }
         for (var j = 0; j < dict['expertise'].length; j++){
           term = dict['expertise'][j]
-          if (term.toLowerCase().indexOf(search_key) !== -1){
-              hit=true
-              break;
+          for (var idx in search_key_split){
+            if (term.toLowerCase().indexOf(search_key_split[idx]) !== -1){
+                hit_count += 1
+                break;
+            }
           }
         }
         for (var j = 0; j < dict['tags'].length; j++){
           term = dict['tags'][j]
-          if (term.toLowerCase().indexOf(search_key) !== -1){
-              hit=true
-              break;
+          for (var idx in search_key_split){
+            if (term.toLowerCase().indexOf(search_key_split[idx]) !== -1){
+                hit_count += 1
+                break;
+            }
           }
         }
-        if (dict['tagLine'].toLowerCase().indexOf(search_key)!==-1){
-          hit=true
+        for (var idx in search_key_split){
+          if (dict['tagLine'].toLowerCase().indexOf(search_key_split[idx])!==-1){
+            hit=true
+            hit_count += 1
+          }
         }
-        if(hit){
+        if(hit_count>0){
             $("#"+ALL_DATA[i]['id']+".product").css("display", "block")
           count += 1
         }else if(stype=="filter"){
@@ -89,8 +101,8 @@ function search_algo(search_key, stype){
     console.log($("#reset").attr("clicked"))
     if( $("input[type=submit][clicked=true]").val()=='search'){
       $("*.product").css("display", "none")
-      /*$("#search_results").empty()*/
-      results_list = search_algo(search.input.value, stype="filter")
+      $("#search_results.layout").empty()
+      results_list = search_algo(search.input.value, "search")
 
       $("#box_1").css("display", "none")
       /*$("#box_0").css("display", "block")*/
@@ -98,6 +110,7 @@ function search_algo(search_key, stype){
       $("#search_results.layout").append(results_list)
       $("#search_results.layout").css("display", "block")
     }else if( $("input[type=submit][clicked=true]").val()==='reset'){
+      $("#box_1").css("display", "block")
       $("#search_results.layout").empty()
       $("#search_results.layout").css("display", "none")
       $("*.product").css("display", "block")
@@ -122,10 +135,15 @@ $("#filter").click(function (event){
       search_key += $(this).val()+" "
       }
   })
+  $("#search_results.layout").empty()
+  $("#search_results.layout").css("display", "none")
   console.log(search_key)
   if (highlights_selected==false){
     $("#box_1").css("display", "none")
   }
-  results_list = search_algo(search_key, stype="filter")
+  $("#search_results.layout").empty()
+  results_list = search_algo(search_key, "filter")
+  $("#search_results.layout").append(results_list)
+  $("#search_results.layout").css("display", "block")
 });
 
