@@ -3,8 +3,10 @@ upstream flask {
 }
 
 server {
-    listen 8000 default_server
-    return 404;
+    listen 8000 default_server;
+    location ~ (?:^|/)\. {
+       deny all;
+    }
 }
 
 server {
@@ -20,7 +22,7 @@ server {
 server {
         listen 8000;
         listen [::]:8000;
-        server_name admin.research-software.nl
+        server_name admin.research-software.nl;
         
         location ^~ /api/ {
                 proxy_pass http://localhost:8001/;
