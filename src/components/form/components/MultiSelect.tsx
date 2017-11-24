@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Button, Dropdown, Icon, Segment } from 'semantic-ui-react';
-import {isArray} from 'util';
+import { isArray } from 'util';
 
 interface IProps {
   label: string;

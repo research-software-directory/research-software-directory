@@ -29,7 +29,7 @@ export class FormField extends React.Component<IProps, {}> {
   onNewOption = (option: comp.IOption) => {
     return false && option;
     // this.props.addToSchemaEnum(this.props.parentResourceType, this.props.fieldName, option.value as string );
-  };
+  }
 
   schemaEnum(): string[] {
     if (isEnumProperty(this.props.property)) {
@@ -46,7 +46,7 @@ export class FormField extends React.Component<IProps, {}> {
     label: this.props.property.htmlDescription || this.props.property.description || '',
     onChange: this.props.onChange,
     className: this.props.hasChanged ? 'dirty' : ''
-  });
+  })
 
   renderTextInput           = () => <comp.TextInput            {...this.defaultFieldProps()} />;
   renderBooleanInput        = () => <comp.BooleanInput         {...this.defaultFieldProps()} />;
@@ -105,7 +105,7 @@ export class FormField extends React.Component<IProps, {}> {
       return `${s.slice(0, i)}...`;
     }
     return s;
-  };
+  }
 
   renderMultiResource() {
     if (!(isArrayProperty(this.props.property) && isLinkProperty(this.props.property.items))) { return null; }
