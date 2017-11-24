@@ -697,7 +697,8 @@
           "Lisp",
           "PHP",
           "SPARQL",
-          "SQL"
+          "SQL",
+          "Shell scripts (bash, csh, ...)"
         ]
       }
     },
