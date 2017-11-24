@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Button, Dropdown, Icon, Segment } from 'semantic-ui-react';
+import {isArray} from 'util';
 
 interface IProps {
   label: string;
@@ -76,16 +77,15 @@ export class MultiSelect extends React.PureComponent<IProps, IState> {
   }
 
   options = () => {
-    // if (isArray(this.props.value)) {
-    //   const valuesNotInOptions = this.props.value.filter(
-    //     (value: string) => !this.props.options.find((option) => option.value === value)
-    //   ).map((value: string) =>
-    //     {
-    //
-    //     }
-    //   )
-    // }
-    return this.props.options.map((option: IOption) =>
+    let opts = this.props.options;
+
+    if (isArray(this.props.value)) {
+      const valuesNotInOptions: IOption[] = this.props.value.filter(
+        (value: string) => !this.props.options.find((option) => option.value === value)
+      ).map((value: string) => ({ label: value, value: value }));
+      opts = opts.concat(valuesNotInOptions);
+    }
+    return opts.map((option) =>
       ({ text: option.label, key: option.value, value: option.value, icon: option.icon }));
   }
 

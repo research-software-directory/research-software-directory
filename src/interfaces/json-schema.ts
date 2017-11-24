@@ -42,7 +42,7 @@ export function isReferenceProperty(property: any): property is IReferenceProper
   return 'reference' in property;
 }
 
-interface IEnumProperty extends IBaseProperty {
+export interface IEnumProperty extends IBaseProperty {
   type: 'string';
   'enum': string[];
 }

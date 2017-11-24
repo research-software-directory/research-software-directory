@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as comp from './components';
 import {
-  IProperty, isAnyOfProperty, isArrayProperty, isBooleanProperty, isEnumProperty, isLinkProperty, isStringProperty
+  IProperty, isAnyOfProperty, isArrayProperty, isBooleanProperty, isEnumProperty, isLinkProperty, isStringProperty,
+  IEnumProperty
 } from '../../interfaces/json-schema';
 import { IData } from '../../interfaces/misc';
 import { IProject } from '../../interfaces/resources/project';
@@ -28,7 +29,7 @@ export class FormField extends React.Component<IProps, {}> {
   onNewOption = (option: comp.IOption) => {
     return false && option;
     // this.props.addToSchemaEnum(this.props.parentResourceType, this.props.fieldName, option.value as string );
-  }
+  };
 
   schemaEnum(): string[] {
     if (isEnumProperty(this.props.property)) {
@@ -45,7 +46,7 @@ export class FormField extends React.Component<IProps, {}> {
     label: this.props.property.htmlDescription || this.props.property.description || '',
     onChange: this.props.onChange,
     className: this.props.hasChanged ? 'dirty' : ''
-  })
+  });
 
   renderTextInput           = () => <comp.TextInput            {...this.defaultFieldProps()} />;
   renderBooleanInput        = () => <comp.BooleanInput         {...this.defaultFieldProps()} />;
@@ -55,7 +56,7 @@ export class FormField extends React.Component<IProps, {}> {
   renderDateInput           = () => <comp.DateInput            {...this.defaultFieldProps()} />;
   renderMultiString         = () => <comp.StringArray          {...this.defaultFieldProps(true)} />;
 
-  renderEnum(multi: boolean = true) {
+  renderEnum(multi: boolean = true, addable: boolean = false) {
     const options = this.schemaEnum().map((option) =>
       ({label: option, value: option, key: option}));
 
@@ -65,10 +66,38 @@ export class FormField extends React.Component<IProps, {}> {
         options={options}
         multi={multi}
         search={true}
-        addable={false}
+        addable={addable}
         onNewOption={this.onNewOption}
       />
     );
+  }
+
+  renderEnumOrString() {
+    const property = this.props.property;
+    if (
+      isArrayProperty(property) &&
+      isAnyOfProperty(property.items) &&
+      (isEnumProperty(property.items.anyOf[0]) || isEnumProperty(property.items.anyOf[1]))
+    ) {
+      const enumProp: IEnumProperty = (
+        isEnumProperty(property.items.anyOf[0])
+          ? property.items.anyOf[0]
+          : property.items.anyOf[1]
+        ) as IEnumProperty;
+      const options = enumProp.enum.map((option) =>
+        ({label: option, value: option, key: option}));
+
+      return (
+        <comp.MultiSelect
+          {...this.defaultFieldProps(true)}
+          options={options}
+          multi={true}
+          search={true}
+          addable={true}
+        />
+      );
+    }
+    return null;
   }
 
   capLength = (s: string, i: number) => {
@@ -76,7 +105,7 @@ export class FormField extends React.Component<IProps, {}> {
       return `${s.slice(0, i)}...`;
     }
     return s;
-  }
+  };
 
   renderMultiResource() {
     if (!(isArrayProperty(this.props.property) && isLinkProperty(this.props.property.items))) { return null; }
@@ -194,6 +223,12 @@ export class FormField extends React.Component<IProps, {}> {
       return this.renderTextInput();
     } else if (isArrayProperty(property) && isEnumProperty(property.items)) {
       return this.renderEnum(true);
+    } else if (
+        isArrayProperty(property) &&
+        isAnyOfProperty(property.items) &&
+        (isEnumProperty(property.items.anyOf[0]) || isEnumProperty(property.items.anyOf[1]))
+      ) {
+        return this.renderEnumOrString();
     } else if (isArrayProperty(property) && isLinkProperty(property.items)) {
       return this.renderMultiResource();
     } else if (isArrayProperty(property) && isAnyOfProperty(property.items)) {
