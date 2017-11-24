@@ -196,7 +196,6 @@ Since the projects in Zotero are not searchable, find your project below:
 | 33015003    | IndoDutch - Understanding Large Scale Human Mobility         | Berend
 | 33015002    | Primavera                                                    | Rena
 | 33015001    | From sentiment to emotions - Embodied emotions               | Janneke
-| 33014001    | ODEX4ALL - Open Discovery and Exchange for all               | Arnold
 | 33013002    | LifeWatch                                                    | Christiaan
 | 33013001    | Flysafe 2                                                    | Jurriaan
 | 27017G06    | NEWSGAC:Advancing Media History by genre classification      | Erik
@@ -265,6 +264,7 @@ Since the projects in Zotero are not searchable, find your project below:
 | 27013703    | Big Data Analytics in the Geo Spatial Domain                 | Romulo
 | 27013702    | Jungle-Computing                                             | Jason
 | 27013701    | ABC-Muse                                                     | Niels
+| 27012904    | ODEX4ALL - Open Discovery and Exchange for all               | Arnold
 | 27012903    | Distributed High-performance AMUSE                           | Niels
 | 27012902    | TwiNL                                                        | Erik
 | 27012901    | eSiBayes                                                     | Jurriaan
