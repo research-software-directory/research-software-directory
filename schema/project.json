@@ -263,8 +263,7 @@
         "enum": [
           "Big Data Analytics",
           "Optimized Data Handling",
-          "Efficient Computing",
-          "aasdsadasd"
+          "Efficient Computing"
         ],
         "type": "string"
       }
