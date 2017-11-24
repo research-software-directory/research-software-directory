@@ -7,7 +7,7 @@
   ],
   "id": "software",
   "type": "object",
-  "#schema": "http://json-schema.org/draft-04/schema#",
+  "#schema": "http://json-schema.org/draft-04/schema",
   "properties": {
     "createdAt": {
       "description": "Timestamp resource was created at",
@@ -670,35 +670,43 @@
       "type": "array",
       "description": "Programming languages used in the software or supported by the software.",
       "items": {
-        "description": "e.g. C, C++, Java, Python, R, JavaScript, PHP, TypeScript, etc. See https://github.com/github/linguist",
-        "type": "string",
-        "enum": [
-          "C",
-          "C++",
-          "Fortran",
-          "Java",
-          "Python",
-          "YAML",
-          "Perl",
-          "JavaScript",
-          "TypeScript",
-          "R",
-          "MATLAB",
-          "FORTRAN",
-          "CUDA",
-          "HTML",
-          "Cython",
-          "Ruby",
-          "C#",
-          "OpenCL",
-          "Erlang",
-          "Go",
-          "Haskell",
-          "Lisp",
-          "PHP",
-          "SPARQL",
-          "SQL",
-          "Shell scripts (bash, csh, ...)"
+        "anyOf": [
+          {
+            "description": "e.g. C, C++, Java, Python, R, JavaScript, PHP, TypeScript, etc.",
+            "type": "string"
+          },
+          {
+            "description": "e.g. C, C++, Java, Python, R, JavaScript, PHP, TypeScript, etc.",
+            "type": "string",
+            "enum": [
+              "C",
+              "C++",
+              "Fortran",
+              "Java",
+              "Python",
+              "YAML",
+              "Perl",
+              "JavaScript",
+              "TypeScript",
+              "R",
+              "MATLAB",
+              "FORTRAN",
+              "CUDA",
+              "HTML",
+              "Cython",
+              "Ruby",
+              "C#",
+              "OpenCL",
+              "Erlang",
+              "Go",
+              "Haskell",
+              "Lisp",
+              "PHP",
+              "SPARQL",
+              "SQL",
+              "Shell scripts (bash, csh, ...)"
+            ]
+          }
         ]
       }
     },
