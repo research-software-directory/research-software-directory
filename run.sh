@@ -1,5 +1,11 @@
 #!/bin/sh
-cp config/nginx.conf.template /etc/nginx/conf.d/default.conf
+if [[ -z "${DOMAIN}" ]] || [ ! -f /cert/live/$DOMAIN/privkey.pem ]; then
+    echo "\$DOMAIN not set, or key not found at /cert/live/\$DOMAIN/, cannot setup HTTPS"
+    cp config/nginx.http.conf.template /etc/nginx/conf.d/default.conf
+else
+    echo "Configuring HTTPS for $DOMAIN"
+    cat config/nginx.https.conf.template | sed s#{DOMAIN}#$DOMAIN#g > /etc/nginx/conf.d/default.conf
+fi
 
 mkdir -p /run/nginx
 nginx
