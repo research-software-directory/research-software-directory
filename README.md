@@ -309,3 +309,5 @@ If you want your software to be published as a site on the Research Software Dir
 
 Note: there is no row-level locking, so if two persons edit the same software item, the person to press `save` last will overwrite previous data. Please communicate who is responsible for which item.*
 * Check the way your page looks on https://test.research-software.nl/software/[id], where [id] is the same as in the URL of the admin site (http://admin.research-software.nl/software/[id]).
+
+![Mapping admin interface to RSD page](https://raw.githubusercontent.com/NLeSC/rsd-instruction/master/rsd_mapping.png)
