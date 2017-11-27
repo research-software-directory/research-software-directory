@@ -297,5 +297,15 @@ For the gems (as far as they are not covered by a project):
 | ReGIS | Carlos
 | PyCWL | Lourens 
 
+# Software Pages
+If you want your software to be published as a site on the Research Software Directory, some additional information should be added. Because Zotero is limited in what we can add this should be done on the [admin site](http://admin.research-software.nl).
+* Login at http://admin.research-software.nl/ using your GitHub credentials.
+* Find your software under `Software` and the name you entered in Zotero.
+  
+*Note: Currently there is a manual step involved synchronizing software entries from Zenodo to the Research Software Directory, so if you cannot find your software, wait a bit more, or contact Tom. We will improve this in the future*
+* The fields `Github ID` and `main DOI` should be prefilled. Please fill the rest of the form.
+* Check `Published` if your page should be published; check `Highlighted` if it is a Gem.
+* **When you are done, click the `Save` button, otherwise changes will be gone when you close the page**
 
-
+Note: there is no row-level locking, so if two persons edit the same software item, the person to press `save` last will overwrite previous data. Please communicate who is responsible for which item.*
+* Check the way your page looks on https://test.research-software.nl/software/[id], where [id] is the same as in the URL of the admin site (http://admin.research-software.nl/software/[id]).
