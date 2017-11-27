@@ -1,0 +1,51 @@
+upstream flask {
+     server unix:///tmp/api.sock;
+}
+
+server {
+    listen 8000 default_server;
+    location ~ (?:^|/)\. {
+       deny all;
+    }
+}
+
+server {
+        listen 127.0.0.1:8001;
+        server_name 127.0.0.1;
+        client_max_body_size 5M;
+        location / {
+                include uwsgi_params;
+                uwsgi_pass flask;
+        }
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+    ssl on;
+    ssl_certificate /cert/live/{DOMAIN}/fullchain.pem;
+    ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
+    server_name admin.research-software.nl;
+
+    location ^~ /api/ {
+                proxy_pass http://localhost:8001/;
+        }
+
+    location /index.html {
+            proxy_pass {STATIC_FILES_URL}/index.html;
+    }
+
+    location = / {
+            proxy_pass {STATIC_FILES_URL}/index.html;
+    }
+
+    location / {
+            proxy_pass {STATIC_FILES_URL}$request_uri;
+    }
+}
+
+server {
+        listen 0.0.0.0:8000;
+        server_name _;
+        return 301 https://$host$request_uri;
+}
