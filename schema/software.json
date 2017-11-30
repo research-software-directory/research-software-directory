@@ -654,7 +654,7 @@
     },
     "programmingLanguage": {
       "type": "array",
-      "description": "Programming languages used in the software or supported by the software.",
+      "description": "In which language is the software implemented?",
       "items": {
         "anyOf": [
           {
