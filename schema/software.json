@@ -590,20 +590,6 @@
         "resType": "software"
       }
     },
-    "discipline": {
-      "type": "array",
-      "description": "NLeSC disciplines associated to the software.",
-      "items": {
-        "type": "string",
-        "enum": [
-          "Physics & Beyond",
-          "Environment & Sustainability",
-          "Life Sciences & eHealth",
-          "Humanities & Social Sciences",
-          "eScience Methodology"
-        ]
-      }
-    },
     "codeRepository": {
       "type": "string",
       "description": "Link to the repository where the un-compiled, human readable code and related code is located (github, SVN, CodePlex).",
