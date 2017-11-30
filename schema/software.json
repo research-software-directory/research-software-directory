@@ -19,14 +19,6 @@
       "type": "integer",
       "minimum": 0
     },
-    "publications": {
-      "items": {
-        "type": "string",
-        "resType": "publication"
-      },
-      "type": "array",
-      "description": "Publications based on software"
-    },
     "id": {
       "format": "uri",
       "description": "ID of the software.",
@@ -77,76 +69,6 @@
       ],
       "description": "Contact person of the project."
     },
-    "description": {
-      "description": "Full description of the software, in Markdown format",
-      "type": "string"
-    },
-    "usingOrganization": {
-      "type": "array",
-      "description": "Entities that use the software.",
-      "items": {
-        "anyOf": [
-          {
-            "reference": "organization"
-          },
-          {
-            "description": "ID of the organization. This is preferably an URI where the organization's metadata can be resolved, e.g., s.verhoeven.",
-            "type": "string",
-            "resType": "organization"
-          }
-        ]
-      }
-    },
-    "technologyTag": {
-      "items": {
-        "type": "string",
-        "description": "e.g. Simulation, Modeling, MultiModel, ImageClassification, NER, NeuralNetworks, etc."
-      },
-      "type": "array",
-      "description": "Keywords of related or relevant technologies."
-    },
-    "owner": {
-      "description": "Entity that is the copyright holder of the software (usually NLeSC and project partners).",
-      "type": "array",
-      "items": {
-        "anyOf": [
-          {
-            "reference": "organization"
-          },
-          {
-            "format": "uri",
-            "description": "ID of the organization. e.g., nlesc.",
-            "type": "string",
-            "resType": "organization"
-          }
-        ]
-      }
-    },
-    "status": {
-      "enum": [
-        "concept",
-        "wip",
-        "suspended",
-        "abandoned",
-        "active",
-        "inactive",
-        "unsupported"
-      ],
-      "type": "string",
-      "description": "Development status, see http://www.repostatus.org"
-    },
-    "competence": {
-      "type": "array",
-      "description": "NLeSC core competences associated to the software.",
-      "items": {
-        "enum": [
-          "Big Data Analytics",
-          "Efficient Computing",
-          "Optimized Data Handling"
-        ],
-        "type": "string"
-      }
-    },
     "tags": {
       "type": "array",
       "description": "Tags associated with software.",
@@ -192,34 +114,6 @@
       },
       "description": "Contributor to the software",
       "type": "array"
-    },
-    "expertise": {
-      "description": "NLeSC expertises associated to the project.",
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [
-          "Accelerated Computing",
-          "Computer Vision",
-          "Data Assimilation",
-          "Databases",
-          "Distributed Computing",
-          "Handling Sensor Data",
-          "High Performance Computing",
-          "Info",
-          "Information Integration",
-          "Information Retrieval",
-          "Information Visualization",
-          "Linked Data",
-          "Low Power Computing",
-          "Machine Learning",
-          "Orchestrated Computing",
-          "Reproducible Research",
-          "Scientific Visualization",
-          "Statistical Inference",
-          "Text Mining"
-        ]
-      }
     },
     "mainUrl": {
       "format": "uri",
@@ -570,16 +464,6 @@
         ]
       }
     },
-    "dependsOn": {
-      "type": "array",
-      "description": "Other software that this software depends on",
-      "items": {
-        "format": "uri",
-        "description": "ID of the software",
-        "type": "string",
-        "resType": "software"
-      }
-    },
     "usedInProject": {
       "description": "Projects the software is used in.",
       "type": "array",
@@ -603,27 +487,6 @@
             "description": "ID of the project. e.g., emetabolomics.",
             "type": "string",
             "resType": "project"
-          }
-        ]
-      }
-    },
-    "startDate": {
-      "description": "Start date of development.",
-      "type": "string",
-      "format": "date"
-    },
-    "involvedOrganization": {
-      "type": "array",
-      "description": "Organizations that have been developing this software or have a large stake in the software.",
-      "items": {
-        "anyOf": [
-          {
-            "reference": "organization"
-          },
-          {
-            "type": "string",
-            "description": "ID of the organization",
-            "resType": "organization"
           }
         ]
       }
@@ -681,21 +544,6 @@
         ]
       }
     },
-    "supportLevel": {
-      "type": "string",
-      "description": "Level of support that NLeSC can provide under eStep.",
-      "enum": [
-        "none",
-        "basic",
-        "advanced",
-        "specialized"
-      ]
-    },
-    "nlescWebsite": {
-      "type": "string",
-      "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/technology/software/xenon).",
-      "format": "uri"
-    },
     "zoteroKey": {
       "description": "Zotero key of the software",
       "type": "string"
@@ -722,16 +570,6 @@
         }
       }
     },
-    "relatedSoftware": {
-      "description": "related software.",
-      "type": "array",
-      "items": {
-        "format": "uri",
-        "description": "ID of the software. e.g., emetabolomics.",
-        "type": "string",
-        "resType": "software"
-      }
-    },
     "testimonial": {
       "type": "string",
       "description": "Testimonial / recommendation (e.g. 'Noodles, the best thing since sliced bread')"
@@ -739,15 +577,6 @@
     "testimonialBy": {
       "type": "string",
       "description": "Testimonial written by (e.g. 'John Doe, University of Harderwijk')"
-    },
-    "blogPosts": {
-      "description": "Blog posts about the software (add as URLs).",
-      "type": "array",
-      "items": {
-        "format": "uri",
-        "description": "URL where post is located.",
-        "type": "string"
-      }
     }
   },
   "additionalProperties": false

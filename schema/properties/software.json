@@ -1,7 +1,4 @@
 {
-  "blogPosts": {
-    "editable": false
-  },
   "highlighted": {
     "sortIndex": 5,
     "htmlDescription": "<b>Highlighted</b> on software site (RSD)"
@@ -38,18 +35,6 @@
     "sortIndex": 21,
     "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415)."
   },
-  "startDate": {
-    "sortIndex": 22,
-    "htmlDescription": "<b>Start date</b> of development.",
-    "editable": false
-  },
-  "description": {
-    "markdown": true,
-    "long": true,
-    "editable": false,
-    "sortIndex": 26,
-    "htmlDescription": "<b>What</b> does it do?"
-  },
   "contactPerson": {
     "sortIndex": 30,
     "htmlDescription": "<b>Contact person</b> of the software?"
@@ -66,90 +51,20 @@
     "sortIndex": 36,
     "htmlDescription": "<b>Projects</b> the software is used in."
   },
-  "involvedOrganization": {
-    "sortIndex": 47,
-    "editable": false
-  },
   "contributingOrganization": {
     "sortIndex": 45,
     "htmlDescription": "In <b>collaboration</b> with <b>Organizations</b>."
   },
-  "usingOrganization": {
-    "sortIndex": 61,
-    "htmlDescription": "<b>Organizations</b> that use the software.",
-    "editable": false
-  },
-  "owner": {
-    "sortIndex": 40,
-    "editable": false
-  },
-  "dependsOn": {
-    "sortIndex": 70,
-    "editable": false
-  },
-  "publications": {
-    "sortIndex": 75,
-    "htmlDescription": "<b>Publications</b> based on software.",
-    "editable": false
-  },
-  "competence": {
-    "sortIndex": 80,
-    "htmlDescription": "NLeSC core <b>competences</b> associated to the software.",
-    "editable": false
-  },
-  "discipline": {
-    "sortIndex": 81,
-    "htmlDescription": "NLeSC <b>disciplines</b> associated to the software."
-  },
-  "expertise": {
-    "sortIndex": 82,
-    "htmlDescription": "NLeSC <b>expertises</b> associated to the software.",
-    "editable": false
-  },
   "programmingLanguage": {
     "sortIndex": 90,
-    "htmlDescription": "<b>Programming languages</b> used in the software or supported by the software."
+    "htmlDescription": "<b>Programming languages</b> the software is implemented in."
   },
   "tags": {
     "sortIndex": 95,
     "htmlDescription": "Relevant <b>tags</b>, used for filtering on the RSD overview page."
   },
-  "technologyTag": {
-    "sortIndex": 100,
-    "htmlDescription": "<b>Keywords of</b> related or relevant <b>technologies.</b>",
-    "editable": false
-  },
-  "supportLevel": {
-    "sortIndex": 120,
-    "editable": false
-  },
-  "status": {
-    "sortIndex": 110,
-    "editable": false
-  },
-  "nlescWebsite": {
-    "sortIndex": 130,
-    "editable": false
-  },
-  "website": {
-    "sortIndex": 140,
-    "editable": false
-  },
   "mainUrl": {
     "sortIndex": 145,
-    "htmlDescription": "<b>Main link</b>, URL behind the big button on software page."
-  },
-  "codeRepository": {
-    "sortIndex": 150,
-    "htmlDescription": "Link to the <b>repository</b> where the un-compiled, human readable <b>code</b> and related code is located (github, SVN, CodePlex)."
-  },
-  "downloadUrl": {
-    "sortIndex": 155,
-    "htmlDescription": "Link to <b>download page</b> (e.g. Github releases, PyPi, npm, jcenter)."
-  },
-  "documentationUrl": {
-    "sortIndex": 160,
-    "htmlDescription": "Link to the <b>documentation</b> pages."
   },
   "releases": {
     "sortIndex": 170,
@@ -165,6 +80,9 @@
     "editable": false
   },
   "schema": {
+    "editable": false
+  },
+  "zoteroKey": {
     "editable": false
   }
 }
