@@ -64,11 +64,6 @@
       "description": "Software statement.",
       "type": "string"
     },
-    "website": {
-      "format": "uri",
-      "description": "Link to the main website.",
-      "type": "string"
-    },
     "contactPerson": {
       "anyOf": [
         {
@@ -228,12 +223,7 @@
     },
     "mainUrl": {
       "format": "uri",
-      "description": "Main link, URL behind the big button on software page.",
-      "type": "string"
-    },
-    "downloadUrl": {
-      "format": "uri",
-      "description": "Link to download page (e.g. Github releases, PyPi, npm, jcenter).",
+      "description": "'Getting started' URL.",
       "type": "string"
     },
     "license": {
@@ -590,11 +580,6 @@
         "resType": "software"
       }
     },
-    "codeRepository": {
-      "type": "string",
-      "description": "Link to the repository where the un-compiled, human readable code and related code is located (github, SVN, CodePlex).",
-      "format": "uri"
-    },
     "usedInProject": {
       "description": "Projects the software is used in.",
       "type": "array",
@@ -654,7 +639,7 @@
     },
     "programmingLanguage": {
       "type": "array",
-      "description": "In which language is the software implemented?",
+      "description": "In which language is the software implemented?4",
       "items": {
         "anyOf": [
           {
@@ -695,11 +680,6 @@
           }
         ]
       }
-    },
-    "documentationUrl": {
-      "type": "string",
-      "description": "Link to the documentation pages.",
-      "format": "uri"
     },
     "supportLevel": {
       "type": "string",
