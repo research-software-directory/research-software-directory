@@ -27,6 +27,12 @@
     "long": true,
     "htmlDescription": "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
   },
+  "readMore": {
+    "sortIndex": 14,
+    "markdown": true,
+    "long": true,
+    "htmlDescription": "Text behind <b>Read more</b>"
+  },
   "githubid": {
     "sortIndex": 20,
     "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)"

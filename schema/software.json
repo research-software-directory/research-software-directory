@@ -52,6 +52,10 @@
       "description": "Short software statement.",
       "type": "string"
     },
+    "readMore": {
+      "description": "Read more",
+      "type": "string"
+    },
     "statement": {
       "description": "Software statement.",
       "type": "string"
