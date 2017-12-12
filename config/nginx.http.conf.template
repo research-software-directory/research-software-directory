@@ -4,6 +4,7 @@ upstream flask {
 
 server {
         listen 0.0.0.0:8000;
+        listen [::]:8000;
         server_name 0.0.0.0;
         client_max_body_size 5M;
         location / {

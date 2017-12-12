@@ -52,19 +52,7 @@ function search_algo(search_key, stype){
   return results_list
 }
 
- $("#input").on("focusin", function(){
-    if($("#input").val()=="Search for software, people, technologies, etc."){
-      $("#input").val("")
-      $("#input").css('color', '#000000');
-    }
- });
- $("#input").on("focusout", function(){
-    if($("#input").val()==""){
-      $("#input").val("Search for software, people, technologies, etc.")
-      $("#input").css('color', '#676a70');
-    }
- });
-
+=
 
  $(document).ready(function(){
     // fill gems div
