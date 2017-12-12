@@ -10,26 +10,17 @@ server {
 }
 
 server {
-        listen 127.0.0.1:8001;
-        server_name 127.0.0.1;
-        client_max_body_size 5M;
-        location / {
-                include uwsgi_params;
-                uwsgi_pass flask;
-        }
-}
-
-server {
     listen 443;
     listen [::]:443;
     ssl on;
     ssl_certificate /cert/live/{DOMAIN}/fullchain.pem;
     ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
-    server_name admin.research-software.nl;
+    server_name {DOMAIN};
 
     location ^~ /api/ {
-                proxy_pass http://localhost:8001/;
-        }
+        include uwsgi_params;
+        uwsgi_pass flask;
+    }
 
     location /index.html {
             proxy_pass {STATIC_FILES_URL}/index.html;
