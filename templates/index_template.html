@@ -1,7 +1,7 @@
 {% extends "layout_template.html" %}
 {% block head %}
 {{super()}}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index_style.css')}}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style/index_style.css')}}">
 <script type="text/javascript" src="/dynamic/data.js"></script>
 {% endblock %}
 {% block title %}
@@ -25,7 +25,7 @@ Browse All Software
 
     <div id="box_3">
       <div id="title_bar_right">Projects</div>
-      [[JSON.stringify(filtered_software)]]
+      [[JSON.stringify(software)]]
       <div class="layout" id="search_results"></div>
       <div class="layout" id="data_display">
       </div>
@@ -60,9 +60,9 @@ Browse All Software
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
   <!--<script type="text/javascript" src="{{url_for('static', filename='scripts/index_scripts.js') }}"></script>-->
   <script>

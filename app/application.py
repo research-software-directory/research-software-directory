@@ -1,26 +1,20 @@
+import datetime
 import json
+import random
 
 import flask
-import requests
 import markdown
-import random
-import datetime
-import plot_commits
+import requests
 
-app = application = flask.Flask(__name__)
+from app import plot_commits
 
+application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-# def json_dumps(json_object):
-#    json_dump = flask.json.dumps(json_object,
-#                                 sort_keys = True,
-#                                 indent = 4,
-#                                 seperators = (',', ': '))
-#    return json_dump
-# app.jinja_env.filters['dump_json'] = json_dumps
+api_url = 'https://admin.research-software.nl/api'
 
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def index():
-    url = "http://admin.research-software.nl/api/software"
+    url = api_url + '/software'
     all_software_dictionary = requests.get(url).json()
     # template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     random_integer = random.randint(1, 100)
@@ -29,9 +23,9 @@ def index():
                                  random_integer=str(random_integer))
 
 
-@app.route('/software/<software_id>')
+@application.route('/software/<software_id>')
 def software_product_page_template(software_id):
-    url = "http://admin.research-software.nl/api/software/%s" % software_id
+    url = api_url + "/software/%s" % software_id
     software_dictionary = requests.get(url).json()
     if ("error" in software_dictionary):
         return flask.redirect("/", code=302)
@@ -63,23 +57,23 @@ def software_product_page_template(software_id):
                                  mention_types=mention_types, commits_data=commits_data)
 
 
-@app.route('/about')
+@application.route('/about')
 def about_template():
     return flask.render_template('about_template.html')
 
 
-@app.route('/rsd')
+@application.route('/rsd')
 def rsd_template():
     return flask.render_template('rsd_template.html')
 
 
-@app.errorhandler(404)
+@application.errorhandler(404)
 def page_not_found(e):
     return flask.redirect("/", code=302)
 
 
 def get_commits_data(software_id):
-    url = "http://admin.research-software.nl/api/software/%s/report" % software_id
+    url = api_url + "/software/%s/report" % software_id
     report_dictionary = requests.get(url).json()
     if 'github' in report_dictionary:
         commits = report_dictionary['github']['commits']
@@ -95,17 +89,13 @@ def get_commits_data(software_id):
     return commits_data
 
 
-@app.template_filter('strftime')
+@application.template_filter('strftime')
 def strftime(millis):
     format = "%Y-%m-%d %H:%M:%S"
     result = datetime.datetime.fromtimestamp(millis).strftime(format)
     return result
 
 
-@app.template_filter('listNames')
+@application.template_filter('listNames')
 def listNames(contributors):
     return [c['name'] for c in contributors]
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

@@ -4,8 +4,8 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 
-gulp.task('watch', function(gulpCallback) {
-    gulp.watch('static/**/*.scss', ['build']);
+gulp.task('watch', ['build'], function(gulpCallback) {
+    gulp.watch('/style/**/*.scss', ['build']);
 });
 
 gulp.task('build', function() {
@@ -14,8 +14,8 @@ gulp.task('build', function() {
         cssnano
     ];
 
-    return gulp.src('static/**/*.scss')
+    return gulp.src('/style/**/*.scss')
         .pipe(sass())
         .pipe(postcss(plugins))
-        .pipe(gulp.dest('static'))
+        .pipe(gulp.dest('/static/style'))
 });
