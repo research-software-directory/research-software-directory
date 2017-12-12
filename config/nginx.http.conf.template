@@ -3,21 +3,15 @@ upstream flask {
 }
 
 server {
-    listen 8000 default_server;
-    location ~ (?:^|/)\. {
-       deny all;
-    }
-}
-
-server {
         listen 8000;
         listen [::]:8000;
         server_name admin.research-software.nl;
         client_max_body_size 5M;
 
-        location ^~ /api/ {
-                include uwsgi_params;
-                uwsgi_pass flask;
+        location ^~ /api {
+            rewrite ^/api/(.*) /$1 break;
+            uwsgi_pass flask;
+            include uwsgi_params;
         }
 
         location /index.html {

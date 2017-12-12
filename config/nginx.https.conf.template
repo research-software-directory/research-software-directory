@@ -3,13 +3,6 @@ upstream flask {
 }
 
 server {
-    listen 8000 default_server;
-    location ~ (?:^|/)\. {
-       deny all;
-    }
-}
-
-server {
     listen 443;
     listen [::]:443;
     ssl on;
@@ -17,9 +10,10 @@ server {
     ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
     server_name {DOMAIN};
 
-    location ^~ /api/ {
-        include uwsgi_params;
+    location ^~ /api {
+        rewrite ^/api/(.*) /$1 break;
         uwsgi_pass flask;
+        include uwsgi_params;
     }
 
     location /index.html {
