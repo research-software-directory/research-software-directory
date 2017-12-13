@@ -6,20 +6,30 @@ import flask
 import markdown
 import requests
 
+import ago
+
 from app import plot_commits
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = 'https://admin.research-software.nl/api'
+# api_url = 'https://admin.research-software.nl/api'
+api_url = 'http://172.19.0.1:5001'
+
+def format_software(sw):
+    sw['lastUpdateAgo'] = ago.human(sw.get('lastUpdate'), precision=1)
 
 @application.route('/', methods=['GET', 'POST'])
 def index():
     url = api_url + '/software'
-    all_software_dictionary = requests.get(url).json()
+    all_software = requests.get(url).json()
+    for sw in all_software:
+        format_software(sw)
+
     # template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     random_integer = random.randint(1, 100)
-    return flask.render_template('index_template.html', template_data=all_software_dictionary,
-                                 data_json=flask.Markup(json.dumps(all_software_dictionary)),
+    return flask.render_template('index_template.html',
+                                 template_data=all_software,
+                                 data_json=flask.Markup(json.dumps(all_software)),
                                  random_integer=str(random_integer))
 
 
