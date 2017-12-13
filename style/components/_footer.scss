@@ -1,0 +1,41 @@
+#footer {
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+	// background-color: #dddddd;
+	width: 100%;
+	height: 160px;
+}
+#footer_text {
+	padding-top: 10px;
+	padding-left: 40px;
+	padding-bottom: 10px;
+	width: 340px;
+}
+#footer_logo {
+	padding-left: 40px;
+}
+#footer_logo {
+	svg {
+		fill: $white;
+		width: auto;
+		height: 23px;
+		display: block; 
+	}
+	a:hover{
+
+		svg{
+			#block {
+				fill: $primaryColor;
+			}
+		}
+	}
+}
+#footer_links {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+#footer_links a {
+	padding-left: 10px;
+}

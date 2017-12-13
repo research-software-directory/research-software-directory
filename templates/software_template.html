@@ -1,7 +1,7 @@
 {% extends "layout_template.html" %}
 {% block head %}
 {{super()}}
-<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style/software_style.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style/software_style.css')}}"> -->
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
@@ -10,126 +10,110 @@
 {% endblock %}
 {% block title %}{{template_data.name}}{% endblock %}
 {% block content %}
-{% if template_data.name %}
-<div class="name">{{template_data.name}}</div>
-{% endif %}
-{% if template_data.contributor %}
-<div class="by">By {{", ".join(template_data.contributor|listNames)}}</div>
-{% endif %}
-{% if template_data.contributingOrganization %}
-<div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|listNames)}}</div>
-{% endif %}
-{% if template_data.shortStatement %}
-<div class="shortStatement">{{template_data.shortStatement}}</div>
-{% endif %}
 
-<div class="box">
-    <div class="box_left">
-        <a href={{template_data.mainUrl}} target="_blank"><div class="box_mainlink">Get started</div></a>
-        {% if template_data.codeRepository %}
-        <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
-        {% endif %}
-        {% if template_data.website %}
-        <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
-        {% endif %}
-        {% if template_data.downloadUrl %}
-        <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
-        {% endif %}
-        {% if template_data.documentationUrl %}
-        <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
-        {% endif %}
-    </div>
-    <div class="box_right">
+
+<!-- Introduction -->
+<section class="" id="introduction">
+    <div class="container">
+    
         {% if template_data.name %}
-        <div class="software_commitsPlot" id="commitsPlot"></div>
-        <div class="software_commitsStat" id="commitsStat"></div>
+        <div class="name">{{template_data.name}}</div>
         {% endif %}
+        {% if template_data.contributor %}
+        <div class="by">By {{", ".join(template_data.contributor|listNames)}}</div>
+        {% endif %}
+        {% if template_data.contributingOrganization %}
+        <div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|listNames)}}</div>
+        {% endif %}
+        {% if template_data.shortStatement %}
+        <div class="shortStatement">{{template_data.shortStatement}}</div>
+        {% endif %}
+
     </div>
-</div>
+</section>
 
-{% if template_data.statement %}
-<div class="statement">
-    <div class="subtitle">Why {{template_data.name}}?</div>
-    {{statementMarkup}}
-</div>
-{% endif %}
 
-<div class="divider"></div>
+<!-- Get Started -->
+<section class="bg-light" id="get-started">
+    <div class="container">
 
-{% if template_data.contributingOrganization %}
-<div class="contributingOrganization">
-    <div class="subtitle">In collaboration with</div>
-    <div class="flex_container">
-        {% for contributingOrganization in template_data.contributingOrganization %}
-        <div class="flex_item">
-        {% if contributingOrganization.website %}
-            <a href="{{contributingOrganization.website}}" target="_blank">
-        {% endif %}
-        {% if organisation_logos[contributingOrganization.id] %}
-                <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
-        {% else %}
-                {{contributingOrganization.name}}
-        {% endif %}
-        {% if contributingOrganization.website %}
-            </a>
-        {% endif %}
-        </div>
-        {% endfor %}
-    </div>
-</div>
-{% endif %}
-
-<div class="divider"></div>
-
-<div class="creators">
-    <div class="subtitle">Creators</div>
-    {% if template_data.contactPerson %}
-    <span class="creators_left">
-        <div class="subsubtitle">Contact person</div>
-        <div class="contactPerson">
-            {% if template_data.contactPerson.website %}
-            <a href="{{template_data.contactPerson.website}}" target="_blank">
-               {{template_data.contactPerson.name}}
-            </a>
-            {% else %}
-               {{template_data.contactPerson.name}}
-            {% endif %}
-        </div>
-        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
-        <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
-        </div>
-    </span>
-    {% endif %}
-    {% if template_data.contributor %}
-    <span class="creators_right">
-        <div class="subsubtitle">Contributors</div>
-        <div class="flex_container">
-            {% for contributor in template_data.contributor %}
-            {% if contributor.name != template_data.contactPerson.name %}
-            <div class="contributor flex_item">
-                {% if contributor.linkedInUrl %}
-                <a href="{{contributor.linkedInUrl}}" target="_blank">
-                   {{contributor.name}}
-                </a>
-                {% else %}
-                   {{contributor.name}}
+        <div class="box">
+            <div class="box_left">
+                <a href={{template_data.mainUrl}} target="_blank"><div class="box_mainlink">Get started</div></a>
+                {% if template_data.codeRepository %}
+                <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
                 {% endif %}
-                {% if contributor.affiliation %}
-                <br>
-                {{contributor.affiliation}}
+                {% if template_data.website %}
+                <div class="website"><a href={{template_data.website}} target="_blank">website</a></div>
+                {% endif %}
+                {% if template_data.downloadUrl %}
+                <div class="downloadUrl"><a href={{template_data.downloadUrl}} target="_blank">downloadUrl</a></div>
+                {% endif %}
+                {% if template_data.documentationUrl %}
+                <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
                 {% endif %}
             </div>
-            {% endif %}
-            {% endfor %}
+            <div class="box_right">
+                {% if template_data.name %}
+                <div class="software_commitsPlot" id="commitsPlot"></div>
+                <div class="software_commitsStat" id="commitsStat"></div>
+                {% endif %}
+            </div>
         </div>
-    {% endif %}
-    </span>
-</div>
 
+    </div>
+</section>
+
+
+<!-- About -->
+<section class="" id="about">
+    <div class="container">
+        {% if template_data.statement %}
+        <div class="statement">
+            <div class="subtitle">Why {{template_data.name}}?</div>
+            {{statementMarkup}}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+
+<!-- Collaborations -->
+{% if template_data.contributingOrganization %}
+<section class="" id="collaborations">
+    <div class="container">
+        
+        <div class="contributingOrganization">
+            <div class="subtitle">In collaboration with</div>
+            <div class="flex_container">
+                {% for contributingOrganization in template_data.contributingOrganization %}
+                <div class="flex_item">
+                {% if contributingOrganization.website %}
+                    <a href="{{contributingOrganization.website}}" target="_blank">
+                {% endif %}
+                {% if organisation_logos[contributingOrganization.id] %}
+                        <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
+                {% else %}
+                        {{contributingOrganization.name}}
+                {% endif %}
+                {% if contributingOrganization.website %}
+                    </a>
+                {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+</section>
+{% endif %}
+
+
+<!-- Mentions -->
 {% if template_data.mentions %}
-    <div class="divider"></div>
-
-    <div class="mentions">
+<section class="bg-dark" id="mentions">
+    <div class="container">
+        
         <div class="subtitle">Mentions</div>
         <div class="divider"></div>
         {% for key, value in template_data.mentions.items() %}
@@ -155,17 +139,84 @@
             <div class="divider"></div>
         </div>
         {% endfor %}
-    </div>
+        
+    </div>    
+</section>
 {% endif %}
 
-{% if template_data.testimonial %}
-    <div class="testimonial">"{{template_data.testimonial}}"</div>
-    <div class="testimonialby">- {{template_data.testimonialBy}}</div>
-{% endif %}
 
-<div class="divider"></div>
+<!-- Projects -->
+<section class="" id="projects">
+    <div class="container">
+           
+        {% if template_data.testimonial %}
+        <div class="testimonial">"{{template_data.testimonial}}"</div>
+        <div class="testimonialby">- {{template_data.testimonialBy}}</div>
+        {% endif %}
 
-<div class="otherDetails">
+    </div>     
+</section>
+
+
+<!-- Contributors -->
+<section class="bg-light" id="contributors">
+    <div class="container">
+
+        <div class="subtitle">Creators</div>
+        {% if template_data.contactPerson %}
+        <span class="creators_left">
+            <div class="subsubtitle">Contact person</div>
+            <div class="contactPerson">
+                {% if template_data.contactPerson.website %}
+                <a href="{{template_data.contactPerson.website}}" target="_blank">
+                    {{template_data.contactPerson.name}}
+                </a>
+                {% else %}
+                    {{template_data.contactPerson.name}}
+                {% endif %}
+            </div>
+            <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
+            <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
+            </div>
+        </span>
+        {% endif %}
+        {% if template_data.contributor %}
+        <span class="creators_right">
+            <div class="subsubtitle">Contributors</div>
+            <div class="flex_container">
+                {% for contributor in template_data.contributor %}
+                {% if contributor.name != template_data.contactPerson.name %}
+                <div class="contributor flex_item">
+                    {% if contributor.linkedInUrl %}
+                    <a href="{{contributor.linkedInUrl}}" target="_blank">
+                        {{contributor.name}}
+                    </a>
+                    {% else %}
+                        {{contributor.name}}
+                    {% endif %}
+                    {% if contributor.affiliation %}
+                    <br>
+                    {{contributor.affiliation}}
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        </span>
+        
+    </div>     
+</section>
+
+
+<!-- Related Tools -->
+<section class="" id="related-tools">
+    <div class="container">
+            
+    </div>    
+</section>
+
+<!-- <div class="otherDetails">
     <div class="flex_container">
     {% if template_data.doi %}
         <div class="flex_item">
@@ -217,5 +268,6 @@
         </div>
     {% endif %}
     </div>
-</div>
+</div> -->
+
 {% endblock %}
