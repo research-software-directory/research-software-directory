@@ -1,0 +1,33 @@
+
+
+//	RSD main scss file
+//	==========================================================================
+
+//	Settings
+//  --------------------------------------------------
+@import "settings/variables";
+// @import "settings/mediaqueries";
+@import "settings/mixins";
+
+
+//	Base
+//  --------------------------------------------------
+@import "base/resets";
+@import "base/fonts";
+@import "base/typography";
+@import "base/scaffolding";
+
+
+//	Components
+//  --------------------------------------------------
+@import "components/header";
+@import "components/footer";
+
+// @import "components/footer";
+
+
+//	Templates
+//  --------------------------------------------------
+@import "templates/index";
+@import "templates/software";
+
