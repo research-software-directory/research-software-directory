@@ -16,13 +16,11 @@
     "url": "https://github.com/NLeSC/research-software-directory-frontend/issues"
   },
   "homepage": "https://github.com/NLeSC/research-software-directory-frontend#readme",
-  "dependencies": {
-    "webpack": "^3.9.1"
-  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-postcss": "^7.0.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1"
   }
 }

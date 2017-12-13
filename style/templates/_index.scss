@@ -1,12 +1,41 @@
+#software_list {
+    display:flex;
+    flex-wrap: wrap;
+    width: 100%;
+    >a {
+        display:block;
+        width: 50%;
+        border: 2px solid white;
+        background-color: grey;
+    }
+}
+
+.col-3 {
+    display:flex;
+    padding: 1em;
+    >.left {
+        flex: 3;
+    }
+    >.right {
+        flex: 7;
+    }
+
+}
+
+
+
+/* old stuff: */
+
+
 .index_title {
     font-size: 3em;
     text-align:center;
 }
 .search_bar {
     position:relative;
-    float:top;
     margin-bottom:70px;
     width:100%;
+    height:50px;
 }
 .search_form {
     font-size:16pt;

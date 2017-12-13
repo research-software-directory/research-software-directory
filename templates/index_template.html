@@ -16,52 +16,31 @@ Browse All Software
           <input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >
       </form>
   </div>
-
-  <div id="container_right">
-    <div id="box_3">
-      <div id="title_bar_right">Software</div>
-      <div id="sw_container" style="display:flex; flex-wrap: wrap; width: 100%">
-        <a :href="'/software/' + sw.id" v-for="sw in software" style="display:block; width: 48%; border: 2px solid white; background-color: grey">
+  <div class="col-3">
+    <div class="left">
+      <div id="filters">
+        <div>Filter</div>
+        <div>
+          <form id="filter_form" >
+            <span v-for="tag in tags">
+              <input type="checkbox" :value="tag" v-model="filter.tags" /><span class="checkboxtext"><b>[[tag]]</b></span><br>
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div id="software_list">
+        <a v-for="sw in software" :href="'/software/' + sw.id">
           <h1>[[sw.name]]</h1>
           <div class="code">[[sw.code]]</div>
           <p>[[sw.tagLine]]</p>
-          [[sw.lastUpdateAgo]]
+          <i>[[sw.lastUpdateAgo]]</i>
         </a>
       </div>
-      <div class="layout" id="search_results"></div>
-      <div class="layout" id="data_display">
-      </div>
     </div>
   </div>
 
-  <div id="container_left">
-    <div id="box_2a">
-      <div id="title_bar_left">Filter</div>
-      <div id="filter">
-      <form id="filter_form" >
-        <span v-for="tag in tags">
-          <input type="checkbox" :value="tag" v-model="filter.tags" /><span class="checkboxtext"><b>[[tag]]</b></span><br>
-        </span>
-      </form>
-      </div>
-    </div>
-
-    <div id="box_2b">
-      <div id="title_bar_left">News</div>
-      <div id="mentions">
-        <h2>Mentions</h2>
-        <ul>
-          <li>...</li>
-        </ul>
-      </div>
-      <div id="releases">
-        <h2>Releases</h2>
-        <ul>
-          <li>...</li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
   <script>
     var v = new Vue({
