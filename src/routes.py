@@ -67,6 +67,8 @@ def get_routes(service_controller, db):
             'id': software.data.get('id'),
             'name': software.data.get('name'),
             'tagLine': software.data.get('tagLine'),
+            'shortStatement': software.data.get('shortStatement'),
+            'code': software.data.get('name')[0].upper() + software.data.get('name')[1].lower(),
             'discipline': software.data.get('discipline'),
             'expertise': software.data.get('expertise'),
             'tags': software.data.get('tags'),
