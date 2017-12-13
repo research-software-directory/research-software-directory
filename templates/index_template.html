@@ -18,14 +18,16 @@ Browse All Software
   </div>
 
   <div id="container_right">
-    <div id="box_1">
-     <div id="title_bar_right">Highlights</div>
-     <div class="layout" id="data_gems"></div>
-    </div>
-
     <div id="box_3">
-      <div id="title_bar_right">Projects</div>
-      [[JSON.stringify(software)]]
+      <div id="title_bar_right">Software</div>
+      <div id="sw_container" style="display:flex; flex-wrap: wrap; width: 100%">
+        <a :href="'/software/' + sw.id" v-for="sw in software" style="display:block; width: 48%; border: 2px solid white; background-color: grey">
+          <h1>[[sw.name]]</h1>
+          <div class="code">[[sw.code]]</div>
+          <p>[[sw.tagLine]]</p>
+          [[sw.lastUpdateAgo]]
+        </a>
+      </div>
       <div class="layout" id="search_results"></div>
       <div class="layout" id="data_display">
       </div>
@@ -60,11 +62,7 @@ Browse All Software
       </div>
     </div>
   </div>
-  <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
-  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
-  <!--<script type="text/javascript" src="{{url_for('static', filename='scripts/index_scripts.js') }}"></script>-->
   <script>
     var v = new Vue({
       el: '#content',
