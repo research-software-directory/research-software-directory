@@ -3,10 +3,17 @@ body {
     font-family: $primaryFont;
     font-size: $defaultFontSize;
     line-height: $defaultLineHeight;
- 
+    -webkit-font-smoothing: antialiased;    
+
     background-color: $white;
    
 }
+
+::selection, ::-moz-selection{
+    color: $white;
+    background: $primaryColor;
+}
+
 
 /* ids */
 #layout_container {
@@ -16,14 +23,16 @@ body {
 }
 
 #body {
-    margin: 0px;
-    margin-left: auto;
-    margin-right: auto;
-	padding: 0px;
+    // margin: 0px;
+    // margin-left: auto;
+    // margin-right: auto;
+	// padding: 0px;
 	// width: $contentWidth;
-	min-height: calc(100% - 260px);
+	// min-height: calc(100% - 260px);
 }
-
+section{
+    display: block;
+}
 .bg-dark{
     background-color: $bgDark;
 }
@@ -33,12 +42,21 @@ body {
 }
 
 .container{
-    position: relative;
+    // position: relative;
+    // display: inline-block;
     width: 100%;
     max-width: $contentWidth;
     margin: 0 auto;
-
+    padding-left: 20px;
+    padding-right: 20px;
     // &--flex{
     //     display: flex;
     // }
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.col{
+
 }
