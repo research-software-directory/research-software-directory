@@ -1,0 +1,48 @@
+.button{
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.85em 1.5em;
+
+    font-size: 1.6rem;
+    
+    &--big{
+        font-size: 2.4rem;
+    }
+
+    &--filled-blue{
+        // margin-top: 1px;
+        // margin-bottom: 1px;
+        background-color: $primaryColor;
+        color: $white;
+        font-family: $primaryFontBold;
+
+        &:hover{
+            background-color: $black;
+            color: $white;
+        }
+    }
+
+    &--filled-dark{
+        // margin-top: 1px;
+        // margin-bottom: 1px;
+        background-color: $dark;
+        color: $white;
+        font-family: $primaryFontBold;
+        
+        &:hover{
+            background-color: $primaryColor;
+            color: $white;
+        }
+    }
+
+    &--outlined{
+        border: 1px solid currentColor;
+    }
+  
+}
+
+.button_icon{
+    padding-left: 1.3em;
+}

@@ -2,14 +2,20 @@
 // Media Queries
 // -------------------------------------------------
 
-
-// Breakpoints
+// Devices
 
 $phone:		    480px;
 $phablet:	    600px;
 $tablet:	    960px;
 $desktop:		1280px;
 $widescreen:    1440px;
+
+// $phone-port:    580px;
+// $phone-land:	690px;
+// $tablet-port:	768px;
+// $tablet-land:	1024px;
+// $desktop:		1280px;
+// $widescreen:    1600px;
 
 
 @mixin bp( $type, $first:0, $second:0 ) {
@@ -37,10 +43,12 @@ $widescreen:    1440px;
 /* Examples
 ____________________________________________________________________________________
 
-You can select the type of media querie you want to create: minMax, min or max.
+You can select the type of media query you want to create: minMax, min or max.
 For min and max values you can use predefined device variables or simple px values.
 Keep in mind that the default min and max value is set to 0.
 
+Tip!
+You can do something like @include bp( max, $desktop - 1px ) to apply the styling to screensize below the desktop.
 ____________________________________________________________________________________
 
 SCSS to CSS:
