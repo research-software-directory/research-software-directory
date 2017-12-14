@@ -1,17 +1,64 @@
-/* tags */
 
-/* classes */
+// Introduction
+// -----------------------------------
+
+#introduction{
+    .container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .row{
+        justify-content: space-between;
+    }
+    .col--left{
+        // width: (100% / 12) * 8;
+        width: 100%;
+        max-width: 720px;
+    }
+    .col--right{
+        // width: (100% / 12) * 4;
+        flex-grow: 1;
+    }
+}
+
 .name {
-    font-size: 3em;
-    padding-top: 20px;
+    font-size: 6.4rem;
+    
 }
-.by {
-    font-weight: bold;
+
+.by, .contributingOrganizationJoin {
+    font-size: 1.5rem;
+    line-height: 1.5;
 }
+
 .shortStatement {
-    font-style: italic;
-    padding-top: 20px;
+    font-family: $primaryFontLight;
+    font-size: 3rem;
+    padding-top: 1.5em;
+    padding-bottom: 0.8em;
 }
+
+.specs{
+    width: 100%;
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.spec{
+    padding: 10px 25px;
+    text-align: center;
+
+    .num{
+        font-family: $primaryFontLight;
+        font-size: 5.4rem;
+        color: $primaryColor;
+    }
+}
+
+
+
+
 .codeRepository {
 }
 .website {
@@ -81,8 +128,8 @@
 .box {
 	// background-color: #dddddd;
     padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
     height: 150px;
 }
 .box_left {

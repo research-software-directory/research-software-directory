@@ -5,12 +5,16 @@
 	// background-color: #dddddd;
 	width: 100%;
 	height: 160px;
+	
+	
 }
 #footer_text {
 	padding-top: 10px;
 	padding-left: 40px;
 	padding-bottom: 10px;
 	width: 340px;
+
+	color: $white;
 }
 #footer_logo {
 	padding-left: 40px;
@@ -37,5 +41,14 @@
 	right: 30px;
 }
 #footer_links a {
-	padding-left: 10px;
+	color: $white;
+
+	// &:hover{
+	// 	color: $primaryColor;
+	// }
+
+	:not(:first-child){
+		padding-left: 10px;
+	}
+	
 }
