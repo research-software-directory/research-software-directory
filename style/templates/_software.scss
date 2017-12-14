@@ -14,10 +14,12 @@
         // width: (100% / 12) * 8;
         width: 100%;
         max-width: 720px;
+
     }
     .col--right{
         // width: (100% / 12) * 4;
         flex-grow: 1;
+
     }
 }
 
