@@ -1,5 +1,6 @@
-.button{
 
+.button{
+    
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -7,8 +8,28 @@
 
     font-size: 1.6rem;
     
+    .icon{
+        fill: $white;
+        display: block;
+        width: 16px;
+        height: 16px;
+    }
+
+    span:first-child{
+        margin-right: 1em;
+    }
+
     &--big{
         font-size: 2.4rem;
+        
+        .icon{
+            // width: 15px;
+            // height: 15px;
+        }
+
+        span:first-child{
+            margin-right: 1.2em;
+        }
     }
 
     &--filled-blue{
@@ -19,7 +40,7 @@
         font-family: $primaryFontBold;
 
         &:hover{
-            background-color: $black;
+            background-color: $mid;
             color: $white;
         }
     }
@@ -32,17 +53,17 @@
         font-family: $primaryFontBold;
         
         &:hover{
-            background-color: $primaryColor;
+            background-color: $mid;
             color: $white;
         }
     }
 
     &--outlined{
         border: 1px solid currentColor;
+        .icon{
+            fill: currentColor;
+        }
     }
   
 }
 
-.button_icon{
-    padding-left: 1.3em;
-}

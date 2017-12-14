@@ -32,7 +32,7 @@ h6 {
 }
 
 a{  
-    color:black;
+    color: currentColor;
     text-decoration: none;
     &:visited{
         color: inherit;

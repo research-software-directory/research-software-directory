@@ -9,11 +9,18 @@ body {
     color: $dark;
 }
 
-::selection, ::-moz-selection{
+::selection{
+    color: $white;
+    background: $primaryColor;
+}
+::-moz-selection{
     color: $white;
     background: $primaryColor;
 }
 
+.icon{
+    display:block;
+}
 
 /* ids */
 #layout_container {
@@ -35,10 +42,18 @@ section{
 }
 .bg-dark{
     background-color: $dark;
+    color: $white;
 }
 
 .bg-light{
-    background-color: $bgLight;
+    background-color: $light;
+}
+
+.divider {
+    border-top: 1px solid #dddddd;
+    padding: 0px;
+    // margin-top: 25px;
+    // margin-bottom: 25px;
 }
 
 .container{
@@ -53,10 +68,24 @@ section{
     //     display: flex;
     // }
 }
+
 .row{
     display: flex;
     flex-wrap: wrap;
 }
-.col{
 
+.col_25{
+    width: 25%;
+
+    @include bp(max, $tablet){
+        width: 100%;
+    }
+}
+
+.col_75{
+    width: 75%;
+
+    @include bp(max, $tablet){
+        width: 100%;
+    }
 }

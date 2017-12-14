@@ -17,9 +17,9 @@
     <div class="container">
         <div class="row">
 
-            <div class="col col--left">
+            <div class="col col_75">
                 {% if template_data.name %}
-                <div class="name">{{template_data.name}}</div>
+                <h1 class="title name">{{template_data.name}}</h1>
                 {% endif %}
                 {% if template_data.contributor %}
                 <div class="by">By <strong>{{", ".join(template_data.contributor|listNames)}}</strong></div>
@@ -32,13 +32,13 @@
                 {% endif %}
             </div>
 
-            <div class="col col--right">
-                <div class="specs">
-                    <div class="spec">
+            <div class="col col_25">
+                <div class="highlight-data">
+                    <div class="data">
                         <div class="num">17</div>
                         <div class="text">mentions</div>
                     </div>
-                    <div class="spec">
+                    <div class="data">
                         <div class="num">3</div>
                         <div class="text">contributors</div>
                     </div>
@@ -54,9 +54,21 @@
 <section class="bg-light" id="get-started">
     <div class="container">
 
-        <div class="box">
-            <div class="box_left">
-                <a class="button button--big button--filled-blue" href={{template_data.mainUrl}} target="_blank">Get started<img class="button_icon" src="{{url_for('static', filename='icons/external.svg')}}"></a>
+        <div class="row">
+            
+            {% if template_data.mainUrl %}
+            <div class="col_25">
+                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span>Get started</span><span><svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
+            </div>
+            {% endif %}
+
+            <div class="col_75">
+
+                {% if template_data.name %}
+                <div class="software_commitsPlot" id="commitsPlot"></div>
+                <div class="software_commitsStat" id="commitsStat"></div>
+                {% endif %}
+
                 {% if template_data.codeRepository %}
                 <div class="codeRepository"><a href={{template_data.codeRepository}} target="_blank">codeRepository</a></div>
                 {% endif %}
@@ -69,28 +81,62 @@
                 {% if template_data.documentationUrl %}
                 <div class="documentationUrl"><a href={{template_data.documentationUrl}} target="_blank">documentationUrl</a></div>
                 {% endif %}
-            </div>
-            <div class="box_right">
-                {% if template_data.name %}
-                <div class="software_commitsPlot" id="commitsPlot"></div>
-                <div class="software_commitsStat" id="commitsStat"></div>
-                {% endif %}
-            </div>
+
+            </div>            
         </div>
+
+        
 
     </div>
 </section>
 
 
+<!-- Cite this software -->
+<section id="cite-this">
+    <div class="container">
+
+        <div class="row">
+            <h2 class="subtitle">Cite this software</h2>
+            <a href="#"><div class="button button--filled-blue"><span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span><span>Choose a citation style</span></div></a>
+        </div>
+
+    </div>
+</section>            
+
+
 <!-- About -->
 <section class="" id="about">
     <div class="container">
-        {% if template_data.statement %}
-        <div class="statement">
-            <div class="subtitle">Why {{template_data.name}}?</div>
-            {{statementMarkup}}
+        <div class="row">
+
+            {% if template_data.statement %}
+            <div class="statement col_75">
+                <h2 class="subtitle text-blue">What {{template_data.name}} can do for you</h2>
+                {{statementMarkup}}
+            </div>
+            {% endif %}
+
+            <div class="specifications col_25">
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+                <ul class="tags">
+                    <li>Name</li>
+                    <li>Longer name</li>
+                    <li>Very long name</li>
+                    <li>Mid tagname</li>
+                </ul>
+
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Lanuage</h5>
+                <ul class="languages">
+                    <li>Python</li>
+                </ul>
+
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
+                <ul class="licenses">
+                    <li>lgpl-3.0</li>
+                </ul>
+            </div>
+
         </div>
-        {% endif %}
     </div>
 </section>
 
@@ -99,19 +145,24 @@
 {% if template_data.contributingOrganization %}
 <section class="" id="collaborations">
     <div class="container">
-        
-        <div class="contributingOrganization">
-            <div class="subtitle">In collaboration with</div>
-            <div class="flex_container">
+
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col_25">
+                <h2 class="subtitle text-blue">In collaboration with</h2>
+            </div>
+
+            <div class="col_75 row contributing-organisations">
                 {% for contributingOrganization in template_data.contributingOrganization %}
-                <div class="flex_item">
+                <div class="organisation">
                 {% if contributingOrganization.website %}
                     <a href="{{contributingOrganization.website}}" target="_blank">
                 {% endif %}
                 {% if organisation_logos[contributingOrganization.id] %}
-                        <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
+                    <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
                 {% else %}
-                        {{contributingOrganization.name}}
+                    {{contributingOrganization.name}}
                 {% endif %}
                 {% if contributingOrganization.website %}
                     </a>
@@ -131,31 +182,48 @@
 <section class="bg-dark" id="mentions">
     <div class="container">
         
-        <div class="subtitle">Mentions</div>
-        <div class="divider"></div>
-        {% for key, value in template_data.mentions.items() %}
-        <div class="mention">
-            <div class="mention_button">
-                <div class="subsubtitle">{{mention_types.get(key, key)}} ({{value|length}})</div>
+        <div class="row">
+            <div class="col_25">
+                <h2 class="subtitle text-blue">Mentions</h2>
             </div>
-            <div class="mention_text">
-                <ul>
-                {% for item in value %}
-                    <li>
-                    {% if item.data.url %}
-                        <a href="{{item.data.url}}" target="_blank">
-                        {{item.data.title}}
-                        </a>
-                    {% else %}
-                        {{item.data.title}}
-                    {% endif %}
-                    </li>
+
+            <div class="col_75">
+
+                <div class="mention_blog-post">
+                   <h6>Tom is it possible to get post data from medium?</h6>
+                </div>
+
+                <div class="divider"></div>
+                
+                {% for key, value in template_data.mentions.items() %}
+                <div class="mention">
+                    <div class="mention_button">
+                        <h3><span class="amount">{{value|length}}</span>{{mention_types.get(key, key)}}</h3>
+                        <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
+                    </div>
+                    <div class="mention_text">
+                        <ul>
+                        {% for item in value %}
+                            <li>
+                            {% if item.data.url %}
+                                <a href="{{item.data.url}}" target="_blank">
+                                {{item.data.title}}
+                                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+                                </a>
+                            {% else %}
+                                {{item.data.title}}
+                            {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="divider"></div>
+                </div>
                 {% endfor %}
-                </ul>
             </div>
-            <div class="divider"></div>
         </div>
-        {% endfor %}
+
         
     </div>    
 </section>
