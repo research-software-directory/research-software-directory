@@ -12,6 +12,9 @@
     src: url('fonts/akkurat/lineto-akkurat-bold.eot?#iefix') format('embedded-opentype'),
          url('fonts/akkurat/lineto-akkurat-bold.woff') format('woff'),
          url('fonts/akkurat/lineto-akkurat-bold.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
 }
 
 // Akkurat Regular
@@ -19,10 +22,13 @@
 @font-face {
     font-family: "Akkurat";
     
-    src: url('fonts/akkurat/lineto-akkurat-regular.eot');
-    src: url('fonts/akkurat/lineto-akkurat-regular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-regular.woff') forgmat('woff'),
-         url('fonts/akkurat/lineto-akkurat-regular.ttf') format('truetype');
+    src: url('fonts/akkurat/lineto-akkurat.eot');
+    src: url('fonts/akkurat/lineto-akkurat.eot?#iefix') format('embedded-opentype'),
+         url('fonts/akkurat/lineto-akkurat.woff') format('woff'),
+         url('fonts/akkurat/lineto-akkurat.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;     
 }
 
 // Akkurat Light
@@ -34,4 +40,7 @@
     src: url('fonts/akkurat/lineto-akkurat-light.eot?#iefix') format('embedded-opentype'),
          url('fonts/akkurat/lineto-akkurat-light.woff') format('woff'),
          url('fonts/akkurat/lineto-akkurat-light.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;  
 }
