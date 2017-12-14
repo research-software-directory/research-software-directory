@@ -11,15 +11,16 @@
         justify-content: space-between;
     }
     .col--left{
-        // width: (100% / 12) * 8;
-        width: 100%;
-        max-width: 720px;
+        width: (100% / 12) * 8;
+        // width: 100%;
+        // max-width: 720px;
 
+        @include bp(max, $tablet){
+            width: 100%;
+        }
     }
     .col--right{
-        // width: (100% / 12) * 4;
         flex-grow: 1;
-
     }
 }
 
@@ -44,7 +45,11 @@
     width: 100%;
     padding-top: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    
+    @include bp(max, $tablet){
+        justify-content: space-around;
+    }
 }
 
 .spec{

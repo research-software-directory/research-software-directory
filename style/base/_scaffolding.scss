@@ -6,7 +6,7 @@ body {
     -webkit-font-smoothing: antialiased;    
 
     background-color: $white;
-   
+    color: $dark;
 }
 
 ::selection, ::-moz-selection{
@@ -34,7 +34,7 @@ section{
     display: block;
 }
 .bg-dark{
-    background-color: $bgDark;
+    background-color: $dark;
 }
 
 .bg-light{
