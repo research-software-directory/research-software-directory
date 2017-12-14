@@ -109,3 +109,7 @@ def strftime(millis):
 @application.template_filter('listNames')
 def listNames(contributors):
     return [c['name'] for c in contributors]
+
+@application.route('/favicon.ico')
+def serve_favicon():
+    return application.send_static_file('favicon.ico')

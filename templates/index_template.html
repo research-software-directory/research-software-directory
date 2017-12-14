@@ -3,80 +3,139 @@
   Browse All Software
 {% endblock %}
 {% block content %}
-  <div id="content">
-    <div class="search_bar">
-        <form id="search" action="">
-            <input type='text' v-model="filter.search" class="search_form" id="input" placeholder="Search for software, people, technologies, etc.">
-            <input type="button" class="search_form" id="submit" value="search" >
-            <input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >
-        </form>
+  <div id="overview" class="container">
+    <h1 class="title">Research Software Directory</h1>
+    <p class="subsubtitle">Encouraging the re-use of research software</p>
+    <p id="intro_text">
+      The Research Software Directory aims to promote the impact, the exchange and re-use of best practices
+      and to prevent fragmentation and duplication of research software. <br/>
+      Please use our tools! <a href="/more">Read more</a>
+    </p>
+
+    <div id="search_bar" class="col-1-3">
+      <div class="left">
+        <span>Find software</span>
+      </div>
+      <div class="right">
+        <input type='text' v-model="filter.search" id="input" placeholder="Find software, people, organizations, technologies, etc...">
+        <input type="button" id="submit" value="Search the directory">
+        <!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
+      </div>
     </div>
-    <div class="col-3">
+
+    <div id="sorter">
+      <label>Sort by:</label>
+      <select v-model="sort">
+        <option>Last updated</option>
+        <option>Bar</option>
+        <option>Baz</option>
+      </select>
+    </div>
+
+    <div class="col-1-3" v-cloak>
       <div class="left">
         <div id="filters">
-          <h2>Filter</h2>
+          <label>Tags</label>
           <div v-for="tag in tags">
-            <input type="checkbox" :value="tag" v-model="filter.tags" />
-            <span class="checkboxtext"><b>[[tag]]</b></span><br>
+            <input type="checkbox" :id="tag" v-model="filter.tags" :value="tag" />
+            <label :for="tag">[[tag]] <b>([[ tagCount[tag] ]])</b></label>
           </div>
         </div>
       </div>
       <div class="right">
         <div id="software_list">
-          <a v-for="sw in software" :href="'/software/' + sw.id">
-            <h1>[[sw.name]]</h1>
+          <a v-for="sw in sortedSoftware" :href="'/software/' + sw.id" :class="{ highlighted: sw.highlighted }">
+            <h1 class="name">[[sw.name]]</h1>
             <div class="code">[[sw.code]]</div>
-            <p>[[sw.tagLine]]</p>
-            <i>[[sw.lastUpdateAgo]]</i>
+            <p class="tagline">[[sw.tagLine]]</p>
+            <span class="lastUpdated">[[sw.lastUpdateAgo]]</span>
           </a>
         </div>
       </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
-    <script>
-      var v = new Vue({
-        el: '#content',
+  </div>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js" crossorigin="anonymous"></script>
+<script>
+    Vue.config.devtools = true;
+    var v = new Vue({
+        el: '#overview',
         delimiters: ["[[", "]]"],
+        methods: {
+            log: console.log
+        },
         data: {
-          tags: [
-            'highlights',
-            'big data',
-            'cloud computing',
-            'image processing',
-            'visualisation',
-            'text analysis',
-            'realtime data analysis',
-            'interoperability and linked data'
-          ],
-          software: {{ data_json }},
-          filter: {
-            search: '',
-            tags: []
-          }
+            tags: [
+                "Visualization",
+                "Image processing",
+                "Machine learning",
+                "Text analysis & natural language processing",
+                "Real time data analysis",
+                "Optimized data handling",
+                "Big data",
+                "Inter-operability & linked data",
+                "Multi-scale & multi model simulations",
+                "High performance computing",
+                "GPU",
+                "Workflow technologies"
+            ],
+            software: {{ data_json }},
+            filter: {
+                search: '',
+                tags: [],
+            },
+            sort: 'Last updated'
         },
         computed: {
-          filtered_software: function() {
-            var self = this;
-            this.software.filter( function(s) {
-              var match = false;
-              s.tags.map((tag) => tag.toLowerCase()).forEach(function(tag) {
-                if (tag in self.filter.tags) {
-                  console.log(tag);
-                  match = true;
+            tagCount: function() {
+                // initialize to 0
+                var counts = this.tags.reduce(function(acc, cur) {
+                    acc[cur] = 0;
+                    return acc;
+                }, {});
+                this.software.forEach(function(sw) {
+                    sw.tags.forEach(function(tag) {
+                        counts[tag] += 1;
+                    });
+                });
+                return counts;
+            },
+            filteredSoftware: function() {
+                var self = this;
+                if (self.filter.tags.length  === 0 ) {
+                    return this.software;
                 }
-              });
-              return match;
-            });
-          }
+                var result = this.software.filter( function(s) {
+                    var match = false;
+                    s.tags.forEach(function(tag) {
+                        if (self.filter.tags.includes(tag)) {
+                            match = true;
+                        }
+                    });
+                    return match;
+                });
+                return result
+            },
+
+            sortedSoftware: function() {
+                function updatedSorter(a,b) {
+                  return b.lastUpdate - a.lastUpdate;
+                }
+                if (this.sort === 'Last updated' ) {
+                    return this.filteredSoftware.sort(updatedSorter);
+                } else {
+                    return this.filteredSoftware
+                }
+            }
         },
         watch: {
-          filter: {
-            handler: console.log,
-            deep: true
-          }
+
+            // filter: {
+            //     handler: console.log,
+            //     deep: true
+            // }
         }
-      });
-    </script>
-  </div>
+    });
+</script>
 {% endblock %}
