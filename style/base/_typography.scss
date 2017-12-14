@@ -5,16 +5,18 @@ strong{
 }
 
 .title{
-    font-size: 3em;
-    font-weight: bold;
+    font-size: 6.4rem;
 }
 .subtitle{
-    font-size: 2em;
-    text-align: center;
-    padding-bottom: 10px;
+    font-family: $primaryFontLight;
+    font-size: 3.6rem;
 }
 
 .subsubtitle{
     font-size: 1.5em;
     padding-bottom: 10px;
+}
+
+.text-blue{
+    color: $primaryColor !important;    
 }
