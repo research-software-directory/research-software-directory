@@ -1,113 +1,82 @@
 {% extends "layout_template.html" %}
-{% block head %}
-{{super()}}
-<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style/index_style.css')}}"> -->
-<script type="text/javascript" src="/dynamic/data.js"></script>
-{% endblock %}
 {% block title %}
-Browse All Software
+  Browse All Software
 {% endblock %}
 {% block content %}
-<div id="content">
-  <div class="search_bar">
-      <form id="search" action="">
-          <input type='text' v-model="filter.search" class="search_form" id="input" placeholder="Search for software, people, technologies, etc.">
-          <input type="button" class="search_form" id="submit" value="search" >
-          <input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >
-      </form>
-  </div>
-
-  <div id="container_right">
-    <div id="box_1">
-     <div id="title_bar_right">Highlights</div>
-     <div class="layout" id="data_gems"></div>
+  <div id="content">
+    <div class="search_bar">
+        <form id="search" action="">
+            <input type='text' v-model="filter.search" class="search_form" id="input" placeholder="Search for software, people, technologies, etc.">
+            <input type="button" class="search_form" id="submit" value="search" >
+            <input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >
+        </form>
     </div>
-
-    <div id="box_3">
-      <div id="title_bar_right">Projects</div>
-      [[JSON.stringify(software)]]
-      <div class="layout" id="search_results"></div>
-      <div class="layout" id="data_display">
+    <div class="col-3">
+      <div class="left">
+        <div id="filters">
+          <h2>Filter</h2>
+          <div v-for="tag in tags">
+            <input type="checkbox" :value="tag" v-model="filter.tags" />
+            <span class="checkboxtext"><b>[[tag]]</b></span><br>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div id="container_left">
-    <div id="box_2a">
-      <div id="title_bar_left">Filter</div>
-      <div id="filter">
-      <form id="filter_form" >
-        <span v-for="tag in tags">
-          <input type="checkbox" :value="tag" v-model="filter.tags" /><span class="checkboxtext"><b>[[tag]]</b></span><br>
-        </span>
-      </form>
+      <div class="right">
+        <div id="software_list">
+          <a v-for="sw in software" :href="'/software/' + sw.id">
+            <h1>[[sw.name]]</h1>
+            <div class="code">[[sw.code]]</div>
+            <p>[[sw.tagLine]]</p>
+            <i>[[sw.lastUpdateAgo]]</i>
+          </a>
+        </div>
       </div>
     </div>
 
-    <div id="box_2b">
-      <div id="title_bar_left">News</div>
-      <div id="mentions">
-        <h2>Mentions</h2>
-        <ul>
-          <li>...</li>
-        </ul>
-      </div>
-      <div id="releases">
-        <h2>Releases</h2>
-        <ul>
-          <li>...</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
-  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
-  <!--<script type="text/javascript" src="{{url_for('static', filename='scripts/index_scripts.js') }}"></script>-->
-  <script>
-    var v = new Vue({
-      el: '#content',
-      delimiters: ["[[", "]]"],
-      data: {
-        tags: [
-          'highlights',
-          'big data',
-          'cloud computing',
-          'image processing',
-          'visualisation',
-          'text analysis',
-          'realtime data analysis',
-          'interoperability and linked data'
-        ],
-        software: {{ data_json }},
-        filter: {
-          search: '',
-          tags: []
-        }
-      },
-      computed: {
-        filtered_software: function() {
-          var self = this;
-          this.software.filter( function(s) {
-            var match = false;
-            s.tags.map((tag) => tag.toLowerCase()).forEach(function(tag) {
-              if (tag in self.filter.tags) {
-                console.log(tag);
-                match = true;
-              }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
+    <script>
+      var v = new Vue({
+        el: '#content',
+        delimiters: ["[[", "]]"],
+        data: {
+          tags: [
+            'highlights',
+            'big data',
+            'cloud computing',
+            'image processing',
+            'visualisation',
+            'text analysis',
+            'realtime data analysis',
+            'interoperability and linked data'
+          ],
+          software: {{ data_json }},
+          filter: {
+            search: '',
+            tags: []
+          }
+        },
+        computed: {
+          filtered_software: function() {
+            var self = this;
+            this.software.filter( function(s) {
+              var match = false;
+              s.tags.map((tag) => tag.toLowerCase()).forEach(function(tag) {
+                if (tag in self.filter.tags) {
+                  console.log(tag);
+                  match = true;
+                }
+              });
+              return match;
             });
-            return match;
-          });
+          }
+        },
+        watch: {
+          filter: {
+            handler: console.log,
+            deep: true
+          }
         }
-      },
-      watch: {
-        filter: {
-          handler: console.log,
-          deep: true
-        }
-      }
-    });
-  </script>
-</div>
+      });
+    </script>
+  </div>
 {% endblock %}

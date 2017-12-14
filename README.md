@@ -9,7 +9,7 @@
 
 A server should be running at [http://localhost:5000](http://localhost:5000)
 
-###Documentation
+### Documentation
 The `docker-compose.yml` uses two Docker containers:
 * `node-sass`
 * `flask`
