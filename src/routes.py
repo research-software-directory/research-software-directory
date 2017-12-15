@@ -83,6 +83,12 @@ def get_routes(service_controller, db):
         } for software in resources]
         return result, 200
 
+    @api.route('/latest_mentions', methods=["GET"])
+    @jsonify
+    def _get_latest_mentions():
+        result = list(db['zotero_publication'].find({'data.relations' : { '$ne' : {}}}).limit(3))
+        return result, 200
+
     @api.route('/software/<id>/report', methods=["GET"])
     @jsonify
     def _get_report(id):
