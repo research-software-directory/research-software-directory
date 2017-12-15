@@ -130,20 +130,28 @@
                 return counts;
             },
             filteredSoftware: function() {
-                var self = this;
-                if (self.filter.tags.length  === 0 ) {
-                    return this.software;
+                function filterTags(tags) {
+                    return function(sw) {
+                        if (tags.length === 0) return true;
+                        var match = false;
+                        sw.tags.forEach(function (tag) {
+                            if (tags.includes(tag)) {
+                                match = true;
+                            }
+                        });
+                        return match;
+                    }
+                };
+                function filterSearch(searchTerm) {
+                    return function(sw) {
+                        if (!searchTerm) return true;
+                        var fields = sw.name + " " + sw.tagLine + ' ' + sw.tags.join(" ");
+                        return fields.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+                    }
                 }
-                var result = this.software.filter( function(s) {
-                    var match = false;
-                    s.tags.forEach(function(tag) {
-                        if (self.filter.tags.includes(tag)) {
-                            match = true;
-                        }
-                    });
-                    return match;
-                });
-                return result
+                return this.software
+                    .filter(filterTags(this.filter.tags))
+                    .filter(filterSearch(this.filter.search));
             },
 
             sortedSoftware: function() {
@@ -176,6 +184,12 @@
 
             lastPage: function() {
                 return Math.ceil(this.filteredSoftware.length / this.pageSize);
+            },
+
+            searchFields: function() {
+                this.software.map(function(sw) {
+                   return "test";
+                });
             }
         },
         watch: {
