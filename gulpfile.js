@@ -22,3 +22,15 @@ gulp.task('build', function() {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('/static/style'))
 });
+
+gulp.task('build-production', function() {
+    var plugins = [
+        autoprefixer({browsers: ['>5%']}),
+        cssnano
+    ];
+
+    return gulp.src('style/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss(plugins))
+        .pipe(gulp.dest('static/style'))
+});

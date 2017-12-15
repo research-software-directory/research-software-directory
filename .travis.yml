@@ -4,10 +4,11 @@ python:
 services:
 - docker
 script:
-- echo "empty script"
+- npm install
+- node node_modules/gulp/bin/gulp.js build-production
 after_success:
 - if [ "$TRAVIS_BRANCH" = "master" ]; then docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD}
-  && docker pull ${DOCKER_USERNAME}/rsd-frontend && docker build -t ${DOCKER_USERNAME}/rsd-frontend
+  && docker pull ${DOCKER_USERNAME}/rsd-frontend && docker build -f compose/production/Dockerfile -t ${DOCKER_USERNAME}/rsd-frontend
   --cache-from ${DOCKER_USERNAME}/rsd-frontend . && docker push ${DOCKER_USERNAME}/rsd-frontend;
   fi
 env:
