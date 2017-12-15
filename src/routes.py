@@ -62,7 +62,10 @@ def get_routes(service_controller, db):
     @api.route('/software', methods=["GET"])
     @jsonify
     def _get_software():
-        resources = list(db['software'].all())
+        if flask.request.args.get('published'):
+            resources = list(db['software'].find({'published': True }))
+        else:
+            resources = list(db['software'].all())
         result = [{
             'id': software.data.get('id'),
             'name': software.data.get('name'),
