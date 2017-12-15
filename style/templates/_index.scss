@@ -114,7 +114,7 @@
     position:relative;
     height: 300px;
     width: 50%;
-    @include bp(max, $tablet){
+    @include bp(max, $phone){
       width: 100%;
       .name {
         font-size: 2rem !important;
