@@ -49,7 +49,7 @@
       padding-left: 1em;
       padding-right: 1em;
       height: 100%;
-      background-color: $bgLight;
+      background-color: $light;
       border: none;
       display: inline-block;
       vertical-align: middle;
@@ -109,7 +109,7 @@
     flex-direction: column;
     justify-content: space-between;
     border: 2px solid white;
-    background-color: $bgLight;
+    background-color: $light;
     &:hover {
       background-color: $primaryColor;
       color:white;
@@ -118,7 +118,7 @@
       background-color: $primaryColor;
       color:white;
       &:hover {
-        background-color: $bgDark;
+        background-color: $dark;
         color:white;
       }
     }
@@ -143,6 +143,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+  }
+}
+
+.pagination {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    text-align: center;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    &:hover:not(.active):not(.gap) {
+      background-color: $primaryColor;
+      cursor: pointer;
+    }
+    &.active {
+      background-color: $black;
+      color: $white;
     }
   }
 }
