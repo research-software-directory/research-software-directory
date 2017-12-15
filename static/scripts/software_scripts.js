@@ -62,13 +62,15 @@ $(document).ready(function() {
                 tickformat: "%Y"
             },
             paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(0,0,0,0)"
+            plot_bgcolor: "rgba(0,0,0,0)",
+            line: {
+                color: "rgb(255,163,227)"
+            }
+        };
+        data[0].marker = {
+            color: "rgb(0,163,227)"
         };
         Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true});
-        var update = {
-            "marker.color": "rgb(100,100,100)"
-        };
-        Plotly.restyle(plotid, update);
     }
 
     var statid = document.getElementById("commitsStat");
