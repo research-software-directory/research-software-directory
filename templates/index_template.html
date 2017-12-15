@@ -156,16 +156,16 @@
                     else if (b.highlighted) return 1;
                     return 0;
                 }
-                function searchFunction(sortVal) {
+                function sortFunction(sortVal) {
                     switch (sortVal) {
                         case 'Last updated': return updatedSorter;
-                        default: return updatedSorted;
+                        default: return updatedSorter;
                     }
                 }
                 if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
                     return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
                 } else {
-                    return this.filteredSoftware.sort(searchFunction(this.sorts));
+                    return this.filteredSoftware.sort(sortFunction(this.sorts));
                 }
             },
 
