@@ -20,7 +20,7 @@ def format_software(sw):
 
 @application.route('/', methods=['GET', 'POST'])
 def index():
-    url = api_url + '/software'
+    url = api_url + '/software?published=true'
     all_software = requests.get(url).json()
     for sw in all_software:
         format_software(sw)
