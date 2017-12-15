@@ -15,6 +15,6 @@ RUN (pip3 install -r requirements.txt)
 
 COPY . /src
 
-CMD [ "sh", "compose/production/run.sh" ]
+CMD [ "bash", "compose/production/run.sh" ]
 
 EXPOSE 8000
