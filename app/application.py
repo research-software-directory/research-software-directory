@@ -13,7 +13,7 @@ from app import plot_commits
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
 api_url = 'https://admin.research-software.nl/api'
-# api_url = 'http://172.19.0.1:5001'
+api_url = 'http://172.19.0.1:5001'
 
 def format_software(sw):
     sw['lastUpdateAgo'] = ago.human(sw.get('lastUpdate'), precision=1)
@@ -21,6 +21,7 @@ def format_software(sw):
 @application.route('/', methods=['GET', 'POST'])
 def index():
     url = api_url + '/software?published=true'
+    latest_mentions = requests.get(api_url + '/latest_mentions').json()
     all_software = requests.get(url).json()
     for sw in all_software:
         format_software(sw)
@@ -30,7 +31,9 @@ def index():
     return flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
-                                 random_integer=str(random_integer))
+                                 random_integer=str(random_integer),
+                                 latest_mentions=latest_mentions
+                                 )
 
 
 def set_markdown(software, fields):
@@ -112,8 +115,12 @@ def get_commits_data(software_id):
 @application.template_filter('strftime')
 def strftime(millis):
     format = "%Y-%m-%d %H:%M:%S"
-    result = datetime.datetime.fromtimestamp(millis).strftime(format)
-    return result
+    return datetime.datetime.fromtimestamp(millis).strftime(format)
+
+@application.template_filter('strftime')
+def strftime(millis):
+    format = "%B %d, %Y"
+    return datetime.datetime.fromtimestamp(millis).strftime(format)
 
 
 @application.template_filter('listNames')

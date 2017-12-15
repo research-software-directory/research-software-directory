@@ -77,6 +77,35 @@
       </div>
     </div>
   </div>
+{% if latest_mentions %}
+  <section class="container col-1-3">
+    <div class="left subtitle text-blue">
+      Latest mentions
+    </div>
+    <div class="right">
+      <ul class="mentions">
+        {% for mention in latest_mentions %}
+        <li>
+          <div class="mentionTitle">
+            <b>{% if mention.data.url %}
+              <a href="{{mention.data.url}}" target="_blank">
+                {{mention.data.title}}
+                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+              </a>
+              {% else %}
+                {{mention.data.title}}
+              {% endif %}</b> <br/>
+            {{ mention.updatedAt | strftime }}
+          </div>
+          <div class="mentionLocation">
+            {{ mention.data.meetingName if 'meetingName' in mention.data else '' }}
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+{% endif %}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js" crossorigin="anonymous"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>-->
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
