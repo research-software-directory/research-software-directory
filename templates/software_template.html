@@ -119,20 +119,23 @@
             <div class="specifications col_25">
                 <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
                 <ul class="tags">
-                    <li>Name</li>
-                    <li>Longer name</li>
-                    <li>Very long name</li>
-                    <li>Mid tagname</li>
+                    {% for tag in template_data.tags %}
+                        <li>{{tag}}</li>
+                    {% endfor %}
                 </ul>
 
                 <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Lanuage</h5>
                 <ul class="languages">
-                    <li>Python</li>
+                    {% for language in template_data.programmingLanguage %}
+                        <li>{{language}}</li>
+                    {% endfor %}
                 </ul>
 
                 <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
                 <ul class="licenses">
-                    <li>lgpl-3.0</li>
+                    {% for license in template_data.license %}
+                    <li>{{license}}</li>
+                    {% endfor %}
                 </ul>
             </div>
 
