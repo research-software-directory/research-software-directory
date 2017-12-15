@@ -40,6 +40,10 @@
         max-height: 0;
         overflow-y: hidden;
         transition: max-height 1s;
+        p {
+            margin-top: .5em;
+            margin-bottom: .5em;
+        }
     }
     &.active>.readMoreContents {
         max-height: 500px;
