@@ -61,7 +61,7 @@ def software_product_page_template(software_id):
         'videoRecording': 'Video recording',
         'bookSection': 'Book section'
     }
-    commits_data = get_commits_data(software_id)
+    commits_data = flask.Markup(get_commits_data(software_id))
     return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary,
                                  statementMarkup=statementMarkup, organisation_logos=organisation_logos,
                                  mention_types=mention_types, commits_data=commits_data)
