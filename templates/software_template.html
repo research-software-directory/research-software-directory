@@ -30,6 +30,12 @@
                 {% if template_data.shortStatement %}
                 <div class="shortStatement">{{template_data.shortStatement}}</div>
                 {% endif %}
+                {% if template_data.readMore %}
+                <div class="readMore">
+                    <a>Read more</a>
+                    <div class="readMoreContents">{{template_data.readMore}}</div>
+                </div>
+                {% endif %}
             </div>
 
             <div class="col col_25">
@@ -99,7 +105,7 @@
             {% if template_data.statement %}
             <div class="statement col_75">
                 <h2 class="subtitle text-blue">What {{template_data.name}} can do for you</h2>
-                {{statementMarkup}}
+                {{template_data.statement}}
             </div>
             {% endif %}
 

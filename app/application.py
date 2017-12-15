@@ -33,14 +33,20 @@ def index():
                                  random_integer=str(random_integer))
 
 
+def set_markdown(software, fields):
+    for field in fields:
+        if field in software and software[field] and software[field] is not '':
+            software[field] = flask.Markup(markdown.markdown(software[field]))
+        else:
+            software[field] = None
+
 @application.route('/software/<software_id>')
 def software_product_page_template(software_id):
     url = api_url + "/software/%s" % software_id
     software_dictionary = requests.get(url).json()
     if ("error" in software_dictionary):
         return flask.redirect("/", code=302)
-    statement = software_dictionary.get("statement", '')
-    statementMarkup = flask.Markup(markdown.markdown(statement))
+    set_markdown(software_dictionary, ['statement', 'shortStatement','readMore'])
     organisation_logos = {"astron": "astron.gif", "cbs-knaw": "cbs-knaw.png", "commit": "commit.png", "cwi": "cwi.png",
                           "dans": "dans.jpg", "deltares": "deltares.jpe", "dtl": "dtl.png", "fugro": "fugro.png",
                           "geodan": "geodan.gif", "huygens": "huygens.png", "icl": "icl.jpg", "ign": "ign.jpg",
@@ -63,7 +69,7 @@ def software_product_page_template(software_id):
     }
     commits_data = flask.Markup(get_commits_data(software_id))
     return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary,
-                                 statementMarkup=statementMarkup, organisation_logos=organisation_logos,
+                                 organisation_logos=organisation_logos,
                                  mention_types=mention_types, commits_data=commits_data)
 
 
@@ -92,10 +98,14 @@ def get_commits_data(software_id):
         else:
             commits_data = commits
     else:
-        commits_data = {'error': '%s: %s' % (
-            str(report_dictionary['exception']['class']),
-            str(report_dictionary['exception']['error'])
-        )}
+        commits_data = None
+        #if 'exception' in report_dictionary:
+        #    commits_data = {'error': '%s: %s' % (
+        #        str(report_dictionary['exception']['class']),
+        #        str(report_dictionary['exception']['error'])
+        #    )}
+        #else:
+        #    commits_data = None
     return commits_data
 
 
