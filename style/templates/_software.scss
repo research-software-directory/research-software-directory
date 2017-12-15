@@ -35,6 +35,21 @@
     padding-bottom: 0.8em;
 }
 
+.readMore {
+    >.readMoreContents {
+        max-height: 0;
+        overflow-y: hidden;
+        transition: max-height 1s;
+    }
+    &.active>.readMoreContents {
+        max-height: 500px;
+    }
+    >a {
+        text-decoration:underline;
+        cursor:pointer;
+    }
+}
+
 .highlight-data{
     width: 100%;
     padding-top: 5px;
