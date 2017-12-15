@@ -44,12 +44,32 @@
       </div>
       <div class="right">
         <div id="software_list">
-          <a v-for="sw in sortedSoftware" :href="'/software/' + sw.id" :class="{ highlighted: sw.highlighted }">
+          <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" :class="{ highlighted: sw.highlighted }">
             <h1 class="name">[[sw.name]]</h1>
             <div class="code">[[sw.code]]</div>
             <p class="tagline">[[sw.tagLine]]</p>
             <span class="lastUpdated">[[sw.lastUpdateAgo]]</span>
           </a>
+        </div>
+        <div class="pagination">
+          <span @click="page = page > 1 ? page - 1 : page">
+            &lt;
+          </span>
+          <template v-for="i in lastPage">
+            <span
+              v-if="showPage(i)"
+              @click="page = i"
+              :class="{ active: page === i }"
+            >
+              [[ i ]]
+            </span>
+            <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
+              ...
+            </span>
+          </template>
+          <span @click="page = page < lastPage ? page + 1 : page">
+            &gt;
+          </span>
         </div>
       </div>
     </div>
@@ -58,12 +78,18 @@
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js" crossorigin="anonymous"></script>
 <script>
+    /*** Copyright 2013 Teun Duynstee Licensed under the Apache License, Version 2.0 ***/
+    var firstBy=function(){function n(n){return n}function t(n){return"string"==typeof n?n.toLowerCase():n}function r(r,e){if(e="number"==typeof e?{direction:e}:e||{},"function"!=typeof r){var i=r;r=function(n){return n[i]?n[i]:""}}if(1===r.length){var u=r,o=e.ignoreCase?t:n;r=function(n,t){return o(u(n))<o(u(t))?-1:o(u(n))>o(u(t))?1:0}}return-1===e.direction?function(n,t){return-r(n,t)}:r}function e(n,t){var i="function"==typeof this&&this,u=r(n,t),o=i?function(n,t){return i(n,t)||u(n,t)}:u;return o.thenBy=e,o}return e}();
+
     Vue.config.devtools = true;
     var v = new Vue({
         el: '#overview',
         delimiters: ["[[", "]]"],
         methods: {
-            log: console.log
+            log: console.log,
+            showPage: function(n) {
+                return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
+            }
         },
         data: {
             tags: [
@@ -80,13 +106,15 @@
                 "GPU",
                 "Workflow technologies"
             ],
-            software: {{ data_json }},
             filter: {
                 search: '',
                 tags: [],
             },
-            sort: 'Last updated'
-        },
+            sort: 'Last updated',
+            pageSize: 10,
+            page: 1,
+            software: {{ data_json }},
+    },
         computed: {
             tagCount: function() {
                 // initialize to 0
@@ -122,19 +150,40 @@
                 function updatedSorter(a,b) {
                   return b.lastUpdate - a.lastUpdate;
                 }
-                if (this.sort === 'Last updated' ) {
-                    return this.filteredSoftware.sort(updatedSorter);
-                } else {
-                    return this.filteredSoftware
+                function promoteHighlighted(a,b) {
+                    if (a.highlighted && b.highlighted) return 0;
+                    else if (a.highlighted) return -1;
+                    else if (b.highlighted) return 1;
+                    return 0;
                 }
+                function searchFunction(sortVal) {
+                    switch (sortVal) {
+                        case 'Last updated': return updatedSorter;
+                        default: return updatedSorted;
+                    }
+                }
+                if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
+                    return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
+                } else {
+                    return this.filteredSoftware.sort(searchFunction(this.sorts));
+                }
+            },
+
+            pagedSoftware: function() {
+                var offset = this.pageSize * (this.page - 1);
+                return this.sortedSoftware.slice(offset, offset + this.pageSize);
+            },
+
+            lastPage: function() {
+                return Math.ceil(this.filteredSoftware.length / this.pageSize);
             }
         },
         watch: {
-
-            // filter: {
-            //     handler: console.log,
-            //     deep: true
-            // }
+            sort: { handler: function() { this.page = 1; } },
+            filter: {
+                handler: function() { this.page = 1; },
+                deep: true
+            }
         }
     });
 </script>
