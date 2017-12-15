@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     $(".mention_button").each(function() {
         $(this).on("click", function() {
+            $(this).toggleClass('active');
             $(this).next().slideToggle();
         });
     });

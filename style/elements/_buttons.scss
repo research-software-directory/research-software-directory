@@ -1,0 +1,69 @@
+
+.button{
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.85em 1.5em;
+
+    font-size: 1.6rem;
+    
+    .icon{
+        fill: $white;
+        display: block;
+        width: 16px;
+        height: 16px;
+    }
+
+    span:first-child{
+        margin-right: 1em;
+    }
+
+    &--big{
+        font-size: 2.4rem;
+        
+        .icon{
+            // width: 15px;
+            // height: 15px;
+        }
+
+        span:first-child{
+            margin-right: 1.2em;
+        }
+    }
+
+    &--filled-blue{
+        // margin-top: 1px;
+        // margin-bottom: 1px;
+        background-color: $primaryColor;
+        color: $white;
+        font-family: $primaryFontBold;
+
+        &:hover{
+            background-color: $mid;
+            color: $white;
+        }
+    }
+
+    &--filled-dark{
+        // margin-top: 1px;
+        // margin-bottom: 1px;
+        background-color: $dark;
+        color: $white;
+        font-family: $primaryFontBold;
+        
+        &:hover{
+            background-color: $mid;
+            color: $white;
+        }
+    }
+
+    &--outlined{
+        border: 1px solid currentColor;
+        .icon{
+            fill: currentColor;
+        }
+    }
+  
+}
+
