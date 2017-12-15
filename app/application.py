@@ -13,7 +13,7 @@ from app import plot_commits
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
 api_url = 'https://admin.research-software.nl/api'
-api_url = 'http://172.19.0.1:5001'
+#api_url = 'http://172.19.0.1:5001'
 
 def format_software(sw):
     sw['lastUpdateAgo'] = ago.human(sw.get('lastUpdate'), precision=1)
