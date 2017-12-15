@@ -3,27 +3,24 @@
 // -----------------------------------
 
 #introduction{
+
     .container{
         padding-top: 50px;
         padding-bottom: 50px;
     }
+
     .row{
         justify-content: space-between;
     }
-    .col--left{
-        // width: (100% / 12) * 8;
-        width: 100%;
-        max-width: 720px;
+
+    .col_75{
+        max-width: 860px;
     }
-    .col--right{
-        // width: (100% / 12) * 4;
-        flex-grow: 1;
-    }
+    
 }
 
 .name {
     font-size: 6.4rem;
-    
 }
 
 .by, .contributingOrganizationJoin {
@@ -38,22 +35,249 @@
     padding-bottom: 0.8em;
 }
 
-.specs{
+.highlight-data{
     width: 100%;
     padding-top: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    
+    @include bp(max, $tablet){
+        justify-content: space-around;
+    }
+
+    .data{
+        padding: 10px 25px;
+        text-align: center;
+    
+        .num{
+            font-family: $primaryFontLight;
+            font-size: 5.4rem;
+            color: $primaryColor;
+        }
+    }
 }
 
-.spec{
-    padding: 10px 25px;
-    text-align: center;
 
-    .num{
-        font-family: $primaryFontLight;
-        font-size: 5.4rem;
-        color: $primaryColor;
+
+
+// Get Started
+// -----------------------------------
+
+#get-started{
+    .container{
+        padding-top: 50px;
+        padding-bottom: 115px;
     }
+    // margin-bottom: 65px;
+}
+
+
+// Cite this
+// -----------------------------------
+
+#cite-this{
+    // outline: 3px solid red;
+    .row{
+        transform: translateY(-65px); 
+        padding: 40px 80px;
+        color: $white;
+        background-color: $dark;
+        justify-content: space-between;
+    }
+}
+
+
+// About
+// -----------------------------------
+
+#about{
+
+    .container{
+        // padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .row{
+        justify-content: space-between;
+    }
+    .col_75{
+        max-width: 860px;
+    }
+}
+.statement{
+    h2{
+        padding-bottom: 0.3em;
+    }
+
+    ul{
+        padding-left: 1.5em;
+        list-style-type: disc;
+        li{
+            padding: 0.45em 1em;
+            
+            ul{
+               list-style-type: circle;
+            }
+        }
+    }
+
+    ol{
+        padding-left: 1.5em;
+        list-style-type: decimal;
+        li{
+            padding: 0.45em 1em;
+
+            ul{
+                list-style-type: circle;
+            }
+        }
+    }
+}
+
+.specifications{
+
+   
+
+    .icon{
+        width: 17px;
+        height: 17px;
+        fill: currentColor;
+        
+    }
+    h5{
+        display: flex;
+        align-items: center;
+        color: $primaryColor;
+        padding: 2em 0 0.5em;
+
+        .icon{
+            margin-right: 0.5em;
+        }
+    }
+    .tags{
+        margin-left: -2px;
+        display: flex;
+        flex-wrap: wrap;
+
+        li{
+            margin: 2px;
+            padding: 0.5em 0.8em 0.6em 0.8em;  
+            background-color: darken( $light, 1% );
+        }
+    }
+}
+
+
+// Collaborations
+// -----------------------------------
+
+#collaborations{
+    
+    .container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+}
+.contributing-organisations{
+    align-items: center;
+
+    .organisation{
+        flex-basis: 25%;
+        flex-shrink: 0;
+
+        img{
+            max-width: 90%;
+            max-height: 100%;
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+        }
+    }
+}
+
+
+// Mentions
+// -----------------------------------
+
+#mentions{
+    .container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .divider{
+        border-top: 1px solid $white;
+        opacity: 0.25;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.mention{
+    .mention_button{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .icon{
+            width: 18px;
+            height: 18px;
+            fill: $primaryColor;
+
+            transition: 0.3s ease-in;
+            polygon{
+                transition: 0.2s ease-in;
+            }
+        }
+        &.active{
+            .icon{
+                width: 18px;
+                height: 18px;
+                fill: $primaryColor;
+
+                transform: rotate(135deg);
+            }        
+        }
+    }
+
+    h3{
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+
+        .amount{
+            font-family: $primaryFontBold;
+            font-size: 0.9em;
+            border-radius: 50%;
+            width: 1.5em;
+            height: 1.5em;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $primaryColor;
+            color: $dark;
+            margin-right: 0.8em;
+            
+        }
+    }
+
+    .mention_text{
+        margin: 1em 0;
+        padding: 1em;
+        background-color: lighten( $dark, 10% );
+
+        a:hover{
+            color: $primaryColor;
+        }
+    }
+
+    .icon{
+        margin-left: 0.5em;
+        width: 0.8em;
+        height: 0.8em;
+        display: inline-block;
+        fill: currentColor;
+    }
+
 }
 
 
@@ -69,9 +293,7 @@
 }
 .technologyTag {
 }
-.contributingOrganization {
-    margin: auto;
-}
+
 .flex_container {
     display: flex;
     flex-direction: row;
@@ -119,12 +341,7 @@
     text-align: center;
     margin-bottom: 20px;
 }
-.divider {
-    border-top: 1px solid #dddddd;
-    padding: 0px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
+
 .box {
 	// background-color: #dddddd;
     padding: 20px;
@@ -183,10 +400,7 @@
     width: 90%;
     margin: auto;
 }
-.mentions .divider {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
+
 .mentions .subsubtitle {
     padding-bottom: 0px;
 }
