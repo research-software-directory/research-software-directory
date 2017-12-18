@@ -42,6 +42,9 @@
 #header_text {
 	font-family: $primaryFontLight;
     font-size: 2rem;
+	@include bp(min, $phone) {
+		margin-left: 1em;
+	}
 }
 
 #header_links {
@@ -55,6 +58,7 @@
 	@include bp(max, $phone) {
 		text-align: left;
 		margin-top: 1em;
+		a:not(:first-child) { margin-left: 0}
 	}
 
 }
