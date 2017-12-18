@@ -300,12 +300,19 @@
 
     .mention_text{
         margin: 1em 0;
-        padding: 1em;
-        background-color: lighten( $dark, 10% );
-
+        
+        li{
+            background-color: lighten( $dark, 10% );
+            padding: 1em;
+            
+            &:not(:last-child) {
+                margin-bottom: 2px;
+            }
+        }
         a:hover{
             color: $primaryColor;
         }
+
     }
 
     .icon{
