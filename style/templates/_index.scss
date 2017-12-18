@@ -210,14 +210,17 @@
 }
 
 
-.mentions {
+ul.latest_mentions {
+  margin: 0;
+  padding: 0;
   >li {
     background-color: $light;
     margin-bottom: 4px;
     display: flex;
-    height: 100px;
+    min-height: 100px;
     align-items: center;
     justify-content: center;
+    padding: 1em;
     >div:first-child {
       width: 75%;
     }
