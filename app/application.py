@@ -89,7 +89,7 @@ def get_citation(citeas_data, format):
     if format == 'enw':
         return 'application/x-endnote-refer', 'enw', get_export('enw')
     if format == 'ris':
-        return 'application/x-research-info-systems', 'bib', get_export('ris')
+        return 'application/x-research-info-systems', 'ris', get_export('ris')
     raise Exception('unknown format %s' % format)
 
 @application.route('/cite/<software_id>')

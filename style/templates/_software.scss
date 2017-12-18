@@ -103,6 +103,25 @@
         background-color: $dark;
         justify-content: space-between;
     }
+    .citation_list {
+        background-color: $white;
+        color: $black;
+        border: 1px solid $primaryColor;
+        display: none;
+        position: absolute;
+        li>a {
+            padding: 1em;
+            display: block;
+            &:hover {
+                background-color: $primaryColor;
+                color: $white;
+            }
+        }
+
+        &.active {
+            display: block;
+        }
+    }
 }
 
 
