@@ -95,7 +95,7 @@
               {% else %}
                 {{mention.data.title}}
               {% endif %}</b> <br/>
-            {{ mention.updatedAt | strftime }}
+            {{ mention.updatedAt | strfdatehuman }}
           </div>
           <div class="mentionLocation">
             {{ mention.data.meetingName if 'meetingName' in mention.data else '' }}

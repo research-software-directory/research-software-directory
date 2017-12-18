@@ -1,5 +1,15 @@
 {% extends "layout_template.html" %}
 {% block head %}
+
+<meta name="citation_title" content="{{template_data.name}}" />
+<meta name="citation_author" content="{{", ".join(template_data.contributor|listNames)}}" />
+<meta name="citation_publication_date" content="{{template_data.createdAt | strfdate}}" />
+{% if template_data.doi %}<meta name="citation_doi" content="{{template_data.doi}}" />{% endif %}
+<meta property="og:title" content="{{template_data.name}}" />
+<meta property="og:description" content="{{template_data.shortStatement}}" />
+<meta property="og:url" content="https://www.research-software.nl/software/{{template_data.id}}" />
+<meta property="og:site_name" content="Research Software Directory" />
+
 {{super()}}
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
@@ -39,10 +49,12 @@
 
             <div class="col col-1-4">
                 <div class="highlight-data">
-                    <div class="data">
-                        <div class="num">{{template_data.mentionCount}}</div>
-                        <div class="text">mentions</div>
-                    </div>
+                    {% if template_data.mentionCount > 0 %}
+                        <div class="data">
+                            <div class="num">{{template_data.mentionCount}}</div>
+                            <div class="text">mentions</div>
+                        </div>
+                    {% endif %}
                     <div class="data">
                         <div class="num">{{ template_data.contributorCount }}</div>
                         <div class="text">contributors</div>

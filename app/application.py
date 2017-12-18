@@ -123,6 +123,9 @@ def cite(software_id):
 def about_template():
     return flask.render_template('about_template.html')
 
+@application.route('/launch')
+def launch_template():
+    return flask.render_template('launch.html')
 
 @application.route('/rsd')
 def rsd_template():
@@ -160,9 +163,14 @@ def strftime(millis):
     format = "%Y-%m-%d %H:%M:%S"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strftime')
-def strftime(millis):
+@application.template_filter('strfdatehuman')
+def strfdatehuman(millis):
     format = "%B %d, %Y"
+    return datetime.datetime.fromtimestamp(millis).strftime(format)
+
+@application.template_filter('strfdate')
+def strfdate(millis):
+    format = "%Y/%m/%d"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
 
@@ -173,3 +181,5 @@ def listNames(contributors):
 @application.route('/favicon.ico')
 def serve_favicon():
     return application.send_static_file('favicon.ico')
+
+
