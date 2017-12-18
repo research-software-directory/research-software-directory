@@ -29,14 +29,6 @@ body {
     position: relative;
 }
 
-#body {
-    // margin: 0px;
-    // margin-left: auto;
-    // margin-right: auto;
-	// padding: 0px;
-	// width: $contentWidth;
-	// min-height: calc(100% - 260px);
-}
 section{
     display: block;
 }
@@ -74,7 +66,7 @@ section{
     flex-wrap: wrap;
 }
 
-.col_25{
+.col-1-4{
     width: 25%;
 
     @include bp(max, $tablet){
@@ -82,7 +74,7 @@ section{
     }
 }
 
-.col_75{
+.col-3-4{
     width: 75%;
 
     @include bp(max, $tablet){

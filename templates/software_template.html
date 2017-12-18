@@ -1,7 +1,6 @@
 {% extends "layout_template.html" %}
 {% block head %}
 {{super()}}
-<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style/software_style.css')}}"> -->
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
 <script>
@@ -17,7 +16,7 @@
 <section class="" id="introduction">
     <div class="container">
         <div class="row">
-            <div class="col col_75">
+            <div class="col col-3-4">
                 {% if template_data.name %}
                 <h1 class="title name">{{template_data.name}}</h1>
                 {% endif %}
@@ -38,7 +37,7 @@
                 {% endif %}
             </div>
 
-            <div class="col col_25">
+            <div class="col col-1-4">
                 <div class="highlight-data">
                     <div class="data">
                         <div class="num">17</div>
@@ -63,12 +62,12 @@
         <div class="row">
             
             {% if template_data.mainUrl %}
-            <div class="col_25">
+            <div class="col-1-4">
                 <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span>Get started</span><span><svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
             </div>
             {% endif %}
 
-            <div class="col_75">
+            <div class="col-3-4">
 
                 {% if template_data.name %}
                 <div class="software_commitsPlot" id="commitsPlot"></div>
@@ -103,13 +102,13 @@
         <div class="row">
 
             {% if template_data.statement %}
-            <div class="statement col_75">
+            <div class="statement col-3-4">
                 <h2 class="subtitle text-blue">What {{template_data.name}} can do for you</h2>
                 {{template_data.statement}}
             </div>
             {% endif %}
 
-            <div class="specifications col_25">
+            <div class="specifications col-1-4">
                 <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
                 <ul class="tags">
                     {% for tag in template_data.tags %}
@@ -145,11 +144,11 @@
         <div class="divider"></div>
 
         <div class="row">
-            <div class="col_25">
+            <div class="col-1-4">
                 <h2 class="subtitle text-blue">In collaboration with</h2>
             </div>
 
-            <div class="col_75 row contributing-organisations">
+            <div class="col-3-4 row contributing-organisations">
                 {% for contributingOrganization in template_data.contributingOrganization %}
                 <div class="organisation">
                 {% if contributingOrganization.website %}
@@ -179,11 +178,11 @@
     <div class="container">
         
         <div class="row">
-            <div class="col_25">
+            <div class="col-1-4">
                 <h2 class="subtitle text-blue">Mentions</h2>
             </div>
 
-            <div class="col_75">
+            <div class="col-3-4">
 
                 <div class="mention_blog-post">
                    <h6>Tom is it possible to get post data from medium?</h6>
