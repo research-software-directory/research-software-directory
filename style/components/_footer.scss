@@ -1,24 +1,51 @@
 #footer {
-	position: relative;
-	bottom: 0px;
-	left: 0px;
-	// background-color: #dddddd;
 	width: 100%;
-	height: 160px;
-	
-	
+	padding: 4em;
+	font-size: 2rem;
+	font-family: $primaryFontLight;
+	@include bp(max, $phone) {
+		padding: 1em;
+	}
 }
 #footer_text {
-	padding-top: 10px;
-	padding-left: 40px;
-	padding-bottom: 10px;
-	width: 340px;
-
+	width: 66%;
+	@include bp(max, $phone) {
+		width: 100%;
+	}
 	color: $white;
+	margin-bottom: 4em;
+	a {
+		text-decoration: underline;
+		&:hover {
+			color: $primaryColor;
+		}
+	}
 }
-#footer_logo {
-	padding-left: 40px;
+
+.footer_links {
+	svg {
+		fill: $primaryColor;
+		height: 1em;
+		width: 1em;
+		position: relative;
+		top: 4px;
+		display: inline-block;
+	}
+	p {
+		line-height: 2em;
+	}
+	.escience {
+		margin-top: 1em;
+	}
+	a {
+		color: $primaryColor;
+		font-size: 1em;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
+
 #footer_logo {
 	svg {
 		fill: $white;
@@ -34,21 +61,4 @@
 			}
 		}
 	}
-}
-#footer_links {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-}
-#footer_links a {
-	color: $white;
-
-	// &:hover{
-	// 	color: $primaryColor;
-	// }
-
-	:not(:first-child){
-		padding-left: 10px;
-	}
-	
 }
