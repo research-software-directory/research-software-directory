@@ -11,6 +11,12 @@ $(document).ready(function() {
         $(this).parent().toggleClass('active');
     });
 
+    $("#choose_citation_button").on("click", function(e) {
+        $('.citation_list').toggleClass('active');
+        e.preventDefault();
+        return false;
+    });
+
     // Configure/customize these variables.
     // var showChar = 100;  // How many characters are shown by default
     // var ellipsestext = "...";

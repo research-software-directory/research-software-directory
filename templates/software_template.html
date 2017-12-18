@@ -84,16 +84,31 @@
 
 
 <!-- Cite this software -->
+{% if 'githubid' in template_data %}
 <section id="cite-this">
     <div class="container">
-
         <div class="row">
             <h2 class="subtitle">Cite this software</h2>
-            <a href="#"><div class="button button--filled-blue"><span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span><span>Choose a citation style</span></div></a>
+            <div>
+                <a href="#">
+                    <div id="choose_citation_button" class="button button--filled-blue">
+                        <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span>
+                        <span>Choose a citation style</span>
+                    </div>
+                </a>
+                <ul class="citation_list">
+                    <li><a target="_blank" href="/cite/{{template_data['id']}}?format=apa">text (APA style)</a></li>
+                    <li><a target="_blank" href="/cite/{{template_data['id']}}?format=csv">CSV</a></li>
+                    <li><a target="_blank" href="/cite/{{template_data['id']}}?format=bibtex">Bibtex</a></li>
+                    <li><a target="_blank" href="/cite/{{template_data['id']}}?format=enw">EndNote .enw</a></li>
+                    <li><a target="_blank" href="/cite/{{template_data['id']}}?format=ris">RIS</a></li>
+                </ul>
+            </div>
         </div>
 
     </div>
-</section>            
+</section>
+{% endif %}
 
 
 <!-- About -->
