@@ -6,9 +6,12 @@ import flask
 import markdown
 import requests
 
+import dateparser
+
 import ago
 
 from app import plot_commits
+from app.BlogScraper import BlogScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -18,6 +21,11 @@ api_url = 'https://admin.research-software.nl/api'
 def format_software(sw):
     sw['lastUpdateAgo'] = ago.human(sw.get('lastUpdate'), precision=1)
 
+def get_blogs():
+    scraper = BlogScraper(baseurl="https://blog.esciencecenter.nl/")
+    return scraper.posts
+
+
 @application.route('/', methods=['GET', 'POST'])
 def index():
     url = api_url + '/software?published=true'
@@ -25,6 +33,10 @@ def index():
     all_software = requests.get(url).json()
     for sw in all_software:
         format_software(sw)
+    blog_posts = get_blogs()[:4]
+    for post in blog_posts:
+        format = "%B %d, %Y"
+        post['datetime'] = dateparser.parse(post['datetime']).strftime(format)
 
     # template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     random_integer = random.randint(1, 100)
@@ -32,7 +44,8 @@ def index():
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
                                  random_integer=str(random_integer),
-                                 latest_mentions=latest_mentions
+                                 latest_mentions=latest_mentions,
+                                 blog_posts=blog_posts
                                  )
 
 
@@ -130,7 +143,6 @@ def launch_template():
 @application.route('/rsd')
 def rsd_template():
     return flask.render_template('rsd_template.html')
-
 
 @application.errorhandler(404)
 def page_not_found(e):
