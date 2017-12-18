@@ -17,7 +17,7 @@ server {
             uwsgi_cache app_cache;
             add_header X-Proxy-Cache $upstream_cache_status;
             uwsgi_cache_valid 200 30m;
-            
+
             include uwsgi_params;
             uwsgi_pass flask;
         }

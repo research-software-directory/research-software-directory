@@ -34,12 +34,14 @@
         iframe = document.getElementById('iframe');
         button = document.getElementById('button')
         button.addEventListener('click', function(e) {
+            iframe.addEventListener('load', function(e) {
+                window.setTimeout(function() {
+                    window.location = '/';
+                }, 5000);
+            });
             iframe.src="https://www.youtube.com/embed/AArEdqZEZUs?autoplay=1&showinfo=0&controls=0";
             iframe.style.display = 'block';
             button.style.display = 'none';
-            window.setTimeout(function() {
-                window.location = '/';
-            }, 5000);
         });
     </script>
     </body>
