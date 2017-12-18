@@ -318,6 +318,83 @@
 
 }
 
+// Projects
+// -----------------------------------
+
+#projects{
+    .container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .divider{
+        border-top: 1px solid $white;
+        opacity: 0.25;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .project_items {
+        display: flex;
+        justify-content: space-between;
+        .project_item {
+            // width: 36%;
+            padding-right: 1em;
+            margin-bottom: 2em;
+            @include bp(max, $tablet){
+                width: 100%;
+            }
+            .content {
+                display: flex;
+                .thumb {
+                    flex-shrink: 0;
+                    padding: 0 1em 1em 0;
+                }
+                h2 {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin-bottom: .5em;
+                }
+                .text {
+                    font-family: $primaryFontLight;
+                    font-size: 2rem;
+                    margin-bottom: .5em;
+                }
+            }
+        } 
+    }
+}
+.testimonial {
+    background-color: $primaryColor;
+    padding: 2.25em;
+    position: relative;
+    blockquote {
+        color: $white;
+        font-family: $primaryFontLight;
+        font-size: 1.5em;
+        &:before {
+            content: '\201C';
+        }
+        &:after {
+            content: '\201D';
+        }
+    }
+    &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border: 0 solid transparent;
+        position: absolute;
+        left: 72px;
+        top: 100%;
+        border-top-width: 0;
+        border-bottom-width: 24px;
+        border-right: 16px solid $primaryColor;
+    }
+}
+.testimonialby {
+    margin: 20px 0;
+    padding-left: 104px;
+}
+
 
 
 
@@ -368,17 +445,8 @@
 }
 .contributor {
 }
-.testimonial {
-    font-size: 1.2em;
-    font-style: italic;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-.testimonialby {
-    text-align: center;
-    margin-bottom: 20px;
-}
+
+
 
 .box {
 	// background-color: #dddddd;

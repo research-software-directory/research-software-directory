@@ -61,10 +61,16 @@ section{
     // }
 }
 
+
 .row{
     display: flex;
     flex-wrap: wrap;
 }
+
+
+// Columns
+// -------------------------------
+
 
 .col-1-4{
     width: 25%;
@@ -104,5 +110,3 @@ section{
         width: 100%;
     }
 }
-
-
