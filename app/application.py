@@ -76,6 +76,45 @@ def software_product_page_template(software_id):
                                  mention_types=mention_types, commits_data=commits_data)
 
 
+def get_citation(citeas_data, format):
+    def get_export(export_name):
+        return [value for value in citeas_data['exports'] if value['export_name'] == export_name][0]['export']
+
+    if format == 'apa':
+        return 'text/plain', 'txt', citeas_data['citations'][0]['citation']
+    if format == 'bibtex':
+        return 'application/x-bibtex', 'bib', get_export('bibtex')
+    if format == 'csv':
+        return 'text/csv', 'csv', get_export('csv')
+    if format == 'enw':
+        return 'application/x-endnote-refer', 'enw', get_export('enw')
+    if format == 'ris':
+        return 'application/x-research-info-systems', 'bib', get_export('ris')
+    raise Exception('unknown format %s' % format)
+
+@application.route('/cite/<software_id>')
+def cite(software_id):
+    url = api_url + "/software/%s" % software_id
+    software_dictionary = requests.get(url).json()
+    if "error" in software_dictionary:
+        return "not found", 404
+    if not 'githubid' in software_dictionary:
+        return "not found", 404
+
+    url = 'http://api.citeas.org/product/https://github.com/%s' % software_dictionary.get('githubid')
+
+    res = requests.get(url).json()
+    try:
+        mime, extension, data = get_citation(res, flask.request.args.get('format'))
+    except Exception:
+        return "unknown format '%s'" % flask.request.args.get('format'), 400
+
+    return flask.Response(
+        data,
+        mimetype=mime,
+        headers={"Content-disposition": "attachment; filename=citation.%s" % extension}
+    )
+
 @application.route('/about')
 def about_template():
     return flask.render_template('about_template.html')
