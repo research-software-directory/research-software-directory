@@ -70,6 +70,10 @@ def software_product_page_template(software_id):
         'videoRecording': 'Video recording',
         'bookSection': 'Book section'
     }
+
+    software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
+    software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
+
     commits_data = flask.Markup(get_commits_data(software_id))
     return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary,
                                  organisation_logos=organisation_logos,
