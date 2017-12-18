@@ -1,14 +1,18 @@
 #header {
-	top: 0px;
-	left: 0px;
 	width: 100%;
 
 	.container{
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
-		padding-top: 25px;
-		padding-bottom: 25px;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
 		border-bottom: 1px solid;
+		justify-content: space-between;
+		>div:first-child {
+			display: flex;
+			flex-wrap: wrap;
+		}
 	}
 	a:hover{
 		color: $primaryColor;
@@ -38,16 +42,19 @@
 #header_text {
 	font-family: $primaryFontLight;
     font-size: 2rem;
-	padding-left: 20px;
 }
 
 #header_links {
-	margin-left: auto;
-	
-	a:not(:first-child){
-		margin-left: 50px;
+	text-align: right;
+	a {
+		display: inline-block;
+		&:not(:first-child) {
+			margin-left: 2em;
+		}
 	}
+	@include bp(max, $phone) {
+		text-align: left;
+		margin-top: 1em;
+	}
+
 }
-// #header_links a {
-// 	padding-left: 10px;
-// }
