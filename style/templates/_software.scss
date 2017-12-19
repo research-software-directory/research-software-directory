@@ -363,8 +363,8 @@
     }
 }
 .testimonialby {
-    margin: 20px 0;
-    padding-left: 104px;
+    margin: 20px 0 4em;
+    padding-left: 96px;
 }
 .project_items {
     display: flex;
@@ -400,7 +400,75 @@
     }
 }
 
+// Contributors
+// -----------------------------------
 
+#contributors{
+    .container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .intro {
+        margin-bottom: 2em;
+        a {
+            text-decoration: underline;
+        }
+    }
+    ul.contributors_list {
+        li {
+            margin-bottom: 2em;
+        }
+    }
+    .button {
+        margin-bottom: 2em;
+    }
+    .contributor_name {
+        font-family: $primaryFont;
+        font-size: 2rem;
+        color: $primaryColor;
+    }
+    .contributor_picture {
+        margin-bottom: 1em;
+        text-align: center;
+        img {
+            border-radius: 50%;
+        }
+    }
+    .contributor_email {
+        svg {
+            height: 1em;
+            width: 1em;
+            position: relative;
+            top: 3px;
+            margin-right: 0.5em;
+            display: inline-block;
+        }
+    }
+    .contact_card {
+        .contact_card_header {
+            color: $white;
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            font-family: $primaryFontBold;
+            background-color: $primaryColor;    
+            padding: 1em 1.5em;
+        }
+        .contact_card_content {
+            padding: 1.5em;
+            background-color: $white;
+        }
+    }
+}
+
+// Related tools
+// -----------------------------------
+
+#related-tools{
+    .container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
 
 .codeRepository {
 }
