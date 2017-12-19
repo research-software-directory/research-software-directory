@@ -11,7 +11,7 @@ import dateparser
 import ago
 
 from app import plot_commits
-from app.BlogScraper import BlogScraper
+from app.corporate_scraper.Scraper import BlogPostScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -22,7 +22,7 @@ def format_software(sw):
     sw['lastUpdateAgo'] = ago.human(sw.get('lastUpdate'), precision=1)
 
 def get_blogs():
-    scraper = BlogScraper(baseurl="https://blog.esciencecenter.nl/")
+    scraper = BlogPostScraper(baseurl="https://blog.esciencecenter.nl/")
     return scraper.posts
 
 
@@ -36,7 +36,7 @@ def index():
     blog_posts = get_blogs()[:4]
     for post in blog_posts:
         format = "%B %d, %Y"
-        post['datetime'] = dateparser.parse(post['datetime']).strftime(format)
+        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
 
     # template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
     random_integer = random.randint(1, 100)
