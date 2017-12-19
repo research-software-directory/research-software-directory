@@ -259,13 +259,11 @@
             <div class="col-1-4">
                 <h2 class="subtitle text-blue">Projects with {{template_data.name}}</h2>
             </div>
-            <div class="col-3-4">
-                
+            <div class="col-3-4">       
             <!-- {% if template_data.testimonial %}
             <div class="testimonial">"{{template_data.testimonial}}"</div>
             <div class="testimonialby">- {{template_data.testimonialBy}}</div>
             {% endif %} -->
-
                 <div class="testimonial">
                     <blockquote>
                         Constructing 3-D models of the thousands of archeological objects along Via Appia was only possible because we could leverage big, off-site compute resources through Xenon
@@ -307,10 +305,8 @@
                     </article>
                     
                 </div>
-                
             </div>
         </div>
-        
     </div>
 </section>
 
@@ -321,58 +317,145 @@
 <!-- Contributors -->
 <section class="bg-light" id="contributors">
     <div class="container">
-
-        <div class="subtitle">Creators</div>
-        {% if template_data.contactPerson %}
-        <span class="creators_left">
-            <div class="subsubtitle">Contact person</div>
-            <div class="contactPerson">
-                {% if template_data.contactPerson.website %}
-                <a href="{{template_data.contactPerson.website}}" target="_blank">
-                    {{template_data.contactPerson.name}}
+        <div class="row">
+            <div class="col-1-4">
+                <h2 class="subtitle text-blue">Contributors</h2>
+            </div>
+            <div class="col-3-4">
+                <div class="intro">
+                    <p>For bug reports and issues, please use the <a href="#">Github Issues feature</a>. And don’t forget to check the documentation!</p>
+                </div>
+                <div class="row">
+                    <div class="col-2-3">
+                        <div class="row">
+                            <div class="col-1-2">
+                                <ul class="contributors_list">
+                                    <li>
+                                        <div class="contributor_name">Felipe Zapata</div>
+                                        <div class="contributor_organisation">Netherlands eScience Center</div>
+                                    </li>
+                                    <li>
+                                        <div class="contributor_name">Mrs. Principal Investigator</div>
+                                        <div class="contributor_organisation">University of Harderwijk</div>
+                                    </li>
+                                    <li>
+                                        <div class="contributor_name">Felipe Zapata</div>
+                                        <div class="contributor_organisation">Netherlands eScience Center</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-1-2">
+                                <ul class="contributors_list">
+                                    <li>
+                                        <div class="contributor_name">Johannes Hidding</div>
+                                        <div class="organisation">Netherlands eScience Center</div>
+                                    </li>
+                                    <li>
+                                        <div class="contributor_name">Berend Weel</div>
+                                        <div class="contributor_organisation">Netherlands eScience Center</div>
+                                    </li>
+                                    <li>
+                                        <div class="contributor_name">Johannes Hidding</div>
+                                        <div class="contributor_organisation">Netherlands eScience Center</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a class="button button--filled-dark" href="#" target="_blank">
+                            <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
+                            <span>Show all contributors</span>
+                        </a>
+                    </div>
+                    <div class="col-1-3">
+                        <div class="contact_card">
+                            <div class="contact_card_header">
+                                Contact person
+                            </div>
+                            <div class="contact_card_content">
+                                <div class="contributor_picture"><img src="http://via.placeholder.com/96x96" alt=""></div>
+                                <div class="contributor_name">Felipe Zapata</div>
+                                <div class="contributor_organisation">Netherlands eScience Center</div>
+                                <div class="contributor_email">
+                                    <a href="mailto:j.hidding@esciencecenter.nl">
+                                        <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                                        j.hidding@esciencecenter.nl
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- {% if template_data.contactPerson %}
+    <span class="creators_left">
+        <div class="subsubtitle">Contact person</div>
+        <div class="contactPerson">
+            {% if template_data.contactPerson.website %}
+            <a href="{{template_data.contactPerson.website}}" target="_blank">
+                {{template_data.contactPerson.name}}
+            </a>
+            {% else %}
+                {{template_data.contactPerson.name}}
+            {% endif %}
+        </div>
+        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
+        <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
+        </div>
+    </span>
+    {% endif %}
+    {% if template_data.contributor %}
+    <span class="creators_right">
+        <div class="subsubtitle">Contributors</div>
+        <div class="flex_container">
+            {% for contributor in template_data.contributor %}
+            {% if contributor.name != template_data.contactPerson.name %}
+            <div class="contributor flex_item">
+                {% if contributor.linkedInUrl %}
+                <a href="{{contributor.linkedInUrl}}" target="_blank">
+                    {{contributor.name}}
                 </a>
                 {% else %}
-                    {{template_data.contactPerson.name}}
+                    {{contributor.name}}
+                {% endif %}
+                {% if contributor.affiliation %}
+                <br>
+                {{contributor.affiliation}}
                 {% endif %}
             </div>
-            <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
-            <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
-            </div>
-        </span>
-        {% endif %}
-        {% if template_data.contributor %}
-        <span class="creators_right">
-            <div class="subsubtitle">Contributors</div>
-            <div class="flex_container">
-                {% for contributor in template_data.contributor %}
-                {% if contributor.name != template_data.contactPerson.name %}
-                <div class="contributor flex_item">
-                    {% if contributor.linkedInUrl %}
-                    <a href="{{contributor.linkedInUrl}}" target="_blank">
-                        {{contributor.name}}
-                    </a>
-                    {% else %}
-                        {{contributor.name}}
-                    {% endif %}
-                    {% if contributor.affiliation %}
-                    <br>
-                    {{contributor.affiliation}}
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        {% endif %}
-        </span>
-        
-    </div>     
+            {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    </span> -->   
 </section>
 
 
 <!-- Related Tools -->
 <section class="" id="related-tools">
     <div class="container">
-            
+        <div class="row">
+            <div class="col-1-4">
+                <h2 class="subtitle text-blue">Related tools</h2>
+            </div>
+            <div class="col-3-4">
+                <div id="software_list">
+                    <a href="/software/twinl-website-code" class="">
+                        <h1 class="name">TwiNL: website code</h1>
+                        <div class="code">Tw</div>
+                        <p class="tagline">Access to Dutch tweet statistics</p>
+                        <span class="lastUpdated">63 days ago</span>
+                    </a>
+                    <a href="/software/pattyvis" class="">
+                        <h1 class="name">Via Appia Visualization</h1>
+                        <div class="code">Vi</div>
+                        <p class="tagline">WebGL pointcloud visualization of the Via Appia</p>
+                        <span class="lastUpdated">100 days ago</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>    
 </section>
 
