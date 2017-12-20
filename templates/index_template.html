@@ -45,7 +45,7 @@
           <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" :class="{ highlighted: sw.highlighted }">
             <h1 class="name">[[sw.name]]</h1>
             <div class="code">[[sw.code]]</div>
-            <p class="tagline">[[sw.tagLine]]</p>
+            <p>[[sw.shortStatement]]</p>
             <span class="lastUpdated">[[sw.lastUpdateAgo]]</span>
           </a>
         </div>
