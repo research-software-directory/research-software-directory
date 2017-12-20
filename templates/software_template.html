@@ -263,20 +263,18 @@
             <div class="col-1-4">
                 <h2 class="subtitle text-blue">Projects with {{template_data.name}}</h2>
             </div>
-            <div class="col-3-4">       
-            <!-- {% if template_data.testimonial %}
-            <div class="testimonial">"{{template_data.testimonial}}"</div>
-            <div class="testimonialby">- {{template_data.testimonialBy}}</div>
-            {% endif %} -->
+            <div class="col-3-4">
+                {% if template_data.testimonial %}
                 <div class="testimonial">
                     <blockquote>
-                        Constructing 3-D models of the thousands of archeological objects along Via Appia was only possible because we could leverage big, off-site compute resources through Xenon
+                        {{template_data.testimonial}}
                     </blockquote>
                 </div>
 
                 <div class="testimonialby">
-                    - Maurice de Kleijn, VU University Amsterdam
+                    - {{template_data.testimonialBy}}
                 </div>
+                {% endif %}
 
                 <div class="row project_items">
 

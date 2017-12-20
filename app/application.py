@@ -98,8 +98,8 @@ def software_product_page_template(software_id):
                 [post['id'] in x['data']['url'] for post in escience_blog_posts]
             ), software_dictionary['mentions']['blogPost']))
 
-    if len(software_dictionary['mentions']['blogPost']) == 0:
-        del software_dictionary['mentions']['blogPost']
+        if len(software_dictionary['mentions']['blogPost']) == 0:
+            del software_dictionary['mentions']['blogPost']
 
     for post in escience_blog_posts:
         format = "%B %d, %Y"
