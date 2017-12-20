@@ -39,12 +39,6 @@
                 {% if template_data.shortStatement %}
                 <div class="shortStatement">{{template_data.shortStatement}}</div>
                 {% endif %}
-                {% if template_data.readMore %}
-                <div class="readMore">
-                    <a>Read more</a>
-                    <div class="readMoreContents">{{template_data.readMore}}</div>
-                </div>
-                {% endif %}
             </div>
 
             <div class="col col-1-4">
@@ -86,10 +80,8 @@
                 <div class="software_commitsStat" id="commitsStat"></div>
                 {% endif %}
 
-            </div>            
+            </div>
         </div>
-
-        
 
     </div>
 </section>
@@ -117,7 +109,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </section>
 {% endif %}
@@ -159,6 +150,14 @@
             </div>
 
         </div>
+
+        {% if template_data.readMore %}
+        <div class="readMore">
+            <a>Read more</a>
+            <div class="readMoreContents">{{template_data.readMore}}</div>
+        </div>
+        {% endif %}
+
     </div>
 </section>
 
