@@ -330,7 +330,8 @@
                     {{template_data.contactPerson.name}}
                 {% endif %}
             </div>
-            <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
+            <div class="contactEmail">
+            <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-envelope"></use></svg>
             <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
             </div>
         </span>

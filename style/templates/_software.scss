@@ -500,11 +500,13 @@
     flex-basis: 33%;
     flex-shrink: 0;
 }
-.contactEmail img {
-    width: 10px;
-    height: 10px;
-    padding-right: 6px;
-    margin-top: 8px;
+.contactEmail svg.icon {
+    fill: $primaryColor;
+    height: 1em;
+    width: 1em;
+    position: relative;
+    top: 4px;
+    display: inline-block;
 }
 .mentions {
     width: 90%;
