@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  redis:
+    image: "redis:alpine"
+
+  celeryworker:
+    build:
+      context: .
+      dockerfile: compose/production/flask/Dockerfile
+    env_file:
+      - .env.local
+    depends_on:
+      - redis
+    command: /start-celeryworker.sh
+
+  flask:
+    build:
+      context: .
+      dockerfile: compose/local/flask/Dockerfile
+    volumes:
+      - .:/app
+    depends_on:
+      - celeryworker
+    env_file:
+      - .env.local
+    environment:
+      - FLASK_APP=/app/entry.py
+      - FLASK_DEBUG=1
+    command: /start-flask.sh
+    ports:
+      - "5000:5000"

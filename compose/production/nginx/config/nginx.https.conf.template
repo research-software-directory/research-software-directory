@@ -1,5 +1,5 @@
 upstream flask {
-     server unix:///tmp/api.sock;
+     server flask:8000;
 }
 
 server {
@@ -30,7 +30,7 @@ server {
 }
 
 server {
-        listen 0.0.0.0:8000;
+        listen 0.0.0.0:80;
         server_name _;
         return 301 https://$host$request_uri;
 }

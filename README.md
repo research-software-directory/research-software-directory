@@ -4,47 +4,32 @@
 
 Backend for the eScience Research Software Directory.
 ### Requirements:
-- Python 3
-- Pip
-- mkvirtualenv (`pip install virtualenvwrapper`)
+- docker, docker-compose
 - Mongodb server
 
 ### Configuration:
-- Copy `settings.json.dist` to `settings.json` or add as environmental variables
-  (environment is prioritized over `settings.json`)
+- Configuration is done through environmental variables read by Docker through
+  `.env`. Copy and fill `.env.example` to `.env`. Local (dev) config is read from `.dev.local`.
 
-### Setup
+### Run locally:
+- Make sure a local mongodb server is running. Note that it should listen on the IP address
+of the docker bridge (eg. `172.17.0.1`). (`bind_ip=127.0.0.1,172.17.0.1` in `/etc/mongodb.conf`)
+- Todo: creating a MongoDB Docker container should make things easier.
+
+### Run unit tests
 ```
 mkvirtualenv rsd -p `which python3`
 pip install -r requirements.txt
-export FLASK_APP=`pwd`/entry.py
-export FLASK_DEBUG=1
-```
-### Run unit tests
-```
 PYTHONPATH=`pwd` pytest
 ```
+
 ### Run API server
 ```
-flask run
-```
-### Docker
-```
-docker build -t rsd-backend
-docker run -v data:/data -p 0.0.0.0:80:8000 rsd-backend
-```
-
-### export MongoDB data
-```
-flask export file.tar.gz
-```
-
-### import MongoDB data exported with `flask export`
-```
-flask import file.tar.gz
+docker-compose -f docker-compose.local.yml build
+docker-compose -f docker-compose.local.yml up
 ```
 
 ### api keys:
 API keys are encrypted in `.travis.yml` - this is for testing purposes (tests are ran directly against
 services). They should NOT be included in the build but deployed seperately in the production environment
-(through settings.json or environmental variables.
+(through environmental variables in `.env`.

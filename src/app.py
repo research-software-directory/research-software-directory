@@ -44,9 +44,10 @@ def register_blueprints(app, service_controller, db):
 
 
 def register_extensions(app):
-    app.config['RESIZE_URL'] = settings['DATA_FOLDER']
-    app.config['RESIZE_ROOT'] = settings['DATA_FOLDER']
-    resize.init_app(app)
+    # app.config['RESIZE_URL'] = settings['DATA_FOLDER']
+    # app.config['RESIZE_ROOT'] = settings['DATA_FOLDER']
+    # resize.init_app(app)
+    pass
 
 
 def register_commands(app, service_controller, db):

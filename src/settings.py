@@ -12,7 +12,7 @@ required_settings = [
     "DATABASE_HOST",
     "DATABASE_PORT",
     "DATABASE_NAME",
-    "DATA_FOLDER"
+    "CELERY_BROKER_URL"
 ]
 
 for setting in required_settings:

@@ -1,10 +1,10 @@
 upstream flask {
-     server unix:///tmp/api.sock;
+     server flask:8000;
 }
 
 server {
-        listen 8000;
-        listen [::]:8000;
+        listen 80;
+        listen [::]:80;
         server_name admin.research-software.nl;
         client_max_body_size 5M;
 

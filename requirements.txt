@@ -9,3 +9,6 @@ pyzenodo==0.0.6
 python-dateutil==2.6.1
 pyzotero==1.2.13
 jsonschema==2.6.0
+celery==4.1.0
+redis==2.10.6
+uwsgi==2.0.15
