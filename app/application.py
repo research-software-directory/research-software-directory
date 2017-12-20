@@ -11,7 +11,7 @@ import dateparser
 import ago
 
 from app import plot_commits
-from app.corporate_scraper.Scraper import BlogPostScraper
+from app.corporate_scraper.Scraper import BlogPostScraper, ProjectScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -25,6 +25,10 @@ def get_blogs():
     scraper = BlogPostScraper(baseurl="https://blog.esciencecenter.nl/")
     return scraper.posts
 
+def get_projects():
+    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
+        include_deep_info=True)
+    return scraper.projects
 
 @application.route('/', methods=['GET', 'POST'])
 def index():
