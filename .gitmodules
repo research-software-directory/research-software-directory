@@ -1,3 +1,0 @@
-[submodule "app/corporate_scraper"]
-	path = app/corporate_scraper
-	url = https://github.com/jspaaks/corporate-scraper
