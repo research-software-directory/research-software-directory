@@ -318,6 +318,13 @@
 <!-- Contributors -->
 <section class="bg-light" id="contributors">
     <div class="container">
+
+
+
+
+
+
+
         <div class="row">
             <div class="col-1-4">
                 <h2 class="subtitle text-blue">Contributors</h2>
@@ -388,48 +395,56 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- {% if template_data.contactPerson %}
-    <span class="creators_left">
-        <div class="subsubtitle">Contact person</div>
-        <div class="contactPerson">
-            {% if template_data.contactPerson.website %}
-            <a href="{{template_data.contactPerson.website}}" target="_blank">
-                {{template_data.contactPerson.name}}
-            </a>
-            {% else %}
-                {{template_data.contactPerson.name}}
-            {% endif %}
-        </div>
-        <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
-        <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
-        </div>
-    </span>
-    {% endif %}
-    {% if template_data.contributor %}
-    <span class="creators_right">
-        <div class="subsubtitle">Contributors</div>
-        <div class="flex_container">
-            {% for contributor in template_data.contributor %}
-            {% if contributor.name != template_data.contactPerson.name %}
-            <div class="contributor flex_item">
-                {% if contributor.linkedInUrl %}
-                <a href="{{contributor.linkedInUrl}}" target="_blank">
-                    {{contributor.name}}
+
+
+
+
+
+        <!--<div class="subtitle">Creators</div>
+        {% if template_data.contactPerson %}
+        <span class="creators_left">
+            <div class="subsubtitle">Contact person</div>
+            <div class="contactPerson">
+                {% if template_data.contactPerson.website %}
+                <a href="{{template_data.contactPerson.website}}" target="_blank">
+                    {{template_data.contactPerson.name}}
                 </a>
                 {% else %}
-                    {{contributor.name}}
-                {% endif %}
-                {% if contributor.affiliation %}
-                <br>
-                {{contributor.affiliation}}
+                    {{template_data.contactPerson.name}}
                 {% endif %}
             </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-    {% endif %}
-    </span> -->   
+            <div class="contactEmail"><img src="{{url_for('static', filename='envelope.png')}}" alt="Email icon">
+            <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
+            </div>
+        </span>
+        {% endif %}
+        {% if template_data.contributor %}
+        <span class="creators_right">
+            <div class="subsubtitle">Contributors</div>
+            <div class="flex_container">
+                {% for contributor in template_data.contributor %}
+                {% if contributor.name != template_data.contactPerson.name %}
+                <div class="contributor flex_item">
+                    {% if contributor.linkedInUrl %}
+                    <a href="{{contributor.linkedInUrl}}" target="_blank">
+                        {{contributor.name}}
+                    </a>
+                    {% else %}
+                        {{contributor.name}}
+                    {% endif %}
+                    {% if contributor.affiliation %}
+                    <br>
+                    {{contributor.affiliation}}
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        </span>
+        -->
+        
+    </div>     
 </section>
 
 
