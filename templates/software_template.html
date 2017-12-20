@@ -211,10 +211,14 @@
 
             <div class="col-3-4">
 
+                {% if escience_blog_posts %}
                 <div class="mention_blog-post">
-                   <h6>Tom is it possible to get post data from medium?</h6>
+                    <img src="{{ escience_blog_posts[0].image }}">
+                   <h6>{{ escience_blog_posts[0].title }}</h6>
+                   <h6>{{ escience_blog_posts[0].author }}</h6>
+                   <h6>{{ escience_blog_posts[0]['datetime'] }}</h6>
                 </div>
-
+                {% endif %}
                 <div class="divider"></div>
                 
                 {% for key, value in template_data.mentions.items() %}

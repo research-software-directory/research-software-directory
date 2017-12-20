@@ -43,7 +43,6 @@ def index():
     return flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
-                                 random_integer=str(random_integer),
                                  latest_mentions=latest_mentions,
                                  blog_posts=blog_posts
                                  )
@@ -84,13 +83,35 @@ def software_product_page_template(software_id):
         'bookSection': 'Book section'
     }
 
+
+    escience_blog_posts = []
+    if 'blogPost' in software_dictionary['mentions']:
+        all_escience_blog_posts = get_blogs()
+        urls = list(map(lambda x: x['data']['url'], software_dictionary['mentions']['blogPost']))
+        escience_blog_posts = list(filter(lambda x: any([x['id'] in url for url in urls]), all_escience_blog_posts))
+        software_dictionary['mentions']['blogPost'] = list(filter(
+            lambda x: not any(
+                [post['id'] in x['data']['url'] for post in escience_blog_posts]
+            ), software_dictionary['mentions']['blogPost']))
+
+    if len(software_dictionary['mentions']['blogPost']) == 0:
+        del software_dictionary['mentions']['blogPost']
+
+    for post in escience_blog_posts:
+        format = "%B %d, %Y"
+        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
+
     software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
     software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
 
     commits_data = flask.Markup(get_commits_data(software_id))
-    return flask.render_template('software_template.html', software_id=software_id, template_data=software_dictionary,
+    return flask.render_template('software_template.html',
+                                 software_id=software_id,
+                                 template_data=software_dictionary,
                                  organisation_logos=organisation_logos,
-                                 mention_types=mention_types, commits_data=commits_data)
+                                 mention_types=mention_types,
+                                 commits_data=commits_data,
+                                 escience_blog_posts=escience_blog_posts)
 
 
 def get_citation(citeas_data, format):

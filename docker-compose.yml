@@ -19,6 +19,9 @@ services:
       - .:/app
     depends_on:
       - node-sass
+    environment:
+      - FLASK_APP=/app/app/application.py
+      - FLASK_DEBUG=1
     ports:
       - "5000:5000"
 
