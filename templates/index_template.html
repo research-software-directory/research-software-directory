@@ -51,7 +51,13 @@
             <h1 class="name">[[sw.name]]</h1>
             <div class="code">[[sw.code]]</div>
             <p>[[sw.shortStatement]]</p>
-            <span class="lastUpdated">[[sw.lastUpdateAgo]]</span>
+            <span class="sortByText">
+                {% if True %}
+                <svg class="icon" height="1.8em"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg> Featured
+                {% else %}
+                [[sw.lastUpdateAgo]]
+                {% endif %}
+            </span>
           </a>
         </div>
         <div v-if="pagedSoftware.length === 0">
