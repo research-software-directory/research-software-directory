@@ -6,4 +6,4 @@ set -o nounset
 
 
 #celery -A seedorf.taskapp beat -l INFO
-celery beat -l INFO
+celery -A src.task_schedule beat -l INFO

@@ -32,7 +32,9 @@ def add(x, y):
     return x + y
 
 
-
+@app.task
+def test(arg):
+    print(arg)
 
 @app.task(bind=True)
 def debug_task(self):
