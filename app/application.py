@@ -19,7 +19,7 @@ api_url = 'https://admin.research-software.nl/api'
 #api_url = 'http://172.19.0.1:5001'
 
 def format_software(sw):
-    sw['lastUpdateAgo'] = ago.human(sw.get('lastUpdate'), precision=1)
+    sw['lastUpdateAgo'] = 'Last update: ' + ago.human(sw.get('lastUpdate'), precision=1)
 
 def get_blogs():
     scraper = BlogPostScraper(baseurl="https://blog.esciencecenter.nl/")
