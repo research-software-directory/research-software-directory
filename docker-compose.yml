@@ -45,6 +45,8 @@ services:
     build:
       context: .
       dockerfile: compose/production/nginx/Dockerfile
+    volumes:
+      - /cert:/cert
     depends_on:
       - flask
     env_file:
