@@ -7,14 +7,12 @@
     <h1 class="title">Research Software Directory</h1>
     <p class="subsubtitle">Encouraging the re-use of research software</p>
     <p id="intro_text">
-      The Research Software Directory aims to promote the impact, the exchange and re-use of best practices
-      and to prevent fragmentation and duplication of research software. <br/>
-      Please use our tools! <a href="/more">Read more</a>
+      The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools! <a href="/about">Read more</a>
     </p>
 
     <div id="search_bar" class="row">
       <div class="col-1-3 left">
-        <span>Find software</span>
+        <!-- <span>Find software</span> -->
       </div>
       <div class="col-2-3 right">
         <input type='text' v-model="filter.search" id="input" placeholder="Find software, people, organizations, technologies, etc...">
@@ -47,7 +45,7 @@
           <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" :class="{ highlighted: sw.highlighted }">
             <h1 class="name">[[sw.name]]</h1>
             <div class="code">[[sw.code]]</div>
-            <p class="tagline">[[sw.tagLine]]</p>
+            <p>[[sw.shortStatement]]</p>
             <span class="lastUpdated">[[sw.lastUpdateAgo]]</span>
           </a>
         </div>
