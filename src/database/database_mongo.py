@@ -85,6 +85,9 @@ class MongoCollection(Collection):
         self._collection.update({'_id': record.data['_id']}, record.data)
         record.data.pop('_id')
 
+    def drop(self):
+        self._collection.drop()
+
 
 class MongoDatabase(Database):
     def __init__(self, host, port, database_name):

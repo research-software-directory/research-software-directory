@@ -1,18 +1,17 @@
 from celery.schedules import crontab
 
-from src.tasks import app, add, test
+from src.tasks import app, zotero_sync, blogs_sync, projects_sync, report_all
 
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-    # Calls test('hello') every 10 seconds.
-    sender.add_periodic_task(10.0, test.s('hello'), name='add every 10')
+    sender.add_periodic_task(2 * 60 * 60, zotero_sync.s(), name='Zotero sync')
+    sender.add_periodic_task(2 * 60 * 60, blogs_sync.s(), name='Corporate blogs sync')
+    sender.add_periodic_task(2 * 60 * 60, projects_sync.s(), name='Corporate projects sync')
 
-    # Calls test('world') every 30 seconds
-    sender.add_periodic_task(30.0, test.s('world'), expires=10)
-
-    # Executes every Monday morning at 7:30 a.m.
-    # sender.add_periodic_task(
-    #     crontab(hour=7, minute=30, day_of_week=1),
-    #     test.s('Happy Mondays!'),
-    # )
+    #Every night 2 oclock
+    sender.add_periodic_task(
+        crontab(hour=2, minute=0),
+        report_all,
+        name='Full report for all software'
+    )
 

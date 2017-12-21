@@ -9,10 +9,10 @@ logger = get_task_logger(__name__)
 
 app = Celery('tasks', backend=settings.get('CELERY_BACKEND_URL'), broker=settings.get('CELERY_BROKER_URL'))
 db = None
+service_controller = None
 
 def prerun(**kwargs):
-    global db
-    logger.info('Prerunning')
+    global db, service_controller
     db = MongoDatabase(settings['DATABASE_HOST'],
         settings['DATABASE_PORT'],
         settings['DATABASE_NAME'],
@@ -26,16 +26,25 @@ task_prerun.connect(prerun)
 task_postrun.connect(postrun)
 
 @app.task
-def add(x, y):
-    logger.info('Adding {0} + {1}'.format(x, y))
-    logger.info(db['software'])
-    return x + y
-
+def zotero_sync():
+    logger.info('Syncing Zotero')
+    service_controller.zotero.sync_publications()
 
 @app.task
-def test(arg):
-    print(arg)
+def blogs_sync():
+    logger.info('Syncing blogs')
+    service_controller.corporate.sync_blogs()
 
-@app.task(bind=True)
-def debug_task(self):
-    print('Request: {0!r}'.format(self.request))  # pragma: no cover
+@app.task
+def projects_sync():
+    logger.info('Syncing projects')
+    service_controller.corporate.sync_projects()
+
+@app.task
+def report_all():
+    i = 1
+    softwares = db.software.all()
+    for software in softwares:
+        logger.info('(%i / %i) generating report for %s' % (i, softwares.count(), software['id']))
+        service_controller.impact_report.generate_impact_report(software['id'])
+        i += 1

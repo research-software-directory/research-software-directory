@@ -1,3 +1,4 @@
+from src.services.corporate import CorporateService
 from src.services.github import GithubService
 from src.services.impact_report import ImpactReportService
 from src.services.import_export import ImportExportService
@@ -68,3 +69,7 @@ class ServiceController:
     @CachedProperty
     def impact_report(self):
         return ImpactReportService(self.db, self.github, self.libraries_io)
+
+    @CachedProperty
+    def corporate(self):
+        return CorporateService(self.db)
