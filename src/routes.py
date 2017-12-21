@@ -224,4 +224,12 @@ def get_routes(service_controller, db):
         else:
             raise exceptions.NotFoundException('project not found')
 
+    @api.route('/testtask', methods=['GET'])
+    @jsonify
+    def _testtask():
+        from src.tasks import add
+        add.delay(2, 3)
+        return 'testing task', 200
+
     return api
+

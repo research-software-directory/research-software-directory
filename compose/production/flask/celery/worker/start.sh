@@ -5,5 +5,4 @@ set -o pipefail
 set -o nounset
 
 
-#celery -A seedorf.taskapp worker -l INFO
-celery worker -l INFO
+celery -A src.tasks worker -l INFO

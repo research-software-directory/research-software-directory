@@ -102,5 +102,8 @@ class MongoDatabase(Database):
     def get_pymongo(self):
         return self.db
 
+    def close(self):
+        self.client.close()
+
     def __getattr__(self, item):
         return MongoCollection(item, self.db)
