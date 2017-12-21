@@ -52,11 +52,8 @@
             <div class="code">[[sw.code]]</div>
             <p>[[sw.shortStatement]]</p>
             <span class="sortByText">
-                {% if True %}
-                <svg class="icon" height="1.8em"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg> Featured
-                {% else %}
-                [[sw.lastUpdateAgo]]
-                {% endif %}
+                <svg v-if="sw.highlighted" class="icon" height="1.8em"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg> Featured
+                <span v-else>[[sw.lastUpdateAgo]]</span>
             </span>
           </a>
         </div>
