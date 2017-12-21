@@ -40,6 +40,7 @@ def register_error_handlers(app):
 
 def register_blueprints(app, service_controller, db):
     routes = get_routes(service_controller, db)
+    logger.info('123')
     app.register_blueprint(routes)
 
 
