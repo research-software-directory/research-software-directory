@@ -1,6 +1,12 @@
 version: '2'
 
 services:
+  mongo:
+    image: "mongo:3.6"
+    volumes:
+      - /data/rsd:/data/db
+    command: --bind_ip 0.0.0.0 --smallfiles
+
   redis:
     image: "redis:alpine"
 
@@ -12,6 +18,7 @@ services:
       - .env
     depends_on:
       - redis
+      - mongo
     command: /start-celeryworker.sh
 
   celerybeat:
@@ -25,12 +32,9 @@ services:
     command: /start-celerybeat.sh
 
   flask:
-#    container_name: flask
     build:
       context: .
       dockerfile: compose/production/flask/Dockerfile
-#    volumes:
-#      - .:/app
     depends_on:
       - celeryworker
     env_file:
@@ -38,7 +42,6 @@ services:
     command: /start-flask.sh
 
   nginx:
-#    container_name: nginx
     build:
       context: .
       dockerfile: compose/production/nginx/Dockerfile

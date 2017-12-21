@@ -1,6 +1,7 @@
 .vscode
 .env
 .env.local
+db/
 # Jekyll
 _site
 .sass-cache

@@ -1,6 +1,12 @@
 version: '2'
 
 services:
+  mongo:
+    image: "mongo:3.6"
+    volumes:
+      - ./db:/data/db
+    command: --bind_ip 0.0.0.0 --smallfiles
+
   redis:
     image: "redis:alpine"
 
@@ -12,6 +18,7 @@ services:
       - .env.local
     depends_on:
       - redis
+      - mongo
     command: /start-celeryworker.sh
 
   flask:
