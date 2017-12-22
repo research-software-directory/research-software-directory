@@ -6,75 +6,87 @@
 About
 {% endblock %}
 {% block content %}
-<div class="textPage container">
+<div id="about" class="container col-1-2">
+
     <h1>Encouraging the re-use of research software</h1>
-    <p class="subtitle">The Research Software Directory is an initiative by the Netherlands eScience Center. It is an
-        exhibition space for
-        research software to encourage its re-use.</p>
-    <h2>The importance of software for research</h2>
-    <p>Where would today’s research be without software?</p>
-    <p>It would be hard for climate scientists to model the future of our natural environment. It would be impossible
-        for
-        astronomers and physicists to process the huge amounts of data gathered by radio telescopes and particle
-        colliders.
-        Sociologists would have a hard time to capitalize on the potential of all the social data available these days
-        to
-        get a better understanding of human behavior. And biologists would most likely still rely solely on field work
-        to
-        study animal behavior.
-        In short, most of today’s research projects would be impossible without software.
-        It has become a fundamental aspect of doing research.
-        Many research teams are nowadays developing and applying their own software.
-    </p>
-    <h2>Encouraging researchers to re-use software</h2>
-    <p>However, in the academic world, most software is developed quickly to solve one-off problems.
-        This usually leads to software that is not sustainable or usable beyond a single project.
-        In many cases the software is hard for other researchers to read and understand, and often lacks documentation –
-        making it difficult to re-use.
-    </p>
-    <p>
-        There is growing recognition from the academic community that sustainable software development requires more
-        attention.
-        Re-usability requires more than sustainable software development.
-        It requires an encouragement strategy.
-        We try to encourage the re-use of research software via three ways:
-    <ol>
-        <li> Facilitating potential users to explore our software and quickly grasp its relevance and quality.</li>
-        <li> Making it easy to cite the use of research software in publications, increasing its visibility and value
-            for
-            the academic community.
-        </li>
-        <li>Facilitate other organizations to set up their own, but nationally and internationally connected, research
-            software directory.
-        </li>
-    </ol>
-    </p>
-    <p>
-        Our ambition is to establish and connect many research software directories to make them searchable.
-    </p>
-    <h2>The RSD Concept - not another archive website</h2>
-    <p>The Research Software Directory is not just another software archive website but gives insight into what software
-        may be valuable for your research.
-        There is no universal way to quantify software value, therefore a set of value indicators is reported:
-    <ul>
-        <li>A (jargon-free) short software statement</li>
-        <li>An overview of publications and other public sources that refer to the software</li>
-        <li>Recent updates to the software</li>
-        <li>Testimonials by end-users</li>
-        <li>Research collaborations in which we have developed and used the software ourselves.</li>
-    </ul>
-    </p>
-    <p>
-        To software developers, the research software directory offers a platform to exhibit their software for viewing
-        by researchers and funders.
-    </p>
-    <h2>Read more</h2>
-    <ul>
-        <li>Blog Vincent</li>
-        <li>Software Development Guide</li>
-        <li>KB Lab</li>
-        <li>CIT Groningen</li>
-        <li>Software Sustainability Institute</li>
-    </ul>
+
+        <p>
+        Much of modern day science would not be possible without the use of
+        computers, and as a result, many scientists spend a significant part of
+        their time writing code. During the past 5 years or so since the
+        Netherlands eScience Center first started working with scientists, some
+        patterns related to research software have emerged.
+        </p>
+
+        <p>
+        For example, research software often contains components that are quite
+        generic in their application. To give you some idea, this may include
+        components to draw certain types of linked plots, or to connect to a
+        cluster computer located elsewhere, or to let a computer program take
+        some of its inputs from the command line. Indeed, one may ask why such
+        components are being developed in research programs?
+        </p>
+
+<!-- 
+        we see relatively little re-use of such components
+        so why arent these components used by other scientists
+ -->
+
+    <h2>On finding software</h2>
+
+        <p>
+        Apart from technical reasons relating to engineering quality of research
+        software, the most important reason is that it is difficult to
+        successfully search for software. Scientists, like most people these
+        days, depend on search engines whenever they are looking for information
+        on something. However, when looking for software, that approach is
+        fraught with confusion and frustration. Sure, if you know the name of
+        something, Googling it is easy enough, but what if you don't know what
+        the right keywords are? For the examples above, most researchers
+        probably don't know to search for <i>trellis plots</i> and
+        <i>brushing</i> when looking for linked plots. Similarly, they would not
+        know that the type of component used to connect to a cluster goes by the
+        ill-chosen name of <i>middleware</i>, and that a computer program can
+        read its inputs from the command line by way of an <i>argument
+        parser</i>.
+        </p>
+
+        <p>
+        Search engines do not 'understand' software repositories like GitHub,
+        SourceForge, or BitBucket
+        </p>
+
+        <p>
+        Even if you happen to know what keywords to search for, the sites listed
+        in the search results typically do not answer questions like "What can
+        this tool do for me?", "Where do I go to get started?", "Are other
+        people in my field using it and what are they using it for?"'
+        </p>
+
+<!-- 
+        This is what the Research Software Directory aims to solve
+        Not only for ourselves, but for everybody (see below)
+ -->
+
+    <h2>Visible impact</h2>
+
+        <p>
+        Funders want to steer on creating the most impact, but they have very
+        little information to go on. The Research Software Directory makes
+        transparent what the impact of software is.
+        </p>
+
+        <!-- scientists developing new ideas -->
+
+<!-- 
+    <h2>Vision</h2>
+
+        technical: APIs
+        content: instructions
+        <p>
+        We envision a federated system of Research Software Directories, where
+        any organization can have its own.
+        </p>
+ -->
 </div>
 {% endblock %}
