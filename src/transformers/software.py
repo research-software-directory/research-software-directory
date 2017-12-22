@@ -49,6 +49,7 @@ def unpack_project(entry, db):
 
 def get_blog_posts(posts, db):
     import dateparser
+    import time
     # splits blogPost mentions into Corporate eScience Blog and other blog
     all_escience_blog_posts = list(iter(db['corporate_blog'].all()))
     urls = list(map(lambda x: x['data']['url'], posts))
@@ -60,8 +61,7 @@ def get_blog_posts(posts, db):
         ), posts))
 
     for post in escience_blog_posts:
-        format = "%B %d, %Y"
-        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
+        post['datetime'] = time.mktime(dateparser.parse(post['datetime-published']).timetuple())
 
     return other_blog_posts, escience_blog_posts
 
