@@ -1,3 +1,7 @@
+from flask import logging
+
+logger = logging.getLogger(__name__)
+
 def unpack_person(entry, db):
     if isinstance(entry, str):
         person = db['person'].find_by_id(entry)
@@ -23,31 +27,45 @@ def unpack_organization(entry, db):
     return entry
 
 
-def unpack_project(entry, db):
+def find_matching_corporate_project(project, db):
     import re
-    if isinstance(entry, str):
-        project = db['project'].find_by_id(entry)
-        if not project:
-            return entry
-        else:
-            result = {
-                'id': project.data.get('id'),
-                'name': project.data.get('name'),
-                'nlescWebsite': project.data.get('nlescWebsite')
-            }
-
-            if project.data.get('nlescWebsite'):
-                stripped_url = re.sub('https?://', '', project.data.get('nlescWebsite'), 1)
-                corporate_projects = list(iter(db['corporate_project'].all()))
-                matches = list(filter(lambda corporate_project: stripped_url in corporate_project['url'], corporate_projects))
-                if len(matches) > 0:
-                    result['corporate_project'] = matches[0]
-
-            return result
-    return entry
+    if project.data.get('nlescWebsite'):
+        stripped_url = re.sub('https?://', '', project.data.get('nlescWebsite'), 1)
+        corporate_projects = list(iter(db['corporate_project'].all()))
+        matches = list(filter(lambda corporate_project: stripped_url in corporate_project['url'], corporate_projects))
+        if len(matches) > 0:
+            return matches[0]
+    return None
 
 
-def related_software(sw, db):
+def unpack_project(entry, db):
+    if not isinstance(entry, str):
+        return None
+    project = db['project'].find_by_id(entry)
+    if not project:
+        return None
+    return find_matching_corporate_project(project, db)
+
+
+def get_blog_posts(posts, db):
+    import dateparser
+    # splits blogPost mentions into Corporate eScience Blog and other blog
+    all_escience_blog_posts = list(iter(db['corporate_blog'].all()))
+    urls = list(map(lambda x: x['data']['url'], posts))
+    escience_blog_posts = list(filter(lambda x: any([x['id'] in url for url in urls]), all_escience_blog_posts))
+    logger.info([x['id'] for x in all_escience_blog_posts])
+    other_blog_posts = list(filter(
+        lambda x: not any(
+            [post['id'] in x['data']['url'] for post in escience_blog_posts]
+        ), posts))
+
+    for post in escience_blog_posts:
+        format = "%B %d, %Y"
+        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
+
+    return other_blog_posts, escience_blog_posts
+
+def get_related_software(sw, db):
     result = []
     if 'computerProgram' in sw['mentions']:
         for related_program in sw['mentions']['computerProgram']:
@@ -57,16 +75,9 @@ def related_software(sw, db):
 
     return result
 
-def transform(resource, db):
-    for idx, contributor in enumerate(resource['contributor']):
-        resource.data['contributor'][idx] = unpack_person(contributor, db)
-    resource.data['contactPerson'] = unpack_person(resource.data['contactPerson'], db)
-    for idx, organization in enumerate(resource['contributingOrganization']):
-        resource.data['contributingOrganization'][idx] = unpack_organization(organization, db)
 
-    resource['usedInProject'] = [unpack_project(project, db) for project in resource['usedInProject']]
-
-    resource.data['mentions'] = {}
+def get_mentions(resource, db):
+    result = {}
     if 'zoteroKey' in resource.data:
         def has_relation(key, publication):
             if 'dc:relation' in publication['data']['relations']:
@@ -86,11 +97,22 @@ def transform(resource, db):
                 extra_field = item['data']['extra'].lower()
                 if 'itemtype: dataset' in extra_field or 'itemtype:dataset' in extra_field:
                     item_type = 'dataset'
-            if item_type not in resource.data['mentions']:
-                resource.data['mentions'][item_type] = []
-            resource.data['mentions'][item_type].append(item)
+            if item_type not in result:
+                result[item_type] = []
+            result[item_type].append(item)
+    return result
 
-        resource.data['relatedSoftware'] = related_software(resource.data, db)
+def transform(resource, db):
+    resource.data['contactPerson'] = unpack_person(resource.data['contactPerson'], db)
+    resource.data['contributor'] = [unpack_person(contributor, db) for contributor in resource['contributor']]
+    resource.data['contributingOrganization'] = [unpack_organization(organization, db) for organization in resource['contributingOrganization']]
+    resource.data['corporateProjects'] = [unpack_project(project, db) for project in resource['usedInProject'] if project is not None]
+    resource.data['mentions'] = get_mentions(resource, db)
+    if 'blogPost' in resource.data['mentions']:
+        resource.data['mentions']['blogPost'], resource.data['corporateBlogs'] = get_blog_posts(resource.data['mentions']['blogPost'], db)
+        if len(resource.data['mentions']['blogPost']) == 0:
+            del resource.data['mentions']['blogPost']
+    resource.data['relatedSoftware'] = get_related_software(resource.data, db)
 
 def list_entry(software):
     return {
