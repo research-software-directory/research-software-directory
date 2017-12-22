@@ -99,11 +99,13 @@ function initOverview(softwareData) {
                     }
                 }
 
-                if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
-                    return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
-                } else {
-                    return this.filteredSoftware.sort(sortFunction(this.sorts));
-                }
+                return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
+
+                // if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
+                //     return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
+                // } else {
+                //     return this.filteredSoftware.sort(sortFunction(this.sorts));
+                // }
             },
 
             pagedSoftware: function () {
