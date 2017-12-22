@@ -55,7 +55,7 @@
             <p>[[sw.shortStatement]]</p>
             <div class="sortByText">
                 <span v-if="sw.highlighted">
-                    <img class="icon" src="/static/icons/pushpin.svg" />
+                    <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg>
                     <span>Featured</span>
                 </span>
                 <span v-else>[[sw.lastUpdateAgo]]</span>
