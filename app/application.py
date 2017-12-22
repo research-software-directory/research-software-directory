@@ -22,8 +22,7 @@ def format_software(sw):
     sw['lastUpdateAgo'] = 'Last update: ' + ago.human(sw.get('lastUpdate'), precision=1)
 
 def get_blogs():
-    scraper = BlogPostScraper(baseurl="https://blog.esciencecenter.nl/")
-    return scraper.posts
+    return requests.get(api_url + '/corporate_blogs').json()
 
 def get_projects():
     scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
@@ -42,8 +41,6 @@ def index():
         format = "%B %d, %Y"
         post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
 
-    # template_data_json = flask.json.dumps(all_software_dictionary, sort_keys = True, indent = 4)
-    random_integer = random.randint(1, 100)
     return flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
@@ -66,6 +63,10 @@ def software_product_page_template(software_id):
     if ("error" in software_dictionary):
         return flask.redirect("/", code=302)
     set_markdown(software_dictionary, ['statement', 'shortStatement','readMore'])
+
+    for sw in software_dictionary['relatedSoftware']:
+        format_software(sw)
+
     organisation_logos = {"astron": "astron.gif", "cbs-knaw": "cbs-knaw.png", "commit": "commit.png", "cwi": "cwi.png",
                           "dans": "dans.jpg", "deltares": "deltares.jpe", "dtl": "dtl.png", "fugro": "fugro.png",
                           "geodan": "geodan.gif", "huygens": "huygens.png", "icl": "icl.jpg", "ign": "ign.jpg",
@@ -84,26 +85,14 @@ def software_product_page_template(software_id):
         'journalArticle': 'Journal article',
         'presentation': 'Presentation',
         'videoRecording': 'Video recording',
-        'bookSection': 'Book section'
+        'bookSection': 'Book section',
+        'computerProgram': 'Computer program',
+        'blogPost': 'Blog post',
+        'webpage': 'Webpage',
+        'book': 'Book',
+        'newspaperArticle': 'Newspaper article',
+        'conferencePaper': 'Conference paper'
     }
-
-
-    escience_blog_posts = []
-    if 'blogPost' in software_dictionary['mentions']:
-        all_escience_blog_posts = get_blogs()
-        urls = list(map(lambda x: x['data']['url'], software_dictionary['mentions']['blogPost']))
-        escience_blog_posts = list(filter(lambda x: any([x['id'] in url for url in urls]), all_escience_blog_posts))
-        software_dictionary['mentions']['blogPost'] = list(filter(
-            lambda x: not any(
-                [post['id'] in x['data']['url'] for post in escience_blog_posts]
-            ), software_dictionary['mentions']['blogPost']))
-
-        if len(software_dictionary['mentions']['blogPost']) == 0:
-            del software_dictionary['mentions']['blogPost']
-
-    for post in escience_blog_posts:
-        format = "%B %d, %Y"
-        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
 
     software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
     software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
@@ -115,7 +104,7 @@ def software_product_page_template(software_id):
                                  organisation_logos=organisation_logos,
                                  mention_types=mention_types,
                                  commits_data=commits_data,
-                                 escience_blog_posts=escience_blog_posts)
+                                 )
 
 
 def get_citation(citeas_data, format):
@@ -180,18 +169,12 @@ def get_commits_data(software_id):
     if 'github' in report_dictionary:
         commits = report_dictionary['github']['commits']
         if isinstance(commits, list):
-            commits_data = plot_commits.bin_commits_data(commits)
+            commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True))
         else:
             commits_data = commits
     else:
         commits_data = None
-        #if 'exception' in report_dictionary:
-        #    commits_data = {'error': '%s: %s' % (
-        #        str(report_dictionary['exception']['class']),
-        #        str(report_dictionary['exception']['error'])
-        #    )}
-        #else:
-        #    commits_data = None
+
     return commits_data
 
 
@@ -214,6 +197,18 @@ def strfdate(millis):
 @application.template_filter('listNames')
 def listNames(contributors):
     return [c['name'] for c in contributors]
+
+@application.template_filter('pickPI')
+def pickPI(team):
+    pis = list(filter(lambda x: x['role'] == 'Principal Investigator', team))
+    if len(pis) > 0:
+        return pis[0]
+    else:
+        return team[0]
+
+@application.template_filter('noNone')
+def noNone(l):
+    return list(filter(lambda x: x is not None, l))
 
 @application.route('/favicon.ico')
 def serve_favicon():

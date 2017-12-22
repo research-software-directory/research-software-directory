@@ -210,12 +210,21 @@
 
             <div class="col-3-4">
 
-                {% if escience_blog_posts %}
-                <div class="mention_blog-post">
-                    <img src="{{ escience_blog_posts[0].image }}">
-                   <h6>{{ escience_blog_posts[0].title }}</h6>
-                   <h6>{{ escience_blog_posts[0].author }}</h6>
-                   <h6>{{ escience_blog_posts[0]['datetime'] }}</h6>
+                {% if template_data.corporateBlogs %}
+                <div class="mention_blog-post row">
+                    <div class="col-1-3">
+                        <img src="{{ template_data.corporateBlogs[0].image }}">
+                    </div>
+                    <div class="col-2-3">
+                        <div>
+                            <h2 class="subtitle">{{ template_data.corporateBlogs[0].title }}</h2>
+                            <div>By {{ template_data.corporateBlogs[0].author }}</div>
+                            <div>{{ template_data.corporateBlogs[0]['datetime'] | strfdatehuman }}</div>
+                        </div>
+                        <div>
+                            <a href="{{template_data.corporateBlogs[0].url}}">Visit our blog</a>
+                        </div>
+                    </div>
                 </div>
                 {% endif %}
                 <div class="divider"></div>
@@ -256,6 +265,7 @@
 
 
 <!-- Projects -->
+{% if template_data.corporateProjects | noNone %}
 <section class="" id="projects">
     <div class="container">
         <div class="row">
@@ -276,103 +286,71 @@
                 {% endif %}
 
                 <div class="row project_items">
-
+                    {% for project in template_data.corporateProjects | noNone %}
                     <article class="project_item col-1-2">
-                        <div class="content">
-                            <div class="thumb"><img src="http://via.placeholder.com/80x80" alt=""></div>
+                        <a class="content" href="{{project.url}}" target="_blank">
+                            <div class="thumb"><img src="{{project.image}}" alt=""></div>
                             <div class="text">
-                                <h2 class="text-blue">Computational Chemistry Made Easy</h2>
-                                <p>Bringing concepts from distributed computing and bioinformatics to the field of computational chemistry</p>
+                                <h2 class="text-blue">{{project.title}}</h2>
+                                <p>{{project.subtitle}}</p>
                                 <div class="author">
-                                    <div class="author_name">Prof. Lucas Visscher</div>
-                                    <div class="author_university">VU University Amsterdam</div>
+                                    <div class="author_name">{{(project.team | pickPI).name}}</div>
+                                    <div class="author_university">{{(project.team | pickPI).affiliation}}</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
-                    
-                    <article class="project_item col-1-2">
-                        <div class="content">
-                            <div class="thumb"><img src="http://via.placeholder.com/80x80" alt=""></div>
-                            <div class="text">
-                                <h2 class="text-blue">Improving Open-Source Photogrammetric Workflows for Processing Big Datasets</h2>
-                                <p>Processing large datasets on consumer-grade computers</p>
-                                <div class="author">
-                                    <div class="author_name">Dr. Francesco Carlo Nex<div>
-                                    <div class="author_university">University of Twente</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
+{% endif %}
 
 
 
 <!-- Contributors -->
 <section class="bg-light" id="contributors">
     <div class="container">
-
-
-
-
-
-
-
         <div class="row">
             <div class="col-1-4">
                 <h2 class="subtitle text-blue">Contributors</h2>
             </div>
             <div class="col-3-4">
+                {% if template_data.githubid %}
                 <div class="intro">
-                    <p>For bug reports and issues, please use the <a href="#">Github Issues feature</a>. And don’t forget to check the documentation!</p>
+                    <p>For bug reports and issues, please use the <a href="https://github.com/{{template_data.githubid}}/issues">Github Issues feature</a>. And don’t forget to check the documentation!</p>
                 </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-2-3">
                         <div class="row">
                             <div class="col-1-2">
                                 <ul class="contributors_list">
-                                    <li>
-                                        <div class="contributor_name">Felipe Zapata</div>
-                                        <div class="contributor_organisation">Netherlands eScience Center</div>
-                                    </li>
-                                    <li>
-                                        <div class="contributor_name">Mrs. Principal Investigator</div>
-                                        <div class="contributor_organisation">University of Harderwijk</div>
-                                    </li>
-                                    <li>
-                                        <div class="contributor_name">Felipe Zapata</div>
-                                        <div class="contributor_organisation">Netherlands eScience Center</div>
-                                    </li>
+                                    {% for contributor in template_data.contributor[:3] %}
+                                        <li>
+                                            <div class="contributor_name"> {{ contributor.name }}</div>
+                                            <div class="contributor_organisation">Netherlands eScience Center</div>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                             <div class="col-1-2">
                                 <ul class="contributors_list">
+                                    {% for contributor in template_data.contributor[3:6] %}
                                     <li>
-                                        <div class="contributor_name">Johannes Hidding</div>
-                                        <div class="organisation">Netherlands eScience Center</div>
-                                    </li>
-                                    <li>
-                                        <div class="contributor_name">Berend Weel</div>
+                                        <div class="contributor_name"> {{ contributor.name }}</div>
                                         <div class="contributor_organisation">Netherlands eScience Center</div>
                                     </li>
-                                    <li>
-                                        <div class="contributor_name">Johannes Hidding</div>
-                                        <div class="contributor_organisation">Netherlands eScience Center</div>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
-                        <a class="button button--filled-dark" href="#" target="_blank">
-                            <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
-                            <span>Show all contributors</span>
-                        </a>
+                        <!--<a class="button button&#45;&#45;filled-dark" href="#" target="_blank">-->
+                            <!--<span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>-->
+                            <!--<span>Show all contributors</span>-->
+                        <!--</a>-->
                     </div>
                     <div class="col-1-3">
                         <div class="contact_card">
@@ -380,13 +358,12 @@
                                 Contact person
                             </div>
                             <div class="contact_card_content">
-                                <div class="contributor_picture"><img src="http://via.placeholder.com/96x96" alt=""></div>
-                                <div class="contributor_name">Felipe Zapata</div>
+                                <div class="contributor_name">{{ template_data.contactPerson.name }}</div>
                                 <div class="contributor_organisation">Netherlands eScience Center</div>
                                 <div class="contributor_email">
-                                    <a href="mailto:j.hidding@esciencecenter.nl">
+                                    <a href="mailto:{{ template_data.contactPerson.email }}">
                                         <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
-                                        j.hidding@esciencecenter.nl
+                                        {{ template_data.contactPerson.email }}
                                     </a>
                                 </div>
                             </div>
@@ -395,61 +372,12 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-        <!--<div class="subtitle">Creators</div>
-        {% if template_data.contactPerson %}
-        <span class="creators_left">
-            <div class="subsubtitle">Contact person</div>
-            <div class="contactPerson">
-                {% if template_data.contactPerson.website %}
-                <a href="{{template_data.contactPerson.website}}" target="_blank">
-                    {{template_data.contactPerson.name}}
-                </a>
-                {% else %}
-                    {{template_data.contactPerson.name}}
-                {% endif %}
-            </div>
-            <div class="contactEmail">
-            <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-envelope"></use></svg>
-            <a href="mailto:{{template_data.contactPerson.email}}">{{template_data.contactPerson.email}}</a>
-            </div>
-        </span>
-        {% endif %}
-        {% if template_data.contributor %}
-        <span class="creators_right">
-            <div class="subsubtitle">Contributors</div>
-            <div class="flex_container">
-                {% for contributor in template_data.contributor %}
-                {% if contributor.name != template_data.contactPerson.name %}
-                <div class="contributor flex_item">
-                    {% if contributor.linkedInUrl %}
-                    <a href="{{contributor.linkedInUrl}}" target="_blank">
-                        {{contributor.name}}
-                    </a>
-                    {% else %}
-                        {{contributor.name}}
-                    {% endif %}
-                    {% if contributor.affiliation %}
-                    <br>
-                    {{contributor.affiliation}}
-                    {% endif %}
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        {% endif %}
-        </span>
-        -->
-        
-    </div>     
+    </div>
 </section>
 
 
 <!-- Related Tools -->
+{% if template_data.relatedSoftware %}
 <section class="" id="related-tools">
     <div class="container">
         <div class="row">
@@ -458,76 +386,19 @@
             </div>
             <div class="col-3-4">
                 <div id="software_list">
-                    <a href="/software/twinl-website-code" class="">
-                        <h1 class="name">TwiNL: website code</h1>
-                        <div class="code">Tw</div>
-                        <p class="tagline">Access to Dutch tweet statistics</p>
-                        <span class="lastUpdated">63 days ago</span>
+                    {% for tool in template_data.relatedSoftware %}
+                    <a href="/software/{{tool.id}}" class="">
+                        <h1 class="name">{{tool.name}}</h1>
+                        <div class="code">{{tool.code}}</div>
+                        <p class="tagline">{{tool.shortStatement}}</p>
+                        <span class="lastUpdated">{{tool.lastUpdateAgo}}</span>
                     </a>
-                    <a href="/software/pattyvis" class="">
-                        <h1 class="name">Via Appia Visualization</h1>
-                        <div class="code">Vi</div>
-                        <p class="tagline">WebGL pointcloud visualization of the Via Appia</p>
-                        <span class="lastUpdated">100 days ago</span>
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>    
 </section>
-
-<!-- <div class="otherDetails">
-    <div class="flex_container">
-    {% if template_data.doi %}
-        <div class="flex_item">
-            <b>DOI</b>
-            <br>
-            <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a>
-        </div>
-    {% endif %}
-    {% if template_data.updatedAt %}
-        <div class="flex_item">
-            <b>updatedAt</b>
-            <br>
-            {{template_data.updatedAt|strftime}}
-        </div>
-    {% endif %}
-    {% if template_data.license %}
-        <div class="flex_item">
-            <b>License</b>
-            <br>
-            {{", ".join(template_data.license)}}
-        </div>
-    {% endif %}
-    {% if template_data.competence %}
-        <div class="flex_item">
-            <b>Competence</b>
-            <br>
-            {{", ".join(template_data.competence)}}
-        </div>
-    {% endif %}
-    {% if template_data.discipline %}
-        <div class="flex_item">
-            <b>discipline</b>
-            <br>
-            {{", ".join(template_data.discipline)}}
-        </div>
-    {% endif %}
-    {% if template_data.programmingLanguage %}
-        <div class="flex_item">
-            <b>programmingLanguage</b>
-            <br>
-            {{", ".join(template_data.programmingLanguage)}}
-        </div>
-    {% endif %}
-    {% if template_data.technologyTag %}
-        <div class="flex_item">
-            <b>technologyTag</b>
-            <br>
-            {{", ".join(template_data.technologyTag)}}
-        </div>
-    {% endif %}
-    </div>
-</div> -->
+{% endif %}
 
 {% endblock %}
