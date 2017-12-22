@@ -14,6 +14,8 @@ from src.json_response import jsonify
 from src.settings import settings
 
 from src.transformers import software as t_software
+from src.transformers.software import list_entry
+
 
 def get_routes(service_controller, db):
     user = service_controller.user
@@ -43,21 +45,7 @@ def get_routes(service_controller, db):
             resources = list(db['software'].find({'published': True }))
         else:
             resources = list(db['software'].all())
-        result = [{
-            'id': software.data.get('id'),
-            'name': software.data.get('name'),
-            'tagLine': software.data.get('tagLine'),
-            'shortStatement': software.data.get('shortStatement'),
-            'code': software.data.get('name')[0].upper() + software.data.get('name')[1].lower(),
-            'discipline': software.data.get('discipline'),
-            'expertise': software.data.get('expertise'),
-            'tags': software.data.get('tags'),
-            'mentions': randint(0, 50),
-            'commits': randint(0, 3000),
-            'lastUpdate': int(time.time()) - randint(0, 3600*24*365),
-            'highlighted': software.data.get('highlighted') or False,
-            'published': software.data.get('published') or False
-        } for software in resources]
+        result = [list_entry(software) for software in resources]
         return result, 200
 
     @api.route('/latest_mentions', methods=["GET"])
