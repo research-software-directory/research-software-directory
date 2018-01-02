@@ -35,11 +35,42 @@
     <div class="row" v-cloak>
       <div class="col-1-3">
         <div id="filters">
-          <label>Tags</label>
+
+            <!-- <label class="checkbox">
+              <input type="checkbox" name="checkbox" value="value">
+              <div class="indicator"></div>
+              <div class="text">
+                <span class="title">Medisch & farmacie</span>
+              </div>
+            </label> -->
+
+
+          <div class="filter-title">Tags</div>
+            <ul>
+
+              <li v-for="tag in tags">
+                  <label :for="tag" class="checkbox">
+
+                    <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+
+                    <div class="custom-checkbox"></div> 
+
+                    <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+                    
+                  </label>
+              </li>
+
+            </ul>
+          
+
+          <!-- <label>Tags</label>
           <div v-for="tag in tags">
             <input type="checkbox" :id="tag" v-model="filter.tags" :value="tag" />
             <label :for="tag">[[tag]] <b>([[ tagCount[tag] ]])</b></label>
-          </div>
+          </div> -->
+
+
+
         </div>
       </div>
       <div class="col-2-3">

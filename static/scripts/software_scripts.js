@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
 
     $(".mention_button").each(function() {
         $(this).on("click", function() {
@@ -19,17 +20,14 @@ $(document).ready(function() {
 
     $(window).click(function() {
         $('.citation_list').removeClass('active');
-    })
+    });
 
-});
-
-$(document).ready(function() {
 
     function plot_commits(data) {
         var plotid = document.getElementById("commitsPlot");
         var layout = {
             autosize: true,
-            margin: {l:20,r:50,b:40,t:20},
+            margin: {l:35,r:50,b:40,t:20},
             xaxis: {
                 type: 'date',
                 autotick: false,
@@ -48,6 +46,12 @@ $(document).ready(function() {
             color: "rgb(0,163,227)"
         };
         Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true});
+
+        // Resize graph on window resize
+        // ----------------------------------------------------------
+        $( window ).resize(function() {
+            Plotly.Plots.resize(plotid);
+        });
     }
 
     var statid = document.getElementById("commitsStat");

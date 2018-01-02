@@ -33,7 +33,7 @@ def bin_commits_data(commit_data):
             'x': x,
             'y': y,
             'line': {'shape': 'spline'},
-            'fill': 'tonexty'}],
+            'fill': 'none'}],
         'total': total_commits,
         'last': last_commit
         }
