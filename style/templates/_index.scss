@@ -172,23 +172,13 @@
 
 
 #filters {
-  >label {
-    display: block;
-    font-family: $primaryFontBold;
-    margin-bottom: 1em;
-  }
 
-  >div {
-    margin-left: 1em;
-    display: flex;
-    margin-bottom: .5em;
-    input {
-      margin-left: -1em;
-    }
-    label {
-      display: block;
-      margin-left: 1em;
-    }
+  .filter-title{
+    font-family: $primaryFontBold;
+    padding-bottom: 1em;
+  }
+  li{
+    padding: 0.25em 0;
   }
 }
 
