@@ -43,6 +43,7 @@
         p {
             margin-top: .5em;
             margin-bottom: .5em;
+            line-height: 1.5em;
         }
         a {
             text-decoration: underline;
@@ -52,7 +53,7 @@
         }
     }
     &.active>.readMoreContents {
-        max-height: 500px;
+        max-height: 800px;
     }
     >a {
         text-decoration:underline;
