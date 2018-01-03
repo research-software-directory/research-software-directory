@@ -94,7 +94,7 @@ $(document).ready(function() {
         var plotid = document.getElementById("commitsPlot");
         var layout = {
             autosize: true,
-            margin: {l:35,r:50,b:40,t:20},
+            margin: {l:35,r:20,b:40,t:20},
             xaxis: {
                 type: 'date',
                 autotick: false,
