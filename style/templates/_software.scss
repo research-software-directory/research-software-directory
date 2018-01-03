@@ -35,24 +35,27 @@
     padding-bottom: 0.8em;
 }
 
-.readMore {
-    >.readMoreContents {
-        max-height: 0;
-        overflow-y: hidden;
-        transition: max-height 1s;
-        p {
-            margin-top: .5em;
-            margin-bottom: .5em;
+.read-more_button{
+
+    .icon{
+        transition: 0.38s ease-in 0.3s;
+    }
+
+    &.active{
+        .icon{
+            transform: rotate(135deg);
         }
     }
-    &.active>.readMoreContents {
-        max-height: 1000px;
-    }
-    >a {
-        text-decoration:underline;
-        cursor:pointer;
+}
+.read-more_content {
+    overflow: hidden;
+    transition: height 0.48s ease-in-out;
+
+    p{
+        margin-bottom: 1em;
     }
 }
+
 
 .highlight-data{
     width: 100%;
@@ -173,8 +176,6 @@
 }
 
 .specifications{
-
-   
 
     .icon{
         width: 17px;
