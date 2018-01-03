@@ -123,23 +123,29 @@
 
 {% if blog_posts %}
 <section id="escience_blog" class="row bg-dark">
-  <div class="col-1-4">
-    <p class="subtitle text-blue">From the eScience blog</p>
-    <a class="button button--filled-blue" href="https://blog.esciencecenter.nl" target="_blank">
-      Visit our blog
-    </a>
-  </div>
-  <div class="col-3-4">
+  <div class="container">
     <div class="row">
-      {% for post in blog_posts %}
-        <a class="col-1-2 blog_post" href="{{post.url}}">
-          <img src="{{post.image}}">
-          <p>By {{post.author}} | {{ post.datetime }}</p>
-          <p class="title">{{post.title}}</p>
-        </a>
-      {% endfor %}
+      <div class="col-1-4">
+          <p class="subtitle text-blue">From the eScience blog</p>
+          <a class="button button--filled-blue" href="https://blog.esciencecenter.nl" target="_blank">
+              <span>Visit our blog</span>
+              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-external"></use></svg></span>
+          </a>
+        </div>
+        <div class="col-3-4">
+          <div class="row">
+            {% for post in blog_posts %}
+              <a class="col-1-2 blog_post" href="{{post.url}}">
+                <div class="image-container">
+                    <img src="{{post.image}}">
+                </div>
+                <p class="author">By {{post.author}} | {{ post.datetime }}</p>
+                <p class="title">{{post.title}}</p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
     </div>
-
   </div>
 </section>
 {% endif %}

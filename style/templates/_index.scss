@@ -195,19 +195,37 @@
   .blog_post {
     padding: 1em;
     display: block;
+
+    &:not(:last-child){
+      margin-bottom: 10px;
+    }
+    .author{
+      font-size: 1.5rem;
+      padding: 0.4em 0;
+    }
     .title {
-      font-size: 2rem;
+      font-size: 2.4rem;
+      line-height: 1.3;
     }
     &:hover {
       .title {
-        text-decoration: underline;
+        color: $primaryColor;
+      }
+      img{
+        transform: scale(1.03);
       }
     }
-    img {
+    .image-container{
+      overflow: hidden;
+      height: 260px;
+      margin-bottom: 15px;
+    }
+    img{
+      transition: transform 0.27s ease-in-out;
       overflow: hidden;
       object-fit: cover;
       width: 100%;
-      height: 300px;
+      height: 100%;
     }
   }
 }
