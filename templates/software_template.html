@@ -216,12 +216,21 @@
 
             <div class="col-3-4">
 
-                {% if escience_blog_posts %}
-                <div class="mention_blog-post">
-                    <img src="{{ escience_blog_posts[0].image }}">
-                   <h6>{{ escience_blog_posts[0].title }}</h6>
-                   <h6>{{ escience_blog_posts[0].author }}</h6>
-                   <h6>{{ escience_blog_posts[0]['datetime'] }}</h6>
+                {% if template_data.corporateBlogs %}
+                <div class="mention_blog-post row">
+                    <div class="col-1-3">
+                        <img src="{{ template_data.corporateBlogs[0].image }}">
+                    </div>
+                    <div class="col-2-3">
+                        <div>
+                            <h2 class="subtitle">{{ template_data.corporateBlogs[0].title }}</h2>
+                            <div>By {{ template_data.corporateBlogs[0].author }}</div>
+                            <div>{{ template_data.corporateBlogs[0]['datetime'] | strfdatehuman }}</div>
+                        </div>
+                        <div>
+                            <a href="{{template_data.corporateBlogs[0].url}}">Visit our blog</a>
+                        </div>
+                    </div>
                 </div>
                 {% endif %}
                 
@@ -263,6 +272,7 @@
 
 
 <!-- Projects -->
+{% if template_data.corporateProjects | noNone %}
 <section class="" id="projects">
     <div class="container">
         <div class="row">
@@ -288,11 +298,11 @@
                         <div class="content">
                             <div class="thumb"><img src="http://via.placeholder.com/80x80" alt=""></div>
                             <div class="text">
-                                <h2 class="text-blue">Computational Chemistry Made Easy</h2>
-                                <p>Bringing concepts from distributed computing and bioinformatics to the field of computational chemistry</p>
+                                <h2 class="text-blue">{{project.title}}</h2>
+                                <p>{{project.subtitle}}</p>
                                 <div class="author">
-                                    <div class="author_name">Prof. Lucas Visscher</div>
-                                    <div class="author_university">VU University Amsterdam</div>
+                                    <div class="author_name">{{(project.team | pickPI).name}}</div>
+                                    <div class="author_university">{{(project.team | pickPI).affiliation}}</div>
                                 </div>
                             </div>
                         </div>
@@ -311,26 +321,25 @@
                             </div>
                         </div>
                     </article>
-                    
+                
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
+{% endif %}
 
 
 
 <!-- Contributors -->
 <section class="bg-light" id="contributors">
     <div class="container">
-
         <div class="row">
             <div class="col col-1-4">
                 <h2 class="subtitle text-blue">Contributors</h2>
             </div>
             <div class="col-3-4">
+                {% if template_data.githubid %}
                 <div class="intro">
                     <p>For bug reports and issues, please use the <a href="{{template_data.mainUrl}}/issues" target="_blank">Github Issues feature</a>. And don’t forget to check the documentation!</p>
                 </div>
@@ -400,6 +409,7 @@
                     {% endif %}
 
                 </div>
+                {% endif %}
             </div>
         </div>
 
@@ -410,6 +420,7 @@
 
 
 <!-- Related Tools -->
+{% if template_data.relatedSoftware %}
 <section class="" id="related-tools">
     <div class="container">
         <div class="row">
@@ -418,76 +429,19 @@
             </div>
             <div class="col-3-4">
                 <div id="software_list">
-                    <a href="/software/twinl-website-code" class="">
-                        <h1 class="name">TwiNL: website code</h1>
-                        <div class="code">Tw</div>
-                        <p class="tagline">Access to Dutch tweet statistics</p>
-                        <span class="lastUpdated">63 days ago</span>
+                    {% for tool in template_data.relatedSoftware %}
+                    <a href="/software/{{tool.id}}" class="">
+                        <h1 class="name">{{tool.name}}</h1>
+                        <div class="code">{{tool.code}}</div>
+                        <p class="tagline">{{tool.shortStatement}}</p>
+                        <span class="lastUpdated">{{tool.lastUpdateAgo}}</span>
                     </a>
-                    <a href="/software/pattyvis" class="">
-                        <h1 class="name">Via Appia Visualization</h1>
-                        <div class="code">Vi</div>
-                        <p class="tagline">WebGL pointcloud visualization of the Via Appia</p>
-                        <span class="lastUpdated">100 days ago</span>
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>    
 </section>
-
-<!-- <div class="otherDetails">
-    <div class="flex_container">
-    {% if template_data.doi %}
-        <div class="flex_item">
-            <b>DOI</b>
-            <br>
-            <a href="http://dx.doi.org/{{template_data.doi}}" target="_blank">{{template_data.doi}}</a>
-        </div>
-    {% endif %}
-    {% if template_data.updatedAt %}
-        <div class="flex_item">
-            <b>updatedAt</b>
-            <br>
-            {{template_data.updatedAt|strftime}}
-        </div>
-    {% endif %}
-    {% if template_data.license %}
-        <div class="flex_item">
-            <b>License</b>
-            <br>
-            {{", ".join(template_data.license)}}
-        </div>
-    {% endif %}
-    {% if template_data.competence %}
-        <div class="flex_item">
-            <b>Competence</b>
-            <br>
-            {{", ".join(template_data.competence)}}
-        </div>
-    {% endif %}
-    {% if template_data.discipline %}
-        <div class="flex_item">
-            <b>discipline</b>
-            <br>
-            {{", ".join(template_data.discipline)}}
-        </div>
-    {% endif %}
-    {% if template_data.programmingLanguage %}
-        <div class="flex_item">
-            <b>programmingLanguage</b>
-            <br>
-            {{", ".join(template_data.programmingLanguage)}}
-        </div>
-    {% endif %}
-    {% if template_data.technologyTag %}
-        <div class="flex_item">
-            <b>technologyTag</b>
-            <br>
-            {{", ".join(template_data.technologyTag)}}
-        </div>
-    {% endif %}
-    </div>
-</div> -->
+{% endif %}
 
 {% endblock %}

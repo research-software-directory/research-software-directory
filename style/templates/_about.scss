@@ -1,25 +1,24 @@
-.textPage {
-  h1 {
+#about {
+  >h1 {
     font-size: 4rem;
-    margin-top: .5em;
+    margin-top: 1.5em;
     margin-bottom: 1em;
   }
-  h2 {
-    color: $primaryColor;
+  >h2 {
     font-size: 2em;
     margin-top: 1em;
     margin-bottom: .5em;
   }
-  p {
+  >p {
     margin-top: .5em;
     margin-bottom: .5em;
+    line-height: 1.5em;
   }
-  ul {
+  >ul {
     list-style: inside;
   }
-  ol {
+  >ol {
     list-style: decimal inside;
   }
-
   margin-bottom: 2em;
 }
