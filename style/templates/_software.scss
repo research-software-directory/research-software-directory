@@ -238,7 +238,7 @@ section{
         li{
             margin: 2px;
             padding: 0.5em 0.8em 0.6em 0.8em;  
-            background-color: darken( $light, 1% );
+            background-color: darken( $light, 2% );
         }
     }
 }
@@ -456,6 +456,12 @@ section{
             width: 100%;
         }
 
+        &:hover{
+            color: $primaryColor!important;
+            .thumb{
+                transform: scale(1.03);
+            }
+        }
     }
 
     .content {
@@ -463,6 +469,7 @@ section{
         padding-right: 1em;
 
         .thumb {
+            transition: 0.25s ease-in;
             flex-shrink: 0;
             padding: 0 1em 1em 0;
             width: 100px;
