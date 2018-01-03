@@ -302,6 +302,27 @@ section{
         margin-top: 15px;
         margin-bottom: 15px;
     }
+    .mention_blog-post {
+        a {
+            text-decoration: underline;
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+        >div:first-child {
+            height: 250px;
+            >img {
+                height: 100%;
+            }
+        }
+        >div:last-child {
+            padding-left: 1em;
+            padding-right: 1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
 }
 
 .mention{
@@ -444,6 +465,8 @@ section{
         .thumb {
             flex-shrink: 0;
             padding: 0 1em 1em 0;
+            width: 100px;
+            height: 100px;
         }
         h2 {
             font-size: 2rem;
