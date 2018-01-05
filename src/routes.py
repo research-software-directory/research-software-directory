@@ -81,6 +81,7 @@ def get_routes(service_controller, db):
     @api.route('/github_auth')
     def _github_auth():
         return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s' % settings['GITHUB_CLIENT_ID'])
+        # return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s&scope=read:org' % settings['GITHUB_CLIENT_ID'])
 
     @api.route('/get_access_token/<token>')
     @jsonify
