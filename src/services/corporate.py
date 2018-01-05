@@ -1,5 +1,5 @@
 import logging
-from src.scraper.Scraper import BlogPostScraper, ProjectScraper
+from src.scraper.Scraper import BlogPostScraper, ProjectScraper, PersonScraper
 
 logger = logging.getLogger(__name__)
 
@@ -12,6 +12,10 @@ def get_projects():
         include_deep_info=True)
     return scraper.projects
 
+
+def get_people():
+    scraper = PersonScraper(baseurl="https://www.esciencecenter.nl/people")
+    return scraper.people
 
 class CorporateService:
     def __init__(self, db):
@@ -33,4 +37,14 @@ class CorporateService:
         for project in projects:
             record = self.db['corporate_project'].new()
             record.data.update(project)
+            record.save()
+
+
+    def sync_people(self):
+        people = get_people()
+        self.db['corporate_person'].drop()
+
+        for person in people:
+            record = self.db['corporate_person'].new()
+            record.data.update(person)
             record.save()

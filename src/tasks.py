@@ -41,6 +41,11 @@ def projects_sync():
     service_controller.corporate.sync_projects()
 
 @app.task
+def people_sync():
+    logger.info('Syncing people')
+    service_controller.corporate.sync_people()
+
+@app.task
 def report_all():
     i = 1
     softwares = db.software.all()

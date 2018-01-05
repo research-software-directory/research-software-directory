@@ -14,3 +14,4 @@ redis==2.10.6
 uwsgi==2.0.15
 beautifulsoup4==4.6.0
 dateparser==0.6.0
+pytest==3.3.2

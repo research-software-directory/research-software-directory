@@ -26,6 +26,26 @@ class AbstractScraper:
         self.soup = BeautifulSoup(self.html, 'html.parser')
 
 
+class PersonScraper(AbstractScraper):
+    def __init__(self, baseurl):
+        super().__init__(baseurl)
+        self.people = []
+        self.get_people()
+
+    def get_people(self):
+        people_soup = self.soup.find_all('div', class_="teamMember")
+        for idx, people_soup in enumerate(people_soup):
+            person = dict()
+
+            person['name'] = people_soup.find('div', class_='name').string.strip()
+            person['function'] = people_soup.find('div', class_='function').string.strip()
+            person['url'] = people_soup.find('a', class_='name').attrs["href"]
+            img_style = people_soup.find('span', class_='circularImage').attrs["style"]
+            person['image'] = re.findall('background:url\(\'(.*?)\'\)', img_style)[0]
+
+            self.people.append(person)
+
+
 class BlogPostScraper(AbstractScraper):
     def __init__(self, baseurl):
         super().__init__(baseurl)
@@ -81,7 +101,7 @@ class ProjectScraper(AbstractScraper):
                 print(project["url"])
                 r = requests.get(project["url"])
                 if r.status_code != 200:
-                    raise Exception("Something went wrong while retrieving the page.")
+                    raise Exception("Something went wrong while retrieving the page. url:" + project["url"])
                 else:
                     project_soup = BeautifulSoup(r.text, 'html.parser')
                 teams_soup = project_soup.find_all("div", class_="team")
