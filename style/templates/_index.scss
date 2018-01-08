@@ -134,10 +134,33 @@
       width: calc(100% - 70px);
       padding-right: 5px;
     }
-    .sortByText {
+    .software_data{
       margin-top: auto;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+
+      .last-update{
+        flex-shrink: 0;
+      }
+      .highlighted{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .icon{
+          width: 1.1em;
+          height: 1.1em;
+          fill: currentColor;
+          margin-right: 0.5em;
+          margin-top: -0.25em;
+        }
+      }
+
     }
+    
 
     .code {
       position: absolute;
@@ -154,14 +177,6 @@
       align-items: center;
     }
 
-    .icon {
-      height: 2.5rem;
-      width: 2.5rem;
-      position: relative;
-      top: 0.5rem;
-      left: 0.5rem;
-      display: inline-block;
-    }
 
     // .software-item
     @include bp( max, $tablet ){
@@ -203,6 +218,7 @@
     &:hover:not(.active):not(.gap) {
       background-color: $primaryColor;
       cursor: pointer;
+      color: white;
     }
     &.active {
       background-color: $black;
