@@ -60,6 +60,8 @@ function initOverview(softwareData, organizationsData) {
                 tags: [],
                 organizations: []
             },
+            tagsFilterOpen: getDevice() !== device.phone,
+            organizationsFilterOpen: getDevice() !== device.phone,
             sort: 'Last updated',
             device: getDevice(),
             page: 1,

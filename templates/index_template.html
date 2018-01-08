@@ -41,8 +41,13 @@
 
       <div class="col-1-4" id="filters">
 
-        <div class="filter-title">Tags</div>
-        <ul class="filter-list">
+        <div class="filter-title">
+          Tags
+          <span @click="tagsFilterOpen = !tagsFilterOpen" class="button button--outlined">
+            [[ tagsFilterOpen ? 'Hide' : 'Show' ]]
+          </span>
+        </div>
+        <ul class="filter-list" v-if="tagsFilterOpen">
           <li v-for="tag in tags">
               <label :for="tag" class="checkbox">
                 <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
@@ -52,8 +57,13 @@
           </li>
         </ul>
 
-        <div class="filter-title">Partner organization</div>
-        <ul class="filter-list">
+        <div class="filter-title">
+          Partner organizations
+          <span @click="organizationsFilterOpen = !organizationsFilterOpen" class="button button--outlined">
+            [[ organizationsFilterOpen ? 'Hide' : 'Show' ]]
+          </span>
+        </div>
+        <ul v-if="organizationsFilterOpen" class="filter-list">
           <li v-for="org in organizationsWithCount">
               <label :for="org.id" class="checkbox">
                 <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
