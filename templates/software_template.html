@@ -11,11 +11,11 @@
 <meta property="og:site_name" content="Research Software Directory" />
 
 {{super()}}
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
 <script>
     var commitsData = {{ commits_data }};
 </script>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
 {% endblock %}
 {% block title %}{{template_data.name}}{% endblock %}
@@ -242,7 +242,7 @@
                         <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
-                    <div class="mention_list">
+                    <div class="mention_list" style="height: 0">
                         <ul>
                         {% for item in value %}
                             <li>
