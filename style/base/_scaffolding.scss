@@ -20,6 +20,8 @@ body {
 
 .icon{
     display:block;
+    color: inherit;
+    fill: currentColor;
 }
 
 /* ids */
@@ -53,8 +55,11 @@ section{
     width: 100%;
     max-width: $contentWidth;
     margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 40px;
+
+    @include bp(max, $tablet){
+        padding: 0 6vw;
+    }
     // &--flex{
     //     display: flex;
     // }

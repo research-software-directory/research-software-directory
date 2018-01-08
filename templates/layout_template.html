@@ -19,6 +19,8 @@
 
                 gtag('config', 'UA-111275282-1');
             </script>
+
+            
         {% endblock %}
     </head>
 
@@ -29,7 +31,7 @@
                 <div class="container">
                     <div>
                         <div id="header_logo">
-                            <a href="https://www.esciencecenter.nl" target="_blank">
+                            <a href="/">
                                 {% include 'logo.html' %}
                             </a>
                         </div>
@@ -56,5 +58,7 @@
             {% include 'footer_template.html' %}
         </div>
     </body>
+
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/scrollMonitor.js')}}"></script>
 </html>
 
