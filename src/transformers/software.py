@@ -146,5 +146,6 @@ def list_entry(software):
         'tags': software.data.get('tags'),
         'lastUpdate': software.data.get('updatedAt'),
         'highlighted': software.data.get('highlighted') or False,
-        'published': software.data.get('published') or False
+        'published': software.data.get('published') or False,
+        'contributingOrganization': software.data.get('contributingOrganization') or []
     }
