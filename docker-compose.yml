@@ -9,6 +9,7 @@ services:
 
   redis:
     image: "redis:alpine"
+    command: --save "" --appendonly no
 
   celeryworker:
     build:
