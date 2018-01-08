@@ -97,12 +97,13 @@
           <h2 class="name">[[sw.name]]</h2>
           <p class="short">[[sw.shortStatement]]</p>
           
-          <div class="sortByText">
-              <span v-if="sw.highlighted">
-                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg>
-                  <span>Featured</span>
-              </span>
-              <span v-else>[[sw.lastUpdateAgo]]</span>
+          <div class="software_data">
+              <span class="last-update">[[sw.lastUpdateAgo]]</span>
+
+              <div v-if="sw.highlighted" class="highlighted">
+                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#featured"></use></svg>
+                <span>Featured</span>
+              </div>
           </div>
         </a>
 
