@@ -10,7 +10,8 @@ def unpack_person(entry, db):
                 'id': person.data.get('id'),
                 'name': person.data.get('name'),
                 'website': person.data.get('website'),
-                'email': person.data.get('email')
+                'email': person.data.get('email'),
+                'organization': 'Netherlands eScience Center',
             }
     return entry
 
