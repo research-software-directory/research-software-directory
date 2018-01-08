@@ -52,41 +52,20 @@
           </li>
         </ul>
 
-        <div class="filter-title">Partner organization !dummy</div>
+        <div class="filter-title">Partner organization</div>
         <ul class="filter-list">
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+          <li v-for="org in organizationsWithCount">
+              <label :for="org.id" class="checkbox">
+                <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
                 <div class="custom-checkbox"></div> 
-                <span class="text">TU Delft <strong>(12)</strong></span>
-              </label>
-          </li>
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">KNMI <strong>(7)</strong></span>
-              </label>
-          </li>
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">TU Delft <strong>(3)</strong></span>
-              </label>
-          </li>
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">KNMI <strong>(15)</strong></span>
+                <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
               </label>
           </li>
         </ul>
-        <div class="more-filters text-blue">
-          <span>+</span>
-          <span>More</span>
-        </div>
+        <!--<div class="more-filters text-blue">-->
+          <!--<span>+</span>-->
+          <!--<span>More</span>-->
+        <!--</div>-->
       </div>
       
 
@@ -218,6 +197,6 @@
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/index_scripts.js') }}"></script>
 <script>
-  initOverview({{data_json}});
+  initOverview({{data_json}},{{organizations}});
 </script>
 {% endblock %}
