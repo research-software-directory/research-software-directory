@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <!--
+    
     <div id="sorter">
       <label>Sort by:</label>
       <select v-model="sort">
@@ -35,89 +35,107 @@
         <option>Baz</option>
       </select>
     </div>
-    -->
+   
 
     <div class="row" v-cloak>
-      <div class="col-1-3">
-        <div id="filters">
 
-            <!-- <label class="checkbox">
-              <input type="checkbox" name="checkbox" value="value">
-              <div class="indicator"></div>
-              <div class="text">
-                <span class="title">Medisch & farmacie</span>
-              </div>
-            </label> -->
+      <div class="col-1-4" id="filters">
 
+        <div class="filter-title">Tags</div>
+        <ul class="filter-list">
+          <li v-for="tag in tags">
+              <label :for="tag" class="checkbox">
+                <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+                <div class="custom-checkbox"></div> 
+                <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+              </label>
+          </li>
+        </ul>
 
-          <div class="filter-title">Tags</div>
-            <ul>
+        <div class="filter-title">Partner organization !dummy</div>
+        <ul class="filter-list">
+          <li>
+              <label for="dummytag" class="checkbox">
+                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                <div class="custom-checkbox"></div> 
+                <span class="text">TU Delft <strong>(12)</strong></span>
+              </label>
+          </li>
+          <li>
+              <label for="dummytag" class="checkbox">
+                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                <div class="custom-checkbox"></div> 
+                <span class="text">KNMI <strong>(7)</strong></span>
+              </label>
+          </li>
+          <li>
+              <label for="dummytag" class="checkbox">
+                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                <div class="custom-checkbox"></div> 
+                <span class="text">TU Delft <strong>(3)</strong></span>
+              </label>
+          </li>
+          <li>
+              <label for="dummytag" class="checkbox">
+                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                <div class="custom-checkbox"></div> 
+                <span class="text">KNMI <strong>(15)</strong></span>
+              </label>
+          </li>
+        </ul>
+        <div class="more-filters text-blue">
+          <span>+</span>
+          <span>More</span>
+        </div>
+      </div>
+      
 
-              <li v-for="tag in tags">
-                  <label :for="tag" class="checkbox">
+      <div class="col-3-4" id="software_list">
 
-                    <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-
-                    <div class="custom-checkbox"></div> 
-
-                    <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-                    
-                  </label>
-              </li>
-
-            </ul>
+        <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" class="software_item" :class="{ highlighted: sw.highlighted }">
+          <div class="code">[[sw.code]]</div>
+          <h2 class="name">[[sw.name]]</h2>
+          <p class="short">[[sw.shortStatement]]</p>
           
+          <div class="sortByText">
+              <span v-if="sw.highlighted">
+                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg>
+                  <span>Featured</span>
+              </span>
+              <span v-else>[[sw.lastUpdateAgo]]</span>
+          </div>
+        </a>
 
-          <!-- <label>Tags</label>
-          <div v-for="tag in tags">
-            <input type="checkbox" :id="tag" v-model="filter.tags" :value="tag" />
-            <label :for="tag">[[tag]] <b>([[ tagCount[tag] ]])</b></label>
-          </div> -->
-
-
-
-        </div>
-      </div>
-      <div class="col-2-3">
-        <div id="software_list">
-          <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" :class="{ highlighted: sw.highlighted }">
-            <h1 class="name">[[sw.name]]</h1>
-            <div class="code">[[sw.code]]</div>
-            <p>[[sw.shortStatement]]</p>
-            <div class="sortByText">
-                <span v-if="sw.highlighted">
-                    <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#push-pin"></use></svg>
-                    <span>Featured</span>
-                </span>
-                <span v-else>[[sw.lastUpdateAgo]]</span>
-            </div>
-            </span>
-          </a>
-        </div>
         <div v-if="pagedSoftware.length === 0">
-          No results for <i>[[ filter.search ]]</i>
-        </div>
-        <div class="pagination" v-else>
-          <span @click="page = page > 1 ? page - 1 : page">
-            &lt;
-          </span>
-          <template v-for="i in lastPage">
-            <span
-              v-if="showPage(i)"
-              @click="page = i"
-              :class="{ active: page === i }"
-            >
-              [[ i ]]
+            No results for <i>[[ filter.search ]]</i>
+          </div>
+    
+          <div class="pagination" v-else>
+            <span @click="page = page > 1 ? page - 1 : page">
+              &lt;
             </span>
-            <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
-              ...
+    
+            <template v-for="i in lastPage">
+              <span
+                v-if="showPage(i)"
+                @click="page = i"
+                :class="{ active: page === i }"
+              >
+                [[ i ]]
+              </span>
+              <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
+                ...
+              </span>
+            </template>
+    
+            <span @click="page = page < lastPage ? page + 1 : page">
+              &gt;
             </span>
-          </template>
-          <span @click="page = page < lastPage ? page + 1 : page">
-            &gt;
-          </span>
-        </div>
+    
+          </div>
+
       </div>
+
     </div>
   </div>
 
@@ -125,17 +143,19 @@
 <section id="escience_blog" class="row bg-dark">
   <div class="container">
     <div class="row">
+
       <div class="col-1-4">
           <p class="subtitle text-blue">From the eScience blog</p>
-          <a class="button button--filled-blue" href="https://blog.esciencecenter.nl" target="_blank">
+          <a class="button button--outlined" href="https://blog.esciencecenter.nl" target="_blank">
               <span>Visit our blog</span>
               <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-external"></use></svg></span>
           </a>
         </div>
+
         <div class="col-3-4">
-          <div class="row">
+          <div class="row blog_post-list">
             {% for post in blog_posts %}
-              <a class="col-1-2 blog_post" href="{{post.url}}">
+              <a class="col blog_post" href="{{post.url}}" target="_blank">
                 <div class="image-container">
                     <img src="{{post.image}}">
                 </div>
@@ -145,6 +165,7 @@
             {% endfor %}
           </div>
         </div>
+
     </div>
   </div>
 </section>
@@ -152,31 +173,42 @@
 
 
 {% if latest_mentions %}
-  <section id="latest_mentions" class="container row">
-    <div class="col-1-3 left subtitle text-blue">
-      Latest mentions
-    </div>
-    <div class="col-2-3 right">
-      <ul>
-        {% for mention in latest_mentions %}
-        <li>
-          <div class="mentionTitle">
-            <b>{% if mention.data.url %}
-              <a href="{{mention.data.url}}" target="_blank">
-                {{mention.data.title}}
-                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
-              </a>
-              {% else %}
-                {{mention.data.title}}
-              {% endif %}</b> <br/>
-            {{ mention.updatedAt | strfdatehuman }}
-          </div>
-          <div class="mentionLocation">
-            {{ mention.data.meetingName if 'meetingName' in mention.data else '' }}
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
+  <section id="latest_mentions">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-1-3 subtitle text-blue">
+          Latest mentions
+        </div>
+    
+        <div class="col-2-3">
+          <ul>
+            {% for mention in latest_mentions %}
+            <li class="row">
+    
+              <div class="col mention_info">
+                <div class="mention_title">
+                    {% if mention.data.url %}
+                    <a href="{{mention.data.url}}" target="_blank">
+                      {{mention.data.title}}
+                      <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+                    </a>
+                    {% else %}
+                        {{mention.data.title}}
+                    {% endif %}
+                  </div>
+        
+                  <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+              </div>
+    
+              <div class="col mention_date">{{ mention.updatedAt | strfdatehuman }}</div>
+    
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
     </div>
   </section>
 {% endif %}

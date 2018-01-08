@@ -69,7 +69,7 @@
             
             {% if template_data.mainUrl %}
             <div class="col col-1-4">
-                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span>Get started</span><span><svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
+                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span class="button_text">Get started</span><span class="button_icon"><svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
             </div>
             {% endif %}
 
@@ -211,7 +211,7 @@
         
         <div class="row">
             <div class="col-1-4">
-                <h2 class="subtitle text-blue">Mentions</h2>
+                <h2 class="subtitle">Mentions</h2>
             </div>
 
             <div class="col-3-4">
@@ -239,20 +239,26 @@
                 {% for key, value in template_data.mentions.items() %}
                 <div class="mention">
                     <div class="mention_button">
-                        <h3><span class="amount">{{value|length}}</span>{{mention_types.get(key, key)}}</h3>
+                        <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
-                    <div class="mention_text">
+                    <div class="mention_list">
                         <ul>
                         {% for item in value %}
                             <li>
                             {% if item.data.url %}
-                                <a href="{{item.data.url}}" target="_blank">
-                                {{item.data.title}}
-                                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
-                                </a>
+
+                            <a href="{{item.data.url}}" target="_blank">
+                                <div class="mention_title">{{item.data.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
+                                
+                                <div class="mention_post-date">Dummydate 7, 2016</div> 
+                            </a>
+
                             {% else %}
-                                {{item.data.title}}
+
+                                <div class="mention_title">{{item.data.title}}</div> 
+                                <div class="mention_post-date">Dummydate 7, 2016</div> 
+
                             {% endif %}
                             </li>
                         {% endfor %}
@@ -283,12 +289,12 @@
                 {% if template_data.testimonial %}
                 <div class="testimonial">
                     <blockquote>
-                        {{template_data.testimonial}}
+                    {{template_data.testimonial}}
                     </blockquote>
                 </div>
 
                 <div class="testimonialby">
-                    - {{template_data.testimonialBy}}
+                    – {{template_data.testimonialBy}}, Dummy organisation
                 </div>
                 {% endif %}
 
@@ -359,9 +365,13 @@
                                         {{contributor.name}}
                                     {% endif %}
                                 </div>
-                                {% if contributor.affiliation %}
+
+                                <div class="contributor_organisation">Dummy organisation</div>
+
+                                <!-- {% if contributor.affiliation %}
                                 <div class="contributor_organisation">{{contributor.affiliation}}</div>
-                                {% endif %}
+                                {% endif %} -->
+
                             </li>
                             {% endfor %}
                         </ul>
@@ -395,7 +405,7 @@
                             {% endif %}
                             </div>
                             
-                            <div class="contributor_organisation">Netherlands eScience Center</div>
+                            <div class="contributor_organisation">Dummy organisation</div>
                             <div class="contributor_email">
                                 <a href="mailto:{{template_data.contactPerson.email}}">
                                     <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
