@@ -38,6 +38,13 @@ def get_routes(service_controller, db):
             result[resource_type] = list(db[resource_type].all())
         return result, 200
 
+    @api.route('/organizations', methods=["GET"])
+    @jsonify
+    def _get_organizations():
+        resources = list(db['organization'].all())
+        # result = [list_entry(software) for software in resources]
+        return resources, 200
+
     @api.route('/software', methods=["GET"])
     @jsonify
     def _get_software():
