@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 // tslint:disable-next-line:no-import-side-effect
 import 'rxjs';
-import { register as registerServiceWorker } from './services/registerServiceWorker';
 import { Provider } from 'react-redux';
 import ReduxToastr from 'react-redux-toastr';
 
@@ -34,4 +33,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWorker();
