@@ -6,14 +6,33 @@ def unpack_person(entry, db):
     if isinstance(entry, str):
         person = db['person'].find_by_id(entry)
         if person:
-            return {
+            unpacked_person = {
                 'id': person.data.get('id'),
                 'name': person.data.get('name'),
                 'website': person.data.get('website'),
                 'email': person.data.get('email'),
-                'organization': 'Netherlands eScience Center',
+                'organization': 'Netherlands eScience Center'
             }
+            corporate_person = find_matching_corporate_person(person, db)
+            if corporate_person:
+                unpacked_person['image'] = corporate_person.data.get('image')
+                unpacked_person['website'] = corporate_person.data.get('url')
+                unpacked_person['function'] = corporate_person.data.get('function')
+                unpacked_person['name'] = corporate_person.data.get('name')
+            return unpacked_person
     return entry
+
+
+def find_matching_corporate_person(person, db):
+    import re
+    if person.data.get('nlescWebsite'):
+        stripped_url = re.sub('https?://', '', person.data.get('nlescWebsite'), 1)
+        corporate_people = list(iter(db['corporate_person'].all()))
+        matches = list(filter(lambda corporate_person: stripped_url in corporate_person['url'], corporate_people))
+        if len(matches) > 0:
+            return matches[0]
+    return None
+
 
 def unpack_organization(entry, db):
     if isinstance(entry, str):

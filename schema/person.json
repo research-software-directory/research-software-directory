@@ -32,11 +32,6 @@
       "description": "ID of the person. e.g., s.verhoeven.",
       "type": "string"
     },
-    "photo": {
-      "format": "uri",
-      "description": "Person's portrait.",
-      "type": "string"
-    },
     "researchgateUrl": {
       "format": "uri",
       "type": "string",
