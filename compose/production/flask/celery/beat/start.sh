@@ -4,6 +4,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+touch /app/celerybeat.pid
 rm /app/celerybeat.pid
 
 #celery -A seedorf.taskapp beat -l INFO
