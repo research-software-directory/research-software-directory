@@ -109,31 +109,31 @@
 
         <div v-if="pagedSoftware.length === 0">
             No results for <i>[[ filter.search ]]</i>
-          </div>
+        </div>
     
-          <div class="pagination" v-else>
-            <span @click="page = page > 1 ? page - 1 : page">
-              &lt;
+        <div class="pagination" v-else>
+          <span @click="page = page > 1 ? page - 1 : page">
+            &lt;
+          </span>
+
+          <template v-for="i in lastPage">
+            <span
+              v-if="showPage(i)"
+              @click="page = i"
+              :class="{ active: page === i }"
+            >
+              [[ i ]]
             </span>
-    
-            <template v-for="i in lastPage">
-              <span
-                v-if="showPage(i)"
-                @click="page = i"
-                :class="{ active: page === i }"
-              >
-                [[ i ]]
-              </span>
-              <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
-                ...
-              </span>
-            </template>
-    
-            <span @click="page = page < lastPage ? page + 1 : page">
-              &gt;
+            <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
+              ...
             </span>
-    
-          </div>
+          </template>
+
+          <span @click="page = page < lastPage ? page + 1 : page">
+            &gt;
+          </span>
+
+        </div>
 
       </div>
 
