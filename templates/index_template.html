@@ -43,109 +43,58 @@
         
         <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
           <div class="filters_columns">
-              <div class="filter-group">
-                <div class="filter-group_title">Tags</div>
-                <ul>
-                  <li v-for="tag in tags">
-                      <label :for="tag" class="checkbox">
-                        <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-                      </label>
-                  </li>
-                </ul>
+          
+            <div class="filter-group">
+              <div class="filter-title">
+                Tags
+                <span @click="tagsFilterOpen = !tagsFilterOpen" class="button button--outlined">
+                  [[ tagsFilterOpen ? 'Hide' : 'Show' ]]
+                </span>
               </div>
-        
-              <div class="filter-group">
-                <div class="filter-group_title">Partner organization !dummy</div>
-                <ul>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">TU Delft <strong>(12)</strong></span>
-                      </label>
-                  </li>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">KNMI <strong>(7)</strong></span>
-                      </label>
-                  </li>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">TU Delft <strong>(3)</strong></span>
-                      </label>
-                  </li>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">KNMI <strong>(15)</strong></span>
-                      </label>
-                  </li>
-                </ul>
-                  
-                <div class="more-filters text-blue">
-                  <span class="icon">+</span>
-                  <span>More</span>
-                </div>
+              <ul class="filter-list" v-if="tagsFilterOpen">
+                <li v-for="tag in tags">
+                    <label :for="tag" class="checkbox">
+                      <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+                      <div class="custom-checkbox"></div> 
+                      <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+                    </label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title">
+                Partner organizations
+                <span @click="organizationsFilterOpen = !organizationsFilterOpen" class="button button--outlined">
+                  [[ organizationsFilterOpen ? 'Hide' : 'Show' ]]
+                </span>
               </div>
-        
-              <div class="filter-group">
-                <div class="filter-group_title">Main contributers !dummy</div>
-                <ul>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">TU Delft <strong>(12)</strong></span>
-                      </label>
-                  </li>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">KNMI <strong>(7)</strong></span>
-                      </label>
-                  </li>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">TU Delft <strong>(3)</strong></span>
-                      </label>
-                  </li>
-                  <li>
-                      <label for="dummytag" class="checkbox">
-                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">KNMI <strong>(15)</strong></span>
-                      </label>
-                  </li>
-                </ul>
-                  
-                <div class="more-filters text-blue">
-                  <span class="icon">+</span>
-                  <span>More</span>
-                </div>
-              </div>
-              
+              <ul v-if="organizationsFilterOpen" class="filter-list">
+                <li v-for="org in organizationsWithCount">
+                    <label :for="org.id" class="checkbox">
+                      <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
+                      <div class="custom-checkbox"></div> 
+                      <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
+                    </label>
+                </li>
+              </ul>
+            </div>
+          
           </div>
-          <div class="bottom-gradient"></div>
+          
         </div>
 
         <div class="toggle-filters" @click="mobShowFilters = !mobShowFilters">
-          <span class="text" v-if="!mobShowFilters"><span class="icon">+</span>Show filters</span>
-          <span class="text" v-else><span class="icon">-</span>Hide filters</span>
+          <template v-if="mobShowFilters">
+            <span class="icon">-</span><span class="text">Hide filters</span>
+          </template>
+          <template v-else>
+              <span class="icon">+</span><span class="text">Show filters</span>
+            </template>
         </div>
-
-      </div>
-
         
+      </div> 
+
       <div class="col-3-4" id="software_list">
 
         <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" class="software_item" :class="{ highlighted: sw.highlighted }">
@@ -165,33 +114,33 @@
 
         <div v-if="pagedSoftware.length === 0">
             No results for <i>[[ filter.search ]]</i>
-          </div>
+        </div>
     
-          <div class="pagination" v-else>
-            <span @click="page = page > 1 ? page - 1 : page">
-              &lt;
-            </span>
-    
-            <template v-for="i in lastPage">
-              <span
-                v-if="showPage(i)"
-                @click="page = i"
-                :class="{ active: page === i }"
-              >
-                [[ i ]]
-              </span>
-              <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
-                ...
-              </span>
-            </template>
-    
-            <span @click="page = page < lastPage ? page + 1 : page">
-              &gt;
-            </span>
-    
-          </div>
+        <div class="pagination" v-else>
+          <span @click="page = page > 1 ? page - 1 : page">
+            &lt;
+          </span>
 
-      </div>
+          <template v-for="i in lastPage">
+            <span
+              v-if="showPage(i)"
+              @click="page = i"
+              :class="{ active: page === i }"
+            >
+              [[ i ]]
+            </span>
+            <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
+              ...
+            </span>
+          </template>
+
+          <span @click="page = page < lastPage ? page + 1 : page">
+            &gt;
+          </span>
+
+        </div>
+
+      </divdiv>
 
     </div>
   </div>
@@ -274,6 +223,6 @@
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/index_scripts.js') }}"></script>
 <script>
-  initOverview({{data_json}});
+  initOverview({{data_json}},{{organizations}});
 </script>
 {% endblock %}

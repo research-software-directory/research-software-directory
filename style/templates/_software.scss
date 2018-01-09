@@ -417,7 +417,9 @@ section{
     }
 
     .mention_list{
-        display: none;
+        //display: none;
+        overflow: hidden;
+        transition: height .5s;
         margin: 1em 0;
         ul{
             padding: 5px 0 15px;
