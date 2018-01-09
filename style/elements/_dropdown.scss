@@ -1,0 +1,18 @@
+.dropdown{
+
+    &_button{
+        border: 1px solid $dark;
+        padding: 1em 2em;
+    }
+
+    &_panel{
+        display: none;
+    }
+
+    &.is-active{
+      
+        .dropdown_panel{
+            display: block;
+        }
+    }
+}

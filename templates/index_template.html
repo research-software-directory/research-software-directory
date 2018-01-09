@@ -28,12 +28,22 @@
 
     
     <div id="sorter">
-      <label>Sort by:</label>
-      <select v-model="sort">
-        <option>Last updated</option>
-        <option>Bar</option>
-        <option>Baz</option>
-      </select>
+      <div class="text">Sort by:</div>
+     
+      <div class="dropdown">
+        <div class="dropdown_button" @click="toggleParent">
+          <span>Last updated</span>
+          <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#chev-down"></use></svg>
+        </div>
+        <div class="dropdown_panel">
+            <ul>
+              <li class="is-active"><a href="#"><span>Last updated</span></a></li>
+              <li><a href="#"><span>Most updates</span></a></li>
+              <li><a href="#"><span>Most mentions</span></a></li>
+              
+            </ul>
+          </div>
+      </div>
     </div>
    
 
@@ -150,7 +160,7 @@
           <p class="subtitle text-blue">From the eScience blog</p>
           <a class="button button--outlined" href="https://blog.esciencecenter.nl" target="_blank">
               <span>Visit our blog</span>
-              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-external"></use></svg></span>
+              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
           </a>
         </div>
 

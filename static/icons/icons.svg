@@ -51,5 +51,12 @@
         </symbol>
 
 
+        <!-- Chevron Down -->
+        <symbol id="chev-down" viewBox="0 0 12 12">
+            <polygon points="1.775 9.471 1.775 10.471 10.246 10.471 10.246 2 9.246 2 9.246 9.471" transform="rotate(45 6.01 6.236)"></polygon>
+        </symbol>
+
+        
+
     </defs>
 </symbol>
