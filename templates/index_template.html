@@ -85,12 +85,8 @@
         </div>
 
         <div class="toggle-filters" @click="mobShowFilters = !mobShowFilters">
-          <template v-if="mobShowFilters">
-            <span class="icon">-</span><span class="text">Hide filters</span>
-          </template>
-          <template v-else>
-              <span class="icon">+</span><span class="text">Show filters</span>
-            </template>
+          <span class="icon">[[ mobShowFilters ? '-' : '+' ]]</span>
+          <span class="text">[[ mobShowFilters ? 'Hide filters' : 'Show filters' ]]</span>
         </div>
         
       </div> 
