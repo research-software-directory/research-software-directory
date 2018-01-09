@@ -45,10 +45,10 @@
           <div class="filters_columns">
           
             <div class="filter-group">
-              <div class="filter-title">
+              <div class="filter-group_title">
                 Tags
-                <span @click="tagsFilterOpen = !tagsFilterOpen" class="button button--outlined">
-                  [[ tagsFilterOpen ? 'Hide' : 'Show' ]]
+                <span class="toggle-button" @click="tagsFilterOpen = !tagsFilterOpen">
+                  [[ tagsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
               <ul class="filter-list" v-if="tagsFilterOpen">
@@ -63,10 +63,10 @@
             </div>
 
             <div class="filter-group">
-              <div class="filter-title">
+              <div class="filter-group_title">
                 Partner organizations
-                <span @click="organizationsFilterOpen = !organizationsFilterOpen" class="button button--outlined">
-                  [[ organizationsFilterOpen ? 'Hide' : 'Show' ]]
+                <span @click="organizationsFilterOpen = !organizationsFilterOpen">
+                  [[ organizationsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
               <ul v-if="organizationsFilterOpen" class="filter-list">
