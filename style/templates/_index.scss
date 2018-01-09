@@ -284,18 +284,22 @@
 
   }
 
-  .more-filters{
-    display: flex;
-    align-items: center;
-    font-family: $primaryFontBold;
-
-    .icon{
-      margin-right: 0.4em;
-      font-size: 1.3em;
-      padding-bottom: 0.25em;
-    }
-
+  .toggle-button{
+    cursor: pointer;
+    
   }
+  // .toggle-button{
+  //   display: flex;
+  //   align-items: center;
+  //   font-family: $primaryFontBold;
+
+  //   .icon{
+  //     margin-right: 0.4em;
+  //     font-size: 1.3em;
+  //     padding-bottom: 0.25em;
+  //   }
+
+  // }
 
   // Toggle for all filters
   .toggle-filters{
