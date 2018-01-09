@@ -11,11 +11,11 @@
 <meta property="og:site_name" content="Research Software Directory" />
 
 {{super()}}
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
 <script>
     var commitsData = {{ commits_data }};
 </script>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
 {% endblock %}
 {% block title %}{{template_data.name}}{% endblock %}
@@ -242,7 +242,7 @@
                         <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
-                    <div class="mention_list">
+                    <div class="mention_list" style="height: 0">
                         <ul>
                         {% for item in value %}
                             <li>
@@ -251,13 +251,13 @@
                             <a href="{{item.data.url}}" target="_blank">
                                 <div class="mention_title">{{item.data.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
                                 
-                                <div class="mention_post-date">Dummydate 7, 2016</div> 
+                                <div class="mention_post-date">{{item.data.date}}</div>
                             </a>
 
                             {% else %}
 
                                 <div class="mention_title">{{item.data.title}}</div> 
-                                <div class="mention_post-date">Dummydate 7, 2016</div> 
+                                <div class="mention_post-date">{{item.data.date}}</div>
 
                             {% endif %}
                             </li>
@@ -304,7 +304,7 @@
                     <article class="project-item col-1-2">
                         <a href="{{project.url}}" target="_blank">
                             <div class="content">
-                                <div class="thumb"><img src="http://via.placeholder.com/80x80" alt=""></div>
+                                <div class="thumb"><img src="{{project.image}}" alt=""></div>
                                 <div class="text">
                                     <h2 class="text-blue">
                                         {{project.title}}
@@ -366,11 +366,7 @@
                                     {% endif %}
                                 </div>
 
-                                <div class="contributor_organisation">Dummy organisation</div>
-
-                                <!-- {% if contributor.affiliation %}
-                                <div class="contributor_organisation">{{contributor.affiliation}}</div>
-                                {% endif %} -->
+                                <div class="contributor_organisation">{{contributor.organization}}</div>
 
                             </li>
                             {% endfor %}
@@ -393,7 +389,12 @@
                             Contact person
                         </div>
                         <div class="contact_card_content">
-                            <div class="contributor_picture"><img src="http://via.placeholder.com/96x96" alt=""></div>
+                            <div class="contributor_picture"><img
+                                    {%- if template_data.contactPerson.image %}
+                                        src="{{template_data.contactPerson.image }}" alt=""></div>
+                                    {% else %}
+                                        src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""></div>
+                                    {% endif %}
 
                             <div class="contributor_name">
                             {% if template_data.contactPerson.website %}
@@ -405,7 +406,7 @@
                             {% endif %}
                             </div>
                             
-                            <div class="contributor_organisation">Dummy organisation</div>
+                            <div class="contributor_organisation">{{template_data.contactPerson.organization}}</div>
                             <div class="contributor_email">
                                 <a href="mailto:{{template_data.contactPerson.email}}">
                                     <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>

@@ -33,6 +33,7 @@ def get_projects():
 def index():
     url = api_url + '/software?published=true'
     latest_mentions = requests.get(api_url + '/latest_mentions').json()
+    organizations = requests.get(api_url + '/organizations').json()
     all_software = requests.get(url).json()
     for sw in all_software:
         format_software(sw)
@@ -44,6 +45,7 @@ def index():
     return flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
+                                 organizations=flask.Markup(json.dumps(organizations)),
                                  latest_mentions=latest_mentions,
                                  blog_posts=blog_posts
                                  )

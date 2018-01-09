@@ -46,49 +46,46 @@ function expandSection(element) {
 
 
 
-
-$(document).ready(function() {
-
+document.addEventListener("DOMContentLoaded", function(event) {
     var moreContent = document.querySelector('.read-more_content');
 
-    $('.read-more_button').on("click", function() {
-
+    document.querySelector('.read-more_button').addEventListener('click', function() {
         var buttonText = this.querySelector('.button_text');
         
         this.classList.toggle('active');
 
-        if ( !moreContent.getAttribute('data-collapsed') || moreContent.getAttribute('data-collapsed') === 'true' ) {
-            expandSection(moreContent);
-            
-            buttonText.textContent = 'Read less';
-        } else {
+        if ( moreContent.getAttribute('data-collapsed') === 'false') {
             collapseSection(moreContent);
             buttonText.textContent = 'Read more';
+        } else {
+            expandSection(moreContent);
+            buttonText.textContent = 'Read less';
         }
     });
    
 
-    $(".mention_button").each(function() {
-        $(this).on("click", function() {
-            $(this).toggleClass('active');
-            $(this).next().slideToggle();
+    document.querySelectorAll('.mention_button').forEach(function(elm) {
+        elm.addEventListener('click', function(event) {
+            this.classList.toggle('active');
+            var sibling = elm.nextElementSibling;
+            if ( sibling.getAttribute('data-collapsed') === 'false') {
+                collapseSection(sibling);
+            } else {
+                expandSection(sibling);
+            }
         });
     });
 
-    $(".readMore>a").on("click", function() {
-        $(this).parent().toggleClass('active');
-    });
-
-    $("#choose_citation_button").on("click", function(e) {
-        $('.citation_list').toggleClass('active');
+    document.getElementById('choose_citation_button').addEventListener('click', function(e) {
+        document.querySelector('.citation_list').classList.toggle('active');
         e.preventDefault();
+        e.stopPropagation();
         return false;
     });
 
-    $(window).click(function() {
-        $('.citation_list').removeClass('active');
+    window.addEventListener('click', function() {
+        document.querySelector('.citation_list').classList.remove('active');
     });
-
 
     function plot_commits(data) {
         var plotid = document.getElementById("commitsPlot");
@@ -119,7 +116,7 @@ $(document).ready(function() {
 
         // Resize graph on window resize
         // ----------------------------------------------------------
-        $( window ).resize(function() {
+        window.addEventListener('resize', function(e) {
             Plotly.Plots.resize(plotid);
         });
     }
