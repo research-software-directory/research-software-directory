@@ -20,7 +20,7 @@ $widescreen:    1440px;
 
 @mixin bp( $type, $first:0, $second:0 ) {
 
-    @if( $type == minMax ){
+    @if( $type == maxMin ){
         @media only screen and ( max-width: $first ) and ( min-width: $second ){
             @content;
         }
@@ -43,7 +43,7 @@ $widescreen:    1440px;
 /* Examples
 ____________________________________________________________________________________
 
-You can select the type of media query you want to create: minMax, min or max.
+You can select the type of media query you want to create: maxMin, min or max.
 For min and max values you can use predefined device variables or simple px values.
 Keep in mind that the default min and max value is set to 0.
 
@@ -53,7 +53,7 @@ ________________________________________________________________________________
 
 SCSS to CSS:
 
-@include bp( minMax, $desktop, 600px ) = 
+@include bp( maxMin, $desktop, 600px ) = 
 
 @media only screen and ( max-width: 1280px ) and ( min-width: 600px ){
     content

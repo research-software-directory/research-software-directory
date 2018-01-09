@@ -40,56 +40,112 @@
     <div class="row" v-cloak>
 
       <div class="col-1-4" id="filters">
-
-        <div class="filter-title">Tags</div>
-        <ul class="filter-list">
-          <li v-for="tag in tags">
-              <label :for="tag" class="checkbox">
-                <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-              </label>
-          </li>
-        </ul>
-
-        <div class="filter-title">Partner organization !dummy</div>
-        <ul class="filter-list">
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">TU Delft <strong>(12)</strong></span>
-              </label>
-          </li>
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">KNMI <strong>(7)</strong></span>
-              </label>
-          </li>
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">TU Delft <strong>(3)</strong></span>
-              </label>
-          </li>
-          <li>
-              <label for="dummytag" class="checkbox">
-                <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
-                <div class="custom-checkbox"></div> 
-                <span class="text">KNMI <strong>(15)</strong></span>
-              </label>
-          </li>
-        </ul>
-        <div class="more-filters text-blue">
-          <span>+</span>
-          <span>More</span>
+        
+        <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
+          <div class="filters_columns">
+              <div class="filter-group">
+                <div class="filter-group_title">Tags</div>
+                <ul>
+                  <li v-for="tag in tags">
+                      <label :for="tag" class="checkbox">
+                        <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+                      </label>
+                  </li>
+                </ul>
+              </div>
+        
+              <div class="filter-group">
+                <div class="filter-group_title">Partner organization !dummy</div>
+                <ul>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">TU Delft <strong>(12)</strong></span>
+                      </label>
+                  </li>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">KNMI <strong>(7)</strong></span>
+                      </label>
+                  </li>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">TU Delft <strong>(3)</strong></span>
+                      </label>
+                  </li>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">KNMI <strong>(15)</strong></span>
+                      </label>
+                  </li>
+                </ul>
+                  
+                <div class="more-filters text-blue">
+                  <span class="icon">+</span>
+                  <span>More</span>
+                </div>
+              </div>
+        
+              <div class="filter-group">
+                <div class="filter-group_title">Main contributers !dummy</div>
+                <ul>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">TU Delft <strong>(12)</strong></span>
+                      </label>
+                  </li>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">KNMI <strong>(7)</strong></span>
+                      </label>
+                  </li>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">TU Delft <strong>(3)</strong></span>
+                      </label>
+                  </li>
+                  <li>
+                      <label for="dummytag" class="checkbox">
+                        <input type="checkbox" name="checkbox" id="dummytag" value="dummytag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">KNMI <strong>(15)</strong></span>
+                      </label>
+                  </li>
+                </ul>
+                  
+                <div class="more-filters text-blue">
+                  <span class="icon">+</span>
+                  <span>More</span>
+                </div>
+              </div>
+              
+          </div>
+          <div class="bottom-gradient"></div>
         </div>
-      </div>
-      
 
+        <div class="toggle-filters" @click="mobShowFilters = !mobShowFilters">
+          <span class="text" v-if="!mobShowFilters"><span class="icon">+</span>Show filters</span>
+          <span class="text" v-else><span class="icon">-</span>Hide filters</span>
+        </div>
+
+      </div>
+
+        
       <div class="col-3-4" id="software_list">
 
         <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" class="software_item" :class="{ highlighted: sw.highlighted }">

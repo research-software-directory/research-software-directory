@@ -94,19 +94,22 @@ $(document).ready(function() {
         var plotid = document.getElementById("commitsPlot");
         var layout = {
             autosize: true,
-            margin: {l:35,r:20,b:40,t:20},
+            margin: {l:0,r:10,b:40,t:20},
             xaxis: {
                 type: 'date',
                 autotick: false,
-                ticks: 'outside',
                 tick0: '2000-01-15',
                 dtick: 'M12',
-                tickformat: "%Y"
+                tickformat: "%Y",
+                showgrid: false
+            },
+            yaxis: {
+                showgrid: false
             },
             paper_bgcolor: "rgba(0,0,0,0)",
             plot_bgcolor: "rgba(0,0,0,0)",
             line: {
-                color: "rgb(255,163,227)"
+                color: "rgb(0,163,227)"
             }
         };
         data[0].marker = {

@@ -101,9 +101,16 @@ section{
 // -----------------------------------
 
 #get-started{
+
     .container{
         padding-top: 50px;
         padding-bottom: 115px;
+
+        .col:first-child{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     }
     
 
