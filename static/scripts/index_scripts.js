@@ -9,6 +9,7 @@ var gaSearch = debounce(function(search) {
     }
 }, 3000);
 
+
 function initOverview(softwareData) {
     var v = new Vue({
         el: '#overview',
@@ -17,7 +18,7 @@ function initOverview(softwareData) {
             log: console.log,
             showPage: function (n) {
                 return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
-            }
+            }            
         },
         data: {
             tags: [
@@ -41,9 +42,11 @@ function initOverview(softwareData) {
             sort: 'Last updated',
             pageSize: 10,
             page: 1,
-            software: softwareData
+            software: softwareData,
+            mobShowFilters: false
         },
         computed: {
+            
             tagCount: function () {
                 // initialize to 0
                 var counts = this.tags.reduce(function (acc, cur) {
@@ -144,3 +147,5 @@ function initOverview(softwareData) {
         }
     });
 }
+
+

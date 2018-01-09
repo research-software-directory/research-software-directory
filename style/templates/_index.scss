@@ -221,7 +221,7 @@
       color: white;
     }
     &.active {
-      background-color: $black;
+      background-color: $dark;
       color: $white;
     }
   }
@@ -230,32 +230,111 @@
 
 #filters {
   margin-bottom: 50px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 
-  .filter-title{
-    font-family: $primaryFontBold;
-    padding-bottom: 0.7em;
-  }
+  // break filter groups to two columns between mobile and desktop
+  .filters_container{
+    overflow: hidden;
+    transition: max-height 1.4s ease;
+    
+    &.mob-hidden{
+      transition: max-height 0.7s ease;
+    }
 
-  .filter-list{
-    padding-right: 20px;
+    @include bp( maxMin, $tablet, $phablet ){
+      .filters_columns{
+        columns: auto 2;
+        column-gap: 40px;
+        padding-bottom: 1.5em;
+      }
+    }
 
-    &:not(:last-child){
-      margin-bottom: 2.5em;
+    @include bp( max, $tablet){
+      max-height: 1200px;
+     
+      &.mob-hidden{
+        max-height: 0;
+      }
+    }
+
+    @include bp( max, $phablet){
+      order: 2;
+      max-height: 2000px;
     }
   }
 
-  li{
-    padding: 0.2em 0;
+  .filter-group{
+    break-inside: avoid;
+
+    &:not(:last-child){  margin-bottom: 2.25em; }
+
+    ul{
+      padding-right: 20px;
+
+      li{ padding: 0.2em 0; }
+    }
+
+    &_title{
+      font-family: $primaryFontBold;
+      padding-bottom: 0.5em;
+    }
+
   }
+
   .more-filters{
     display: flex;
     align-items: center;
+    font-family: $primaryFontBold;
+
     .icon{
-      display: block;
-      position: relative;
-      width: 1em;
-      height: 1em;
+      margin-right: 0.4em;
+      font-size: 1.3em;
+      padding-bottom: 0.25em;
     }
+
+  }
+
+  // Toggle for all filters
+  .toggle-filters{
+    
+    cursor: pointer;
+    border-top: 1px solid $divider;
+    padding-top: 0.5em;
+    align-items: center;
+    justify-content: center;
+    font-family: $primaryFontBold;
+
+    display: none;
+    
+    .text{
+      display: flex;
+      align-items: center;
+    }
+    .icon{
+      margin-right: 0.4em;
+      font-size: 1.3em;
+      padding-bottom: 0.25em;
+    }
+
+    &:hover{
+      color: $primaryColor;
+    }
+
+    // only display on tablet and under
+    @include bp( max, $tablet ){
+      display: flex;
+    }
+
+    @include bp( max, $phablet ){
+      border-top: 0;
+      border-bottom: 1px solid $divider;
+      margin-bottom: 2em;
+    }
+
+    
   }
 }
 
