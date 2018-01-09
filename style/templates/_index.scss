@@ -69,9 +69,13 @@
 #sorter{
   display: flex;
   justify-content: flex-end;
-  outline: 1px solid;
-  .text {
+  align-items: center;
 
+  margin-bottom: 35px;
+  
+  .text {
+    padding-right: 1em;
+    font-family: $primaryFontBold;
   }
 
   .panel{
@@ -85,26 +89,6 @@
   }
 }
 
-
-// #sorter {
-//   width: 100%;
-//   line-height: 2.5em;
-//   display: flex;
-//   justify-content: flex-end;
-//   position: relative;
-//   margin-bottom: 2em;
-//   label {
-//     font-family: $primaryFontBold;
-//     margin-right: 1em;
-//   }
-//   select {
-//     min-width: 250px;
-//     padding-left: 1em;
-//     padding-right: 1em;
-//     position: relative;
-//     background-color: white;
-//   }
-// }
 
 #software_list {
   display: flex;
