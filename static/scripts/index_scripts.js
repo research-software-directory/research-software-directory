@@ -38,6 +38,11 @@ function initOverview(softwareData, organizationsData) {
             },
             getOrganizationById: function(id) {
                 return this.organizations.find(function(org) { return org.id === id; });
+            },
+            
+            // Toggle .is-active class of clicked elements parent
+            toggleParent: function (event) {
+                event.currentTarget.parentNode.classList.toggle('is-active');
             }
         },
         data: {
@@ -70,8 +75,7 @@ function initOverview(softwareData, organizationsData) {
             organizations: organizationsData
         },
         computed: {
-            
-            tagCount: function () {
+             tagCount: function () {
                 // initialize to 0
                 var counts = this.tags.reduce(function (acc, cur) {
                     acc[cur] = 0;
