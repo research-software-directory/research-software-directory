@@ -67,7 +67,7 @@
 
 
     &--outlined{
-        color: $black;
+        color: currentColor;
         border: 1px solid currentColor;
         .icon{
             transform: scale(0.8);
@@ -81,6 +81,10 @@
     
     &_text{
         flex-shrink: 0;
+    }
+
+    &:focus, &:visited{
+        color: inherit;
     }
 }
 
