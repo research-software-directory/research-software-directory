@@ -141,14 +141,16 @@ function initOverview(softwareData, organizationsData) {
                 }
 
 
-
+                
                 return this.software
                     .filter(filterTags(this.filter.tags))
                     .filter(filterOrganizations(this.filter.organizations))
                     .filter(filterSearch(this.filter.search));
+                    
             },
 
             sortedSoftware: function () {
+
                 function updatedSorter(a, b) {
                     return b.lastUpdate - a.lastUpdate;
                 }
@@ -168,9 +170,10 @@ function initOverview(softwareData, organizationsData) {
                             return updatedSorter;
                     }
                 }
-
+                
                 return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
 
+                
                 // if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
                 //     return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
                 // } else {
@@ -223,3 +226,14 @@ function initOverview(softwareData, organizationsData) {
 
 
 }
+
+// Beamer Mode | Press 'Ctrl + b' to darken the grey backgrounds
+// ---------------------------------------------------------------------
+function KeyPress(e) {
+    var bodyel = document.querySelector('body');
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode == 66 && evtobj.ctrlKey){
+        bodyel.classList.toggle('beamer-mode');
+    }
+}
+document.onkeydown = KeyPress;

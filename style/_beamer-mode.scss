@@ -1,0 +1,9 @@
+body.beamer-mode{
+    .bg-light{
+        transition: background-color 0.3s ease;
+        background-color: darken( $light, 9% );
+    }
+    .tags li.bg-light{
+        background-color: darken( $light, 10% );
+    }
+}

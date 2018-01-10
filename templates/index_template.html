@@ -15,13 +15,20 @@
       The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools! <a href="/about">Read more</a>
     </p>
 
-    <div id="search_bar" class="row">
-      <div class="col-1-3 left">
-        <!-- <span>Find software</span> -->
+    <div id="search-software" class="row">
+      <div class="col-1-4">
+        <!-- <h2 class="subtitle text-blue">Find software</h2> -->
       </div>
-      <div class="col-2-3 right">
+
+      <div class="col-3-4 search-bar bg-light">
         <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for software">
-        <input type="button" id="submit" value="Search the directory">
+        <div class="search-bar_button">
+          <svg class="icon" ><use href="{{url_for('static', filename='icons/icons.svg')}}#search"></use></svg>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19">
+            <path d="M13.9979533,12.8743308 L18.7135545,17.589932 L17.6528943,18.6505922 L12.9372931,13.9349909 C11.6482528,14.9892428 10.0008219,15.6217043 8.20567168,15.6217043 C4.07513682,15.6217043 0.726676719,12.2732442 0.726676719,8.14270935 C0.726676719,4.01217449 4.07513682,0.663714394 8.20567168,0.663714394 C12.3362065,0.663714394 15.6846666,4.01217449 15.6846666,8.14270935 C15.6846666,9.93785957 15.0522051,11.5852905 13.9979533,12.8743308 Z M8.20567168,14.1217043 C11.5077794,14.1217043 14.1846666,11.4448171 14.1846666,8.14270935 C14.1846666,4.84060162 11.5077794,2.16371439 8.20567168,2.16371439 C4.90356394,2.16371439 2.22667672,4.84060162 2.22667672,8.14270935 C2.22667672,11.4448171 4.90356394,14.1217043 8.20567168,14.1217043 Z" transform="translate(-.162 .197)"/>
+          </svg> -->
+          
+        </div>
         <!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
       </div>
     </div>
@@ -33,7 +40,7 @@
       <div class="dropdown">
         <div class="dropdown_button" @click="toggleParent">
           <span>Last updated</span>
-          <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#chev-down"></use></svg>
+          <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#chev-down"></use></svg>
         </div>
         <div class="dropdown_panel">
             <ul>
@@ -47,7 +54,7 @@
     </div>
    
 
-    <div class="row" v-cloak>
+    <div class="row" id="software" v-cloak>
 
       <div class="col-1-4" id="filters">
         
@@ -103,7 +110,8 @@
 
       <div class="col-3-4" id="software_list">
 
-        <a v-for="sw in pagedSoftware" :href="'/software/' + sw.id" class="software_item" :class="{ highlighted: sw.highlighted }">
+        <transition-group name="slide-fade" tag="div" class="all-software">
+        <a v-for="sw in pagedSoftware" v-bind:key="sw" :href="'/software/' + sw.id" class="software_item bg-light" :class="{ highlighted: sw.highlighted }">
           <div class="code">[[sw.code]]</div>
           <h2 class="name">[[sw.name]]</h2>
           <p class="short">[[sw.shortStatement]]</p>
@@ -112,12 +120,14 @@
               <span class="last-update">[[sw.lastUpdateAgo]]</span>
 
               <div v-if="sw.highlighted" class="highlighted">
-                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#featured"></use></svg>
+                <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#featured"></use></svg>
                 <span>Featured</span>
               </div>
           </div>
         </a>
-
+        </transition-group>
+       
+        
         <div v-if="pagedSoftware.length === 0">
             No results for <i>[[ filter.search ]]</i>
         </div>
@@ -146,13 +156,13 @@
 
         </div>
 
-      </divdiv>
+      </div>
 
     </div>
   </div>
 
 {% if blog_posts %}
-<section id="escience_blog" class="row bg-dark">
+<section id="escience_blog" class="bg-dark">
   <div class="container">
     <div class="row">
 
@@ -160,7 +170,7 @@
           <p class="subtitle text-blue">From the eScience blog</p>
           <a class="button button--outlined" href="https://blog.esciencecenter.nl" target="_blank">
               <span>Visit our blog</span>
-              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
+              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
           </a>
         </div>
 
@@ -196,14 +206,14 @@
         <div class="col-2-3">
           <ul>
             {% for mention in latest_mentions %}
-            <li class="row">
+            <li class="row bg-light">
     
               <div class="col mention_info">
                 <div class="mention_title">
                     {% if mention.data.url %}
                     <a href="{{mention.data.url}}" target="_blank">
                       {{mention.data.title}}
-                      <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+                      <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
                     </a>
                     {% else %}
                         {{mention.data.title}}

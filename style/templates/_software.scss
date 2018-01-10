@@ -252,8 +252,10 @@ section{
         li{
             margin: 2px;
             padding: 0.5em 0.8em;  
-            // background-color: darken( $light, 2% );
-            background-color: $light;
+
+            &.bg-light{
+                background-color: darken( $light, 4% );
+            }
         }
     }
 }
@@ -263,12 +265,10 @@ section{
 // -----------------------------------
 
 #collaborations{
-    
     .container{
         padding-top: 50px;
         padding-bottom: 50px;
     }
-
 }
 .contributing-organisations{
     align-items: center;

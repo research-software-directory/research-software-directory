@@ -22,47 +22,71 @@
   }
 }
 
-#search_bar {
+#search-software {
+
   line-height: 6rem;
-  margin: 4em 0;
-  >.left {
-    height: 100%;
-    color: $primaryColor;
-    font-family: $primaryFontLight;
-    font-size: 3rem;
-  }
-  >.right {
+  margin: 3.5em 0;
+
+  
+  .search-bar {
     height: 6rem;
     font-size: 1.8rem;
+    display: flex;
+    position:relative;
+
+    &_button{
+      position:absolute;
+      
+      right:0;
+      cursor: pointer;
+      background-color: $dark;
+      height: 6rem;
+      width: 6rem;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon{
+        width: 2.4rem;
+        height: 2.4rem;
+        transform: scale(0.9);
+        fill: white;
+        transition: transform 0.17s ease;
+      }
+    }
+
     @include bp(max, $tablet){
       font-size: 1.2rem;
     }
-    display: flex;
+
     input[type="text"] {
       font-size: inherit;
-      padding-left: 1em;
-      padding-right: 1em;
+      padding: 0 1em;
       height: 100%;
-      background-color: $light;
+      z-index: +1;
+      flex:1;
+      background-color: transparent;
       border: none;
-      display: inline-block;
       vertical-align: middle;
-      flex: 1;
-    }
-    input[type="button"] {
-      font-size: inherit;
-      color: $white;
-      padding-left: 2em;
-      padding-right: 2em;
-      height: 100%;
-      background-color: $black;
-      border: none;
-      cursor: pointer;
-      &:hover {
-        background-color: $primaryColor;
+      transition: background-color .3s ease;
 
+      &:focus{
+        outline:0;
+        background-color: darken( $light, 6% );
+        margin-right: 6rem;
       }
     }
+
+    &:hover{
+      .search-bar_button{
+        background-color: $primaryColor;
+
+        .icon{
+          transform: scale(1);
+        }
+      }
+    }
+
   }
 }
 
@@ -78,21 +102,31 @@
     font-family: $primaryFontBold;
   }
 
-  .panel{
-    text-align: center;
-
-    ul li{
-      .is-active{ display:none; }
-      a{ padding: 1.2rem 1.5rem; }
-      
-    }	
-  }
 }
 
 
+
+
+// Animations for software items
+.slide-fade-enter-active {
+  transition: all 0.46s ease 0.12s;
+}
+.slide-fade-leave-active {
+  transition: all 0.24s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to{
+  transform: translate3d( 0, 10px, 0 );
+  opacity: 0;
+}
+
+#software{ align-items: flex-start; }
+
 #software_list {
-  display: flex;
-  flex-wrap: wrap;
+
+  .all-software{
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   .software_item {
     overflow: hidden;
@@ -101,11 +135,8 @@
     width: 50%;
     padding: 1em;
     border: 1px solid white;
-    background-color: $light;
-
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     
     &:hover {
       background-color: $primaryColor;
@@ -228,6 +259,22 @@
     }
   }
 }
+// .list-enter-active, .list-leave-active {
+//   transition: all 1s;
+// }
+// .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+//   opacity: 0;
+//   transform: translate3d(0,15px,0);
+// }
+// .list-leave-active{
+//   transition: opacity 1s ease;
+// }
+// .list-leave{
+//   opacity: 1;
+// }
+// .list-leave-to{
+//   opacity: 0;
+// }
 
 
 #filters {
@@ -343,8 +390,6 @@
     
   }
 }
-
-
 #escience_blog {
   padding: 80px 0;
   
@@ -423,7 +468,6 @@
 
   ul {
     > li {
-      background-color: $light;
       margin-bottom: 5px;
       padding: 1.8em 1.3em 1.5em;
     }
