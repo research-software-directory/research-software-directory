@@ -25,7 +25,8 @@
     </head>
 
     <body>
-        <svg style="position: absolute; width: 0; height: 0; overflow: hidden;"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}"></use></svg>
+        <svg style="position: absolute; width: 0; height: 0; overflow: hidden;"><use href="{{url_for('static', filename='icons/icons.svg')}}"></use></svg>
+        
         <div id="layout_container">
             <div id="header">
                 <div class="container">
@@ -61,7 +62,7 @@
             {% include 'footer_template.html' %}
         </div>
     </body>
-
-    <script type="text/javascript" src="{{url_for('static', filename='scripts/scrollMonitor.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='scripts/scrollMonitor.js')}}"></script> -->
 </html>
 

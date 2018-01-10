@@ -69,7 +69,7 @@
             
             {% if template_data.mainUrl %}
             <div class="col col-1-4">
-                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span class="button_text">Get started</span><span class="button_icon"><svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
+                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span class="button_text">Get started</span><span class="button_icon"><svg class="icon" viewBox="0 0 15 15"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
             </div>
             {% endif %}
 
@@ -96,7 +96,7 @@
             <div>
                 <a href="#">
                     <div id="choose_citation_button" class="button button--filled-blue">
-                        <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span>
+                        <span><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span>
                         <span>Choose citation</span>
                     </div>
                 </a>
@@ -129,7 +129,7 @@
                     <div class="read-more_content" style="height:0;">{{template_data.readMore}}</div>
 
                     <div class="read-more_button button button--outlined">
-                        <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
+                        <span><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
                         <span class="button_text">Read more</span>
                     </div>
                 </div>
@@ -139,21 +139,21 @@
             {% endif %}
 
             <div class="specifications col-1-4">
-                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+                <h5><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
                 <ul class="tags">
                     {% for tag in template_data.tags %}
-                        <li>{{tag}}</li>
+                        <li class="bg-light">{{tag}}</li>
                     {% endfor %}
                 </ul>
 
-                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Lanuage</h5>
+                <h5><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Lanuage</h5>
                 <ul class="languages">
                     {% for language in template_data.programmingLanguage %}
                         <li>{{language}}</li>
                     {% endfor %}
                 </ul>
 
-                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
+                <h5><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
                 <ul class="licenses">
                     {% for license in template_data.license %}
                     <li>{{license}}</li>
@@ -238,7 +238,7 @@
                 <div class="mention">
                     <div class="mention_button">
                         <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
-                        <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
+                        <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
                     <div class="mention_list" style="height: 0">
                         <ul>
@@ -247,7 +247,7 @@
                             {% if item.data.url %}
 
                             <a href="{{item.data.url}}" target="_blank">
-                                <div class="mention_title">{{item.data.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
+                                <div class="mention_title">{{item.data.title}} <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
                                 
                                 <div class="mention_post-date">{{item.data.date}}</div>
                             </a>
@@ -372,7 +372,7 @@
                         
                         {% if template_data.contributor|length > 6 %}
                         <a class="button button--filled-dark" href="#" target="_blank">
-                            <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
+                            <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="/static/icons/icons.svg#icon-plus"></use></svg></span>
                             <span>Show all contributors</span>
                         </a>
                         {% endif %}
@@ -407,7 +407,7 @@
                             <div class="contributor_organisation">{{template_data.contactPerson.organization}}</div>
                             <div class="contributor_email">
                                 <a href="mailto:{{template_data.contactPerson.email}}">
-                                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="/static/icons/icons.svg#icon-envelope"></use></svg>
                                     Mail {{template_data.contactPerson.name}}
                                 </a>
                             </div>

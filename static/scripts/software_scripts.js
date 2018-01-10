@@ -1,68 +1,59 @@
 function collapseSection(element) {
-    // get the height of the element's inner content, regardless of its actual size
     var sectionHeight = element.scrollHeight;
-    
-    // temporarily disable all css transitions
     var elementTransition = element.style.transition;
     element.style.transition = '';
-    
-    // on the next frame (as soon as the previous style change has taken effect),
-    // explicitly set the element's height to its current pixel height, so we 
-    // aren't transitioning out of 'auto'
     requestAnimationFrame(function() {
       element.style.height = sectionHeight + 'px';
       element.style.transition = elementTransition;
-      
-      // on the next frame (as soon as the previous style change has taken effect),
-      // have the element transition to height: 0
       requestAnimationFrame(function() {
         element.style.height = 0 + 'px';
       });
     });
-    
-    // mark the section as "currently collapsed"
     element.setAttribute('data-collapsed', 'true');
 }
   
 function expandSection(element) {
-    // get the height of the element's inner content, regardless of its actual size
     var sectionHeight = element.scrollHeight;
-    
-    // have the element transition to the height of its inner content
     element.style.height = sectionHeight + 'px';
-  
-    // when the next css transition finishes (which should be the one we just triggered)
     element.addEventListener('transitionend', function handler(e) {
-      // remove this event listener so it only gets triggered once
       element.removeEventListener('transitionend', handler);
-      
-      // remove "height" from the element's inline styles, so it can return to its initial value
       element.style.height = null;
     });
-    
-    // mark the section as "currently not collapsed"
     element.setAttribute('data-collapsed', 'false');
 }
 
+    
+// Beamer Mode | Press 'Ctrl + b' to darken the grey backgrounds
+// ---------------------------------------------------------------------
+function KeyPress(e) {
+    var bodyel = document.querySelector('body');
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode == 66 && evtobj.ctrlKey){
+        bodyel.classList.toggle('beamer-mode');
+    }
+}
+document.onkeydown = KeyPress;
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    var moreContent = document.querySelector('.read-more_content');
 
-    document.querySelector('.read-more_button').addEventListener('click', function() {
-        var buttonText = this.querySelector('.button_text');
-        
-        this.classList.toggle('active');
-
-        if ( moreContent.getAttribute('data-collapsed') === 'false') {
-            collapseSection(moreContent);
-            buttonText.textContent = 'Read more';
-        } else {
-            expandSection(moreContent);
-            buttonText.textContent = 'Read less';
-        }
-    });
    
+    if(document.querySelector('.read-more_button')){
+        document.querySelector('.read-more_button').addEventListener('click', function() {
+
+            var moreContent = document.querySelector('.read-more_content');
+            var buttonText = this.querySelector('.button_text');
+            this.classList.toggle('active');
+
+            if ( moreContent.getAttribute('data-collapsed') === 'false') {
+                collapseSection(moreContent);
+                buttonText.textContent = 'Read more';
+            } else {
+                expandSection(moreContent);
+                buttonText.textContent = 'Read less';
+            }
+        });
+    }
 
     document.querySelectorAll('.mention_button').forEach(function(elm) {
         elm.addEventListener('click', function(event) {
