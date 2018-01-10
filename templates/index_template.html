@@ -23,7 +23,7 @@
       <div class="col-3-4 search-bar bg-light">
         <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for software">
         <div class="search-bar_button">
-          <svg class="icon" ><use href="{{url_for('static', filename='icons/icons.svg')}}#search"></use></svg>
+          <svg class="icon" ><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use></svg>
         </div>
         <!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
       </div>
@@ -34,11 +34,11 @@
       <div class="text">Sort by:</div>
      
       <div class="dropdown">
-        <div class="dropdown_button" @click="toggleParent">
+        <div class="dropdown_button dropdown_button--dark" @click="toggleParent">
           <span>Last updated</span>
-          <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#chev-down"></use></svg>
+          <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
         </div>
-        <div class="dropdown_panel">
+        <div class="dropdown_panel dropdown_panel--dark">
             <ul>
               <li class="is-active"><a href="#"><span>Last updated</span></a></li>
               <li><a href="#"><span>Most updates</span></a></li>
@@ -116,7 +116,7 @@
               <span class="last-update">[[sw.lastUpdateAgo]]</span>
 
               <div v-if="sw.highlighted" class="highlighted">
-                <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#featured"></use></svg>
+                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#featured"></use></svg>
                 <span>Featured</span>
               </div>
           </div>
@@ -166,7 +166,7 @@
           <p class="subtitle text-blue">From the eScience blog</p>
           <a class="button button--outlined" href="https://blog.esciencecenter.nl" target="_blank">
               <span>Visit our blog</span>
-              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
+              <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
           </a>
         </div>
 
@@ -209,7 +209,7 @@
                     {% if mention.data.url %}
                     <a href="{{mention.data.url}}" target="_blank">
                       {{mention.data.title}}
-                      <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+                      <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
                     </a>
                     {% else %}
                         {{mention.data.title}}
