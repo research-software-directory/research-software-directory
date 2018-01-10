@@ -37,7 +37,24 @@ document.onkeydown = KeyPress;
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-   
+
+    if(document.querySelector('.dropdown')){
+        dropdowns = document.querySelectorAll('.dropdown_button');
+        for (i = 0; i < dropdowns.length; i++) { 
+            dropdowns[i].addEventListener('click', function() {
+                this.parentNode.classList.toggle('is-active');
+            });
+        }
+        window.addEventListener('click', function(e) {
+            console.log(e.target);
+            if( !e.target.classList.contains('dropdown_button') ){
+                for (i = 0; i < dropdowns.length; i++) { 
+                    dropdowns[i].parentNode.classList.remove('is-active');
+                }
+            }
+        });
+    }
+
     if(document.querySelector('.read-more_button')){
         document.querySelector('.read-more_button').addEventListener('click', function() {
 
@@ -66,18 +83,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     expandSection(sibling);
                 }
             });
-        });
-    }
-    if(document.querySelector('.choose_citation_button')){
-        document.querySelector('.choose_citation_button').addEventListener('click', function(e) {
-            document.querySelector('.citation_list').classList.toggle('active');
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        });
-
-        window.addEventListener('click', function() {
-            document.querySelector('.citation_list').classList.remove('active');
         });
     }
 
