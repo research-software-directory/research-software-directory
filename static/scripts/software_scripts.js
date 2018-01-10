@@ -55,28 +55,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
     }
 
-    document.querySelectorAll('.mention_button').forEach(function(elm) {
-        elm.addEventListener('click', function(event) {
-            this.classList.toggle('active');
-            var sibling = elm.nextElementSibling;
-            if ( sibling.getAttribute('data-collapsed') === 'false') {
-                collapseSection(sibling);
-            } else {
-                expandSection(sibling);
-            }
+    if(document.querySelector('.mention_button')){
+        document.querySelectorAll('.mention_button').forEach(function(elm) {
+            elm.addEventListener('click', function(event) {
+                this.classList.toggle('active');
+                var sibling = elm.nextElementSibling;
+                if ( sibling.getAttribute('data-collapsed') === 'false') {
+                    collapseSection(sibling);
+                } else {
+                    expandSection(sibling);
+                }
+            });
         });
-    });
+    }
+    if(document.querySelector('.choose_citation_button')){
+        document.querySelector('.choose_citation_button').addEventListener('click', function(e) {
+            document.querySelector('.citation_list').classList.toggle('active');
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
 
-    document.getElementById('choose_citation_button').addEventListener('click', function(e) {
-        document.querySelector('.citation_list').classList.toggle('active');
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-    });
-
-    window.addEventListener('click', function() {
-        document.querySelector('.citation_list').classList.remove('active');
-    });
+        window.addEventListener('click', function() {
+            document.querySelector('.citation_list').classList.remove('active');
+        });
+    }
 
     function plot_commits(data) {
         var plotid = document.getElementById("commitsPlot");

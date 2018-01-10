@@ -105,16 +105,17 @@
 }
 
 
-
-
 // Animations for software items
 .slide-fade-enter-active {
-  transition: all 0.46s ease 0.12s;
+  transition: transform 0.36s ease 0.1s, opacity 0.36s ease 0.1s;
 }
 .slide-fade-leave-active {
-  transition: all 0.24s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: transform 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0), opacity 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
-.slide-fade-enter, .slide-fade-leave-to{
+.slide-fade-enter{
+  opacity: 0;
+}
+.slide-fade-leave-to{
   transform: translate3d( 0, 10px, 0 );
   opacity: 0;
 }
@@ -123,7 +124,7 @@
 
 #software_list {
 
-  .all-software{
+  .software_list_wrap{
     display: flex;
     flex-wrap: wrap;
   }

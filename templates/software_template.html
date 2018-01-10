@@ -73,7 +73,7 @@
             </div>
             {% endif %}
 
-            <div class="col col-3-4">
+            <div class="col col-3-4 chart">
 
                 {% if template_data.name %}
                 <div class="software_commitsPlot" id="commitsPlot"></div>
@@ -89,7 +89,7 @@
 
 <!-- Cite this software -->
 {% if 'githubid' in template_data %}
-<section id="cite-this">
+<!-- <section id="cite-this">
     <div class="container">
         <div class="row">
             <h2 class="subtitle">Cite this software</h2>
@@ -109,6 +109,18 @@
                 </ul>
             </div>
         </div>
+    </div>
+</section> -->
+
+<section id="cite-this">
+    <div class="container">
+
+        <div class="row bg-dark">
+            <div class="col-1-3">
+                <h2 class="subtitle">Cite this software</h2>
+            </div>
+        </div>
+
     </div>
 </section>
 {% endif %}
@@ -436,14 +448,21 @@
             </div>
             <div class="col-3-4">
                 <div id="software_list">
-                    {% for tool in template_data.relatedSoftware %}
-                    <a href="/software/{{tool.id}}" class="">
-                        <h1 class="name">{{tool.name}}</h1>
-                        <div class="code">{{tool.code}}</div>
-                        <p class="tagline">{{tool.shortStatement}}</p>
-                        <span class="lastUpdated">{{tool.lastUpdateAgo}}</span>
-                    </a>
-                    {% endfor %}
+                    <div class="software_list_wrap">
+                        
+                        {% for tool in template_data.relatedSoftware %}
+                        <a href="/software/{{tool.id}}" class="software_item bg-light">
+                            <div class="code">{{tool.code}}</div>
+                            <h2 class="name">{{tool.name}}</h2>
+                            <p class="short">{{tool.shortStatement}}</p>
+    
+                            <div class="software_data">
+                                <span class="last-update">{{tool.lastUpdateAgo}}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                    </div>
                 </div>
             </div>
         </div>
