@@ -343,6 +343,10 @@
       li{ 
         padding: 0.2em 0; 
         transition: opacity 0.4s ease-in;
+
+        &.empty {
+          opacity: .5 !important;
+        }
       }
     }
 
