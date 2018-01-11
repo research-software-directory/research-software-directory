@@ -52,11 +52,11 @@
     <noscript>
       <h2>Our tools:</h2>
       <div id="noscript_projects" class="row">
-        {%- for software in template_data %}
+        {%- for software in template_data -%}
           <li class="col-1-4">
             <a href="/software/{{software.id}}">{{software.name}}</a>
           </li>
-        {% endfor %}
+        {%- endfor -%}
       </div>
     </noscript>
 
