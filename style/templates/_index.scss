@@ -260,20 +260,18 @@
     }
   }
 }
-// .list-enter-active, .list-leave-active {
-//   transition: all 1s;
+
+// // Animations for software items
+// .homo-enter-active {
+//   transition: opacity 0.1s ease-in;
 // }
-// .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+// .homo-leave-active {
+//   transition: opacity 0.1s ease-in;
+// }
+// .homo-enter{
 //   opacity: 0;
-//   transform: translate3d(0,15px,0);
 // }
-// .list-leave-active{
-//   transition: opacity 1s ease;
-// }
-// .list-leave{
-//   opacity: 1;
-// }
-// .list-leave-to{
+// .homo-leave-to{
 //   opacity: 0;
 // }
 
@@ -324,7 +322,10 @@
     ul{
       padding-right: 20px;
 
-      li{ padding: 0.2em 0; }
+      li{ 
+        padding: 0.2em 0; 
+        transition: opacity 0.4s ease-in;
+      }
     }
 
     &_title{
@@ -338,18 +339,7 @@
     cursor: pointer;
     
   }
-  // .toggle-button{
-  //   display: flex;
-  //   align-items: center;
-  //   font-family: $primaryFontBold;
 
-  //   .icon{
-  //     margin-right: 0.4em;
-  //     font-size: 1.3em;
-  //     padding-bottom: 0.25em;
-  //   }
-
-  // }
 
   // Toggle for all filters
   .toggle-filters{

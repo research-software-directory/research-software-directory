@@ -502,15 +502,18 @@ section{
             padding: 20px 0 15px;
         }
         li{
-            background-color: lighten( $dark, 10% );
-            padding: 1em;
+
+            &:not(:last-child) { margin-bottom: 2px; }
             
-            &:not(:last-child) {
-                margin-bottom: 2px;
+            .mention_content{ 
+                display: block;
+                padding: 1em; 
+                background-color: lighten( $dark, 10% );
             }
-        }
-        a:hover{
-            color: $primaryColor;
+            a.mention_content:hover{
+                background-color: darken( $light, 2% );
+                color: $black;
+            }
         }
 
     }

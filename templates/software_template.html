@@ -293,17 +293,17 @@
                             <li>
                             {% if item.data.url %}
 
-                            <a href="{{item.data.url}}" target="_blank">
+                            <a class="mention_content" href="{{item.data.url}}" target="_blank">
                                 <div class="mention_title">{{item.data.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
                                 
                                 <div class="mention_post-date">{{item.data.date}}</div>
                             </a>
 
                             {% else %}
-
+                            <div class="mention_content">
                                 <div class="mention_title">{{item.data.title}}</div> 
                                 <div class="mention_post-date">{{item.data.date}}</div>
-
+                            </div>
                             {% endif %}
                             </li>
                         {% endfor %}

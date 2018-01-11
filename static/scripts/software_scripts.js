@@ -1,3 +1,23 @@
+/**
+ * Element.closest() polyfill
+ * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+ */
+if (!Element.prototype.closest) {
+    if (!Element.prototype.matches) {
+        Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+    }
+    Element.prototype.closest = function (s) {
+        var el = this;
+        var ancestor = this;
+        if (!document.documentElement.contains(el)) return null;
+        do {
+            if (ancestor.matches(s)) return ancestor;
+            ancestor = ancestor.parentElement;
+        } while (ancestor !== null);
+        return null;
+    };
+}
+
 function collapseSection(element) {
     var sectionHeight = element.scrollHeight;
     var elementTransition = element.style.transition;
@@ -39,20 +59,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     if(document.querySelector('.dropdown')){
-        dropdowns = document.querySelectorAll('.dropdown_button');
-        for (i = 0; i < dropdowns.length; i++) { 
-            dropdowns[i].addEventListener('click', function() {
+        var dropdowns = document.querySelectorAll('.dropdown');
+
+        // Add click event listener to each dropdown (in case more dropdowns will be used in the future)
+        for ( i = 0; i < dropdowns.length; i++ ) { 
+            dropdowns[i].querySelector('.dropdown_button').addEventListener('click', function() {
                 this.parentNode.classList.toggle('is-active');
             });
         }
-        window.addEventListener('click', function(e) {
-            console.log(e.target);
-            if( !e.target.classList.contains('dropdown_button') ){
-                for (i = 0; i < dropdowns.length; i++) { 
-                    dropdowns[i].parentNode.classList.remove('is-active');
-                }
+        
+        document.addEventListener('click', function(event) {
+            // If the click happened inside the the container, bail
+            if ( event.target.closest('.dropdown') ) return;
+
+            // If document contains an active dropdown, remove is-active
+            if ( document.querySelector('.dropdown.is-active') ) {
+                document.querySelector('.dropdown.is-active').classList.remove('is-active');
             }
-        });
+
+        }, false);
     }
 
     if(document.querySelector('.read-more_button')){
