@@ -120,6 +120,24 @@
   opacity: 0;
 }
 
+#noscript_projects {
+  ul {
+    text-indent:-20px;
+    margin-left:20px;
+  }
+  li {
+    list-style-type: none;
+    border: 1px solid $dark;
+    a {
+      padding: .2em;
+      display: block;
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+}
+
 #software{ align-items: flex-start; }
 
 #software_list {
