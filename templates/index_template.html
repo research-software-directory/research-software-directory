@@ -15,7 +15,7 @@
       The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools! <a href="/about">Read more</a>
     </p>
 
-    <div id="search-software" class="row">
+    <div id="search-software" class="row" v-cloak>
       <div class="col-1-4">
         <!-- <h2 class="subtitle text-blue">Find software</h2> -->
       </div>
@@ -30,7 +30,7 @@
     </div>
 
     
-    <div id="sorter">
+    <div id="sorter" v-cloak>
       <div class="text">Sort by:</div>
      
       <div class="dropdown">
@@ -48,7 +48,17 @@
           </div>
       </div>
     </div>
-   
+
+    <noscript>
+      <h2>Our tools:</h2>
+      <div id="noscript_projects" class="row">
+        {%- for software in template_data %}
+          <li class="col-1-4">
+            <a href="/software/{{software.id}}">{{software.name}}</a>
+          </li>
+        {% endfor %}
+      </div>
+    </noscript>
 
     <div class="row" id="software" v-cloak>
 
