@@ -85,7 +85,7 @@
               v-on:enter="enter"
               v-on:leave="leave"
               >
-              <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen">
+              <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
                   <label :for="tag" class="checkbox">
                     <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
                     <div class="custom-checkbox"></div> 
@@ -103,7 +103,7 @@
                 </span>
               </div>
               <ul v-if="organizationsFilterOpen" class="filter-list">
-                <li v-for="org in organizationsWithCount">
+                <li v-for="org in organizationsWithCount" :class="org.count === 0 ? 'empty' : ''">
                     <label :for="org.id" class="checkbox">
                       <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
                       <div class="custom-checkbox"></div> 
