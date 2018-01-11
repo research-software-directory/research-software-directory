@@ -132,9 +132,6 @@ function initOverview(softwareData, organizationsData) {
                     return acc;
                 }, {});
 
-                // this.software
-                //     .filter(filterSearch(this.filter.search))
-                //     .filter(filterOrganizations(this.filter.organizations))
                  this.filteredSoftware
                      .forEach(function (sw) {
                         sw.tags.forEach(function (tag) {
@@ -162,10 +159,7 @@ function initOverview(softwareData, organizationsData) {
             organizationsWithCount: function () {
                 var partners = this.partnerOrganizations;
                 partners.forEach(function(org) { org['count'] = 0});
-                // this.software
                 this.filteredSoftware
-                    // .filter(filterSearch(this.filter.search))
-                    // .filter(filterTags(this.filter.tags))
                     .forEach(function (sw) {
                         sw.contributingOrganization.forEach(function (orgId) {
                             var org = partners.find(function(corg) { return corg.id === orgId });
