@@ -11,7 +11,7 @@ server {
     ssl on;
     ssl_certificate /cert/live/{DOMAIN}/fullchain.pem;
     ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
-    server_name {DOMAIN};
+    server_name test.research-software.nl research-software.nl www.research-software.nl;
 
     location / {
             uwsgi_cache app_cache;
