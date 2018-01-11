@@ -11,7 +11,7 @@ server {
     ssl on;
     ssl_certificate /cert/live/{DOMAIN}/fullchain.pem;
     ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
-    server_name test.research-software.nl research-software.nl www.research-software.nl;
+    server_name test.research-software.nl www.research-software.nl;
 
     location / {
             uwsgi_cache app_cache;
@@ -21,6 +21,17 @@ server {
             include uwsgi_params;
             uwsgi_pass flask;
         }
+}
+
+server {
+    listen 443;
+    listen [::]:443;
+    ssl on;
+    ssl_certificate /cert/live/{DOMAIN}/fullchain.pem;
+    ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
+    server_name research-software.nl;
+
+    return 301 https://www.research-software.nl;
 }
 
 server {
