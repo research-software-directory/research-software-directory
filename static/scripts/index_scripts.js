@@ -43,6 +43,26 @@ function initOverview(softwareData, organizationsData) {
             // Toggle .is-active class of clicked elements parent
             toggleParent: function (event) {
                 event.currentTarget.parentNode.classList.toggle('is-active');
+            },
+
+            beforeEnter: function (el) {
+                console.log('before');
+                el.style.opacity = 0
+            },
+            enter: function (el) {
+                console.log('enter');
+                var delay = el.dataset.index * 150
+                setTimeout(function () {
+                    el.style.opacity = 1
+                }, delay)
+            },
+            leave: function (el) {
+                console.log('leave');
+                console.log(el.dataset);
+                var delay = el.dataset.index * 150
+                setTimeout(function () {
+                    el.style.opacity = 0
+                }, delay)
             }
         },
         data: {
