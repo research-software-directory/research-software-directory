@@ -58,6 +58,8 @@ function initOverview(softwareData, organizationsData) {
         }
     }
 
+
+
     var v = new Vue({
         el: '#overview',
         delimiters: ["[[", "]]"],
@@ -68,11 +70,6 @@ function initOverview(softwareData, organizationsData) {
             },
             getOrganizationById: function(id) {
                 return this.organizations.find(function(org) { return org.id === id; });
-            },
-            
-            // Toggle .is-active class of clicked elements parent
-            toggleParent: function (event) {
-                event.currentTarget.parentNode.classList.toggle('is-active');
             },
 
             beforeEnter: function (el) {
@@ -110,12 +107,14 @@ function initOverview(softwareData, organizationsData) {
                 "GPU",
                 "Workflow technologies"
             ],
+            sorters: ['Last updated', 'Most updates', 'Most mentions'],
             filter: {
                 search: '',
                 tags: [],
                 organizations: []
             },
             tagsFilterOpen: getDevice() !== device.phone,
+            sortersOpen: false,
             organizationsFilterOpen: getDevice() !== device.phone,
             sort: 'Last updated',
             device: getDevice(),
@@ -187,6 +186,12 @@ function initOverview(softwareData, organizationsData) {
                     return b.lastUpdate - a.lastUpdate;
                 }
 
+                function keyCountSorter(key) {
+                    return function(a,b) {
+                        return b[key] - a[key];
+                    }
+                }
+
                 function promoteHighlighted(a, b) {
                     if (a.highlighted && b.highlighted) return 0;
                     else if (a.highlighted) return -1;
@@ -198,19 +203,16 @@ function initOverview(softwareData, organizationsData) {
                     switch (sortVal) {
                         case 'Last updated':
                             return updatedSorter;
+                        case 'Most mentions':
+                            return keyCountSorter('numMentions');
+                        case 'Most updates':
+                            return keyCountSorter('numCommits');
                         default:
                             return updatedSorter;
                     }
                 }
                 
-                return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
-
-                
-                // if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
-                //     return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
-                // } else {
-                //     return this.filteredSoftware.sort(sortFunction(this.sorts));
-                // }
+                return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(sortFunction(this.sort)));
             },
 
             pagedSoftware: function () {
