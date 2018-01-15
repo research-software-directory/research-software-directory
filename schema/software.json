@@ -41,7 +41,7 @@
     },
     "citation": {
       "description": "Citation",
-      "type": "string",
+      "type": "string"
     },
     "doi": {
       "type": "string",
