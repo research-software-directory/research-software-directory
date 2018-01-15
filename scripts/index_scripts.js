@@ -5,17 +5,13 @@ function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(
 
 var gaSearch = debounce(function(search) {
     if (window.ga) {
-        ga.getAll()[0].send('event', 'search', search);
+        ga('send', 'event', 'search', search);
     }
 }, 3000);
 
 function initOverview(softwareData, organizationsData) {
     function sortByKey(key) {
         return function(a, b) { return a[key] - b[key]; }
-    }
-
-    function hasKey(key) {
-        return function(a) { return a.hasOwnProperty(key); }
     }
 
     var device = {
@@ -26,6 +22,40 @@ function initOverview(softwareData, organizationsData) {
 
     function getDevice() {
         return window.innerWidth > 1000 ? device.desktop : (window.innerWidth > 700 ? device.tablet : device.phone);
+    }
+
+    function filterTags(tags) {
+        return function (sw) {
+            if (tags.length === 0) return true;
+            var matches = 0;
+            sw.tags.forEach(function (tag) {
+                if (tags.includes(tag)) {
+                    matches += 1;
+                }
+            });
+            return matches === tags.length;
+        }
+    }
+
+    function filterOrganizations(orgs) {
+        return function(sw) {
+            if (orgs.length === 0) return true;
+            var matches = 0;
+            sw.contributingOrganization.forEach(function (org) {
+                if (orgs.includes(org)) {
+                    matches += 1;
+                }
+            });
+            return matches === orgs.length;
+        }
+    }
+
+    function filterSearch(searchTerm) {
+        return function (sw) {
+            if (!searchTerm) return true;
+            var fields = sw.name + " " + sw.tagLine + ' ' + sw.tags.join(" ");
+            return fields.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        }
     }
 
     var v = new Vue({
@@ -43,6 +73,26 @@ function initOverview(softwareData, organizationsData) {
             // Toggle .is-active class of clicked elements parent
             toggleParent: function (event) {
                 event.currentTarget.parentNode.classList.toggle('is-active');
+            },
+
+            beforeEnter: function (el) {
+                console.log('before');
+                el.style.opacity = 0
+            },
+            enter: function (el) {
+                console.log('enter');
+                var delay = el.dataset.index * 150
+                setTimeout(function () {
+                    el.style.opacity = 1
+                }, delay)
+            },
+            leave: function (el) {
+                console.log('leave');
+                console.log(el.dataset);
+                var delay = el.dataset.index * 150;
+                setTimeout(function () {
+                    el.style.opacity = 0;
+                }, delay)
             }
         },
         data: {
@@ -81,67 +131,50 @@ function initOverview(softwareData, organizationsData) {
                     acc[cur] = 0;
                     return acc;
                 }, {});
-                this.software.forEach(function (sw) {
-                    sw.tags.forEach(function (tag) {
-                        counts[tag] += 1;
+
+                 this.filteredSoftware
+                     .forEach(function (sw) {
+                        sw.tags.forEach(function (tag) {
+                            counts[tag] += 1;
+                        });
                     });
-                });
                 return counts;
             },
 
-            organizationsWithCount: function () {
-                var counts = JSON.parse(JSON.stringify(this.organizations));
-                this.software.forEach(function (sw) {
-                    sw.contributingOrganization.forEach(function (orgId) {
-                        var org = counts.find(function(corg) { return corg.id === orgId });
-                        if (org) {
-                            org['count'] = (org['count'] || 0) + 1;
-                        }
+            partnerOrganizations: function() {
+                var orgCounts = JSON.parse(JSON.stringify(this.organizations));
+                this.software
+                    .forEach(function (sw) {
+                        sw.contributingOrganization.forEach(function (orgId) {
+                            var org = orgCounts.find(function(corg) { return corg.id === orgId });
+                            if (org) {
+                                org['isPartner'] = true;
+                            }
+                        });
                     });
-                });
 
-                return counts.filter(hasKey('count')).sort(sortByKey('count')).reverse();
+                return orgCounts.filter(function(org) { return org.hasOwnProperty('isPartner')});
+            },
+
+            organizationsWithCount: function () {
+                var partners = this.partnerOrganizations;
+                partners.forEach(function(org) { org['count'] = 0});
+                this.filteredSoftware
+                    .forEach(function (sw) {
+                        sw.contributingOrganization.forEach(function (orgId) {
+                            var org = partners.find(function(corg) { return corg.id === orgId });
+                            if (org) {
+                                org['count'] = (org['count'] || 0) + 1;
+                            }
+                        });
+                    });
+
+                return partners;
             },
 
 
 
             filteredSoftware: function () {
-                function filterTags(tags) {
-                    return function (sw) {
-                        if (tags.length === 0) return true;
-                        var match = false;
-                        sw.tags.forEach(function (tag) {
-                            if (tags.includes(tag)) {
-                                match = true;
-                            }
-                        });
-                        return match;
-                    }
-                }
-
-                function filterOrganizations(orgs) {
-                    return function(sw) {
-                        if (orgs.length === 0) return true;
-                        var match = false;
-                        sw.contributingOrganization.forEach(function (org) {
-                            if (orgs.includes(org)) {
-                                match = true;
-                            }
-                        });
-                        return match;
-                    }
-                }
-
-                function filterSearch(searchTerm) {
-                    return function (sw) {
-                        if (!searchTerm) return true;
-                        var fields = sw.name + " " + sw.tagLine + ' ' + sw.tags.join(" ");
-                        return fields.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-                    }
-                }
-
-
-                
                 return this.software
                     .filter(filterTags(this.filter.tags))
                     .filter(filterOrganizations(this.filter.organizations))
@@ -150,7 +183,6 @@ function initOverview(softwareData, organizationsData) {
             },
 
             sortedSoftware: function () {
-
                 function updatedSorter(a, b) {
                     return b.lastUpdate - a.lastUpdate;
                 }

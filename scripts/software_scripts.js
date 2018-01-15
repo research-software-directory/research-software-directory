@@ -1,3 +1,23 @@
+/**
+ * Element.closest() polyfill
+ * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+ */
+if (!Element.prototype.closest) {
+    if (!Element.prototype.matches) {
+        Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+    }
+    Element.prototype.closest = function (s) {
+        var el = this;
+        var ancestor = this;
+        if (!document.documentElement.contains(el)) return null;
+        do {
+            if (ancestor.matches(s)) return ancestor;
+            ancestor = ancestor.parentElement;
+        } while (ancestor !== null);
+        return null;
+    };
+}
+
 function collapseSection(element) {
     var sectionHeight = element.scrollHeight;
     var elementTransition = element.style.transition;
@@ -36,8 +56,28 @@ document.onkeydown = KeyPress;
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    if(document.querySelector('.dropdown')){
+        var dropdowns = document.querySelectorAll('.dropdown');
 
-   
+        // Add click event listener to each dropdown (in case more dropdowns will be used in the future)
+        for ( i = 0; i < dropdowns.length; i++ ) { 
+            dropdowns[i].querySelector('.dropdown_button').addEventListener('click', function() {
+                this.parentNode.classList.toggle('is-active');
+            });
+        }
+        
+        document.addEventListener('click', function(event) {
+            // If the click happened inside the the container, bail
+            if ( event.target.closest('.dropdown') ) return;
+
+            // If document contains an active dropdown, remove is-active
+            if ( document.querySelector('.dropdown.is-active') ) {
+                document.querySelector('.dropdown.is-active').classList.remove('is-active');
+            }
+
+        }, false);
+    }
+
     if(document.querySelector('.read-more_button')){
         document.querySelector('.read-more_button').addEventListener('click', function() {
 
@@ -66,18 +106,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     expandSection(sibling);
                 }
             });
-        });
-    }
-    if(document.querySelector('.choose_citation_button')){
-        document.querySelector('.choose_citation_button').addEventListener('click', function(e) {
-            document.querySelector('.citation_list').classList.toggle('active');
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        });
-
-        window.addEventListener('click', function() {
-            document.querySelector('.citation_list').classList.remove('active');
         });
     }
 
