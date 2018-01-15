@@ -194,6 +194,11 @@ def get_routes(service_controller, db):
         reports = list(db.impact_report.find({'software_id': software_id}))
         return reports, 200
 
+    @api.route('/software/<software_id>/commits', methods=["GET"])
+    @jsonify
+    def _commits(software_id):
+        return [commit.data for commit in list(db.commit.find({'software_id': software_id}))], 200
+
     @api.route('/new_projects', methods=['GET'])
     @jsonify
     def _new_projects():
