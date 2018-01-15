@@ -21,6 +21,7 @@
 //  --------------------------------------------------
 @import "elements/buttons";
 @import "elements/checkboxes";
+@import "elements/dropdown";
 
 
 //	Components
@@ -28,10 +29,13 @@
 @import "components/header";
 @import "components/footer";
 
-// @import "components/footer";
+
 //	Templates
 //  --------------------------------------------------
 @import "templates/index";
 @import "templates/software";
 @import "templates/about";
 
+//	Beamer mode
+//  --------------------------------------------------
+@import "beamer-mode";

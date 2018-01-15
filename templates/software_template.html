@@ -11,11 +11,11 @@
 <meta property="og:site_name" content="Research Software Directory" />
 
 {{super()}}
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
 <script>
     var commitsData = {{ commits_data }};
 </script>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
 {% endblock %}
 {% block title %}{{template_data.name}}{% endblock %}
@@ -69,11 +69,11 @@
             
             {% if template_data.mainUrl %}
             <div class="col col-1-4">
-                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span class="button_text">Get started</span><span class="button_icon"><svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
+                <a href={{template_data.mainUrl}} target="_blank"><div class="button button--big button--filled-blue"><span class="button_text">Get started</span><span class="button_icon"><svg class="icon" viewBox="0 0 15 15"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span></div></a>
             </div>
             {% endif %}
 
-            <div class="col col-3-4">
+            <div class="col col-3-4 chart">
 
                 {% if template_data.name %}
                 <div class="software_commitsPlot" id="commitsPlot"></div>
@@ -89,14 +89,14 @@
 
 <!-- Cite this software -->
 {% if 'githubid' in template_data %}
-<section id="cite-this">
+<!-- <section id="cite-this">
     <div class="container">
         <div class="row">
             <h2 class="subtitle">Cite this software</h2>
             <div>
                 <a href="#">
                     <div id="choose_citation_button" class="button button--filled-blue">
-                        <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span>
+                        <span><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span>
                         <span>Choose citation</span>
                     </div>
                 </a>
@@ -109,6 +109,18 @@
                 </ul>
             </div>
         </div>
+    </div>
+</section> -->
+
+<section id="cite-this">
+    <div class="container">
+
+        <div class="row bg-dark">
+            <div class="col-1-3">
+                <h2 class="subtitle">Cite this software</h2>
+            </div>
+        </div>
+
     </div>
 </section>
 {% endif %}
@@ -129,7 +141,7 @@
                     <div class="read-more_content" style="height:0;">{{template_data.readMore}}</div>
 
                     <div class="read-more_button button button--outlined">
-                        <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
+                        <span><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
                         <span class="button_text">Read more</span>
                     </div>
                 </div>
@@ -139,21 +151,21 @@
             {% endif %}
 
             <div class="specifications col-1-4">
-                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+                <h5><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
                 <ul class="tags">
                     {% for tag in template_data.tags %}
-                        <li>{{tag}}</li>
+                        <li class="bg-light">{{tag}}</li>
                     {% endfor %}
                 </ul>
 
-                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Lanuage</h5>
+                <h5><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Lanuage</h5>
                 <ul class="languages">
                     {% for language in template_data.programmingLanguage %}
                         <li>{{language}}</li>
                     {% endfor %}
                 </ul>
 
-                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
+                <h5><svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
                 <ul class="licenses">
                     {% for license in template_data.license %}
                     <li>{{license}}</li>
@@ -217,21 +229,19 @@
             <div class="col-3-4">
 
                 {% if template_data.corporateBlogs %}
-                <div class="mention_blog-post row">
-                    <div class="col-1-3">
+                <a href="{{template_data.corporateBlogs[0].url}}" target="_blank" class="mention_blog-post row">
+                    <div class="image-container">
                         <img src="{{ template_data.corporateBlogs[0].image }}">
                     </div>
-                    <div class="col-2-3">
-                        <div>
-                            <h2 class="subtitle">{{ template_data.corporateBlogs[0].title }}</h2>
-                            <div>By {{ template_data.corporateBlogs[0].author }}</div>
-                            <div>{{ template_data.corporateBlogs[0]['datetime'] | strfdatehuman }}</div>
-                        </div>
-                        <div>
-                            <a href="{{template_data.corporateBlogs[0].url}}">Visit our blog</a>
-                        </div>
+                    <div class="data">
+                        
+                        <h3 class="title">{{ template_data.corporateBlogs[0].title }}</h3>
+                        <p class="author">By {{ template_data.corporateBlogs[0].author }}</p>
+                        <p class="date">{{ template_data.corporateBlogs[0]['datetime'] | strfdatehuman }}</p>
+                        
+                        <div class="visit-blog text-underline">Visit our blog</div>
                     </div>
-                </div>
+                </a>
                 {% endif %}
                 
                 <div class="divider"></div>
@@ -240,16 +250,16 @@
                 <div class="mention">
                     <div class="mention_button">
                         <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
-                        <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
+                        <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
-                    <div class="mention_list">
+                    <div class="mention_list" style="height: 0">
                         <ul>
                         {% for item in value %}
                             <li>
                             {% if item.data.url %}
 
                             <a href="{{item.data.url}}" target="_blank">
-                                <div class="mention_title">{{item.data.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
+                                <div class="mention_title">{{item.data.title}} <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div> 
                                 
                                 <div class="mention_post-date">{{item.data.date}}</div>
                             </a>
@@ -372,9 +382,9 @@
                             {% endfor %}
                         </ul>
                         
-                        {% if template_data.contributor|length > 3 %}
+                        {% if template_data.contributor|length > 6 %}
                         <a class="button button--filled-dark" href="#" target="_blank">
-                            <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
+                            <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="/static/icons/icons.svg#icon-plus"></use></svg></span>
                             <span>Show all contributors</span>
                         </a>
                         {% endif %}
@@ -409,7 +419,7 @@
                             <div class="contributor_organisation">{{template_data.contactPerson.organization}}</div>
                             <div class="contributor_email">
                                 <a href="mailto:{{template_data.contactPerson.email}}">
-                                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                                    <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="/static/icons/icons.svg#icon-envelope"></use></svg>
                                     Mail {{template_data.contactPerson.name}}
                                 </a>
                             </div>
@@ -438,14 +448,21 @@
             </div>
             <div class="col-3-4">
                 <div id="software_list">
-                    {% for tool in template_data.relatedSoftware %}
-                    <a href="/software/{{tool.id}}" class="">
-                        <h1 class="name">{{tool.name}}</h1>
-                        <div class="code">{{tool.code}}</div>
-                        <p class="tagline">{{tool.shortStatement}}</p>
-                        <span class="lastUpdated">{{tool.lastUpdateAgo}}</span>
-                    </a>
-                    {% endfor %}
+                    <div class="software_list_wrap">
+                        
+                        {% for tool in template_data.relatedSoftware %}
+                        <a href="/software/{{tool.id}}" class="software_item bg-light">
+                            <div class="code">{{tool.code}}</div>
+                            <h2 class="name">{{tool.name}}</h2>
+                            <p class="short">{{tool.shortStatement}}</p>
+    
+                            <div class="software_data">
+                                <span class="last-update">{{tool.lastUpdateAgo}}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                    </div>
                 </div>
             </div>
         </div>
