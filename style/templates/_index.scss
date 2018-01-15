@@ -346,6 +346,7 @@
 
         &.empty {
           opacity: .5 !important;
+          pointer-events: none;
         }
       }
     }
