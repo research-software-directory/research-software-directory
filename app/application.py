@@ -99,7 +99,10 @@ def software_product_page_template(software_id):
     software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
     software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
 
-    commits_data = flask.Markup(get_commits_data(software_id))
+    commits_data = get_commits_data(software_id)
+    if commits_data and 'last' in commits_data:
+        commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
+    commits_data = flask.Markup(commits_data)
     return flask.render_template('software_template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
