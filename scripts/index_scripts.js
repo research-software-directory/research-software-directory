@@ -65,6 +65,10 @@ function initOverview(softwareData, organizationsData) {
         delimiters: ["[[", "]]"],
         methods: {
             log: console.log,
+            setSorter: function(sorter) {
+                this.sort = sorter;
+                this.sortersOpen = false;
+            },
             showPage: function (n) {
                 return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
             },

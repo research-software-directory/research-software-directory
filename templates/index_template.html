@@ -40,8 +40,8 @@
         </div>
         <div class="dropdown_panel dropdown_panel--dark is-active">
             <ul>
-              <li v-for="sorter in sorters" :class="sort==sorter?'is-active':''">
-                <a href="#" @click="sort=sorter;sortersOpen = !sortersOpen">
+              <li v-for="sorter in sorters" :class="{'is-active': sort==sorter}">
+                <a href="#" @click.stop.prevent="setSorter(sorter)">
                   <span>[[sorter]]</span>
                 </a>
               </li>
