@@ -16,21 +16,13 @@
                 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
                 ga('create', 'UA-111275282-1', 'auto') ;
                 ga('send', 'pageview');
-                var trackOutboundLink = function(url) {
-                    ga('send', 'event', 'outbound', 'click', url, {
-                        'transport': 'beacon',
-                        'hitCallback': function(){document.location = url;}
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelectorAll("a[href^='http']:not([href*='research-software.nl'])").forEach(function (elm) {
+                        elm.addEventListener('click', function (e) {
+                            ga('send', 'event', 'outbound', 'click', url, { 'transport': 'beacon' });
+                        });
                     });
-                };
-                // document.addEventListener("DOMContentLoaded", function() {
-                //     document.querySelectorAll("a[href^='http']:not([href*='research-software.nl'])").forEach(function (elm) {
-                //         elm.addEventListener('click', function (e) {
-                //             trackOutboundLink(elm.href);
-                //             console.log('bla');
-                //             return false;
-                //         });
-                //     });
-                // });
+                });
             </script>
 
             

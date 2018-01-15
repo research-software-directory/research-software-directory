@@ -5,7 +5,7 @@ function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(
 
 var gaSearch = debounce(function(search) {
     if (window.ga) {
-        ga.getAll()[0].send('event', 'search', search);
+        ga('send', 'event', 'search', search);
     }
 }, 3000);
 
