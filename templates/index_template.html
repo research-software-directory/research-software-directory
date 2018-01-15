@@ -33,17 +33,18 @@
     <div id="sorter" v-cloak>
       <div class="text">Sort by:</div>
      
-      <div class="dropdown">
-        <div class="dropdown_button dropdown_button--dark" @click="toggleParent">
-          <span>Last updated</span>
+      <div :class="['dropdown', {'is-active': sortersOpen}]">
+        <div class="dropdown_button dropdown_button--dark" @click="sortersOpen = !sortersOpen">
+          <span>[[sort]]</span>
           <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
         </div>
-        <div class="dropdown_panel dropdown_panel--dark">
+        <div class="dropdown_panel dropdown_panel--dark is-active">
             <ul>
-              <li class="is-active"><a href="#"><span>Last updated</span></a></li>
-              <li><a href="#"><span>Most updates</span></a></li>
-              <li><a href="#"><span>Most mentions</span></a></li>
-              
+              <li v-for="sorter in sorters" :class="sort==sorter?'is-active':''">
+                <a href="#" @click="sort=sorter;sortersOpen = !sortersOpen">
+                  <span>[[sorter]]</span>
+                </a>
+              </li>
             </ul>
           </div>
       </div>
