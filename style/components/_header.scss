@@ -5,27 +5,22 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		justify-content: space-between;
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;
-		// border-bottom: 1px solid;
-		justify-content: space-between;
 
 		>div:first-child {
 			display: flex;
 			flex-wrap: wrap;
+			align-items: center;
 		}
 	}
 	a:hover{
 		color: $primaryColor;
 	}
 	.divider{
-		// position: absolute;
-		// width: 100%;
 		margin-bottom: 0;
 		margin-top: 0;
-		// bottom: 0;
-		// left: 0;
-		// right: 0;
 	}
 }
 

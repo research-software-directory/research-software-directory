@@ -166,19 +166,14 @@ def page_not_found(e):
 
 
 def get_commits_data(software_id):
-    url = api_url + "/software/%s/report" % software_id
-    report_dictionary = requests.get(url).json()
-    if 'github' in report_dictionary:
-        commits = report_dictionary['github']['commits']
-        if isinstance(commits, list):
-            commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True))
-        else:
-            commits_data = commits
+    url = api_url + "/software/%s/commits" % software_id
+    commits = requests.get(url).json()
+    if commits and len(commits) > 0:
+        commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True))
     else:
         commits_data = None
 
     return commits_data
-
 
 @application.template_filter('strftime')
 def strftime(millis):

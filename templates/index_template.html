@@ -15,7 +15,7 @@
       The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools! <a href="/about">Read more</a>
     </p>
 
-    <div id="search-software" class="row">
+    <div id="search-software" class="row" v-cloak>
       <div class="col-1-4">
         <!-- <h2 class="subtitle text-blue">Find software</h2> -->
       </div>
@@ -23,22 +23,22 @@
       <div class="col-3-4 search-bar bg-light">
         <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for software">
         <div class="search-bar_button">
-          <svg class="icon" ><use href="{{url_for('static', filename='icons/icons.svg')}}#search"></use></svg>
+          <svg class="icon" ><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use></svg>
         </div>
         <!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
       </div>
     </div>
 
     
-    <div id="sorter">
+    <div id="sorter" v-cloak>
       <div class="text">Sort by:</div>
      
       <div class="dropdown">
-        <div class="dropdown_button" @click="toggleParent">
+        <div class="dropdown_button dropdown_button--dark" @click="toggleParent">
           <span>Last updated</span>
-          <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#chev-down"></use></svg>
+          <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
         </div>
-        <div class="dropdown_panel">
+        <div class="dropdown_panel dropdown_panel--dark">
             <ul>
               <li class="is-active"><a href="#"><span>Last updated</span></a></li>
               <li><a href="#"><span>Most updates</span></a></li>
@@ -48,7 +48,17 @@
           </div>
       </div>
     </div>
-   
+
+    <noscript>
+      <h2>Our tools:</h2>
+      <div id="noscript_projects" class="row">
+        {%- for software in template_data -%}
+          <li class="col-1-4">
+            <a href="/software/{{software.id}}">{{software.name}}</a>
+          </li>
+        {%- endfor -%}
+      </div>
+    </noscript>
 
     <div class="row" id="software" v-cloak>
 
@@ -64,15 +74,25 @@
                   [[ tagsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
-              <ul class="filter-list" v-if="tagsFilterOpen">
-                <li v-for="tag in tags">
-                    <label :for="tag" class="checkbox">
-                      <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-                      <div class="custom-checkbox"></div> 
-                      <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-                    </label>
-                </li>
-              </ul>
+
+              <transition-group 
+              appear 
+              name="homo" 
+              tag="ul"
+              class="filter-list"
+              v-bind:css="false"
+              v-on:before-enter="beforeEnter"
+              v-on:enter="enter"
+              v-on:leave="leave"
+              >
+              <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
+                  <label :for="tag" class="checkbox">
+                    <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+                    <div class="custom-checkbox"></div> 
+                    <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+                  </label>
+              </li>
+              </transition-group>
             </div>
 
             <div class="filter-group">
@@ -83,7 +103,7 @@
                 </span>
               </div>
               <ul v-if="organizationsFilterOpen" class="filter-list">
-                <li v-for="org in organizationsWithCount">
+                <li v-for="org in organizationsWithCount" :class="org.count === 0 ? 'empty' : ''">
                     <label :for="org.id" class="checkbox">
                       <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
                       <div class="custom-checkbox"></div> 
@@ -106,7 +126,7 @@
 
       <div class="col-3-4" id="software_list">
 
-        <transition-group name="slide-fade" tag="div" class="software_list_wrap">
+        <transition-group appear name="slide-fade" tag="div" class="software_list_wrap">
         <a v-for="sw in pagedSoftware" v-bind:key="sw" :href="'/software/' + sw.id" class="software_item bg-light" :class="{ highlighted: sw.highlighted }">
           <div class="code">[[sw.code]]</div>
           <h2 class="name">[[sw.name]]</h2>
@@ -116,7 +136,7 @@
               <span class="last-update">[[sw.lastUpdateAgo]]</span>
 
               <div v-if="sw.highlighted" class="highlighted">
-                <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#featured"></use></svg>
+                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-featured"></use></svg>
                 <span>Featured</span>
               </div>
           </div>
@@ -166,7 +186,7 @@
           <p class="subtitle text-blue">From the eScience blog</p>
           <a class="button button--outlined" href="https://blog.esciencecenter.nl" target="_blank">
               <span>Visit our blog</span>
-              <span><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
+              <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></span>
           </a>
         </div>
 
@@ -209,7 +229,7 @@
                     {% if mention.data.url %}
                     <a href="{{mention.data.url}}" target="_blank">
                       {{mention.data.title}}
-                      <svg class="icon"><use href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+                      <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
                     </a>
                     {% else %}
                         {{mention.data.title}}
