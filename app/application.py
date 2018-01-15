@@ -7,7 +7,7 @@ import markdown
 import requests
 
 import dateparser
-
+import htmlmin
 import ago
 
 from app import plot_commits
@@ -42,13 +42,13 @@ def index():
         format = "%B %d, %Y"
         post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
 
-    return flask.render_template('index_template.html',
+    return htmlmin.minify(flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
                                  latest_mentions=latest_mentions,
                                  blog_posts=blog_posts
-                                 )
+                                 ))
 
 
 def set_markdown(software, fields):
@@ -103,13 +103,14 @@ def software_product_page_template(software_id):
     if commits_data and 'last' in commits_data:
         commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
     commits_data = flask.Markup(commits_data)
-    return flask.render_template('software_template.html',
+
+    return htmlmin.minify(flask.render_template('software_template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
                                  organisation_logos=organisation_logos,
                                  mention_types=mention_types,
                                  commits_data=commits_data,
-                                 )
+                                 ))
 
 
 def get_citation(citeas_data, format):
@@ -153,15 +154,7 @@ def cite(software_id):
 
 @application.route('/about')
 def about_template():
-    return flask.render_template('about_template.html')
-
-@application.route('/launch')
-def launch_template():
-    return flask.render_template('launch.html')
-
-@application.route('/rsd')
-def rsd_template():
-    return flask.render_template('rsd_template.html')
+    return htmlmin.minify(flask.render_template('about_template.html'))
 
 @application.errorhandler(404)
 def page_not_found(e):

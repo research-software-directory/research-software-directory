@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% block head %}
+        {%- block head -%}
             <title>Research Software Directory | {% block title %}{% endblock %}</title>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +25,7 @@
                     });
                 });
             </script>
-
-            
-        {% endblock %}
+        {%- endblock -%}
     </head>
 
     <body>
@@ -63,7 +61,7 @@
                 </div>
             </div>
             <div id="body">
-                {% block content %}{% endblock %}
+                {%- block content -%}{%- endblock -%}
             </div>
             {% include 'footer_template.html' %}
         </div>
