@@ -38,7 +38,10 @@
     "githubid": {
       "description": "Github ID (eg. NLeSC/repository)",
       "type": "string",
-      "sortIndex": 10
+    },
+    "citation": {
+      "description": "Citation",
+      "type": "string",
     },
     "doi": {
       "type": "string",

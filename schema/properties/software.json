@@ -37,8 +37,13 @@
     "sortIndex": 20,
     "htmlDescription": "<b>Github ID</b> (eg. NLeSC/repository)"
   },
-  "doi": {
+  "citation": {
     "sortIndex": 21,
+    "long": true,
+    "htmlDescription": "<b>Citation</b> Fallback for generating citation (Preferred method is through a citation file in the Github repo in CFF format)."
+  },
+  "doi": {
+    "sortIndex": 23,
     "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415)."
   },
   "contactPerson": {
