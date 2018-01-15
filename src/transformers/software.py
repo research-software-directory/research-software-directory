@@ -1,4 +1,5 @@
 from flask import logging
+import dateparser
 
 logger = logging.getLogger(__name__)
 
@@ -136,7 +137,8 @@ def transform(resource, db):
 
 def list_entry(software, db):
     mentions = get_mentions(software, db)
-    return {
+    commits = db['commit'].find({'software_id': software.data.get('id')})
+    result = {
         'id': software.data.get('id'),
         'name': software.data.get('name'),
         'tagLine': software.data.get('tagLine'),
@@ -150,5 +152,12 @@ def list_entry(software, db):
         'published': software.data.get('published') or False,
         'contributingOrganization': software.data.get('contributingOrganization') or [],
         'numMentions': sum([len(mentions[type]) for type in mentions]),
-        'numCommits': db['commit'].find({'software_id': software.data.get('id')}).count()
+        'numCommits': commits.count()
     }
+
+    if commits and commits.count() > 0:
+        last_commit = list(commits.sort('date', -1).limit(1))[0]
+        result['lastUpdate'] = int(dateparser.parse(last_commit['date']).timestamp())
+
+
+    return result
