@@ -20,7 +20,7 @@
                 document.addEventListener("DOMContentLoaded", function() {
                     document.querySelectorAll("a[href^='http']:not([href*='research-software.nl'])").forEach(function (elm) {
                         elm.addEventListener('click', function (e) {
-                            ga('send', 'event', 'outbound', 'click', url, { 'transport': 'beacon' });
+                            ga('send', 'event', 'outbound', 'click', elm.href, { 'transport': 'beacon' });
                         });
                     });
                 });
