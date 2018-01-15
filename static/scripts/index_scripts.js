@@ -38,6 +38,11 @@ function initOverview(softwareData, organizationsData) {
             },
             getOrganizationById: function(id) {
                 return this.organizations.find(function(org) { return org.id === id; });
+            },
+            
+            // Toggle .is-active class of clicked elements parent
+            toggleParent: function (event) {
+                event.currentTarget.parentNode.classList.toggle('is-active');
             }
         },
         data: {
@@ -66,10 +71,11 @@ function initOverview(softwareData, organizationsData) {
             device: getDevice(),
             page: 1,
             software: softwareData,
+            mobShowFilters: false,
             organizations: organizationsData
         },
         computed: {
-            tagCount: function () {
+             tagCount: function () {
                 // initialize to 0
                 var counts = this.tags.reduce(function (acc, cur) {
                     acc[cur] = 0;
@@ -135,14 +141,16 @@ function initOverview(softwareData, organizationsData) {
                 }
 
 
-
+                
                 return this.software
                     .filter(filterTags(this.filter.tags))
                     .filter(filterOrganizations(this.filter.organizations))
                     .filter(filterSearch(this.filter.search));
+                    
             },
 
             sortedSoftware: function () {
+
                 function updatedSorter(a, b) {
                     return b.lastUpdate - a.lastUpdate;
                 }
@@ -162,9 +170,10 @@ function initOverview(softwareData, organizationsData) {
                             return updatedSorter;
                     }
                 }
-
+                
                 return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
 
+                
                 // if (this.sort === 'Last updated' && !this.filter.search && this.filter.tags.length === 0) {
                 //     return this.filteredSoftware.sort(firstBy(promoteHighlighted).thenBy(updatedSorter));
                 // } else {
@@ -217,3 +226,14 @@ function initOverview(softwareData, organizationsData) {
 
 
 }
+
+// Beamer Mode | Press 'Ctrl + b' to darken the grey backgrounds
+// ---------------------------------------------------------------------
+function KeyPress(e) {
+    var bodyel = document.querySelector('body');
+    var evtobj = window.event? event : e
+    if (evtobj.keyCode == 66 && evtobj.ctrlKey){
+        bodyel.classList.toggle('beamer-mode');
+    }
+}
+document.onkeydown = KeyPress;

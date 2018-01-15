@@ -22,75 +22,112 @@
   }
 }
 
-#search_bar {
+#search-software {
+
   line-height: 6rem;
-  margin: 4em 0;
-  >.left {
-    height: 100%;
-    color: $primaryColor;
-    font-family: $primaryFontLight;
-    font-size: 3rem;
-  }
-  >.right {
+  margin: 3.5em 0;
+
+  
+  .search-bar {
     height: 6rem;
     font-size: 1.8rem;
+    display: flex;
+    position:relative;
+
+    &_button{
+      position:absolute;
+      
+      right:0;
+      cursor: pointer;
+      background-color: $dark;
+      height: 6rem;
+      width: 6rem;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon{
+        width: 2.4rem;
+        height: 2.4rem;
+        transform: scale(0.9);
+        fill: white;
+        transition: transform 0.17s ease;
+      }
+    }
+
     @include bp(max, $tablet){
       font-size: 1.2rem;
     }
-    display: flex;
+
     input[type="text"] {
       font-size: inherit;
-      padding-left: 1em;
-      padding-right: 1em;
+      padding: 0 1em;
       height: 100%;
-      background-color: $light;
+      z-index: +1;
+      flex:1;
+      background-color: transparent;
       border: none;
-      display: inline-block;
       vertical-align: middle;
-      flex: 1;
-    }
-    input[type="button"] {
-      font-size: inherit;
-      color: $white;
-      padding-left: 2em;
-      padding-right: 2em;
-      height: 100%;
-      background-color: $black;
-      border: none;
-      cursor: pointer;
-      &:hover {
-        background-color: $primaryColor;
+      transition: background-color .3s ease;
 
+      &:focus{
+        outline:0;
+        background-color: darken( $light, 6% );
+        margin-right: 6rem;
       }
     }
+
+    &:hover{
+      .search-bar_button{
+        background-color: $primaryColor;
+
+        .icon{
+          transform: scale(1);
+        }
+      }
+    }
+
   }
 }
 
-
-
-#sorter {
-  width: 100%;
-  line-height: 2.5em;
+#sorter{
   display: flex;
   justify-content: flex-end;
-  position: relative;
-  margin-bottom: 2em;
-  label {
-    font-family: $primaryFontBold;
-    margin-right: 1em;
-  }
-  select {
-    min-width: 250px;
-    padding-left: 1em;
+  align-items: center;
+
+  margin-bottom: 35px;
+  
+  .text {
     padding-right: 1em;
-    position: relative;
-    background-color: white;
+    font-family: $primaryFontBold;
   }
+
 }
 
+
+// Animations for software items
+.slide-fade-enter-active {
+  transition: transform 0.36s ease 0.1s, opacity 0.36s ease 0.1s;
+}
+.slide-fade-leave-active {
+  transition: transform 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0), opacity 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter{
+  opacity: 0;
+}
+.slide-fade-leave-to{
+  transform: translate3d( 0, 10px, 0 );
+  opacity: 0;
+}
+
+#software{ align-items: flex-start; }
+
 #software_list {
-  display: flex;
-  flex-wrap: wrap;
+
+  .software_list_wrap{
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   .software_item {
     overflow: hidden;
@@ -99,11 +136,8 @@
     width: 50%;
     padding: 1em;
     border: 1px solid white;
-    background-color: $light;
-
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     
     &:hover {
       background-color: $primaryColor;
@@ -221,45 +255,142 @@
       color: white;
     }
     &.active {
-      background-color: $black;
+      background-color: $dark;
       color: $white;
     }
   }
 }
+// .list-enter-active, .list-leave-active {
+//   transition: all 1s;
+// }
+// .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+//   opacity: 0;
+//   transform: translate3d(0,15px,0);
+// }
+// .list-leave-active{
+//   transition: opacity 1s ease;
+// }
+// .list-leave{
+//   opacity: 1;
+// }
+// .list-leave-to{
+//   opacity: 0;
+// }
 
 
 #filters {
   margin-bottom: 50px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 
-  .filter-title{
-    font-family: $primaryFontBold;
-    padding-bottom: 0.7em;
-  }
+  // break filter groups to two columns between mobile and desktop
+  .filters_container{
+    overflow: hidden;
+    transition: max-height 1.4s ease;
+    
+    &.mob-hidden{
+      transition: max-height 0.7s ease;
+    }
 
-  .filter-list{
-    padding-right: 20px;
+    @include bp( maxMin, $tablet, $phablet ){
+      .filters_columns{
+        columns: auto 2;
+        column-gap: 40px;
+        padding-bottom: 1.5em;
+      }
+    }
 
-    &:not(:last-child){
-      margin-bottom: 2.5em;
+    @include bp( max, $tablet){
+      max-height: 1200px;
+     
+      &.mob-hidden{
+        max-height: 0;
+      }
+    }
+
+    @include bp( max, $phablet){
+      order: 2;
+      max-height: 2000px;
     }
   }
 
-  li{
-    padding: 0.2em 0;
+  .filter-group{
+    break-inside: avoid;
+
+    &:not(:last-child){  margin-bottom: 2.25em; }
+
+    ul{
+      padding-right: 20px;
+
+      li{ padding: 0.2em 0; }
+    }
+
+    &_title{
+      font-family: $primaryFontBold;
+      padding-bottom: 0.5em;
+    }
+
   }
-  .more-filters{
-    display: flex;
+
+  .toggle-button{
+    cursor: pointer;
+    
+  }
+  // .toggle-button{
+  //   display: flex;
+  //   align-items: center;
+  //   font-family: $primaryFontBold;
+
+  //   .icon{
+  //     margin-right: 0.4em;
+  //     font-size: 1.3em;
+  //     padding-bottom: 0.25em;
+  //   }
+
+  // }
+
+  // Toggle for all filters
+  .toggle-filters{
+    
+    cursor: pointer;
+    border-top: 1px solid $divider;
+    padding-top: 0.5em;
     align-items: center;
-    .icon{
-      display: block;
-      position: relative;
-      width: 1em;
-      height: 1em;
+    justify-content: center;
+    font-family: $primaryFontBold;
+
+    display: none;
+    
+    .text{
+      display: flex;
+      align-items: center;
     }
+    .icon{
+      margin-right: 0.4em;
+      font-size: 1.3em;
+      padding-bottom: 0.25em;
+    }
+
+    &:hover{
+      color: $primaryColor;
+    }
+
+    // only display on tablet and under
+    @include bp( max, $tablet ){
+      display: flex;
+    }
+
+    @include bp( max, $phablet ){
+      border-top: 0;
+      border-bottom: 1px solid $divider;
+      margin-bottom: 2em;
+    }
+
+    
   }
 }
-
-
 #escience_blog {
   padding: 80px 0;
   
@@ -338,7 +469,6 @@
 
   ul {
     > li {
-      background-color: $light;
       margin-bottom: 5px;
       padding: 1.8em 1.3em 1.5em;
     }
