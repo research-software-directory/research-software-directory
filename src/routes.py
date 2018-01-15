@@ -52,7 +52,7 @@ def get_routes(service_controller, db):
             resources = list(db['software'].find({'published': True }))
         else:
             resources = list(db['software'].all())
-        result = [list_entry(software) for software in resources]
+        result = [list_entry(software, db) for software in resources]
         return result, 200
 
     @api.route('/latest_mentions', methods=["GET"])

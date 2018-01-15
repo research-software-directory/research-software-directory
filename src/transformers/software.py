@@ -134,7 +134,8 @@ def transform(resource, db):
             del resource.data['mentions']['blogPost']
     resource.data['relatedSoftware'] = get_related_software(resource.data, db)
 
-def list_entry(software):
+def list_entry(software, db):
+    mentions = get_mentions(software, db)
     return {
         'id': software.data.get('id'),
         'name': software.data.get('name'),
@@ -147,5 +148,7 @@ def list_entry(software):
         'lastUpdate': software.data.get('updatedAt'),
         'highlighted': software.data.get('highlighted') or False,
         'published': software.data.get('published') or False,
-        'contributingOrganization': software.data.get('contributingOrganization') or []
+        'contributingOrganization': software.data.get('contributingOrganization') or [],
+        'numMentions': sum([len(mentions[type]) for type in mentions]),
+        'numCommits': db['commit'].find({'software_id': software.data.get('id')}).count()
     }

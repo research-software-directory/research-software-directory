@@ -91,9 +91,9 @@ class MongoCollection(Collection):
 
 class MongoDatabase(Database):
     def __init__(self, host, port, database_name):
-        self.client = MongoClient('mongodb://%s:%s/' % (host, port))
+        self.client = MongoClient('mongodb://%s:%s/' % (host, port), connect=False)
         self.db = self.client[database_name]
-        self._create_indexes()
+        # self._create_indexes()
 
     def _create_indexes(self):
         self.db.impact_report.create_index([('software_id', 1)])
