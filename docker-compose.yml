@@ -9,6 +9,7 @@ services:
     volumes:
       - ./static:/static
       - ./style:/style
+      - ./scripts:/scripts
 
   flask:
     container_name: flask
