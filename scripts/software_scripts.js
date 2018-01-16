@@ -18,7 +18,7 @@ if (!Element.prototype.closest) {
     };
 }
 
-function collapseSection(element) {
+function collapseSection(element, initHeight) {
     var sectionHeight = element.scrollHeight;
     var elementTransition = element.style.transition;
     element.style.transition = '';
@@ -26,18 +26,28 @@ function collapseSection(element) {
       element.style.height = sectionHeight + 'px';
       element.style.transition = elementTransition;
       requestAnimationFrame(function() {
-        element.style.height = 0 + 'px';
+          if(initHeight){
+            element.style.height = initHeight + 'px';
+          }
+          else{
+            element.style.height = 0 + 'px';
+          }
       });
     });
     element.setAttribute('data-collapsed', 'true');
 }
   
-function expandSection(element) {
+function expandSection(element, initHeight) {
     var sectionHeight = element.scrollHeight;
     element.style.height = sectionHeight + 'px';
     element.addEventListener('transitionend', function handler(e) {
-      element.removeEventListener('transitionend', handler);
-      element.style.height = null;
+        element.removeEventListener('transitionend', handler);
+        if(initHeight){
+            element.style.height = sectionHeight + 'px';
+        }
+        else{
+            element.style.height = null;
+        }
     });
     element.setAttribute('data-collapsed', 'false');
 }
@@ -56,7 +66,7 @@ document.onkeydown = KeyPress;
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    if(document.querySelector('.dropdown')){
+    if( document.querySelector('.dropdown') ){
         var dropdowns = document.querySelectorAll('.dropdown');
 
         // Add click event listener to each dropdown (in case more dropdowns will be used in the future)
@@ -78,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }, false);
     }
 
-    if(document.querySelector('.read-more_button')){
+    if( document.querySelector('.read-more_button') ){
         document.querySelector('.read-more_button').addEventListener('click', function() {
 
             var moreContent = document.querySelector('.read-more_content');
@@ -95,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
     }
 
-    if(document.querySelector('.mention_button')){
+    if( document.querySelector('.mention_button') ){
         document.querySelectorAll('.mention_button').forEach(function(elm) {
             elm.addEventListener('click', function(event) {
                 this.classList.toggle('active');
@@ -106,6 +116,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     expandSection(sibling);
                 }
             });
+        });
+    }
+
+    if( document.querySelector('.show-all-contributors') ){
+
+        var originalHeight = document.querySelector('.show-all-contributors').previousElementSibling.clientHeight; 
+        
+        document.querySelector('.show-all-contributors').addEventListener('click', function() {
+            
+            var buttonText = this.querySelector('.button_text');
+            var prevSibling = this.previousElementSibling;
+
+            this.parentElement.classList.toggle('active');
+
+            if ( prevSibling.getAttribute('data-collapsed') === 'false') {
+                collapseSection( prevSibling, originalHeight );
+                buttonText.textContent = 'Show all contributors';
+            } else {
+                expandSection( prevSibling, true );
+                buttonText.textContent = 'Show less contributors';
+            }
         });
     }
 

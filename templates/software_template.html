@@ -395,11 +395,16 @@
 
                     {% if template_data.contributor %}
 
+                    {% if template_data.contributor|length > 6 %}
+                    <div class="col col-2-3 contributors_list long-list">
+                        <ul class="row">
+                            <div class="gradient gradient--gray"></div>
+
+                    {% else %}
                     <div class="col col-2-3 contributors_list">
                         <ul class="row">
-                            {% if template_data.contributor|length > 6 %}
-                            <div class="gradient gradient--gray"></div>
-                            {% endif %}
+                            <div class="gradient gradient--gray"></div>        
+                    {% endif %}
 
                             {% for contributor in template_data.contributor %}
                             <li class="col col-1-2">
@@ -420,10 +425,10 @@
                         </ul>
                         
                         {% if template_data.contributor|length > 6 %}
-                        <a class="button button--filled-dark" href="#" target="_blank">
+                        <div class="button button--filled-dark show-all-contributors">
                             <span><svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
-                            <span>Show all contributors</span>
-                        </a>
+                            <span class="button_text">Show all contributors</span>
+                        </div>
                         {% endif %}
 
                     </div>
@@ -443,23 +448,25 @@
                                         src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""></div>
                                     {% endif %}
 
-                            <div class="contributor_name">
-                            {% if template_data.contactPerson.website %}
-                            <a href="{{template_data.contactPerson.website}}" target="_blank">
-                                {{template_data.contactPerson.name}}
-                            </a>
-                            {% else %}
-                                {{template_data.contactPerson.name}}
-                            {% endif %}
-                            </div>
+                            <div class="contributor-info">
+                                <div class="contributor_name">
+                                    {% if template_data.contactPerson.website %}
+                                    <a href="{{template_data.contactPerson.website}}" target="_blank">
+                                        {{template_data.contactPerson.name}}
+                                    </a>
+                                    {% else %}
+                                        {{template_data.contactPerson.name}}
+                                    {% endif %}
+                                </div>
+                                <div class="contributor_organisation">{{template_data.contactPerson.organization}}</div>
+                                <div class="contributor_email">
+                                    <a href="mailto:{{template_data.contactPerson.email}}">
+                                        <svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                                        Mail {{template_data.contactPerson.name}}
+                                    </a>
+                                </div>
+                            </div>        
                             
-                            <div class="contributor_organisation">{{template_data.contactPerson.organization}}</div>
-                            <div class="contributor_email">
-                                <a href="mailto:{{template_data.contactPerson.email}}">
-                                    <svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
-                                    Mail {{template_data.contactPerson.name}}
-                                </a>
-                            </div>
                         </div>
                     </div>
                     {% endif %}
