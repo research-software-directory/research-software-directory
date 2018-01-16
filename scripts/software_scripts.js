@@ -56,8 +56,6 @@ document.onkeydown = KeyPress;
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
-
-
     if(document.querySelector('.dropdown')){
         var dropdowns = document.querySelectorAll('.dropdown');
 

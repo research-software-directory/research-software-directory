@@ -7,7 +7,7 @@ import markdown
 import requests
 
 import dateparser
-
+import htmlmin
 import ago
 
 from app import plot_commits
@@ -42,13 +42,13 @@ def index():
         format = "%B %d, %Y"
         post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
 
-    return flask.render_template('index_template.html',
+    return htmlmin.minify(flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
                                  latest_mentions=latest_mentions,
                                  blog_posts=blog_posts
-                                 )
+                                 ))
 
 
 def set_markdown(software, fields):
@@ -99,14 +99,18 @@ def software_product_page_template(software_id):
     software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
     software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
 
-    commits_data = flask.Markup(get_commits_data(software_id))
-    return flask.render_template('software_template.html',
+    commits_data = get_commits_data(software_id)
+    if commits_data and 'last' in commits_data:
+        commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
+    commits_data = flask.Markup(commits_data)
+
+    return htmlmin.minify(flask.render_template('software_template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
                                  organisation_logos=organisation_logos,
                                  mention_types=mention_types,
                                  commits_data=commits_data,
-                                 )
+                                 ))
 
 
 def get_citation(citeas_data, format):
@@ -150,15 +154,7 @@ def cite(software_id):
 
 @application.route('/about')
 def about_template():
-    return flask.render_template('about_template.html')
-
-@application.route('/launch')
-def launch_template():
-    return flask.render_template('launch.html')
-
-@application.route('/rsd')
-def rsd_template():
-    return flask.render_template('rsd_template.html')
+    return htmlmin.minify(flask.render_template('about_template.html'))
 
 @application.errorhandler(404)
 def page_not_found(e):
@@ -166,19 +162,14 @@ def page_not_found(e):
 
 
 def get_commits_data(software_id):
-    url = api_url + "/software/%s/report" % software_id
-    report_dictionary = requests.get(url).json()
-    if 'github' in report_dictionary:
-        commits = report_dictionary['github']['commits']
-        if isinstance(commits, list):
-            commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True))
-        else:
-            commits_data = commits
+    url = api_url + "/software/%s/commits" % software_id
+    commits = requests.get(url).json()
+    if commits and len(commits) > 0:
+        commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True))
     else:
         commits_data = None
 
     return commits_data
-
 
 @application.template_filter('strftime')
 def strftime(millis):
