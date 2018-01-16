@@ -52,6 +52,16 @@ function expandSection(element, initHeight) {
     element.setAttribute('data-collapsed', 'false');
 }
 
+
+function addEvent(el, type, handler) {
+    if (el.attachEvent) el.attachEvent('on'+type, handler); else el.addEventListener(type, handler);
+}
+function removeEvent(el, type, handler) {
+    if (el.detachEvent) el.detachEvent('on'+type, handler); else el.removeEventListener(type, handler);
+}
+
+
+
     
 // Beamer Mode | Press 'Ctrl + b' to darken the grey backgrounds
 // ---------------------------------------------------------------------
@@ -120,16 +130,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     if( document.querySelector('.show-all-contributors') ){
-
         var originalHeight = document.querySelector('.show-all-contributors').previousElementSibling.clientHeight; 
-        
         document.querySelector('.show-all-contributors').addEventListener('click', function() {
-            
             var buttonText = this.querySelector('.button_text');
             var prevSibling = this.previousElementSibling;
-
             this.parentElement.classList.toggle('active');
-
             if ( prevSibling.getAttribute('data-collapsed') === 'false') {
                 collapseSection( prevSibling, originalHeight );
                 buttonText.textContent = 'Show all contributors';
@@ -138,6 +143,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 buttonText.textContent = 'Show less contributors';
             }
         });
+    }
+
+    if( document.querySelector('.citation-block') ){
+
+        citeHiddenToggle =  document.querySelector('.citation-block_hidden-toggle');
+        citeToggle =        document.querySelector('.citation-block_toggle');
+
+        citeHiddenToggle.addEventListener('click', function(event) {
+            this.parentElement.classList.toggle('is-closed');
+        });
+        citeToggle.addEventListener('click', function(event) {
+            this.parentElement.classList.toggle('is-closed');
+        });
+       
+
     }
 
     function plot_commits(data) {
