@@ -651,31 +651,21 @@ section{
         
         width: ( 100% / 3 ) * 2;
 
-        @include bp(max, $tablet ){
-            width: 60%;
+        @include bp(max, 1100px ){
+            width: 90%;
+            order: 2;
+            margin-top: 40px;
         }
         @include bp(max, $phablet ){
             width: 100%;
         }
-
-        .row{
-            height: auto;
-            overflow: hidden;
-            max-height: 16em;
-        }
-
         ul{
-            margin: 0 -5px 15px;
+            margin: 0 -10px 15px;
             li {
-                padding: 0 5px;
+                padding: 0 10px;
                 margin-bottom: 2em;
                 width: 50%;
-    
-                @include bp(max, $tablet ){
-                   .contributor_name{
-                        font-size: 1.6rem;
-                   }
-                }
+
                 @include bp(max, $phablet ){
                     width: 100%;
                     margin-bottom: 1.2em;
@@ -685,7 +675,31 @@ section{
                  }
             }
         }
+
+        &.long-list{
+            .row{
+                transition: height 0.3s ease-in;
+                height: 260px;
+                overflow: hidden;
+
+                .gradient{ transition: opacity 0.23s ease; }
+            }
+
+            .button .icon{
+                transition: 0.3s ease-in;
+            }
+
+            &.active{
+                .row .gradient{ opacity: 0; }
+
+                .button .icon{
+                    transform: rotate(135deg);
+                }
+                
+            }
+        }
     }
+
     .button {
         margin-bottom: 2em;
     }
@@ -716,18 +730,10 @@ section{
             color: $primaryColor;
         }
     }
+
     .contact_card {
         width: ( 100% / 3 );
-        
         z-index: 10;
-
-        @include bp( max, $tablet ){
-            width: 40%;
-        }
-        @include bp(max, $phablet ){
-            text-align: center;
-            width: 100%;
-        } 
         .contact_card_header {
             color: $white;
             text-transform: uppercase;
@@ -739,9 +745,35 @@ section{
         }
         .contact_card_content {
             line-height: 1.55;
-            padding: 1.5em;
+            padding: 1.5em 2.5em 1.5em 1.5em;
             background-color: $white;
+
+            display: flex;
+            flex-direction: column;
         }
+
+        @include bp( maxMin, 1100px, $phablet ){
+            width: auto;
+  
+            .contact_card_content{
+                flex-direction: row;
+                align-items: center;
+                
+                .contributor_picture{
+                    margin-right: 20px;
+                }
+                .contributor_info{
+                    margin-top: -0.3em;
+                }
+            }
+        }
+        @include bp(max, $phablet ){
+            text-align: center;
+            width: 100%;
+            .contact_card_content{
+                padding: 1.5em;
+            }
+        } 
     }
 
     @include bp(max, $phablet ){
