@@ -399,6 +399,10 @@
 
                     <div class="col col-2-3 contributors_list">
                         <ul class="row">
+                            {% if template_data.contributor|length > 6 %}
+                            <div class="gradient gradient--gray"></div>
+                            {% endif %}
+
                             {% for contributor in template_data.contributor %}
                             <li class="col col-1-2">
                                 <div class="contributor_name">    

@@ -658,6 +658,12 @@ section{
             width: 100%;
         }
 
+        .row{
+            height: auto;
+            overflow: hidden;
+            max-height: 16em;
+        }
+
         ul{
             margin: 0 -5px 15px;
             li {
@@ -713,6 +719,8 @@ section{
     .contact_card {
         width: ( 100% / 3 );
         
+        z-index: 10;
+
         @include bp( max, $tablet ){
             width: 40%;
         }
