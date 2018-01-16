@@ -84,7 +84,7 @@
             color: $primaryColor;
         }
         &:focus, &:visited{
-            color: currentColor;
+            color: $primaryColor;
         }
     }
     
