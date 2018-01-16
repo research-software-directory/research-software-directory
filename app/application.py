@@ -11,6 +11,7 @@ import htmlmin
 import ago
 
 from app import plot_commits
+from app.citation import get_citation
 from app.corporate_scraper.Scraper import BlogPostScraper, ProjectScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
@@ -112,37 +113,18 @@ def software_product_page_template(software_id):
                                  commits_data=commits_data,
                                  ))
 
-
-def get_citation(citeas_data, format):
-    def get_export(export_name):
-        return [value for value in citeas_data['exports'] if value['export_name'] == export_name][0]['export']
-
-    if format == 'apa':
-        return 'text/plain', 'txt', citeas_data['citations'][0]['citation']
-    if format == 'bibtex':
-        return 'application/x-bibtex', 'bib', get_export('bibtex')
-    if format == 'csv':
-        return 'text/csv', 'csv', get_export('csv')
-    if format == 'enw':
-        return 'application/x-endnote-refer', 'enw', get_export('enw')
-    if format == 'ris':
-        return 'application/x-research-info-systems', 'ris', get_export('ris')
-    raise Exception('unknown format %s' % format)
-
 @application.route('/cite/<software_id>')
 def cite(software_id):
     url = api_url + "/software/%s" % software_id
     software_dictionary = requests.get(url).json()
+
     if "error" in software_dictionary:
         return "not found", 404
     if not 'githubid' in software_dictionary:
         return "not found", 404
 
-    url = 'http://api.citeas.org/product/https://github.com/%s' % software_dictionary.get('githubid')
-
-    res = requests.get(url).json()
     try:
-        mime, extension, data = get_citation(res, flask.request.args.get('format'))
+        mime, extension, data = get_citation(software_dictionary.get('githubid'), flask.request.args.get('format'))
     except Exception:
         return "unknown format '%s'" % flask.request.args.get('format'), 400
 
@@ -208,3 +190,6 @@ def serve_favicon():
     return application.send_static_file('favicon.ico')
 
 
+@application.route('/robots.txt')
+def serve_robots():
+    return application.send_static_file('robots.txt')
