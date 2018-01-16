@@ -208,3 +208,6 @@ def serve_favicon():
     return application.send_static_file('favicon.ico')
 
 
+@application.route('/robots.txt')
+def serve_robots():
+    return application.send_static_file('robots.txt')
