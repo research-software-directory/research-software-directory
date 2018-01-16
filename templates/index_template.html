@@ -76,9 +76,7 @@
                 </span>
               </div>
 
-              <transition-group 
-              appear 
-              name="filter-animation" 
+              <!-- <transition-group 
               tag="ul"
               class="filter-list"
               v-bind:css="false"
@@ -93,7 +91,18 @@
                     <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
                   </label>
               </li>
-              </transition-group>
+              </transition-group> -->
+
+              <ul v-if="organizationsFilterOpen" class="filter-list">
+                  <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
+                      <label :for="tag" class="checkbox">
+                        <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+                        <div class="custom-checkbox"></div> 
+                        <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+                      </label>
+                  </li>
+              </ul>
+
             </div>
 
             <div class="filter-group">

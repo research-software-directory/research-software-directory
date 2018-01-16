@@ -95,64 +95,63 @@
 <!-- Cite this software -->
 {% if 'githubid' in template_data %}
 
-<!--
-<li><a target="_blank" href="/cite/{{template_data['id']}}?format=apa">text (APA style)</a></li>
-<li><a target="_blank" href="/cite/{{template_data['id']}}?format=csv">CSV</a></li>
-<li><a target="_blank" href="/cite/{{template_data['id']}}?format=bibtex">Bibtex</a></li>
-<li><a target="_blank" href="/cite/{{template_data['id']}}?format=enw">EndNote .enw</a></li>
-<li><a target="_blank" href="/cite/{{template_data['id']}}?format=ris">RIS</a></li>
--->
-
 <section id="cite-this">
     <div class="container">
-        <div class="row bg-dark citation_block">
 
+        <div class="row bg-dark citation-block is-closed">
+            
+            <div class="citation-block_hidden-toggle"></div>
+
+            <div class="citation-block_toggle">
+                <span>
+                    <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
+                </span>
+            </div>   
+                
             <div class="col-1-3">
                 <h2 class="subtitle">Cite this software</h2>
             </div>
 
-            <div class="col-2-3">
-                <div class="row justify-end">
-                    
-                    <div class="citation_display">
-                        <div class="citation_text">
-                            ! If citation format is presentable (text format for example) then it should be rendered here. If not, hide the citation_display and copy to clipboard button!
+            <div class="col-2-3 content hidden">
+                <div class="citation-block_doi">
+                    <h5>DOI:</h5>
+                    <div class="row">
+                        <div class="doi_url">
+                            <span class="gradient"></span>
+                            <span>
+                                http://dx.doi.org/10.1037/rmh00000008
+                            </span>
+                        </div>
+                        <div class="button button--filled-blue" href="#">
+                            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-download"></use></svg></span>
+                            <span>Copy to clipboard</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="citation_select">
-                        <div>Choose a citation style</div>
-
+                <div class="citation-block_download">
+                    <h5>Choose a citation style:</h5>
+                    <div class="row">
                         <div class="dropdown">
                             <div class="dropdown_button dropdown_button--light">
-                                <span>text (APA style)</span>
+                                <span>Bibtex</span>
                                 <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
                             </div>
                             <div class="dropdown_panel dropdown_panel--light">
                                 <ul>
-                                    <li class="is-active"><a href="#"><span>text (APA style)</span></a></li>
-                                    <li><a href="#"><span>CSV</span></a></li>
-                                    <li><a href="#"><span>Bibtex</span></a></li>
-                                    <li><a href="#"><span>EndNote .enw</span></a></li>
-                                    <li><a href="#"><span>RIS</span></a></li>
+                                    <li><span data-download-url="/cite/{{template_data['id']}}?format=bibtex"><span>Bibtex</span></a></li>
+                                    <li><span data-download-url="/cite/{{template_data['id']}}?format=enw"><span>EndNote .enw</span></span></li>
+                                    <li><span data-download-url="/cite/{{template_data['id']}}?format=ris"><span>RIS</span></span></li>
                                 </ul>
                             </div>
                         </div>
-
                         <a class="button button--filled-blue" href="#" download>
-                            <span>Download</span>
                             <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-download"></use></svg></span>
+                            <span>Download file</span>
                         </a>
-
-                        <div class="button button--filled-blue">
-                            <span>Copy to clipboard</span>
-                            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-pencil"></use></svg></span>
-                        </div>
                     </div>
-
                 </div>
-            </div>
-
+            </div>                  
         </div>
     </div>
 </section>
