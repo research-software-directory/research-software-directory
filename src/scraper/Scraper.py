@@ -63,17 +63,9 @@ class BlogPostScraper(AbstractScraper):
             post["url"] = post_soup.find("div", class_="postItem").a["href"].split("?")[0]
             style_string = post_soup.find("div", class_="postItem").a.attrs["style"]
             post["image"] = re.findall(r'"([^"]*)"', style_string)[0]
-            if idx == 0:
-                post["title"] = post_soup.parent.find_all(recursive=False)[1].find("h3").string
-                post["author"] = post_soup.parent.find_all(recursive=False)[1]\
-                    .find("div", class_="postMetaInline").a.string
-                post["datetime-published"] = post_soup.parent.find_all(recursive=False)[1]\
-                    .find("div", class_="postMetaInline").div.time.attrs["datetime"]
-            else:
-                divs_soup = post_soup.find_all("div", recursive=False)
-                post["title"] = divs_soup[1].find("h3").string
-                post["author"] = divs_soup[1].find("div", class_="postMetaInline").a.string
-                post["datetime-published"] = divs_soup[1].find("div", class_="postMetaInline").div.time.attrs["datetime"]
+            post["title"] = post_soup.find("h3").string
+            post["author"] = post_soup.select('a.ds-link')[0].string
+            post["datetime-published"] = post_soup.select('time')[0].attrs['datetime']
 
             self.posts.append(post)
 
