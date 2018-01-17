@@ -44,12 +44,12 @@
                     {% if template_data.mentionCount > 0 %}
                         <div class="data">
                             <div class="num">{{template_data.mentionCount}}</div>
-                            <div class="text">mentions</div>
+                            <div class="text">{{ 'mentions' if template_data.mentionCount>1 else 'mention' }}</div>
                         </div>
                     {% endif %}
                     <div class="data">
                         <div class="num">{{ template_data.contributorCount }}</div>
-                        <div class="text">contributors</div>
+                        <div class="text">{{ 'contributors' if template_data.contributorCount>1 else 'contributor' }}</div>
                     </div>
                 </div>
             </div>
