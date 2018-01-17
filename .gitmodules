@@ -1,0 +1,12 @@
+[submodule "admin"]
+	path = admin
+	url = https://github.com/research-software-directory/admin
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/research-software-directory/frontend
+[submodule "backend"]
+	path = backend
+	url = https://github.com/research-software-directory/backend
+[submodule "instruction"]
+	path = instruction
+	url = https://github.com/research-software-directory/instruction
