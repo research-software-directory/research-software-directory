@@ -151,6 +151,7 @@ section{
     }
     .subtitle{
         padding-bottom: 0;
+        text-align: left!important;
     }
 
     .citation-block{
@@ -167,11 +168,12 @@ section{
             cursor: pointer;
             position: absolute;
             right: 70px;
-            height: 100%;
-            top: 0;
-            bottom: 0;
+            height: auto;
+            bottom: auto;
+            top: 50px;
+            
             display: flex;
-            align-items: center;
+            align-items: flex-start;
 
             span{
                 width: 24px;
@@ -189,6 +191,9 @@ section{
                     fill: $primaryColor;
                 }
             } 
+            @include bp(max, $desktop){
+                display: none;
+            }
         }
 
         &_doi, &_download{
@@ -197,13 +202,18 @@ section{
                 width: 100%;
                 max-width: 600px;
                 flex-wrap: nowrap;
+
+                @include bp(max, $phablet){
+                    flex-wrap: wrap;
+                    max-width: 360px;
+                }
             }
         }
         
         &_doi{
             margin-bottom: 2em;
             .doi_url{
-                padding: 0.5em 0.9em;
+                padding: 0.7em 0.9em;
                 display: flex;
                 align-items: center;
                 background-color: lighten( $dark, 5% );
@@ -213,6 +223,9 @@ section{
 
         .doi_url, .dropdown{
             width: 62%;
+            @include bp(max, $phablet){
+                width: 100%;
+            }
         }
 
         &_download{
@@ -226,12 +239,16 @@ section{
             span{
                 flex-shrink: 0;
             }
+            @include bp(max, $phablet){
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
 
         .content{
-            transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in, opacity 0.3s ease-in 0.2s;
             opacity: 1;
-            height: auto;
+            // height: auto;
         }
         &.is-closed{
             .citation-block_hidden-toggle{
@@ -240,14 +257,17 @@ section{
                 
             }
             .citation-block_toggle{
+                
                 .icon{
                     transform: rotate(0deg);
                 }
+                @include bp(max, $desktop){
+                    display: flex;
+                }
             }
             .content{
-                transition: all 0.3s ease-in;
                 opacity: 0;
-                height: 0;         
+                transition: all 0.3s ease-in 0.1s, opacity 0.2s ease-in 0s;
             }
             &:hover{
                 cursor: pointer;
@@ -263,7 +283,6 @@ section{
 
     }
   
-
     @include bp(max, $tablet){
         .container{
             padding: 0;
@@ -272,11 +291,12 @@ section{
             flex-direction: column;
             align-items: center;
             padding: 40px 6vw;
+
+            &_doi{
+                padding-top: 30px;
+            }
         }
         
-    }
-    @include bp(max, $phablet){
-
     }
 }
 

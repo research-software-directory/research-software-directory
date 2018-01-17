@@ -52,16 +52,6 @@ function expandSection(element, initHeight) {
     element.setAttribute('data-collapsed', 'false');
 }
 
-
-function addEvent(el, type, handler) {
-    if (el.attachEvent) el.attachEvent('on'+type, handler); else el.addEventListener(type, handler);
-}
-function removeEvent(el, type, handler) {
-    if (el.detachEvent) el.detachEvent('on'+type, handler); else el.removeEventListener(type, handler);
-}
-
-
-
     
 // Beamer Mode | Press 'Ctrl + b' to darken the grey backgrounds
 // ---------------------------------------------------------------------
@@ -76,6 +66,7 @@ document.onkeydown = KeyPress;
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    
     if( document.querySelector('.dropdown') ){
         var dropdowns = document.querySelectorAll('.dropdown');
 
@@ -146,18 +137,51 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     if( document.querySelector('.citation-block') ){
-
+        
         citeHiddenToggle =  document.querySelector('.citation-block_hidden-toggle');
         citeToggle =        document.querySelector('.citation-block_toggle');
+        citeContent =       document.querySelector('.citation-block .content');
 
+        dropDownPanel =     document.querySelector('.citation-block .dropdown_panel');
+        dropDownButton =    document.querySelector('.citation-block .dropdown_button');
+        dropDownOptions =   document.querySelectorAll('.citation-block .dropdown_panel li');
+        downloadButton =    document.querySelector('.citation-block .button.download');
+
+        // Toggle 
         citeHiddenToggle.addEventListener('click', function(event) {
             this.parentElement.classList.toggle('is-closed');
+            if ( citeContent.getAttribute('data-collapsed') === 'false') {
+                collapseSection( citeContent );
+            } else {
+                expandSection( citeContent );
+            }
         });
         citeToggle.addEventListener('click', function(event) {
             this.parentElement.classList.toggle('is-closed');
+            if ( citeContent.getAttribute('data-collapsed') === 'false') {
+                collapseSection( citeContent );
+            } else {
+                expandSection( citeContent );
+            }
         });
-       
-
+        
+        // Download file selection
+        for ( i = 0; i < dropDownOptions.length; i++ ) { 
+            dropDownOptions[i].addEventListener('click', function() {
+                dropDownPanel.querySelector('.is-active').classList.remove('is-active');
+                
+                this.classList.toggle('is-active');
+                
+                selectedText = this.querySelector('.text').textContent;
+                selectedUrl = this.getAttribute('data-download-url');
+                
+                dropDownButton.querySelector('.text').textContent = selectedText;
+                downloadButton.setAttribute('href', selectedUrl);
+               
+                dropDownPanel.parentElement.classList.toggle('is-active');
+            });
+        }
+  
     }
 
     function plot_commits(data) {
