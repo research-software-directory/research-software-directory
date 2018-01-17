@@ -112,7 +112,7 @@
                 <h2 class="subtitle">Cite this software</h2>
             </div>
 
-            <div class="col-2-3 content hidden">
+            <div class="col-2-3 content" style="height:0px;">
                 <div class="citation-block_doi">
                     <h5>DOI:</h5>
                     <div class="row">
@@ -123,7 +123,7 @@
                             </span>
                         </div>
                         <div class="button button--filled-blue" href="#">
-                            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-download"></use></svg></span>
+                            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
                             <span>Copy to clipboard</span>
                         </div>
                     </div>
@@ -134,18 +134,18 @@
                     <div class="row">
                         <div class="dropdown">
                             <div class="dropdown_button dropdown_button--light">
-                                <span>Bibtex</span>
+                                <span class="text">Bibtex</span>
                                 <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
                             </div>
                             <div class="dropdown_panel dropdown_panel--light">
                                 <ul>
-                                    <li><span data-download-url="/cite/{{template_data['id']}}?format=bibtex"><span>Bibtex</span></a></li>
-                                    <li><span data-download-url="/cite/{{template_data['id']}}?format=enw"><span>EndNote .enw</span></span></li>
-                                    <li><span data-download-url="/cite/{{template_data['id']}}?format=ris"><span>RIS</span></span></li>
+                                    <li data-download-url="/cite/{{template_data['id']}}?format=bibtex" class="is-active"><span class="inside"><span class="text">Bibtex</span></span></li>
+                                    <li data-download-url="/cite/{{template_data['id']}}?format=enw"><span class="inside"><span class="text">EndNote .enw</span></span></li>
+                                    <li data-download-url="/cite/{{template_data['id']}}?format=ris"><span class="inside"><span class="text">RIS</span></span></li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="button button--filled-blue" href="#" download>
+                        <a class="button button--filled-blue download" href="/cite/{{template_data['id']}}?format=bibtex" download>
                             <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-download"></use></svg></span>
                             <span>Download file</span>
                         </a>
