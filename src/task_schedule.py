@@ -1,6 +1,6 @@
 from celery.schedules import crontab
 
-from src.tasks import app, zotero_sync, blogs_sync, projects_sync, people_sync, report_all
+from src.tasks import app, zotero_sync, blogs_sync, projects_sync, people_sync, commits_sync
 
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
@@ -12,7 +12,7 @@ def setup_periodic_tasks(sender, **kwargs):
     #Every night 2 oclock
     sender.add_periodic_task(
         crontab(hour=2, minute=0),
-        report_all,
-        name='Full report for all software'
+        commits_sync,
+        name='Sync software github commits'
     )
 

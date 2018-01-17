@@ -46,6 +46,16 @@ def people_sync():
     service_controller.corporate.sync_people()
 
 @app.task
+def commits_sync():
+    logger.info('Syncing github commits')
+    i = 1
+    softwares = db.software.all()
+    for software in softwares:
+        logger.info('(%i / %i) updating github commit history for %s' % (i, softwares.count(), software['id']))
+        service_controller.github.update_commits(software['id'])
+        i += 1
+
+@app.task
 def report_all():
     i = 1
     softwares = db.software.all()

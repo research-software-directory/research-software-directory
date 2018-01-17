@@ -19,7 +19,7 @@ def unpack_person(entry, db):
                 unpacked_person['image'] = corporate_person.data.get('image')
                 unpacked_person['website'] = corporate_person.data.get('url')
                 unpacked_person['function'] = corporate_person.data.get('function')
-                unpacked_person['name'] = corporate_person.data.get('name')
+                # unpacked_person['name'] = corporate_person.data.get('name')
             return unpacked_person
     return entry
 
