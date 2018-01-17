@@ -50,6 +50,9 @@
             background-color: $mid;
             color: $white;
         }
+        &:focus, &:visited{
+            color: $white;
+        }
     }
 
     &--filled-dark{
@@ -61,6 +64,10 @@
         
         &:hover{
             background-color: $mid;
+            color: $white;
+        }
+
+        &:focus, &:visited{
             color: $white;
         }
     }
@@ -76,15 +83,17 @@
         &:hover{
             color: $primaryColor;
         }
+        &:focus, &:visited{
+            color: $primaryColor;
+        }
     }
-
     
     &_text{
         flex-shrink: 0;
     }
 
-    &:focus, &:visited{
-        color: inherit;
-    }
+    // &:focus, &:visited{
+    //     color: inherit;
+    // }
 }
 
