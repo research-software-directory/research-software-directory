@@ -9,3 +9,4 @@ ago==0.0.92
 beautifulsoup4==4.6.0
 dateparser==0.6.0
 htmlmin==0.1.12
+git+https://github.com/citationcff/citationcff.git
