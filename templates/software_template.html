@@ -1,5 +1,6 @@
 {% extends "layout_template.html" %}
 {%- block head -%}
+    <title>{{template_data.name}} | Research Software Directory</title>
     <meta name="citation_title" content="{{template_data.name}}" />
     <meta name="citation_author" content="{{", ".join(template_data.contributor|listNames)}}" />
     <meta name="citation_publication_date" content="{{template_data.createdAt | strfdate}}" />
@@ -80,7 +81,6 @@
 
 
 {%- endblock -%}
-{% block title %}{{template_data.name}}{% endblock %}
 {%- block content -%}
 
 
