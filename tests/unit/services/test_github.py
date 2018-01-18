@@ -11,7 +11,7 @@ if settings['GITHUB_ACCESS_TOKEN']:
             'software': [
                 {
                     'id': 'research-software-directory-backend',
-                    'githubid': 'nlesc/research-software-directory-backend'
+                    'githubid': 'research-software-directory/backend'
                 }
             ]
         })
@@ -24,8 +24,8 @@ if settings['GITHUB_ACCESS_TOKEN']:
         assert service is not None
 
     def test_get_github_repo(service):
-        repo = service.get_github_repo('nlesc/research-software-directory-backend')
-        assert repo['name'] == 'research-software-directory-backend'
+        repo = service.get_github_repo('research-software-directory/backend')
+        assert repo['name'] == 'backend'
 
     def test_update_commits_fails_for_unknown_repo(service):
         with pytest.raises(Exception) as excinfo:

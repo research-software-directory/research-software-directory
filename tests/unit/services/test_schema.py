@@ -9,7 +9,7 @@ def db():
         'software': [
             {
                 'id': 'research-software-directory-backend',
-                'githubid': 'nlesc/research-software-directory-backend'
+                'githubid': 'research-software-directory/backend'
             }
         ]
     })
