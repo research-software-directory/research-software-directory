@@ -1,4 +1,9 @@
 {% extends "layout_template.html" %}
+{%- block head -%}
+{{super()}}
+<meta name="description" content="The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools!"/>
+{%- endblock -%}
+
 {%- block title -%}{%- endblock -%}
 <!-- omit the rsd home link, since we're already at that page -->
 {% block rsd_home %}{% endblock %}
