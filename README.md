@@ -11,11 +11,6 @@ Backend for the eScience Research Software Directory.
 - Configuration is done through environmental variables read by Docker through
   `.env`. Copy and fill `.env.example` to `.env`. Local (dev) config is read from `.dev.local`.
 
-### Run locally:
-- Make sure a local mongodb server is running. Note that it should listen on the IP address
-of the docker bridge (eg. `172.17.0.1`). (`bind_ip=127.0.0.1,172.17.0.1` in `/etc/mongodb.conf`)
-- Todo: creating a MongoDB Docker container should make things easier.
-
 ### Run unit tests
 ```
 mkvirtualenv rsd -p `which python3`
