@@ -184,6 +184,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
     }
 
+    document.getElementById('btn-copy-clipboard').addEventListener('click', function(event) {
+        var range = document.createRange();
+        range.selectNodeContents(document.getElementById("doi"));
+
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        try {
+            document.execCommand('copy');
+        } catch(err) {
+        }
+        window.getSelection().removeAllRanges();
+    });
+
+
+
     function plot_commits(data) {
         var plotid = document.getElementById("commitsPlot");
         var layout = {
