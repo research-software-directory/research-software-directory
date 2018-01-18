@@ -10,3 +10,6 @@
 [submodule "instruction"]
 	path = instruction
 	url = https://github.com/research-software-directory/instruction
+[submodule "readthedocs"]
+	path = readthedocs
+	url = https://github.com/research-software-directory/readthedocs
