@@ -1,6 +1,6 @@
 # research-software-directory-backend
-[![TravisCIBadge](https://travis-ci.org/research-software-directory/backend.svg?branch=master)](https://travis-ci.org/NLeSC/research-software-directory-backend)
-[![Coverage Status](https://coveralls.io/repos/github/research-software-directory/backend/badge.svg)](https://coveralls.io/github/NLeSC/research-software-directory-backend)
+[![TravisCIBadge](https://travis-ci.org/research-software-directory/backend.svg?branch=master)](https://travis-ci.org/research-software-directory/backend)
+[![Coverage Status](https://coveralls.io/repos/github/research-software-directory/backend/badge.svg)](https://coveralls.io/github/research-software-directory/backend)
 
 Backend for the eScience Research Software Directory.
 ### Requirements:
