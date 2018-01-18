@@ -4,6 +4,7 @@
     <meta name="citation_author" content="{{", ".join(template_data.contributor|listNames)}}" />
     <meta name="citation_publication_date" content="{{template_data.createdAt | strfdate}}" />
     {% if template_data.doi %}<meta name="citation_doi" content="{{template_data.doi}}" />{% endif %}
+    <meta property="description" content="{{template_data.shortStatement}}" />
     <meta property="og:title" content="{{template_data.name}}" />
     <meta property="og:description" content="{{template_data.shortStatement}}" />
     <meta property="og:url" content="https://www.research-software.nl/software/{{template_data.id}}" />
@@ -15,6 +16,34 @@
     </script>
     <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://www.research-software.nl",
+          "name": "Research Software Directory"
+        }
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@id": "https://www.research-software.nl/software",
+          "name": "Software"
+        }
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://www.research-software.nl/software/{{template_data.id}}",
+          "name": "{{template_data.name}}"
+        }
+      }]
+    }
+    </script>
 {%- endblock -%}
 {% block title %}{{template_data.name}}{% endblock %}
 {%- block content -%}
@@ -113,21 +142,23 @@
             </div>
 
             <div class="col-2-3 content" style="height:0px;">
-                <div class="citation-block_doi">
-                    <h5>DOI:</h5>
-                    <div class="row">
-                        <div class="doi_url">
-                            <span class="gradient"></span>
-                            <span>
-                                http://dx.doi.org/10.1037/rmh00000008
-                            </span>
-                        </div>
-                        <div class="button button--filled-blue" href="#">
-                            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
-                            <span>Copy to clipboard</span>
+                {% if template_data.doi %}
+                    <div class="citation-block_doi">
+                        <h5>DOI:</h5>
+                        <div class="row">
+                            <div class="doi_url">
+                                <span class="gradient"></span>
+                                <span>
+                                    {{ template_data.doi }}
+                                </span>
+                            </div>
+                            <div class="button button--filled-blue" href="#">
+                                <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
+                                <span>Copy to clipboard</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
 
                 <div class="citation-block_download">
                     <h5>Choose a citation style:</h5>
