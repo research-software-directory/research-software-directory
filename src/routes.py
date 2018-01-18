@@ -116,6 +116,8 @@ def get_routes(service_controller, db):
                 if not record:
                     record = db[resource_type].new(resource_data)
                 else:
+                    record.data.pop('updatedAt', None)
+                    record.data.pop('createdAt', None)
                     record.data.update(resource_data)
                 record.save()
                 # db[resource_type].update({'_id': resource['id'], 'id': resource['id']}, resource, upsert=True)
