@@ -30,7 +30,18 @@ def get_projects():
         include_deep_info=True)
     return scraper.projects
 
-@application.route('/', methods=['GET', 'POST'])
+@application.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    url = api_url + '/software?published=true'
+    all_software = requests.get(url).json()
+
+    response = flask.Response(flask.render_template('sitemap.xml',
+                                 data=all_software
+                                 ))
+    response.headers["Content-Type"] = "application/xml"
+    return response
+
+@application.route('/', methods=['GET'])
 def index():
     url = api_url + '/software?published=true'
     latest_mentions = requests.get(api_url + '/latest_mentions').json()
@@ -171,6 +182,10 @@ def strfdate(millis):
     format = "%Y/%m/%d"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
+@application.template_filter('strfdatedash')
+def strfdatedash(millis):
+    format = "%Y-%m-%d"
+    return datetime.datetime.fromtimestamp(millis).strftime(format)
 
 @application.template_filter('listNames')
 def listNames(contributors):
