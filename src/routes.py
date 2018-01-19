@@ -90,17 +90,28 @@ def get_routes(service_controller, db):
         return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s' % settings['GITHUB_CLIENT_ID'])
         # return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s&scope=read:org' % settings['GITHUB_CLIENT_ID'])
 
+    # get access token from auth token
     @api.route('/get_access_token/<token>')
     @jsonify
     def _login(token):
         res = user.login(token)
         res['user'] = user.get_user(res['access_token'])
+        if not user.user_in_organization(res['access_token'], 'nlesc'):
+            raise exceptions.UnauthorizedException(
+                'Not a public member of organization NLeSC. Check https://github.com/orgs/NLeSC/people?query= %s' % res['user']['login']
+            )
         return res, 200
 
     @api.route('/verify_access_token/<token>')
     @jsonify
     def _verify_access_token(token):
-        return {'user': user.get_user(token)}, 200
+        logged_user = user.get_user(token)
+        if not user.user_in_organization(token, 'nlesc'):
+            raise exceptions.UnauthorizedException(
+                'Not a public member of organization NLeSC. Check https://github.com/orgs/NLeSC/people?query= %s' % logged_user['login']
+            )
+
+        return {'user': logged_user}, 200
 
     @api.route('/update', methods=["POST"])
     @jsonify
