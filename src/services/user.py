@@ -63,7 +63,7 @@ class UserService:
                 if 'Token' not in request.headers:
                     raise UnauthorizedException('No "Token" header in request')
                 if not UserService.user_in_organization(request.headers['Token'], organization):
-                    raise UnauthorizedException('Not in organization ' + organization)
+                    raise UnauthorizedException('Not a public member of organization ' + organization)
 
                 return func(*args, **kwargs)
             wrapper.__name__ = func.__name__
