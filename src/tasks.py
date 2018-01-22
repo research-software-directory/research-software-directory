@@ -52,7 +52,10 @@ def commits_sync():
     softwares = db.software.all()
     for software in softwares:
         logger.info('(%i / %i) updating github commit history for %s' % (i, softwares.count(), software['id']))
-        service_controller.github.update_commits(software['id'])
+        try:
+            service_controller.github.update_commits(software['id'])
+        except Exception as e:
+            logger.info('(%i / %i) error updating github commit history for %s: %s' % (i, softwares.count(), software['id'], str(e)))
         i += 1
 
 @app.task
