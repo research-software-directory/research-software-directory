@@ -1,25 +1,29 @@
-<div class="bg-dark row" id="footer">
-    <div class="col-2-3">
-        <div id="footer_text">
-            The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools! <a href="/about">Read more</a>
-        </div>
-        <div id="footer_logo">
-            <a href="https://www.esciencecenter.nl" target="_blank">
-                {% include 'logo.html' %}
-            </a>
+<footer class="bg-dark" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-2-3">
+                <div id="footer_text">
+                    The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools! <a href="/about">Read more</a>
+                </div>
+                <div id="footer_logo">
+                    <a href="https://www.esciencecenter.nl" target="_blank">
+                        {% include 'logo.html' %}
+                    </a>
+                </div>
+            </div>
+            <div class="col-1-3 footer_links">
+                <p class="footer_title">Questions or comments?</p>
+                <p><a href="mailto:rsd@esciencecenter.nl">
+                    <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-envelope"></use></svg>
+                    rsd@esciencecenter.nl</a>
+                </p>
+                <p class="footer_title escience">Netherlands eScience Center</p>
+                <ul>
+                    <li><a href="https://www.esciencecenter.nl">Home</a></li>
+                    <li><a href="https://www.esciencecenter.nl/projects">Projects</a></li>
+                    <li><a href="https://www.esciencecenter.nl/people">People</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="col-1-3 footer_links">
-        <p class="footer_title">Questions or comments?</p>
-        <p><a href="mailto:rsd@esciencecenter.nl">
-            <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-envelope"></use></svg>
-            rsd@esciencecenter.nl</a>
-        </p>
-        <p class="footer_title escience">Netherlands eScience Center</p>
-        <ul>
-            <li><a href="https://www.esciencecenter.nl">Home</a></li>
-            <li><a href="https://www.esciencecenter.nl/projects">Projects</a></li>
-            <li><a href="https://www.esciencecenter.nl/people">People</a></li>
-        </ul>
-    </div>
-</div>
+</footer>
