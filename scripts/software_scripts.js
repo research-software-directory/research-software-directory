@@ -138,8 +138,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if( document.querySelector('.citation-block') ){
         
-        citeHiddenToggle =  document.querySelector('.citation-block_hidden-toggle');
-        citeToggle =        document.querySelector('.citation-block_toggle');
         citeContent =       document.querySelector('.citation-block .content');
 
         dropDownPanel =     document.querySelector('.citation-block .dropdown_panel');
@@ -147,24 +145,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         dropDownOptions =   document.querySelectorAll('.citation-block .dropdown_panel li');
         downloadButton =    document.querySelector('.citation-block .button.download');
 
-        // Toggle 
-        citeHiddenToggle.addEventListener('click', function(event) {
-            this.parentElement.classList.toggle('is-closed');
-            if ( citeContent.getAttribute('data-collapsed') === 'false') {
-                collapseSection( citeContent );
-            } else {
-                expandSection( citeContent );
-            }
-        });
-        citeToggle.addEventListener('click', function(event) {
-            this.parentElement.classList.toggle('is-closed');
-            if ( citeContent.getAttribute('data-collapsed') === 'false') {
-                collapseSection( citeContent );
-            } else {
-                expandSection( citeContent );
-            }
-        });
-        
         // Download file selection
         for ( i = 0; i < dropDownOptions.length; i++ ) { 
             dropDownOptions[i].addEventListener('click', function() {
