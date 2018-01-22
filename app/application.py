@@ -96,16 +96,16 @@ def software_product_page_template(software_id):
                           "utwente": "utwente.png", "uu": "uu.svg", "uva": "uva.jpg", "vua": "vua.png",
                           "wur": "wur.jpg"}
     mention_types = {
-        'journalArticle': 'Journal article',
-        'presentation': 'Presentation',
-        'videoRecording': 'Video recording',
-        'bookSection': 'Book section',
-        'computerProgram': 'Computer program',
-        'blogPost': 'Blog post',
-        'webpage': 'Webpage',
-        'book': 'Book',
-        'newspaperArticle': 'Newspaper article',
-        'conferencePaper': 'Conference paper'
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'bookSection': {"singular": "Book section", "plural": "Book sections"},
+        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'webpage': {"singular": "Webpage", "plural": "Webpages"},
+        'book': {"singular": "Book", "plural": "Books"},
+        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"}
     }
 
     software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
