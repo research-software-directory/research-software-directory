@@ -251,20 +251,6 @@ section{
             // height: auto;
         }
         &.is-closed{
-            .citation-block_hidden-toggle{
-                height: 100%;
-                z-index: +1;
-                
-            }
-            .citation-block_toggle{
-                
-                .icon{
-                    transform: rotate(0deg);
-                }
-                @include bp(max, $desktop){
-                    display: flex;
-                }
-            }
             .content{
                 opacity: 0;
                 transition: all 0.3s ease-in 0.1s, opacity 0.2s ease-in 0s;
