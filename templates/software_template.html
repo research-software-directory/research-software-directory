@@ -199,7 +199,11 @@
 
                 {% if template_data.readMore %}
                 <div class="read-more">
-                    <div class="read-more_content" style="height:0;">{{template_data.readMore}}</div>
+                    <div class="read-more_content text-content" style="height:0;">{{template_data.readMore}}
+                       <p>
+                            <a href="">YO</a>
+                       </p> 
+                    </div>
 
                     <div class="read-more_button button button--outlined">
                         <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
