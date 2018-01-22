@@ -345,7 +345,10 @@
                 {% for key, value in template_data.mentions.items() %}
                 <div class="mention">
                     <div class="mention_button">
-                        <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
+                        <h3>
+                            <span class="amount">{{value|length}}</span>
+                            <span class="category">{{mention_types.get(key, key).singular if value|length == 1 else mention_types.get(key, key).plural}}</span>
+                        </h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
                     <div class="mention_list" style="height: 0">
