@@ -25,7 +25,9 @@
 }
 
 #header_logo {
-	
+
+	margin-right: 15px;
+
 	svg {
 		fill: $black;
 		width: auto;
@@ -34,7 +36,6 @@
 	}
 
 	a:hover{
-
 		svg{
 			#block {
 				fill: $primaryColor;
@@ -46,9 +47,9 @@
 #header_text {
 	font-family: $primaryFontLight;
     font-size: 2rem;
-	@include bp(min, $phone) {
-		margin-left: 1em;
-	}
+	// @include bp(min, $phone) {
+	// 	margin-left: 1em;
+	// }
 }
 
 #header_links {
@@ -59,11 +60,11 @@
 			margin-left: 2em;
 		}
 	}
-	@include bp(max, $phone) {
-		text-align: left;
-		margin-top: 1em;
-		a:not(:first-child) { margin-left: 0}
-	}
+	// @include bp(max, $tablet) {
+	// 	text-align: left;
+	// 	margin-top: 1em;
+	// 	// a:not(:first-child) { margin-left: 0}
+	// }
 
 }
 
