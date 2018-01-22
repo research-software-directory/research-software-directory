@@ -234,10 +234,15 @@ section{
             }
         }
         .button{
+            justify-content: space-between;
             margin-left: 10px;
             flex-grow: 1;
             span{
                 flex-shrink: 0;
+            }
+            .icon use{
+                transition: transform 0.13s cubic-bezier(.49,.01,.27,1.45);
+                transform-origin: center;
             }
             @include bp(max, $phablet){
                 margin-left: 0;
