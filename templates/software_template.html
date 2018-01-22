@@ -347,7 +347,11 @@
                     <div class="mention_button">
                         <h3>
                             <span class="amount">{{value|length}}</span>
-                            <span class="category">{{mention_types.get(key, key).singular if value|length == 1 else mention_types.get(key, key).plural}}</span>
+                            {% if key in mention_types %}
+                            <span class="category">{{mention_types[key].singular if value|length == 1 else mention_types[key].plural}}</span>
+                            {% else %}
+                            <span class="category">{{key}}</span>
+                            {% endif%}
                         </h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
