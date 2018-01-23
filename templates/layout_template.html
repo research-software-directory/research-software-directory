@@ -30,19 +30,19 @@
         <svg style="position: absolute; width: 0; height: 0; overflow: hidden;"><use href="{{url_for('static', filename='icons/icons.svg')}}"></use></svg>
         
         <div id="layout_container">
-            <div id="header">
+            <header id="header">
                 <div class="container">
-                    <div>
-                        <div id="header_logo">
-                            <a href="/">
-                                {% include 'logo.html' %}
-                            </a>
-                        </div>
-                        <div id="header_text">
+                    
+                    <div id="header_logo">
+                        <a href="/">
+                            {% include 'logo.html' %}
+
                             {% block rsd_home %}
-                            <a href="/">research software directory</a>
+                            <div id="header_text">
+                                research software directory
+                            </div>
                             {% endblock %}
-                        </div>
+                        </a>
                     </div>
 
                     <div id="header_links">
@@ -57,8 +57,8 @@
                 <div class="container">
                     <div class="divider"></div>    
                 </div>
-            </div>
-            <div id="body">
+            </header>
+            <div id="body" style="background-color:white;">
                 {%- block content -%}{%- endblock -%}
             </div>
             {% include 'footer_template.html' %}

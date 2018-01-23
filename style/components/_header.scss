@@ -1,19 +1,13 @@
 #header {
 	width: 100%;
-
+	
 	.container:first-child{
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
 		padding-top: 1.5em;
-		padding-bottom: 1.5em;
-
-		>div:first-child {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-		}
+		padding-bottom: 0.5em;
 	}
 	a:hover{
 		color: $primaryColor;
@@ -25,45 +19,48 @@
 }
 
 #header_logo {
+	// flex-shrink: 0;
+	margin-right: 15px;
 	
+	padding-bottom: 1em;
+
 	svg {
 		fill: $black;
 		width: auto;
 		height: 23px;
 		display: block; 
+		margin-right: 20px;
 	}
-
-	a:hover{
-
-		svg{
-			#block {
-				fill: $primaryColor;
+	a{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		
+		&:hover{
+			svg{
+				#block {
+					fill: $primaryColor;
+				}
 			}
 		}
 	}
 }
 
 #header_text {
+	flex-shrink: 0;
 	font-family: $primaryFontLight;
     font-size: 2rem;
-	@include bp(min, $phone) {
-		margin-left: 1em;
-	}
+	line-height: 2;
+	margin-top: -0.05em;
 }
 
 #header_links {
-	text-align: right;
+	padding-bottom: 0.75em;
 	a {
 		display: inline-block;
 		&:not(:first-child) {
 			margin-left: 2em;
 		}
 	}
-	@include bp(max, $phone) {
-		text-align: left;
-		margin-top: 1em;
-		a:not(:first-child) { margin-left: 0}
-	}
-
 }
 
