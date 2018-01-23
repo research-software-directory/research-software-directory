@@ -17,7 +17,6 @@ after_success:
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
-  - DATA_FOLDER=`mktemp -d`
   - DATABASE_HOST=127.0.0.1
   - DATABASE_PORT=27017
   - DATABASE_NAME=test
