@@ -1,19 +1,31 @@
+#layout_container{
+	margin-bottom: 400px;
+}
+#footer{
+	height: 400px;
+}
+
 #footer {
 	width: 100%;
-	padding: 4em;
 	font-size: 2rem;
 	font-family: $primaryFontLight;
-	@include bp(max, $phone) {
-		padding: 1em;
-	}
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	
+	display: flex;
+	align-items: center;
 }
 #footer_text {
+
 	width: 66%;
 	@include bp(max, $phone) {
 		width: 100%;
 	}
 	color: $white;
-	margin-bottom: 4em;
+	margin-bottom: 3em;
 	a {
 		text-decoration: underline;
 		&:hover {
@@ -60,5 +72,15 @@
 				fill: $primaryColor;
 			}
 		}
+	}
+}
+
+@include bp(max, $tablet) {
+	#layout_container{
+		margin-bottom: 550px;
+	}
+	#footer{
+		height: 550px;
+		font-size: 1.8rem;
 	}
 }

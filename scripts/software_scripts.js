@@ -137,13 +137,76 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     if( document.querySelector('.citation-block') ){
-        
+
         citeContent =       document.querySelector('.citation-block .content');
 
+        // Copy to clipboard
+        copyButton =        document.querySelector('.citation-block .button.copy');
+
+        // Download file selection
         dropDownPanel =     document.querySelector('.citation-block .dropdown_panel');
         dropDownButton =    document.querySelector('.citation-block .dropdown_button');
         dropDownOptions =   document.querySelectorAll('.citation-block .dropdown_panel li');
         downloadButton =    document.querySelector('.citation-block .button.download');
+
+        // Copy to clipboard click
+        copyButton.addEventListener('click', function(event) {
+
+            button = this;
+            icon = button.querySelector('.icon use');
+
+            if ( !button.classList.contains('active') ){
+
+                var range = document.createRange();
+                range.selectNodeContents(document.getElementById("doi"));
+
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+
+                try {
+                    document.execCommand('copy');
+                } catch(err) {
+                }
+                window.getSelection().removeAllRanges();
+
+
+
+                button.classList.add('active');
+
+                icon.style.webkitTransform = "scale(0)";
+                icon.style.msTransform = "scale(0)";
+                icon.style.transform = "scale(0)";
+
+                setTimeout(function(){
+                    icon.setAttribute('xlink:href', "/static/icons/icons.svg#icon-check");
+                    icon.style.webkitTransform = "scale(1)";
+                    icon.style.msTransform = "scale(1)";
+                    icon.style.transform = "scale(1)";
+                }, 200);
+
+                button.querySelector('.text').textContent = 'Copied to clipboard';
+
+                setTimeout(function(){
+                    button.querySelector('.text').textContent = 'Copy to clipboard';
+
+                    icon.style.webkitTransform = "scale(0)";
+                    icon.style.msTransform = "scale(0)";
+                    icon.style.transform = "scale(0)";
+
+                    setTimeout(function(){
+                        icon.setAttribute('xlink:href', "/static/icons/icons.svg#icon-clipboard");
+                        icon.style.webkitTransform = "scale(1)";
+                        icon.style.msTransform = "scale(1)";
+                        icon.style.transform = "scale(1)";
+                    }, 200);
+
+                    button.classList.remove('active');
+                }, 1900);
+
+            }
+
+        });
 
         // Download file selection
         for ( i = 0; i < dropDownOptions.length; i++ ) { 
@@ -163,23 +226,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
   
     }
-
-    document.getElementById('btn-copy-clipboard').addEventListener('click', function(event) {
-        var range = document.createRange();
-        range.selectNodeContents(document.getElementById("doi"));
-
-        var selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-
-        try {
-            document.execCommand('copy');
-        } catch(err) {
-        }
-        window.getSelection().removeAllRanges();
-    });
-
-
 
     function plot_commits(data) {
         var plotid = document.getElementById("commitsPlot");

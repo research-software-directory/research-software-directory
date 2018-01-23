@@ -155,15 +155,13 @@
     </div>
 </section>
 
-
-<!-- Cite this software -->
 {% if 'githubid' in template_data %}
-
+<!-- Cite this software -->
 <section id="cite-this">
     <div class="container">
 
         <div class="row bg-dark citation-block">
-            
+
             <div class="col-1-3">
                 <h2 class="subtitle">Cite this software</h2>
             </div>
@@ -177,9 +175,9 @@
                                 <span class="gradient"></span>
                                 <span id="doi">{{ template_data.doi }}</span>
                             </div>
-                            <div id="btn-copy-clipboard" class="button button--filled-blue" href="#">
+                            <div class="button button--filled-blue copy" href="#">
                                 <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
-                                <span>Copy to clipboard</span>
+                                <span class="text">Copy to clipboard</span>
                             </div>
                         </div>
                     </div>
