@@ -4,23 +4,13 @@ node_js:
 cache:
   directories:
   - node_modules
-install: npm install
-script:
+install:
+- npm install
 - npm run schemabuild
+before_script:
 - REACT_APP_BACKEND="" npm test
-- test $TRAVIS_BRANCH = "master" && npm run build
-deploy:
-  provider: s3
-  access_key_id:
-    secure: cuil10xKfOYZYpis+Z92I3EO128Y9YY9ZwTOXvhoq9WXL1EeXPsB6onnUQJeruitkOcdc7BZErt0H9NLEu92rSt/g1jy6X+4MtEd/5jJCBCjO/2dBM5XzDLuFFAaDRZtBLHbmz9izH8BXjDsDRcJOVvJSRQfCtr8yySECjXCEW7efb88O3My3Tn16e7/X9NPP7bV08cgUmn9IIncWFo6NFn509uy3B25e+RMZU3kE6TEIB5d3n1RdJqJGWXhhqxUgH9KxdPOjVE15HC4M5pNSuNEaSvkeZx3qN/i7fGP9iJdboj697rg5oVnm+SW8ywrQjkjBHQhYl5fal6WySFzMLyu5YKBMfkDCRgcgTmnHhSS9siGiCa3gGfFw60hzhGIgCXaecodjCvutSPMsXJq/5Pl0FqmTMKuaPXriNiBLxXwu6o6tcnzmtWHPPkUXhZ0QNrviWCoJ6O/+Z7rabLUKM+yxiaimPvHeoMEaVJW6Bc4uYUz6DlEt0JlzhikGePNk2KA3njjx+ajmcpscOTlWd1bfENrJtcmCHwPCnTp5othJCjaQ8rrvJUG5CELJhznmI8S7WoAWe6LOU6fjh3m5CxFC2Ko6YkmGvI/cx/pOkNbT45a61eg7Scu+gK7HpQV3jDSVobzAzxRnL/e7mcJ1lJyUAjcf6v50C4TL1kH3ME=
-  secret_access_key:
-    secure: IFk03qHhMBhSn5YSRiralQTUxpIG7dXBR453K0khJ4x8bJrB+YRqjAxHHkIJjQyZKAjx7/09EXAelxi1j2RXFJnsvYG2h7/BK7KzMrOPfHt7BT6PMmslyShTHVJMw3vYaGNWUF0IwFRVysGhA3Y+tOH4Pwz15GjOgIi4LfGKbGfquP8EmqhdDFp+chTUdaSwCVbMNplgUZ3k4SHKFo4rjfyt9AkTY1ia9NMHkzrxSOYhBJ1OCCQkA31x5nObhG4TJJZUB+53lbgn0BFBg66QREm8enDBAVd07NTcI2wxkOXbdYswczgw6sAaQYqXO1PBv5/Qz1RhZlnZnRPUmMgUpuxWsM5Czr6JvJEF8NubFQnhDDGK+uJwKPdi0KkqvPxSGMs9Di1deuOqdouqPN29IPUP2+KdlIGd+SkKX8nHgAZ8ByMy6ux96JcHrcMHCI1F3lbm2gPz86LSOQGxpzyqMVZeW2gfNMMsUV5kOh4m40JAUdqhQTlvODIMiWmwn+Icfk7BcBRYaH5EMhgI0l0F80y/WRYxDPn5PX40S4g6VV8YVSyEltA0znLh7ihLeFkazkM8tjKTEFlcvVWxhoaxbNQov476n5C61v38PQUmIxevi//BbUMPZ5TZra370M+zdQWruxqpCKuVstXBSNl68CtuWg/8bDWy2h28emcymTA=
-  bucket: rsd.esciencecenter.nl
-  skip_cleanup: true
-  region: eu-central-1
-  local_dir: build
-  on:
-    branch: master
+script:
+- docker build -f ./Dockerfile.prod . -t rsdnlesc/admin
 env:
   matrix:
   - COMMIT=${TRAVIS_COMMIT::8} REACT_APP_BACKEND=/api
