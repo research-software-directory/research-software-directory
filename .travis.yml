@@ -10,9 +10,4 @@ install:
 before_script:
 - REACT_APP_BACKEND="" npm test
 script:
-- docker build -f ./Dockerfile.prod . -t rsdnlesc/admin
-env:
-  matrix:
-  - COMMIT=${TRAVIS_COMMIT::8} REACT_APP_BACKEND=/api
-  global:
-    secure: KNxBvMRoUyBw385amYSAn2C67EQwbY3Hv8tn9H2LX09xa8vTdiJ3F6YCGtCcTCTAKYB+yZzyVksTcuzR3ceIxF332OmnOPSFrYJZn81YGx1cB0nO0y820Y5EKLuKZlCy2ectcgUfMY+1567DRtX6vA8GhYZ4MiVbWAv5n+PyfH3tXla03kZa044b4xJrcftxAZoBWBZnJZRAlYXhB7KCeksCeGqADXO/bZAsx/e49XJikB2gWYj1N9hoPq5Ix5e7ZghkJuURyRRfrnrNnR9XhwU+O727CtQ8aelolE2cOjIBePd+7H64OtueGW1C2MvASojeWIXsKSSq726jNWeV+YeA9Jlb9QuO+r/Y0JaTAiYBGH8DZa727fG3gMpq95bffquaNtSLUyisnoqe1U3J9cyLNsvVvOcGL18N3/FjxvZe/rbjnCPQCaclJM6ciwdYaawvIrNGMJ/lXEHAYtI6MfbAmasxAeGWXWzuHEPDK7LNq43G4v0r9qCuS+Dpov4utYNLVc4b/0Zt8IlywSL9UYQHgxstAwtHPaaa2CuyZLdOuOWc1VmKlnCzmQ27wlyg2K+NdhlKyaWyddRTcdOQ+l5JzkPJ7yxXhXmMUgrFLcEs97b5SaOPW6LyhlQxkg91RvAZkH2x3XOHOzTPuWMfFOYFt5YCcaHV1eMBZ9HfNWk=
+- npm run build
