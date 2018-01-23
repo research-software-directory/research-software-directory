@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+# Docker
+- `docker build -f ./Dockerfile.dev . -t rsd-admin`
+
 # Installation
 - Clone repository
 - Use node version `^8.0`, eg using [nvm](#install-node-using-nvm)
