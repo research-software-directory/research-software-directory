@@ -14,12 +14,6 @@ script:
 - PYTHONPATH=`pwd` pytest --cov=src
 after_success:
 - coveralls
-- if [ "$TRAVIS_BRANCH" = "master" ]; then
-    docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD} &&
-    docker pull ${DOCKER_USERNAME}/rsd-backend &&
-    docker build -t ${DOCKER_USERNAME}/rsd-backend --cache-from ${DOCKER_USERNAME}/rsd-backend . &&
-    docker push ${DOCKER_USERNAME}/rsd-backend;
-  fi
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
@@ -39,4 +33,4 @@ env:
   - secure: i4ZH+cGHGPaNLBx5kQpCuq33WwPL3dHv+ykzznlI1RPQe0D7+2ReNd8ivDwD+YSkcR61GTbr0l1otrdvsbSuu0bgLdoHTLwK67f7fJ/6949m+Mzf7G7TTi3/niDc8nKFT5azYsTpNqvrD7y5ci7+AZxY0Af0GZULCe+MJaN7ex16tKzqiqyVrSHnFXWncCXHCkf3KW1b/MKbORKB/uzD77YyDMlc7ZLbkTMKj1FR9E2P9jt/Sp7B8j4BktOau9MuavwVyTOwGuutEZ3NXDgnI2BlknaYBidK97wvvlZauXE6VI2HmwrrYEZIFBV3mCl7h4v4b7S1Zn70hbnJNSR6F/UMzcUxxKRW+uT/iYHRGFkVoRHcSkItx8DoRfaTBiLWcNtF0Oxxj0qosIWjKyErp792lfI7u8C8Z0tVoeewtGJikGmnp05SzOPy7yQ1iDfeKNIV31wT7GO2uhVD/STvMiyXACAI5ZlsusAnFuw8jaN/13zG9yIf4Dazgv+OVpuUNTtm2F0EUrUYA7nak3GXwyh+iNYz1vMDihzZ5c+9zlSW2xqXAvWArOSQJ+SmxqGpYA0ew87ELvl1TEmc7omqdUCmoXg3rZAon6gwT5X7BOrLrSNLbh/TnpbKFYXKYQvWtUc06RNjPH8X6uv/t5DfyPUAEXrnpkC9ly5SKxKxX0M=
 notifications:
   email:
-  - t.klaver@esciencecenter.nl
+  - rsd@esciencecenter.nl
