@@ -11,3 +11,7 @@ before_script:
 - REACT_APP_BACKEND="" npm test
 script:
 - npm run build
+env:
+  global:
+    - GITHUB_ACCESS_TOKEN:
+        secure: =McwKqXM4zfh4+EH8nyZozo45JRvHENwOAvqS4udvZ5D1Lw2iZVP1r6c3/eUkbds2fBMYDXgFb+5mqWVdnofcby9fRSxLPvZtyJ+sOe8HUu0p2bEi29V1U76UmFO3hwZdHh+AJHeRyDykuX9N49d0O785lpkdzmKaEmJGUHBMQD7RkB1s0Uglnr+yYzMaN/syNpemaaTuTKkAUt+DRbO9PKiltjJtPRsy/Gwtc/+pPLwVyc+1I+WVQaYZS1fWTEbd8qUyu7C5mD6QvNjgVoDv50g190o+UrWzzuXgsB8bogdFYvrMzdKK/SJ+LTKCfZixXRxIJocKfBO1ybMc5rZzy1bprsJXLi01FZWqHwwH/7jPhrv8Tp8+i/XSA2ydDl/ip9sFaW7XHXC/9TY+TYT3ZEBtLjBKkfS1n7l8cJomi6L2Zq3rgFdiiQfvPG/Y9Au0TIjci54aqgUuICLow5LRuS+V7z4KXusa1hIjUb6fLshrZqyqPCNIRY2CNKMZwRSDRsO06eZZBJN1rsRE2UQEuLNVm1/bggDPln518eFI+pNGXsij1YHlRoUsQIo72XqcHsbAYHw74Tx/9gJpIwjrs5fkBdtS0ymFfR1mj//fRE0wQB1ArDGy4cIJukVhZPYQAxjx8ZA3jX2Gsu/UZrd3HMTW7Znqu82hJ5GBPg2C3cY=
