@@ -152,47 +152,6 @@ def get_routes(service_controller, db):
             raise exceptions.RouteException("'id' parameter required", 400)
         return service_controller.github.description(id), 200
 
-    @api.route('/images', methods=["GET"])
-    @jsonify
-    def _images():
-        return [filename for
-                filename in os.listdir(settings['DATA_FOLDER']+'/images') if not filename == '.gitkeep'], 200
-
-    @api.route('/thumbnail/<filename>', methods=["GET"])
-    def _thumbnail(filename):
-        filename = settings['DATA_FOLDER']+'/images/' + filename
-        if not os.path.isfile(filename):
-            return flask.send_file('data/image-not-found.png')
-        resized_url = resize(filename, '100x100')
-        return flask.send_file(resized_url)
-
-    @api.route('/image/<filename>', methods=["GET"])
-    def _image(filename):
-        filename = settings['DATA_FOLDER']+'/images/' + filename
-        if not os.path.isfile(filename):
-            return flask.send_file('data/image-not-found.png')
-        return flask.send_file(filename)
-
-    @api.route('/upload', methods=["POST", "PUT"])
-    @jsonify
-    @user.require_organization('nlesc')
-    def _upload():
-        image = flask.request.files['file']
-        contents = image.stream.read()
-        md5 = hashlib.md5(contents).hexdigest()
-        image.filename = md5 + '.' + image.filename.split(".")[-1]
-        if "/" in image.filename:
-            raise Exception('invalid filename')
-
-        full_path = settings['DATA_FOLDER']+'/images/'+image.filename
-        if os.path.isfile(full_path):
-            raise Exception('file exists')
-
-        with open(full_path, 'wb') as file:
-            file.write(contents)
-
-        return {'status': 'ok', 'filename': image.filename}, 200
-
     @api.route('/software/<software_id>/generate_report', methods=["POST"])
     @jsonify
     def _generate_report(software_id):
