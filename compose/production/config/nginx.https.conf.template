@@ -24,18 +24,16 @@ server {
 }
 
 server {
-    listen 443;
-    listen [::]:443;
+    listen 443 default_server;
+    listen [::]:443 default_server;
     ssl on;
     ssl_certificate /cert/live/{DOMAIN}/fullchain.pem;
     ssl_certificate_key /cert/live/{DOMAIN}/privkey.pem;
-    server_name research-software.nl;
 
     return 301 https://www.research-software.nl;
 }
 
 server {
-        listen 0.0.0.0:8000;
-        server_name _;
-        return 301 https://$host$request_uri;
+        listen 80 default_server;
+        return 301 https://www.research-software.nl;
 }

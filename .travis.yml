@@ -1,21 +1,13 @@
 language: python
 python:
 - 3.6
-services:
-- docker
+cache:
+  pip: true
+  directories:
+  - node_modules
 script:
 - npm install
 - node node_modules/gulp/bin/gulp.js build-production
-after_success:
-- if [ "$TRAVIS_BRANCH" = "master" ]; then docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD}
-  && docker pull ${DOCKER_USERNAME}/rsd-frontend && docker build -f compose/production/Dockerfile -t ${DOCKER_USERNAME}/rsd-frontend
-  --cache-from ${DOCKER_USERNAME}/rsd-frontend . && docker push ${DOCKER_USERNAME}/rsd-frontend;
-  fi
-env:
-  global:
-  - COMMIT=${TRAVIS_COMMIT::8}
-  - secure: mNI1vPA3mNIedIbpbDrvrman4askaazPIVGVHBWBNyzia76vYLW2qLbMpMJ5hyINpWyhGra5Xb3z3EMuzwCHo74kTVip9Bq1iMj9f7HZc0QTSFgf0ghDyMQw7df6+S5iMhsVPaGtXsKVZPgC3PVNwzLlIKJN2du9GcT4FseqTEpny0ZnUIXbUmBaFjm9vbtuCfBuKiJ6qkW/isrO/Hxurch3fMoEMEhX52O3velgQE41N9DeVilrRQ/PuDlf9aA9jV89PP01k7FgYt5rfbis7t1ET4JNEq0hvMeRpxRXL7f+Mfvz3ah0kGuQZTnlRrnEfKbZZFP0u0wEI+mG6O810GpKRm/hNL/uYUz+ryudWzFyFpUqjusW30SlI8Yf6EfF6W8YH7Zque7W/ekMVAGMZAOcel8n9TZBfcAQUbeZbUNcRkUsCayPeXXrw0EMhdnCkd3vAj/7BElEf/nJfxzldngCHXhzRgGwo4XGo1+KnPA2q+CT8CH4E0LRxSTBRjozrDF5fQKLp6AFVOI4GCS93zlQJqjtq0iFDta7OXjUICaRCQ2CBUX3s14VaIE/9yrFa/kPU6yCh2CzBYEFbW2NnUMSWzkKEp5017P1TXIjvUFU7vtJRFqA3hPClfJuJsii7Ap353KJAec4ekslPv6/hYC1EZrOEr1nOquthrMdODs=
-  - secure: CjJwy5L3D6qwjsbiOnw13QFoOOkoBxGSI5k4874ESknNibMk7gkQ8CJOixSvtt2fNKNO5h5B5cJLdPq9g00dcY3Cycma0O6Bz/w7F2cdo7ecBO6oUrZmV1XWwLE42f5vVJP1EoXcHTLnikkAdweUQ2aro21TBOwd7ljc+PHHQGy92FED7xmebutXSBmbozyGhWsrusIPNGp/JMo/imFAVa7Mb/shfeUrtG5K9LXqGpkQbEmXb9YISgtRRL4gBxLy64IXCRd5yFKS/k60Sv7jH0h2sOV5O3bLozQs/aiGwMO5dqL8+JzoHHSKpl1C8WjZHVMm3O2LbJvOKSOYMgrkQSgryTNAY55v9VmN86l87/Puqqw9w87JD7GvHD2NgdF8Q4PJdTcyCcXEij5tu5fl/RGqxVxMyjOq6Nvxak7je1O3lujU5/2zIDPKwtklkFu69Sd7G8rfBzTMJdD4zNOvqfYb2IVCXpwDnpzbsBEy/TZvlMSXU15d+n01RKGvkLNj6CYxqhrKDZY41De5shnbJYLQGxGhQrG/OV1IB1CaIV8nnnRskdP02V6Ewk7Bl3Pjnlvj3TaZAkoC7cDmwjg1n2WY5cTsSTo8us8F42J0gCp1vxjGpJkMqRybSUvK2MOcrV0n11e543N79HEDGDvwO8/5d91V5ZUVUNEfQBtFGP0=
 notifications:
   email:
   - estep@esciencecenter.nl

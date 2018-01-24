@@ -1,168 +1,166 @@
 {% extends "layout_template.html" %}
 {% block head %}
+<title>About | Research Software Directory</title>
 {{super()}}
 {% endblock %}
-{%- block title -%}
-About
-{%- endblock -%}
 {% block content %}
 {% block about_rsd %}
 {% endblock %}
-<div class="container">
-    <div id="aboutrsd" class="text-content">
+<div class="textPage container">
+<div id="aboutrsd" class="container col-1-2">
 
-        <h1 class="title">Encouraging the re-use of research software</h1>
+    <h1>Encouraging the re-use of research software</h1>
 
-    <!-- 
-            No science without software
-            - modern day science depends on software
-            - software has generic components
-            - we see relatively little re-use of such components
-            - so why arent these components used by other scientists
-            - publishing on github, permissive licensing,
-    -->
-            <h2>
-            No science without software
-            </h2>
+<!-- 
+        No science without software
+        - modern day science depends on software
+        - software has generic components
+        - we see relatively little re-use of such components
+        - so why arent these components used by other scientists
+        - publishing on github, permissive licensing,
+ -->
+        <h2>
+        No science without software
+        </h2>
 
-            <p>
-            Much of modern day science would not be possible without the use of
-            computers, and as a result, many scientists spend a significant part of
-            their time writing code. During the past 5 years or so since the
-            Netherlands eScience Center first started working with scientists, some
-            patterns related to research software have emerged.
-            </p>
+        <p>
+        Much of modern day science would not be possible without the use of
+        computers, and as a result, many scientists spend a significant part of
+        their time writing code. During the past 5 years or so since the
+        Netherlands eScience Center first started working with scientists, some
+        patterns related to research software have emerged.
+        </p>
 
-            <p>
-            For example, research software often contains components that are quite
-            generic in their application. To give you some idea, this may include
-            components to do X, do Y or do Z. In the 100+ projects we have done so
-            far, we see many implementations of what is functionally the same thing.
-            What's more, the code quality often leaves something to be desired. For
-            example, there are typically no tests, documentation is often lacking,
-            and the code does not usually adhere to any coding standards. This isn't
-            to say that the scientists who wrote such code did a bad job, but rather
-            it is the natural result of what scientists are judged on, namely the
-            scientific quality of the papers they put out, as opposed to the quality
-            of software that enables such papers.
-            </p>
+        <p>
+        For example, research software often contains components that are quite
+        generic in their application. To give you some idea, this may include
+        components to connect to remote systems, to couple dynamic models or to
+        parallelize computations. In the 100+ projects we have done so far, we
+        see many implementations of what is functionally the same thing. What's
+        more, the code quality often leaves something to be desired. For
+        example, there are typically no tests, documentation is often lacking,
+        and the code does not usually adhere to any coding standards. This isn't
+        to say that the scientists who wrote such code did a bad job, but rather
+        it is the natural result of what scientists are judged on, namely the
+        scientific quality of the papers they put out, as opposed to the quality
+        of software that enables such papers.
+        </p>
 
-            <p>
-            So, one of the goals that the Netherlands eScience Center has set
-            itself, is to identify such components, generalize them, and increase
-            their software engineering quality to the point where they can be
-            re-used by scientists from a broad variety of backgrounds. This way,
-            scientists can spend what limited time they have on developing and 
-            testing their scientific ideas, as opposed to struggling with coding
-            problems that have nothing to do with their scientific challenges.
-            </p>
+        <p>
+        So, one of the goals that the Netherlands eScience Center has set
+        itself, is to identify such components, generalize them, and increase
+        their software engineering quality to the point where they can be
+        re-used by scientists from a broad variety of backgrounds. This way,
+        scientists can spend what limited time they have on developing and 
+        testing their scientific ideas, as opposed to struggling with coding
+        problems that have nothing to do with their scientific challenges.
+        </p>
 
-            <p>
-            For a while, we thought (naively perhaps) that as long as we would do a
-            good job of improving the software engineering, surely we would see our
-            tools being integrated into newly developed scientific software. So far
-            though, adoption of our tools has mostly been limited to people that we
-            are already involved with, for example because we do a project with
-            them, or because they have consulted us on how their software can better
-            address the scientific challenges they are facing, or because they have
-            attended one of our symposia. While this is a good start, we also want
-            to help scientists with whom we are not directly involved. To do so, we
-            want to make sure that our software can be found online.
-            </p>
-    <!-- 
-            On finding software
-            - searching for software is difficult:
-                - because it is difficult to instruct a search engine
-                - search engines do no understand the software in public repositories such as those on github or bitbucket
-            - websites included in the search results do not answer questions that a scientist may have, such as:
-                - "What can this tool do for me?"
-                - "Where do I go to get started?"
-                - "Are other people in my field using it and what are they using it for?"
-            - (websites included in the search results do not use language that is easy to understand)
-            - the rsd aims to address this difficult problem by presenting the tool in its scientific context:
-                - what problem does it solve?
-                - who is using it and what are they using it for?
-                - how do I get started with a given tool?
-    -->
-            <h2>On finding software</h2>
+        <p>
+        For a while, we thought (naively perhaps) that as long as we would do a
+        good job of improving the software engineering, surely we would see our
+        tools being integrated into newly developed scientific software. So far
+        though, adoption of our tools has mostly been limited to people that we
+        are already involved with, for example because we do a project with
+        them, or because they have consulted us on how their software can better
+        address the scientific challenges they are facing, or because they have
+        attended one of our symposia. While this is a good start, we also want
+        to help scientists with whom we are not directly involved. To do so, we
+        want to make sure that our software can be found online.
+        </p>
+<!-- 
+        On finding software
+        - searching for software is difficult:
+            - because it is difficult to instruct a search engine
+            - search engines do no understand the software in public repositories such as those on github or bitbucket
+        - websites included in the search results do not answer questions that a scientist may have, such as:
+            - "What can this tool do for me?"
+            - "Where do I go to get started?"
+            - "Are other people in my field using it and what are they using it for?"
+        - (websites included in the search results do not use language that is easy to understand)
+        - the rsd aims to address this difficult problem by presenting the tool in its scientific context:
+            - what problem does it solve?
+            - who is using it and what are they using it for?
+            - how do I get started with a given tool?
+ -->
+    <h2>On finding software</h2>
 
-            <p>
-            Scientists, like most people these days, depend on search engines
-            whenever they are looking for information on something. However, search
-            engines are not very good when it comes to helping people find software.
-            Problems exist both on the 'asking' side and on the 'answering' side of
-            a query for software. On the asking side, using the correct terminology
-            is difficult for scientists unfamiliar with computer science vocabulary.
-            On the answering side, the software you are looking for might not be
-            listed in the search results even if it exists on a software repository
-            website such as GitHub, SourceForge, or BitBucket. This is because
-            search engines have only a limited understanding of the code contained
-            within such repositories. A second problem on the answering side is how
-            to differentiate between the websites listed in the search results, and
-            how to recognize the answer to your question when you see it.
-            </p>
+        <p>
+        Scientists, like most people these days, depend on search engines
+        whenever they are looking for information on something. However, search
+        engines are not very good when it comes to helping people find software.
+        Problems exist both on the 'asking' side and on the 'answering' side of
+        a query for software. On the asking side, using the correct terminology
+        is difficult for scientists unfamiliar with computer science vocabulary.
+        On the answering side, the software you are looking for might not be
+        listed in the search results even if it exists on a software repository
+        website such as GitHub, SourceForge, or BitBucket. This is because
+        search engines have only a limited understanding of the code contained
+        within such repositories. A second problem on the answering side is how
+        to differentiate between the websites listed in the search results, and
+        how to recognize the answer to your question when you see it.
+        </p>
 
-            <p>
-            It is not immediately obvious how to mitigate the problem on the asking
-            side, but the problems on the answering side can be addressed by
-            generating new web content. This new content, which we call the
-            <i>Research Software Directory</i>, should describe software packages
-            using generic language as much as possible, and should answer questions
-            that researchers may have, such as "What can this tool do for me?", "Are
-            other people in my field using it and what are they using it for?", and
-            "Where do I go to get started?". Furthermore, software packages should
-            be presented in their scientific context, by linking it to authors,
-            publications, other software tools, blog posts, or whatever other
-            content exists that may be relevant to the software package being
-            presented. The Research Software Directory will accomplish two things:
-            first, it helps researchers to quickly judge if a software package is
-            relevant to their particular problem. Second, it will help search
-            engines understand what a given software package is about, thereby
-            improving the chances of earning a prominent place among the search
-            results.
-            </p>
+        <p>
+        It is not immediately obvious how to mitigate the problem on the asking
+        side, but the problems on the answering side can be addressed by
+        generating new web content. This new content, which we call the
+        <i>Research Software Directory</i>, should describe software packages
+        using generic language as much as possible, and should answer questions
+        that researchers may have, such as "What can this tool do for me?", "Are
+        other people in my field using it and what are they using it for?", and
+        "Where do I go to get started?". Furthermore, software packages should
+        be presented in their scientific context, by linking it to authors,
+        publications, other software tools, blog posts, or whatever other
+        content exists that may be relevant to the software package being
+        presented. The Research Software Directory will accomplish two things:
+        first, it helps researchers to quickly judge if a software package is
+        relevant to their particular problem. Second, it will help search
+        engines understand what a given software package is about, thereby
+        improving the chances of earning a prominent place among the search
+        results.
+        </p>
 
-    <!-- 
-            Visible impact
-            - As a fortunate side-effect of placing each tool in its context, we can
-            start to get some idea of the impact of certain tools in the broadest 
-            sense of the word.
-            - This is important for funders
-    -->
-    
-        <h2>Visible impact</h2>
+<!-- 
+        Visible impact
+        - As a fortunate side-effect of placing each tool in its context, we can
+          start to get some idea of the impact of certain tools in the broadest 
+          sense of the word.
+        - This is important for funders
+ -->
+ 
+    <h2>Visible impact</h2>
 
-            <p>
-            As a fortunate side-effect of presenting each tool in its scientific
-            context, the Research Software Directory can be used to quickly gain a
-            qualitative understanding of a tool's impact in the broadest sense of
-            the word. This is important both for funders and for developers. Funders
-            want to make sure that resources are granted such that maximum impact
-            can be achieved, while developers benefit from being able to show that
-            their software actually gets used as an integral part of scientific
-            output.
-            </p>
+        <p>
+        As a fortunate side-effect of presenting each tool in its scientific
+        context, the Research Software Directory can be used to quickly gain a
+        qualitative understanding of a tool's impact in the broadest sense of
+        the word. This is important both for funders and for developers. Funders
+        want to make sure that resources are granted such that maximum impact
+        can be achieved, while developers benefit from being able to show that
+        their software actually gets used as an integral part of scientific
+        output.
+        </p>
 
-    <!-- 
-            Vision
-            - We envision a federated system of Research Software Directories, where
-            any organization can have its own.
-            - Not only for ourselves, but for everybody (see below)
-            - call to action: set up your own RSD
-    -->
+<!-- 
+        Vision
+        - We envision a federated system of Research Software Directories, where
+          any organization can have its own.
+        - Not only for ourselves, but for everybody (see below)
+        - call to action: set up your own RSD
+ -->
 
-        <h2>Vision</h2>
-            
-            <p>
-            Other scientific institutions could benefit from having their own
-            Research Software Directory, but usually lack the resources required to
-            develop such a platform. Therefore, we made our complete software stack
-            available to others, free of charge. Visit <a
-            href="http://research-software.nl/software/research-software-directory"
-            >http://research-software.nl/software/research-software-directory</a> to
-            get started on setting up your own!
-            </p>
+    <h2>Vision</h2>
+        
+        <p>
+        Other scientific institutions could benefit from having their own
+        Research Software Directory, but usually lack the resources required to
+        develop such a platform. Therefore, we made our complete software stack
+        available to others, free of charge. Visit <a
+        href="http://research-software.nl/software/research-software-directory"
+        >http://research-software.nl/software/research-software-directory</a> to
+        get started on setting up your own!
+        </p>
 
-    </div>
-</div> 
+</div>
 {% endblock %}
