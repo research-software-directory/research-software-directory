@@ -230,24 +230,28 @@
         <div class="col-2-3">
           <ul>
             {% for mention in latest_mentions %}
-            <li class="row bg-light">
-    
-              <div class="col mention_info">
-                <div class="mention_title">
-                    {% if mention.data.url %}
-                    <a href="{{mention.data.url}}" target="_blank">
-                      {{mention.data.title}}
-                      <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
-                    </a>
-                    {% else %}
-                        {{mention.data.title}}
-                    {% endif %}
-                  </div>
-        
-                  <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
-              </div>
-    
-              <div class="col mention_date">{{ mention.updatedAt | strfdatehuman }}</div>
+            <li>
+
+                {% if mention.data.url %}
+
+                <a href="{{mention.data.url}}" target="_blank" class="mention_content bg-light">
+                    <div class="mention_info">
+                        <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehuman }}</div>
+                    </div>
+                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                </a>
+                {% else %}
+                <div class="mention_content bg-light">
+                    <div class="mention_info">
+                        <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehuman }}</div>
+                    </div>
+                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                </div>
+                {% endif %}
+
+              
     
             </li>
             {% endfor %}
