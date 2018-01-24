@@ -70,33 +70,15 @@
         
         <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
           <div class="filters_columns">
-          
             <div class="filter-group">
-              <div class="filter-group_title">
+              <div class="filter-group_title" @click="tagsFilterOpen = !tagsFilterOpen">
                 Tags
-                <span class="toggle-button" @click="tagsFilterOpen = !tagsFilterOpen">
+                <span class="toggle-button">
                   [[ tagsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
 
-              <!-- <transition-group 
-              tag="ul"
-              class="filter-list"
-              v-bind:css="false"
-              v-on:before-enter="beforeEnter"
-              v-on:enter="enter"
-              v-on:leave="leave"
-              >
-              <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
-                  <label :for="tag" class="checkbox">
-                    <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-                    <div class="custom-checkbox"></div> 
-                    <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-                  </label>
-              </li>
-              </transition-group> -->
-
-              <ul v-if="organizationsFilterOpen" class="filter-list">
+              <ul v-if="tagsFilterOpen" class="filter-list">
                   <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
                       <label :for="tag" class="checkbox">
                         <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
@@ -109,9 +91,9 @@
             </div>
 
             <div class="filter-group">
-              <div class="filter-group_title">
+              <div class="filter-group_title" @click="organizationsFilterOpen = !organizationsFilterOpen">
                 Partner organizations
-                <span @click="organizationsFilterOpen = !organizationsFilterOpen">
+                <span class="toggle-button">
                   [[ organizationsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>

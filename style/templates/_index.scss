@@ -348,17 +348,20 @@
     }
 
     &_title{
+      display: inline-block;
+      cursor: pointer;
       font-family: $primaryFontBold;
       padding-bottom: 0.5em;
+
+      &:hover{
+        color: $primaryColor;
+      }
+      .toggle-button{
+        margin-left: 0.5em;
+      }
     }
 
   }
-
-  .toggle-button{
-    cursor: pointer;
-    
-  }
-
 
   // Toggle for all filters
   .toggle-filters{
