@@ -69,7 +69,9 @@
       <div class="col-1-4" id="filters">
         
         <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
+
           <div class="filters_columns">
+            
             <div class="filter-group">
               <div class="filter-group_title" @click="tagsFilterOpen = !tagsFilterOpen">
                 Tags
@@ -78,15 +80,23 @@
                 </span>
               </div>
 
-              <ul v-if="tagsFilterOpen" class="filter-list">
-                  <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
-                      <label :for="tag" class="checkbox">
-                        <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-                      </label>
-                  </li>
-              </ul>
+              <transition-group 
+              tag="ul"
+              class="filter-list"
+              v-bind:css="false"
+              v-on:before-enter="filtersBeforeEnter"
+              v-on:enter="filtersEnter"
+              v-on:leave="filtersLeave">
+
+              <li v-for="(tag, index) in tags" v-bind:data-index="index" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
+                  <label :for="tag" class="checkbox">
+                    <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
+                    <div class="custom-checkbox"></div> 
+                    <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
+                  </label>
+              </li>
+
+              </transition-group>
 
             </div>
 
@@ -97,15 +107,26 @@
                   [[ organizationsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
-              <ul v-if="organizationsFilterOpen" class="filter-list">
-                <li v-for="org in organizationsWithCount" :class="org.count === 0 ? 'empty' : ''">
-                    <label :for="org.id" class="checkbox">
-                      <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
-                      <div class="custom-checkbox"></div> 
-                      <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
-                    </label>
-                </li>
-              </ul>
+          
+              <transition-group 
+              tag="ul"
+              class="filter-list"
+              v-bind:css="false"
+              v-on:before-enter="filtersBeforeEnter"
+              v-on:enter="filtersEnter"
+              v-on:before-leave="filtersBeforeLeave"
+              v-on:leave="filtersLeave">
+              
+              <li v-for="(org, index) in organizationsWithCount" v-bind:data-index="index" :key="org" v-if="organizationsFilterOpen" :class="org.count === 0 ? 'empty' : ''">
+                <label :for="org.id" class="checkbox">
+                  <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
+                  <div class="custom-checkbox"></div> 
+                  <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
+                </label>
+              </li>
+
+              </transition-group>
+
             </div>
           
           </div>
