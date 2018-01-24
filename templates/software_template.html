@@ -1,5 +1,6 @@
 {% extends "layout_template.html" %}
 {%- block head -%}
+    <title>{{template_data.name}} | Research Software Directory</title>
     <meta name="citation_title" content="{{template_data.name}}" />
     <meta name="citation_author" content="{{", ".join(template_data.contributor|listNames)}}" />
     <meta name="citation_publication_date" content="{{template_data.createdAt | strfdate}}" />
@@ -44,8 +45,42 @@
       }]
     }
     </script>
+    {% if template_data.id == 'boatswain' %}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "SoftwareSourceCode",
+            "codeRepository": "https://github.com/NLeSC/boatswain",
+            "datePublished": "2018-01-16",
+            "author": [{
+                "@type": "Person",
+                "givenName": "Berend",
+                "familyName": "Weel",
+                "affiliation": {
+                    "@type": "Organization",
+                    "legalName": "Netherlands eScience Center"
+                }
+            }, {
+                "@type": "Person",
+                "additionalName": "H.",
+                "givenName": "Jurriaan",
+                "familyName": "Spaaks",
+                "affiliation": {
+                    "@type": "Organization",
+                    "legalName": "Netherlands eScience Center"
+                }
+            }],
+            "keywords": ["docker", "docker-compose", "containers"],
+            "license": "http://www.apache.org/licenses/LICENSE-2.0",
+            "version": "1.0.2",
+            "identifier": "https://doi.org/10.5281/zenodo.1149011",
+            "name": "boatswain"
+        }
+    </script>
+    {% endif %}
+
+
 {%- endblock -%}
-{% block title %}{{template_data.name}}{% endblock %}
 {%- block content -%}
 
 
@@ -125,30 +160,20 @@
 <section id="cite-this">
     <div class="container">
 
-        <div class="row bg-dark citation-block is-closed">
-            
-            <div class="citation-block_hidden-toggle"></div>
+        <div class="row bg-dark citation-block">
 
-            <div class="citation-block_toggle">
-                <span>
-                    <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
-                </span>
-            </div>   
-                
             <div class="col-1-3">
                 <h2 class="subtitle">Cite this software</h2>
             </div>
 
-            <div class="col-2-3 content" style="height:0px;">
+            <div class="col-2-3 content">
                 {% if template_data.doi %}
                     <div class="citation-block_doi">
                         <h5>DOI:</h5>
                         <div class="row">
                             <div class="doi_url">
                                 <span class="gradient"></span>
-                                <span>
-                                    {{ template_data.doi }}
-                                </span>
+                                <span id="doi">{{ template_data.doi }}</span>
                             </div>
                             <div class="button button--filled-blue copy" href="#">
                                 <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
@@ -199,9 +224,7 @@
 
                 {% if template_data.readMore %}
                 <div class="read-more">
-                    <div class="read-more_content text-content" style="height:0;">{{template_data.readMore}}
-          
-                    </div>
+                    <div class="read-more_content" style="height:0;">{{template_data.readMore}}</div>
 
                     <div class="read-more_button button button--outlined">
                         <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
@@ -312,7 +335,14 @@
                 {% for key, value in template_data.mentions.items() %}
                 <div class="mention">
                     <div class="mention_button">
-                        <h3><span class="amount">{{value|length}}</span><span class="category">{{mention_types.get(key, key)}}</span></h3>
+                        <h3>
+                            <span class="amount">{{value|length}}</span>
+                            {% if key in mention_types %}
+                            <span class="category">{{mention_types[key].singular if value|length == 1 else mention_types[key].plural}}</span>
+                            {% else %}
+                            <span class="category">{{key}}</span>
+                            {% endif%}
+                        </h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
                     <div class="mention_list" style="height: 0">
@@ -416,10 +446,6 @@
                 <h2 class="subtitle text-blue">Contributors</h2>
             </div>
             <div class="col-3-4">
-                {% if template_data.githubid %}
-                <div class="intro">
-                    <p>For bug reports and issues, please use the <a href="{{template_data.mainUrl}}/issues" target="_blank">Github Issues feature</a>. And don’t forget to check the documentation!</p>
-                </div>
 
                 <div class="row">
 
@@ -494,20 +520,14 @@
                                         Mail {{template_data.contactPerson.name}}
                                     </a>
                                 </div>
-                            </div>        
-                            
+                            </div>
                         </div>
                     </div>
                     {% endif %}
-
                 </div>
-                {% endif %}
             </div>
         </div>
-
-       
-        
-    </div>     
+    </div>
 </section>
 
 
