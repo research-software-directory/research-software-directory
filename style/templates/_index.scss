@@ -337,8 +337,10 @@
       padding-right: 20px;
 
       li{ 
+        overflow: hidden;
         padding: 0.2em 0; 
-        transition: opacity 0.4s ease-in;
+        // max-height: 5em;
+        transition: all 0.2s ease-in, opacity 0.15s ease-in;
 
         &.empty {
           opacity: .5 !important;
