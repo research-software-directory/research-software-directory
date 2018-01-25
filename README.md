@@ -1,5 +1,6 @@
 # research-software-directory-frontend
-
+[![TravisCIBadge](https://travis-ci.org/research-software-directory/frontend.svg?branch=master)](https://travis-ci.org/research-software-directory/frontend)
+[![Docker badge](https://dockerbuildbadges.quelltext.eu/status.svg?organization=rsdnlesc&repository=frontend)](https://hub.docker.com/r/rsdnlesc/frontend/)
 ### Requirements
 * [docker & docker-compose](https://docs.docker.com/compose/install/)
 
