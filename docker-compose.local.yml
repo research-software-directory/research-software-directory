@@ -5,31 +5,15 @@ services:
     image: "mongo:3.6"
     volumes:
       - ./db:/data/db
-    command: --bind_ip 0.0.0.0 --smallfiles
+    command: --bind_ip 0.0.0.0
     user: 1000:1000
-
-  redis:
-    image: "redis:alpine"
-
-  celeryworker:
-    build:
-      context: .
-      dockerfile: compose/production/flask/Dockerfile
-    env_file:
-      - .env.local
-    depends_on:
-      - redis
-      - mongo
-    command: /start-celeryworker.sh
 
   flask:
     build:
       context: .
-      dockerfile: compose/local/flask/Dockerfile
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app
-    depends_on:
-      - celeryworker
     env_file:
       - .env.local
     environment:
