@@ -5,17 +5,19 @@ services:
     container_name: node-sass
     build:
       context: .
-      dockerfile: ./compose/local/node/Dockerfile
+      dockerfile: compose/local/node/Dockerfile
     volumes:
       - ./static:/static
       - ./style:/style
       - ./scripts:/scripts
+    command: node node_modules/gulp/bin/gulp.js watch
 
   flask:
     container_name: flask
     build:
       context: .
       dockerfile: ./compose/local/flask/Dockerfile
+    command: flask run -h 0.0.0.0 -p 5000
     volumes:
       - .:/app
     depends_on:
