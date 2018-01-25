@@ -1,16 +1,15 @@
 FROM node:8.2.1
 
-WORKDIR /src
+WORKDIR /app
 
 ADD ./package.json ./package.json
+ADD ./package-lock.json ./package-lock.json
 
-RUN (npm install)
+RUN npm install
 
 ADD ./tsconfig.json ./tsconfig.json
 ADD ./tslint.json ./tslint.json
 ADD ./public ./public
-ADD ./src ./src
+ADD ./scripts ./scripts
+#ADD ./src ./src
 
-RUN (npm run build)
-
-CMD ['npm', 'start']
