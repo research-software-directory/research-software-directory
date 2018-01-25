@@ -1,3 +1,5 @@
+[![Read the Docs](https://img.shields.io/readthedocs/pip.svg?style=flat-square)](http://researchsoftwaredirectory.readthedocs.io/en/latest/)
+
 # The Research Software Directory's landing page
 
 
