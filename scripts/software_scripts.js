@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 buttonText.textContent = 'Show all contributors';
             } else {
                 expandSection( prevSibling, true );
-                buttonText.textContent = 'Show less contributors';
+                buttonText.textContent = 'Show fewer contributors';
             }
         });
     }
