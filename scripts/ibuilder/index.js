@@ -7,6 +7,9 @@ String.prototype.capitalize = function() { return this.charAt(0).toUpperCase() +
 
 const tsLintDisable = '// tslint:disable\n';
 const regexpExport = /\nexport.*?\n/;
+
+['SCHEMA_URL', 'SCHEMA_LOCATIONS', 'SCHEMA_LOCAL'].map(key => console.log(key, process.env[key]));
+
 const BASE_URL = process.env['SCHEMA_URL'];
 const API_RESOURCE_URL = process.env['SCHEMA_LOCATIONS'];
 const localPath = process.env['SCHEMA_LOCAL'];
