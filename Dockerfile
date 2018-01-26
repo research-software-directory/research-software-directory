@@ -15,6 +15,11 @@ COPY ./tsconfig.json /app
 COPY ./src /app/src
 COPY ./scripts /app/scripts
 COPY ./public /app/public
+
+ENV SCHEMA_URL=https://raw.githubusercontent.com/research-software-directory/backend/master/schema
+ENV SCHEMA_LOCATIONS=https://api.github.com/repos/research-software-directory/backend/contents/schema
+ENV SCHEMA_LOCAL=/schema
+
 RUN npm run build
 
 CMD nginx -g "daemon off;"
