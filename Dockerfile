@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.6.4-alpine3.7
 
 WORKDIR /src
 
@@ -12,5 +12,6 @@ RUN mkdir /var/log/flask-uwsgi
 RUN touch /var/log/flask-uwsgi/flask-uwsgi.log
 RUN chmod 666 /var/log/flask-uwsgi/flask-uwsgi.log
 
-CMD [ "uwsgi", "--socket", "0.0.0.0:8000", "--processes", "5", "--master", "--wsgi-file", "entry.py" ]
+CMD [ "uwsgi", "--http-socket", "0.0.0.0:8000", "--processes", "5", "--master", "--wsgi-file", "entry.py" ]
 EXPOSE 8000
+
