@@ -7,9 +7,10 @@ String.prototype.capitalize = function() { return this.charAt(0).toUpperCase() +
 
 const tsLintDisable = '// tslint:disable\n';
 const regexpExport = /\nexport.*?\n/;
-const BASE_URL = 'https://raw.githubusercontent.com/research-software-directory/backend/master/schema';
-const API_RESOURCE_URL = 'https://api.github.com/repos/research-software-directory/backend/contents/schema';
-const localPath = path.join(__dirname, '..', '..', '..', 'research-software-directory-backend', 'schema');
+
+const BASE_URL = process.env['SCHEMA_URL'];
+const API_RESOURCE_URL = process.env['SCHEMA_LOCATIONS'];
+const localPath = process.env['SCHEMA_LOCAL'];
 const localPathExists = fs.existsSync(localPath);
 const outputPath = path.join(__dirname, '..', '..', 'src', 'interfaces');
 
