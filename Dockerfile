@@ -16,4 +16,4 @@ RUN chown -R flask /app
 USER flask
 
 WORKDIR /app
-CMD uwsgi --ini compose/production/flask/config/uwsgi.ini
+CMD uwsgi --http-socket 0.0.0.0:8000 --wsgi-file entry.py --processes 5 --master
