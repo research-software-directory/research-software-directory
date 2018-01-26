@@ -69,61 +69,64 @@
       <div class="col-1-4" id="filters">
         
         <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
+
           <div class="filters_columns">
-          
+            
             <div class="filter-group">
-              <div class="filter-group_title">
+              <div class="filter-group_title" @click="tagsFilterOpen = !tagsFilterOpen">
                 Tags
-                <span class="toggle-button" @click="tagsFilterOpen = !tagsFilterOpen">
+                <span class="toggle-button">
                   [[ tagsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
 
-              <!-- <transition-group 
+              <transition-group 
               tag="ul"
               class="filter-list"
               v-bind:css="false"
-              v-on:before-enter="beforeEnter"
-              v-on:enter="enter"
-              v-on:leave="leave"
-              >
-              <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
+              v-on:before-enter="filtersBeforeEnter"
+              v-on:enter="filtersEnter"
+              v-on:leave="filtersLeave">
+
+              <li v-for="(tag, index) in tags" v-bind:data-index="index" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
                   <label :for="tag" class="checkbox">
                     <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
                     <div class="custom-checkbox"></div> 
                     <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
                   </label>
               </li>
-              </transition-group> -->
 
-              <ul v-if="organizationsFilterOpen" class="filter-list">
-                  <li v-for="tag in tags" v-bind:key="tag" v-if="tagsFilterOpen" :class="tagCount[tag] === 0 ? 'empty' : ''">
-                      <label :for="tag" class="checkbox">
-                        <input type="checkbox" name="checkbox" :id="tag" v-model="filter.tags" :value="tag">  
-                        <div class="custom-checkbox"></div> 
-                        <span class="text">[[tag]] <strong>([[ tagCount[tag] ]])</strong></span>
-                      </label>
-                  </li>
-              </ul>
+              </transition-group>
 
             </div>
 
             <div class="filter-group">
-              <div class="filter-group_title">
+              <div class="filter-group_title" @click="organizationsFilterOpen = !organizationsFilterOpen">
                 Partner organizations
-                <span @click="organizationsFilterOpen = !organizationsFilterOpen">
+                <span class="toggle-button">
                   [[ organizationsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
-              <ul v-if="organizationsFilterOpen" class="filter-list">
-                <li v-for="org in organizationsWithCount" :class="org.count === 0 ? 'empty' : ''">
-                    <label :for="org.id" class="checkbox">
-                      <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
-                      <div class="custom-checkbox"></div> 
-                      <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
-                    </label>
-                </li>
-              </ul>
+          
+              <transition-group 
+              tag="ul"
+              class="filter-list"
+              v-bind:css="false"
+              v-on:before-enter="filtersBeforeEnter"
+              v-on:enter="filtersEnter"
+              v-on:before-leave="filtersBeforeLeave"
+              v-on:leave="filtersLeave">
+              
+              <li v-for="(org, index) in organizationsWithCount" v-bind:data-index="index" :key="org" v-if="organizationsFilterOpen" :class="org.count === 0 ? 'empty' : ''">
+                <label :for="org.id" class="checkbox">
+                  <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
+                  <div class="custom-checkbox"></div> 
+                  <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
+                </label>
+              </li>
+
+              </transition-group>
+
             </div>
           
           </div>
@@ -235,24 +238,28 @@
         <div class="col-2-3">
           <ul>
             {% for mention in latest_mentions %}
-            <li class="row bg-light">
-    
-              <div class="col mention_info">
-                <div class="mention_title">
-                    {% if mention.data.url %}
-                    <a href="{{mention.data.url}}" target="_blank">
-                      {{mention.data.title}}
-                      <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
-                    </a>
-                    {% else %}
-                        {{mention.data.title}}
-                    {% endif %}
-                  </div>
-        
-                  <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
-              </div>
-    
-              <div class="col mention_date">{{ mention.updatedAt | strfdatehuman }}</div>
+            <li>
+
+                {% if mention.data.url %}
+
+                <a href="{{mention.data.url}}" target="_blank" class="mention_content bg-light">
+                    <div class="mention_info">
+                        <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehuman }}</div>
+                    </div>
+                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                </a>
+                {% else %}
+                <div class="mention_content bg-light">
+                    <div class="mention_info">
+                        <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehuman }}</div>
+                    </div>
+                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                </div>
+                {% endif %}
+
+              
     
             </li>
             {% endfor %}

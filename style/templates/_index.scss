@@ -337,8 +337,10 @@
       padding-right: 20px;
 
       li{ 
+        overflow: hidden;
         padding: 0.2em 0; 
-        transition: opacity 0.4s ease-in;
+        // max-height: 5em;
+        transition: all 0.2s ease-in, opacity 0.15s ease-in;
 
         &.empty {
           opacity: .5 !important;
@@ -348,17 +350,20 @@
     }
 
     &_title{
+      display: inline-block;
+      cursor: pointer;
       font-family: $primaryFontBold;
       padding-bottom: 0.5em;
+
+      &:hover{
+        color: $primaryColor;
+      }
+      .toggle-button{
+        margin-left: 0.5em;
+      }
     }
 
   }
-
-  .toggle-button{
-    cursor: pointer;
-    
-  }
-
 
   // Toggle for all filters
   .toggle-filters{
@@ -471,54 +476,87 @@
 }
 
 
-
 #latest_mentions {
 
   padding: 70px 0;
 
-  ul {
-    > li {
-      margin-bottom: 5px;
-      padding: 1.8em 1.3em 1.5em;
+  ul{
+      padding: 20px 0 15px;
+  }
+  li{
+    &:not(:last-child) { margin-bottom: 2px; }
+    .mention_content{ 
+        display: block;
+        padding: 1.8em 1.4em 1.6em; 
+        // background-color: lighten( $dark, 10% );
+        background-color: $light;
     }
-  }
+    .mention_info {
+      display: flex;
+      // flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .mention_title{
+      font-family: $primaryFontBold;
+      padding-right: 1em;
+    }
+    .mention_post-date{
+      flex-shrink: 0;
+      font-family: $primaryFontLight;
+    }
+    .mention_location{
+      font-family: $primaryFontLight;
+    }
+    a.mention_content:hover{
+        background-color: lighten( $dark, 5% );
+        color: $white;
+    }
+    .icon{
+      margin-left: 0.5em;
+      width: 0.8em;
+      height: 0.8em;
+      display: inline-block;
+      fill: currentColor;
+    }
+  } 
 
-  a .icon {
-    width: .8em;
-    height: .8em;
-    margin-left: .5em;
-    display: inline-block;
-  }
 
-  .mention_title{
-    font-family: $primaryFontBold;
-  }
-  .mention_location, .mention_date{
-    font-family: $primaryFontLight;
-  }
+  // a .icon {
+  //   width: .8em;
+  //   height: .8em;
+  //   margin-left: .5em;
+  //   display: inline-block;
+  // }
 
-  .mention_info {
-    width: 75%;
-  }
+  // .mention_title{
+  //   font-family: $primaryFontBold;
+  // }
+  // .mention_location, .mention_date{
+  //   font-family: $primaryFontLight;
+  // }
+
+  // .mention_info {
+  //   width: 75%;
+  // }
   
-  .mention_date {
-    flex-shrink: 0;
-    width: 25%;
-    text-align: right;
-  }
+  // .mention_date {
+  //   flex-shrink: 0;
+  //   width: 25%;
+  //   text-align: right;
+  // }
 
-  @include bp(max, $tablet){
-    padding: 50px 0;
+  // @include bp(max, $tablet){
+  //   padding: 50px 0;
     
-    .mention_info, .mention_date{
-      width: 100%;
-      text-align: left;
-    }
-    .mention_date{
-      padding-top: 1em;
-      font-size: 1.4rem;
-    }
+  //   .mention_info, .mention_date{
+  //     width: 100%;
+  //     text-align: left;
+  //   }
+  //   .mention_date{
+  //     padding-top: 1em;
+  //     font-size: 1.4rem;
+  //   }
   
-  }
+  // }
 
 }

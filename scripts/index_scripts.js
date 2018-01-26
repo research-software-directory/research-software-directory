@@ -74,7 +74,33 @@ function initOverview(softwareData, organizationsData) {
             },
             getOrganizationById: function(id) {
                 return this.organizations.find(function(org) { return org.id === id; });
+            },
+            filtersBeforeEnter: function (el) {
+                el.style.opacity = 0;
+                el.style.padding = 0;
+                el.style.maxHeight = 0;
+            },
+            filtersEnter: function(el, done) {
+                var delay = el.dataset.index * 20;
+                setTimeout(function () {
+                    el.style.opacity = 1;
+                    el.style.maxHeight = '5em';
+                    el.style.removeProperty('padding');
+                }, delay );
+            },
+            filtersBeforeLeave: function (el) {
+                el.style.opacity = 1;
+                el.style.maxHeight = '5em';
+            },
+            filtersLeave: function(el, done) {
+                var delay = el.dataset.index * 20;
+                setTimeout(function () {
+                    el.style.opacity = 0;
+                    el.style.maxHeight = 0;
+                    el.style.padding = 0;
+                }, delay );
             }
+
         },
         data: {
             tags: [
@@ -108,7 +134,7 @@ function initOverview(softwareData, organizationsData) {
             organizations: organizationsData
         },
         computed: {
-             tagCount: function () {
+            tagCount: function () {
                 // initialize to 0
                 var counts = this.tags.reduce(function (acc, cur) {
                     acc[cur] = 0;
