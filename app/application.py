@@ -9,6 +9,7 @@ import requests
 import dateparser
 import htmlmin
 import ago
+import os
 
 from app import plot_commits
 from app.citation import get_citation
@@ -16,7 +17,7 @@ from app.corporate_scraper.Scraper import BlogPostScraper, ProjectScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = 'https://admin.research-software.nl/api'
+api_url = os.environ.get('API_URL', 'https://admin.research-software.nl/api')
 #api_url = 'http://172.19.0.1:5001'
 
 def format_software(sw):
