@@ -12,6 +12,8 @@ RUN mkdir /var/log/flask-uwsgi
 RUN touch /var/log/flask-uwsgi/flask-uwsgi.log
 RUN chmod 666 /var/log/flask-uwsgi/flask-uwsgi.log
 
+STOPSIGNAL SIGINT
+
 CMD [ "uwsgi", "--http-socket", "0.0.0.0:8000", "--processes", "5", "--master", "--wsgi-file", "entry.py" ]
 EXPOSE 8000
 
