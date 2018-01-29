@@ -90,7 +90,10 @@ def get_related_software(sw, db):
     result = []
     if 'computerProgram' in sw['mentions']:
         for related_program in sw['mentions']['computerProgram']:
-            related_sw = next(iter(db['software'].find({'zoteroKey': related_program['key']})))
+            try:
+                related_sw = next(iter(db['software'].find({'zoteroKey': related_program['key']})))
+            except StopIteration:
+                pass
             if related_sw:
                 result.append(list_entry(related_sw, db))
 
