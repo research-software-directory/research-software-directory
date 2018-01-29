@@ -49,11 +49,10 @@ class UserService:
     @staticmethod
     def user_in_organization(token, organization):
         user = UserService.get_user(token)
-        url = 'http://api.github.com/orgs/%s/members/%s' % (organization, user['login'])
+        url = 'https://api.github.com/orgs/%s/members/%s' % (organization, user['login'])
         req = requests.get(url, headers=UserService.headers(token))
         if req.status_code == 403:
             raise Exception('Github rate limit exceeded?')
-        # print(req.status_code)
         return 200 <= req.status_code < 300
 
     @staticmethod
