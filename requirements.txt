@@ -10,4 +10,5 @@ beautifulsoup4==4.6.0
 dateparser==0.6.0
 htmlmin==0.1.12
 uwsgi==2.0.15
+pprint==0.1
 git+https://github.com/citationcff/citationcff.git

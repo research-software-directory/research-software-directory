@@ -35,7 +35,9 @@
                     
                     <div id="header_logo">
                         <a href="/">
+                            {% with position="header" %}
                             {% include 'logo.html' %}
+                            {% endwith %}
 
                             {% block rsd_home %}
                             <div id="header_text">
