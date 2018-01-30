@@ -17,7 +17,7 @@ from app.corporate_scraper.Scraper import BlogPostScraper, ProjectScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = os.environ.get('API_URL', 'https://admin.research-software.nl/api')
+api_url = os.environ.get('API_URL', 'https://api.research-software.nl')
 #api_url = 'http://172.19.0.1:5001'
 
 def format_software(sw):
