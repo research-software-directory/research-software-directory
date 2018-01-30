@@ -93,7 +93,7 @@ def get_related_software(sw, db):
             try:
                 related_sw = next(iter(db['software'].find({'zoteroKey': related_program['key']})))
             except StopIteration:
-                pass
+                continue
             if related_sw:
                 result.append(list_entry(related_sw, db))
 
