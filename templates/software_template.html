@@ -1,5 +1,6 @@
 {% extends "layout_template.html" %}
 {%- block head -%}
+    {{super()}}
     <title>{{template_data.name}} | Research Software Directory</title>
     <meta name="citation_title" content="{{template_data.name}}" />
     <meta name="citation_author" content="{{", ".join(template_data.contributor|listNames)}}" />
@@ -10,7 +11,6 @@
     <meta property="og:description" content="{{template_data.shortStatement}}" />
     <meta property="og:url" content="https://www.research-software.nl/software/{{template_data.id}}" />
     <meta property="og:site_name" content="Research Software Directory" />
-    {{super()}}
     <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
     <script>
         var commitsData = {{ commits_data }};
@@ -454,7 +454,7 @@
                     {% if template_data.contributor|length > 6 %}
                     <div class="col col-2-3 contributors_list long-list">
                         <ul class="row">
-                            <div class="gradient gradient--gray"></div>
+                            <li style="width:100%" class="gradient gradient--gray"></li>
 
                     {% else %}
                     <div class="col col-2-3 contributors_list">

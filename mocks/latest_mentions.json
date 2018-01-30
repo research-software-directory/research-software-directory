@@ -1,0 +1,364 @@
+[
+  {
+    "id": "5a5e26ed780461000f0c22e6",
+    "key": "HI7ZAHTI",
+    "version": 2734,
+    "library": {
+      "type": "group",
+      "id": 1689348,
+      "name": "Netherlands eScience Center",
+      "links": {
+        "alternate": {
+          "href": "https://www.zotero.org/groups/netherlands_escience_center",
+          "type": "text/html"
+        }
+      }
+    },
+    "links": {
+      "self": {
+        "href": "https://api.zotero.org/groups/1689348/items/HI7ZAHTI",
+        "type": "application/json"
+      },
+      "alternate": {
+        "href": "https://www.zotero.org/groups/netherlands_escience_center/items/HI7ZAHTI",
+        "type": "text/html"
+      }
+    },
+    "meta": {
+      "createdByUser": {
+        "id": 4256850,
+        "username": "nlesc",
+        "name": "Netherlands eScience Center",
+        "links": {
+          "alternate": {
+            "href": "https://www.zotero.org/nlesc",
+            "type": "text/html"
+          }
+        }
+      },
+      "creatorSummary": "Faruk Diblen",
+      "parsedDate": "2018-01-16",
+      "numChildren": 0
+    },
+    "data": {
+      "key": "HI7ZAHTI",
+      "version": 2734,
+      "itemType": "blogPost",
+      "title": "SPOT : Visual scientific data analytics made easy",
+      "creators": [
+        {
+          "creatorType": "author",
+          "name": "Faruk Diblen"
+        }
+      ],
+      "abstractNote": "",
+      "blogTitle": "SPOT : Visual scientific data analytics made easy",
+      "websiteType": "",
+      "date": "16-01-2018",
+      "url": "https://blog.esciencecenter.nl/visual-scientific-data-analytics-made-easy-62e03a895bae",
+      "accessDate": "",
+      "language": "",
+      "shortTitle": "",
+      "rights": "",
+      "extra": "",
+      "tags": [],
+      "collections": [
+        "8ZG3BUJR"
+      ],
+      "relations": {
+        "dc:relation": "http://zotero.org/groups/1689348/items/9JFAADGG"
+      },
+      "dateAdded": "2018-01-16T15:03:03Z",
+      "dateModified": "2018-01-16T15:04:36Z"
+    },
+    "createdAt": 1516119790,
+    "updatedAt": 1516119890
+  },
+  {
+    "id": "5a54bf5103d7ac0009fd0879",
+    "key": "6AZEKMLQ",
+    "version": 2755,
+    "library": {
+      "type": "group",
+      "id": 1689348,
+      "name": "Netherlands eScience Center",
+      "links": {
+        "alternate": {
+          "href": "https://www.zotero.org/groups/netherlands_escience_center",
+          "type": "text/html"
+        }
+      }
+    },
+    "links": {
+      "self": {
+        "href": "https://api.zotero.org/groups/1689348/items/6AZEKMLQ",
+        "type": "application/json"
+      },
+      "alternate": {
+        "href": "https://www.zotero.org/groups/netherlands_escience_center/items/6AZEKMLQ",
+        "type": "text/html"
+      }
+    },
+    "meta": {
+      "createdByUser": {
+        "id": 4310659,
+        "username": "jmaassen",
+        "name": "",
+        "links": {
+          "alternate": {
+            "href": "https://www.zotero.org/jmaassen",
+            "type": "text/html"
+          }
+        }
+      },
+      "lastModifiedByUser": {
+        "id": 4362155,
+        "username": "jspaaks",
+        "name": "",
+        "links": {
+          "alternate": {
+            "href": "https://www.zotero.org/jspaaks",
+            "type": "text/html"
+          }
+        }
+      },
+      "creatorSummary": "Maassen et al.",
+      "parsedDate": "2017-11-06",
+      "numChildren": 0
+    },
+    "data": {
+      "key": "6AZEKMLQ",
+      "version": 2755,
+      "itemType": "computerProgram",
+      "title": "NLeSC/Xenon: This Is Release 2.2.0 Of Xenon.",
+      "creators": [
+        {
+          "creatorType": "programmer",
+          "firstName": "Jason",
+          "lastName": "Maassen"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Stefan",
+          "lastName": "Verhoeven"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Joris",
+          "lastName": "Borgdorff"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Niels",
+          "lastName": "Drost"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Jurriaan H.",
+          "lastName": "Spaaks"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Christiaan",
+          "lastName": "Meijer"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Rob V. Van",
+          "lastName": "Nieuwpoort"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Atze Van Der",
+          "lastName": "Ploeg"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Piter T. De",
+          "lastName": "Boer"
+        },
+        {
+          "creatorType": "programmer",
+          "firstName": "Ben Van",
+          "lastName": "Werkhoven"
+        }
+      ],
+      "abstractNote": "What problem does Xenon solve?\n\nMany applications use remote storage and compute resources. To do so, they need to include code to interact with the scheduling systems and file transfer protocols used on those remote machines.\n\nUnfortunately, many different scheduler systems and file transfer protocols exist, often with completely different programming interfaces. This makes it hard for applications to switch to a different system or support multiple remote systems simultaneously.\n\nXenon solves this problem by providing a single programming interface to many different types of remote resources, allowing applications to switch without changing a single line of code.\n\nNotable changes compared to v2.1.0:\n\n\n\textended CredentialMap to retrieve all keys\n\tremoved logback config from jar\n\tfixed bug in handling workdir of Local and TorqueSchedulers\n\tmany small bugfixes, additional tests, etc.",
+      "seriesTitle": "",
+      "versionNumber": "",
+      "date": "November 6, 2017",
+      "system": "",
+      "place": "",
+      "company": "Zenodo",
+      "programmingLanguage": "",
+      "ISBN": "",
+      "shortTitle": "NLeSC/Xenon",
+      "url": "",
+      "rights": "",
+      "archive": "",
+      "archiveLocation": "",
+      "libraryCatalog": "DataCite",
+      "callNumber": "",
+      "accessDate": "",
+      "extra": "DOI: 10.5281/zenodo.1042443",
+      "tags": [],
+      "collections": [
+        "8ZG3BUJR"
+      ],
+      "relations": {
+        "dc:relation": "http://zotero.org/groups/1689348/items/XRA6XBNB"
+      },
+      "dateAdded": "2018-01-09T12:01:07Z",
+      "dateModified": "2018-01-29T13:45:35Z"
+    },
+    "createdAt": 1515503442,
+    "updatedAt": 1517234487
+  },
+  {
+    "id": "5a3d1cda461c94000979aee3",
+    "key": "HKMM6BGF",
+    "version": 2655,
+    "library": {
+      "type": "group",
+      "id": 1689348,
+      "name": "Netherlands eScience Center",
+      "links": {
+        "alternate": {
+          "href": "https://www.zotero.org/groups/netherlands_escience_center",
+          "type": "text/html"
+        }
+      }
+    },
+    "links": {
+      "self": {
+        "href": "https://api.zotero.org/groups/1689348/items/HKMM6BGF",
+        "type": "application/json"
+      },
+      "alternate": {
+        "href": "https://www.zotero.org/groups/netherlands_escience_center/items/HKMM6BGF",
+        "type": "text/html"
+      }
+    },
+    "meta": {
+      "createdByUser": {
+        "id": 4362049,
+        "username": "j.vanderzwaan",
+        "name": "",
+        "links": {
+          "alternate": {
+            "href": "https://www.zotero.org/j.vanderzwaan",
+            "type": "text/html"
+          }
+        }
+      },
+      "creatorSummary": "van der Zwaan et al.",
+      "parsedDate": "2016",
+      "numChildren": 0
+    },
+    "data": {
+      "key": "HKMM6BGF",
+      "version": 2655,
+      "itemType": "bookSection",
+      "title": "Storyteller: Visualizing Perspectives in Digital Humanities Projects",
+      "creators": [
+        {
+          "creatorType": "editor",
+          "firstName": "Bojan",
+          "lastName": "Bozic"
+        },
+        {
+          "creatorType": "editor",
+          "firstName": "Gavin",
+          "lastName": "Mendel-Gleason"
+        },
+        {
+          "creatorType": "editor",
+          "firstName": "Christophe",
+          "lastName": "Debruyne"
+        },
+        {
+          "creatorType": "editor",
+          "firstName": "Declan",
+          "lastName": "O'Sullivan"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Janneke M.",
+          "lastName": "van der Zwaan"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Maarten",
+          "lastName": "van Meersbergen"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Antske",
+          "lastName": "Fokkens"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Serge",
+          "lastName": "ter Braake"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Inger",
+          "lastName": "Leemans"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Erika",
+          "lastName": "Kuijpers"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Piek",
+          "lastName": "Vossen"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Isa",
+          "lastName": "Maks"
+        }
+      ],
+      "abstractNote": "",
+      "bookTitle": "Computational History and Data-Driven Humanities",
+      "series": "",
+      "seriesNumber": "",
+      "volume": "482",
+      "numberOfVolumes": "",
+      "edition": "",
+      "place": "Cham",
+      "publisher": "Springer International Publishing",
+      "date": "2016",
+      "pages": "78-90",
+      "language": "",
+      "ISBN": "978-3-319-46223-3 978-3-319-46224-0",
+      "shortTitle": "Storyteller",
+      "url": "http://link.springer.com/10.1007/978-3-319-46224-0_8",
+      "accessDate": "2017-12-22T11:33:55Z",
+      "archive": "",
+      "archiveLocation": "",
+      "libraryCatalog": "CrossRef",
+      "callNumber": "",
+      "rights": "",
+      "extra": "DOI: 10.1007/978-3-319-46224-0_8",
+      "tags": [],
+      "collections": [
+        "M3DTJCI4"
+      ],
+      "relations": {
+        "dc:relation": [
+          "http://zotero.org/groups/1689348/items/2KH9BFYW",
+          "http://zotero.org/groups/1689348/items/2Y56IUR9",
+          "http://zotero.org/groups/1689348/items/GIA2VJE3"
+        ]
+      },
+      "dateAdded": "2017-12-22T11:33:55Z",
+      "dateModified": "2017-12-22T11:33:55Z"
+    },
+    "createdAt": 1513954523,
+    "updatedAt": 1513954523
+  }
+]
