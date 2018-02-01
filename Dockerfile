@@ -8,12 +8,8 @@ RUN pip3 install -r requirements.txt
 COPY . /src
 RUN bash build-assets.sh
 
-RUN mkdir /var/log/flask-uwsgi
-RUN touch /var/log/flask-uwsgi/flask-uwsgi.log
-RUN chmod 666 /var/log/flask-uwsgi/flask-uwsgi.log
-
 STOPSIGNAL SIGINT
 
-CMD [ "uwsgi", "--http-socket", "0.0.0.0:8000", "--processes", "5", "--master", "--wsgi-file", "entry.py" ]
-EXPOSE 8000
+CMD gunicorn --workers 3 --max-requests 10 --bind 0.0.0.0:8000 --access-logfile /log/reqlog --error-logfile /log/errlog entry:application
 
+EXPOSE 8000

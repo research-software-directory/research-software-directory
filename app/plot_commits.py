@@ -14,14 +14,13 @@ def date2ym(date):
     else:
         return None
 
-def bin_commits_data(commit_data):
+def bin_commits_data(commit_data, current_ym = datetime.date.today().year * 12 + datetime.date.today().month):
     binned_commits = {}
     for commit in commit_data:
         d = date2ym(commit['date'][:7])
         binned_commits[d] = binned_commits.get(d, 0) + 1
     x = []
     y = []
-    current_ym = datetime.date.today().year * 12 + datetime.date.today().month
     for ym in range(current_ym - 60, current_ym):
         x.append(ym2date(ym))
         y.append(binned_commits[ym] if ym in binned_commits else 0)
