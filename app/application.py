@@ -158,11 +158,11 @@ def page_not_found(e):
     return flask.redirect("/", code=302)
 
 
-def get_commits_data(software_id):
+def get_commits_data(software_id, current_ym=datetime.date.today().year * 12 + datetime.date.today().month):
     url = api_url + "/software/%s/commits" % software_id
     commits = requests.get(url).json()
     if commits and len(commits) > 0:
-        commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True))
+        commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True), current_ym)
     else:
         commits_data = None
 
