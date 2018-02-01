@@ -26,10 +26,10 @@ def test_get_commits_data():
         commits_text = f.read()
     with requests_mock.mock() as m:
         m.get('%s/software/%s/commits' % (api_url, software_id), text=commits_text)
-        assert get_commits_data(software_id) == result_sorted
+        assert get_commits_data(software_id, 24217) == result_sorted
 
 def test_bin_commits_data():
     with open("mocks/commits.json") as f:
         commits = json.loads(f.read())
-    binned = bin_commits_data(commits)
+    binned = bin_commits_data(commits, 24217)
     assert binned == result_unsorted
