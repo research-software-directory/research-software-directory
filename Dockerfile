@@ -8,9 +8,6 @@ RUN groupadd -r flask \
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
-RUN mkdir -p /var/log/flask-uwsgi
-RUN chown flask /var/log/flask-uwsgi
-
 COPY . /app
 RUN chown -R flask /app
 USER flask
@@ -19,4 +16,4 @@ WORKDIR /app
 
 STOPSIGNAL SIGINT
 
-CMD uwsgi --http-socket 0.0.0.0:8000 --wsgi-file entry.py --processes 5 --master
+CMD gunicorn --workers 3 --max-requests 10 --bind 0.0.0.0:8000 --access-logfile /log/reqlog --error-logfile /log/errlog entry:application
