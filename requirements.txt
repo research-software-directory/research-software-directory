@@ -11,7 +11,7 @@ pyzotero==1.2.13
 jsonschema==2.6.0
 celery==4.1.0
 redis==2.10.6
-uwsgi==2.0.15
+gunicorn==19.7.1
 beautifulsoup4==4.6.0
 dateparser==0.6.0
 pytest==3.3.2
