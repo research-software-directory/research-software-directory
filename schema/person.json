@@ -1,91 +1,61 @@
 {
-  "required": [
-    "name",
-    "id",
-    "schema"
-  ],
-  "id": "person",
-  "type": "object",
-  "#schema": "http://json-schema.org/draft2-3/schema#",
-  "properties": {
-    "createdAt": {
-      "description": "Timestamp resource was created at",
-      "type": "integer",
-      "minimum": 0
+    "required": [
+        "id",
+        "schema",
+        "given-names",
+        "family-names"
+    ],
+    "id": "project",
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "additionalProperties": false,
+    "id": "person",
+    "properties": {
+        "affiliation": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "createdAt": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "email": {
+            "format": "email",
+            "type": "string"
+        },
+        "family-names": {
+            "type": "string"
+        },
+        "given-names": {
+            "type": "string"
+        },
+        "id": {
+            "format": "uri",
+            "type": "string"
+        },
+        "name-particle": {
+            "type": "string"
+        },
+        "name-suffix": {
+            "type": "string"
+        },
+        "schema": {
+            "type": "string",
+            "enum": [
+                "person"
+            ]
+        },
+        "updatedAt": {
+            "type": "integer",
+            "minimum": 0
+        }
     },
-    "updatedAt": {
-      "description": "Timestamp resource was last updated at",
-      "type": "integer",
-      "minimum": 0
-    },
-    "name": {
-      "description": "Full name of the person.",
-      "type": "string"
-    },
-    "githubid": {
-      "format": "uri",
-      "type": "string",
-      "description": "Person's github username (e.g. sverhoeven)."
-    },
-    "id": {
-      "format": "uri",
-      "description": "ID of the person. e.g., s.verhoeven.",
-      "type": "string"
-    },
-    "researchgateUrl": {
-      "format": "uri",
-      "type": "string",
-      "description": "Personal ResearchGate profile (e.g. https://www.researchgate.net/profile/Stefan_Verhoeven)."
-    },
-    "description": {
-      "description": "Person description, bio and/or CV, in Markdown format",
-      "type": "string"
-    },
-    "jobTitle": {
-      "type": "string",
-      "description": "The job title of the person (for example, eScience Research Engineer)."
-    },
-    "ORCID": {
-      "format": "uri",
-      "description": "Person's ORCID ID (e.g. http://orcid.org/0000-0002-4510-0385).",
-      "type": "string"
-    },
-    "linkedInUrl": {
-      "type": "string",
-      "description": "Person's LinkedIn profile (e.g. https://www.linkedin.com/in/stefan-verhoeven-15381121).",
-      "format": "uri"
-    },
-    "schema": {
-      "description": "Fixed property, to validate the JSON object with the current schema.",
-      "type": "string",
-      "enum": [
-        "person"
-      ]
-    },
-    "twitterUrl": {
-      "format": "uri",
-      "description": "Person's Twitter profile",
-      "type": "string"
-    },
-    "website": {
-      "format": "uri",
-      "type": "string",
-      "description": "Link to the main website."
-    },
-    "email": {
-      "description": "Email address of the person",
-      "type": "string",
-      "format": "email"
-    },
-    "organization": {
-      "description": "Organization of the person",
-      "type": "string"
-    },
-    "nlescWebsite": {
-      "description": "Link to the associated page on the NLeSC website (e.g. https://www.esciencecenter.nl/profile/ing.-stefan-verhoeven).",
-      "type": "string",
-      "format": "uri"
-    }
-  },
-  "additionalProperties": false
+    "required": [
+        "name",
+        "id",
+        "schema"
+    ],
+    "type": "object"
 }
