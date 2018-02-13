@@ -3,6 +3,7 @@
 
 # The Research Software Directory's landing page
 
+Read the documentation on [Read The Docs](http://researchsoftwaredirectory.readthedocs.io/en/latest/).
 
 **This repo uses git submodules.**
 
