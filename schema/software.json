@@ -3,7 +3,7 @@
     "additionalProperties": false,
     "properties": {
         "allOf": [{
-                "$ref": "file:created-and-updated.json"
+                "$ref": "created-and-updated.json"
             },
             {
                 "brandName": {

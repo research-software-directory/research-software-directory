@@ -3,7 +3,7 @@
     "properties": {
         "allOf": [
             {
-                "$ref": "file:created-and-updated.jon"
+                "$ref": "created-and-updated.jon"
             },
             {
                 "principalInvestigator": {
