@@ -1,38 +1,45 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
     "properties": {
-        "principalInvestigator": {
-            "allOf": [
-                {
-                    "$ref": "person.json"
-                },
-                {
-                    "properties": {
-                        "affiliations": {
-                            "items": {
-                                "type": "string"
+        "allOf": [
+            {
+                "$ref": "file:created-and-updated.jon"
+            },
+            {
+                "principalInvestigator": {
+                    "allOf": [
+                        {
+                            "$ref": "person.json"
+                        },
+                        {
+                            "properties": {
+                                "affiliations": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                }
                             },
-                            "type": "array"
+                            "type": "object"
                         }
-                    },
-                    "type": "object"
+                    ]
+                },
+                "image": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "url": {
+                    "format": "uri",
+                    "type": "string"
                 }
-            ]
-        },
-        "image": {
-            "format": "uri",
-            "type": "string"
-        },
-        "subtitle": {
-            "type": "string"
-        },
-        "title": {
-            "type": "string"
-        },
-        "url": {
-            "format": "uri",
-            "type": "string"
-        }
+            }
+        ]
     },
     "required": [
         "principalInvestigator",
