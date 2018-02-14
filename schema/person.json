@@ -1,38 +1,10 @@
 {
-    "required": [
-        "id",
-        "schema",
-        "given-names",
-        "family-names"
-    ],
-    "id": "project",
-    "type": "object",
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "additionalProperties": false,
-    "id": "person",
     "properties": {
-        "affiliation": {
-            "items": {
-                "type": "string"
-            },
-            "type": "array"
-        },
-        "createdAt": {
-            "type": "integer",
-            "minimum": 0
-        },
-        "email": {
-            "format": "email",
-            "type": "string"
-        },
         "family-names": {
             "type": "string"
         },
         "given-names": {
-            "type": "string"
-        },
-        "id": {
-            "format": "uri",
             "type": "string"
         },
         "name-particle": {
@@ -46,16 +18,11 @@
             "enum": [
                 "person"
             ]
-        },
-        "updatedAt": {
-            "type": "integer",
-            "minimum": 0
         }
     },
     "required": [
-        "name",
-        "id",
-        "schema"
+        "given-names",
+        "family-names"
     ],
     "type": "object"
 }

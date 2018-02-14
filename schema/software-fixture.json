@@ -1,0 +1,52 @@
+{
+    "brandName": "mcfly",
+    "citationcff": "djndnj",
+    "contributors": [{
+        "family-names": "Kuppevelt",
+        "name-particle": "van",
+        "given-names": "Dafne",
+        "isContactPerson": false,
+        "emailAddress": "d.vankuppevelt@esciencecenter.nl",
+        "affiliations": ["Netherlands eScience Center"]
+    }, {
+        "family-names": "Meijer",
+        "given-names": "Christiaan",
+        "isContactPerson": true,
+        "emailAddress": "c.meijer@esciencecenter.nl",
+        "affiliations": ["Netherlands eScience Center"]
+    }],
+    "githubURLs": [{
+        "commits": [
+                "2012-01-01T00:01:00Z",
+                "2012-01-01T00:03:00Z",
+                "2012-01-01T00:07:00Z"
+            ],
+        "url": "https://github.com/NLeSC/mcfly"
+    }, {
+        "commits": [
+                "2014-01-01T00:01:00Z",
+                "2015-01-01T00:03:00Z",
+                "2016-01-01T00:07:00Z",
+                "2016-01-01T00:07:40Z"
+            ],
+        "url": "https://github.com/NLeSC/mcfly34"
+    }],
+    "isFeatured": true,
+    "isPublished": true,
+    "license": ["Apache-2.0"],
+    "programmingLanguage": ["Python"],
+    "related": {
+        "projects": [{
+            "principalInvestigator": {
+                "family-names": "Magnússon",
+                "name-particle": "Ver",
+                "given-names": "Magnús"
+            },
+            "image": "www.google.com",
+            "title": "the title",
+            "subtitle": "the subtitle",
+            "url": "https://ww.theprojectwwebiste.nl"
+        }]
+    },
+    "tags": ["Machine learning"]
+}

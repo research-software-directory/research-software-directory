@@ -1,43 +1,45 @@
 {
-    "required": [
-        "title",
-        "id",
-        "schema"
-    ],
-    "id": "project",
-    "type": "object",
     "$schema": "http://json-schema.org/draft-06/schema#",
     "properties": {
-        "createdAt": {
-            "minimum": 0,
-            "type": "integer"
+        "principalInvestigator": {
+            "allOf": [
+                {
+                    "$ref": "person.json"
+                },
+                {
+                    "properties": {
+                        "affiliations": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                }
+            ]
         },
-        "id": {
-                "type": "string"
-        },
-        "logo": {
+        "image": {
             "format": "uri",
             "type": "string"
         },
-        "schema": {
-            "enum": [
-                "project"
-            ],
+        "subtitle": {
             "type": "string"
-        },
-        "tagLine": {
-            "type": "string",
         },
         "title": {
             "type": "string"
         },
-        "updatedAt": {
-            "minimum": 0,
-            "type": "integer"
-        },
-        "zoteroKey": {
+        "url": {
+            "format": "uri",
             "type": "string"
         }
     },
-    "additionalProperties": false
+    "required": [
+        "principalInvestigator",
+        "image",
+        "subtitle",
+        "title",
+        "url"
+    ],
+    "type": "object"
 }
