@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"test.commit"},{"v":2,"key":{"software_id":1},"name":"software_id_1","ns":"test.commit"}],"uuid":"ed5369bbc6e942c58e48271c1cee966b"}
