@@ -4,6 +4,17 @@
         "family-names": {
             "type": "string"
         },
+        "foreignKey": {
+            "properties": {
+                "collection": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "given-names": {
             "type": "string"
         },
@@ -21,8 +32,9 @@
         }
     },
     "required": [
-        "given-names",
-        "family-names"
+        "family-names",
+        "foreignKey",
+        "given-names"
     ],
     "type": "object"
 }

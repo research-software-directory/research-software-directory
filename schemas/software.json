@@ -3,7 +3,7 @@
     "additionalProperties": false,
     "properties": {
         "allOf": [{
-                "$ref": "created-and-updated.json"
+                "$ref": "#/schemas/created-and-updated.json"
             },
             {
                 "brandName": {
@@ -19,7 +19,7 @@
                 "contributors": {
                     "items": {
                         "allOf": [{
-                                "$ref": "person.json"
+                                "$ref": "#/schemas/person.json"
                             },
                             {
                                 "properties": {
@@ -86,7 +86,7 @@
                     "type": "array",
                     "items": {
                         "anyOf": [{
-                                "$ref": "license.json"
+                                "$ref": "#/schemas/license.json"
                             },
                             {
                                 "type": "string"
@@ -189,7 +189,7 @@
                         },
                         "projects": {
                             "items": {
-                                "$ref": "project.json"
+                                "$ref": "#/schemas/project.json"
                             },
                             "type": "array"
                         },
@@ -203,7 +203,7 @@
                 },
                 "tags": {
                     "items": {
-                        "$ref": "tag.json"
+                        "$ref": "#/schemas/tag.json"
                     },
                     "type": "array"
                 },
@@ -217,7 +217,7 @@
                             },
                             "attribution": {
                                 "allOf": [{
-                                        "$ref": "person.json"
+                                        "$ref": "#/schemas/person.json"
                                     },
                                     {
                                         "properties": {
