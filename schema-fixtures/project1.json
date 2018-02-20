@@ -1,0 +1,20 @@
+{
+    "project": {
+        "createdAt": 3563456,
+        "foreignKeys": {
+            "principalInvestigator": {
+                "collection": "person",
+                "id": "89239823"
+            }
+        },
+        "image": "https://www.esciencecenter.nl/img/projects/1.P026-large.jpg",
+        "primaryKey": {
+            "collection": "project",
+            "id": "938475947"
+        },
+        "subtitle": "The generalization and optimization of the multi-purpose software environment",
+        "title": "ABC-MUSE",
+        "updatedAt": 3562346,
+        "url": "https://www.esciencecenter.nl/project/abc-muse"
+    }
+}

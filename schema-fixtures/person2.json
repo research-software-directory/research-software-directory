@@ -1,0 +1,12 @@
+{
+    "person": {
+        "createdAt": 3563456,
+        "familyNames": "Drost",
+        "givenNames": "Niels",
+        "primaryKey": {
+            "collection": "person",
+            "id": "0284u928459"
+        },
+        "updatedAt": 3562346
+    }
+}

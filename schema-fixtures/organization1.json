@@ -1,0 +1,13 @@
+{
+    "organization": {
+        "createdAt": 3563456,
+        "logo": "https://www.esciencecenter.nl/img/cdn/logo_escience_center.png",
+        "name": "Netherlands eScience Center",
+        "primaryKey": {
+            "collection": "organization",
+            "id": "9384934"
+        },
+        "updatedAt": 3562346,
+        "url": "https://www.esciencecenter.nl/"
+    }
+}

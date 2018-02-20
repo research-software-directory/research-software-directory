@@ -1,0 +1,12 @@
+{
+    "person": {
+        "createdAt": 3563456,
+        "familyNames": "Zhao",
+        "givenNames": "Jing Hua",
+        "primaryKey": {
+            "collection": "person",
+            "id": "906725642"
+        },
+        "updatedAt": 3562346
+    }
+}

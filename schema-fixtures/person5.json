@@ -1,0 +1,13 @@
+{
+    "person": {
+        "createdAt": 3563456,
+        "familyNames": "Ploeg",
+        "givenNames": "Atze",
+        "nameParticle": "van der",
+        "primaryKey": {
+            "collection": "person",
+            "id": "830490782"
+        },
+        "updatedAt": 3562346
+    }
+}
