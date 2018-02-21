@@ -8,6 +8,10 @@
                     "type": "integer",
                     "minimum": 0
                 },
+                "date": {
+                    "format": "date-time",
+                    "type": "string"
+                },
                 "primaryKey": {
                     "additionalProperties": false,
                     "properties": {
@@ -22,15 +26,44 @@
                     "required": ["collection", "id"],
                     "type": "object"
                 },
-                "zoteroKey": {
+                "title": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "blogPost",
+                        "book",
+                        "bookSection",
+                        "computerProgram",
+                        "conferencePaper",
+                        "journalArticle",
+                        "newspaperArticle",
+                        "presentation",
+                        "videoRecording",
+                        "webpage"
+                    ],
                     "type": "string"
                 },
                 "updatedAt": {
                     "type": "integer",
                     "minimum": 0
+                },
+                "url": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "zoteroKey": {
+                    "type": "string"
                 }
             },
-            "required": ["createdAt", "primaryKey", "updatedAt", "zoteroKey"],
+            "required": [
+                "createdAt",
+                "primaryKey",
+                "title",
+                "type",
+                "updatedAt",
+                "zoteroKey"
+            ],
             "type": "object"
         },
         "organization": {
@@ -772,6 +805,27 @@
                                     "minItems": 1,
                                     "type": "array"
                                 },
+                                    "mentions": {
+                                        "items": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "collection": {
+                                                    "enum": ["mention"],
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "collection",
+                                                "id"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "minItems": 1,
+                                        "type": "array"
+                                    },
                                 "projects": {
                                     "items": {
                                         "additionalProperties": false,
