@@ -1,16 +1,8 @@
-import hashlib
-import os
-from random import randint
-import time
-
 import flask
 from flask_cors import CORS
 
 import src.exceptions as exceptions
-from src.extensions import resize
-from src.helpers.util import worker
 from src.json_response import jsonify
-# from src.services.report import load_reports
 from src.settings import settings
 
 from src.transformers import software as t_software
@@ -60,14 +52,6 @@ def get_routes(service_controller, db):
     def _get_latest_mentions():
         result = list(db['zotero_publication'].find({'data.relations': {'$ne': {}}}).sort("data.dateAdded", -1).limit(3))
         return result, 200
-
-    @api.route('/software/<id>/report', methods=["GET"])
-    @jsonify
-    def _get_report(id):
-        reports = list(db.impact_report.find({'software_id': id}))
-        if not reports:
-            raise exceptions.NotFoundException('resource not found')
-        return reports[-1], 200
 
     @api.route('/<resource_type>/<id>', methods=["GET"])
     @jsonify
@@ -131,40 +115,8 @@ def get_routes(service_controller, db):
                     record.data.pop('createdAt', None)
                     record.data.update(resource_data)
                 record.save()
-                # db[resource_type].update({'_id': resource['id'], 'id': resource['id']}, resource, upsert=True)
 
         return {'status': 'ok'}, 200
-
-    @api.route('/githubreleases', methods=["GET"])
-    @jsonify
-    def _github_releases():
-        id = flask.request.args.get('id')
-        if not id or id.find('/') == -1:
-            raise exceptions.RouteException("'id' parameter required", 400)
-        # return service_controller.github.releases(flask.request.headers.get('token'), id), 200
-        return service_controller.github.releases(id), 200
-
-    @api.route('/githubdescription', methods=["GET"])
-    @jsonify
-    def _github_description():
-        id = flask.request.args.get('id')
-        if not id or id.find('/') == -1:
-            raise exceptions.RouteException("'id' parameter required", 400)
-        return service_controller.github.description(id), 200
-
-    @api.route('/software/<software_id>/generate_report', methods=["POST"])
-    @jsonify
-    def _generate_report(software_id):
-        if not db.software.find_by_id(software_id):
-            raise Exception("Resource %s not found" % software_id)
-        worker('impact_report', software_id)
-        return {'status': 'ok'}, 200
-
-    @api.route('/software/<software_id>/reports', methods=["GET"])
-    @jsonify
-    def _reports(software_id):
-        reports = list(db.impact_report.find({'software_id': software_id}))
-        return reports, 200
 
     @api.route('/software/<software_id>/commits', methods=["GET"])
     @jsonify
