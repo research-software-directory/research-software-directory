@@ -73,33 +73,7 @@
                     "type": "integer",
                     "minimum": 0
                 },
-                "logo": {
-                    "type": "string",
-                    "format": "uri"
-                },
                 "name": {
-                    "enum": [
-                        "ASTRON",
-                        "CBS-KNAW Fungal Biodiversity Centre",
-                        "CWI",
-                        "Delft University of Technology",
-                        "Dutch Techcenter for Life Sciences (DTL)",
-                        "Fugro",
-                        "Koninklijk Nederlands Instituut in Rome",
-                        "Koninklijke Bibliotheek",
-                        "Leiden University Medical Center (LUMC)",
-                        "Leiden University",
-                        "Netherlands eScience Center",
-                        "NIKHEF",
-                        "Potree",
-                        "Radboud University Nijmegen",
-                        "SURFsara",
-                        "University of Amsterdam",
-                        "University of Groningen",
-                        "University of Twente",
-                        "VU University Amsterdam",
-                        "Wageningen University and Research Center (WUR)"
-                    ],
                     "type": "string"
                 },
                 "primaryKey": {
@@ -127,7 +101,6 @@
             },
             "required": [
                 "createdAt",
-                "logo",
                 "name",
                 "primaryKey",
                 "updatedAt",
@@ -142,11 +115,19 @@
                     "minimum": 0
                 },
                 "emailAddress": {
-                    "format": "email",
-                    "type": "string"
+                    "type": ["string", "null"]
                 },
                 "familyNames": {
                     "type": "string"
+                },
+                "givenNames": {
+                    "type": ["string", "null"]
+                },
+                "nameParticle": {
+                    "type": ["string", "null"]
+                },
+                "nameSuffix": {
+                    "type": ["string", "null"]
                 },
                 "primaryKey": {
                     "additionalProperties": false,
@@ -162,23 +143,18 @@
                     "required": ["collection", "id"],
                     "type": "object"
                 },
-                "givenNames": {
-                    "type": "string"
-                },
-                "nameParticle": {
-                    "type": "string"
-                },
-                "nameSuffix": {
-                    "type": "string"
-                },
                 "updatedAt": {
                     "type": "integer",
                     "minimum": 0
-                }
+                },
             },
             "required": [
                 "createdAt",
+                "emailAddress",
                 "familyNames",
+                "givenNames",
+                "nameParticle",
+                "nameSuffix",
                 "primaryKey",
                 "updatedAt"
             ]

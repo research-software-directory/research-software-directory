@@ -1,11 +1,10 @@
 import logging
 from flask import Flask
-
 from src.database.database_mongo import MongoDatabase
 from src.routes import get_routes
-from src.extensions import resize
 from src.service_controller import ServiceController
 from src.settings import settings
+
 import src.commands as commands
 import src.error_handlers as error_handlers
 
@@ -15,7 +14,6 @@ handler = logging.StreamHandler()
 logger.addHandler(handler)
 handler.setFormatter(logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s'))
 logger.info('Starting')
-
 
 def create_app(database=None):
     app = Flask(__name__)
@@ -40,7 +38,6 @@ def register_error_handlers(app):
 
 def register_blueprints(app, service_controller, db):
     routes = get_routes(service_controller, db)
-    logger.info('123')
     app.register_blueprint(routes)
 
 
