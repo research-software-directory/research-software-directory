@@ -1,7 +1,5 @@
 import logging
 import time
-import subprocess
-import os
 
 logger = logging.getLogger(__name__)
 
@@ -38,14 +36,3 @@ def rate_limit(name, calls, period):
             return func(*args, **kwargs)
         return func_wrapper
     return wrapper
-
-
-def worker(*args):
-    """
-    Spawn flask command worker (subprocess in the background)
-
-    :param args: arguments after `flask` command
-    """
-    env = os.environ.copy()
-    env['FLASK_APP'] = './entry.py'
-    return subprocess.Popen(["flask", *args], env=env)
