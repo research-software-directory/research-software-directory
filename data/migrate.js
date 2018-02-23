@@ -93,7 +93,7 @@ const mapContributors = (oldContributor, sw) => {
     }
 }
 
-db.software.find().map(_=>_).forEach(sw => {
+db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
     db.software.update({_id: sw._id}, {
         primaryKey: {
             id: sw.id,
@@ -104,7 +104,7 @@ db.software.find().map(_=>_).forEach(sw => {
         brandName:              sw.name,
         bullets:                sw.statement,
         citationcff:            null,
-        contributors:           sw.contributor.map(c => mapContributors(c, sw)).filter(c=>c)
+        contributors:           sw.contributor ? sw.contributor.map(c => mapContributors(c, sw)).filter(c=>c) : [],
         getStartedURL:          sw.mainUrl,
         githubURLs:             sw.githubid ? [{
             isCitationcffSource: false,
