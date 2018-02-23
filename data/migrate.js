@@ -65,6 +65,7 @@ const mapContributors = (oldContributor, sw) => {
             nameParticle: null,
             nameSuffix: null
         }
+        db.person.insert(person);
 
         const affiliations = [];
 
