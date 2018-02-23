@@ -12,7 +12,7 @@ fixtures_folder = os.path.join(pwd, '..', '..', 'schema-fixtures')
 
 schemas = {}
 
-for (path, file) in [(path, open(path)) for path in glob.glob('%s/*.json' % schemas_folder)]:
+for (path, file) in [(path, open(path)) for path in glob.glob(os.path.join(schemas_folder, '*.json'))]:
     file_name = path.split('/')[-1]
     schema_name = file_name.split('.')[0]
     schemas[schema_name] = json.load(file)
@@ -22,13 +22,13 @@ def test_schemas_exist():
 
 
 def test_at_least_three_schemas_exist():
-    assert len(schemas) > 3
+    assert len(schemas) >= 3
 
 
 parameters = [
     (schema_name, fixture_path) for
     schema_name in schemas.keys() for
-    fixture_path in glob.glob('%s/%s*.json' % (fixtures_folder, schema_name))
+    fixture_path in glob.glob(os.path.join(fixtures_folder, '%s*.json' % schema_name))
 ]
 
 
