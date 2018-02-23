@@ -615,7 +615,8 @@
         "updatedAt": {
             "type": "integer",
             "minimum": 0
-        }
+        },
+        "zoteroKey": {"type": "string"}
     },
     "definitions": {
         "key": {
