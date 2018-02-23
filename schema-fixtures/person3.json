@@ -1,12 +1,13 @@
 {
-    "person": {
-        "createdAt": 3563456,
-        "familyNames": "Portegies Zwart",
-        "givenNames": "Simon",
-        "primaryKey": {
-            "collection": "person",
-            "id": "8923079"
-        },
-        "updatedAt": 3562346
-    }
+    "createdAt": 3563456,
+    "emailAddress": null,
+    "familyNames": "Portegies Zwart",
+    "givenNames": "Simon",
+    "nameParticle": null,
+    "nameSuffix": null,
+    "primaryKey": {
+        "collection": "person",
+        "id": "8923079"
+    },
+    "updatedAt": 3562346
 }

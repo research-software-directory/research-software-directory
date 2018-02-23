@@ -28,26 +28,16 @@
 //    })
 //})
 
-db.project.find().map(_=>_).forEach(project => {
-    print(JSON.stringify(project.principalInvestigator));
-
-//    db.project.update({_id: project._id}, {
-//        primaryKey: {
-//            id: project.id,
-//            collection: "project"
-//        },
-//        foreignKeys: {
-//            principalInvestigator: {
-//                id:
-//                collection: "person"
-//            }
-//        }
-//        createdAt:      project.createdAt,
-//        updatedAt:      project.updatedAt,
-//        emailAddress: person.email,
-//        familyNames: person.name,
-//        givenNames: null,
-//        nameParticle: null,
-//        nameSuffix: null,
-//    })
+db.software.find().map(_=>_).forEach(sw => {
+    db.software.update({_id: sw._id}, {
+        primaryKey: {
+            id: sw.id,
+            collection: "software"
+        },
+        createdAt:      sw.createdAt,
+        updatedAt:      sw.updatedAt,
+        brandName:      sw.name,
+        bullets:        "",
+        citationcff:    null
+    })
 })

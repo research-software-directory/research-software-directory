@@ -1,13 +1,13 @@
 {
-    "person": {
-        "createdAt": 3563456,
-        "familyNames": "Elteren",
-        "givenNames": "Arjen",
-        "nameParticle": "van",
-        "primaryKey": {
-            "collection": "person",
-            "id": "80357895324"
-        },
-        "updatedAt": 3562346
-    }
+    "createdAt": 3563456,
+    "familyNames": "Elteren",
+    "givenNames": "Arjen",
+    "nameParticle": "van",
+    "emailAddress": null,
+    "nameSuffix": null,
+    "primaryKey": {
+        "collection": "person",
+        "id": "80357895324"
+    },
+    "updatedAt": 3562346
 }

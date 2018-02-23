@@ -1,131 +1,132 @@
 {
-    "software": {
-        "bullets": "* Provides starting point for researchers to use deep learning\n* Creates deep learning models to classify time series data\n* Derives features automatically from raw data\n* Helps with finding a suitable model architecture and hyperparameters\n* Has a tutorial in Python to get you started!\n",
-        "brandName": "mcfly",
-        "citationcff": "# YAML 1.2\n--- \nauthors: \n  - \n    affiliation: \"Netherlands eScience Center\"\n    family-names: Kuppevelt\n    given-names: Dafne\n    name-particle: van\n  - \n    affiliation: \"Netherlands eScience Center\"\n    family-names: Meijer\n    given-names: Christiaan\n  -     affiliation: \"Netherlands eScience Center\"\n    family-names: Hees\n    given-names: Vincent\n    name-particle: van\n  - \n    affiliation: \"Netherlands eScience Center\"\n    family-names: Kuzak\n    given-names: Mateusz\n    orcid: \"https://orcid.org/0000-0003-0087-6021\"\ncff-version: \"1.0.3\"\ncommit: 95c5a7f76525655562baeca0af8d334d1796bf57\ndate-released: 2017-04-06\ndoi: 10.5281/zenodo.495345\nkeywords: \n  - \"machine learning\"\n  - \"deep learning\"\n  - \"time series\"\n  - \"automatic classification\"\nlicense: Apache-2.0\nmessage: \"If you use this software, please cite it using these metadata.\"\nrepository-code: \"https://github.com/NLeSC/mcfly\"\ntitle: mcfly\nversion: \"1.0.1\"\n",
-        "contributors": [
-            {
-                "foreignKeys": {
-                    "affiliations": [
-                        {
-                            "collection": "organization",
-                            "id": "83478487"
-                        }
-                    ],
-                    "person": {
-                        "collection": "person",
-                        "id": "982739763847"
+    "bullets": "* Provides starting point for researchers to use deep learning\n* Creates deep learning models to classify time series data\n* Derives features automatically from raw data\n* Helps with finding a suitable model architecture and hyperparameters\n* Has a tutorial in Python to get you started!\n",
+    "brandName": "mcfly",
+    "citationcff": "# YAML 1.2\n--- \nauthors: \n  - \n    affiliation: \"Netherlands eScience Center\"\n    family-names: Kuppevelt\n    given-names: Dafne\n    name-particle: van\n  - \n    affiliation: \"Netherlands eScience Center\"\n    family-names: Meijer\n    given-names: Christiaan\n  -     affiliation: \"Netherlands eScience Center\"\n    family-names: Hees\n    given-names: Vincent\n    name-particle: van\n  - \n    affiliation: \"Netherlands eScience Center\"\n    family-names: Kuzak\n    given-names: Mateusz\n    orcid: \"https://orcid.org/0000-0003-0087-6021\"\ncff-version: \"1.0.3\"\ncommit: 95c5a7f76525655562baeca0af8d334d1796bf57\ndate-released: 2017-04-06\ndoi: 10.5281/zenodo.495345\nkeywords: \n  - \"machine learning\"\n  - \"deep learning\"\n  - \"time series\"\n  - \"automatic classification\"\nlicense: Apache-2.0\nmessage: \"If you use this software, please cite it using these metadata.\"\nrepository-code: \"https://github.com/NLeSC/mcfly\"\ntitle: mcfly\nversion: \"1.0.1\"\n",
+    "contributors": [
+        {
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "collection": "organization",
+                        "id": "83478487"
                     }
-                },
-                "isContactPerson": true
-            }
-        ],
-        "createdAt": 123424,
-        "getStartedURL": "https://github.com/NLeSC/mcfly-tutorial",
-        "githubURLs": [
+                }
+            ],
+            "foreignKey": {
+                "collection": "person",
+                "id": "982739763847"
+            },
+            "isContactPerson": true
+        }
+    ],
+    "createdAt": 123424,
+    "getStartedURL": "https://github.com/NLeSC/mcfly-tutorial",
+    "githubURLs": [
+        {
+            "isCitationcffSource": true,
+            "isCommitDataSource": true,
+            "url": "https://github.com/NLeSC/mcfly"
+        },
+        {
+            "isCitationcffSource": false,
+            "isCommitDataSource": true,
+            "url": "https://github.com/NLeSC/mcfly34"
+        },
+        {
+            "isCitationcffSource": false,
+            "isCommitDataSource": true,
+            "url": "https://github.com/NLeSC/mcfly-tutorial"
+        }
+    ],
+    "isCitable": true,
+    "isPublished": false,
+    "isFeatured": false,
+    "license": [
+        "Apache-2.0",
+        "CC-BY-SA-2.0"
+    ],
+    "primaryKey": {
+        "collection": "software",
+        "id": "9023478370"
+    },
+    "programmingLanguage": [
+        "Python"
+    ],
+    "tags": [
+        "Big data"
+    ],
+    "shortStatement": "Do you want to use deep learning on your time series data, but don't know where to start? mcfly helps you find a suitable model, building upon state-of-the-art deep learning research.",
+    "readMore": "Deep learning is a powerful tool to help with the automated classification of data. However, designing a deep learning network that works well for your data is not trivial: it requires the user to choose the number of layers in the network, the number of nodes in each layer, the type of each layer, and so forth. With so many degrees of freedom, finding the network that is right for your data is an arduous task. Moreover, each network still needs to be calibrated or _trained_ before it can be usefully applied for automated classification of data.\n\nmcfly simplifies this process by making explicit the required steps while offering useful default values at each step. mcfly then proceeds by trying out many different network configurations, training each one to the data provided by the user. It subsequently lists the performance of each network, along with a visualization that helps the user judge each network's tendency to overfit or underfit the data.",
+    "related": {
+        "organizations": [
             {
-                "commits": [
-                        "2012-01-01T00:01:00Z",
-                        "2012-01-01T00:03:00Z",
-                        "2012-01-01T00:07:00Z"
-                    ],
-                "isCitationcffSource": true,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/mcfly"
+                "foreignKey": {
+                    "collection": "organization",
+                    "id": "19286341792634"
+                }
             },
             {
-                "commits": [
-                        "2014-01-01T00:01:00Z",
-                        "2015-01-01T00:03:00Z",
-                        "2016-01-01T00:07:00Z",
-                        "2016-01-01T00:07:40Z"
-                    ],
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/mcfly34"
+                "foreignKey": {
+                    "collection": "organization",
+                    "id": "893458934"
+                }
+            }
+        ],
+        "mentions": [
+            {
+                "foreignKey": {
+                    "collection": "mention",
+                    "id": "780"
+                }
+            }
+        ],
+        "projects": [
+            {
+                "foreignKey": {
+                    "collection": "project",
+                    "id": "12312"
+                }
             },
             {
-                "commits": [],
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/mcfly-tutorial"
+                "foreignKey": {
+                    "collection": "project",
+                    "id": "6782467"
+                }
             }
         ],
-        "isCitable": true,
-        "isPublished": false,
-        "isFeatured": false,
-        "license": [
-            "Apache-2.0",
-            "CC-BY-SA-2.0"
-        ],
-        "primaryKey": {
-            "collection": "software",
-            "id": "9023478370"
-        },
-        "programmingLanguage": ["Python"],
-        "tags": [
-            "Big data"
-        ],
-        "shortStatement": "Do you want to use deep learning on your time series data, but don't know where to start? mcfly helps you find a suitable model, building upon state-of-the-art deep learning research.",
-        "readMore": "Deep learning is a powerful tool to help with the automated classification of data. However, designing a deep learning network that works well for your data is not trivial: it requires the user to choose the number of layers in the network, the number of nodes in each layer, the type of each layer, and so forth. With so many degrees of freedom, finding the network that is right for your data is an arduous task. Moreover, each network still needs to be calibrated or _trained_ before it can be usefully applied for automated classification of data.\n\nmcfly simplifies this process by making explicit the required steps while offering useful default values at each step. mcfly then proceeds by trying out many different network configurations, training each one to the data provided by the user. It subsequently lists the performance of each network, along with a visualization that helps the user judge each network's tendency to overfit or underfit the data.",
-        "related": {
-            "foreignKeys": {
-                "organizations": [
-                    {
-                        "collection": "organization",
-                        "id": "19286341792634"
-                    },
-                    {
-                        "collection": "organization",
-                        "id": "893458934"
-                    }
-                ],
-                "mentions": [
-                    {
-                        "collection": "mention",
-                        "id": "780"
-                    }
-                ],
-                "projects": [
-                    {
-                        "collection": "project",
-                        "id": "12312"
-                    },
-                    {
-                        "collection": "project",
-                        "id": "6782467"
-                    }
-                ],
-                "software": [
-                    {
-                        "collection": "software",
-                        "id": "789268523823"
-                    },
-                    {
-                        "collection": "software",
-                        "id": "789268523824"
-                    }
-
-                ]
-            }
-        },
-        "testimonial": [
+        "software": [
             {
-                "foreignKeys": {
-                    "affiliations": [
-                        {
+                "foreignKey": {
+                    "collection": "software",
+                    "id": "789268523823"
+                }
+            },
+            {
+                "foreignKey": {
+                    "collection": "software",
+                    "id": "789268523824"
+                }
+            }
+        ]
+    },
+    "testimonial": [
+        {
+            "person": {
+                "affiliations": [
+                    {
+                        "foreignKey": {
                             "collection": "organization",
                             "id": "23450978340"
                         }
-                    ],
-                    "person": {
-                        "collection": "person",
-                        "id": "239802930734"
                     }
-                },
-                "text": "mcfly, the best thing since sliced bread."
-            }
-        ],
-        "updatedAt": 3562346
-    }
+                ],
+                "foreignKey": {
+                    "collection": "person",
+                    "id": "239802930734"
+                }
+            },
+            "text": "mcfly, the best thing since sliced bread."
+        }
+    ],
+    "updatedAt": 3562346
 }

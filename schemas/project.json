@@ -1,0 +1,172 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "title": "Project schema",
+    "properties": {
+        "createdAt": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "primaryKey": {
+            "$ref": "#/definitions/key/project"
+        },
+        "principalInvestigator": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+                "foreignKey"
+            ],
+            "properties": {
+                "foreignKey": {
+                    "$ref": "#/definitions/key/person"
+                }
+            }
+        },
+        "image": {
+            "format": "uri",
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "url": {
+            "format": "uri",
+            "type": "string"
+        }
+    },
+    "required": [
+        "createdAt",
+        "image",
+        "primaryKey",
+        "principalInvestigator",
+        "subtitle",
+        "title",
+        "updatedAt",
+        "url"
+    ],
+    "definitions": {
+        "key": {
+            "commit": {
+                "type": "object",
+                "required": [
+                    "collection",
+                    "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "collection": {
+                        "enum": [
+                            "commit"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "mention": {
+                "type": "object",
+                "required": [
+                    "collection",
+                    "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "collection": {
+                        "enum": [
+                            "mention"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "person": {
+                "type": "object",
+                "required": [
+                    "collection",
+                    "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "collection": {
+                        "enum": [
+                            "person"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "project": {
+                "type": "object",
+                "required": [
+                    "collection",
+                    "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "collection": {
+                        "enum": [
+                            "project"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "organization": {
+                "type": "object",
+                "required": [
+                    "collection",
+                    "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "collection": {
+                        "enum": [
+                            "organization"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "software": {
+                "type": "object",
+                "required": [
+                    "collection",
+                    "id"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "collection": {
+                        "enum": [
+                            "software"
+                        ],
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

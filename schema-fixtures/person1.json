@@ -1,11 +1,13 @@
 {
-    "person": {
-        "createdAt": 3563456,
-        "familyNames": "Drost",
-        "primaryKey": {
-            "collection": "person",
-            "id": "0284u928459"
-        },
-        "updatedAt": 3562346
-    }
+    "createdAt": 3563456,
+    "emailAddress": null,
+    "familyNames": "Drost",
+    "givenNames": null,
+    "nameParticle": null,
+    "nameSuffix": null,
+    "primaryKey": {
+        "collection": "person",
+        "id": "0284u928459"
+    },
+    "updatedAt": 3562346
 }

@@ -3,7 +3,6 @@ from src.services.github import GithubService
 from src.services.impact_report import ImpactReportService
 from src.services.import_export import ImportExportService
 from src.services.libraries_io import LibrariesIOService
-from src.services.original_data_importer import OriginalDataImporterService
 from src.services.schema import SchemaService
 from src.services.user import UserService
 from src.services.zotero import ZoteroService
@@ -49,10 +48,6 @@ class ServiceController:
     @CachedProperty
     def schema(self):
         return SchemaService(self.db)
-
-    @CachedProperty
-    def original_data_importer(self):
-        return OriginalDataImporterService(self.db)
 
     @CachedProperty
     def user(self):
