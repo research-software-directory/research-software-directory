@@ -75,7 +75,7 @@ def _login():
         code = request.args.get('code')
         access_token = get_access_token(code)
         user_profile = get_user_profile(access_token)
-        if not is_user_in_organization(user_profile, access_token, os.environ.get('AUTH_GITHUB_ORGANIZATION') + 'asd'):
+        if not is_user_in_organization(user_profile, access_token, os.environ.get('AUTH_GITHUB_ORGANIZATION')):
             raise UserNotInOrganization
 
         payload = {
