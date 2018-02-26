@@ -1,6 +1,7 @@
 .vscode
 .env
 .env.local
+.env.production
 db/
 # Jekyll
 _site

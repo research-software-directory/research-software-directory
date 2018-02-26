@@ -1,6 +1,6 @@
 import time
 
-from src.helpers import util
+from src import util
 
 
 def test_rate_limit():
