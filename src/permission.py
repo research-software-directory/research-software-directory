@@ -18,7 +18,7 @@ class Permission(Enum):
         return True
 
 
-def require_permission(organization):
+def require_permission(permissions):
     def decorator(func):
         def wrapper(*args, **kwargs):
             if 'Authorization' not in request.headers:
@@ -26,6 +26,8 @@ def require_permission(organization):
             jwt_token = request.headers['Authorization'].split(' ')[1]
             try:
                 payload = jwt.decode(jwt_token, settings['JWT_SECRET'], algorithm='HS256')
+                for p in permissions:
+                    assert p in payload.get('permissions')
             except jwt.exceptions.DecodeError as e:
                 raise UnauthorizedException('Error in JWT token: ' + str(e))
 

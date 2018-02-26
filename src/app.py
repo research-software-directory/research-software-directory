@@ -15,6 +15,7 @@ logger.addHandler(handler)
 handler.setFormatter(logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s'))
 logger.info('Starting')
 
+
 def create_app(database=None):
     app = Flask(__name__)
     if database:
@@ -25,7 +26,6 @@ def create_app(database=None):
                            settings['DATABASE_NAME'],
                            )
     service_controller = ServiceController(db, settings)
-    register_extensions(app)
     register_error_handlers(app)
     register_blueprints(app, service_controller, db)
     register_commands(app, service_controller, db)
@@ -41,16 +41,8 @@ def register_blueprints(app, service_controller, db):
     app.register_blueprint(routes)
 
 
-def register_extensions(app):
-    pass
-
-
 def register_commands(app, service_controller, db):
     commands.init(app, service_controller, db)
-
-
-def setup_service_controller(app):
-    app['test'] = 5
 
 
 if __name__ == "__main__":
