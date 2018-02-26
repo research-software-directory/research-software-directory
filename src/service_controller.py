@@ -1,11 +1,5 @@
-from src.services.corporate import CorporateService
-from src.services.github import GithubService
-from src.services.impact_report import ImpactReportService
-from src.services.import_export import ImportExportService
-from src.services.libraries_io import LibrariesIOService
 from src.services.schema import SchemaService
 from src.services.user import UserService
-from src.services.zotero import ZoteroService
 
 
 class CachedProperty(object):
@@ -35,36 +29,9 @@ class ServiceController:
         self.settings = settings
 
     @CachedProperty
-    def github(self):
-        return GithubService(self.db, self.settings['GITHUB_ACCESS_TOKEN'])
-
-    @CachedProperty
-    def import_export(self):
-        return ImportExportService(self.db,
-                                   self.settings['DATABASE_HOST'],
-                                   self.settings['DATABASE_PORT'],
-                                   self.settings['DATABASE_NAME'])
-
-    @CachedProperty
     def schema(self):
         return SchemaService(self.db)
 
     @CachedProperty
     def user(self):
         return UserService(self.settings['GITHUB_CLIENT_ID'], self.settings['GITHUB_CLIENT_SECRET'])
-
-    @CachedProperty
-    def zotero(self):
-        return ZoteroService(self.db, self.settings['ZOTERO_API_KEY'])
-
-    @CachedProperty
-    def libraries_io(self):
-        return LibrariesIOService(self.settings['LIBRARIES_IO_API_KEY'])
-
-    @CachedProperty
-    def impact_report(self):
-        return ImpactReportService(self.db, self.github, self.libraries_io)
-
-    @CachedProperty
-    def corporate(self):
-        return CorporateService(self.db)

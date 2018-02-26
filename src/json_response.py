@@ -3,7 +3,7 @@
 import flask
 import json
 
-from src.database.database import Record
+from pymongal.database import Record
 
 
 class Encoder(json.JSONEncoder):

@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 import src.exceptions as exceptions
 from src.json_response import jsonify
+from src.permission import require_permission
 from src.settings import settings
 
 from src.transformers import software as t_software
@@ -124,9 +125,9 @@ def get_routes(service_controller, db):
         return [commit.data for commit in list(db.commit.find({'software_id': software_id}))], 200
 
     @api.route('/new_projects', methods=['GET'])
-    @jsonify
+    @require_permission('read')
     def _new_projects():
-        return service_controller.zotero.new_projects(), 200
+        return 'bla', 200
 
     @api.route('/new_publications', methods=['GET'])
     @jsonify

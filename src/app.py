@@ -1,6 +1,6 @@
 import logging
 from flask import Flask
-from src.database.database_mongo import MongoDatabase
+from pymongal.database_mongo import MongoDatabase
 from src.routes import get_routes
 from src.service_controller import ServiceController
 from src.settings import settings
