@@ -66,8 +66,14 @@ def is_user_in_organization(user, access_token, organization):
 
 
 class UserNotInOrganization(Exception):
-    pass
-
+    def __str__(self):
+        return 'It appears you\'re not a (public) member of GitHub organization "%s". If you are a private member, ' \
+               'please go to <a target="_blank" href="https://github.com/orgs/%s/people">https://github.com/orgs/%s/people</a> and ' \
+               'change your membership from private to public.' % (
+                   os.environ.get('AUTH_GITHUB_ORGANIZATION'),
+                   os.environ.get('AUTH_GITHUB_ORGANIZATION'),
+                   os.environ.get('AUTH_GITHUB_ORGANIZATION')
+                  )
 
 @app.route('/get_jwt', methods=["GET"])
 def _login():
@@ -93,20 +99,10 @@ def _login():
         return redirect(os.environ.get('AUTH_CALLBACK_URL') + '?jwt=' + issued_jwt), 302
 
     except Exception as e:
-        msg = str(e)
-        if isinstance(e, UserNotInOrganization):
-            msg = 'It appears you\'re not a (public) member of GitHub organization "%s". If you are a private member, ' \
-                  'please go to <a target="_blank" href="https://github.com/orgs/%s/people">https://github.com/orgs/%s/people</a> and ' \
-                  'change your membership from private to public.' % (
-                      os.environ.get('AUTH_GITHUB_ORGANIZATION'),
-                      os.environ.get('AUTH_GITHUB_ORGANIZATION'),
-                      os.environ.get('AUTH_GITHUB_ORGANIZATION')
-                  )
-
         return error_template \
                    .replace('{TITLE}', 'Error getting JWT') \
                    .replace('{SUBTITLE}', str(e.__class__.__name__)) \
-                   .replace('{MESSAGE}', msg) \
+                   .replace('{MESSAGE}', str(e)) \
                    .replace('{AUTH_URL}', 'https://github.com/login/oauth/authorize/?client_id=%s' % os.environ.get('AUTH_GITHUB_CLIENT_ID')), 400
 
 
