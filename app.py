@@ -80,7 +80,7 @@ def _login(code):
         payload = {
             'sub': user_profile.get('login'),
             'subType': 'GITHUB',
-            'permissions': ['read'],
+            'permissions': ['read', 'write'],
             'iat': round(time.time()),
             'user': {
                 'name': user_profile.get('name'),
