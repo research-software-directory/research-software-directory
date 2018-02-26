@@ -2,17 +2,16 @@ import flask
 from flask_cors import CORS
 
 import src.exceptions as exceptions
+
+from src.schema import schema
 from src.json_response import jsonify
 from src.permission import require_permission
-from src.settings import settings
 
 from src.transformers import software as t_software
 from src.transformers.software import list_entry
 
 
-def get_routes(service_controller, db):
-    user = service_controller.user
-
+def get_routes(db):
     def collection_to_object(collection):
         result = {}
         for resource in collection:
@@ -24,7 +23,7 @@ def get_routes(service_controller, db):
 
     @api.route('/all', methods=["GET"])
     @jsonify
-    @user.require_organization('nlesc')
+    @require_permission(['read'])
     def _get_all_data():
         result = {}
         for resource_type in ['software', 'project', 'person', 'publication', 'organization']:
@@ -68,39 +67,11 @@ def get_routes(service_controller, db):
     @api.route('/schema')
     @jsonify
     def _schema():
-        return service_controller.schema.schema, 200
-
-    @api.route('/github_auth')
-    def _github_auth():
-        return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s' % settings['GITHUB_CLIENT_ID'])
-        # return flask.redirect('https://github.com/login/oauth/authorize/?client_id=%s&scope=read:org' % settings['GITHUB_CLIENT_ID'])
-
-    # get access token from auth token
-    @api.route('/get_access_token/<token>')
-    @jsonify
-    def _login(token):
-        res = user.login(token)
-        res['user'] = user.get_user(res['access_token'])
-        if not user.user_in_organization(res['access_token'], 'nlesc'):
-            raise exceptions.UnauthorizedException(
-                'Not a public member of organization NLeSC. Check https://github.com/orgs/NLeSC/people?query= %s' % res['user']['login']
-            )
-        return res, 200
-
-    @api.route('/verify_access_token/<token>')
-    @jsonify
-    def _verify_access_token(token):
-        logged_user = user.get_user(token)
-        if not user.user_in_organization(token, 'nlesc'):
-            raise exceptions.UnauthorizedException(
-                'Not a public member of organization NLeSC. Check https://github.com/orgs/NLeSC/people?query= %s' % logged_user['login']
-            )
-
-        return {'user': logged_user}, 200
+        return schema, 200
 
     @api.route('/update', methods=["POST"])
     @jsonify
-    @user.require_organization('nlesc')
+    @require_permission(['write'])
     def _post_update():
         value = flask.request.get_json()
         if not value:
@@ -123,41 +94,5 @@ def get_routes(service_controller, db):
     @jsonify
     def _commits(software_id):
         return [commit.data for commit in list(db.commit.find({'software_id': software_id}))], 200
-
-    @api.route('/new_projects', methods=['GET'])
-    @require_permission('read')
-    def _new_projects():
-        return 'bla', 200
-
-    @api.route('/new_publications', methods=['GET'])
-    @jsonify
-    def _new_publications():
-        publications, software = service_controller.zotero.new_publications()
-        return publications, 200
-
-    @api.route('/new_software', methods=['GET'])
-    @jsonify
-    def _new_software():
-        publications, software = service_controller.zotero.new_publications()
-        return software, 200
-
-    @api.route('/project/<id>', methods=['GET'])
-    @jsonify
-    def _project(id):
-        project = db.project.find_one({'id': id})
-        if project:
-            return project, 200
-        else:
-            raise exceptions.NotFoundException('project not found')
-
-    @api.route('/corporate_projects', methods=['GET'])
-    @jsonify
-    def _corporate_projects():
-        return list(db.corporate_project.all()), 200
-
-    @api.route('/corporate_blogs', methods=['GET'])
-    @jsonify
-    def _corporate_blogs():
-        return list(db.corporate_blog.all()), 200
 
     return api

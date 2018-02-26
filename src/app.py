@@ -2,7 +2,6 @@ import logging
 from flask import Flask
 from pymongal.database_mongo import MongoDatabase
 from src.routes import get_routes
-from src.service_controller import ServiceController
 from src.settings import settings
 
 import src.commands as commands
@@ -25,10 +24,9 @@ def create_app(database=None):
                            settings['DATABASE_PORT'],
                            settings['DATABASE_NAME'],
                            )
-    service_controller = ServiceController(db, settings)
     register_error_handlers(app)
-    register_blueprints(app, service_controller, db)
-    register_commands(app, service_controller, db)
+    register_blueprints(app, db)
+    register_commands(app, db)
     return app
 
 
@@ -36,13 +34,13 @@ def register_error_handlers(app):
     error_handlers.init(app)
 
 
-def register_blueprints(app, service_controller, db):
-    routes = get_routes(service_controller, db)
+def register_blueprints(app, db):
+    routes = get_routes(db)
     app.register_blueprint(routes)
 
 
-def register_commands(app, service_controller, db):
-    commands.init(app, service_controller, db)
+def register_commands(app, db):
+    commands.init(app, db)
 
 
 if __name__ == "__main__":

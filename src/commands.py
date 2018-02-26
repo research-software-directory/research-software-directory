@@ -3,15 +3,15 @@ import jwt
 import click
 import time
 from src.settings import settings
-
+from src.schema import verify_data
 from src.permission import Permission
 logger = logging.getLogger(__name__)
 
 
-def init(app, service_controller, db):
+def init(app, db):
     @app.cli.command('verify_data')
     def _verify_data():
-        service_controller.schema.verify_data()
+        verify_data()
 
     @app.cli.command('generate_jwt')
     @click.option('--sub', required=True, help='Identity (name of user, software etc).')

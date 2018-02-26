@@ -1,7 +1,7 @@
 db.organization.find().map(_=>_).forEach(org => {
     db.organization.update({_id: org._id}, {
         primaryKey: {
-            id: org.id,
+            id: org._id,
             collection: "organization"
         },
         createdAt:  org.createdAt,
