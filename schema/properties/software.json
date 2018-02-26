@@ -9,11 +9,12 @@
   },
   "name": {
     "sortIndex": 10,
-    "htmlDescription": "Human readable <b>name</b>"
+    "htmlDescription": "<b>Brand name</b>"
   },
   "tagLine": {
     "sortIndex": 11,
-    "htmlDescription": "<p>One-sentence <b>tagline</b>: In max. 6 words explain what your software does<p><p>Example for Xenon:</p><p><i>Easy access to compute and storage</i></p>"
+    "htmlDescription": "<p>One-sentence <b>tagline</b>: In max. 6 words explain what your software does<p><p>Example for Xenon:</p><p><i>Easy access to compute and storage</i></p>",
+    "editable": false
   },
   "shortStatement": {
     "sortIndex": 12,
@@ -40,11 +41,13 @@
   "citation": {
     "sortIndex": 21,
     "long": true,
-    "htmlDescription": "<b>Citation</b> Fallback for generating citation (Preferred method is through a citation file in the Github repo in CFF format)."
+    "htmlDescription": "<b>Citation</b> Fallback for generating citation (Preferred method is through a citation file in the Github repo in CFF format).",
+    "editable": false
   },
   "doi": {
     "sortIndex": 23,
-    "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415)."
+    "htmlDescription": "Main <b>DOI</b> (e.g. 10.5281/zenodo.35415).",
+    "editable": false
   },
   "contactPerson": {
     "sortIndex": 30,
