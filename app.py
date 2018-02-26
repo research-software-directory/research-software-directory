@@ -3,8 +3,8 @@ import os
 import requests
 import jwt
 import time
-from flask import Flask, redirect
 import urllib.parse
+from flask import Flask, redirect, request
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -69,9 +69,10 @@ class UserNotInOrganization(Exception):
     pass
 
 
-@app.route('/get_jwt/<code>', methods=["GET"])
-def _login(code):
+@app.route('/get_jwt', methods=["GET"])
+def _login():
     try:
+        code = request.args.get('code')
         access_token = get_access_token(code)
         user_profile = get_user_profile(access_token)
         if not is_user_in_organization(user_profile, access_token, os.environ.get('AUTH_GITHUB_ORGANIZATION') + 'asd'):
@@ -95,7 +96,7 @@ def _login(code):
         msg = str(e)
         if isinstance(e, UserNotInOrganization):
             msg = 'It appears you\'re not a (public) member of GitHub organization "%s". If you are a private member, ' \
-                  'please go to <a href="https://github.com/orgs/%s/people">https://github.com/orgs/%s/people</a> and ' \
+                  'please go to <a target="_blank" href="https://github.com/orgs/%s/people">https://github.com/orgs/%s/people</a> and ' \
                   'change your membership from private to public.' % (
                       os.environ.get('AUTH_GITHUB_ORGANIZATION'),
                       os.environ.get('AUTH_GITHUB_ORGANIZATION'),
@@ -105,7 +106,8 @@ def _login(code):
         return error_template \
                    .replace('{TITLE}', 'Error getting JWT') \
                    .replace('{SUBTITLE}', str(e.__class__.__name__)) \
-                   .replace('{MESSAGE}', msg), 400
+                   .replace('{MESSAGE}', msg) \
+                   .replace('{AUTH_URL}', 'https://github.com/login/oauth/authorize/?client_id=%s' % os.environ.get('AUTH_GITHUB_CLIENT_ID')), 400
 
 
 if __name__ == "__main__":
