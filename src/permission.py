@@ -1,8 +1,9 @@
+import jwt
+import os
+
 from enum import Enum
 from flask import request
-import jwt
 from src.exceptions import UnauthorizedException
-from src.settings import settings
 
 
 class Permission(Enum):
@@ -25,7 +26,7 @@ def require_permission(permissions):
                 raise UnauthorizedException('No "Authorization" header in request')
             jwt_token = request.headers['Authorization'].split(' ')[1]
             try:
-                payload = jwt.decode(jwt_token, settings['JWT_SECRET'], algorithm='HS256')
+                payload = jwt.decode(jwt_token, os.environ.get('JWT_SECRET'), algorithm='HS256')
                 for p in permissions:
                     assert p in payload.get('permissions')
             except jwt.exceptions.DecodeError as e:

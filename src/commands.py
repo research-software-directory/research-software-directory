@@ -2,7 +2,8 @@ import logging
 import jwt
 import click
 import time
-from src.settings import settings
+import os
+
 from src.schema import verify_data
 from src.permission import Permission
 logger = logging.getLogger(__name__)
@@ -26,7 +27,7 @@ def init(app, db):
             'permissions': list(permissions),
             'iat': round(time.time())
         }
-        issued_jwt = jwt.encode(payload, settings['JWT_SECRET'], algorithm='HS256')
+        issued_jwt = jwt.encode(payload, os.environ.get('JWT_SECRET'), algorithm='HS256')
 
         print(payload)
         print(issued_jwt.decode('ascii'))
