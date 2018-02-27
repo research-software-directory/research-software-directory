@@ -54,7 +54,7 @@
                         "type": "array"
                     },
                     "foreignKey": {
-                        "$ref": "#/definitions/key/person"
+                        "$ref": "definitions.json/key/person"
                     },
                     "isContactPerson": {
                         "default": false,
