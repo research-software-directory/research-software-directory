@@ -359,24 +359,14 @@
     "updatedAt": 1510323475
   },
   {
-    "id": "tu-delft",
-    "schema": "organization",
+    "createdAt": 1510323175,
+    "description": "TU Delft cooperates with many other educational and research institutions, both in the Netherlands and abroad. The high quality of our research and teaching is renowned. TU Delft has numerous contacts with governments, trade associations, consultancies, industry and small and medium-sized companies.\n",
+    "id": "tudelft",
     "logo": "/images/organization/tu-delft.png",
     "name": "Delft University of Technology",
-    "website": "http://www.tudelft.nl",
-    "description": "TU Delft cooperates with many other educational and research institutions, both in the Netherlands and abroad. The high quality of our research and teaching is renowned. TU Delft has numerous contacts with governments, trade associations, consultancies, industry and small and medium-sized companies.\n",
-    "createdAt": 1510323175,
-    "updatedAt": 1510323475
-  },
-  {
-    "id": "tudelft",
     "schema": "organization",
-    "name": "Delft University of Technology",
-    "website": "http://tudelft.nl",
-    "logo": "http://www.tudelft.nl/fileadmin/Default/Templates/images/logo.gif",
-    "description": "",
-    "createdAt": 1510323175,
-    "updatedAt": 1510323474
+    "updatedAt": 1510323475,
+    "website": "http://www.tudelft.nl"
   },
   {
     "id": "university.of.groningen",
