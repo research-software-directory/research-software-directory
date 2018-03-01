@@ -1,16 +1,15 @@
 import * as React from 'react';
 
-import { Button, Icon, Image, Loader, Menu } from 'semantic-ui-react';
+import { Button, Icon, Image, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import { IUser } from '../../containers/auth/reducer';
-import { resourceTypes } from '../../settings';
 import { ResourceTypeMenu } from './ResourceTypeMenu';
 import { UploadStatus } from '../../containers/menu/UploadStatus';
 
 import './AppMenu.css';
 
-const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
+const resourceTypesMenu = ['software', 'person', 'organization'];
 
 interface IProps {
   dataDirty: boolean;
@@ -52,7 +51,6 @@ export class AppMenu extends React.PureComponent<IProps, {}> {
         <Menu.Item>
           <Image onClick={this.avatarClick} avatar={true} src={this.props.user.avatar_url} />&nbsp;
           {this.props.user.name}
-          <Loader inline={true} active={this.props.numAsyncs > 0} />
           <Button
             floated="right"
             inverted={true}
