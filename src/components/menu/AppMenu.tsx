@@ -10,7 +10,7 @@ import { UploadStatus } from '../../containers/menu/UploadStatus';
 
 import './AppMenu.css';
 
-const resourceTypesMenu = [ ...resourceTypes, 'publication' ];
+const resourceTypesMenu = ['software', 'person', 'organization'];
 
 interface IProps {
   dataDirty: boolean;
