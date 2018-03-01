@@ -97,16 +97,22 @@ def software_product_page_template(software_id):
                           "utwente": "utwente.png", "uu": "uu.svg", "uva": "uva.jpg", "vua": "vua.png",
                           "wur": "wur.jpg"}
     mention_types = {
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'book': {"singular": "Book", "plural": "Books"},
         'bookSection': {"singular": "Book section", "plural": "Book sections"},
         'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'webpage': {"singular": "Webpage", "plural": "Webpages"},
-        'book': {"singular": "Book", "plural": "Books"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
+        'dataset': {"singular": "Data set", "plural": "Data sets"},
+        'document': {"singular": "Document", "plural": "Documents"},
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
+        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
         'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"}
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'report': {"singular": "Report", "plural": "Reports"},
+        'thesis': {"singular": "Thesis", "plural": "Theses"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'webpage': {"singular": "Web page", "plural": "Web pages"},
     }
 
     software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
