@@ -91,7 +91,7 @@ def software_product_page_template(software_id):
                           "ntu": "ntu.gif", "oracle": "oracle.png", "potree": "potree.png",
                           "radboud.university.nijmegen": "radboud.university.nijmegen.png",
                           "rijkswaterstaat": "rijkswaterstaat.png", "spinlab": "spinlab.jpg",
-                          "surfsara": "surfsara.png", "tno": "tno.jpg", "tu-delft": "tu-delft.png",
+                          "surfsara": "surfsara.png", "tno": "tno.jpg", "tudelft": "tu-delft.png",
                           "university.of.groningen": "university.of.groningen.png",
                           "university.of.southampton": "university.of.southampton.svg", "upv": "upv.png",
                           "utwente": "utwente.png", "uu": "uu.svg", "uva": "uva.jpg", "vua": "vua.png",
