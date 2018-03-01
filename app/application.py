@@ -101,7 +101,7 @@ def software_product_page_template(software_id):
         'book': {"singular": "Book", "plural": "Books"},
         'bookSection': {"singular": "Book section", "plural": "Book sections"},
         'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"}
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
         'dataset': {"singular": "Data set", "plural": "Data sets"},
         'document': {"singular": "Document", "plural": "Documents"},
         'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
