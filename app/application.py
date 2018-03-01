@@ -168,40 +168,40 @@ def get_commits_data(software_id, current_ym=datetime.date.today().year * 12 + d
 
     return commits_data
 
-@application.template_filter('strftimeFilter')
-def strftime(millis):
+@application.template_filter()
+def strftimeFilter(millis):
     format = "%Y-%m-%d %H:%M:%S"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strfdatehumanFilter')
-def strfdatehuman(millis):
+@application.template_filter()
+def strfdatehumanFilter(millis):
     format = "%B %d, %Y"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strfdateFilter')
-def strfdate(millis):
+@application.template_filter()
+def strfdateFilter(millis):
     format = "%Y/%m/%d"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strfdatedashFilter')
-def strfdatedash(millis):
+@application.template_filter()
+def strfdatedashFilter(millis):
     format = "%Y-%m-%d"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('listNamesFilter')
-def listNames(contributors):
+@application.template_filter()
+def listNamesFilter(contributors):
     return [c['name'] for c in contributors]
 
-@application.template_filter('pickPIFilter')
-def pickPI(team):
+@application.template_filter()
+def pickPIFilter(team):
     pis = list(filter(lambda x: x['role'] == 'Principal Investigator', team))
     if len(pis) > 0:
         return pis[0]
     else:
         return team[0]
 
-@application.template_filter('noNoneFilter')
-def noNone(l):
+@application.template_filter()
+def noNoneFilter(l):
     return list(filter(lambda x: x is not None, l))
 
 @application.route('/favicon.ico')
