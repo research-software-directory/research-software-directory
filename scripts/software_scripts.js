@@ -138,19 +138,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     if( document.querySelector('.citation-block') ){
 
-        citeContent =       document.querySelector('.citation-block .content');
+        var citeContent =       document.querySelector('.citation-block .content');
 
         // Copy to clipboard
-        copyButton =        document.querySelector('.citation-block .button.copy');
+        var copyButton =        document.querySelector('.citation-block .button.copy');
 
         // Download file selection
-        dropDownPanel =     document.querySelector('.citation-block .dropdown_panel');
-        dropDownButton =    document.querySelector('.citation-block .dropdown_button');
-        dropDownOptions =   document.querySelectorAll('.citation-block .dropdown_panel li');
-        downloadButton =    document.querySelector('.citation-block .button.download');
+        var dropDownPanel =     document.querySelector('.citation-block .dropdown_panel');
+        var dropDownButton =    document.querySelector('.citation-block .dropdown_button');
+        var dropDownOptions =   document.querySelectorAll('.citation-block .dropdown_panel li');
+        var downloadButton =    document.querySelector('.citation-block .button.download');
 
         // Copy to clipboard click
-        copyButton.addEventListener('click', function(event) {
+        if (copyButton) copyButton.addEventListener('click', function(event) {
 
             button = this;
             icon = button.querySelector('.icon use');
@@ -209,14 +209,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
 
         // Download file selection
-        for ( i = 0; i < dropDownOptions.length; i++ ) { 
+        if (dropDownOptions) for ( i = 0; i < dropDownOptions.length; i++ ) {
             dropDownOptions[i].addEventListener('click', function() {
                 dropDownPanel.querySelector('.is-active').classList.remove('is-active');
                 
                 this.classList.toggle('is-active');
                 
-                selectedText = this.querySelector('.text').textContent;
-                selectedUrl = this.getAttribute('data-download-url');
+                var selectedText = this.querySelector('.text').textContent;
+                var selectedUrl = this.getAttribute('data-download-url');
                 
                 dropDownButton.querySelector('.text').textContent = selectedText;
                 downloadButton.setAttribute('href', selectedUrl);
@@ -226,7 +226,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
   
     }
+});
 
+document.addEventListener("DOMContentLoaded", function(event) {
     function plot_commits(data) {
         var plotid = document.getElementById("commitsPlot");
         var layout = {
@@ -268,5 +270,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         plot_commits(commitsData['plot']);
         statid.innerHTML = '<b>' + commitsData['total'] + '</b> commits | Last update: <b>' + commitsData['last'] + '</b>';
     }
-
 });
