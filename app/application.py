@@ -91,7 +91,7 @@ def software_product_page_template(software_id):
                           "ntu": "ntu.gif", "oracle": "oracle.png", "potree": "potree.png",
                           "radboud.university.nijmegen": "radboud.university.nijmegen.png",
                           "rijkswaterstaat": "rijkswaterstaat.png", "spinlab": "spinlab.jpg",
-                          "surfsara": "surfsara.png", "tno": "tno.jpg", "tu-delft": "tu-delft.png",
+                          "surfsara": "surfsara.png", "tno": "tno.jpg", "tudelft": "tu-delft.png",
                           "university.of.groningen": "university.of.groningen.png",
                           "university.of.southampton": "university.of.southampton.svg", "upv": "upv.png",
                           "utwente": "utwente.png", "uu": "uu.svg", "uva": "uva.jpg", "vua": "vua.png",
@@ -174,40 +174,40 @@ def get_commits_data(software_id, current_ym=datetime.date.today().year * 12 + d
 
     return commits_data
 
-@application.template_filter('strftime')
-def strftime(millis):
+@application.template_filter()
+def strftimeFilter(millis):
     format = "%Y-%m-%d %H:%M:%S"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strfdatehuman')
-def strfdatehuman(millis):
+@application.template_filter()
+def strfdatehumanFilter(millis):
     format = "%B %d, %Y"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strfdate')
-def strfdate(millis):
+@application.template_filter()
+def strfdateFilter(millis):
     format = "%Y/%m/%d"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('strfdatedash')
-def strfdatedash(millis):
+@application.template_filter()
+def strfdatedashFilter(millis):
     format = "%Y-%m-%d"
     return datetime.datetime.fromtimestamp(millis).strftime(format)
 
-@application.template_filter('listNames')
-def listNames(contributors):
+@application.template_filter()
+def listNamesFilter(contributors):
     return [c['name'] for c in contributors]
 
-@application.template_filter('pickPI')
-def pickPI(team):
+@application.template_filter()
+def pickPIFilter(team):
     pis = list(filter(lambda x: x['role'] == 'Principal Investigator', team))
     if len(pis) > 0:
         return pis[0]
     else:
         return team[0]
 
-@application.template_filter('noNone')
-def noNone(l):
+@application.template_filter()
+def noNoneFilter(l):
     return list(filter(lambda x: x is not None, l))
 
 @application.route('/favicon.ico')

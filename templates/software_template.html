@@ -3,8 +3,8 @@
     {{super()}}
     <title>{{template_data.name}} | Research Software Directory</title>
     <meta name="citation_title" content="{{template_data.name}}" />
-    <meta name="citation_author" content="{{", ".join(template_data.contributor|listNames)}}" />
-    <meta name="citation_publication_date" content="{{template_data.createdAt | strfdate}}" />
+    <meta name="citation_author" content="{{", ".join(template_data.contributor|listNamesFilter)}}" />
+    <meta name="citation_publication_date" content="{{template_data.createdAt | strfdateFilter}}" />
     {% if template_data.doi %}<meta name="citation_doi" content="{{template_data.doi}}" />{% endif %}
     <meta property="description" content="{{template_data.shortStatement}}" />
     <meta property="og:title" content="{{template_data.name}}" />
@@ -93,10 +93,10 @@
                 <h1 class="title name">{{template_data.name}}</h1>
                 {% endif %}
                 {% if template_data.contributor %}
-                <div class="by">By <strong>{{", ".join(template_data.contributor|listNames)}}</strong></div>
+                <div class="by">By <strong>{{", ".join(template_data.contributor|listNamesFilter)}}</strong></div>
                 {% endif %}
                 {% if template_data.contributingOrganization %}
-                <div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|listNames)}}</div>
+                <div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|listNamesFilter)}}</div>
                 {% endif %}
                 {% if template_data.shortStatement %}
                 <div class="shortStatement">{{template_data.shortStatement}}</div>
@@ -328,7 +328,7 @@
                         
                         <h3 class="title">{{ template_data.corporateBlogs[0].title }}</h3>
                         <p class="author">By {{ template_data.corporateBlogs[0].author }}</p>
-                        <p class="date">{{ template_data.corporateBlogs[0]['datetime'] | strfdatehuman }}</p>
+                        <p class="date">{{ template_data.corporateBlogs[0]['datetime'] | strfdatehumanFilter }}</p>
                         
                         <div class="visit-blog text-underline">Visit our blog</div>
                     </div>
@@ -386,7 +386,7 @@
 
 
 <!-- Projects -->
-{% if template_data.corporateProjects | noNone %}
+{% if template_data.corporateProjects | noNoneFilter %}
 <section class="" id="projects">
     <div class="container">
         <div class="row">
@@ -408,7 +408,7 @@
 
                 <div class="row project-items">
 
-                    {% for project in template_data.corporateProjects | noNone %}
+                    {% for project in template_data.corporateProjects | noNoneFilter %}
                     <article class="project-item col-1-2">
                         <a href="{{project.url}}" target="_blank">
                             <div class="content">
@@ -422,10 +422,10 @@
                                     </p>
                                     <div class="author">
                                         <div class="author_name">
-                                            {{(project.team | pickPI).name}}
+                                            {{(project.team | pickPIFilter).name}}
                                         </div>
                                         <div class="author_university">
-                                            {{(project.team | pickPI).affiliation}}
+                                            {{(project.team | pickPIFilter).affiliation}}
                                         </div>
                                     </div>
                                 </div>
