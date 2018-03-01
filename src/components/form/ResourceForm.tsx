@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { FormFieldContainer } from '../../containers/form/FormFieldContainer';
-import { Button, Segment, Header } from 'semantic-ui-react';
+import { Segment, Header } from 'semantic-ui-react';
 import { ISchema } from '../../interfaces/json-schema';
 
 import './style.css';
@@ -64,17 +63,6 @@ export class ResourceForm extends React.PureComponent<IProps, {}> {
       .sort(this.schemaSort(schema.properties))
       .map((field: string) => this.renderField(field))
 
-  impactReportButton = () => (
-    <Button
-      primary={true}
-      content="Impact report"
-      icon="line chart"
-      labelPosition="left"
-      as={Link}
-      to={`${this.props.id}/report/`}
-    />
-  )
-
   render() {
     if (!this.props.data) {
       return null;
@@ -84,9 +72,6 @@ export class ResourceForm extends React.PureComponent<IProps, {}> {
       <div className="main_form">
         <Segment.Group>
           <Segment secondary={true}>
-            <Segment basic={true} floated="right">
-              {this.props.resourceType === 'software' && this.impactReportButton()}
-            </Segment>
             <Header>{this.props.id}</Header>
           </Segment>
           {this.renderFields(this.props.schema[this.props.resourceType])}</Segment.Group>
