@@ -238,11 +238,16 @@
 
             <div class="specifications col-1-4">
                 <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+                {% if template_data.tags %}
                 <ul class="tags">
                     {% for tag in template_data.tags %}
                         <li class="bg-light">{{tag}}</li>
                     {% endfor %}
                 </ul>
+                {% else %}
+                    <i>No tags available</i>
+                {% endif%}
+
 
                 <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Language</h5>
                 <ul class="languages">
