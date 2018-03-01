@@ -1,26 +1,26 @@
 This is the roadmap to the first stable release:
 
-- refactoring data model/database schemas (https://github.com/research-software-directory/landing-page/issues/36)
-- make backups of current data
-- let frontend code use database with new schemas
-- migrate old 'schema-less' data to new schema
-   - delete deprecated fields
-- refactor mechanisms for filling the database
-   - mentions: API call to Zotero creates a filtered copy of all items in Zotero
-   - organizations: create/read/update/delete via web form in Admin interface (https://github.com/research-software-directory/landing-page/issues/57)
-   - persons: create/read/update/delete via web form in Admin interface (https://github.com/research-software-directory/landing-page/issues/57)
-   - projects: fill data base with filtered copy of what's on the corporate site (collected by scraper)
-   - software: create/read/update/delete via web form in Admin interface (https://github.com/research-software-directory/landing-page/issues/57)
-- admin interface
-   - adapt web form to new database schemas (https://github.com/research-software-directory/landing-page/issues/58)
-   - refactor how a software brand can be tied to 
-       - related mentions
-       - related projects
-       - related other software brands
-- resolve remaining bugs
-- document
-   - how to bring up an exact copy of our RSD
-   - where element of the data is coming from
-   - how to make changes, e.g. how to use
-      - other schemas
-      - other scrapers/preprocessing 
+- [ ] refactoring data model/database schemas (https://github.com/research-software-directory/landing-page/issues/36)
+- [ ] make backups of current data
+- [ ] let frontend code use database with new schemas
+- [ ] migrate old 'schema-less' data to new schema
+   - [ ] delete deprecated fields
+- [ ] refactor mechanisms for filling the database
+   - [ ] mentions: API call to Zotero creates a filtered copy of all items in Zotero
+   - [ ] organizations: create/read/update/delete via web form in Admin interface (https://github.com/research-software-directory/landing-page/issues/57)
+   - [ ] persons: create/read/update/delete via web form in Admin interface (https://github.com/research-software-directory/landing-page/issues/57)
+   - [ ] projects: fill data base with filtered copy of what's on the corporate site (collected by scraper)
+   - [ ] software: create/read/update/delete via web form in Admin interface (https://github.com/research-software-directory/landing-page/issues/57)
+- [ ] admin interface
+   - [ ] adapt web form to new database schemas (https://github.com/research-software-directory/landing-page/issues/58)
+   - [ ] refactor how a software brand can be tied to 
+       - [ ] related mentions
+       - [ ] related projects
+       - [ ] related other software brands
+- [ ] resolve remaining bugs
+- [ ] document
+   - [ ] how to bring up an exact copy of our RSD
+   - [ ] where element of the data is coming from
+   - [ ] how to make changes, e.g. how to use
+      - [ ] other schemas
+      - [ ] other scrapers/preprocessing 
