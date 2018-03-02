@@ -5,6 +5,9 @@ FROM python:3.6
 RUN groupadd -r flask \
     && useradd -r -g flask flask
 
+RUN if [ ! -d /log ]; then mkdir /log; fi
+RUN chown flask:flask /log
+
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
