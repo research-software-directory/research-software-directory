@@ -8,6 +8,14 @@ class RouteException(Exception):
         super().__init__(message, status_code, data, *args)
 
 
+class BadRequestException(RouteException):
+    def __init__(self, message, status_code=400, data=None, *args):
+        super().__init__(message, status_code, data, *args)
+
+class DuplicatePrimaryKeyException(RouteException):
+    def __init__(self, id, status_code=409, data=None, *args):
+        super().__init__('primaryKey already exists: \'%s\'' % id, status_code, data, *args)
+
 class UnauthorizedException(RouteException):
     def __init__(self, message, status_code=401, data=None, *args):
         super().__init__(message, status_code, data, *args)

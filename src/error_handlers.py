@@ -1,4 +1,7 @@
 import traceback
+
+from jsonschema import ValidationError
+
 from src.json_response import jsonify
 from src.exceptions import RouteException
 import logging
@@ -43,3 +46,13 @@ def init(app):
             "traceback": traceback.format_tb(exception.__traceback__),
         }
         return data, 404
+
+    @app.errorhandler(ValidationError)
+    @jsonify
+    def _validation_error(exception):
+        data = {
+            "error": exception.message,
+            "class": "ValidationError",
+            "path": list(exception.absolute_path)
+        }
+        return data, 400

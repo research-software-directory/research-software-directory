@@ -8,4 +8,4 @@ gunicorn==19.7.1
 dateparser==0.6.0
 pytest==3.3.2
 PyJWT==1.5.3
-pymongal==0.0.2
+pymongo==3.6.1

@@ -1,98 +1,138 @@
 import flask
+import datetime
+import pymongo
 from flask_cors import CORS
+from jsonschema import validate
+from bson.objectid import ObjectId
 
-import src.exceptions as exceptions
-
-from src.schema import schema
+from src import exceptions
 from src.json_response import jsonify
 from src.permission import require_permission
 
-from src.transformers import software as t_software
-from src.transformers.software import list_entry
 
+def time_now():
+    return datetime.datetime.utcnow().replace(microsecond=0).isoformat()+'Z'
 
-def get_routes(db):
-    def collection_to_object(collection):
-        result = {}
-        for resource in collection:
-            result[resource['_id']] = resource
-        return result
-
+def get_routes(db, schema):
     api = flask.Blueprint("api", __name__)
     cors = CORS(api, resources={r"*": {"origins": "*"}})
-
-    @api.route('/all', methods=["GET"])
-    @jsonify
-    @require_permission(['read'])
-    def _get_all_data():
-        result = {}
-        for resource_type in ['software', 'project', 'person', 'publication', 'organization']:
-            result[resource_type] = list(db[resource_type].all())
-        return result, 200
-
-    @api.route('/organizations', methods=["GET"])
-    @jsonify
-    def _get_organizations():
-        resources = list(db['organization'].all())
-        # result = [list_entry(software) for software in resources]
-        return resources, 200
-
-    @api.route('/software', methods=["GET"])
-    @jsonify
-    def _get_software():
-        if flask.request.args.get('published'):
-            resources = list(db['software'].find({'published': True }))
-        else:
-            resources = list(db['software'].all())
-        result = [list_entry(software, db) for software in resources]
-        return result, 200
-
-    @api.route('/latest_mentions', methods=["GET"])
-    @jsonify
-    def _get_latest_mentions():
-        result = list(db['zotero_publication'].find({'data.relations': {'$ne': {}}}).sort("data.dateAdded", -1).limit(3))
-        return result, 200
 
     @api.route('/<resource_type>/<id>', methods=["GET"])
     @jsonify
     def _get_resource(resource_type, id):
-        resource = db[resource_type].find_by_id(id)
-        if not resource:
-            raise exceptions.NotFoundException('resource not found')
-        if resource_type == 'software':
-            t_software.transform(resource, db)
+        schemas = schema.all()
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
 
-        return resource.data, 200
+        resource = None
+        if 'slug' in schemas[resource_type]['properties'].keys():
+            resource = db[resource_type].find_one({'slug': id})
+        if not resource:
+            resource = db[resource_type].find_one({'primaryKey.id': id})
+        if not resource:
+            raise exceptions.NotFoundException('Resource not found')
+
+        return resource, 200
+
+    @api.route('/<resource_type>', methods=["GET"])
+    @jsonify
+    def _get_resources(resource_type):
+        """
+        Get list of resource `resource_type`, forwards GET parameters sort, direction, skip, limit to mongo query
+        :param resource_type: The resource type
+        :return: list of resources
+        """
+        schemas = schema.all()
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
+
+        query = db[resource_type].find()
+        if 'sort' in flask.request.args.keys():
+            direction = pymongo.DESCENDING if flask.request.args.get('direction') == 'desc' else pymongo.ASCENDING
+            query.sort(flask.request.args.get('sort'), direction)
+
+        query.skip(int(flask.request.args.get('skip', 0)))
+        query.limit(int(flask.request.args.get('limit', 0)))
+
+        return list(query), 200
+
+    @api.route('/<resource_type>', methods=["POST"])
+    @require_permission(['write'])
+    @jsonify
+    def _create_resources(resource_type):
+        """
+        Save a resource
+        :param resource_type: The resource type
+        :return: the saved resource
+        """
+        schemas = schema.all()
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
+
+        data = flask.request.get_json(force=True, silent=True)
+        if not data or not isinstance(data, dict):
+            raise exceptions.BadRequestException('Malformed JSON in POST data')
+
+        data['createdAt'] = time_now()
+        data['updatedAt'] = time_now()
+
+        if 'primaryKey' not in data:
+            data['primaryKey'] = {
+                'collection': resource_type,
+                'id': str(ObjectId())
+            }
+        validate(data, schemas.get(resource_type))
+
+        if db[resource_type].find_one({'primaryKey.id': data['primaryKey']['id']}):
+            raise exceptions.DuplicatePrimaryKeyException(data['primaryKey']['id'])
+
+        if 'test' not in flask.request.args:
+            db[resource_type].insert(data)
+
+        return data, 200
+
+    @api.route('/<resource_type>/<id>', methods=["PATCH"])
+    @require_permission(['write'])
+    @jsonify
+    def _update_resource(resource_type, id):
+        """
+        Update a resource, can update whole resource or a subset of fields
+        :param resource_type: The resource type
+        :return: the updated resource
+        """
+        schemas = schema.all()
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
+
+        resource = None
+        if 'slug' in schemas[resource_type]['properties'].keys():
+            resource = db[resource_type].find_one({'slug': id})
+        if not resource:
+            resource = db[resource_type].find_one({'primaryKey.id': id})
+        if not resource:
+            raise exceptions.NotFoundException('Resource not found')
+
+        data = flask.request.get_json(force=True, silent=True)
+        if not data or not isinstance(data, dict):
+            raise exceptions.BadRequestException('Malformed JSON in PATCH data')
+
+        resource_id = resource.pop('_id')
+        resource_created_at = resource.pop('createdAt')
+        resource.update(data)
+        resource['updatedAt'] = time_now()
+        resource['createdAt'] = resource_created_at
+
+        validate(resource, schemas.get(resource_type))
+
+        resource['_id'] = resource_id
+
+        db[resource_type].update_one({'_id': resource_id}, {'$set': resource})
+
+        return resource, 200
 
     @api.route('/schema')
     @jsonify
     def _schema():
-        return schema, 200
-
-    @api.route('/update', methods=["POST"])
-    @jsonify
-    @require_permission(['write'])
-    def _post_update():
-        value = flask.request.get_json()
-        if not value:
-            raise exceptions.RouteException('no value provided', 401)
-
-        for resource_type in value:
-            for resource_data in value[resource_type]:
-                record = db[resource_type].find_by_id(resource_data['id'])
-                if not record:
-                    record = db[resource_type].new(resource_data)
-                else:
-                    record.data.pop('updatedAt', None)
-                    record.data.pop('createdAt', None)
-                    record.data.update(resource_data)
-                record.save()
-
-        return {'status': 'ok'}, 200
-
-    @api.route('/software/<software_id>/commits', methods=["GET"])
-    @jsonify
-    def _commits(software_id):
-        return [commit.data for commit in list(db.commit.find({'software_id': software_id}))], 200
+        return schema.all(), 200
 
     return api
