@@ -1,11 +1,20 @@
+function convertDate(timestamp) {
+    if (typeof timestamp === 'number') {
+        return new Date(timestamp*1000).toISOString().substr(0,19)+'Z';
+    }
+    else {
+        return timestamp;
+    }
+}
+
 db.organization.find().map(_=>_).forEach(org => {
     db.organization.update({_id: org._id}, {
         primaryKey: {
             id: org._id,
             collection: "organization"
         },
-        createdAt:  org.createdAt,
-        updatedAt:  org.updatedAt,
+        createdAt:  convertDate(org.createdAt),
+        updatedAt:  convertDate(org.updatedAt),
         name:       org.name,
         url:        org.website
     })
@@ -17,8 +26,8 @@ db.person.find().map(_=>_).forEach(person => {
             id: person.id,
             collection: "person"
         },
-        createdAt:      person.createdAt,
-        updatedAt:      person.updatedAt,
+        createdAt:      convertDate(person.createdAt),
+        updatedAt:      convertDate(person.updatedAt),
         emailAddress:   person.email,
         familyNames:    person.name,
         givenNames:     null,
@@ -100,8 +109,8 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
             id: sw.id,
             collection: "software"
         },
-        createdAt:              sw.createdAt,
-        updatedAt:              sw.updatedAt,
+        createdAt:              convertDate(sw.createdAt),
+        updatedAt:              convertDate(sw.updatedAt),
         brandName:              sw.name,
         bullets:                sw.statement,
         citationcff:            null,
@@ -122,7 +131,14 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         slug:                   sw.id,
         tags:                   sw.tags || [],
         testimonial:            [],
-        zoteroKey:              sw.zoteroKey
+        related: {
+            software: !sw.relatedSoftware ? [] : sw.relatedSoftware.map(rel => ({
+                foreignKey: {
+                    id: rel,
+                    collection: 'software'
+                }
+            }))
+        }
     })
 });
 

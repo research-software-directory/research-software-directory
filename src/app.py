@@ -19,7 +19,6 @@ required_environmental_variables = [
     "DATABASE_HOST",
     "DATABASE_PORT",
     "DATABASE_NAME",
-    "ENVIRONMENT",
     "JWT_SECRET",
     "SCHEMA_URL"
 ]

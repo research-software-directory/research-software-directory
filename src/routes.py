@@ -126,9 +126,28 @@ def get_routes(db, schema):
 
         resource['_id'] = resource_id
 
-        db[resource_type].update_one({'_id': resource_id}, {'$set': resource})
+        if 'test' not in flask.request.args:
+            db[resource_type].update_one({'_id': resource_id}, {'$set': resource})
 
         return resource, 200
+
+    @api.route('/')
+    @require_permission(['read'])
+    @jsonify
+    def _root():
+        """
+        Get all resources as a dict (only if there are less than 1000)
+        :return: All resources
+        """
+        schemas = schema.all()
+        results = {}
+        for resource_type in schemas.keys():
+            resource_cursor = db[resource_type].find()
+            if resource_cursor.count() < 1000:
+                results[resource_type] = list(resource_cursor)
+
+        return results, 200
+
 
     @api.route('/schema')
     @jsonify
