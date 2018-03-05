@@ -13,6 +13,7 @@ from src.permission import require_permission
 def time_now():
     return datetime.datetime.utcnow().replace(microsecond=0).isoformat()+'Z'
 
+
 def get_routes(db, schema):
     api = flask.Blueprint("api", __name__)
     cors = CORS(api, resources={r"*": {"origins": "*"}})
