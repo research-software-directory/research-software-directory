@@ -1,0 +1,63 @@
+div.ui.menu.submenu {
+    margin: 0 !important;
+    padding: 1em 1em !important;
+    font-size: 1em;
+    width: 100%;
+}
+
+div.ui.menu.submenu>div>.item>a:hover,
+div.ui.menu.submenu>div>.item.active>a {
+    color: white !important;
+}
+
+div.submenu-search {
+    width: 100%;
+}
+
+div.menu.submenu>div>input {
+    background-color: #444;
+    color: #ccc;
+    border: none;
+}
+
+div.menu.submenu>div>input:focus {
+    background-color: #444;
+    color: white;
+}
+
+div.ui.vertical.inverted.menu .menu .item {
+    color: #ccc;
+    line-height: 1.2rem;
+    padding: .5em 0;
+}
+
+div.ui.menu.main_menu>div.item.resource_menu {
+    /* padding: 0.5em, 0.5em, 0.5em, 0.5em; */
+    padding: 0;
+    border-top: 1px solid #444;
+}
+
+div.ui.menu.main_menu>div.item.resource_menu.active {
+    background-color: inherit;
+    color: red;
+}
+
+div.ui.menu.main_menu>div.item.resource_menu>div:first-child {
+    padding: 1em 1em;
+}
+
+#main_menu {
+    min-height: 100vh;
+    font-size: 100%;
+    flex: 0 0 300px;
+}
+
+#main_menu>.item>.header {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 0 !important;
+}
+
+#main_menu>.item>.header:hover {
+    color: #aa8888;
+}

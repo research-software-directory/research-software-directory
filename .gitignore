@@ -27,6 +27,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-src/interfaces/resources/*.ts
-src/interfaces/resource.ts

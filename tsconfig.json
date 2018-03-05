@@ -28,14 +28,15 @@
 //        }
     },
     "exclude": [
-        "node_modules",
         "build",
         "coverage",
         "scripts",
         "acceptance-tests",
         "webpack",
         "jest",
-        "src/setupTests.ts"
+        "src/setupTests.ts",
+        "src_old",
+        "src_keep"
     ],
     "types": [
         "typePatches"

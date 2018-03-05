@@ -2,7 +2,7 @@ export interface ISchema {
   id: string;
   required?: string[];
   type: 'object';
-  $schema: 'http://json-schema.org/draft-04/schema';
+  '#schema': 'http://json-property.org/draft-04/property#';
   properties: { [key: string]: IProperty };
   additionalProperties: boolean;
 }

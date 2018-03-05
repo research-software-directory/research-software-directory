@@ -1,0 +1,61 @@
+.main_form textarea {
+    min-height: 150px;
+}
+
+.markdown ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+    line-height: 1.2em;
+}
+
+.markdown ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.markdown li {
+    line-height: 2.0em;
+}
+
+.markdown p {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.markdown h1 {
+    font-size: 200%;
+}
+
+.markdown h2 {
+    font-size: 160%;
+}
+
+.markdown h3 {
+    font-size: 140%;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+    margin-top: 1em;
+}
+
+.markdown code,
+.markdown code * {
+    font-family: Courier New, Courier, monospace;
+    background-color: rgba(255, 255, 100, 0.1);
+}
+
+.markdown blockquote {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2em;
+}
+
+.markdown_input_label ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.markdown_input_label li {
+    line-height: 2.0em;
+}

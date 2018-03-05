@@ -1,0 +1,16 @@
+div.ui.input.dirty>input {
+    border-color: orange;
+}
+
+.main_form input {
+    min-width: 30rem;
+}
+
+.main_form .ui.input {
+    width: 100%;
+}
+
+.main_form textarea {
+    min-width: 30rem;
+    width: 100%;
+}
