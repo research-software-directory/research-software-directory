@@ -13,7 +13,7 @@ const SETTINGS_URL = '/settings.json';
 
 const errorAction = (message: string) => toastrActions.add({
   message: message,
-  options: { timeOut: 3000, showCloseButton: true },
+  options: { timeOut: 10000, showCloseButton: true },
   position: 'top-center',
   title: 'Error',
   type: 'error'
@@ -109,11 +109,21 @@ function * fetchSchema() {
 }
 
 function* initSaga() {
-  yield call(fetchSettings);
-  const settings = yield select((state: any) => state.settings);
-  yield call(getJWT(settings.authUrl));
-  yield all([call(fetchData), call(fetchSchema)]);
-  yield put({ type: 'INIT_DONE' });
+  try {
+    yield call(fetchSettings);
+    const settings = yield select((state: any) => state.settings);
+    yield call(getJWT(settings.authUrl));
+    yield all([call(fetchData), call(fetchSchema)]);
+    yield put({type: 'INIT_DONE'});
+  } catch (e) {
+    if (e.message === 'Network Error') {
+      yield put(errorAction('Network error connecting to ' + e.config.url));
+    } else if (e.response) {
+      yield put(errorAction(`Error getting ${e.config.url}: ${e.response.data.class}: ${e.response.data.error}`));
+    } else {
+      yield put(errorAction('error: ' + e));
+    }
+  }
 }
 
 export default initSaga;

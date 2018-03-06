@@ -4,14 +4,15 @@
   "resources": {
     "software" : {
       "name": "Software",
-      "icon": "file code outline"
+      "icon": "file code outline",
+      "displayName": ["brandName"]
     },
     "person" : {
       "name": "Person",
       "icon": "user"
     },
-    "publication" : {
-      "name": "Publication",
+    "mention" : {
+      "name": "mention",
       "icon": "book"
     },
     "project" : {

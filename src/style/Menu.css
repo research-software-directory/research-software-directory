@@ -47,9 +47,13 @@ div.ui.menu.main_menu>div.item.resource_menu>div:first-child {
 }
 
 #main_menu {
-    min-height: 100vh;
+    height: 100vh;
     font-size: 100%;
     flex: 0 0 300px;
+    overflow-y: scroll;
+    margin: 0;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 #main_menu>.item>.header {

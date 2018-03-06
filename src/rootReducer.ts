@@ -5,6 +5,7 @@ import { reducer as toastrReducer, ToastrState } from 'react-redux-toastr';
 
 import { IData } from './interfaces/misc';
 import { ISchema } from './interfaces/json-schema';
+import { SemanticICONS } from 'semantic-ui-react/dist/commonjs';
 
 /**
  * General reducer that updates state with action.claims for type `actionType`
@@ -50,7 +51,7 @@ export interface ISettings {
   resources: {
     [key: string]: {
       name: string,
-      icon: string
+      icon: SemanticICONS
     }
   }[];
 }

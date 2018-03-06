@@ -12,6 +12,7 @@
         "immutability-helper": "^2.6.6",
         "moment": "^2.21.0",
         "react": "^16.2.0",
+        "react-ace": "^5.9.0",
         "react-animate-height": "^0.10.10",
         "react-day-picker": "^6.2.1",
         "react-dom": "^16.2.0",
