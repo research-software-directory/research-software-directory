@@ -19,7 +19,6 @@ DATABASE_HOST=localhost            - MongoDB host
 DATABASE_PORT=27017                - MongoDB tcp port
 DATABASE_NAME=rsd                  - MongoDB database to use
 SCHEMA_URL=http://localhost:5003   - URL of schema location
-FLASK_DEBUG=1                      - Run flask in debug (automatically refreshes on code change).
 ```
 
 ### Run unit tests
@@ -33,12 +32,12 @@ PYTHONPATH=`pwd` pytest
 Make sure that your Python is up to date and requirements are installed (same as under unit tests).
 Set environmental variables (eg. `export $(cat .env.example | xargs)`).
 ```
-FLASK_APP=`pwd`/entry.py flask run                                     # starts server
-FLASK_APP=`pwd`/entry.py flask generate_jwt --sub test_user -p write   # generates a JWT for writing
+python entry.py                                                               # starts server
+FLASK_APP=`pwd`/entry.py flask generate_jwt --sub test_user -p write -p read  # generates a JWT for read+write
 ```
 Or run through Docker:
 ```
-docker build . -t data-api && docker run -p 5000:8000 -it --name data-api data-api
+docker build . -t data-api && docker run -p 5001:8000 -it --name data-api data-api
 ```
 
 ### Usage

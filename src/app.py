@@ -58,8 +58,3 @@ def register_blueprints(app, db, schema):
 
 def register_commands(app, db, schema):
     commands.init(app, db, schema)
-
-
-if __name__ == "__main__":
-    app = create_app()
-    app.run(host='0.0.0.0', port=5001)
