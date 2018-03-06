@@ -69,7 +69,8 @@ class UserNotInOrganization(Exception):
     def __str__(self):
         return 'It appears you\'re not a (public) member of GitHub organization "%s". If you are a private member, ' \
                'please go to <a target="_blank" href="https://github.com/orgs/%s/people">https://github.com/orgs/%s/people</a> and ' \
-               'change your membership from private to public.' % (
+               'change your membership from private to public.' \
+               '<img src="https://raw.githubusercontent.com/research-software-directory/auth-github/master/cast-github-private-public.gif" />' % (
                    os.environ.get('AUTH_GITHUB_ORGANIZATION'),
                    os.environ.get('AUTH_GITHUB_ORGANIZATION'),
                    os.environ.get('AUTH_GITHUB_ORGANIZATION')
