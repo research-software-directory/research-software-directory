@@ -246,7 +246,11 @@ def get_routes(db, schema):
         for resource_type in schemas.keys():
             resource_cursor = db[resource_type].find()
             if resource_cursor.count() < 1000:
-                results[resource_type] = list(resource_cursor)
+                resources = list(resource_cursor)
+                for resource in resources:
+                    if '_id' in resource:
+                        del resource['_id']
+                results[resource_type] = resources
 
         return results, 200
 
