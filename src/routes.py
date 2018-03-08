@@ -48,13 +48,22 @@ def get_routes(db, schema):
         if resource_type not in schemas.keys():
             raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
 
-        query = db[resource_type].find()
+        keyword_arg_keys = ['sort', 'skip', 'limit', 'direction']
+        searches = {}
+        for key in [key for key in flask.request.args.keys() if key not in keyword_arg_keys]:
+            searches[key] = flask.request.args[key]
+
+        query = db[resource_type].find(searches)
         if 'sort' in flask.request.args.keys():
             direction = pymongo.DESCENDING if flask.request.args.get('direction') == 'desc' else pymongo.ASCENDING
             query.sort(flask.request.args.get('sort'), direction)
 
         query.skip(int(flask.request.args.get('skip', 0)))
         query.limit(int(flask.request.args.get('limit', 0)))
+
+
+
+
 
         return list(query), 200
 
