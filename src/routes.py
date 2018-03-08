@@ -1,13 +1,14 @@
 import flask
 import datetime
 import pymongo
+import copy
 from flask_cors import CORS
 from jsonschema import validate
 from bson.objectid import ObjectId
 
 from src import exceptions
 from src.json_response import jsonify
-from src.permission import require_permission
+from src.permission import require_permission, get_sub
 
 
 def time_now():
@@ -76,6 +77,8 @@ def get_routes(db, schema):
 
         data['createdAt'] = time_now()
         data['updatedAt'] = time_now()
+        data['createdBy'] = get_sub()
+        data['updatedBy'] = get_sub()
 
         if 'primaryKey' not in data:
             data['primaryKey'] = {
@@ -113,22 +116,40 @@ def get_routes(db, schema):
         if not resource:
             raise exceptions.NotFoundException('Resource not found')
 
+        if 'save_history' in flask.request.args:
+            old_data = copy.deepcopy(resource)
+
         data = flask.request.get_json(force=True, silent=True)
         if not data or not isinstance(data, dict):
             raise exceptions.BadRequestException('Malformed JSON in PATCH data')
 
+        # save keys that cannot be changed on update
         resource_id = resource.pop('_id')
+        resource_primary_key = resource.pop('primaryKey')
         resource_created_at = resource.pop('createdAt')
+        resource_created_by = resource.pop('createdBy', None)
+
+        # update resource dict with POSTed data
         resource.update(data)
+
+        # restore keys that cannot be changed on update
         resource['updatedAt'] = time_now()
+        resource['updatedBy'] = get_sub()
         resource['createdAt'] = resource_created_at
+        resource['createdBy'] = resource_created_by
+        resource['primaryKey'] = resource_primary_key
 
         validate(resource, schemas.get(resource_type))
 
+        # _id is not part of the schema, so restore this after validation
         resource['_id'] = resource_id
 
         if 'test' not in flask.request.args:
             db[resource_type].update_one({'_id': resource_id}, {'$set': resource})
+
+        if 'save_history' in flask.request.args:
+            old_data.pop('_id')
+            db[resource_type+'_history'].insert(old_data)
 
         return resource, 200
 
