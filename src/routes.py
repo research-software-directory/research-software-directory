@@ -61,10 +61,6 @@ def get_routes(db, schema):
         query.skip(int(flask.request.args.get('skip', 0)))
         query.limit(int(flask.request.args.get('limit', 0)))
 
-
-
-
-
         return list(query), 200
 
     @api.route('/<resource_type>', methods=["POST"])
@@ -72,37 +68,112 @@ def get_routes(db, schema):
     @jsonify
     def _create_resources(resource_type):
         """
-        Save a resource
+        Save one or more new resources
         :param resource_type: The resource type
         :return: the saved resource
         """
+        def add_fields_and_validate(res):
+            res['createdAt'] = time_now()
+            res['updatedAt'] = time_now()
+            res['createdBy'] = get_sub()
+            res['updatedBy'] = get_sub()
+
+            if 'primaryKey' not in res:
+                res['primaryKey'] = {
+                    'collection': resource_type,
+                    'id': str(ObjectId())
+                }
+
+            validate(res, schemas.get(resource_type))
+
+            if db[resource_type].find_one({'primaryKey.id': res['primaryKey']['id']}):
+                raise exceptions.DuplicatePrimaryKeyException(res['primaryKey']['id'])
+
         schemas = schema.all()
         if resource_type not in schemas.keys():
             raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
 
         data = flask.request.get_json(force=True, silent=True)
-        if not data or not isinstance(data, dict):
+        if not data or not (isinstance(data, dict) or isinstance(data, list)):
             raise exceptions.BadRequestException('Malformed JSON in POST data')
 
-        data['createdAt'] = time_now()
-        data['updatedAt'] = time_now()
-        data['createdBy'] = get_sub()
-        data['updatedBy'] = get_sub()
+        if isinstance(data, dict):
+            add_fields_and_validate(data)
+            if 'test' not in flask.request.args:
+                db[resource_type].insert(data)
 
-        if 'primaryKey' not in data:
-            data['primaryKey'] = {
-                'collection': resource_type,
-                'id': str(ObjectId())
-            }
-        validate(data, schemas.get(resource_type))
+            return data, 200
 
-        if db[resource_type].find_one({'primaryKey.id': data['primaryKey']['id']}):
-            raise exceptions.DuplicatePrimaryKeyException(data['primaryKey']['id'])
+        else:  # list
+            for resource in data:
+                add_fields_and_validate(resource)
+                if 'test' not in flask.request.args:
+                    db[resource_type].insert(resource)
+            return 'ok', 200
+
+    @api.route('/<resource_type>', methods=["PATCH"])
+    @require_permission(['write'])
+    @jsonify
+    def _update_or_insert(resource_type):
+        """
+        Update or insert a list of resources
+        :param resource_type: The resource type
+        :return: the resources list.
+        """
+        schemas = schema.all()
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
+
+        data = flask.request.get_json(force=True, silent=True)
+        if not data or not isinstance(data, list):
+            raise exceptions.BadRequestException('Malformed JSON in PATCH data (expected JSON list)')
+
+        resources_to_update = []
+        resources_to_create = []
+
+        for resource in data:
+            if 'primaryKey' not in resource:
+                resource['primaryKey'] = {
+                    'collection': resource_type,
+                    'id': str(ObjectId())
+                }
+
+            old_resource = db[resource_type].find_one({'primaryKey.id': resource['primaryKey']['id']})
+            if not old_resource:
+                resource['createdAt'] = time_now()
+                resource['updatedAt'] = time_now()
+                resource['createdBy'] = get_sub()
+                resource['updatedBy'] = get_sub()
+                validate(resource, schemas.get(resource_type))
+
+                resources_to_create.append(resource)
+            else:
+                resource_id = old_resource.pop('_id')
+                resource_primary_key = old_resource.pop('primaryKey')
+                resource_created_at = old_resource.pop('createdAt')
+                resource_created_by = old_resource.pop('createdBy', None)
+
+                # update resource dict with POSTed data
+                old_resource.update(resource)
+
+                # restore keys that cannot be changed on update
+                old_resource['updatedAt'] = time_now()
+                old_resource['updatedBy'] = get_sub()
+                old_resource['createdAt'] = resource_created_at
+                old_resource['createdBy'] = resource_created_by
+                old_resource['primaryKey'] = resource_primary_key
+
+                validate(old_resource, schemas.get(resource_type))
+                old_resource['_id'] = resource_id
+                resources_to_update.append(old_resource)
 
         if 'test' not in flask.request.args:
-            db[resource_type].insert(data)
+            for resource in resources_to_create:
+                db[resource_type].insert(resource)
+            for resource in resources_to_update:
+                db[resource_type].update_one({'_id': resource['_id']}, {'$set': resource})
 
-        return data, 200
+        return 'ok', 200
 
     @api.route('/<resource_type>/<id>', methods=["PATCH"])
     @require_permission(['write'])
