@@ -116,6 +116,7 @@ def sync_github_repo(url):
     logger.info('%s new commits' % str(len(commits)))
     if len(commits) > 0:
         save_commits(url, commits)
+    return len(commits)
 
 
 def sync_all():
@@ -125,6 +126,52 @@ def sync_all():
     urls = get_repo_urls_to_sync()
     for url in urls:
         try:
-            sync_github_repo(url)
+            new_commits = sync_github_repo(url)
         except Exception as e:
             logger.error('Error trying to sync ' + url + ' ' + str(e))
+
+    set_total_commits()
+
+
+def get_last_commit_date(sw):
+    last_commit_date = ''
+    for url in [repo['url'] for repo in sw['githubURLs'] if repo['isCommitDataSource']]:
+        last_commit = requests.get(
+            os.environ.get('BACKEND_URL') + '/commit?limit=1&sort=date&direction=desc&githubURL=' + url
+        ).json()
+        if len(last_commit) > 0 and last_commit[0].get('date') > last_commit_date:
+            last_commit_date = last_commit[0].get('date')
+    return last_commit_date
+
+
+def get_total_commits(sw):
+    total_commits = 0
+    for url in [repo['url'] for repo in sw['githubURLs'] if repo['isCommitDataSource']]:
+        total_commits += requests.get(
+            os.environ.get('BACKEND_URL') + '/commit?count&githubURL=' + url
+        ).json().get('count')
+
+    return total_commits
+
+
+def set_total_commits():
+    """
+    Sets the total commits value for all Software items
+    """
+    software = requests.get(
+        os.environ.get('BACKEND_URL') + '/software'
+    ).json()
+    for sw in software:
+        total_commits = get_total_commits(sw)
+        if total_commits > 0 and total_commits != sw.get('total_commits'):
+            sw_to_save = {
+                'commitsTotal': total_commits,
+                'commitsLast': get_last_commit_date(sw)
+            }
+            res = requests.patch(
+                os.environ.get('BACKEND_URL') + '/software/' + sw['primaryKey']['id'],
+                json=sw_to_save,
+                headers={'Authorization': 'Bearer %s' % os.environ.get('BACKEND_JWT')}
+            )
+            if res.status_code != 200:
+                logger.error('unable to save total commits ' + str(res.json()))
