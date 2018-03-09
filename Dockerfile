@@ -10,6 +10,6 @@ RUN bash build-assets.sh
 
 STOPSIGNAL SIGINT
 
-CMD gunicorn --workers 3 --max-requests 10 --bind 0.0.0.0:8000 --access-logfile /log/reqlog --error-logfile /log/errlog entry:application
+CMD gunicorn --preload --workers 3 --max-requests 10 --timeout 15 --bind 0.0.0.0:5004 --access-logfile - --error-logfile - entry:application
 
-EXPOSE 8000
+EXPOSE 5004

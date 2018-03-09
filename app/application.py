@@ -1,4 +1,5 @@
 import datetime
+from dateutil import parser
 import json
 import random
 
@@ -13,23 +14,15 @@ import os
 
 from app import plot_commits
 from app.citation import get_citation
-from app.corporate_scraper.Scraper import BlogPostScraper, ProjectScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = os.environ.get('API_URL', 'https://api.research-software.nl')
-#api_url = 'http://172.19.0.1:5001'
+api_url = os.environ.get('BACKEND_URL')
 
 def format_software(sw):
-    sw['lastUpdateAgo'] = 'Last update: ' + ago.human(sw.get('lastUpdate'), precision=1)
+    sw['lastUpdate'] = sw.get('commitsLast', sw.get('updatedAt'))
+    sw['lastUpdateAgo'] = 'Last update: ' + ago.human(strTSFilter(sw.get('lastUpdate')), precision=1)
 
-def get_blogs():
-    return requests.get(api_url + '/corporate_blogs').json()
-
-def get_projects():
-    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
-        include_deep_info=True)
-    return scraper.projects
 
 @application.route('/sitemap.xml', methods=['GET'])
 def sitemap():
@@ -44,23 +37,23 @@ def sitemap():
 
 @application.route('/', methods=['GET'])
 def index():
-    url = api_url + '/software?published=true'
-    latest_mentions = requests.get(api_url + '/latest_mentions').json()
-    organizations = requests.get(api_url + '/organizations').json()
+    url = api_url + '/software?isPublished=true'
+    latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
+    organizations = requests.get(api_url + '/organization').json()
     all_software = requests.get(url).json()
     for sw in all_software:
         format_software(sw)
-    blog_posts = get_blogs()[:4]
-    for post in blog_posts:
-        format = "%B %d, %Y"
-        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
+    # blog_posts = get_blogs()[:4]
+    # for post in blog_posts:
+    #     format = "%B %d, %Y"
+    #     post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
 
     return htmlmin.minify(flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(json.dumps(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
                                  latest_mentions=latest_mentions,
-                                 blog_posts=blog_posts
+                                 # blog_posts=blog_posts
                                  ))
 
 
@@ -173,6 +166,10 @@ def get_commits_data(software_id, current_ym=datetime.date.today().year * 12 + d
         commits_data = None
 
     return commits_data
+
+@application.template_filter()
+def strTSFilter(str):
+    return parser.parse(str).timestamp()
 
 @application.template_filter()
 def strftimeFilter(millis):

@@ -41,7 +41,7 @@ function initOverview(softwareData, organizationsData) {
         return function(sw) {
             if (orgs.length === 0) return true;
             var matches = 0;
-            sw.contributingOrganization.forEach(function (org) {
+            sw.contributingOrganizations.forEach(function (org) {
                 if (orgs.includes(org)) {
                     matches += 1;
                 }
@@ -57,8 +57,6 @@ function initOverview(softwareData, organizationsData) {
             return fields.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         }
     }
-
-
 
     var v = new Vue({
         el: '#overview',
@@ -154,8 +152,8 @@ function initOverview(softwareData, organizationsData) {
                 var orgCounts = JSON.parse(JSON.stringify(this.organizations));
                 this.software
                     .forEach(function (sw) {
-                        sw.contributingOrganization.forEach(function (orgId) {
-                            var org = orgCounts.find(function(corg) { return corg.id === orgId });
+                        sw.contributingOrganizations.forEach(function (org) {
+                            var org = orgCounts.find(function(corg) { return corg.primaryKey.id === org.foreignKey.id });
                             if (org) {
                                 org['isPartner'] = true;
                             }
@@ -170,8 +168,8 @@ function initOverview(softwareData, organizationsData) {
                 partners.forEach(function(org) { org['count'] = 0});
                 this.filteredSoftware
                     .forEach(function (sw) {
-                        sw.contributingOrganization.forEach(function (orgId) {
-                            var org = partners.find(function(corg) { return corg.id === orgId });
+                        sw.contributingOrganizations.forEach(function (forg) {
+                            var org = partners.find(function(corg) { return corg.primaryKey.id === forg.foreignKey.id });
                             if (org) {
                                 org['count'] = (org['count'] || 0) + 1;
                             }
@@ -193,7 +191,7 @@ function initOverview(softwareData, organizationsData) {
 
             sortedSoftware: function () {
                 function updatedSorter(a, b) {
-                    return b.lastUpdate - a.lastUpdate;
+                    return b.lastUpdate > a.lastUpdate ? 1 : (a.lastUpdate > b.lastUpdate ? -1 : 0)
                 }
 
                 function keyCountSorter(key) {
@@ -203,9 +201,9 @@ function initOverview(softwareData, organizationsData) {
                 }
 
                 function promoteHighlighted(a, b) {
-                    if (a.highlighted && b.highlighted) return 0;
-                    else if (a.highlighted) return -1;
-                    else if (b.highlighted) return 1;
+                    if (a.isFeatured && b.isFeatured) return 0;
+                    else if (a.isFeatured) return -1;
+                    else if (b.isFeatured) return 1;
                     return 0;
                 }
 
