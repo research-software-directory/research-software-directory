@@ -48,7 +48,7 @@ def get_routes(db, schema):
         if resource_type not in schemas.keys():
             raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
 
-        keyword_arg_keys = ['sort', 'skip', 'limit', 'direction']
+        keyword_arg_keys = ['sort', 'skip', 'limit', 'direction', 'count']
         searches = {}
         for key in [key for key in flask.request.args.keys() if key not in keyword_arg_keys]:
             arg_value = flask.request.args[key]
@@ -65,6 +65,9 @@ def get_routes(db, schema):
 
         query.skip(int(flask.request.args.get('skip', 0)))
         query.limit(int(flask.request.args.get('limit', 0)))
+
+        if 'count' in flask.request.args:
+            return {'count': query.count()}, 200
 
         return list(query), 200
 

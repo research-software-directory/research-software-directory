@@ -114,6 +114,14 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         brandName:              sw.name,
         bullets:                sw.statement,
         citationcff:            null,
+        contributingOrganizations: sw.contributingOrganizations
+            ? sw.contributingOrganizations.map(org => ({
+                foreignKey: {
+                    id: org,
+                    collection: 'organization'
+                }
+              }))
+            : [],
         contributors:           sw.contributor ? sw.contributor.map(c => mapContributors(c, sw)).filter(c=>c) : [],
         getStartedURL:          sw.mainUrl,
         githubURLs:             sw.githubid ? [{
@@ -141,8 +149,6 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         }
     })
 });
-
-
 
 /* manually set: testimonial
 > db.software.find({testimonial: { $exists: true, $ne: '' }}).map(s=>s.id + " " + s.testimonial + " ----- " + s.testimonialBy)
