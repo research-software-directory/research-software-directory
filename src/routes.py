@@ -51,7 +51,12 @@ def get_routes(db, schema):
         keyword_arg_keys = ['sort', 'skip', 'limit', 'direction']
         searches = {}
         for key in [key for key in flask.request.args.keys() if key not in keyword_arg_keys]:
-            searches[key] = flask.request.args[key]
+            arg_value = flask.request.args[key]
+            if arg_value in ['true', 'True']:
+                arg_value = True
+            if arg_value in ['false', 'False']:
+                arg_value = False
+            searches[key] = arg_value
 
         query = db[resource_type].find(searches)
         if 'sort' in flask.request.args.keys():
