@@ -114,8 +114,8 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         brandName:              sw.name,
         bullets:                sw.statement,
         citationcff:            null,
-        contributingOrganizations: sw.contributingOrganizations
-            ? sw.contributingOrganizations.map(org => ({
+        contributingOrganizations: sw.contributingOrganization
+            ? sw.contributingOrganization.map(org => ({
                 foreignKey: {
                     id: org,
                     collection: 'organization'
