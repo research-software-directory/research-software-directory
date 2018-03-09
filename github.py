@@ -8,7 +8,9 @@ import re
 from dateutil import parser
 import datetime
 from util import rate_limit
+import logging
 
+logger = logging.getLogger(__name__)
 
 def flatten(l):
     """
@@ -104,14 +106,14 @@ def sync_github_repo(url):
     - Save commits to backend
     :param url: url of github repo
     """
-    print('syncing ' + url)
+    logger.info('syncing ' + url)
     last_commit = requests.get(
         os.environ.get('BACKEND_URL') + '/commit?githubURL=' + url + '&sort=date&direction=desc&limit=1'
     ).json()
     since = last_commit[0]['date'] if len(last_commit) == 1 else '2012-01-01T00:00:00Z'
     since = (parser.parse(since) + datetime.timedelta(0, 1)).isoformat()[0:-6]+'Z'  # add a second...
     commits = get_commits(url, since)
-    print('%s new commits' % str(len(commits)))
+    logger.info('%s new commits' % str(len(commits)))
     if len(commits) > 0:
         save_commits(url, commits)
 
@@ -122,4 +124,7 @@ def sync_all():
     """
     urls = get_repo_urls_to_sync()
     for url in urls:
-        sync_github_repo(url)
+        try:
+            sync_github_repo(url)
+        except Exception as e:
+            logger.error('Error trying to sync ' + url + ' ' + str(e))

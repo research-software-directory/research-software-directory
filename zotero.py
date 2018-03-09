@@ -11,31 +11,28 @@ import os
 
 logger = logging.getLogger(__name__)
 
-nlesc_library = '1689348'
-library_type = 'group'
-
 
 def get_project_keys(client):
     collections = client.collections_top()
-    projects_collection = None
-    for collection in collections:
-        if collection['data']['name'] == 'Projects':
-            projects_collection = collection
-
+    projects_collection = [c for c in collections if c['data']['name'] == 'Projects'][0]
     projects = client.collections_sub(projects_collection['key'])
     return list(map(lambda x: x['key'], projects))
+
+
+def get_last_version():
+    last_version_item = requests.get(
+        os.environ.get('BACKEND_URL') + '/mention?sort=version&direction=desc&limit=1'
+    ).json()
+
+    return 0 if len(last_version_item) == 0 else last_version_item[0]['version']
 
 
 def zotero_sync():
     client = zotero.Zotero(os.environ.get('ZOTERO_LIBRARY'), 'group', os.environ.get('ZOTERO_API_KEY'))
 
-    last_version_item = requests.get(
-        os.environ.get('BACKEND_URL') + '/mention?sort=version&direction=desc&limit=1'
-    ).json()
+    items = (client.everything(client.items(since=get_last_version())))
 
-    last_version = 0 if len(last_version_item) == 0 else last_version_item[0]['version']
-
-    items = (client.everything(client.items(since=last_version)))
+    print(str(len(items)) + ' new/updated zotero items')
 
     items_to_save = []
 
@@ -62,3 +59,6 @@ def zotero_sync():
             json=items_to_save,
             headers={'Authorization': 'Bearer %s' % os.environ.get('BACKEND_JWT')}
         )
+        if resp.status_code != 200:
+            raise Exception('error saving zotero items')
+
