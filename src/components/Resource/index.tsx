@@ -2,7 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 
 import { RouteComponentProps } from 'react-router';
-import { Message, Button } from 'semantic-ui-react';
+import { Message, Button, Tab } from 'semantic-ui-react';
 
 import { debounce } from '../../utils/debounce';
 import { IJWT, ISettings } from '../../rootReducer';
@@ -93,7 +93,7 @@ export default class extends React.PureComponent<IProps, IState> {
     this.setState({saving: true});
     const { resourceType, id } = this.props.match.params;
     const { backendUrl } = this.props.settings;
-    axios.patch(`${backendUrl}/${resourceType}/${id}`, s, {
+    axios.patch(`${backendUrl}/${resourceType}/${id}?save_history`, s, {
       headers: {
         Authorization: `Bearer ${this.props.jwt.token}`
       }
@@ -156,13 +156,21 @@ export default class extends React.PureComponent<IProps, IState> {
     if (this.state.loading) {
       return null;
     }
-    return (
-      <div style={{height: 'calc(100vh - 200px)'}}>
-        <JsonEditor
+
+    const panes = [
+      { menuItem: 'JSON editor', render: () =>  (
+        <Tab.Pane><div style={{height: 'calc(100vh - 200px)'}}><JsonEditor
           ref={elm => this.editor = elm}
           value={JSON.stringify(this.state.data, null, 2)}
           onChange={(s: string) => this.onChange(s)}
-        />
+        /></div></Tab.Pane>
+        ) },
+      { menuItem: 'Form', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+    ];
+
+    return (
+      <div>
+        <Tab panes={panes} />
         {validationMessage(this.state.valid, this.state.validationError)}
         <Button
           disabled={!this.state.valid || this.state.saving}

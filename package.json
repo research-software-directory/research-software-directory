@@ -62,7 +62,7 @@
         "webpack": "^3.11.0"
     },
     "scripts": {
-        "start": "react-scripts-ts start",
+        "start": "PORT=8000 react-scripts-ts start",
         "build": "npm run schemabuild && react-scripts-ts build",
         "test": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
         "testcoverage": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --coverage",

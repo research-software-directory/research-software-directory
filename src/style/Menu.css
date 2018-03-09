@@ -56,6 +56,15 @@ div.ui.menu.main_menu>div.item.resource_menu>div:first-child {
     padding-right: 1em;
 }
 
+#main_menu>.item.active {
+    background-color: rgba(0,0,0,0);
+    transition: background-color .5s;
+}
+#main_menu>.item.active:hover {
+    background-color: rgba(255,255,255,.15);
+}
+
+
 #main_menu>.item>.header {
     padding-top: 1em;
     padding-bottom: 1em;

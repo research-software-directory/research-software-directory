@@ -33,9 +33,12 @@ export default class extends React.PureComponent<IProps & IOwnProps, {}> {
           .filter(this.searchFilter(this.props.search))
           .sort(sortByLabel)
           .map((item, index) =>
-            <Menu.Item key={index}>
+            <Menu.Item
+              key={index}
+              draggable="true"
+            >
               { item.primaryKey
-                ? <Link to={`/${this.props.type}/${item.primaryKey.id}`} style={{display: 'block'}}>
+                ? <Link draggable={false} to={`/${this.props.type}/${item.primaryKey.id}`} style={{display: 'block'}}>
                     {item.primaryKey.id}
                   </Link>
                 : <div>no PrimaryKey</div>
