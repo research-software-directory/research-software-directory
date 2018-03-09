@@ -2,21 +2,7 @@
 
 import flask
 import json
-import bson
 
-# import bson
-# class Encoder(json.JSONEncoder):
-#     def default(self, obj):
-#         print("asd")
-#         return json.JSONEncoder.default(self, obj)
-#
-#     def encode(self, o):
-#         print('asd')
-#         return json.JSONEncoder.encode(self, o)
-#
-#     def iterencode(self, o, _one_shot=False):
-#         print('dsa')
-#         return json.JSONEncoder.iterencode(self, o, _one_shot)
 
 def dumps(data):
     if isinstance(data, list):

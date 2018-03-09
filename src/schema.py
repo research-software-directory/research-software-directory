@@ -8,10 +8,6 @@ class Schema:
         :param server_url: url of the schema service eg. 'http://schema:8000'
         """
         self._server_url = server_url
-        try:
-            requests.get(server_url).json()
-        except requests.exceptions.ConnectionError as e:
-            raise Exception("Cannot connect to schema service at %s" % server_url)
 
     def all(self):
         """

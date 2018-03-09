@@ -1,5 +1,7 @@
 import logging
 import os
+import sys
+
 from flask import Flask
 from pymongo import MongoClient
 from src import commands
@@ -8,12 +10,26 @@ from src.schema import Schema
 from src.routes import get_routes
 
 
+class MaxLevel(object):
+    def __init__(self, level):
+        self.__level = level
+
+    def filter(self, log_record):
+        return log_record.levelno <= self.__level
+
+log_formatter = logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s')
+stdout_handler = logging.StreamHandler(stream=sys.stdout)
+stdout_handler.addFilter(MaxLevel(logging.WARNING))
+stdout_handler.setFormatter(log_formatter)
+
+stderr_handler = logging.StreamHandler()
+stderr_handler.setLevel(logging.ERROR)
+stderr_handler.setFormatter(log_formatter)
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-logger.addHandler(handler)
-handler.setFormatter(logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s'))
-logger.info('Starting')
+logger.addHandler(stdout_handler)
+logger.addHandler(stderr_handler)
 
 required_environmental_variables = [
     "DATABASE_HOST",
