@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To build:
 - `npm run build`
+
 - Will build to `[current directory]/build`
 
 # Settings
