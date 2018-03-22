@@ -2,6 +2,7 @@ import click
 import logging
 import sys
 
+from cache_software import cache_software
 from corporate import sync_people, sync_projects
 from github import sync_all as github_sync_all
 from zotero import zotero_sync
@@ -13,6 +14,7 @@ class MaxLevel(object):
 
     def filter(self, log_record):
         return log_record.levelno <= self.__level
+
 
 log_formatter = logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s')
 stdout_handler = logging.StreamHandler(stream=sys.stdout)
@@ -30,18 +32,21 @@ logger.addHandler(stderr_handler)
 
 
 @click.command()
-@click.option('--scraper', required=1, help='Name of scraper.')
-def scrape(scraper):
-    if scraper == 'github':
+@click.option('--task', required=1, help='Name of task.')
+def run_task(task):
+    if task == 'github':
         github_sync_all()
-    elif scraper == 'zotero':
+    elif task == 'zotero':
         zotero_sync()
-    elif scraper == 'people':
+    elif task == 'people':
         sync_people()
-    elif scraper == 'projects':
+    elif task == 'projects':
         sync_projects()
+    elif task == 'cache_software':
+        cache_software()
     else:
-        raise Exception('No such scraper: ' + scraper)
+        raise Exception('No such task: ' + task)
+
 
 if __name__ == '__main__':
-    scrape()
+    run_task()
