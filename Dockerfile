@@ -1,12 +1,16 @@
 FROM python:3
 
+RUN (echo "deb http://deb.debian.org/debian stretch main" >> /etc/apt/sources.list)
+RUN (apt-get update)
+RUN (apt-get -y install sassc)
+
 WORKDIR /src
 
 COPY requirements.txt /src/
 RUN pip3 install -r requirements.txt
 
 COPY . /src
-RUN bash build-assets.sh
+RUN (sassc --style=compressed --sourcemap style/rsd.scss static/style/rsd.scss.css)
 
 STOPSIGNAL SIGINT
 

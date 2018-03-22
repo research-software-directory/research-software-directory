@@ -2,7 +2,7 @@
 */**/__pycache__/*
 node_modules
 static/style/*.css
-static/scripts/*.js
+static/style/*.css.map
 .env
 .env.local
 .env.production

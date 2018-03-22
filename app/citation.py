@@ -1,4 +1,4 @@
-from citationcff import citation
+from cff_converter_python import Citation
 import requests
 
 def get_mime_and_extension(format):
@@ -26,11 +26,11 @@ def get_citation_data_citeas(github_id, format):
 def get_citation(github_id, format):
     mime, extension = get_mime_and_extension(format)
     try:
-        c = citation.Citation('https://github.com/%s' % github_id)
+        c = Citation('https://github.com/%s' % github_id)
     except:
         c = None
 
-    if isinstance(c, citation.Citation):
+    if isinstance(c, Citation):
         data = get_citation_data_cff(c, format)
     else:
         data = get_citation_data_citeas(github_id, format)
