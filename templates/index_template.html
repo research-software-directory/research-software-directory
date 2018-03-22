@@ -142,20 +142,20 @@
       <div class="col-3-4" id="software_list">
 
         <transition-group appear name="slide-fade" tag="div" class="software_list_wrap">
-        <a v-for="sw in pagedSoftware" v-bind:key="sw" :href="'/software/' + sw.id" class="software_item bg-light" :class="{ highlighted: sw.isFeatured }">
-          <div class="code">[[sw.brandName.slice(0,2)]]</div>
-          <h2 class="name">[[sw.brandName]]</h2>
-          <p class="short">[[sw.shortStatement]]</p>
-          
-          <div class="software_data">
-              <span class="last-update">[[sw.lastUpdateAgo]]</span>
+          <a v-for="sw in pagedSoftware" v-bind:key="sw" :href="'/software/' + (sw.slug || sw.primaryKey.id)" class="software_item bg-light" :class="{ highlighted: sw.isFeatured }">
+            <div class="code">[[sw.brandName.slice(0,2)]]</div>
+            <h2 class="name">[[sw.brandName]]</h2>
+            <p class="short">[[sw.shortStatement]]</p>
 
-              <div v-if="sw.isFeatured" class="highlighted">
-                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-featured"></use></svg>
-                <span>Featured</span>
-              </div>
-          </div>
-        </a>
+            <div class="software_data">
+                <span class="last-update">[[sw.lastUpdateAgo]]</span>
+
+                <div v-if="sw.isFeatured" class="highlighted">
+                  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-featured"></use></svg>
+                  <span>Featured</span>
+                </div>
+            </div>
+          </a>
         </transition-group>
        
         
