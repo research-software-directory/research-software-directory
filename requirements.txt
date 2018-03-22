@@ -11,4 +11,6 @@ dateparser==0.6.0
 htmlmin==0.1.12
 pprint==0.1
 gunicorn==19.7.1
-git+https://github.com/citationcff/citationcff.git
+libsass==0.14.2
+git+https://github.com/citation-file-format/cff-converter-python.git
+pymongo==3.6.1
