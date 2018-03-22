@@ -109,22 +109,21 @@
               </div>
           
               <transition-group 
-              tag="ul"
-              class="filter-list"
-              v-bind:css="false"
-              v-on:before-enter="filtersBeforeEnter"
-              v-on:enter="filtersEnter"
-              v-on:before-leave="filtersBeforeLeave"
-              v-on:leave="filtersLeave">
-              
-              <li v-for="(org, index) in organizationsWithCount" v-bind:data-index="index" :key="org" v-if="organizationsFilterOpen" :class="org.count === 0 ? 'empty' : ''">
-                <label :for="org.id" class="checkbox">
-                  <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
-                  <div class="custom-checkbox"></div> 
-                  <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
-                </label>
-              </li>
-
+                tag="ul"
+                class="filter-list"
+                v-bind:css="false"
+                v-on:before-enter="filtersBeforeEnter"
+                v-on:enter="filtersEnter"
+                v-on:before-leave="filtersBeforeLeave"
+                v-on:leave="filtersLeave"
+              >
+                <li v-for="(org, index) in organizationsWithCount" v-bind:data-index="index" :key="org" v-if="organizationsFilterOpen" :class="org.count === 0 ? 'empty' : ''">
+                  <label :for="org.id" class="checkbox">
+                    <input type="checkbox" name="checkbox" :id="org.primaryKey.id" v-model="filter.organizations" :value="org.primaryKey.id">
+                    <div class="custom-checkbox"></div>
+                    <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
+                  </label>
+                </li>
               </transition-group>
 
             </div>
