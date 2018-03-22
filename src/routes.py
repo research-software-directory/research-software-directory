@@ -23,11 +23,17 @@ def get_routes(db, schema):
     @jsonify
     def _get_resource(resource_type, id):
         schemas = schema.all()
-        if resource_type not in schemas.keys():
-            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
+        splitted = resource_type.split('_')
+        if (len(splitted) > 1 and splitted[1]) == 'cache':
+            raw_type = splitted[0]
+        else:
+            raw_type = resource_type
+
+        if raw_type not in schemas.keys():
+            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % raw_type)
 
         resource = None
-        if 'slug' in schemas[resource_type]['properties'].keys():
+        if 'slug' in schemas[raw_type]['properties'].keys():
             resource = db[resource_type].find_one({'slug': id})
         if not resource:
             resource = db[resource_type].find_one({'primaryKey.id': id})
