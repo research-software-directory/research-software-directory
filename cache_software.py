@@ -49,3 +49,27 @@ def total_commits(github_url):
 
 def last_commit_date(github_url):
     return db.commit.fineOne({'githubURL': github_url}).sort('date', pymongo.DESCENDING)
+
+
+
+
+'''
+Better: Use pymongo mapreduce, all commits where githuburl in list of software.
+
+binCommits = (urls) => db.commit.mapReduce(function () {
+        emit(this.date.substr(0, 7), 1);
+    },
+    function (key, values) { return Array.sum(values) },
+    {
+        query: {'githubURL': url},
+        out: {inline: 1}
+    }
+).results.reduce((acc, cur) => { acc[cur['_id']] = cur.value; return acc }, {})
+
+['https://github.com/rvanharen/netcdf2littler', 'https://github.com/rvanharen/netcdf2littler'].map(binCommits).reduce(
+    (acc, cur) => {
+        for (key in cur) { acc[key] = (acc[key] || 0) + cur[key] }
+        return acc;
+    }, {}
+);
+'''
