@@ -66,13 +66,13 @@ def set_markdown(software, fields):
 
 @application.route('/software/<software_id>')
 def software_product_page_template(software_id):
-    url = api_url + "/software/%s" % software_id
+    url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
     if ("error" in software_dictionary):
         return flask.redirect("/", code=302)
     set_markdown(software_dictionary, ['statement', 'shortStatement','readMore'])
 
-    for sw in software_dictionary['relatedSoftware']:
+    for sw in software_dictionary['related']['software']:
         format_software(sw)
 
     organisation_logos = {"astron": "astron.gif", "cbs-knaw": "cbs-knaw.png", "commit": "commit.png", "cwi": "cwi.png",
@@ -108,16 +108,16 @@ def software_product_page_template(software_id):
         'webpage': {"singular": "Web page", "plural": "Web pages"},
     }
 
-    software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
-    software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
+    # software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
+    # software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
     
-    if len(software_dictionary['contributingOrganization']) == 1 and software_dictionary['contributingOrganization'][0]['id'] == 'nlesc':
-        software_dictionary['contributingOrganization'] = []
+    # if len(software_dictionary['contributingOrganization']) == 1 and software_dictionary['contributingOrganization'][0]['id'] == 'nlesc':
+    #     software_dictionary['contributingOrganization'] = []
     
     commits_data = get_commits_data(software_id)
-    if commits_data and 'last' in commits_data:
-        commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
-    commits_data = flask.Markup(commits_data)
+    # if commits_data and 'last' in commits_data:
+    #     commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
+    # commits_data = flask.Markup(commits_data)
 
     return htmlmin.minify(flask.render_template('software_template.html',
                                  software_id=software_id,
