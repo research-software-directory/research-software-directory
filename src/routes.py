@@ -51,7 +51,13 @@ def get_routes(db, schema):
         :return: list of resources
         """
         schemas = schema.all()
-        if resource_type not in schemas.keys():
+        splitted = resource_type.split('_')
+        if (len(splitted) > 1 and splitted[1]) == 'cache':
+            raw_type = splitted[0]
+        else:
+            raw_type = resource_type
+
+        if raw_type not in schemas.keys():
             raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
 
         keyword_arg_keys = ['sort', 'skip', 'limit', 'direction', 'count']
