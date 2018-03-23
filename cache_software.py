@@ -34,8 +34,8 @@ def cache_software():
             lambda github_url: github_url['url'],
             filter(lambda x: x['isCommitDataSource'], sw['githubURLs'])
         ))
-        sw['total_commits'] = sum(map(lambda url: total_commits(url), github_urls))
-        sw['last_commit'] = reduce(
+        sw['totalCommits'] = sum(map(lambda url: total_commits(url), github_urls))
+        sw['lastCommit'] = reduce(
             lambda acc, date: date if date and (not acc or date > acc) else acc,
             map(lambda url: last_commit_date(url), github_urls),
             None
