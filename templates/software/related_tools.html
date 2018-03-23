@@ -1,0 +1,30 @@
+{% if template_data.related.software %}
+<section class="" id="related-tools">
+    <div class="container">
+        <div class="row">
+            <div class="col-1-4">
+                <h2 class="subtitle text-blue">Related tools</h2>
+            </div>
+            <div class="col-3-4">
+                <div id="software_list">
+                    <div class="software_list_wrap">
+
+                        {% for tool in template_data.relatedSoftware %}
+                        <a href="/software/{{tool.id}}" class="software_item bg-light">
+                            <div class="code">{{tool.code}}</div>
+                            <h2 class="name">{{tool.name}}</h2>
+                            <p class="short">{{tool.shortStatement}}</p>
+
+                            <div class="software_data">
+                                <span class="last-update">{{tool.lastUpdateAgo}}</span>
+                            </div>
+                        </a>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

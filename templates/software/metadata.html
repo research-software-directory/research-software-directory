@@ -1,0 +1,33 @@
+{% if template_data.id == 'boatswain' %}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "SoftwareSourceCode",
+            "codeRepository": "https://github.com/NLeSC/boatswain",
+            "datePublished": "2018-01-16",
+            "author": [{
+                "@type": "Person",
+                "givenName": "Berend",
+                "familyName": "Weel",
+                "affiliation": {
+                    "@type": "Organization",
+                    "legalName": "Netherlands eScience Center"
+                }
+            }, {
+                "@type": "Person",
+                "additionalName": "H.",
+                "givenName": "Jurriaan",
+                "familyName": "Spaaks",
+                "affiliation": {
+                    "@type": "Organization",
+                    "legalName": "Netherlands eScience Center"
+                }
+            }],
+            "keywords": ["docker", "docker-compose", "containers"],
+            "license": "http://www.apache.org/licenses/LICENSE-2.0",
+            "version": "1.0.2",
+            "identifier": "https://doi.org/10.5281/zenodo.1149011",
+            "name": "boatswain"
+        }
+    </script>
+{% endif %}
