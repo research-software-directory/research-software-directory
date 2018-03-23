@@ -1,0 +1,81 @@
+<section class="bg-light" id="contributors">
+    <div class="container">
+        <div class="row">
+            <div class="col col-1-4">
+                <h2 class="subtitle text-blue">Contributors</h2>
+            </div>
+            <div class="col-3-4">
+                <div class="row">
+                    {% if template_data.contributors %}
+                        {% if template_data.contributors|length > 6 %}
+                            <div class="col col-2-3 contributors_list long-list">
+                                <ul class="row">
+                                    <li style="width:100%" class="gradient gradient--gray"></li>
+                        {% else %}
+                            <div class="col col-2-3 contributors_list">
+                                <ul class="row">
+                        {% endif %}
+                                    {% for contributor in template_data.contributors %}
+                                        <li class="col col-1-2">
+                                            <div class="contributor_name">
+                                                {{contributor.foreignKey.familyNames}}
+                                            </div>
+                                            <div class="contributor_organisation">
+                                                {{contributor.affiliations[0].foreignKey.name}}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                {% if template_data.contributors|length > 6 %}
+                                    <div class="button button--filled-dark show-all-contributors">
+                                        <span><svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
+                                        <span class="button_text">Show all contributors</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                    {% endif %}
+
+                    {% set contactPerson = template_data.contributors | selectattr("isContactPerson", "equalto", True) | first %}
+                    {% if contactPerson %}
+                        <div class="col col-1-3 contact_card">
+                            <div class="contact_card_header">
+                                Contact person
+                            </div>
+                            <div class="contact_card_content">
+                                <div class="contributor_picture">
+                                    <img
+                                        {%- if contactPerson.foreignKey.image %}
+                                            src="{{contactPerson.foreignKey.image}}" alt=""
+                                        {% else %}
+                                            src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
+                                        {% endif %}
+                                    >
+                                </div>
+                                <div class="contributor-info">
+                                    <div class="contributor_name">
+                                        {% if contactPerson.foreignKey.website %}
+                                            <a href="{{contactPerson.foreignKey.website}}" target="_blank">
+                                                {{contactPerson.foreignKey.familyNames}}
+                                            </a>
+                                        {% else %}
+                                            {{contactPerson.foreignKey.familyNames}}
+                                        {% endif %}
+                                    </div>
+                                    <div class="contributor_organisation">
+                                        {{contactPerson.affiliations[0].foreignKey.name}}
+                                    </div>
+                                    <div class="contributor_email">
+                                        <a href="mailto:{{contactPerson.foreignKey.emailAddress}}">
+                                            <svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                                            Mail {{contactPerson.foreignKey.familyNames}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

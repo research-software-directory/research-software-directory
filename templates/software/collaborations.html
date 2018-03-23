@@ -1,0 +1,33 @@
+{% if template_data.contributingOrganization %}
+<section class="" id="collaborations">
+    <div class="container">
+
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col-1-4">
+                <h2 class="subtitle text-blue">In collaboration with</h2>
+            </div>
+
+            <div class="col-3-4 row contributing-organisations">
+                {% for contributingOrganization in template_data.contributingOrganization %}
+                <div class="organisation">
+                {% if contributingOrganization.website %}
+                    <a href="{{contributingOrganization.website}}" target="_blank">
+                {% endif %}
+                {% if organisation_logos[contributingOrganization.id] %}
+                    <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
+                {% else %}
+                    {{contributingOrganization.name}}
+                {% endif %}
+                {% if contributingOrganization.website %}
+                    </a>
+                {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endif %}

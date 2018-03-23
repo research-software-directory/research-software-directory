@@ -58,7 +58,7 @@
       <div id="noscript_projects" class="row">
         {%- for software in template_data -%}
           <li class="col-1-4">
-            <a href="/software/{{software.id}}">{{software.name}}</a>
+            <a href="/software/{{software.primaryKey.id}}">{{software.brandName}}</a>
           </li>
         {%- endfor -%}
       </div>
@@ -244,15 +244,15 @@
                 <a href="{{mention.data.url}}" target="_blank" class="mention_content bg-light">
                     <div class="mention_info">
                         <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
-                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehumanFilter }}</div>
+                        <div class="mention_post-date">{{ mention.updatedAt | human_date_filter }}</div>
                     </div>
-                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                    <div class="mention_location">{{ mention.data.meetingName or '' }}</div>
                 </a>
                 {% else %}
                 <div class="mention_content bg-light">
                     <div class="mention_info">
                         <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
-                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehumanFilter }}</div>
+                        <div class="mention_post-date">{{ mention.updatedAt | human_date_filter }}</div>
                     </div>
                     <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
                 </div>

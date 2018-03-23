@@ -1,0 +1,33 @@
+{% extends "layout_template.html" %}
+{%- block head -%}
+    {{super()}}
+    <title>{{template_data.brandName}} | Research Software Directory</title>
+    <meta name="citation_title" content="{{template_data.brandName}}" />
+    <meta name="citation_author" content="{{", ".join(template_data.contributor | list_names_filter)}}" />
+    <meta name="citation_publication_date" content="{{template_data.createdAt | date_filter }}" />
+    {% if template_data.doi %}<meta name="citation_doi" content="{{template_data.doi}}" />{% endif %}
+    <meta property="description" content="{{template_data.shortStatement}}" />
+    <meta property="og:title" content="{{template_data.name}}" />
+    <meta property="og:description" content="{{template_data.shortStatement}}" />
+    <meta property="og:url" content="https://www.research-software.nl/software/{{template_data.id}}" />
+    <meta property="og:site_name" content="Research Software Directory" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
+    <script>
+        var commitsData = {{ commits_data }};
+    </script>
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
+    {% include 'software/breadcrumbs.html' %}
+    {% include 'software/metadata.html' %}
+{%- endblock -%}
+{%- block content -%}
+    {% include 'software/introduction.html' %}
+    {% include 'software/get_started.html' %}
+    {% include 'software/citation.html' %}
+    {% include 'software/about.html' %}
+    {% include 'software/collaborations.html' %}
+    {% include 'software/mentions.html' %}
+    {% include 'software/projects.html' %}
+    {% include 'software/contributors.html' %}
+    {% include 'software/related_tools.html' %}
+{%- endblock -%}
