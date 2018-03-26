@@ -4,7 +4,7 @@ https://pyzotero.readthedocs.io/en/latest/#retrieving-version-information
 """
 
 import logging
-
+import dateparser
 import requests
 from pyzotero import zotero
 import os
@@ -25,6 +25,13 @@ def get_last_version():
     ).json()
 
     return 0 if len(last_version_item) == 0 else last_version_item[0]['version']
+
+
+def get_date_for_zotero_item(item):
+    try:
+        return dateparser.parse(item['data']['date']).isoformat()[:19]+'Z'
+    except:
+        return dateparser.parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
 
 
 def zotero_sync():
@@ -50,7 +57,8 @@ def zotero_sync():
                 'version': item['version'],
                 'title': item['data'].get('title', ''),
                 'type': item['data']['itemType'],
-                'zoteroKey': item['key']
+                'zoteroKey': item['key'],
+                'date': get_date_for_zotero_item(item)
             })
 
     if len(items_to_save) > 0:
