@@ -9,13 +9,13 @@
             </div>
 
             <div class="col-2-3 content">
-                {% if template_data.doi %}
+                {% if template_data.citationCFF and template_data.citationCFF.doi %}
                     <div class="citation-block_doi">
                         <h5>DOI:</h5>
                         <div class="row">
                             <div class="doi_url">
                                 <span class="gradient"></span>
-                                <span id="doi">{{ template_data.doi }}</span>
+                                <span id="doi">{{ template_data.citationCFF.doi }}</span>
                             </div>
                             <div class="button button--filled-blue copy" href="#">
                                 <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>

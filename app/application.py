@@ -132,16 +132,21 @@ def software_product_page_template(software_id):
 
 @application.route('/cite/<software_id>')
 def cite(software_id):
-    url = api_url + "/software/%s" % software_id
+    url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
 
     if "error" in software_dictionary:
         return "not found", 404
-    if not 'githubid' in software_dictionary:
+    if 'citationCFF' not in software_dictionary:
         return "not found", 404
 
+    citation_cff_urls = list(map(
+        lambda github_url: github_url['url'],
+        filter(lambda x: x['isCitationcffSource'], software_dictionary['githubURLs'])
+    ))
+
     try:
-        mime, extension, data = get_citation(software_dictionary.get('githubid'), flask.request.args.get('format'))
+        mime, extension, data = get_citation(citation_cff_urls[0], flask.request.args.get('format'))
     except Exception:
         return "unknown format '%s'" % flask.request.args.get('format'), 400
 
@@ -195,7 +200,9 @@ def list_names_filter(contributors):
 
 @application.template_filter()
 def markdown_filter(input_string):
-    return flask.Markup(markdown.markdown(input_string + 'asdasdasd'))
+    if not input_string:
+        return ''
+    return flask.Markup(markdown.markdown(input_string))
 
 @application.template_filter()
 def pick_pi_filter(team):
