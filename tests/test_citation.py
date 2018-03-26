@@ -31,48 +31,17 @@ def test_get_citation_cff_bibtex():
 
 def test_get_citation_cff_enw():
     expected_data = \
-'''%0
-%0 Generic
-%A Spaaks, Jurriaan H. & Klaver, Tom
-%D 2018
-%T citationcff
-%E
-%B
-%C
-%I GitHub repository
-%V
-%6
-%N
-%P
-%&
-%Y
-%S
-%7
-%8 1
-%9
-%?
-%!
-%Z
-%@
-%(
-%)
-%*
-%L
-%M
-
-
-%2
-%3
-%4
-%#
-%$
-%F YourReferenceHere
-%K "citation", "bibliography", "cff", "citationcff"
-%X
-%Z
-%U https://github.com/citationcff/citationcff
-'''
+'''%T Citationcff/Citationcff: Citationcff V0.0.0
+%J 
+%V 
+%N 
+%P 
+%D 
+%I Zenodo
+0% Journal Article
+%A Spaaks, Jurriaan H.
+%A Klaver, Tom'''
     mime_type, extension, data = get_citation('citationcff/citationcff', 'enw')
     assert mime_type == 'application/x-endnote-refer'
     assert extension == 'enw'
-    assert data == expected_data
+    assert expected_data == data

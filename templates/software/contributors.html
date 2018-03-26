@@ -20,9 +20,11 @@
                                             <div class="contributor_name">
                                                 {{contributor.foreignKey.familyNames}}
                                             </div>
+                                            {% if contributor.affiliations %}
                                             <div class="contributor_organisation">
                                                 {{contributor.affiliations[0].foreignKey.name}}
                                             </div>
+                                            {% endif %}
                                         </li>
                                     {% endfor %}
                                 </ul>
