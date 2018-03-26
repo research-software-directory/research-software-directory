@@ -1,256 +1,663 @@
 {
-  "id": "xenon",
-  "schema": "software",
-  "codeRepository": "https://github.com/NLeSC/Xenon",
-  "competence": [
-    "Efficient Computing"
-  ],
-  "contactPerson": {
-    "id": "j.maassen",
-    "name": "Jason Maassen",
-    "website": "https://www.esciencecenter.nl/profile/dr.-jason-maassen",
-    "email": "j.maassen@esciencecenter.nl",
-    "organization": "Netherlands eScience Center",
-    "image": "https://www.esciencecenter.nl/img/team/jason-maassen-new.jpg",
-    "function": "Technical Lead Efficient Computing"
-  },
-  "contributingOrganization": [
-    {
-      "id": "nlesc",
-      "name": "Netherlands eScience Center",
-      "website": "http://www.esciencecenter.nl/",
-      "logo": "/images/organization/nlesc.jpg"
-    }
-  ],
-  "contributor": [
-    {
-      "id": "j.maassen",
-      "name": "Jason Maassen",
-      "website": "https://www.esciencecenter.nl/profile/dr.-jason-maassen",
-      "email": "j.maassen@esciencecenter.nl",
-      "organization": "Netherlands eScience Center",
-      "image": "https://www.esciencecenter.nl/img/team/jason-maassen-new.jpg",
-      "function": "Technical Lead Efficient Computing"
+    "primaryKey": {
+        "id": "xenon",
+        "collection": "software"
     },
-    {
-      "id": "s.verhoeven",
-      "name": "Stefan Verhoeven",
-      "website": "https://www.esciencecenter.nl/profile/stefan-verhoeven-bsc",
-      "email": "s.verhoeven@esciencecenter.nl",
-      "organization": "Netherlands eScience Center",
-      "image": "https://www.esciencecenter.nl/img/team/stefan-verhoeven-new.jpg",
-      "function": "eScience Research Engineer"
-    },
-    {
-      "id": "n.drost",
-      "name": "Niels Drost",
-      "website": "https://www.esciencecenter.nl/profile/dr.-niels-drost",
-      "email": "n.drost@esciencecenter.nl",
-      "organization": "Netherlands eScience Center",
-      "image": "https://www.esciencecenter.nl/img/team/nielsdrost-new.jpg",
-      "function": "eScience Research Engineer"
-    },
-    {
-      "id": "r.vannieuwpoort",
-      "name": "Rob van Nieuwpoort",
-      "website": null,
-      "email": "r.vannieuwpoort@esciencecenter.nl",
-      "organization": "Netherlands eScience Center"
-    },
-    {
-      "id": "j.borgdorff",
-      "name": "Joris Borgdorff",
-      "website": "http://www.jorisborgdorff.nl/",
-      "email": "j.borgdorff@esciencecenter.nl",
-      "organization": "Netherlands eScience Center"
-    },
-    {
-      "id": "c.meijer",
-      "name": "Christiaan Meijer",
-      "website": "https://www.esciencecenter.nl/profile/christiaan-meijer-msc",
-      "email": "c.meijer@esciencecenter.nl",
-      "organization": "Netherlands eScience Center",
-      "image": "https://www.esciencecenter.nl/img/team/christiaanmeijer_web.jpg",
-      "function": "eScience Research Engineer"
-    },
-    {
-      "id": "b.vanwerkhoven",
-      "name": "Ben van Werkhoven",
-      "website": "https://www.esciencecenter.nl/profile/dr.-ben-van-werkhoven",
-      "email": "b.vanwerkhoven@esciencecenter.nl",
-      "organization": "Netherlands eScience Center",
-      "image": "https://www.esciencecenter.nl/img/team/Ben-van-Werkhoven_%28002%29.jpg",
-      "function": "eScience Research Engineer"
-    },
-    {
-      "name": "Piter T. de Boer"
-    },
-    {
-      "id": "j.spaaks",
-      "name": "Jurriaan H. Spaaks",
-      "website": null,
-      "email": "j.spaaks@esciencecenter.nl",
-      "organization": "Netherlands eScience Center"
-    }
-  ],
-  "discipline": [
-    "Physics & Beyond",
-    "eScience Methodology"
-  ],
-  "documentationUrl": "http://nlesc.github.io/Xenon/versions/1.1.0/javadoc",
-  "doi": "10.5281/zenodo.1042443",
-  "downloadUrl": "https://bintray.com/nlesc/xenon/xenon/view",
-  "expertise": [
-    "Distributed Computing"
-  ],
-  "involvedOrganization": [
-    "nlesc"
-  ],
-  "license": [
-    "Apache-2.0"
-  ],
-  "name": "Xenon",
-  "nlescWebsite": "https://www.esciencecenter.nl/technology/software/xenon",
-  "owner": [
-    "nlesc",
-    "j.maassen"
-  ],
-  "programmingLanguage": [
-    "Java"
-  ],
-  "startDate": "2013-04-12",
-  "status": "active",
-  "supportLevel": "specialized",
-  "tagLine": "Easy access to compute and storage",
-  "technologyTag": [
-    "Distributed",
-    "Library"
-  ],
-  "website": "http://nlesc.github.io/Xenon/",
-  "description": "Xenon is a middleware abstraction library. It provides a simple\nprogramming interface to various pieces of software that can be used to\naccess distributed compute and storage resources.\n\n# Why Xenon?\n\nXenon is developed by the Netherlands eScience Center as a support\nlibrary for our projects. Several projects develop end-user applications\nthat require access to distributed compute and storage resources. Xenon\nprovides a simple API to access those resources, allowing those\napplications to be developed more rapidly. The experience gained during\nthe development of these end-user applications is used to improve the\nXenon API and implementation.\n",
-  "githubid": "NLeSC/Xenon",
-  "usingOrganization": [
-    "nlesc"
-  ],
-  "zoteroKey": "5HC7I86M",
-  "statement": "* Provides an easy-to-use interface for distributed computing developers \n* Enables the use of different file transfer protocols and scheduling systems on remote machines \n* No need to learn and implement many different APIs\n* Successfully used in many eScience tools and projects",
-  "tags": [
-    "Big data",
-    "Optimized data handling",
-    "High performance computing"
-  ],
-  "shortStatement": "If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you.",
-  "published": true,
-  "highlighted": true,
-  "mainUrl": "https://github.com/NLeSC/Xenon",
-  "relatedSoftware": [],
-  "readMore": "Many applications use remote storage and compute resources. To do so, they need\nto include code to interact with the scheduling systems and file transfer\nprotocols used on those remote machines.\n\nUnfortunately, many different scheduler systems and file transfer protocols\nexist, often with completely different programming interfaces. This makes it\ndifficult for applications to switch to a different system or support multiple\nremote systems simultaneously.\n\nXenon solves this problem by providing a single programming interface to many\ndifferent types of remote resources. As a result, changing from one scheduler to\nanother, or from one file transfer protocol to another, becomes a matter of\nchanging just a few lines of code. This is obviously much cheaper in time and\nmoney than developing, debugging, and maintaining new code that implements the\nsame logic you had before, but for a different scheduler or a different file\ntransfer protocol.\n",
-  "usedInProject": [
-    "emetabolomics",
-    "abcmuse",
-    "amuse",
-    "enabling-dynamic-services",
-    "esalsa",
-    "viaappia-patty",
-    "visualizing-uncertainty-and-perspective-plus",
-    "visualizing-uncertainty-and-perspectives"
-  ],
-  "citation": "",
-  "createdAt": 1510323175,
-  "updatedAt": 1517234547,
-  "corporateProjects": [
-    null,
-    {
-      "id": "5a708667f5616a00090427a1",
-      "title": "ABC-MUSE",
-      "subtitle": "The generalization and optimization of the multi-purpose software environment",
-      "image": "https://www.esciencecenter.nl/img/projects/1.P026-small.jpg",
-      "url": "https://www.esciencecenter.nl/project/abc-muse",
-      "team": [
+    "createdAt": "2017-11-10T14:12:55Z",
+    "updatedAt": "2018-01-29T14:02:27Z",
+    "brandName": "Xenon",
+    "bullets": "* Provides an easy-to-use interface for distributed computing developers \n* Enables the use of different file transfer protocols and scheduling systems on remote machines \n* No need to learn and implement many different APIs\n* Successfully used in many eScience tools and projects",
+    "citationcff": null,
+    "contributingOrganizations": [
         {
-          "role": "Principal Investigator",
-          "url": "http://home.strw.leidenuniv.nl/~spz/",
-          "name": "Prof. Simon Portegies Zwart",
-          "affiliation": "Sterrewacht Leiden of Leiden University"
-        },
-        {
-          "role": "eScience Research Engineer",
-          "url": "https://www.esciencecenter.nl/profile/dr.-ben-van-werkhoven",
-          "name": "Dr. Ben van Werkhoven",
-          "affiliation": "Netherlands eScience Center"
-        },
-        {
-          "role": "eScience Research Engineer",
-          "url": "https://www.esciencecenter.nl/profile/dr.-inti-pelupessy",
-          "name": "Dr. Inti Pelupessy",
-          "affiliation": "Netherlands eScience Center"
+            "foreignKey": {
+                "_id": "nlesc",
+                "primaryKey": {
+                    "id": "nlesc",
+                    "collection": "organization"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:53Z",
+                "name": "Netherlands eScience Center",
+                "url": "http://www.esciencecenter.nl/"
+            }
         }
-      ],
-      "createdAt": 1517323879,
-      "updatedAt": 1517323879
-    },
-    null,
-    null,
-    null,
-    {
-      "id": "5a708667f5616a0009042795",
-      "title": "Mapping the Via Appia in 3D",
-      "subtitle": "Developing a 4D geographic information system for archaeological purposes",
-      "image": "https://www.esciencecenter.nl/img/projects/1.P024-small.jpg",
-      "url": "https://www.esciencecenter.nl/project/mapping-the-via-appia-in-3d",
-      "team": [
+    ],
+    "contributors": [
         {
-          "role": "Principal Investigator",
-          "url": "https://spinlab.vu.nl/research/phd-research/maurice-de-kleijn/",
-          "name": "Maurice de Kleijn, MA",
-          "affiliation": "Spatial Information laboratory (SPINlab)"
+            "foreignKey": {
+                "_id": "j.maassen",
+                "primaryKey": {
+                    "id": "j.maassen",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:41Z",
+                "emailAddress": "j.maassen@esciencecenter.nl",
+                "familyNames": "Jason Maassen",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": true,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
         },
         {
-          "role": "eScience Research Engineer",
-          "url": "https://www.esciencecenter.nl/profile/maarten-van-meersbergen-msc",
-          "name": "Maarten van Meersbergen, MSc",
-          "affiliation": "Netherlands eScience Center"
+            "foreignKey": {
+                "_id": "s.verhoeven",
+                "primaryKey": {
+                    "id": "s.verhoeven",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2018-01-08T12:08:08Z",
+                "emailAddress": "s.verhoeven@esciencecenter.nl",
+                "familyNames": "Stefan Verhoeven",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
         },
         {
-          "role": "eScience Research Engineer",
-          "url": "https://www.esciencecenter.nl/profile/stefan-verhoeven-bsc",
-          "name": "Stefan Verhoeven, BSc",
-          "affiliation": "Netherlands eScience Center"
+            "foreignKey": {
+                "_id": "n.drost",
+                "primaryKey": {
+                    "id": "n.drost",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:43Z",
+                "emailAddress": "n.drost@esciencecenter.nl",
+                "familyNames": "Niels Drost",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
+        },
+        {
+            "foreignKey": {
+                "_id": "r.vannieuwpoort",
+                "primaryKey": {
+                    "id": "r.vannieuwpoort",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:46Z",
+                "emailAddress": "r.vannieuwpoort@esciencecenter.nl",
+                "familyNames": "Rob van Nieuwpoort",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
+        },
+        {
+            "foreignKey": {
+                "_id": "j.borgdorff",
+                "primaryKey": {
+                    "id": "j.borgdorff",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:41Z",
+                "emailAddress": "j.borgdorff@esciencecenter.nl",
+                "familyNames": "Joris Borgdorff",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
+        },
+        {
+            "foreignKey": {
+                "_id": "c.meijer",
+                "primaryKey": {
+                    "id": "c.meijer",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:39Z",
+                "emailAddress": "c.meijer@esciencecenter.nl",
+                "familyNames": "Christiaan Meijer",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
+        },
+        {
+            "foreignKey": {
+                "_id": "b.vanwerkhoven",
+                "primaryKey": {
+                    "id": "b.vanwerkhoven",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:38Z",
+                "emailAddress": "b.vanwerkhoven@esciencecenter.nl",
+                "familyNames": "Ben van Werkhoven",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
+        },
+        {
+            "foreignKey": {
+                "_id": "5ab8c31085414f2cfd644a27",
+                "createdAt": 1522058001,
+                "updatedAt": 1522058001,
+                "primaryKey": {
+                    "collection": "person",
+                    "id": "5ab8c31085414f2cfd644a27"
+                },
+                "familyNames": "Piter T. de Boer",
+                "emailAddress": null,
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": []
+        },
+        {
+            "foreignKey": {
+                "_id": "j.spaaks",
+                "primaryKey": {
+                    "id": "j.spaaks",
+                    "collection": "person"
+                },
+                "createdAt": "2017-11-10T14:12:55Z",
+                "updatedAt": "2017-11-10T14:17:41Z",
+                "emailAddress": "j.spaaks@esciencecenter.nl",
+                "familyNames": "Jurriaan H. Spaaks",
+                "givenNames": null,
+                "nameParticle": null,
+                "nameSuffix": null
+            },
+            "isContactPerson": false,
+            "affiliations": [
+                {
+                    "foreignKey": {
+                        "_id": "nlesc",
+                        "primaryKey": {
+                            "id": "nlesc",
+                            "collection": "organization"
+                        },
+                        "createdAt": "2017-11-10T14:12:55Z",
+                        "updatedAt": "2017-11-10T14:17:53Z",
+                        "name": "Netherlands eScience Center",
+                        "url": "http://www.esciencecenter.nl/"
+                    }
+                }
+            ]
         }
-      ],
-      "createdAt": 1517323879,
-      "updatedAt": 1517323879
-    },
-    null,
-    {
-      "id": "5a708667f5616a0009042791",
-      "title": "Visualizing Uncertainty and Perspectives",
-      "subtitle": "Strengthening the methodology of digital humanities",
-      "image": "https://www.esciencecenter.nl/img/projects/1P038-small.jpg",
-      "url": "https://www.esciencecenter.nl/project/visualizing-uncertainty-and-perspectives",
-      "team": [
+    ],
+    "getStartedURL": "https://github.com/NLeSC/Xenon",
+    "githubURLs": [
         {
-          "role": "Principal Investigator",
-          "url": "http://vossen.info",
-          "name": "Prof. Piek Vossen",
-          "affiliation": "VU University Amsterdam"
-        },
-        {
-          "role": "eScience Research Engineer",
-          "url": "https://www.esciencecenter.nl/profile/dr.-janneke-van-der-zwaan",
-          "name": "Dr. Janneke van der Zwaan",
-          "affiliation": "Netherlands eScience Center"
-        },
-        {
-          "role": "eScience Research Engineer",
-          "url": "https://www.esciencecenter.nl/profile/maarten-van-meersbergen-msc",
-          "name": "Maarten van Meersbergen, MSc",
-          "affiliation": "Netherlands eScience Center"
+            "isCitationcffSource": false,
+            "isCommitDataSource": true,
+            "url": "https://github.com/NLeSC/Xenon"
         }
-      ],
-      "createdAt": 1517323879,
-      "updatedAt": 1517323879
-    }
-  ],
-  "mentions": {}
+    ],
+    "isCitable": false,
+    "isFeatured": true,
+    "isPublished": true,
+    "license": [
+        "Apache-2.0"
+    ],
+    "programmingLanguage": [
+        "Java"
+    ],
+    "readMore": "Many applications use remote storage and compute resources. To do so, they need\nto include code to interact with the scheduling systems and file transfer\nprotocols used on those remote machines.\n\nUnfortunately, many different scheduler systems and file transfer protocols\nexist, often with completely different programming interfaces. This makes it\ndifficult for applications to switch to a different system or support multiple\nremote systems simultaneously.\n\nXenon solves this problem by providing a single programming interface to many\ndifferent types of remote resources. As a result, changing from one scheduler to\nanother, or from one file transfer protocol to another, becomes a matter of\nchanging just a few lines of code. This is obviously much cheaper in time and\nmoney than developing, debugging, and maintaining new code that implements the\nsame logic you had before, but for a different scheduler or a different file\ntransfer protocol.\n",
+    "shortStatement": "If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you.",
+    "slug": "xenon",
+    "tags": [
+        "Big data",
+        "Optimized data handling",
+        "High performance computing"
+    ],
+    "testimonial": [],
+    "related": {
+        "software": [
+            {
+                "foreignKey": {
+                    "_id": "pyxenon",
+                    "primaryKey": {
+                        "id": "pyxenon",
+                        "collection": "software"
+                    },
+                    "createdAt": "2017-11-10T14:12:55Z",
+                    "updatedAt": "2018-01-29T14:50:46Z",
+                    "brandName": "PyXenon",
+                    "bullets": "- Provide easy access to compute and storage resources\n- A Python interface for Xenon\n\n",
+                    "citationcff": null,
+                    "contributingOrganizations": [
+                        {
+                            "foreignKey": {
+                                "id": "nlesc",
+                                "collection": "organization"
+                            }
+                        }
+                    ],
+                    "contributors": [
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "j.borgdorff"
+                            },
+                            "isContactPerson": false,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "j.hidding"
+                            },
+                            "isContactPerson": true,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "s.verhoeven"
+                            },
+                            "isContactPerson": false,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "getStartedURL": "http://pyxenon.readthedocs.io/en/latest/",
+                    "githubURLs": [
+                        {
+                            "isCitationcffSource": false,
+                            "isCommitDataSource": true,
+                            "url": "https://github.com/NLeSC/pyxenon"
+                        }
+                    ],
+                    "isCitable": false,
+                    "isFeatured": false,
+                    "isPublished": true,
+                    "license": [
+                        "Apache-2.0"
+                    ],
+                    "programmingLanguage": [
+                        "Python"
+                    ],
+                    "readMore": null,
+                    "shortStatement": "Python wrapper for the Xenon programming interface to various compute and storage resources.",
+                    "slug": "pyxenon",
+                    "tags": [],
+                    "testimonial": [],
+                    "related": {
+                        "software": [],
+                        "mentions": [
+                            {
+                                "foreignKey": {
+                                    "collection": "mention",
+                                    "id": "6AZEKMLQ"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "foreignKey": {
+                    "_id": "xenon-cli",
+                    "primaryKey": {
+                        "id": "xenon-cli",
+                        "collection": "software"
+                    },
+                    "createdAt": "2017-11-14T13:13:32Z",
+                    "updatedAt": "2017-12-14T15:47:13Z",
+                    "brandName": "Xenon command line interface",
+                    "bullets": "* Provides an easy-to-use command line interface for distributed computing developers \n* Makes the main methods of the Xenon library accessible on the command line\n* Low threshold introduction to the features of Xenon library\n* No programming required to use\n* Used in training material of Xenon library",
+                    "citationcff": null,
+                    "contributingOrganizations": [
+                        {
+                            "foreignKey": {
+                                "id": "nlesc",
+                                "collection": "organization"
+                            }
+                        }
+                    ],
+                    "contributors": [
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "s.verhoeven"
+                            },
+                            "isContactPerson": true,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "j.spaaks"
+                            },
+                            "isContactPerson": false,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "getStartedURL": "https://github.com/NLeSC/xenon-cli",
+                    "githubURLs": [
+                        {
+                            "isCitationcffSource": false,
+                            "isCommitDataSource": true,
+                            "url": "https://github.com/NLeSC/xenon-cli"
+                        }
+                    ],
+                    "isCitable": false,
+                    "isFeatured": false,
+                    "isPublished": true,
+                    "license": [
+                        "Apache-2.0"
+                    ],
+                    "programmingLanguage": [
+                        "Java"
+                    ],
+                    "readMore": null,
+                    "shortStatement": "If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs and do no not want to program, Xenon Command Line Interface (CLI) is the tool for you.",
+                    "slug": "xenon-cli",
+                    "tags": [
+                        "High performance computing"
+                    ],
+                    "testimonial": [],
+                    "related": {
+                        "software": [],
+                        "mentions": []
+                    }
+                }
+            },
+            {
+                "foreignKey": {
+                    "_id": "xenon-grpc",
+                    "primaryKey": {
+                        "id": "xenon-grpc",
+                        "collection": "software"
+                    },
+                    "createdAt": "2017-11-14T13:13:32Z",
+                    "updatedAt": "2017-12-14T15:47:13Z",
+                    "brandName": "Xenon gRPC",
+                    "bullets": "* Provides an easy-to-use interface for distributed computing developers who want to use a different language than Java\n* Xenon gRPC wraps the Xenon library in a server\n* Retains the Xenon library API as much as possible\n* Allows to the Xenon Java library to be called from C++, Python, Go, Ruby, C#, Node.js, Objective-C and PHP (any language supported by gRPC) using generated clients.",
+                    "citationcff": null,
+                    "contributingOrganizations": [
+                        {
+                            "foreignKey": {
+                                "id": "nlesc",
+                                "collection": "organization"
+                            }
+                        }
+                    ],
+                    "contributors": [
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "s.verhoeven"
+                            },
+                            "isContactPerson": true,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "a.vanderploeg"
+                            },
+                            "isContactPerson": false,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "foreignKey": {
+                                "collection": "person",
+                                "id": "j.maassen"
+                            },
+                            "isContactPerson": false,
+                            "affiliations": [
+                                {
+                                    "foreignKey": {
+                                        "collection": "organization",
+                                        "id": "nlesc"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "getStartedURL": "https://github.com/NLeSC/xenon-grpc",
+                    "githubURLs": [
+                        {
+                            "isCitationcffSource": false,
+                            "isCommitDataSource": true,
+                            "url": "https://github.com/NLeSC/xenon-grpc"
+                        }
+                    ],
+                    "isCitable": false,
+                    "isFeatured": false,
+                    "isPublished": true,
+                    "license": [
+                        "Apache-2.0"
+                    ],
+                    "programmingLanguage": [
+                        "Java"
+                    ],
+                    "readMore": null,
+                    "shortStatement": "If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs and do not want to program in Java, Xenon gRPC is the tool for you.",
+                    "slug": "xenon-grpc",
+                    "tags": [
+                        "High performance computing"
+                    ],
+                    "testimonial": [],
+                    "related": {
+                        "software": [],
+                        "mentions": []
+                    }
+                }
+            }
+        ],
+        "mentions": []
+    },
+    "totalCommits": 2242,
+    "lastCommit": "2018-03-16T11:31:44Z",
+    "commits": {
+        "2013-04": 288,
+        "2013-05": 16,
+        "2013-06": 105,
+        "2013-07": 138,
+        "2013-08": 140,
+        "2013-09": 86,
+        "2013-10": 4,
+        "2013-11": 16,
+        "2013-12": 5,
+        "2014-01": 18,
+        "2014-02": 17,
+        "2014-03": 5,
+        "2014-05": 3,
+        "2014-06": 3,
+        "2014-07": 6,
+        "2014-11": 3,
+        "2015-03": 1,
+        "2015-04": 10,
+        "2015-05": 43,
+        "2015-06": 33,
+        "2015-07": 21,
+        "2015-08": 64,
+        "2015-09": 95,
+        "2015-10": 89,
+        "2015-11": 191,
+        "2015-12": 58,
+        "2016-01": 37,
+        "2016-02": 14,
+        "2016-04": 20,
+        "2016-05": 1,
+        "2016-10": 2,
+        "2017-02": 53,
+        "2017-03": 5,
+        "2017-04": 10,
+        "2017-05": 23,
+        "2017-06": 25,
+        "2017-07": 182,
+        "2017-08": 156,
+        "2017-09": 65,
+        "2017-10": 96,
+        "2017-11": 30,
+        "2018-01": 15,
+        "2018-02": 33,
+        "2018-03": 17
+    },
+    "citationCFF": null
 }
