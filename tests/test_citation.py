@@ -1,10 +1,10 @@
 import pytest
 from app.citation import get_citation
 
+
 def test_citation_notype():
     with pytest.raises(TypeError):
         get_citation('research-software-directory/frontend')
-
 
 
 def test_bibtex():
@@ -23,7 +23,6 @@ author={, }}'''
     assert extension == 'bib'
     assert data == expected_data
 
-@pytest.mark.skip(reason="citationcff is raising, because there is no DOI")
 def test_get_citation_cff_bibtex():
     mime_type, extension, data = get_citation('citationcff/citationcff', 'bibtex')
     assert mime_type == 'application/x-bibtex'
