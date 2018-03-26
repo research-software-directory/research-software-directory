@@ -1,4 +1,6 @@
-FROM python:3.6
+FROM python:3.6-alpine
+
+RUN (apk update && apk add g++ make)
 
 COPY . /app
 

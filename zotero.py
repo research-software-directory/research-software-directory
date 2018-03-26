@@ -32,7 +32,7 @@ def zotero_sync():
 
     items = (client.everything(client.items(since=get_last_version())))
 
-    print(str(len(items)) + ' new/updated zotero items')
+    logger.log(logging.INFO, str(len(items)) + ' new/updated zotero items')
 
     items_to_save = []
 
