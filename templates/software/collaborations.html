@@ -1,4 +1,4 @@
-{% if template_data.contributingOrganization %}
+{% if template_data.contributingOrganizations %}
 <section class="" id="collaborations">
     <div class="container">
 
@@ -10,17 +10,18 @@
             </div>
 
             <div class="col-3-4 row contributing-organisations">
-                {% for contributingOrganization in template_data.contributingOrganization %}
+                {% for contributingOrganization in template_data.contributingOrganizations %}
+                {% set org = contributingOrganization.foreignKey %}
                 <div class="organisation">
-                {% if contributingOrganization.website %}
-                    <a href="{{contributingOrganization.website}}" target="_blank">
+                {% if org.website %}
+                    <a href="{{org.website}}" target="_blank">
                 {% endif %}
-                {% if organisation_logos[contributingOrganization.id] %}
-                    <img src="{{url_for('static', filename='logos/'+organisation_logos[contributingOrganization.id])}}" alt="{{contributingOrganization.name}}">
+                {% if organisation_logos[org.primaryKey.id] %}
+                    <img src="{{url_for('static', filename='logos/'+organisation_logos[org.primaryKey.id])}}" alt="{{org.name}}">
                 {% else %}
-                    {{contributingOrganization.name}}
+                    {{org.name}}
                 {% endif %}
-                {% if contributingOrganization.website %}
+                {% if org.website %}
                     </a>
                 {% endif %}
                 </div>

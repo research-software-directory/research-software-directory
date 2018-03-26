@@ -13,7 +13,7 @@
     <meta property="og:site_name" content="Research Software Directory" />
     <script src="https://cdn.plot.ly/plotly-latest.min.js" crossorigin="anonymous"></script>
     <script>
-        var commitsData = {{ commits_data }};
+        var commitsData = {{ template_data.commits | tojson | safe  }};
     </script>
     <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>

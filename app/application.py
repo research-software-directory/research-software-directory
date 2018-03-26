@@ -167,6 +167,10 @@ def str_to_datetime(input_string):
 
 
 @application.template_filter()
+def brand_code_filter(input_string):
+    return input_string[:2].capitalize()
+
+@application.template_filter()
 def date_time_filter(input_string):
     output_format = "%Y-%m-%d %H:%M:%S"
     return str_to_datetime(input_string).strftime(output_format)
@@ -188,6 +192,10 @@ def human_date_filter(input_string):
 def list_names_filter(contributors):
     return [c['name'] for c in contributors]
 
+
+@application.template_filter()
+def markdown_filter(input_string):
+    return flask.Markup(markdown.markdown(input_string + 'asdasdasd'))
 
 @application.template_filter()
 def pick_pi_filter(team):

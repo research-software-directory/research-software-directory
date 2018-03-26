@@ -229,45 +229,54 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    function plot_commits(data) {
-        var plotid = document.getElementById("commitsPlot");
-        var layout = {
-            autosize: true,
-            margin: {l:0,r:10,b:40,t:20},
-            xaxis: {
-                type: 'date',
-                autotick: false,
-                tick0: '2000-01-15',
-                dtick: 'M12',
-                tickformat: "%Y",
-                showgrid: false
-            },
-            yaxis: {
-                showgrid: false
-            },
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(0,0,0,0)",
-            line: {
-                color: "rgb(0,163,227)"
-            }
-        };
-        data[0].marker = {
+    var plotElm = document.getElementById("commitsPlot");
+
+    var currentMonth = (new Date()).getMonth();
+    var currentYear = (new Date()).getFullYear();
+    var month = currentMonth;
+    var year = currentYear - 5;
+    var x = [];
+    var y = [];
+    while (month < currentMonth || year < currentYear) {
+        var i = year + '-' + ('0' + month).substr(-2);
+        x.push(i);
+        y.push(commitsData[i] || 0);
+        month += 1;
+        if (month > 12) { month = 1; year += 1; }
+    }
+    var plotData = {
+        fill: "none",
+        line: { shape: "spline" },
+        marker: {color: "rgb(0,163,227"},
+        mode: "lines",
+        x: x,
+        y: y,
+    }
+    var layout = {
+        autosize: true,
+        margin: {l:0,r:10,b:40,t:20},
+        xaxis: {
+            type: 'date',
+            autotick: false,
+            tick0: '2000-01-15',
+            dtick: 'M12',
+            tickformat: "%Y",
+            showgrid: false
+        },
+        yaxis: {
+            showgrid: false
+        },
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        line: {
             color: "rgb(0,163,227)"
-        };
-        Plotly.newPlot(plotid, data, layout, {displayModeBar: false, staticPlot: true});
+        }
+    };
+    Plotly.newPlot(plotElm, [plotData], layout, {displayModeBar: false, staticPlot: true});
 
-        // Resize graph on window resize
-        // ----------------------------------------------------------
-        window.addEventListener('resize', function(e) {
-            Plotly.Plots.resize(plotid);
-        });
-    }
-
-    var statid = document.getElementById("commitsStat");
-    if ('error' in commitsData) {
-        statid.innerHTML = commitsData['error'];
-    } else {
-        plot_commits(commitsData['plot']);
-        statid.innerHTML = '<b>' + commitsData['total'] + '</b> commits | Last update: <b>' + commitsData['last'] + '</b>';
-    }
+    // Resize graph on window resize
+    // ----------------------------------------------------------
+    window.addEventListener('resize', function(e) {
+        Plotly.Plots.resize(plotElm);
+    });
 });
