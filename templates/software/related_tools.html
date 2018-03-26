@@ -9,15 +9,11 @@
                 <div id="software_list">
                     <div class="software_list_wrap">
 
-                        {% for tool in template_data.relatedSoftware %}
-                        <a href="/software/{{tool.id}}" class="software_item bg-light">
-                            <div class="code">{{tool.code}}</div>
-                            <h2 class="name">{{tool.name}}</h2>
-                            <p class="short">{{tool.shortStatement}}</p>
-
-                            <div class="software_data">
-                                <span class="last-update">{{tool.lastUpdateAgo}}</span>
-                            </div>
+                        {% for tool in template_data.related.software %}
+                        <a href="/software/{{tool.foreignKey.primaryKey.id}}" class="software_item bg-light">
+                            <div class="code">{{tool.foreignKey.brandName | brand_code_filter }}</div>
+                            <h2 class="name">{{tool.foreignKey.brandName}}</h2>
+                            <p class="short">{{tool.foreignKey.shortStatement}}</p>
                         </a>
                         {% endfor %}
 

@@ -16,10 +16,15 @@
             </div>
             {% endif %}
 
+
+            {% if template_data.commits %}
             <div class="col col-3-4 chart">
                 <div class="software_commitsPlot" id="commitsPlot"></div>
-                <div class="software_commitsStat" id="commitsStat"></div>
+                <div class="software_commitsStat" id="commitsStat">
+                    <b>{{template_data.totalCommits}} commits</b> | Last update: <b>{{template_data.lastCommit | human_date_filter }}</b>
+                </div>
             </div>
+            {% endif %}
         </div>
 
     </div>

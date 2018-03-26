@@ -2,12 +2,12 @@
     <div class="container">
         <div class="row">
 
-            {% if template_data.statement %}
+            {% if template_data.bullets %}
             <div class="statement col-3-4">
-                <h2 class="subtitle text-blue">What {{template_data.name}} can do for you</h2>
-                {{template_data.statement}}
+                <h2 class="subtitle text-blue">What {{template_data.brandName}} can do for you</h2>
+                {{template_data.bullets | markdown_filter }}
 
-                {% if template_data.readMore %}
+                {% if template_data.readMore | markdown_filter %}
                 <div class="read-more">
                     <div class="read-more_content" style="height:0;">{{template_data.readMore}}</div>
 
