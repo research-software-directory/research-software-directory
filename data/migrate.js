@@ -1,3 +1,4 @@
+/* This converts RSD data from version 1 to version 2 */
 function convertDate(timestamp) {
     if (typeof timestamp === 'number') {
         return new Date(timestamp*1000).toISOString().substr(0,19)+'Z';
@@ -104,6 +105,21 @@ const mapContributors = (oldContributor, sw) => {
 }
 
 db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
+    let relatedMentions = [];
+    if (sw.zoteroKey) {
+        let zoteroItem = db.zotero_publication.findOne({'key' : sw.zoteroKey});
+        if (zoteroItem && 'dc:relation' in zoteroItem['data']['relations']) {
+            let relations = zoteroItem['data']['relations']['dc:relation'];
+            if (typeof relations === 'string') relations = [relations];
+            relatedMentions = relations.map(mention => ({
+                foreignKey: {
+                    collection: 'mention',
+                    id: mention.substr(-8)
+                }
+            }));
+        }
+    }
+
     db.software.update({_id: sw._id}, {
         primaryKey: {
             id: sw.id,
@@ -145,7 +161,8 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
                     id: rel,
                     collection: 'software'
                 }
-            }))
+            })),
+            mentions: relatedMentions
         }
     })
 });

@@ -1,16 +1,13 @@
-FROM python:3.6
+FROM python:3.6-alpine
 
-#ENV PYTHONUNBUFFERED 1
-
-RUN groupadd -r flask \
-    && useradd -r -g flask flask
+RUN (apk update && apk add g++ make)
 
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 COPY . /app
-RUN chown -R flask /app
-USER flask
+RUN adduser -S rsd_backend
+USER rsd_backend
 
 WORKDIR /app
 
