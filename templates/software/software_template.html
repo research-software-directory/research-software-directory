@@ -5,7 +5,7 @@
     <meta name="citation_title" content="{{template_data.brandName}}" />
     <meta name="citation_author" content="{{", ".join(template_data.contributor | list_names_filter)}}" />
     <meta name="citation_publication_date" content="{{template_data.createdAt | date_filter }}" />
-    {% if template_data.doi %}<meta name="citation_doi" content="{{template_data.doi}}" />{% endif %}
+    {% if template_data.citationCFF and template_data.citationCFF.doi %}<meta name="citation_doi" content="{{template_data.citationCFF.doi}}" />{% endif %}
     <meta property="description" content="{{template_data.shortStatement}}" />
     <meta property="og:title" content="{{template_data.name}}" />
     <meta property="og:description" content="{{template_data.shortStatement}}" />
