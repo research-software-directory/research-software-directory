@@ -100,9 +100,9 @@ def zotero_sync():
 
             if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
                 (author, image) = get_blog_fields(item)
-                item['isESCBlog'] = True
-                item['author'] = author
-                item['image'] = image
+                to_save['isESCBlog'] = True
+                to_save['author'] = author
+                to_save['image'] = image
 
             items_to_save.append(to_save)
 
