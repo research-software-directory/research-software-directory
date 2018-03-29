@@ -125,6 +125,7 @@ def sync_all():
     """
     Sync all Github repos listed in software from backend
     """
+    db.commit.create_index([('githubURL',1)])
     urls = get_repo_urls_to_sync()
     for url in urls:
         try:
