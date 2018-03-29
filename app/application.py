@@ -45,21 +45,18 @@ def serialize_software_list(swlist):
 @application.route('/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
-    # latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
+    latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
     organizations = requests.get(api_url + '/organization').json()
     all_software = requests.get(url).json()
-    # blog_posts = get_blogs()[:4]
-    # for post in blog_posts:
-    #     format = "%B %d, %Y"
-    #     post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
+    blog_posts = requests.get(api_url + '/mention?isESCBlog=true&sort=date&direction=desc&limit=4').json()
 
-    return htmlmin.minify(flask.render_template('index_template.html',
-                                                template_data=all_software,
-                                                data_json=flask.Markup(serialize_software_list(all_software)),
-                                                organizations=flask.Markup(json.dumps(organizations)),
-                                                # latest_mentions=latest_mentions,
-                                                # blog_posts=blog_posts
-                                                ))
+    return flask.render_template('index_template.html',
+                                 template_data=all_software,
+                                 data_json=flask.Markup(serialize_software_list(all_software)),
+                                 organizations=flask.Markup(json.dumps(organizations)),
+                                 latest_mentions=latest_mentions,
+                                 blog_posts=blog_posts
+                                 )
 
 
 def set_markdown(software, fields):
@@ -122,12 +119,12 @@ def software_product_page_template(software_id):
     #     commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
     # commits_data = flask.Markup(commits_data)
 
-    return htmlmin.minify(flask.render_template('software/software_template.html',
-                                                software_id=software_id,
-                                                template_data=software_dictionary,
-                                                organisation_logos=organisation_logos,
-                                                mention_types=mention_types,
-                                                ))
+    return flask.render_template('software/software_template.html',
+                                 software_id=software_id,
+                                 template_data=software_dictionary,
+                                 organisation_logos=organisation_logos,
+                                 mention_types=mention_types,
+                                 )
 
 
 @application.route('/cite/<software_id>')
