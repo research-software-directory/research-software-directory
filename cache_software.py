@@ -60,7 +60,6 @@ def git_citation_cff(sw):
             return json.loads(c.as_json())
         except Exception:
             logger.log(logging.WARNING, 'citation cff not found while set for url %s' % citation_cff_urls[0])
-            pass
     return None
 
 

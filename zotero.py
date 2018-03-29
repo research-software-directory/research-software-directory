@@ -6,6 +6,7 @@ https://pyzotero.readthedocs.io/en/latest/#retrieving-version-information
 import logging
 import dateparser
 import requests
+from bs4 import BeautifulSoup
 from pyzotero import zotero
 import os
 
@@ -34,6 +35,39 @@ def get_date_for_zotero_item(item):
         return dateparser.parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
 
 
+# DOIs can be either an URL or just the identifier, so make sure its a URL
+def doi_to_url(doi):
+    if doi[:4] == 'http':
+        return doi
+    else:
+        return 'https://doi.org/' + doi
+
+
+# URL is constructed from doi (either as doi field or in 'extra'), or else from the 'url' field
+def get_url_for_zotero_item(item):
+    if 'DOI' in item['data'] and item['data']['DOI']:
+        return doi_to_url(item['data']['DOI'])
+    else:
+        for extra in item['data']['extra'].split('\n'):
+            if extra[:3] == 'doi' or extra[:3] == 'DOI':
+                return doi_to_url(extra[5:])
+        if 'url' in item['data'] and item['data']['url']:
+            return item['data']['url']
+    return None
+
+
+def get_blog_fields(zotero_item):
+    logger.info(zotero_item['data']['url'] + ' = eScience Blog')
+    try:
+        data = requests.get(zotero_item['data']['url']).text
+        soup = BeautifulSoup(data, 'html.parser')
+        author = soup.select('header a.ds-link')[0].string
+        image = soup.select('figure img')[0].attrs['src']
+        return author, image
+    except:
+        return None, None
+
+
 def zotero_sync():
     client = zotero.Zotero(os.environ.get('ZOTERO_LIBRARY'), 'group', os.environ.get('ZOTERO_API_KEY'))
 
@@ -46,10 +80,12 @@ def zotero_sync():
     project_keys = get_project_keys(client)
 
     for item in items:
+        if 'title' not in item['data'] or not item['data']['title']:
+            continue
         item_collection_keys = item['data'].get('collections', [])
         if len(set.intersection(set(item_collection_keys), set(project_keys))) > 0:
             # item is part of a project
-            items_to_save.append({
+            to_save = {
                 'primaryKey': {
                     'collection': 'mention',
                     'id': item['key']
@@ -58,8 +94,17 @@ def zotero_sync():
                 'title': item['data'].get('title', ''),
                 'type': item['data']['itemType'],
                 'zoteroKey': item['key'],
-                'date': get_date_for_zotero_item(item)
-            })
+                'date': get_date_for_zotero_item(item),
+                'url': get_url_for_zotero_item(item)
+            }
+
+            if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
+                (author, image) = get_blog_fields(item)
+                item['isESCBlog'] = True
+                item['author'] = author
+                item['image'] = image
+
+            items_to_save.append(to_save)
 
     if len(items_to_save) > 0:
         resp = requests.patch(
