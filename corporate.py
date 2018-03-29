@@ -7,9 +7,6 @@ from Scraper import BlogPostScraper, ProjectScraper, PersonScraper
 
 logger = logging.getLogger(__name__)
 
-def get_blogs():
-    scraper = BlogPostScraper(baseurl="https://blog.esciencecenter.nl/")
-    return scraper.posts
 
 def get_projects():
     scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
@@ -21,15 +18,6 @@ def get_people():
     scraper = PersonScraper(baseurl="https://www.esciencecenter.nl/people")
     return scraper.people
 
-
-# def sync_blogs(self):
-#     blogs = get_blogs()
-    # self.db['corporate_blog'].drop()
-
-    # for blog in blogs:
-    #     record = self.db['corporate_blog'].new()
-    #     record.data.update(blog)
-    #     record.save()
 
 def sync_projects():
     def transform_project(from_scraper): #  to Project according to Schema
@@ -74,9 +62,3 @@ def sync_projects():
 def sync_people():
     people = get_people()
     print(people)
-    # self.db['corporate_person'].drop()
-
-    # for person in people:
-    #     record = self.db['corporate_person'].new()
-    #     record.data.update(person)
-    #     record.save()

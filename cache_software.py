@@ -18,9 +18,16 @@ def replace_foreign_keys(resource):
     if isinstance(resource, dict):
         for key in resource.keys():
             if key == 'foreignKey':
-                resource['foreignKey'] = db[resource['foreignKey']['collection']].find_one(
+                foreign_resource = db[resource['foreignKey']['collection']].find_one(
                     {'primaryKey.id': resource['foreignKey']['id']}
                 )
+                if not foreign_resource:
+                    logger.error(' not found: ' +
+                                 resource['foreignKey']['collection'] + ' ' + resource['foreignKey']['id'])
+                    resource['foreignKey'] = None
+                    continue
+                resource['foreignKey'] = foreign_resource
+                del resource['foreignKey']['_id']
             else:
                 replace_foreign_keys(resource[key])
     if isinstance(resource, list):
@@ -60,7 +67,6 @@ def git_citation_cff(sw):
             return json.loads(c.as_json())
         except Exception:
             logger.log(logging.WARNING, 'citation cff not found while set for url %s' % citation_cff_urls[0])
-            pass
     return None
 
 
