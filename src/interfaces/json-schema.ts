@@ -1,84 +1,59 @@
-export interface ISchema {
-  id: string;
-  required?: string[];
+export type ISchema = IObjectSchema | IArraySchema | IBooleanSchema | IStringSchema | IEnumSchema;
+
+export interface IObjectSchema {
   type: 'object';
+  properties: {
+    [key: string]: ISchema
+  };
+  required?: string[];
+  definitions?: any;
+  additionalProperties?: boolean;
+}
+
+export interface IRootSchema extends IObjectSchema {
   $schema: 'http://json-schema.org/draft-04/schema';
-  properties: { [key: string]: IProperty };
-  additionalProperties: boolean;
+  additionalProperties: false;
 }
 
-export type IProperty = IArrayProperty | ILinkProperty | IStringProperty | IReferenceProperty |
-                        IEnumProperty | IAnyOfProperty;
-
-interface IBaseProperty {
-  description?: string;
-  htmlDescription?: string;
-  sortIndex?: number;
-  // type?: string;
-}
-
-export interface IAnyOfProperty extends IBaseProperty {
-  anyOf: IProperty[];
-}
-
-export function isAnyOfProperty(property: any): property is IAnyOfProperty {
-  return 'anyOf' in property;
-}
-
-export interface IArrayProperty extends IBaseProperty {
+export interface IArraySchema {
   type: 'array';
-  items: IProperty;
+  items: ISchema;
 }
 
-export function isArrayProperty(property: any): property is IArrayProperty {
-  return 'type' in property && property.type === 'array';
-}
-
-interface IReferenceProperty extends IBaseProperty {
-  reference: string;
-}
-
-export function isReferenceProperty(property: any): property is IReferenceProperty {
-  return 'reference' in property;
-}
-
-export interface IEnumProperty extends IBaseProperty {
+export interface IEnumSchema {
   type: 'string';
   'enum': string[];
 }
 
-export function isEnumProperty(property: any): property is IEnumProperty {
-  return 'enum' in property;
-}
-
-interface IBooleanProperty extends IBaseProperty {
+export interface IBooleanSchema {
   type: 'boolean';
 }
 
-export function isBooleanProperty(property: any): property is IBooleanProperty {
-  return 'type' in property && property.type === 'boolean';
-}
-
-interface IStringProperty extends IBaseProperty {
+export interface IStringSchema {
   type: 'string';
   format?: string;
-  markdown?: boolean;
-  long?: boolean;
 }
 
-export function isStringProperty(property: any): property is IStringProperty {
-  return 'type' in property &&
-    !isArrayProperty(property) &&
-    !isEnumProperty(property) &&
-    !isLinkProperty(property) &&
-    !isBooleanProperty(property);
+export function isRootSchema(schema: any): schema is IRootSchema {
+  return schema.type === 'object' && schema.$schema === 'http://json-schema.org/draft-04/schema';
 }
 
-interface ILinkProperty extends IBaseProperty {
-  type: 'string';
-  resType: string;
+export function isObjectSchema(schema: any): schema is IObjectSchema {
+  return schema.type === 'object';
 }
 
-export function isLinkProperty(property: any): property is ILinkProperty {
-  return 'type' in property && property.type === 'string' && 'resType' in property;
+export function isArraySchema(schema: any): schema is IArraySchema {
+  return schema.type === 'array';
+}
+
+export function isEnumSchema(schema: any): schema is IEnumSchema {
+  return 'enum' in schema;
+}
+
+export function isBooleanSchema(schema: any): schema is IBooleanSchema {
+  return schema.type === 'boolean';
+}
+
+export function isStringSchema(schema: any): schema is IStringSchema {
+  return schema.type === 'string';
 }

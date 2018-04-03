@@ -5,7 +5,10 @@
     "software" : {
       "name": "Software",
       "icon": "file code outline",
-      "displayName": ["brandName"]
+      "displayName": ["brandName"],
+      "fields": {
+
+      }
     },
     "person" : {
       "name": "Person",

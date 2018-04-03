@@ -8,7 +8,9 @@ import { debounce } from '../../utils/debounce';
 import { IJWT, ISettings } from '../../rootReducer';
 import { ISchema } from '../../interfaces/json-schema';
 import { IData } from '../../interfaces/misc';
+import { IResource } from '../../interfaces/resource';
 import JsonEditor from './JsonEditor';
+import Form from '../../containers/Form';
 
 const VALIDATE_DEBOUNCE_TIME = 500; // ms
 
@@ -25,7 +27,7 @@ interface IConnectedProps {
 interface IState {
   loading: boolean;
   saving: boolean;
-  data: any;
+  data: IResource | null;
   valid: boolean | null;
   validationError: any;
 }
@@ -61,6 +63,7 @@ const validationMessage = (valid: boolean | null, validationError: string | null
 };
 
 export default class extends React.PureComponent<IProps, IState> {
+  form: any = null;
   editor: JsonEditor | null = null;
 
   validate = debounce(
@@ -111,23 +114,22 @@ export default class extends React.PureComponent<IProps, IState> {
     this.state = {
       saving: false,
       loading: true,
-      data: {},
+      data: null,
       valid: true,
       validationError: null,
     };
   }
 
-  getData() {
+  async getData() {
     const { resourceType, id } = this.props.match.params;
     const { backendUrl } = this.props.settings;
-    axios.get(`${backendUrl}/${resourceType}/${id}`, {
+    const result = await axios.get(`${backendUrl}/${resourceType}/${id}`, {
       headers: {
         Authorization: `Bearer ${this.props.jwt.token}`
       }
-    }).then((result) => {
-      this.setState({data: result.data, loading: false, valid: null});
-      this.validate(JSON.stringify(result.data));
     });
+    this.setState({data: result.data, loading: false, valid: null});
+    this.validate(JSON.stringify(result.data));
   }
 
   componentWillMount() {
@@ -156,21 +158,32 @@ export default class extends React.PureComponent<IProps, IState> {
     if (this.state.loading) {
       return null;
     }
-
     const panes = [
       { menuItem: 'JSON editor', render: () =>  (
-        <Tab.Pane><div style={{height: 'calc(100vh - 200px)'}}><JsonEditor
-          ref={elm => this.editor = elm}
-          value={JSON.stringify(this.state.data, null, 2)}
-          onChange={(s: string) => this.onChange(s)}
-        /></div></Tab.Pane>
+        <Tab.Pane style={{flex: 1}}>
+          <JsonEditor
+            ref={elm => this.editor = elm}
+            value={JSON.stringify(this.state.data, null, 2)}
+            onChange={(s: string) => this.onChange(s)}
+          />
+        </Tab.Pane>
         ) },
-      { menuItem: 'Form', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+      { menuItem: 'Form', render: () => (
+        <Tab.Pane style={{flex: 1, overflowY: 'scroll'}}>
+          <Form
+            ref={elm => this.form = elm}
+            value={this.state.data!}
+            onChange={(data: any) => this.onChange(JSON.stringify(data))}
+          />
+        </Tab.Pane>
+        ) },
     ];
 
     return (
       <div>
-        <Tab panes={panes} />
+        <div style={{height: 'calc(100vh - 200px)'}}>
+          <Tab style={{display: 'flex', flexDirection: 'column', height: '100%'}} panes={panes} />
+        </div>
         {validationMessage(this.state.valid, this.state.validationError)}
         <Button
           disabled={!this.state.valid || this.state.saving}
