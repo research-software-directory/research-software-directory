@@ -9,17 +9,21 @@ Data API for Research Software Directory
 ### Setup:
 - This service depends on the following services:
     -   MongoDB (3.6) (`docker pull mongo:3.6 && docker run -p 27017:27017 mongo:3.6`)
-    -   [RSD Schema service](https://github.com/research-software-directory/schema-nlesc)
+
 
 ### Configuration:
-- Configuration is done through environmental variables
+- Configuration consists of two parts:
+#### Environmental variables
 ```
 JWT_SECRET=[hidden]                - JSON web token secret to generate/verify tokens]
 DATABASE_HOST=localhost            - MongoDB host
 DATABASE_PORT=27017                - MongoDB tcp port
 DATABASE_NAME=rsd                  - MongoDB database to use
-SCHEMA_URL=http://localhost:5003   - URL of schema location
+SCHEMAS_PATH=./schemas             - Path where the schema files can be found
 ```
+#### Schema files
+Schema files should be in `SCHEMAS_PATH`. See the directory `schemas_example`
+for the schemas we use at the eScience Center.
 
 ### Run unit tests
 ```
