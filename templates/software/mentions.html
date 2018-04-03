@@ -8,17 +8,17 @@
             </div>
 
             <div class="col-3-4">
-
-                {% if template_data.corporateBlogs %}
-                <a href="{{template_data.corporateBlogs[0].url}}" target="_blank" class="mention_blog-post row">
+                {% set blog = template_data.related.mentions | map(attribute="foreignKey") | selectattr("isESCBlog") | first %}
+                {% if blog %}
+                <a href="{{blog.url}}" target="_blank" class="mention_blog-post row">
                     <div class="image-container">
-                        <img src="{{ template_data.corporateBlogs[0].image }}">
+                        <img src="{{ blog.image }}">
                     </div>
                     <div class="data">
 
-                        <h3 class="title">{{ template_data.corporateBlogs[0].title }}</h3>
-                        <p class="author">By {{ template_data.corporateBlogs[0].author }}</p>
-                        <p class="date">{{ template_data.corporateBlogs[0]['datetime'] | human_date_filter }}</p>
+                        <h3 class="title">{{ blog.title }}</h3>
+                        <p class="author">By {{ blog.author }}</p>
+                        <p class="date">{{ blog.date | human_date_filter }}</p>
 
                         <div class="visit-blog text-underline">Visit our blog</div>
                     </div>
@@ -26,36 +26,35 @@
                 {% endif %}
 
                 <div class="divider"></div>
-
-                {% for key, value in template_data.mentions.items() %}
+                {% for type, items in template_data.related.mentions | map(attribute="foreignKey") | selectattr("isESCBlog", "ne", True) | groupby('type') %}
                 <div class="mention">
                     <div class="mention_button">
                         <h3>
-                            <span class="amount">{{value|length}}</span>
-                            {% if key in mention_types %}
-                            <span class="category">{{mention_types[key].singular if value|length == 1 else mention_types[key].plural}}</span>
+                            <span class="amount">{{items|length}}</span>
+                            {% if type in mention_types %}
+                            <span class="category">{{mention_types[type].singular if items|length == 1 else mention_types[type].plural}}</span>
                             {% else %}
-                            <span class="category">{{key}}</span>
+                            <span class="category">{{type}}</span>
                             {% endif%}
                         </h3>
                         <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
                     </div>
                     <div class="mention_list" style="height: 0">
                         <ul>
-                        {% for item in value %}
+                        {% for item in items %}
                             <li>
-                            {% if item.data.url %}
+                            {% if item.url %}
 
-                            <a class="mention_content" href="{{item.data.url}}" target="_blank">
-                                <div class="mention_title">{{item.data.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                            <a class="mention_content" href="{{item.url}}" target="_blank">
+                                <div class="mention_title">{{item.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
 
-                                <div class="mention_post-date">{{item.data.date}}</div>
+                                <div class="mention_post-date">{{item.date | human_date_filter}}</div>
                             </a>
 
                             {% else %}
                             <div class="mention_content">
-                                <div class="mention_title">{{item.data.title}}</div>
-                                <div class="mention_post-date">{{item.data.date}}</div>
+                                <div class="mention_title">{{item.title}}</div>
+                                <div class="mention_post-date">{{item.date | human_date_filter}}</div>
                             </div>
                             {% endif %}
                             </li>
