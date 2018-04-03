@@ -2,6 +2,7 @@ import flask
 import datetime
 import pymongo
 import copy
+
 from flask_cors import CORS
 from jsonschema import validate
 from bson.objectid import ObjectId
@@ -10,19 +11,17 @@ from src import exceptions
 from src.json_response import jsonify
 from src.permission import require_permission, get_sub
 
-
 def time_now():
     return datetime.datetime.utcnow().replace(microsecond=0).isoformat()+'Z'
 
 
-def get_routes(db, schema):
+def get_routes(db, schemas):
     api = flask.Blueprint("api", __name__)
     cors = CORS(api, resources={r"*": {"origins": "*"}})
 
     @api.route('/<resource_type>/<id>', methods=["GET"])
     @jsonify
     def _get_resource(resource_type, id):
-        schemas = schema.all()
         splitted = resource_type.split('_')
         if (len(splitted) > 1 and splitted[1]) == 'cache':
             raw_type = splitted[0]
@@ -50,7 +49,6 @@ def get_routes(db, schema):
         :param resource_type: The resource type
         :return: list of resources
         """
-        schemas = schema.all()
         splitted = resource_type.split('_')
         if (len(splitted) > 1 and splitted[1]) == 'cache':
             raw_type = splitted[0]
@@ -109,7 +107,6 @@ def get_routes(db, schema):
             if db[resource_type].find_one({'primaryKey.id': res['primaryKey']['id']}):
                 raise exceptions.DuplicatePrimaryKeyException(res['primaryKey']['id'])
 
-        schemas = schema.all()
         if resource_type not in schemas.keys():
             raise exceptions.NotFoundException('No such resource type exists: \'%s\'' % resource_type)
 
@@ -140,7 +137,6 @@ def get_routes(db, schema):
         :param resource_type: The resource type
         :return: the resources list.
         """
-        schemas = schema.all()
         if resource_type not in schemas.keys():
             raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
 
@@ -204,7 +200,6 @@ def get_routes(db, schema):
         :param resource_type: The resource type
         :return: the updated resource
         """
-        schemas = schema.all()
         if resource_type not in schemas.keys():
             raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
 
@@ -261,7 +256,6 @@ def get_routes(db, schema):
         Get all resources as a dict (only if there are less than 1000)
         :return: All resources
         """
-        schemas = schema.all()
         results = {}
         for resource_type in schemas.keys():
             resource_cursor = db[resource_type].find()
@@ -278,6 +272,6 @@ def get_routes(db, schema):
     @api.route('/schema')
     @jsonify
     def _schema():
-        return schema.all(), 200
+        return schemas, 200
 
     return api
