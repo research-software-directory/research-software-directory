@@ -1,3 +1,5 @@
+// tslint:disable:no-string-literal
+
 import { applyMiddleware, createStore } from "redux";
 import { routerMiddleware } from "react-router-redux";
 
@@ -11,7 +13,6 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   rootReducer,
-  // tslint:disable-next-line:no-string-literal
   window["__REDUX_DEVTOOLS_EXTENSION__"] &&
     window["__REDUX_DEVTOOLS_EXTENSION__"](),
   applyMiddleware(sagaMiddleware, routerMiddleware(history))

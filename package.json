@@ -73,10 +73,11 @@
     "testcoverage":
       "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --coverage",
     "eject": "react-scripts-ts eject",
-    "lint": "react-scripts-ts lint",
+    "lint": "tslint --project \"tsconfig.json\" -t stylish",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"]
+    "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"],
+    "*.{ts,tsx,js}": ["tslint -t stylish \"./tsconfig.json\""]
   }
 }
