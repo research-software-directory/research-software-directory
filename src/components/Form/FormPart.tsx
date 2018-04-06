@@ -1,26 +1,14 @@
 import * as React from "react";
-import styled from "styled-components";
-
-import {
-  isArraySchema,
-  ISchema,
-  isObjectSchema
-} from "../../interfaces/json-schema";
-import TypeObject from "./TypeObject";
-import TypeDummy from "./TypeDummy";
-import TypeArray from "./TypeArray";
+import { Segment } from "semantic-ui-react";
+import { ISchema } from "../../interfaces/json-schema";
 import { IProps } from "./IProps";
+import { getElement } from "./elementFactory";
+import styled from "styled-components";
 
 interface IState {
   hasError: boolean;
   error: any;
   info: any;
-}
-
-function getComponent(schema: ISchema): any {
-  return isObjectSchema(schema)
-    ? TypeObject
-    : isArraySchema(schema) ? TypeArray : TypeDummy;
 }
 
 export default class FormPart extends React.PureComponent<
@@ -43,18 +31,16 @@ export default class FormPart extends React.PureComponent<
     if (this.state.hasError) {
       return <div>error: {JSON.stringify(this.state)}</div>;
     }
-    const Component = getComponent(this.props.schema);
+    const element = getElement(this.props.schema, this.props);
     return (
-      <Container>
-        <label>{this.props.label}</label>
-        <Component {...this.props} />
-      </Container>
+      <Segment>
+        <Label>{this.props.label}</Label>:
+        {element}
+      </Segment>
     );
   }
 }
 
-const Container = styled.div`
-  padding: 1em;
-  border: 1px solid black;
-  margin-bottom: 1em;
+const Label = styled.label`
+  font-size: 2em;
 `;

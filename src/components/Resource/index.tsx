@@ -138,7 +138,7 @@ export default class extends React.PureComponent<IProps, IState> {
     this.validate(JSON.stringify(result.data));
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
   }
 
@@ -184,7 +184,10 @@ export default class extends React.PureComponent<IProps, IState> {
             <Form
               ref={elm => (this.form = elm)}
               value={this.state.data!}
-              onChange={(data: any) => this.onChange(JSON.stringify(data))}
+              onChange={(data: any) => {
+                this.setState({ data });
+                this.onChange(JSON.stringify(data));
+              }}
             />
           </Tab.Pane>
         )
@@ -195,6 +198,7 @@ export default class extends React.PureComponent<IProps, IState> {
       <div>
         <div style={{ height: "calc(100vh - 200px)" }}>
           <Tab
+            defaultActiveIndex={1}
             style={{ display: "flex", flexDirection: "column", height: "100%" }}
             panes={panes}
           />

@@ -3,7 +3,7 @@ export type ISchema =
   | IArraySchema
   | IBooleanSchema
   | IStringSchema
-  | IEnumSchema;
+  | IStringEnumSchema;
 
 export interface IObjectSchema {
   type: "object";
@@ -25,7 +25,7 @@ export interface IArraySchema {
   items: ISchema;
 }
 
-export interface IEnumSchema {
+export interface IStringEnumSchema {
   type: "string";
   enum: string[];
 }
@@ -39,6 +39,20 @@ export interface IStringSchema {
   format?: string;
 }
 
+export interface IForeignKey {
+  type: "object";
+  required: ["collection", "id"];
+  properties: {
+    collection: {
+      enum: string[];
+      type: "string";
+    };
+    id: {
+      type: "string";
+    };
+  };
+}
+
 export function isRootSchema(schema: any): schema is IRootSchema {
   return (
     schema.type === "object" &&
@@ -47,15 +61,17 @@ export function isRootSchema(schema: any): schema is IRootSchema {
 }
 
 export function isObjectSchema(schema: any): schema is IObjectSchema {
-  return schema.type === "object";
+  return (
+    (schema.type === "object" || !schema.type) && !isForeignKeySchema(schema)
+  );
 }
 
 export function isArraySchema(schema: any): schema is IArraySchema {
   return schema.type === "array";
 }
 
-export function isEnumSchema(schema: any): schema is IEnumSchema {
-  return "enum" in schema;
+export function isStringEnumSchema(schema: any): schema is IStringEnumSchema {
+  return schema.type === "string" && schema.enum;
 }
 
 export function isBooleanSchema(schema: any): schema is IBooleanSchema {
@@ -63,5 +79,16 @@ export function isBooleanSchema(schema: any): schema is IBooleanSchema {
 }
 
 export function isStringSchema(schema: any): schema is IStringSchema {
-  return schema.type === "string";
+  return (
+    (schema.type === "string" && !isStringEnumSchema(schema)) ||
+    (Array.isArray(schema.type) && schema.type.indexOf("string") > -1)
+  );
+}
+
+export function isForeignKeySchema(schema: any): schema is IForeignKey {
+  return (
+    schema.type === "object" &&
+    "collection" in schema.properties &&
+    "id" in schema.properties
+  );
 }

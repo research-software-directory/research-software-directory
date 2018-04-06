@@ -32,7 +32,7 @@ export default class extends React.PureComponent<IProps, IState> {
           settings={this.props.settings.resources[type].fields}
           value={this.props.value}
           data={this.props.data}
-          onChange={console.log}
+          onChange={this.props.onChange}
           label=""
         />
       </div>

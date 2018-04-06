@@ -5,6 +5,6 @@ import { IProps } from "./IProps";
 
 export default class extends React.Component<IProps<ISchema>> {
   render() {
-    return <div>{JSON.stringify(this.props.value)}</div>;
+    return <div>im a dummy {JSON.stringify(this.props.value)}</div>;
   }
 }

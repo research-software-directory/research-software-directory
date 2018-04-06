@@ -77,7 +77,6 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"],
-    "*.{ts,tsx,js}": ["tslint -t stylish \"./tsconfig.json\""]
+    "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"]
   }
 }
