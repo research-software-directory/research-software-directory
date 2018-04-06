@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ISchema } from '../../interfaces/json-schema';
-import { IResource } from '../../interfaces/resource';
-import { Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import * as React from "react";
+import { ISchema } from "../../interfaces/json-schema";
+import { IResource } from "../../interfaces/resource";
+import { Menu } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 export interface IOwnProps {
   search: string;
@@ -22,9 +22,14 @@ export default class extends React.PureComponent<IProps & IOwnProps, {}> {
   searchFilter = (search: string) => (item: IResource) => {
     const lowerCase = search.toLowerCase();
 
-    return (label(item).toLowerCase().indexOf(lowerCase) !== -1 ||
-      ('description' in item && (item as any).description.toLowerCase().indexOf(lowerCase) !== -1));
-  }
+    return (
+      label(item)
+        .toLowerCase()
+        .indexOf(lowerCase) !== -1 ||
+      ("description" in item &&
+        (item as any).description.toLowerCase().indexOf(lowerCase) !== -1)
+    );
+  };
 
   render() {
     return (
@@ -32,20 +37,21 @@ export default class extends React.PureComponent<IProps & IOwnProps, {}> {
         {this.props.data
           .filter(this.searchFilter(this.props.search))
           .sort(sortByLabel)
-          .map((item, index) =>
-            <Menu.Item
-              key={index}
-              draggable="true"
-            >
-              { item.primaryKey
-                ? <Link draggable={false} to={`/${this.props.type}/${item.primaryKey.id}`} style={{display: 'block'}}>
-                    {item.primaryKey.id}
-                  </Link>
-                : <div>no PrimaryKey</div>
-              }
+          .map((item, index) => (
+            <Menu.Item key={index} draggable="true">
+              {item.primaryKey ? (
+                <Link
+                  draggable={false}
+                  to={`/${this.props.type}/${item.primaryKey.id}`}
+                  style={{ display: "block" }}
+                >
+                  {item.primaryKey.id}
+                </Link>
+              ) : (
+                <div>no PrimaryKey</div>
+              )}
             </Menu.Item>
-          )
-        }
+          ))}
       </div>
     );
   }

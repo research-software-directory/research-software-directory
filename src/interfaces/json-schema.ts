@@ -1,9 +1,14 @@
-export type ISchema = IObjectSchema | IArraySchema | IBooleanSchema | IStringSchema | IEnumSchema;
+export type ISchema =
+  | IObjectSchema
+  | IArraySchema
+  | IBooleanSchema
+  | IStringSchema
+  | IEnumSchema;
 
 export interface IObjectSchema {
-  type: 'object';
+  type: "object";
   properties: {
-    [key: string]: ISchema
+    [key: string]: ISchema;
   };
   required?: string[];
   definitions?: any;
@@ -11,49 +16,52 @@ export interface IObjectSchema {
 }
 
 export interface IRootSchema extends IObjectSchema {
-  $schema: 'http://json-schema.org/draft-04/schema';
+  $schema: "http://json-schema.org/draft-04/schema";
   additionalProperties: false;
 }
 
 export interface IArraySchema {
-  type: 'array';
+  type: "array";
   items: ISchema;
 }
 
 export interface IEnumSchema {
-  type: 'string';
-  'enum': string[];
+  type: "string";
+  enum: string[];
 }
 
 export interface IBooleanSchema {
-  type: 'boolean';
+  type: "boolean";
 }
 
 export interface IStringSchema {
-  type: 'string';
+  type: "string";
   format?: string;
 }
 
 export function isRootSchema(schema: any): schema is IRootSchema {
-  return schema.type === 'object' && schema.$schema === 'http://json-schema.org/draft-04/schema';
+  return (
+    schema.type === "object" &&
+    schema.$schema === "http://json-schema.org/draft-04/schema"
+  );
 }
 
 export function isObjectSchema(schema: any): schema is IObjectSchema {
-  return schema.type === 'object';
+  return schema.type === "object";
 }
 
 export function isArraySchema(schema: any): schema is IArraySchema {
-  return schema.type === 'array';
+  return schema.type === "array";
 }
 
 export function isEnumSchema(schema: any): schema is IEnumSchema {
-  return 'enum' in schema;
+  return "enum" in schema;
 }
 
 export function isBooleanSchema(schema: any): schema is IBooleanSchema {
-  return schema.type === 'boolean';
+  return schema.type === "boolean";
 }
 
 export function isStringSchema(schema: any): schema is IStringSchema {
-  return schema.type === 'string';
+  return schema.type === "string";
 }

@@ -1,9 +1,9 @@
-import AceEditor from 'react-ace';
-import * as React from 'react';
+import AceEditor from "react-ace";
+import * as React from "react";
 
-import 'brace/mode/json';
-import 'brace/theme/monokai';
-import '../../style/jsonEditor.css';
+import "brace/mode/json";
+import "brace/theme/monokai";
+import "../../style/jsonEditor.css";
 
 interface IProps {
   onChange: (s: string) => any;
@@ -38,7 +38,7 @@ export default class extends React.Component<IProps> {
         showGutter={true}
         highlightActiveLine={true}
         value={this.props.value}
-        editorProps={{$blockScrolling: Infinity}}
+        editorProps={{ $blockScrolling: Infinity }}
         setOptions={{
           wrap: true,
           enableBasicAutocompletion: false,

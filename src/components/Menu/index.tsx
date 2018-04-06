@@ -1,14 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { Image, Menu } from 'semantic-ui-react';
+import { Image, Menu } from "semantic-ui-react";
 // import { Link } from 'react-router-dom';
 
-import { IJWT, ISettings } from '../../rootReducer';
-import { ISchema } from '../../interfaces/json-schema';
-import { IData } from '../../interfaces/misc';
+import { IJWT, ISettings } from "../../rootReducer";
+import { ISchema } from "../../interfaces/json-schema";
+import { IData } from "../../interfaces/misc";
 
-import '../../style/Menu.css';
-import ResourceType from './ResourceType';
+import "../../style/Menu.css";
+import ResourceType from "./ResourceType";
 
 interface IProps {
   jwt: IJWT;
@@ -32,7 +32,10 @@ export default class extends React.PureComponent<IProps, {}> {
           {this.props.jwt.claims.user.name}
         </Menu.Item>
         {Object.keys(this.props.settings.resources).map((type: string) => (
-          <ResourceType type={type} icon={this.props.settings.resources[type].icon} />
+          <ResourceType
+            type={type}
+            icon={this.props.settings.resources[type].icon}
+          />
         ))}
       </Menu>
     );

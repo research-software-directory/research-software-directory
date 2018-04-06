@@ -1,6 +1,6 @@
-import { ISettings } from '../../rootReducer';
-import { IResource } from '../../interfaces/resource';
-import { IData } from '../../interfaces/misc';
+import { ISettings } from "../../rootReducer";
+import { IResource } from "../../interfaces/resource";
+import { IData } from "../../interfaces/misc";
 
 export interface IProps<T> {
   schema: T;
