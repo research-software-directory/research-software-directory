@@ -1,7 +1,7 @@
 .ace_scrollbar-inner::-webkit-scrollbar-thumb {
-    background-color: green;
+  background-color: green;
 }
 
 .ace_scrollbar::-webkit-scrollbar-thumb {
-    background-color: #777;
+  background-color: #777;
 }

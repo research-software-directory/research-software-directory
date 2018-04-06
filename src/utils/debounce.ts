@@ -5,7 +5,7 @@
 export type Procedure = (...args: any[]) => void;
 
 export type Options = {
-  isImmediate: boolean,
+  isImmediate: boolean;
 };
 
 export function debounce<F extends Procedure>(
@@ -13,7 +13,7 @@ export function debounce<F extends Procedure>(
   waitMilliseconds: number = 50,
   options: Options = {
     isImmediate: false
-  },
+  }
 ): F {
   let timeoutId: number | undefined;
 
