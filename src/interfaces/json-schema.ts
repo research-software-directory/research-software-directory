@@ -39,7 +39,7 @@ export interface IStringSchema {
   format?: string;
 }
 
-export interface IForeignKey {
+export interface IForeignKeySchema {
   type: "object";
   required: ["collection", "id"];
   properties: {
@@ -85,7 +85,7 @@ export function isStringSchema(schema: any): schema is IStringSchema {
   );
 }
 
-export function isForeignKeySchema(schema: any): schema is IForeignKey {
+export function isForeignKeySchema(schema: any): schema is IForeignKeySchema {
   return (
     schema.type === "object" &&
     "collection" in schema.properties &&

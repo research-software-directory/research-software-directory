@@ -24,7 +24,7 @@ export default class extends React.Component<IProps<IStringEnumSchema>, {}> {
           selection={true}
           options={options}
           defaultValue={this.props.value}
-          onChange={(_, elm) => console.log(elm.value)}
+          onChange={(_, elm) => this.props.onChange(elm.value)}
         />
       </div>
     );

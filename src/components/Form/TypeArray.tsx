@@ -14,10 +14,11 @@ export default class extends React.PureComponent<IProps<IArraySchema>> {
   }
 
   onAdd = () => {
-    this.props.onChange([
-      ...this.props.value,
-      createEmpty(this.props.schema.items)
-    ]);
+    let value = this.props.value;
+    if (!Array.isArray(value)) {
+      value = [];
+    }
+    this.props.onChange([...value, createEmpty(this.props.schema.items)]);
   };
 
   render() {
@@ -28,6 +29,7 @@ export default class extends React.PureComponent<IProps<IArraySchema>> {
 
     return (
       <div>
+        <Button onClick={this.onAdd}>+ Add</Button>
         {value.map((val: any, index: number) => (
           <FormPart
             value={val}
@@ -38,7 +40,6 @@ export default class extends React.PureComponent<IProps<IArraySchema>> {
             onChange={(v: any) => this.handleChange(index, v)}
           />
         ))}
-        <Button onClick={this.onAdd}>+ Add</Button>
       </div>
     );
   }

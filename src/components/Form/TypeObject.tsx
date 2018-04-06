@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { Segment } from "semantic-ui-react";
 import { IObjectSchema } from "../../interfaces/json-schema";
 import FormPart from "./FormPart";
 import { IProps } from "./IProps";
@@ -25,7 +26,6 @@ export default class extends React.PureComponent<IProps<IObjectSchema>> {
     if (!contents) {
       return null;
     }
-    console.log(this.props.schema.properties, contents);
-    return <div>{contents}</div>;
+    return <Segment>{contents}</Segment>;
   }
 }
