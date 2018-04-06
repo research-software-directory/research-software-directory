@@ -1,10 +1,15 @@
-import * as React from 'react';
+import * as React from "react";
+import styled from "styled-components";
 
-import { isArraySchema, ISchema, isObjectSchema } from '../../interfaces/json-schema';
-import TypeObject from './TypeObject';
-import TypeDummy from './TypeDummy';
-import TypeArray from './TypeArray';
-import { IProps } from './IProps';
+import {
+  isArraySchema,
+  ISchema,
+  isObjectSchema
+} from "../../interfaces/json-schema";
+import TypeObject from "./TypeObject";
+import TypeDummy from "./TypeDummy";
+import TypeArray from "./TypeArray";
+import { IProps } from "./IProps";
 
 interface IState {
   hasError: boolean;
@@ -13,12 +18,15 @@ interface IState {
 }
 
 function getComponent(schema: ISchema): any {
-  return isObjectSchema(schema) ? TypeObject
-       : isArraySchema(schema)  ? TypeArray
-       : TypeDummy;
+  return isObjectSchema(schema)
+    ? TypeObject
+    : isArraySchema(schema) ? TypeArray : TypeDummy;
 }
 
-export default class FormPart extends React.PureComponent<IProps<ISchema>, IState> {
+export default class FormPart extends React.PureComponent<
+  IProps<ISchema>,
+  IState
+> {
   constructor(props: IProps<ISchema>) {
     super(props);
     this.state = {
@@ -35,12 +43,18 @@ export default class FormPart extends React.PureComponent<IProps<ISchema>, IStat
     if (this.state.hasError) {
       return <div>error: {JSON.stringify(this.state)}</div>;
     }
-    const Comp = getComponent(this.props.schema);
+    const Component = getComponent(this.props.schema);
     return (
-      <div style={{ padding: '1em', border: '1px solid black'}}>
+      <Container>
         <label>{this.props.label}</label>
-        <Comp {...this.props} />
-      </div>
+        <Component {...this.props} />
+      </Container>
     );
   }
 }
+
+const Container = styled.div`
+  padding: 1em;
+  border: 1px solid black;
+  margin-bottom: 1em;
+`;
