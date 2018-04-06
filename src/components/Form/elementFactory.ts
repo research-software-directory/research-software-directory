@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import {
   isArraySchema,
   isBooleanSchema,
@@ -9,7 +7,6 @@ import {
   isObjectSchema,
   isStringSchema
 } from "../../interfaces/json-schema";
-import { IProps } from "./IProps";
 import TypeString from "./TypeString";
 import TypeDummy from "./TypeDummy";
 import TypeObject from "./TypeObject";
@@ -18,8 +15,8 @@ import TypeBoolean from "./TypeBoolean";
 import TypeEnum from "./TypeStringEnum";
 import TypeForeignKey from "./TypeForeignKey";
 
-export function getElement(schema: ISchema, props: IProps<any>): any {
-  const Component = isObjectSchema(schema)
+export function getElement(schema: ISchema): any {
+  return isObjectSchema(schema)
     ? TypeObject
     : isArraySchema(schema)
       ? TypeArray
@@ -30,10 +27,4 @@ export function getElement(schema: ISchema, props: IProps<any>): any {
           : isBooleanSchema(schema)
             ? TypeBoolean
             : isForeignKeySchema(schema) ? TypeForeignKey : TypeDummy;
-
-  if (!Component) {
-    return null;
-  }
-
-  return React.createElement(Component as any, props);
 }

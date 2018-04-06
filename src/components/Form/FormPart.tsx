@@ -26,28 +26,18 @@ export default class FormPart extends React.PureComponent<
   }
   componentDidCatch(error: any, info: any) {
     this.setState({ hasError: true, error, info });
-    console.log(error, info);
+    console.error(error, info);
   }
 
   render() {
     if (this.state.hasError) {
-      return (
-        <pre
-          style={{
-            backgroundColor: "red",
-            color: "white",
-            whiteSpace: "pre-wrap"
-          }}
-        >
-          error: {this.state.error.stack.toString()}
-        </pre>
-      );
+      return <ShowError>{this.state.error.stack.toString()}</ShowError>;
     }
-    const element = getElement(this.props.schema, this.props);
+    const Component = getElement(this.props.schema);
     return (
-      <Section border={element.type === TypeArray}>
+      <Section border={Component === TypeArray}>
         {this.props.label && <Label>{this.props.label}</Label>}
-        {element}
+        <Component {...this.props} />
       </Section>
     );
   }
@@ -65,4 +55,10 @@ const Section = styled.section`
   padding-left: 0.5em;
   margin-bottom: 1em;
   border: ${(p: ISectionProps) => (p.border ? "1px solid black" : "none")};
+`;
+
+const ShowError = styled.pre`
+  background-color: red;
+  color: white;
+  white-space: pre-wrap;
 `;

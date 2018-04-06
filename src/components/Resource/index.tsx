@@ -182,11 +182,11 @@ export default class extends React.PureComponent<IProps, IState> {
         render: () => (
           <Tab.Pane style={{ flex: 1, overflowY: "scroll" }}>
             <Form
-              ref={elm => (this.form = elm)}
+              ref={(elm: any) => (this.form = elm)}
               value={this.state.data!}
               onChange={(data: any) => {
                 this.setState({ data });
-                this.onChange(JSON.stringify(data));
+                // this.onChange(JSON.stringify(data));
               }}
             />
           </Tab.Pane>

@@ -23,6 +23,10 @@ interface IState {}
 type IProps = IConnectedProps & IOwnProps;
 
 export default class extends React.PureComponent<IProps, IState> {
+  handleChange = (newValue: any) => {
+    this.props.onChange(newValue);
+  };
+
   render() {
     const type = this.props.value.primaryKey.collection;
     return (
@@ -32,7 +36,7 @@ export default class extends React.PureComponent<IProps, IState> {
           settings={this.props.settings.resources[type].fields}
           value={this.props.value}
           data={this.props.data}
-          onChange={this.props.onChange}
+          onChange={this.handleChange}
           label=""
         />
       </div>

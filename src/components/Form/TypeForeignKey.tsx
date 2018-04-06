@@ -8,11 +8,18 @@ interface IState {
   foreignData: any[] | null;
 }
 
-export default class extends React.PureComponent<
+export default class extends React.Component<
   IProps<IForeignKeySchema>,
   IState
 > {
   state = { foreignData: null };
+
+  shouldComponentUpdate(newProps: IProps<IForeignKeySchema>) {
+    return (
+      newProps.value !== this.props.value || newProps.data !== this.props.data
+    );
+  }
+
   componentDidMount() {
     this.setState({
       foreignData: this.props.data[

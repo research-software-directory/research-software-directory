@@ -6,7 +6,13 @@ import { IProps } from "./IProps";
 import FormPart from "./FormPart";
 import { createEmpty } from "../../utils/createEmpty";
 
-export default class extends React.PureComponent<IProps<IArraySchema>> {
+export default class extends React.Component<IProps<IArraySchema>> {
+  shouldComponentUpdate(newProps: IProps<IArraySchema>) {
+    return (
+      newProps.value !== this.props.value || newProps.data !== this.props.data
+    );
+  }
+
   handleChange(index: number, value: any) {
     const valCopy = [...this.props.value];
     valCopy[index] = value;
@@ -32,6 +38,7 @@ export default class extends React.PureComponent<IProps<IArraySchema>> {
         <Button onClick={this.onAdd}>+ Add</Button>
         {value.map((val: any, index: number) => (
           <FormPart
+            key={index}
             value={val}
             settings={this.props.settings}
             schema={this.props.schema.items}

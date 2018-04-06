@@ -33,6 +33,7 @@ export default class extends React.PureComponent<IProps, {}> {
         </Menu.Item>
         {Object.keys(this.props.settings.resources).map((type: string) => (
           <ResourceType
+            key={type}
             type={type}
             icon={this.props.settings.resources[type].icon}
           />
