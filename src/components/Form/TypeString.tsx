@@ -4,7 +4,10 @@ import { IProps } from "./IProps";
 import styled, { StyledComponentClass } from "styled-components";
 import { IStringSchema } from "../../interfaces/json-schema";
 
-export default class extends React.Component<IProps<IStringSchema>, {}> {
+export default class TypeString extends React.Component<
+  IProps<IStringSchema>,
+  {}
+> {
   shouldComponentUpdate(newProps: IProps<IStringSchema>) {
     return newProps.value !== this.props.value;
   }

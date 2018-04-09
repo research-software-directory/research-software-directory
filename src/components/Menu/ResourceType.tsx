@@ -11,14 +11,15 @@ interface IState {
 }
 
 interface IProps {
+  defaultOpen: boolean;
   type: string;
   icon: SemanticICONS;
 }
 
-export default class extends React.PureComponent<IProps, IState> {
+export default class ResourceType extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    this.state = { open: false, search: "" };
+    this.state = { open: props.defaultOpen, search: "" };
   }
 
   onSubmenuSearch = (e: any) => {

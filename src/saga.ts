@@ -8,6 +8,7 @@ import fetch, { AxiosRequestConfig } from "axios";
 import { actions as toastrActions } from "react-redux-toastr";
 import { push } from "react-router-redux";
 import { IStoreState } from "./rootReducer";
+import config from "./config";
 
 const SETTINGS_URL = "/settings.json";
 
@@ -27,7 +28,9 @@ const errorAction = (message: string) =>
  */
 function* fetchSettings() {
   try {
-    const response = yield fetch(SETTINGS_URL);
+    const response = config.useFixtures
+      ? { data: require("./fixtures/settings.json") }
+      : yield fetch(SETTINGS_URL);
     yield put({
       type: "SETTINGS_FETCHED",
       data: response.data
@@ -69,8 +72,12 @@ const getJWT = (authUrl: string) =>
     if (!jwt) {
       jwt = getJWTfromURL();
       if (!jwt) {
-        window.location.href = authUrl;
-        return;
+        if (!config.useFixtures) {
+          window.location.href = authUrl;
+          return;
+        } else {
+          jwt = require("./fixtures/jwt.json") as string;
+        }
       }
       localStorage.setItem("jwt", jwt);
       yield put(push("/"));
@@ -83,23 +90,25 @@ const getJWT = (authUrl: string) =>
 
 /**
  * Wraps axios fetch with authorization header using current JWT
- * @param url     url to fetch
- * @param config  Axios config
- * @returns       AxiosPromise result
+ * @param url            url to fetch
+ * @param requestConfig  Axios config
+ * @returns              AxiosPromise result
  */
-function* authorizedFetch(url: string, config?: AxiosRequestConfig) {
+function* authorizedFetch(url: string, requestConfig?: AxiosRequestConfig) {
   const jwt = yield select((state: IStoreState) => state.jwt);
   return yield fetch(url, {
     headers: {
       Authorization: `Bearer ${jwt.token}`
     },
-    ...config
+    ...requestConfig
   });
 }
 
 function* fetchData() {
   const settings = yield select((state: any) => state.settings);
-  const result = yield authorizedFetch(settings.backendUrl);
+  const result = config.useFixtures
+    ? { data: require("./fixtures/data.json") }
+    : yield authorizedFetch(settings.backendUrl);
   yield put({
     type: "DATA_FETCHED",
     data: result.data
@@ -108,7 +117,9 @@ function* fetchData() {
 
 function* fetchSchema() {
   const settings = yield select((state: any) => state.settings);
-  const result = yield authorizedFetch(settings.backendUrl + "/schema");
+  const result = config.useFixtures
+    ? { data: require("./fixtures/schema.json") }
+    : yield authorizedFetch(settings.backendUrl + "/schema");
   yield put({
     type: "SCHEMA_FETCHED",
     data: result.data

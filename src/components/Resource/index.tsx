@@ -62,7 +62,7 @@ const validationMessage = (
   }
 };
 
-export default class extends React.PureComponent<IProps, IState> {
+export default class Resource extends React.PureComponent<IProps, IState> {
   form: any = null;
   editor: JsonEditor | null = null;
 

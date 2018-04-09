@@ -18,7 +18,10 @@ interface IProps {
 const label = (item: any): string => JSON.stringify(item).substr(0, 10);
 const sortByLabel = (a: any, b: any) => label(a).localeCompare(label(b));
 
-export default class extends React.PureComponent<IProps & IOwnProps, {}> {
+export default class ResourceList extends React.PureComponent<
+  IProps & IOwnProps,
+  {}
+> {
   searchFilter = (search: string) => (item: IResource) => {
     const lowerCase = search.toLowerCase();
 

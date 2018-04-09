@@ -3,7 +3,10 @@ import { Dropdown } from "semantic-ui-react";
 import { IProps } from "./IProps";
 import { IStringEnumSchema } from "../../interfaces/json-schema";
 
-export default class extends React.Component<IProps<IStringEnumSchema>, {}> {
+export default class TypeStringEnum extends React.Component<
+  IProps<IStringEnumSchema>,
+  {}
+> {
   isNull = (props: IProps<IStringEnumSchema>) => {
     return props.schema.enum.length === 1;
   };

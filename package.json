@@ -33,6 +33,10 @@
     "typescript": "^2.8.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.0",
+    "@storybook/addon-links": "^3.4.0",
+    "@storybook/addons": "^3.4.0",
+    "@storybook/react": "^3.4.0",
     "@types/classnames": "^2.2.3",
     "@types/enzyme": "^3.1.9",
     "@types/enzyme-adapter-react-16": "^1.0.2",
@@ -51,6 +55,9 @@
     "@types/react-test-renderer": "^16.0.1",
     "@types/showdown": "^1.7.3",
     "@types/sinon": "^4.3.1",
+    "awesome-typescript-loader": "^4.0.1",
+    "babel-core": "^6.26.0",
+    "babel-runtime": "^6.26.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "husky": "^0.14.3",
@@ -67,14 +74,16 @@
   },
   "scripts": {
     "start": "PORT=8000 react-scripts-ts start",
-    "build": "npm run schemabuild && react-scripts-ts build",
+    "build": "react-scripts-ts build",
     "test":
       "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
     "testcoverage":
       "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --coverage",
     "eject": "react-scripts-ts eject",
     "lint": "tslint --project \"tsconfig.json\" -t stylish",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"]

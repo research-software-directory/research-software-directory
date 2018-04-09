@@ -3,7 +3,10 @@ import { Checkbox } from "semantic-ui-react";
 import { IProps } from "./IProps";
 import { IStringSchema } from "../../interfaces/json-schema";
 
-export default class extends React.Component<IProps<IStringSchema>, {}> {
+export default class TypeBoolean extends React.Component<
+  IProps<IStringSchema>,
+  {}
+> {
   render() {
     return (
       <div>

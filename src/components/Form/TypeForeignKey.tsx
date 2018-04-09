@@ -8,7 +8,7 @@ interface IState {
   foreignData: any[] | null;
 }
 
-export default class extends React.Component<
+export default class TypeForeignKey extends React.Component<
   IProps<IForeignKeySchema>,
   IState
 > {

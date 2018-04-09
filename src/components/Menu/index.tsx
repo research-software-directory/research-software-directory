@@ -18,8 +18,9 @@ interface IProps {
   push(location: any): any;
 }
 
-export default class extends React.PureComponent<IProps, {}> {
+export default class MainMenu extends React.PureComponent<IProps, {}> {
   render() {
+    console.log(this.props);
     return (
       <Menu
         id="main_menu"
@@ -36,6 +37,7 @@ export default class extends React.PureComponent<IProps, {}> {
             key={type}
             type={type}
             icon={this.props.settings.resources[type].icon}
+            defaultOpen={false}
           />
         ))}
       </Menu>

@@ -5,7 +5,7 @@ import { IObjectSchema } from "../../interfaces/json-schema";
 import FormPart from "./FormPart";
 import { IProps } from "./IProps";
 
-export default class extends React.Component<IProps<IObjectSchema>> {
+export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
   handleChange = (key: string) => (value: any) => {
     this.props.onChange({ ...this.props.value, [key]: value });
   };

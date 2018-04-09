@@ -6,7 +6,7 @@ import { IProps } from "./IProps";
 import FormPart from "./FormPart";
 import { createEmpty } from "../../utils/createEmpty";
 
-export default class extends React.Component<IProps<IArraySchema>> {
+export default class TypeArray extends React.Component<IProps<IArraySchema>> {
   shouldComponentUpdate(newProps: IProps<IArraySchema>) {
     return (
       newProps.value !== this.props.value || newProps.data !== this.props.data
