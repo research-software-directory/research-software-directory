@@ -4,6 +4,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 # Dependencies
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/research-software-directory/admin.svg)](https://greenkeeper.io/)
 - Auth service e.g. [github-auth](https://github.com/research-software-directory/auth-github).
 - Data api service like [rsd-backend](https://github.com/research-software-directory/backend).
 
