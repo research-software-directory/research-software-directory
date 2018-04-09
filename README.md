@@ -20,6 +20,7 @@ This settings file should be overriden in production.
 
 # Build
 - `npm run build`
+
 - Will build to `[current directory]/build`
 
 ### Install node using NVM
