@@ -142,10 +142,6 @@ export default class Resource extends React.PureComponent<IProps, IState> {
     this.getData();
   }
 
-  componentWillReceiveProps(props: IProps) {
-    console.log(props);
-  }
-
   isValidJSON(s: string) {
     try {
       JSON.parse(s);

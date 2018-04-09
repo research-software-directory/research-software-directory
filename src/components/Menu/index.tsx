@@ -20,7 +20,6 @@ interface IProps {
 
 export default class MainMenu extends React.PureComponent<IProps, {}> {
   render() {
-    console.log(this.props);
     return (
       <Menu
         id="main_menu"

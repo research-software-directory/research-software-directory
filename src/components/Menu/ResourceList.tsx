@@ -35,7 +35,6 @@ export default class ResourceList extends React.PureComponent<
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         {this.props.data
