@@ -3,20 +3,45 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { Router } from "react-router";
+import { history } from "../history";
+
 import JsonEditor from "../components/Resource/JsonEditor";
 import App from "../components/App";
-import { store } from "../store";
-import { Provider } from "react-redux";
 import MainMenu from "../components/Menu";
-import { Router } from "react-router";
 import ResourceList from "../components/Menu/ResourceList";
 import ResourceType from "../components/Menu/ResourceType";
 import Resource from "../components/Resource";
-import { history } from "../history";
 
 const settings = require("../fixtures/settings.json");
 const data = require("../fixtures/data.json");
 const schema = require("../fixtures/schema.json");
+const jwtData = {
+  token: "asdasd",
+  claims: {
+    sub: "Tommos0",
+    subType: "GITHUB",
+    permissions: ["read", "write"],
+    iat: 1520588504,
+    user: {
+      name: "Tom Klaver",
+      image: "https://avatars0.githubusercontent.com/u/9217533?v=4"
+    }
+  }
+};
+
+const store = createStore(state => state, {
+  jwt: jwtData,
+  schema,
+  data,
+  settings,
+  route: {
+    location: {}
+  },
+  initialized: true
+});
 
 history.listen(action("routing event"));
 
@@ -40,7 +65,7 @@ storiesOf("JsonEditor").add("default", () => (
 
 storiesOf("Resource").add("default", () => (
   <Resource
-    jwt={store.getState().jwt}
+    jwt={jwtData}
     schema={schema}
     data={data}
     settings={settings}
@@ -77,7 +102,7 @@ storiesOf("Menu")
   .add("Full menu", () => (
     <RouteAndRedux>
       <MainMenu
-        jwt={store.getState().jwt}
+        jwt={jwtData}
         schema={schema}
         data={data}
         settings={settings}

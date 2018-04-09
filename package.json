@@ -35,6 +35,7 @@
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.0",
     "@storybook/addon-links": "^3.4.0",
+    "@storybook/addon-storyshots": "^3.4.0",
     "@storybook/addons": "^3.4.0",
     "@storybook/react": "^3.4.0",
     "@types/classnames": "^2.2.3",
@@ -82,8 +83,8 @@
     "eject": "react-scripts-ts eject",
     "lint": "tslint --project \"tsconfig.json\" -t stylish",
     "precommit": "lint-staged",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "STORYBOOK_ENABLED=1 start-storybook -p 6006",
+    "build-storybook": "STORYBOOK_ENABLED=1 build-storybook"
   },
   "lint-staged": {
     "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"]

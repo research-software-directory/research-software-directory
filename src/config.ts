@@ -2,7 +2,7 @@ const config = {
   useFixtures: false
 };
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "test" || process.env.STORYBOOK_ENABLED) {
   config.useFixtures = true;
 }
 
