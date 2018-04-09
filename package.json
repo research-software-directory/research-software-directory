@@ -73,6 +73,9 @@
     "ts-jest": "^22.4.2",
     "webpack": "^4.5.0"
   },
+  "greenkeeper": {
+    "ignore": ["awesome-typescript-loader"]
+  },
   "scripts": {
     "start": "PORT=8000 react-scripts-ts start",
     "build": "react-scripts-ts build",
