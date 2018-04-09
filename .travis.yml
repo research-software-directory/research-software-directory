@@ -5,16 +5,8 @@ cache:
   directories:
   - node_modules
 install:
-- npm install
-- npm run schemabuild
+- yarn
 before_script:
-- REACT_APP_BACKEND="" npm test
+- yarn test
 script:
-- npm run build
-env:
-  global:
-    # GITHUB_ACCESS_TOKEN:
-    - secure: "WwVJ+RNbJ+pLLVOnfBrB9xMQl9pN9j7ahQO3ys6VWAvdDq73uq2fTMoBWCKW/V29MaxYi/eeLBhMi2yPwUeUxptoiVp4pAYfTtnXWb/n7NgUUkVHPEPpr4CF3YUn/eG/BFANKl+KjSO98nFypUrWOvbZeMWgdjj5TT1Oy5cD36JZcSpryMk0k6zbEVeWnOSNiB+YQUwblQYk6XE6OZC3oNw2/CY+Bm5SYZLVwMQO2grSXwgUVF9tuGZvwjX5Fho/aXnRY9UQRnV0FkD7qRrXFWwtRds8zr9OlbhKRoW4KhKg2KwN887pVBZ5qfblg5Obfl+Xsxh1NlB6YxuotasIyOV38egLV+zvhUkhrLQyKovanjTcDzwuVR1E/AsFqL01gxAG1Ahvmky63Rz37O9Y8vtoTbc0+7Ox6rkUCYNRC0ktfWjZ+snbpGZ7dDOTnZjkLVWItnrXKZG+DTRP9h4TCGJiaaVUaF7C1AWSz81mEORycFeSsNB5bt/rhB6lQ1lplWeZtat7+GJabW3XvpLyeXZ7atcyx1DWXZZPur9ij3Ni13thdO+tap6nObb784w1g52RT7LaAMGwpaJW1rOLgb02ZIbMEJuLtGIxBpicKfcAvIhndSw+IoypaRHZvDGj02+N2OXu56KIx47BjS9oHD4PKcbmWg+m9QQCoXho+lc="
-    - SCHEMA_URL=https://raw.githubusercontent.com/research-software-directory/backend/master/schema
-    - SCHEMA_LOCATIONS=https://api.github.com/repos/research-software-directory/backend/contents/schema
-    - SCHEMA_LOCAL=/schema
+- yarn build
