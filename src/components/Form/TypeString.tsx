@@ -13,13 +13,16 @@ export default class TypeString extends React.Component<
   }
   render() {
     return (
-      <div>
+      <Horizontal>
+        {this.props.showLabel !== false && (
+          <Label>{this.props.settings.label || this.props.label}</Label>
+        )}
         <TextInput
           size="large"
           defaultValue={this.props.value}
           onChange={(_, elm) => this.props.onChange(elm.value)}
         />
-      </div>
+      </Horizontal>
     );
   }
 }
@@ -28,5 +31,16 @@ export default class TypeString extends React.Component<
   https://github.com/styled-components/styled-components/issues/1233
  */
 const TextInput = styled(Input)`
-  width: 100%;
+  flex: 1;
 ` as StyledComponentClass<InputProps, {}>;
+
+const Horizontal = styled.div`
+  flex-direction: row;
+  display: flex;
+`;
+
+const Label = styled.label`
+  display: inline-block;
+  min-width: 150px;
+  font-weight: bold;
+`;

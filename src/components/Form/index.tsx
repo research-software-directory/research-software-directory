@@ -33,7 +33,7 @@ export default class extends React.PureComponent<IProps, IState> {
       <div style={{ height: "100%" }}>
         <FormPart
           schema={this.props.schema[type]}
-          settings={this.props.settings.resources[type].fields}
+          settings={this.props.settings.resources[type]}
           value={this.props.value}
           data={this.props.data}
           onChange={this.handleChange}

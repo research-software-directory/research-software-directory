@@ -12,13 +12,7 @@ export default class TypeForeignKey extends React.Component<
   IProps<IForeignKeySchema>,
   IState
 > {
-  state = { foreignData: null };
-
-  shouldComponentUpdate(newProps: IProps<IForeignKeySchema>) {
-    return (
-      newProps.value !== this.props.value || newProps.data !== this.props.data
-    );
-  }
+  state = { foreignData: null }; // cache foreign data
 
   componentDidMount() {
     this.setState({
@@ -41,6 +35,7 @@ export default class TypeForeignKey extends React.Component<
         fluid={true}
         search={true}
         options={items}
+        style={{ maxWidth: "350px" }}
       />
     );
   }

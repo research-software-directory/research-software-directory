@@ -1,10 +1,8 @@
 import * as React from "react";
-// import { Segment } from "semantic-ui-react";
-import { ISchema } from "../../interfaces/json-schema";
+import { IForeignKeySchema, ISchema } from "../../interfaces/json-schema";
 import { IProps } from "./IProps";
 import { getElement } from "./elementFactory";
 import styled from "styled-components";
-import TypeArray from "./TypeArray";
 
 interface IState {
   hasError: boolean;
@@ -12,10 +10,7 @@ interface IState {
   info: any;
 }
 
-export default class FormPart extends React.PureComponent<
-  IProps<ISchema>,
-  IState
-> {
+export default class FormPart extends React.Component<IProps<ISchema>, IState> {
   constructor(props: IProps<ISchema>) {
     super(props);
     this.state = {
@@ -24,6 +19,13 @@ export default class FormPart extends React.PureComponent<
       info: null
     };
   }
+
+  shouldComponentUpdate(newProps: IProps<IForeignKeySchema>) {
+    return (
+      newProps.value !== this.props.value || newProps.data !== this.props.data
+    );
+  }
+
   componentDidCatch(error: any, info: any) {
     this.setState({ hasError: true, error, info });
     console.error(error, info);
@@ -34,28 +36,9 @@ export default class FormPart extends React.PureComponent<
       return <ShowError>{this.state.error.stack.toString()}</ShowError>;
     }
     const Component = getElement(this.props.schema);
-    return (
-      <Section border={Component === TypeArray}>
-        {this.props.label && <Label>{this.props.label}</Label>}
-        <Component {...this.props} />
-      </Section>
-    );
+    return <Component {...this.props} />;
   }
 }
-
-const Label = styled.label`
-  font-weight: bold;
-`;
-
-interface ISectionProps {
-  border: boolean;
-}
-
-const Section = styled.section`
-  padding-left: 0.5em;
-  margin-bottom: 1em;
-  border: ${(p: ISectionProps) => (p.border ? "1px solid black" : "none")};
-`;
 
 const ShowError = styled.pre`
   background-color: red;

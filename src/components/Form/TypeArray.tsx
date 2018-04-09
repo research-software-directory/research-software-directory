@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import { Button } from "semantic-ui-react";
+import { Button, Label } from "semantic-ui-react";
 import { IArraySchema } from "../../interfaces/json-schema";
 import { IProps } from "./IProps";
 import FormPart from "./FormPart";
 import { createEmpty } from "../../utils/createEmpty";
+import styled from "styled-components";
 
 export default class TypeArray extends React.Component<IProps<IArraySchema>> {
   shouldComponentUpdate(newProps: IProps<IArraySchema>) {
@@ -34,13 +35,26 @@ export default class TypeArray extends React.Component<IProps<IArraySchema>> {
     }
 
     return (
-      <div>
-        <Button onClick={this.onAdd}>+ Add</Button>
+      <div style={{ marginTop: "3em", marginBottom: "3em" }}>
+        {Array.isArray(this.props.value) && (
+          <Label color="blue" circular={true}>
+            {this.props.value.length}
+          </Label>
+        )}
+        {this.props.showLabel !== false && (
+          <FieldLabel>
+            {this.props.settings.label || this.props.label}
+          </FieldLabel>
+        )}
+        <Button color="blue" size="mini" onClick={this.onAdd}>
+          +
+        </Button>
         {value.map((val: any, index: number) => (
           <FormPart
             key={index}
             value={val}
             settings={this.props.settings}
+            showLabel={false}
             schema={this.props.schema.items}
             data={this.props.data}
             label=""
@@ -51,3 +65,8 @@ export default class TypeArray extends React.Component<IProps<IArraySchema>> {
     );
   }
 }
+
+const FieldLabel = styled.label`
+  display: inline-block;
+  font-weight: bold;
+`;

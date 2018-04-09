@@ -1,6 +1,4 @@
 import * as React from "react";
-
-import { Segment } from "semantic-ui-react";
 import { IObjectSchema } from "../../interfaces/json-schema";
 import FormPart from "./FormPart";
 import { IProps } from "./IProps";
@@ -22,7 +20,11 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
         <FormPart
           key={key}
           value={this.props.value[key]}
-          settings={this.props.settings && this.props.settings[key]}
+          settings={
+            (this.props.settings &&
+              this.props.settings.properties &&
+              this.props.settings.properties[key]) || { label: "" }
+          }
           schema={this.props.schema.properties[key]}
           data={this.props.data}
           label={key}
@@ -33,6 +35,19 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
     if (!contents) {
       return null;
     }
-    return <Segment>{contents}</Segment>;
+    return (
+      <div
+        style={{
+          paddingLeft: "1em",
+          borderRadius: "4px",
+          border:
+            Object.keys(this.props.schema.properties).length > 1
+              ? "1px solid #ccc"
+              : ""
+        }}
+      >
+        {contents}
+      </div>
+    );
   }
 }
