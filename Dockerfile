@@ -12,13 +12,9 @@ COPY ./package.json /app
 COPY ./package-lock.json /app
 RUN npm install
 COPY ./tsconfig.json /app
+COPY ./tslint.json /app
 COPY ./src /app/src
-COPY ./scripts /app/scripts
 COPY ./public /app/public
-
-ENV SCHEMA_URL=https://raw.githubusercontent.com/research-software-directory/backend/master/schema
-ENV SCHEMA_LOCATIONS=https://api.github.com/repos/research-software-directory/backend/contents/schema
-ENV SCHEMA_LOCAL=/schema
 
 RUN npm run build
 

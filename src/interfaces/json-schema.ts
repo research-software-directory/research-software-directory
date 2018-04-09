@@ -1,84 +1,94 @@
-export interface ISchema {
-  id: string;
+export type ISchema =
+  | IObjectSchema
+  | IArraySchema
+  | IBooleanSchema
+  | IStringSchema
+  | IStringEnumSchema;
+
+export interface IObjectSchema {
+  type: "object";
+  properties: {
+    [key: string]: ISchema;
+  };
   required?: string[];
-  type: 'object';
-  '#schema': 'http://json-property.org/draft-04/property#';
-  properties: { [key: string]: IProperty };
-  additionalProperties: boolean;
+  definitions?: any;
+  additionalProperties?: boolean;
 }
 
-export type IProperty = IArrayProperty | ILinkProperty | IStringProperty | IReferenceProperty |
-                        IEnumProperty | IAnyOfProperty;
-
-interface IBaseProperty {
-  description?: string;
-  htmlDescription?: string;
-  sortIndex?: number;
-  // type?: string;
+export interface IRootSchema extends IObjectSchema {
+  $schema: "http://json-schema.org/draft-04/schema";
+  additionalProperties: false;
 }
 
-export interface IAnyOfProperty extends IBaseProperty {
-  anyOf: IProperty[];
+export interface IArraySchema {
+  type: "array";
+  items: ISchema;
 }
 
-export function isAnyOfProperty(property: any): property is IAnyOfProperty {
-  return 'anyOf' in property;
+export interface IStringEnumSchema {
+  type: "string";
+  enum: string[];
 }
 
-export interface IArrayProperty extends IBaseProperty {
-  type: 'array';
-  items: IProperty;
+export interface IBooleanSchema {
+  type: "boolean";
 }
 
-export function isArrayProperty(property: any): property is IArrayProperty {
-  return 'type' in property && property.type === 'array';
-}
-
-interface IReferenceProperty extends IBaseProperty {
-  reference: string;
-}
-
-export function isReferenceProperty(property: any): property is IReferenceProperty {
-  return 'reference' in property;
-}
-
-export interface IEnumProperty extends IBaseProperty {
-  type: 'string';
-  'enum': string[];
-}
-
-export function isEnumProperty(property: any): property is IEnumProperty {
-  return 'enum' in property;
-}
-
-interface IBooleanProperty extends IBaseProperty {
-  type: 'boolean';
-}
-
-export function isBooleanProperty(property: any): property is IBooleanProperty {
-  return 'type' in property && property.type === 'boolean';
-}
-
-interface IStringProperty extends IBaseProperty {
-  type: 'string';
+export interface IStringSchema {
+  type: "string";
   format?: string;
-  markdown?: boolean;
-  long?: boolean;
 }
 
-export function isStringProperty(property: any): property is IStringProperty {
-  return 'type' in property &&
-    !isArrayProperty(property) &&
-    !isEnumProperty(property) &&
-    !isLinkProperty(property) &&
-    !isBooleanProperty(property);
+export interface IForeignKeySchema {
+  type: "object";
+  required: ["collection", "id"];
+  properties: {
+    collection: {
+      enum: string[];
+      type: "string";
+    };
+    id: {
+      type: "string";
+    };
+  };
 }
 
-interface ILinkProperty extends IBaseProperty {
-  type: 'string';
-  resType: string;
+export function isRootSchema(schema: any): schema is IRootSchema {
+  return (
+    schema.type === "object" &&
+    schema.$schema === "http://json-schema.org/draft-04/schema"
+  );
 }
 
-export function isLinkProperty(property: any): property is ILinkProperty {
-  return 'type' in property && property.type === 'string' && 'resType' in property;
+export function isObjectSchema(schema: any): schema is IObjectSchema {
+  return (
+    (schema.type === "object" || !schema.type) && !isForeignKeySchema(schema)
+  );
+}
+
+export function isArraySchema(schema: any): schema is IArraySchema {
+  return schema.type === "array";
+}
+
+export function isStringEnumSchema(schema: any): schema is IStringEnumSchema {
+  return schema.type === "string" && schema.enum;
+}
+
+export function isBooleanSchema(schema: any): schema is IBooleanSchema {
+  return schema.type === "boolean";
+}
+
+export function isStringSchema(schema: any): schema is IStringSchema {
+  return (
+    (schema.type === "string" && !isStringEnumSchema(schema)) ||
+    (Array.isArray(schema.type) && schema.type.indexOf("string") > -1)
+  );
+}
+
+export function isForeignKeySchema(schema: any): schema is IForeignKeySchema {
+  return (
+    schema.type === "object" &&
+    "collection" in schema.properties &&
+    "id" in schema.properties
+  );
 }

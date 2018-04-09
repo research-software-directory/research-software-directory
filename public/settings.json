@@ -1,0 +1,30 @@
+{
+  "backendUrl": "http://localhost:5001",
+  "authUrl": "http://localhost:5002",
+  "resources": {
+    "software" : {
+      "name": "Software",
+      "icon": "file code outline",
+      "displayName": ["brandName"],
+      "fields": {
+
+      }
+    },
+    "person" : {
+      "name": "Person",
+      "icon": "user"
+    },
+    "mention" : {
+      "name": "mention",
+      "icon": "book"
+    },
+    "project" : {
+      "name": "Project",
+      "icon": "lab"
+    },
+    "organization" : {
+      "name": "Organization",
+      "icon": "university"
+    }
+  }
+}

@@ -3,8 +3,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-# Docker
-- `docker build -f ./Dockerfile.dev . -t rsd-admin`
+# Dependencies
+- Auth service e.g. [github-auth](https://github.com/research-software-directory/auth-github).
+- Data api service like [rsd-backend](https://github.com/research-software-directory/backend).
 
 # Installation
 - Clone repository
@@ -13,14 +14,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Run tests `npm run test`
 - Start app in dev server: `npm start`
 
-To build:
+## Settings
+Run-time settings should be reachable through `[BASE_URL]/settings.json`, see e.g. `public/settings.json`.
+This settings file should be overriden in production.
+
+# Build
 - `npm run build`
 
 - Will build to `[current directory]/build`
-
-# Settings
-- see `src/settings.ts`
-- requires [backend](https://github.com/NLeSC/research-software-directory-backend)
 
 ### Install node using NVM
 See https://github.com/creationix/nvm#install-script
