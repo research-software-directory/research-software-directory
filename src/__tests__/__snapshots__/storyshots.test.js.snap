@@ -12,40 +12,66 @@ exports[`Storyshots Form elements Array 1`] = `
     + Add
   </button>
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bwzfXH iuviWe"
   >
-    
-    <div>
-      <div
-        className="ui large input sc-bdVaJa UoSJW"
-      >
-        <input
-          defaultValue="asdasd"
-          disabled={undefined}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="text"
-        />
+    <section
+      className="sc-bxivhb fOSOrh"
+    >
+      
+      <div>
+        <div
+          className="ui large input sc-bdVaJa UoSJW"
+        >
+          <input
+            defaultValue="asdasd"
+            disabled={undefined}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
       </div>
-    </div>
+    </section>
+    <button
+      className="ui button"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      x Delete
+    </button>
   </section>
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bwzfXH iuviWe"
   >
-    
-    <div>
-      <div
-        className="ui large input sc-bdVaJa UoSJW"
-      >
-        <input
-          defaultValue="asdasddsa"
-          disabled={undefined}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="text"
-        />
+    <section
+      className="sc-bxivhb fOSOrh"
+    >
+      
+      <div>
+        <div
+          className="ui large input sc-bdVaJa UoSJW"
+        >
+          <input
+            defaultValue="asdasddsa"
+            disabled={undefined}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
       </div>
-    </div>
+    </section>
+    <button
+      className="ui button"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      x Delete
+    </button>
   </section>
 </div>
 `;
@@ -81,10 +107,10 @@ exports[`Storyshots Form elements Object 1`] = `
   className="ui segment"
 >
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bxivhb fOSOrh"
   >
     <label
-      className="sc-bwzfXH hZEuEv"
+      className="sc-htpNat ixiyzb"
     >
       prop1
     </label>
@@ -103,10 +129,10 @@ exports[`Storyshots Form elements Object 1`] = `
     </div>
   </section>
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bxivhb fOSOrh"
   >
     <label
-      className="sc-bwzfXH hZEuEv"
+      className="sc-htpNat ixiyzb"
     >
       prop2
     </label>
