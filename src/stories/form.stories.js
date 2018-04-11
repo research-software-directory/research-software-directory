@@ -8,6 +8,7 @@ import TypeString from "../components/Form/TypeString";
 import TypeStringEnum from "../components/Form/TypeStringEnum";
 import TypeObject from "../components/Form/TypeObject";
 import TypeArray from "../components/Form/TypeArray";
+import TypeForeignKey from "../components/Form/TypeForeignKey";
 
 storiesOf("Form elements")
   .add("Boolean", () => (
@@ -52,6 +53,35 @@ storiesOf("Form elements")
       settings={null}
       onChange={action("change")}
       label="Object"
+    />
+  ))
+  .add("ForeignKey", () => (
+    <TypeForeignKey
+      schema={{
+        properties: {
+          collection: {
+            enum: ["things"]
+          }
+        }
+      }}
+      data={{
+        things: [
+          {
+            primaryKey: {
+              id: "thing1"
+            }
+          },
+          {
+            primaryKey: {
+              id: "thing2"
+            }
+          }
+        ]
+      }}
+      value={{ collection: "things", id: "thing1" }}
+      settings={null}
+      onChange={action("change")}
+      label="ForeignKey"
     />
   ))
   .add("Array", () => (
