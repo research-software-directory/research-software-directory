@@ -102,6 +102,93 @@ exports[`Storyshots Form elements Boolean 1`] = `
 </div>
 `;
 
+exports[`Storyshots Form elements ForeignKey 1`] = `
+<div
+  aria-busy={undefined}
+  aria-disabled={undefined}
+  aria-expanded={false}
+  className="ui fluid search selection dropdown"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onMouseDown={[Function]}
+  role="combobox"
+  tabIndex={undefined}
+>
+  <input
+    aria-autocomplete="list"
+    autoComplete="off"
+    className="search"
+    onChange={[Function]}
+    style={
+      Object {
+        "width": undefined,
+      }
+    }
+    tabIndex={0}
+    type="text"
+    value=""
+  />
+  <div
+    aria-live="polite"
+    className="text"
+    role="alert"
+  >
+    thing1
+  </div>
+  <i
+    aria-hidden="true"
+    className="dropdown icon"
+    onClick={[Function]}
+  />
+  <div
+    aria-multiselectable={undefined}
+    className="menu transition"
+    role="listbox"
+  >
+    <div
+      aria-checked={true}
+      aria-disabled={undefined}
+      aria-selected={true}
+      className="active selected item"
+      onClick={[Function]}
+      role="option"
+      style={
+        Object {
+          "pointerEvents": "all",
+        }
+      }
+    >
+      <span
+        className="text"
+      >
+        thing1
+      </span>
+    </div>
+    <div
+      aria-checked={false}
+      aria-disabled={undefined}
+      aria-selected={false}
+      className="item"
+      onClick={[Function]}
+      role="option"
+      style={
+        Object {
+          "pointerEvents": "all",
+        }
+      }
+    >
+      <span
+        className="text"
+      >
+        thing2
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Form elements Object 1`] = `
 <div
   className="ui segment"
