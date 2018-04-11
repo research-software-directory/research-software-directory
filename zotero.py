@@ -94,9 +94,11 @@ def zotero_sync():
                 'title': item['data'].get('title', ''),
                 'type': item['data']['itemType'],
                 'zoteroKey': item['key'],
-                'date': get_date_for_zotero_item(item),
-                'url': get_url_for_zotero_item(item)
+                'date': get_date_for_zotero_item(item)
             }
+            url = get_url_for_zotero_item(item)
+            if url:
+                to_save['url'] = url
 
             if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
                 (author, image) = get_blog_fields(item)
@@ -113,5 +115,5 @@ def zotero_sync():
             headers={'Authorization': 'Bearer %s' % os.environ.get('BACKEND_JWT')}
         )
         if resp.status_code != 200:
-            raise Exception('error saving zotero items')
 
+            raise Exception('error saving zotero items', str(resp.json()))
