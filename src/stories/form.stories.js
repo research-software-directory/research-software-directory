@@ -21,8 +21,34 @@ storiesOf("Form elements")
   ))
   .add("String", () => (
     <TypeString
-      schema={null}
+      schema={{
+        type: "string"
+      }}
       value={"Value here"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
+    />
+  ))
+  .add("String format=uri valid", () => (
+    <TypeString
+      schema={{
+        format: "uri",
+        type: "string"
+      }}
+      value={"https://example.com"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
+    />
+  ))
+  .add("String format=uri invalid", () => (
+    <TypeString
+      schema={{
+        format: "uri",
+        type: "string"
+      }}
+      value={"Not an uri"}
       settings={null}
       onChange={action("change")}
       label="String"
