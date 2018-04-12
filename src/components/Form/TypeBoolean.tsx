@@ -23,6 +23,7 @@ export default class TypeBoolean extends React.Component<
     );
   }
 }
+
 const Label = styled.label`
   display: inline-block;
   font-weight: bold;
@@ -32,4 +33,5 @@ const Label = styled.label`
 const Horizontal = styled.div`
   flex-direction: row;
   display: flex;
+  align-items: center;
 `;

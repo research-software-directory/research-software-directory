@@ -37,6 +37,7 @@ const TextInput = styled(Input)`
 const Horizontal = styled.div`
   flex-direction: row;
   display: flex;
+  align-items: center;
 `;
 
 const Label = styled.label`

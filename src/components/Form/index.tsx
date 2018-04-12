@@ -5,7 +5,7 @@ import { ISchema } from "../../interfaces/json-schema";
 import { IData } from "../../interfaces/misc";
 import { IResource } from "../../interfaces/resource";
 import FormPart from "./FormPart";
-
+import "./style.css";
 interface IConnectedProps {
   schema: { [key: string]: ISchema };
   data: IData;

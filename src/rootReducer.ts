@@ -45,7 +45,7 @@ export const rootReducer = combineReducers({
 });
 
 export interface ISettingsProperty {
-  properties?: { [key: string]: ISettingsProperty };
+  properties: { [key: string]: ISettingsProperty };
   label?: string;
   icon?: SemanticICONS;
   [key: string]: any;

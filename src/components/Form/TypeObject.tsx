@@ -15,6 +15,12 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
   }
 
   sortKeys = (a: string, b: string) => {
+    if (a === "foreignKey") {
+      return -1;
+    }
+    if (b === "foreignKey") {
+      return 1;
+    }
     if (
       this.props.settings &&
       this.props.settings.properties &&
@@ -55,14 +61,16 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
     }
     return (
       <div
-        style={{
-          paddingLeft: "1em",
-          borderRadius: "4px",
-          border:
-            Object.keys(this.props.schema.properties).length > 1
-              ? "1px solid #ccc"
-              : ""
-        }}
+        style={
+          {
+            // paddingLeft: "1em",
+            // borderRadius: "4px",
+            // border:
+            //   Object.keys(this.props.schema.properties).length > 1
+            //     ? "1px solid #ccc"
+            //     : ""
+          }
+        }
       >
         {contents}
       </div>

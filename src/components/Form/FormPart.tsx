@@ -36,7 +36,18 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
       return <ShowError>{this.state.error.stack.toString()}</ShowError>;
     }
     const Component = getElement(this.props.schema);
-    return <Component {...this.props} />;
+    return (
+      <div
+        style={{
+          minHeight: "4em",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center"
+        }}
+      >
+        <Component {...this.props} />
+      </div>
+    );
   }
 }
 

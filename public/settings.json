@@ -82,7 +82,16 @@
           "label": "tags"
         },
         "testimonial": {
-          "label": "testimonial"
+          "label": "testimonial",
+          "properties": {
+            "person": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Person"
+                }
+              }
+            }
+          }
         },
         "updatedAt": {
           "label": "updatedAt"
