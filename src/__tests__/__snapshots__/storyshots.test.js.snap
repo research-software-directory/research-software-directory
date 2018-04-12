@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Form elements Array 1`] = `
-<div>
+<section
+  className="sc-bwzfXH exYZHK"
+>
   <button
     className="ui button"
     disabled={undefined}
@@ -12,7 +14,7 @@ exports[`Storyshots Form elements Array 1`] = `
     + Add
   </button>
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bxivhb fOSOrh"
   >
     
     <div>
@@ -30,7 +32,7 @@ exports[`Storyshots Form elements Array 1`] = `
     </div>
   </section>
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bxivhb fOSOrh"
   >
     
     <div>
@@ -47,7 +49,75 @@ exports[`Storyshots Form elements Array 1`] = `
       </div>
     </div>
   </section>
-</div>
+</section>
+`;
+
+exports[`Storyshots Form elements Array minItems=1 invalid 1`] = `
+<section
+  className="sc-bwzfXH dxpMzv"
+>
+  <button
+    className="ui button"
+    disabled={undefined}
+    onClick={[Function]}
+    role="button"
+    tabIndex={undefined}
+  >
+    + Add
+  </button>
+</section>
+`;
+
+exports[`Storyshots Form elements Array minItems=1 valid 1`] = `
+<section
+  className="sc-bwzfXH exYZHK"
+>
+  <button
+    className="ui button"
+    disabled={undefined}
+    onClick={[Function]}
+    role="button"
+    tabIndex={undefined}
+  >
+    + Add
+  </button>
+  <section
+    className="sc-bxivhb fOSOrh"
+  >
+    
+    <div>
+      <div
+        className="ui large input sc-bdVaJa UoSJW"
+      >
+        <input
+          defaultValue="asdasd"
+          disabled={undefined}
+          onChange={[Function]}
+          tabIndex={undefined}
+          type="text"
+        />
+      </div>
+    </div>
+  </section>
+  <section
+    className="sc-bxivhb fOSOrh"
+  >
+    
+    <div>
+      <div
+        className="ui large input sc-bdVaJa UoSJW"
+      >
+        <input
+          defaultValue="asdasddsa"
+          disabled={undefined}
+          onChange={[Function]}
+          tabIndex={undefined}
+          type="text"
+        />
+      </div>
+    </div>
+  </section>
+</section>
 `;
 
 exports[`Storyshots Form elements Boolean 1`] = `
@@ -81,10 +151,10 @@ exports[`Storyshots Form elements Object 1`] = `
   className="ui segment"
 >
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bxivhb fOSOrh"
   >
     <label
-      className="sc-bwzfXH hZEuEv"
+      className="sc-htpNat ixiyzb"
     >
       prop1
     </label>
@@ -103,10 +173,10 @@ exports[`Storyshots Form elements Object 1`] = `
     </div>
   </section>
   <section
-    className="sc-htpNat emMBTd"
+    className="sc-bxivhb fOSOrh"
   >
     <label
-      className="sc-bwzfXH hZEuEv"
+      className="sc-htpNat ixiyzb"
     >
       prop2
     </label>
@@ -144,6 +214,38 @@ exports[`Storyshots Form elements String 1`] = `
   >
     <input
       defaultValue="Value here"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements String format=uri invalid 1`] = `
+<div>
+  <div
+    className="ui large input sc-bdVaJa UoSJW"
+  >
+    <input
+      defaultValue="Not an uri"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements String format=uri valid 1`] = `
+<div>
+  <div
+    className="ui large input sc-bdVaJa UoSJW"
+  >
+    <input
+      defaultValue="https://example.com"
       disabled={undefined}
       onChange={[Function]}
       tabIndex={undefined}
