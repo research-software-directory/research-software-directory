@@ -9,16 +9,20 @@
       "displayName": ["brandName"],
       "properties": {
         "brandName": {
-          "label": "brandName"
+          "label": "brandName",
+          "sortIndex": 200
         },
         "bullets": {
-          "label": "bullets"
+          "label": "bullets",
+          "sortIndex": 100
         },
         "citationcff": {
-          "label": "citationcff"
+          "label": "citationcff",
+          "sortIndex": 300
         },
         "contributingOrganizations": {
-          "label": "contributingOrganizations"
+          "label": "contributingOrganizations",
+          "sortIndex": 400
         },
         "contributors": {
           "label": "contributors",

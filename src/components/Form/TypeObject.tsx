@@ -14,9 +14,28 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
     );
   }
 
+  sortKeys = (a: string, b: string) => {
+    if (
+      this.props.settings &&
+      this.props.settings.properties &&
+      this.props.settings.properties[a] &&
+      this.props.settings.properties[b] &&
+      this.props.settings.properties[a].sortIndex &&
+      this.props.settings.properties[b].sortIndex
+    ) {
+      return (
+        this.props.settings.properties[a].sortIndex -
+        this.props.settings.properties[b].sortIndex
+      );
+    } else {
+      return 0;
+    }
+  };
+
   render() {
-    const contents = Object.keys(this.props.schema.properties).map(
-      (key: string) => (
+    const contents = Object.keys(this.props.schema.properties)
+      .sort(this.sortKeys)
+      .map((key: string) => (
         <FormPart
           key={key}
           value={this.props.value[key]}
@@ -30,8 +49,7 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
           label={key}
           onChange={this.handleChange(key)}
         />
-      )
-    );
+      ));
     if (!contents) {
       return null;
     }
