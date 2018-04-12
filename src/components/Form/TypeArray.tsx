@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import { Button } from "semantic-ui-react";
+import styled from "styled-components";
+
 import { IArraySchema } from "../../interfaces/json-schema";
 import { IProps } from "./IProps";
 import FormPart from "./FormPart";
@@ -32,9 +34,14 @@ export default class TypeArray extends React.Component<IProps<IArraySchema>> {
     if (!Array.isArray(value)) {
       value = [];
     }
-
+    let error = false;
+    if ("minItems" in this.props.schema && this.props.schema.minItems) {
+      if (value.length < this.props.schema.minItems) {
+        error = true;
+      }
+    }
     return (
-      <div>
+      <Section error={error}>
         <Button onClick={this.onAdd}>+ Add</Button>
         {value.map((val: any, index: number) => (
           <FormPart
@@ -47,7 +54,15 @@ export default class TypeArray extends React.Component<IProps<IArraySchema>> {
             onChange={(v: any) => this.handleChange(index, v)}
           />
         ))}
-      </div>
+      </Section>
     );
   }
 }
+
+interface ISectionProps {
+  error: boolean;
+}
+
+const Section = styled.section`
+  border: ${(p: ISectionProps) => (p.error ? "1px solid #e0b4b4" : "none")};
+`;

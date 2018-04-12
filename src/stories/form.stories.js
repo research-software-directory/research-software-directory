@@ -92,4 +92,32 @@ storiesOf("Form elements")
       onChange={action("change")}
       label="Array"
     />
+  ))
+  .add("Array minItems=1 valid", () => (
+    <TypeArray
+      schema={{
+        items: {
+          type: "string"
+        },
+        minItems: 1
+      }}
+      value={["asdasd", "asdasddsa"]}
+      settings={null}
+      onChange={action("change")}
+      label="Array"
+    />
+  ))
+  .add("Array minItems=1 invalid", () => (
+    <TypeArray
+      schema={{
+        items: {
+          type: "string"
+        },
+        minItems: 1
+      }}
+      value={[]}
+      settings={null}
+      onChange={action("change")}
+      label="Array"
+    />
   ));
