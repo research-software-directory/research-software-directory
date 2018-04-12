@@ -55,15 +55,22 @@ export default class TypeArray extends React.Component<
     if (!Array.isArray(value)) {
       value = [];
     }
-
+    let error = false;
+    if ("minItems" in this.props.schema && this.props.schema.minItems) {
+      if (value.length < this.props.schema.minItems) {
+        error = true;
+      }
+    }
     return (
-      <div style={{ border: "1px solid blue" }} className="form--array">
+      <Container error={error} className="form--array">
         <Header>
           <ArrayButton
             primary={true}
             onClick={() => this.setState({ collapsed: !this.state.collapsed })}
           >
-            {this.props.settings.label || this.props.label} &nbsp;
+            {(this.props.settings && this.props.settings.label) ||
+              this.props.label}{" "}
+            &nbsp;
             {Array.isArray(this.props.value) && (
               <Label color="blue" circular={true}>
                 {this.props.value.length}
@@ -81,7 +88,7 @@ export default class TypeArray extends React.Component<
         </Header>
         {!this.state.collapsed &&
           value.map((val: any, index: number) => (
-            <Section key={index}>
+            <ArrayItem key={index}>
               <ItemLeft>
                 <DeleteButton
                   secondary={true}
@@ -101,17 +108,13 @@ export default class TypeArray extends React.Component<
                   onChange={(v: any) => this.handleChange(index, v)}
                 />
               </ItemRight>
-            </Section>
+            </ArrayItem>
           ))}
-      </div>
+      </Container>
     );
   }
 }
 
-// const FieldLabel = styled.label`
-//   display: inline-block;
-//   font-weight: bold;
-// `;
 const ArrayButton = styled(Button)`
   border: none;
   border-radius: 0 !important;
@@ -121,7 +124,7 @@ const ArrayButton = styled(Button)`
 
 const DeleteButton = styled(Button)`` as StyledComponentClass<ButtonProps, {}>;
 
-const Section = styled.section`
+const ArrayItem = styled.section`
   display: flex;
   flex-direction: row;
   padding: 0.5em;
@@ -140,4 +143,12 @@ const ItemLeft = styled.div`
 
 const ItemRight = styled.div`
   flex: 1;
+`;
+
+interface IContainerProps {
+  error: boolean;
+}
+
+const Container = styled.section`
+  border: ${(p: IContainerProps) => `1px solid ${p.error ? "red" : "blue"}`};
 `;

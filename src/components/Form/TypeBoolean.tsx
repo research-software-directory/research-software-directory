@@ -17,7 +17,10 @@ export default class TypeBoolean extends React.Component<
           onChange={(_, elm) => this.props.onChange(elm.checked)}
         />
         {this.props.showLabel !== false && (
-          <Label>{this.props.settings.label || this.props.label}</Label>
+          <Label>
+            {(this.props.settings && this.props.settings.label) ||
+              this.props.label}
+          </Label>
         )}
       </Horizontal>
     );

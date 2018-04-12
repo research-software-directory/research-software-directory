@@ -21,7 +21,6 @@ export default class TypeForeignKey extends React.Component<
   }
 
   computeChoices() {
-    console.log("schema", this.props.schema.properties);
     const foreignData = this.props.data[
       this.props.schema.properties.collection.enum[0]
     ];
@@ -46,7 +45,10 @@ export default class TypeForeignKey extends React.Component<
       <Container>
         <Left>
           {this.props.showLabel !== false && (
-            <Label>{this.props.settings.label || this.props.label}</Label>
+            <Label>
+              {(this.props.settings && this.props.settings.label) ||
+                this.props.label}
+            </Label>
           )}
         </Left>
         <Dropdown

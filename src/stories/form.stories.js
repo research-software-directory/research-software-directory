@@ -20,15 +20,7 @@ storiesOf("Form elements")
       label="Boolean"
     />
   ))
-  .add("String", () => (
-    <TypeString
-      schema={null}
-      value={"Value here"}
-      settings={null}
-      onChange={action("change")}
-      label="String"
-    />
-  ))
+
   .add("StringEnum", () => (
     <TypeStringEnum
       schema={{ enum: ["option1", "option2", "option3"] }}
@@ -83,8 +75,10 @@ storiesOf("Form elements")
       onChange={action("change")}
       label="ForeignKey"
     />
-  ))
-  .add("Array", () => (
+  ));
+
+storiesOf("Form elements/Array")
+  .add("default", () => (
     <TypeArray
       schema={{
         items: {
@@ -95,5 +89,70 @@ storiesOf("Form elements")
       settings={null}
       onChange={action("change")}
       label="Array"
+    />
+  ))
+  .add("minItems=1 valid", () => (
+    <TypeArray
+      schema={{
+        items: {
+          type: "string"
+        },
+        minItems: 1
+      }}
+      value={["asdasd", "asdasddsa"]}
+      settings={null}
+      onChange={action("change")}
+      label="Array"
+    />
+  ))
+  .add("minItems=1 invalid", () => (
+    <TypeArray
+      schema={{
+        items: {
+          type: "string"
+        },
+        minItems: 1
+      }}
+      value={[]}
+      settings={null}
+      onChange={action("change")}
+      label="Array"
+    />
+  ));
+
+storiesOf("Form elements/String")
+  .add("default", () => (
+    <TypeString
+      schema={{
+        type: "string"
+      }}
+      value={"Value here"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
+    />
+  ))
+  .add("format=uri valid", () => (
+    <TypeString
+      schema={{
+        format: "uri",
+        type: "string"
+      }}
+      value={"https://example.com"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
+    />
+  ))
+  .add("format=uri invalid", () => (
+    <TypeString
+      schema={{
+        format: "uri",
+        type: "string"
+      }}
+      value={"Not an uri"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
     />
   ));

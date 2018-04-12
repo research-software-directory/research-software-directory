@@ -12,12 +12,20 @@ export default class TypeString extends React.Component<
     return newProps.value !== this.props.value;
   }
   render() {
+    let error = false;
+    if ("format" in this.props.schema) {
+      error = !validUrl(this.props.value);
+    }
     return (
       <Horizontal>
         {this.props.showLabel !== false && (
-          <Label>{this.props.settings.label || this.props.label}</Label>
+          <Label>
+            {(this.props.settings && this.props.settings.label) ||
+              this.props.label}
+          </Label>
         )}
         <TextInput
+          error={error}
           size="large"
           defaultValue={this.props.value}
           onChange={(_, elm) => this.props.onChange(elm.value)}
@@ -25,6 +33,18 @@ export default class TypeString extends React.Component<
       </Horizontal>
     );
   }
+}
+
+function validUrl(value: string) {
+  try {
+    // tslint:disable-next-line:no-unused-expression
+    new URL(value);
+  } catch (error) {
+    if (error instanceof TypeError) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /*
