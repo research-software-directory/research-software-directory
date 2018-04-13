@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Input, InputProps } from "semantic-ui-react";
+import * as moment from "moment";
+
 import { IProps } from "./IProps";
 import styled, { StyledComponentClass } from "styled-components";
 import { IStringSchema } from "../../interfaces/json-schema";
@@ -14,7 +16,12 @@ export default class TypeString extends React.Component<
   render() {
     let error = false;
     if ("format" in this.props.schema) {
-      error = !validUrl(this.props.value);
+      const format = this.props.schema.format;
+      if (format === "uri") {
+        error = !validUrl(this.props.value);
+      } else if (format === "date-time") {
+        error = !validDateTime(this.props.value);
+      }
     }
     return (
       <Horizontal>
@@ -45,6 +52,10 @@ function validUrl(value: string) {
     }
   }
   return true;
+}
+
+function validDateTime(value: string) {
+  return moment(value).isValid();
 }
 
 /*
