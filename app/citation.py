@@ -1,6 +1,7 @@
 from cff_converter_python import Citation
 import requests
 
+
 def get_mime_and_extension(format):
     if format == 'bibtex':
         return 'application/x-bibtex', 'bib'
@@ -10,6 +11,7 @@ def get_mime_and_extension(format):
         return 'application/x-research-info-systems', 'ris'
     raise Exception('unknown format %s' % format)
 
+
 def get_citation_data_cff(c, format):
     if format == 'bibtex':
         return c.as_bibtex()
@@ -18,10 +20,12 @@ def get_citation_data_cff(c, format):
     if format == 'ris':
         return c.as_ris()
 
+
 def get_citation_data_citeas(github_id, format):
     url = 'http://api.citeas.org/product/https://github.com/%s' % github_id
     res = requests.get(url).json()
     return [value for value in res['exports'] if value['export_name'] == format][0]['export']
+
 
 def get_citation(github_url, format):
     mime, extension = get_mime_and_extension(format)

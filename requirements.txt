@@ -7,7 +7,7 @@ Certifi
 Markdown
 ago==0.0.92
 beautifulsoup4==4.6.0
-dateparser==0.6.0
+dateparser==0.7.0
 htmlmin==0.1.12
 pprint==0.1
 gunicorn==19.7.1
