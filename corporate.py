@@ -37,7 +37,7 @@ def sync_projects():
         return {
             'primaryKey': {
                 'collection': 'project',
-                'id': from_scraper['url']
+                'id': from_scraper['url'].replace('https://www.esciencecenter.nl/project/', '')
             },
             'url': from_scraper['url'],
             'image': from_scraper['image'],
