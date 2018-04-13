@@ -340,7 +340,8 @@ exports[`Storyshots Form elements/Array default 1`] = `
       tabIndex={undefined}
     >
       Array
-        
+       
+       
       <div
         className="ui blue circular label"
         onClick={[Function]}
@@ -372,7 +373,8 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
       tabIndex={undefined}
     >
       Array
-        
+       
+       
       <div
         className="ui blue circular label"
         onClick={[Function]}
@@ -404,7 +406,8 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       tabIndex={undefined}
     >
       Array
-        
+       
+       
       <div
         className="ui blue circular label"
         onClick={[Function]}
