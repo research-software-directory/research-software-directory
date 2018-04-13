@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup
 from pyzotero import zotero
 import os
 
+from util import generate_jwt_token
+
 logger = logging.getLogger(__name__)
 
 
@@ -94,24 +96,28 @@ def zotero_sync():
                 'title': item['data'].get('title', ''),
                 'type': item['data']['itemType'],
                 'zoteroKey': item['key'],
-                'date': get_date_for_zotero_item(item),
-                'url': get_url_for_zotero_item(item)
+                'isCorporateBlog': False,
+                'date': get_date_for_zotero_item(item)
             }
+            url = get_url_for_zotero_item(item)
+            if url:
+                to_save['url'] = url
 
             if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
                 (author, image) = get_blog_fields(item)
-                to_save['isESCBlog'] = True
+                to_save['isCorporateBlog'] = True
                 to_save['author'] = author
                 to_save['image'] = image
 
             items_to_save.append(to_save)
 
     if len(items_to_save) > 0:
+        token = generate_jwt_token()
         resp = requests.patch(
             os.environ.get('BACKEND_URL') + '/mention',
             json=items_to_save,
-            headers={'Authorization': 'Bearer %s' % os.environ.get('BACKEND_JWT')}
+            headers={'Authorization': 'Bearer %s' % token}
         )
         if resp.status_code != 200:
-            raise Exception('error saving zotero items')
 
+            raise Exception('error saving zotero items', str(resp.json()))

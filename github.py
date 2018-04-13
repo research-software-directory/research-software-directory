@@ -29,13 +29,17 @@ def flatten(l):
     return [item for sublist in l for item in sublist]
 
 
+def is_github_url(url):
+    return url.startswith('https://github.com/')
+
+
 def get_repo_urls_to_sync():
     """
     Ask the backend for all Github repos that have isCommitDataSource enabled
     :return: list of Github repos (full urls)
     """
     nested_urls = map(
-        lambda sw: [ghDict['url'] for ghDict in sw['githubURLs'] if ghDict['isCommitDataSource']],
+        lambda sw: [url for url in sw['repositoryURLs'] if is_github_url(url)],
         db.software.find()
     )
     return set(flatten(nested_urls))
@@ -94,7 +98,7 @@ def save_commits(repo_url, commits):
     """
     db.commit.insert_many(map(
         lambda commit: {
-            'githubURL': repo_url,
+            'repositoryURL': repo_url,
             'date': commit['commit']['committer']['date']
         },
         commits
@@ -110,7 +114,7 @@ def sync_github_repo(url):
     """
     logger.info('syncing ' + url)
     try:
-        since = db.commit.find({'githubURL': url}).sort('date', pymongo.DESCENDING)[0]['date']
+        since = db.commit.find({'repositoryURL': url}).sort('date', pymongo.DESCENDING)[0]['date']
     except IndexError:
         since = '2012-01-01T00:00:00Z'
     since = (parser.parse(since) + datetime.timedelta(0, 1)).isoformat()[0:-6] + 'Z'  # add a second...
@@ -125,7 +129,7 @@ def sync_all():
     """
     Sync all Github repos listed in software from backend
     """
-    db.commit.create_index([('githubURL',1)])
+    db.commit.create_index([('repositoryURL', 1)])
     urls = get_repo_urls_to_sync()
     for url in urls:
         try:
