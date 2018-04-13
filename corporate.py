@@ -4,6 +4,7 @@ import os
 import requests
 
 from Scraper import BlogPostScraper, ProjectScraper, PersonScraper
+from util import generate_jwt_token
 
 logger = logging.getLogger(__name__)
 
@@ -50,10 +51,11 @@ def sync_projects():
 
     to_save = list(map(transform_project, projects))
 
+    token = generate_jwt_token()
     resp = requests.patch(
         os.environ.get('BACKEND_URL') + '/project',
         json=to_save,
-        headers={'Authorization': 'Bearer %s' % os.environ.get('BACKEND_JWT')}
+        headers={'Authorization': 'Bearer %s' % token}
     )
     if resp.status_code != 200:
         raise Exception('error saving projects', str(resp.json()))

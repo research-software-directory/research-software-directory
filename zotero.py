@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup
 from pyzotero import zotero
 import os
 
+from util import generate_jwt_token
+
 logger = logging.getLogger(__name__)
 
 
@@ -109,10 +111,11 @@ def zotero_sync():
             items_to_save.append(to_save)
 
     if len(items_to_save) > 0:
+        token = generate_jwt_token()
         resp = requests.patch(
             os.environ.get('BACKEND_URL') + '/mention',
             json=items_to_save,
-            headers={'Authorization': 'Bearer %s' % os.environ.get('BACKEND_JWT')}
+            headers={'Authorization': 'Bearer %s' % token}
         )
         if resp.status_code != 200:
 

@@ -1,5 +1,8 @@
 import logging
 import time
+import os
+
+import jwt
 
 logger = logging.getLogger(__name__)
 
@@ -37,3 +40,18 @@ def rate_limit(name, calls, period):
         return func_wrapper
     return wrapper
 
+
+def generate_jwt_token(name='Scraper', read=True, write=True):
+    permissions = []
+    if read:
+        permissions.append('read')
+    if write:
+        permissions.append('write')
+    payload = {
+        'sub': name,
+        'subType': 'TASK_ISSUED',
+        'permissions': permissions,
+        'iat': round(time.time())
+    }
+    issued_jwt = jwt.encode(payload, os.environ.get('JWT_SECRET'), algorithm='HS256')
+    return issued_jwt.decode('ascii')
