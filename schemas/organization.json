@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "title": "Organization schema",
+    "properties": {
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "createdBy": {
+            "type": "string"
+        },
+        "logo": {
+            "$ref": "definitions.json/blob"
+        },
+        "name": {
+            "type": "string"
+        },
+        "primaryKey": {
+            "$ref": "definitions.json/key/organization"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedBy": {
+            "type": "string"
+        },
+        "url": {
+            "format": "uri",
+            "type": "string"
+        }
+    },
+    "required": [
+        "createdAt",
+        "logo",
+        "name",
+        "primaryKey",
+        "updatedAt",
+        "url"
+    ]
+}

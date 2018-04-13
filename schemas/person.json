@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "title": "Person schema",
+    "properties": {
+        "avatar": {
+            "$ref": "definitions.json/blob"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "createdBy": {
+            "type": "string"
+        },
+        "emailAddress": {
+            "type": "string",
+            "format": "email"
+        },
+        "familyNames": {
+            "type": "string",
+            "minLength": 1
+        },
+        "givenNames": {
+            "type": "string",
+            "minLength": 1
+        },
+        "nameParticle": {
+            "type": "string",
+            "minLength": 1
+        },
+        "nameSuffix": {
+            "type": "string",
+            "minLength": 1
+        },
+        "primaryKey": {
+            "$ref": "definitions.json/key/person"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedBy": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "createdAt",
+        "familyNames",
+        "primaryKey",
+        "updatedAt"
+    ]
+}

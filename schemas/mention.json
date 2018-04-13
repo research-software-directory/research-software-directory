@@ -1,0 +1,84 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "title": "Mention schema",
+    "required": [
+        "createdAt",
+        "isESCBlog",
+        "primaryKey",
+        "title",
+        "type",
+        "updatedAt"
+    ],
+    "properties": {
+        "author": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "createdBy": {
+            "type": "string"
+        },
+        "date": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "image": {
+            "type": "string",
+            "format": "uri"
+        },
+        "isCorporateBlog": {
+            "type": "boolean",
+            "default": false
+        },
+        "primaryKey": {
+            "$ref": "definitions.json/key/mention"
+        },
+        "title": {
+            "type": "string"
+        },
+        "type": {
+            "enum": [
+                "attachment",
+                "blogPost",
+                "book",
+                "bookSection",
+                "computerProgram",
+                "conferencePaper",
+                "document",
+                "interview",
+                "journalArticle",
+                "magazineArticle",
+                "manuscript",
+                "newspaperArticle",
+                "note",
+                "presentation",
+                "radioBroadcast",
+                "report",
+                "thesis",
+                "videoRecording",
+                "webpage"
+            ],
+            "type": "string"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedBy": {
+            "type": "string"
+        },
+        "url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "version": {
+            "type": "number"
+        },
+        "zoteroKey": {
+            "type": "string"
+        }
+    }
+}

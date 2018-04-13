@@ -2,7 +2,6 @@
 .env
 .env.local
 .env.production
-schemas/
 schema-fixtures/
 db/
 # Jekyll
