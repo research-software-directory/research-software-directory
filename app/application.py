@@ -134,7 +134,7 @@ def cite(software_id):
 
     if "error" in software_dictionary:
         return "not found", 404
-    if 'concentDOI' not in software_dictionary:
+    if 'conceptDOI' not in software_dictionary:
         return "not found", 404
 
     citation_cff_urls = list(map(
