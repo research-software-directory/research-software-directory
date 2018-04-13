@@ -35,6 +35,8 @@ To fetch GitHub commits for lots of repositories a access token is required.
 The token can be generated at https://github.com/settings/tokens, no scopes need to be selected.
 The token must be set as value for the GITHUB_ACCESS_TOKEN environment variable.
 
+The task directly injects into the database so the DATABASE_PORT and DATABASE_NAME environment variables should be set.
+
 ### Projects
 
 The projects are scrapped from https://www.esciencecenter.nl/projects
@@ -46,6 +48,12 @@ It requires the same BACKEND_URL and JWT_SECRET environment variable as the zote
 The projects are scrapped from https://www.esciencecenter.nl/people
 
 It requires the same BACKEND_URL and JWT_SECRET environment variable as the projects task.
+
+### Releases
+
+Retrieves all the release/doi of a software item by it's concept doi.
+
+The task directly injects into the database so the DATABASE_PORT and DATABASE_NAME environment variables should be set.
 
 ## Usage
 
@@ -73,8 +81,14 @@ The persons can be fetched from the corporate site using
 python app.py --task people
 ```
 
+The releases of each software can be fetch using
+```
+python app.py --task releases
+```
+
 To keep the frontend dumb the software records must be de-normalized with
 
 ```bash
 python app.py --task cache_software
 ```
+

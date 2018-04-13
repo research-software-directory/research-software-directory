@@ -5,6 +5,7 @@ import sys
 from cache_software import cache_software
 from corporate import sync_people, sync_projects
 from github import sync_all as github_sync_all
+from releases import sync_releases
 from zotero import zotero_sync
 
 
@@ -44,6 +45,8 @@ def run_task(task):
         sync_projects()
     elif task == 'cache_software':
         cache_software()
+    elif task == 'releases':
+        sync_releases()
     else:
         raise Exception('No such task: ' + task)
 

@@ -7,15 +7,11 @@ import os
 import re
 from dateutil import parser
 import datetime
-from util import rate_limit
+from util import rate_limit, db_connect
 import logging
 import pymongo
 
-db = pymongo.MongoClient(host=os.environ.get('DATABASE_HOST'),
-                         port=int(os.environ.get('DATABASE_PORT')),
-                         connectTimeoutMS=100,
-                         serverSelectionTimeoutMS=100
-                         )[os.environ.get('DATABASE_NAME')]
+db = db_connect()
 
 logger = logging.getLogger(__name__)
 

@@ -3,6 +3,7 @@ import time
 import os
 
 import jwt
+import pymongo
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +23,7 @@ def rate_limit(name, calls, period):
         :type period: int
         :return: wrapper
     """
+
     def wrapper(func):
         def func_wrapper(*args, **kwargs):
             if name not in request_times:
@@ -37,7 +39,9 @@ def rate_limit(name, calls, period):
                 ]
             request_times[name].append(time.time())
             return func(*args, **kwargs)
+
         return func_wrapper
+
     return wrapper
 
 
@@ -55,3 +59,11 @@ def generate_jwt_token(name='Scraper', read=True, write=True):
     }
     issued_jwt = jwt.encode(payload, os.environ.get('JWT_SECRET'), algorithm='HS256')
     return issued_jwt.decode('ascii')
+
+
+def db_connect():
+    return pymongo.MongoClient(host=os.environ.get('DATABASE_HOST'),
+                               port=int(os.environ.get('DATABASE_PORT')),
+                               connectTimeoutMS=100,
+                               serverSelectionTimeoutMS=100
+                               )[os.environ.get('DATABASE_NAME')]
