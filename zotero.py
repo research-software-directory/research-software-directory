@@ -96,6 +96,7 @@ def zotero_sync():
                 'title': item['data'].get('title', ''),
                 'type': item['data']['itemType'],
                 'zoteroKey': item['key'],
+                'isCorporateBlog': False,
                 'date': get_date_for_zotero_item(item)
             }
             url = get_url_for_zotero_item(item)
@@ -104,7 +105,7 @@ def zotero_sync():
 
             if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
                 (author, image) = get_blog_fields(item)
-                to_save['isESCBlog'] = True
+                to_save['isCorporateBlog'] = True
                 to_save['author'] = author
                 to_save['image'] = image
 
