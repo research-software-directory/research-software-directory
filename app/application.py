@@ -48,7 +48,7 @@ def index():
     latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
     organizations = requests.get(api_url + '/organization').json()
     all_software = requests.get(url).json()
-    blog_posts = requests.get(api_url + '/mention?isESCBlog=true&sort=date&direction=desc&limit=4').json()
+    blog_posts = requests.get(api_url + '/mention?isCorporateBlog=true&sort=date&direction=desc&limit=4').json()
 
     return flask.render_template('index_template.html',
                                  template_data=all_software,
@@ -134,7 +134,7 @@ def cite(software_id):
 
     if "error" in software_dictionary:
         return "not found", 404
-    if 'citationCFF' not in software_dictionary:
+    if 'concentDOI' not in software_dictionary:
         return "not found", 404
 
     citation_cff_urls = list(map(

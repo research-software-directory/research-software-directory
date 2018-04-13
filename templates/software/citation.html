@@ -1,5 +1,5 @@
 <!-- Cite this software -->
-{% if template_data.citationCFF %}
+{% if template_data.conceptDOI %}
 <section id="cite-this">
     <div class="container">
         <div class="row bg-dark citation-block">
@@ -9,21 +9,19 @@
             </div>
 
             <div class="col-2-3 content">
-                {% if template_data.citationCFF and template_data.citationCFF.doi %}
-                    <div class="citation-block_doi">
-                        <h5>DOI:</h5>
-                        <div class="row">
-                            <div class="doi_url">
-                                <span class="gradient"></span>
-                                <span id="doi">{{ template_data.citationCFF.doi }}</span>
-                            </div>
-                            <div class="button button--filled-blue copy" href="#">
-                                <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
-                                <span class="text">Copy to clipboard</span>
-                            </div>
+                <div class="citation-block_doi">
+                    <h5>DOI:</h5>
+                    <div class="row">
+                        <div class="doi_url">
+                            <span class="gradient"></span>
+                            <span id="doi">{{ template_data.conceptDOI }}</span>
+                        </div>
+                        <div class="button button--filled-blue copy" href="#">
+                            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
+                            <span class="text">Copy to clipboard</span>
                         </div>
                     </div>
-                {% endif %}
+                </div>
 
                 <div class="citation-block_download">
                     <h5>Choose a citation style:</h5>
