@@ -1,57 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Form elements Array 1`] = `
-<div>
-  <button
-    className="ui button"
-    disabled={undefined}
-    onClick={[Function]}
-    role="button"
-    tabIndex={undefined}
-  >
-    + Add
-  </button>
-  <section
-    className="sc-htpNat emMBTd"
-  >
-    
-    <div>
-      <div
-        className="ui large input sc-bdVaJa UoSJW"
-      >
-        <input
-          defaultValue="asdasd"
-          disabled={undefined}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="text"
-        />
-      </div>
-    </div>
-  </section>
-  <section
-    className="sc-htpNat emMBTd"
-  >
-    
-    <div>
-      <div
-        className="ui large input sc-bdVaJa UoSJW"
-      >
-        <input
-          defaultValue="asdasddsa"
-          disabled={undefined}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="text"
-        />
-      </div>
-    </div>
-  </section>
-</div>
-`;
-
 exports[`Storyshots Form elements Boolean 1`] = `
-<div>
+<div
+  className="sc-bwzfXH hPtagm"
+>
   <div
     className="ui checked fitted toggle checkbox"
     onChange={[Function]}
@@ -73,24 +25,143 @@ exports[`Storyshots Form elements Boolean 1`] = `
       htmlFor={undefined}
     />
   </div>
+  <label
+    className="sc-bdVaJa iVzaAN"
+  >
+    Boolean
+  </label>
+</div>
+`;
+
+exports[`Storyshots Form elements ForeignKey 1`] = `
+<div
+  className="sc-jTzLTM iLaoaZ"
+>
+  <div
+    className="sc-gqjmRU cvUIdt"
+  >
+    <label
+      className="sc-VigVT iQkZUJ"
+    >
+      ForeignKey
+    </label>
+  </div>
+  <div
+    aria-busy={undefined}
+    aria-disabled={undefined}
+    aria-expanded={false}
+    className="ui fluid search selection dropdown"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    role="combobox"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+    tabIndex={undefined}
+  >
+    <input
+      aria-autocomplete="list"
+      autoComplete="off"
+      className="search"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+      tabIndex={0}
+      type="text"
+      value=""
+    />
+    <div
+      aria-live="polite"
+      className="text"
+      role="alert"
+    >
+      thing1
+    </div>
+    <i
+      aria-hidden="true"
+      className="dropdown icon"
+      onClick={[Function]}
+    />
+    <div
+      aria-multiselectable={undefined}
+      className="menu transition"
+      role="listbox"
+    >
+      <div
+        aria-checked={true}
+        aria-disabled={undefined}
+        aria-selected={true}
+        className="active selected item"
+        onClick={[Function]}
+        role="option"
+        style={
+          Object {
+            "pointerEvents": "all",
+          }
+        }
+      >
+        <span
+          className="text"
+        >
+          thing1
+        </span>
+      </div>
+      <div
+        aria-checked={false}
+        aria-disabled={undefined}
+        aria-selected={false}
+        className="item"
+        onClick={[Function]}
+        role="option"
+        style={
+          Object {
+            "pointerEvents": "all",
+          }
+        }
+      >
+        <span
+          className="text"
+        >
+          thing2
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="ui segment"
+  style={Object {}}
 >
-  <section
-    className="sc-htpNat emMBTd"
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "minHeight": "4em",
+      }
+    }
   >
-    <label
-      className="sc-bwzfXH hZEuEv"
+    <div
+      className="sc-bxivhb bfegXb"
     >
-      prop1
-    </label>
-    <div>
+      <label
+        className="sc-ifAKCX bjCwCI"
+      >
+        prop1
+      </label>
       <div
-        className="ui large input sc-bdVaJa UoSJW"
+        className="ui large input sc-htpNat gChKYK"
       >
         <input
           defaultValue="asdasd"
@@ -101,16 +172,20 @@ exports[`Storyshots Form elements Object 1`] = `
         />
       </div>
     </div>
-  </section>
-  <section
-    className="sc-htpNat emMBTd"
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "minHeight": "4em",
+      }
+    }
   >
-    <label
-      className="sc-bwzfXH hZEuEv"
+    <div
+      className="sc-bwzfXH hPtagm"
     >
-      prop2
-    </label>
-    <div>
       <div
         className="ui fitted toggle checkbox"
         onChange={[Function]}
@@ -132,23 +207,12 @@ exports[`Storyshots Form elements Object 1`] = `
           htmlFor={undefined}
         />
       </div>
+      <label
+        className="sc-bdVaJa iVzaAN"
+      >
+        prop2
+      </label>
     </div>
-  </section>
-</div>
-`;
-
-exports[`Storyshots Form elements String 1`] = `
-<div>
-  <div
-    className="ui large input sc-bdVaJa UoSJW"
-  >
-    <input
-      defaultValue="Value here"
-      disabled={undefined}
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-    />
   </div>
 </div>
 `;
@@ -257,6 +321,174 @@ exports[`Storyshots Form elements StringEnum 1`] = `
         </span>
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/Array default 1`] = `
+<section
+  className="form--array sc-gZMcBi fsdQsC"
+>
+  <div
+    className="sc-htoDjs fHktW"
+  >
+    <button
+      className="ui primary button sc-EHOje gUyRHv"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      Array
+       
+       
+      <div
+        className="ui blue circular label"
+        onClick={[Function]}
+      >
+        2
+      </div>
+       
+      <i
+        aria-hidden="true"
+        className="angle down icon"
+      />
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
+<section
+  className="form--array sc-gZMcBi dPXFYl"
+>
+  <div
+    className="sc-htoDjs fHktW"
+  >
+    <button
+      className="ui primary button sc-EHOje gUyRHv"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      Array
+       
+       
+      <div
+        className="ui blue circular label"
+        onClick={[Function]}
+      >
+        0
+      </div>
+       
+      <i
+        aria-hidden="true"
+        className="angle down icon"
+      />
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
+<section
+  className="form--array sc-gZMcBi fsdQsC"
+>
+  <div
+    className="sc-htoDjs fHktW"
+  >
+    <button
+      className="ui primary button sc-EHOje gUyRHv"
+      disabled={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex={undefined}
+    >
+      Array
+       
+       
+      <div
+        className="ui blue circular label"
+        onClick={[Function]}
+      >
+        2
+      </div>
+       
+      <i
+        aria-hidden="true"
+        className="angle down icon"
+      />
+    </button>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Form elements/String default 1`] = `
+<div
+  className="sc-bxivhb bfegXb"
+>
+  <label
+    className="sc-ifAKCX bjCwCI"
+  >
+    String
+  </label>
+  <div
+    className="ui large input sc-htpNat gChKYK"
+  >
+    <input
+      defaultValue="Value here"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/String format=uri invalid 1`] = `
+<div
+  className="sc-bxivhb bfegXb"
+>
+  <label
+    className="sc-ifAKCX bjCwCI"
+  >
+    String
+  </label>
+  <div
+    className="ui large input sc-htpNat gChKYK"
+  >
+    <input
+      defaultValue="Not an uri"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/String format=uri valid 1`] = `
+<div
+  className="sc-bxivhb bfegXb"
+>
+  <label
+    className="sc-ifAKCX bjCwCI"
+  >
+    String
+  </label>
+  <div
+    className="ui large input sc-htpNat gChKYK"
+  >
+    <input
+      defaultValue="https://example.com"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
   </div>
 </div>
 `;

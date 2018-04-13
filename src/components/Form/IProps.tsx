@@ -1,11 +1,12 @@
-import { ISettings } from "../../rootReducer";
+import { ISettingsProperty } from "../../rootReducer";
 import { IData } from "../../interfaces/misc";
 
 export interface IProps<T> {
   schema: T;
   data: IData;
   value: any;
-  settings: ISettings;
+  settings: ISettingsProperty;
   onChange: (data: any) => any;
   label: string;
+  showLabel?: boolean;
 }

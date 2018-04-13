@@ -2,27 +2,118 @@
   "backendUrl": "http://localhost:5001",
   "authUrl": "http://localhost:5002",
   "resources": {
-    "software" : {
+    "software": {
       "name": "Software",
+      "label": "Software",
       "icon": "file code outline",
       "displayName": ["brandName"],
-      "fields": {
-
+      "properties": {
+        "brandName": {
+          "label": "brandName",
+          "sortIndex": 200
+        },
+        "bullets": {
+          "label": "bullets",
+          "sortIndex": 100
+        },
+        "citationcff": {
+          "label": "citationcff",
+          "sortIndex": 300
+        },
+        "contributingOrganizations": {
+          "label": "contributingOrganizations",
+          "sortIndex": 400
+        },
+        "contributors": {
+          "label": "contributors",
+          "properties": {
+            "foreignKey": { "label": "Person" },
+            "isContactPerson": { "label": "Is this person the contact person?" }
+          }
+        },
+        "createdAt": {
+          "label": "createdAt"
+        },
+        "createdBy": {
+          "label": "createdBy"
+        },
+        "getStartedURL": {
+          "label": "getStartedURL"
+        },
+        "githubURLs": {
+          "label":
+            "Github URLs (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)",
+          "properties": {
+            "isCitationcffSource": { "label": "Is a CitationCFF source" },
+            "isCommitDataSource": { "label": "Include commits in commit graph" }
+          }
+        },
+        "isCitable": {
+          "label": "isCitable"
+        },
+        "isFeatured": {
+          "label": "isFeatured"
+        },
+        "isPublished": {
+          "label": "isPublished"
+        },
+        "license": {
+          "label": "license"
+        },
+        "primaryKey": {
+          "label": "primaryKey"
+        },
+        "programmingLanguage": {
+          "label": "programmingLanguage"
+        },
+        "readMore": {
+          "label": "readMore"
+        },
+        "related": {
+          "label": "related"
+        },
+        "shortStatement": {
+          "label": "shortStatement"
+        },
+        "slug": {
+          "label": "slug"
+        },
+        "tags": {
+          "label": "tags"
+        },
+        "testimonial": {
+          "label": "testimonial",
+          "properties": {
+            "person": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Person"
+                }
+              }
+            }
+          }
+        },
+        "updatedAt": {
+          "label": "updatedAt"
+        },
+        "updatedBy": {
+          "label": "updatedBy"
+        }
       }
     },
-    "person" : {
+    "person": {
       "name": "Person",
       "icon": "user"
     },
-    "mention" : {
+    "mention": {
       "name": "mention",
       "icon": "book"
     },
-    "project" : {
+    "project": {
       "name": "Project",
       "icon": "lab"
     },
-    "organization" : {
+    "organization": {
       "name": "Organization",
       "icon": "university"
     }
