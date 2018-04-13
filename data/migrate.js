@@ -129,7 +129,7 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         updatedAt:              convertDate(sw.updatedAt),
         brandName:              sw.name,
         bullets:                sw.statement,
-        citationcff:            null,
+        conceptDOI:             sw.doi || null,
         contributingOrganizations: sw.contributingOrganization
             ? sw.contributingOrganization.map(org => ({
                 foreignKey: {
@@ -140,12 +140,9 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
             : [],
         contributors:           sw.contributor ? sw.contributor.map(c => mapContributors(c, sw)).filter(c=>c) : [],
         getStartedURL:          sw.mainUrl,
-        githubURLs:             sw.githubid ? [{
-            isCitationcffSource: false,
-            isCommitDataSource: true,
-            url: 'https://github.com/' + sw.githubid
-        }] : [],
-        isCitable:              false,
+        repositoryURLs:         sw.githubid ? [
+            'https://github.com/' + sw.githubid
+        ] : [],
         isFeatured:             sw.highlighted || false,
         isPublished:            sw.published || false,
         license:                (sw.license && sw.license.length > 0) ? sw.license : [],
@@ -162,19 +159,21 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
                     collection: 'software'
                 }
             })),
-            mentions: relatedMentions
+            mentions: relatedMentions,
+            projects: (sw.usedInProject || []).map(project => ({
+               foreignKey: {
+                    id: project,
+                    collection: 'project'
+               }
+            })),
+            organizations: sw.contributingOrganization
+            ? sw.contributingOrganization.map(org => ({
+                foreignKey: {
+                    id: org,
+                    collection: 'organization'
+                }
+              }))
+            : []
         }
     })
 });
-
-/* manually set: testimonial
-> db.software.find({testimonial: { $exists: true, $ne: '' }}).map(s=>s.id + " " + s.testimonial + " ----- " + s.testimonialBy)
-[
-	"case-law-app It’s quite amazing to see how, thanks to this tool, a student can, in some ways, outperform the expert. ----- Gijs van Dijck, Professor of Private Law, Maastricht University",
-	"fastmlc \"A very nice tool to cluster and visualize sequences. The work is well presented, the web application easy to use and the manuscript well written. \" ----- 'Anonymous reviewer'",
-	"magma My group has had an excellent run of almost 1 year now running MAGMa as part of our cluster-based compound ID workflow - it is really a great program. ----- Lee Ferguson, Department of Civil & Environmental Engineering, Duke University",
-	"twinl-website-code Twiqs.nl biedt prachtige mogelijkheden voor onderzoeksvragen in de les ----- Jan Lepeltak: http://ictnieuws.nl/columns/column-twinl-twitter-de-les/",
-	"twiqs.nl Twiqs.nl biedt prachtige mogelijkheden voor onderzoeksvragen in de les ----- Jan Lepeltak, consultant Educational Technology",
-	"wadpac-ggir Thank you @vtvanhees for your work and support on the #GGIRpackage ! ----- Damien Bachasson, Institute of Myology, Paris"
-]
-*/
