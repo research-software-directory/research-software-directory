@@ -4,7 +4,7 @@
     "title": "Mention schema",
     "required": [
         "createdAt",
-        "isESCBlog",
+        "isCorporateBlog",
         "primaryKey",
         "title",
         "type",
