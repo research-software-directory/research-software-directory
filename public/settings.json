@@ -40,13 +40,9 @@
         "getStartedURL": {
           "label": "getStartedURL"
         },
-        "githubURLs": {
+        "repositoryURLs": {
           "label":
-            "Github URLs (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)",
-          "properties": {
-            "isCitationcffSource": { "label": "Is a CitationCFF source" },
-            "isCommitDataSource": { "label": "Include commits in commit graph" }
-          }
+            "SCM Repository urls (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)"
         },
         "isCitable": {
           "label": "isCitable"
