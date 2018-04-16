@@ -38,17 +38,6 @@
             "type": "string",
             "format": "doi"
         },
-        "contributingOrganizations": {
-            "type": "array",
-            "items": {
-                "additionalProperties": false,
-                "properties": {
-                    "foreignKey": {
-                        "$ref": "definitions.json/key/organization"
-                    }
-                }
-            }
-        },
         "contributors": {
             "items": {
                 "additionalProperties": false,

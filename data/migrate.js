@@ -130,14 +130,6 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         brandName:              sw.name,
         bullets:                sw.statement,
         conceptDOI:             sw.doi || null,
-        contributingOrganizations: sw.contributingOrganization
-            ? sw.contributingOrganization.map(org => ({
-                foreignKey: {
-                    id: org,
-                    collection: 'organization'
-                }
-              }))
-            : [],
         contributors:           sw.contributor ? sw.contributor.map(c => mapContributors(c, sw)).filter(c=>c) : [],
         getStartedURL:          sw.mainUrl,
         repositoryURLs:         sw.githubid ? [
