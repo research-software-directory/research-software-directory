@@ -1,4 +1,4 @@
-{% if template_data.contributingOrganizations %}
+{% if template_data.related.organizations %}
 <section class="" id="collaborations">
     <div class="container">
 
@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-3-4 row contributing-organisations">
-                {% for contributingOrganization in template_data.contributingOrganizations %}
+                {% for contributingOrganization in template_data.related.organizations %}
                 {% set org = contributingOrganization.foreignKey %}
                 <div class="organisation">
                 {% if org.website %}

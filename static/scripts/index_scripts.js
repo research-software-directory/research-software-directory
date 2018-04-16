@@ -165,7 +165,7 @@ function initOverview(softwareData, organizationsData) {
                 // all contributing organization ids (map, flatten, filter unique)
                 var contributingOrganizationIds = [].concat.apply(
                     [],
-                    this.software.map(function(sw) { return sw.contributingOrganizations; })
+                    this.software.map(function(sw) { return sw.relatedOrganizations; })
                 )
                 .map(function(org) { return org.foreignKey.id; })
                 .filter(filterUnique);
@@ -181,7 +181,7 @@ function initOverview(softwareData, organizationsData) {
                 partners.forEach(function(partner) { partner['count'] = 0; });
                 this.filteredSoftware
                     .forEach(function (sw) {
-                        sw.contributingOrganizations.forEach(function (forg) {
+                        sw.relatedOrganizations.forEach(function (forg) {
                             var org = partners.find(function(corg) { return corg.primaryKey.id === forg.foreignKey.id });
                             if (org) {
                                 org['count'] = (org['count'] || 0) + 1;
