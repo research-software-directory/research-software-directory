@@ -167,7 +167,7 @@ function initOverview(softwareData, organizationsData) {
                     [],
                     this.software.map(function(sw) { return sw.relatedOrganizations; })
                 )
-                .map(function(org) { return org.foreignKey.id; })
+                .map(function(org) { return org.foreignKey.primaryKey.id; })
                 .filter(filterUnique);
 
                 var orgCopy = JSON.parse(JSON.stringify(this.organizations));
