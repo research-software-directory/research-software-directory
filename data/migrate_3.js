@@ -21,3 +21,4 @@ const idsToDelete = [
  "couchdb"
 ];
 db.software.deleteMany({'primaryKey.id': { '$in': idsToDelete }});
+db.software.updateOne({'_id': 'roofit'}, { '$set' : { 'repositoryURLs': []}})
