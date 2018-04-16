@@ -37,7 +37,7 @@ def serialize_software_list(swlist):
             'brandName': sw.get('brandName'),
             'shortStatement': sw.get('shortStatement'),
             'isFeatured': sw.get('isFeatured'),
-            'contributingOrganizations': sw.get('contributingOrganizations'),
+            'relatedOrganizations': sw.get('related').get('organizations'),
         }
     return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
 
@@ -172,6 +172,7 @@ def str_to_datetime(input_string):
 def brand_code_filter(input_string):
     return input_string[:2].capitalize()
 
+
 @application.template_filter()
 def date_time_filter(input_string):
     output_format = "%Y-%m-%d %H:%M:%S"
@@ -200,6 +201,7 @@ def markdown_filter(input_string):
     if not input_string:
         return ''
     return flask.Markup(markdown.markdown(input_string))
+
 
 @application.template_filter()
 def pick_pi_filter(team):
