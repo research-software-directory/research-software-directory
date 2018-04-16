@@ -55,13 +55,7 @@
                                 </div>
                                 <div class="contributor-info">
                                     <div class="contributor_name">
-                                        {% if contactPerson.foreignKey.website %}
-                                            <a href="{{contactPerson.foreignKey.website}}" target="_blank">
-                                                {{contactPerson.foreignKey.familyNames}}
-                                            </a>
-                                        {% else %}
-                                            {{contactPerson.foreignKey.familyNames}}
-                                        {% endif %}
+                                        {{contactPerson.foreignKey.familyNames}}
                                     </div>
                                     <div class="contributor_organisation">
                                         {{contactPerson.affiliations[0].foreignKey.name}}
