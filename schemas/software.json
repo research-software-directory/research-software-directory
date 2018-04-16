@@ -446,7 +446,6 @@
                     "Cython",
                     "Erlang",
                     "Fortran",
-                    "FORTRAN",
                     "Go",
                     "Haskell",
                     "HTML",
@@ -474,7 +473,7 @@
         },
         "readMore": {
             "type": "string",
-            "minLength": 10
+            "minLength": 200
         },
         "related": {
             "additionalProperties": false,
