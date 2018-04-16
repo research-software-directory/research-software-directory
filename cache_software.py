@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 def replace_foreign_keys(resource):
     if isinstance(resource, dict):
         for key in resource.keys():
-            if key == 'foreignKey':
+            if key == 'foreignKey' and resource['foreignKey'] and 'collection' in resource['foreignKey'] and 'id' in resource['foreignKey']:
                 foreign_resource = db[resource['foreignKey']['collection']].find_one(
                     {'primaryKey.id': resource['foreignKey']['id']}
                 )
@@ -57,6 +57,7 @@ def cache_software():
     for sw in db.software.find():
         logger.log(logging.INFO, 'processing %s' % sw['brandName'])
         replace_foreign_keys(sw)
+        replace_foreign_keys(sw['related'])
         repository_urls = sw['repositoryURLs']
         sw['totalCommits'] = sum(map(lambda url: total_commits(url), repository_urls))
         sw['lastCommit'] = reduce(
