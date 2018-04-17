@@ -3,7 +3,7 @@ import { routerReducer } from "react-router-redux";
 
 import { reducer as toastrReducer, ToastrState } from "react-redux-toastr";
 
-import { IData } from "./interfaces/misc";
+import { IData } from "./interfaces/resource";
 import { ISchema } from "./interfaces/json-schema";
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs";
 
@@ -46,6 +46,7 @@ export const rootReducer = combineReducers({
 
 export interface ISettingsProperty {
   properties: { [key: string]: ISettingsProperty };
+  readonly?: boolean;
   label?: string;
   icon?: SemanticICONS;
   [key: string]: any;

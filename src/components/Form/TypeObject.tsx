@@ -2,6 +2,7 @@ import * as React from "react";
 import { IObjectSchema } from "../../interfaces/json-schema";
 import FormPart from "./FormPart";
 import { IProps } from "./IProps";
+import styled from "styled-components";
 
 export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
   handleChange = (key: string) => (value: any) => {
@@ -44,12 +45,13 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
       .map((key: string) => (
         <FormPart
           key={key}
-          value={this.props.value[key]}
+          value={this.props.value ? this.props.value[key] : undefined}
           settings={
             (this.props.settings &&
               this.props.settings.properties &&
               this.props.settings.properties[key]) || { label: "" }
           }
+          readonly={!!this.props.readonly || !!this.props.settings.readonly}
           schema={this.props.schema.properties[key]}
           data={this.props.data}
           label={key}
@@ -60,20 +62,21 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
       return null;
     }
     return (
-      <div
-        style={
-          {
-            // paddingLeft: "1em",
-            // borderRadius: "4px",
-            // border:
-            //   Object.keys(this.props.schema.properties).length > 1
-            //     ? "1px solid #ccc"
-            //     : ""
-          }
-        }
-      >
-        {contents}
-      </div>
+      <Container>
+        {this.props.showLabel !== false && (
+          <Label>
+            {(this.props.settings && this.props.settings.label) ||
+              this.props.label}
+          </Label>
+        )}
+        <div style={{ flex: 1 }}>{contents}</div>
+      </Container>
     );
   }
 }
+
+const Label = styled.label``;
+
+const Container = styled.div`
+  display: flex;
+`;

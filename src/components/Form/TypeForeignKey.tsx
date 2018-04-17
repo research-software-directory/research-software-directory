@@ -4,6 +4,7 @@ import { IForeignKeySchema } from "../../interfaces/json-schema";
 import { IResource } from "../../interfaces/resource";
 import { Dropdown, DropdownItemProps } from "semantic-ui-react";
 import styled from "styled-components";
+import resourceToString from "../../custom/resourceToString";
 
 interface IState {
   choices: DropdownItemProps[];
@@ -24,14 +25,11 @@ export default class TypeForeignKey extends React.Component<
     const foreignData = this.props.data[
       this.props.schema.properties.collection.enum[0]
     ];
-    return foreignData.map(
-      (item: IResource) =>
-        console.log(item) || {
-          key: item.primaryKey.id,
-          value: item.primaryKey.id,
-          text: item.primaryKey.id
-        }
-    );
+    return foreignData.map((item: IResource) => ({
+      key: item.primaryKey.id,
+      value: item.primaryKey.id,
+      text: resourceToString(item)
+    }));
   }
 
   shouldComponentUpdate(newProps: IProps<IForeignKeySchema>) {
@@ -52,12 +50,19 @@ export default class TypeForeignKey extends React.Component<
           )}
         </Left>
         <Dropdown
+          disabled={!!this.props.readonly || !!this.props.settings.readonly}
           defaultValue={this.props.value ? this.props.value.id : null}
           selection={true}
           fluid={true}
           search={true}
           options={this.state.choices}
           style={{ flex: 1 }}
+          onChange={(_, field) =>
+            this.props.onChange({
+              id: field.value,
+              collection: this.props.schema.properties.collection.enum[0]
+            })
+          }
         />
       </Container>
     );
@@ -66,9 +71,9 @@ export default class TypeForeignKey extends React.Component<
 
 const Left = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  min-width: 50px;
+  min-width: 150px;
 `;
 
 const Label = styled.label`

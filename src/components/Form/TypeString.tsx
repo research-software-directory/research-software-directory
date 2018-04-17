@@ -25,6 +25,7 @@ export default class TypeString extends React.Component<
           </Label>
         )}
         <TextInput
+          disabled={!!this.props.readonly || !!this.props.settings.readonly}
           error={error}
           size="large"
           defaultValue={this.props.value}
