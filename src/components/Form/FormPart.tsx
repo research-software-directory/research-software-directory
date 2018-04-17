@@ -31,6 +31,10 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     ajv.addMetaSchema(metaSchema);
     /* https://www.crossref.org/blog/dois-and-matching-regular-expressions/ */
     ajv.addFormat("doi", /^10.\d{4,9}\/[-._;()/:A-Z0-9]+$/i);
+    ajv.addFormat(
+      "base64",
+      /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/
+    );
     this._ajvValidator = ajv.compile({
       ...props.schema,
       $schema: "http://json-schema.org/draft-04/schema",
