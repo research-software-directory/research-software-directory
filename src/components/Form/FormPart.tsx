@@ -18,7 +18,6 @@ interface IState {
 export default class FormPart extends React.Component<IProps<ISchema>, IState> {
   validate: (newProps: IProps<ISchema>) => any;
   _ajvValidator: (value: any) => boolean | PromiseLike<any>;
-
   constructor(props: IProps<ISchema>) {
     super(props);
     this.state = {

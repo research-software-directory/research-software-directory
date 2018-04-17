@@ -15,7 +15,7 @@ storiesOf("Form elements")
     <TypeBoolean
       schema={null}
       value={true}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="Boolean"
     />
@@ -25,7 +25,7 @@ storiesOf("Form elements")
     <TypeStringEnum
       schema={{ enum: ["option1", "option2", "option3"] }}
       value="option1"
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="StringEnum"
     />
@@ -42,7 +42,7 @@ storiesOf("Form elements")
         prop1: "asdasd",
         prop2: false
       }}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="Object"
     />
@@ -71,7 +71,7 @@ storiesOf("Form elements")
         ]
       }}
       value={{ collection: "things", id: "thing1" }}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="ForeignKey"
     />
@@ -86,7 +86,7 @@ storiesOf("Form elements/Array")
         }
       }}
       value={["asdasd", "asdasddsa"]}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="Array"
     />
@@ -100,7 +100,7 @@ storiesOf("Form elements/Array")
         minItems: 1
       }}
       value={["asdasd", "asdasddsa"]}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="Array"
     />
@@ -114,7 +114,7 @@ storiesOf("Form elements/Array")
         minItems: 1
       }}
       value={[]}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="Array"
     />
@@ -127,7 +127,7 @@ storiesOf("Form elements/String")
         type: "string"
       }}
       value={"Value here"}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="String"
     />
@@ -139,7 +139,7 @@ storiesOf("Form elements/String")
         type: "string"
       }}
       value={"https://example.com"}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="String"
     />
@@ -151,7 +151,7 @@ storiesOf("Form elements/String")
         type: "string"
       }}
       value={"Not an uri"}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="String"
     />
@@ -163,7 +163,7 @@ storiesOf("Form elements/String")
         type: "string"
       }}
       value={"2017-11-14T13:37:17Z"}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="String"
     />
@@ -175,7 +175,7 @@ storiesOf("Form elements/String")
         type: "string"
       }}
       value={"Not a date-time"}
-      settings={null}
+      settings={{}}
       onChange={action("change")}
       label="String"
     />
