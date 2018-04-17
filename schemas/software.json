@@ -13,7 +13,7 @@
             "type": "string"
         },
         "conceptDOI": {
-            "format": "doi",
+            "pattern": "^10\.\d{4,9}\/[-._;()\/:a-zA-Z0-9]+$",
             "type": "string"
         },
         "contributors": {
