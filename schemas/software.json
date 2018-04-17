@@ -50,8 +50,8 @@
             "type": "array"
         },
         "createdAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "createdBy": {
             "type": "string"
@@ -59,13 +59,6 @@
         "getStartedURL": {
             "format": "uri",
             "type": "string"
-        },
-        "repositoryURLs": {
-            "items": {
-                "format": "uri",
-                "type": "string"
-            },
-            "type": "array"
         },
         "isFeatured": {
             "default": false,
@@ -450,30 +443,30 @@
             "type": "array"
         },
         "readMore": {
-            "type": "string",
-            "minLength": 200
+            "minLength": 200,
+            "type": "string"
         },
         "related": {
             "additionalProperties": false,
             "properties": {
-                "organizations": {
-                    "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "foreignKey": {
-                                "$ref": "definitions.json/key/organization"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
                 "mentions": {
                     "items": {
                         "additionalProperties": false,
                         "properties": {
                             "foreignKey": {
                                 "$ref": "definitions.json/key/mention"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "organizations": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/organization"
                             }
                         },
                         "type": "object"
@@ -513,14 +506,21 @@
             ],
             "type": "object"
         },
+        "repositoryURLs": {
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": "array"
+        },
         "shortStatement": {
-            "minLength": 10,
             "maxLength": 300,
+            "minLength": 10,
             "type": "string"
         },
         "slug": {
-            "minLength": 1,
             "maxLength": 100,
+            "minLength": 1,
             "type": "string"
         },
         "tags": {

@@ -1,11 +1,18 @@
 {
+    "blob": {
+        "properties": {
+            "data": {
+                "format": "base64",
+                "type": "string"
+            },
+            "mimeType": {
+                "type": "string"
+            }
+        },
+        "type": "object"
+    },
     "key": {
         "mention": {
-            "type": "object",
-            "required": [
-                "collection",
-                "id"
-            ],
             "additionalProperties": false,
             "properties": {
                 "collection": {
@@ -17,52 +24,14 @@
                 "id": {
                     "type": "string"
                 }
-            }
-        },
-        "person": {
-            "type": "object",
+            },
             "required": [
                 "collection",
                 "id"
             ],
-            "additionalProperties": false,
-            "properties": {
-                "collection": {
-                    "enum": [
-                        "person"
-                    ],
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                }
-            }
-        },
-        "project": {
-            "type": "object",
-            "required": [
-                "collection",
-                "id"
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "collection": {
-                    "enum": [
-                        "project"
-                    ],
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                }
-            }
+            "type": "object"
         },
         "organization": {
-            "type": "object",
-            "required": [
-                "collection",
-                "id"
-            ],
             "additionalProperties": false,
             "properties": {
                 "collection": {
@@ -74,14 +43,52 @@
                 "id": {
                     "type": "string"
                 }
-            }
-        },
-        "software": {
-            "type": "object",
+            },
             "required": [
                 "collection",
                 "id"
             ],
+            "type": "object"
+        },
+        "person": {
+            "additionalProperties": false,
+            "properties": {
+                "collection": {
+                    "enum": [
+                        "person"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "collection",
+                "id"
+            ],
+            "type": "object"
+        },
+        "project": {
+            "additionalProperties": false,
+            "properties": {
+                "collection": {
+                    "enum": [
+                        "project"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "collection",
+                "id"
+            ],
+            "type": "object"
+        },
+        "software": {
             "additionalProperties": false,
             "properties": {
                 "collection": {
@@ -93,19 +100,12 @@
                 "id": {
                     "type": "string"
                 }
-            }
-        }
-    },
-    "blob": {
-        "type": "object",
-        "properties": {
-            "mimeType": {
-                "type": "string"
             },
-            "data": {
-                "type": "string",
-                "format": "base64"
-            }
+            "required": [
+                "collection",
+                "id"
+            ],
+            "type": "object"
         }
     }
 }
