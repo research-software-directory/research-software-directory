@@ -447,6 +447,52 @@ exports[`Storyshots Form elements/String default 1`] = `
 </div>
 `;
 
+exports[`Storyshots Form elements/String format=date-time invalid 1`] = `
+<div
+  className="sc-bxivhb bfegXb"
+>
+  <label
+    className="sc-ifAKCX bjCwCI"
+  >
+    String
+  </label>
+  <div
+    className="ui large error input sc-htpNat gChKYK"
+  >
+    <input
+      defaultValue="Not a date-time"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/String format=date-time valid 1`] = `
+<div
+  className="sc-bxivhb bfegXb"
+>
+  <label
+    className="sc-ifAKCX bjCwCI"
+  >
+    String
+  </label>
+  <div
+    className="ui large input sc-htpNat gChKYK"
+  >
+    <input
+      defaultValue="2017-11-14T13:37:17Z"
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Form elements/String format=uri invalid 1`] = `
 <div
   className="sc-bxivhb bfegXb"

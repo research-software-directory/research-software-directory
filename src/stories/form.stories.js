@@ -155,4 +155,28 @@ storiesOf("Form elements/String")
       onChange={action("change")}
       label="String"
     />
+  ))
+  .add("format=date-time valid", () => (
+    <TypeString
+      schema={{
+        format: "date-time",
+        type: "string"
+      }}
+      value={"2017-11-14T13:37:17Z"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
+    />
+  ))
+  .add("format=date-time invalid", () => (
+    <TypeString
+      schema={{
+        format: "date-time",
+        type: "string"
+      }}
+      value={"Not a date-time"}
+      settings={null}
+      onChange={action("change")}
+      label="String"
+    />
   ));
