@@ -18,7 +18,49 @@
                 "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z",
                 "type": "string"
             },
-            "releases": {},
+            "releases": {
+                "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "doi": {
+                            "type": "string"
+                        },
+                        "files": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "bibtex": {
+                                    "type": "string"
+                                },
+                                "cff": {
+                                    "type": "string"
+                                },
+                                "endnote": {
+                                    "type": "string"
+                                },
+                                "ris": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "bibtex",
+                                "cff",
+                                "endnote",
+                                "ris"
+                            ],
+                            "type": "object"
+                        },
+                        "tag": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "doi",
+                        "files",
+                        "tag"
+                    ]
+                },
+                "type": "array"
+            },
             "totalCommits": {
                 "type": "integer"
             }
