@@ -1,0 +1,35 @@
+{
+    "allOf": [{
+        "$ref": "software.json"
+    }, {
+        "properties": {
+            "commits": {
+                "patternProperties": {
+                    "^\\d{4}-\\{2}$": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "isCitable": {
+                "type": "boolean"
+            },
+            "lastCommit": {
+                "pattern": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z",
+                "type": "string"
+            },
+            "releases": {},
+            "totalCommits": {
+                "type": "integer"
+            }
+        },
+        "required": [
+            "commits",
+            "isCitable",
+            "lastCommit",
+            "releases",
+            "totalCommits"
+        ],
+        "title": "Software schema including derived properties"
+    }]
+}
