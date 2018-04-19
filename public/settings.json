@@ -6,7 +6,7 @@
       "name": "Software",
       "label": "Software",
       "icon": "file code outline",
-      "displayName": ["brandName"],
+      "sortBy": "brandName",
       "properties": {
         "brandName": {
           "label": "brandName",
@@ -28,25 +28,32 @@
           "label": "contributors",
           "properties": {
             "foreignKey": { "label": "Person" },
-            "isContactPerson": { "label": "Is this person the contact person?" }
+            "isContactPerson": {
+              "label": "Is this person the contact person?"
+            },
+            "affiliations": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Organization"
+                }
+              }
+            }
           }
         },
         "createdAt": {
-          "label": "createdAt"
+          "label": "createdAt",
+          "readonly": true
         },
         "createdBy": {
-          "label": "createdBy"
+          "label": "createdBy",
+          "readonly": true
         },
         "getStartedURL": {
           "label": "getStartedURL"
         },
-        "githubURLs": {
+        "repositoryURLs": {
           "label":
-            "Github URLs (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)",
-          "properties": {
-            "isCitationcffSource": { "label": "Is a CitationCFF source" },
-            "isCommitDataSource": { "label": "Include commits in commit graph" }
-          }
+            "SCM Repository urls (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)"
         },
         "isCitable": {
           "label": "isCitable"
@@ -61,7 +68,8 @@
           "label": "license"
         },
         "primaryKey": {
-          "label": "primaryKey"
+          "label": "primaryKey",
+          "readonly": true
         },
         "programmingLanguage": {
           "label": "programmingLanguage"
@@ -70,7 +78,7 @@
           "label": "readMore"
         },
         "related": {
-          "label": "related"
+          "label": "Related"
         },
         "shortStatement": {
           "label": "shortStatement"
@@ -94,10 +102,12 @@
           }
         },
         "updatedAt": {
-          "label": "updatedAt"
+          "label": "updatedAt",
+          "readonly": true
         },
         "updatedBy": {
-          "label": "updatedBy"
+          "label": "updatedBy",
+          "readonly": true
         }
       }
     },
@@ -107,11 +117,13 @@
     },
     "mention": {
       "name": "mention",
-      "icon": "book"
+      "icon": "book",
+      "readonly": true
     },
     "project": {
       "name": "Project",
-      "icon": "lab"
+      "icon": "lab",
+      "readonly": true
     },
     "organization": {
       "name": "Organization",

@@ -14,6 +14,7 @@ export default class TypeBoolean extends React.Component<
         <Checkbox
           toggle={true}
           checked={!!this.props.value}
+          readOnly={!!this.props.readonly || !!this.props.settings.readonly}
           onChange={(_, elm) => this.props.onChange(elm.checked)}
         />
         {this.props.showLabel !== false && (

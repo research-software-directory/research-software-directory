@@ -18,7 +18,7 @@ export default class TypeArray extends React.Component<
   constructor(props: IProps<IArraySchema>) {
     super(props);
     this.state = {
-      collapsed: true
+      collapsed: !(Array.isArray(props.value) || props.value.length === 0)
     };
   }
   shouldComponentUpdate(newProps: IProps<IArraySchema>, newState: IState) {
@@ -40,6 +40,7 @@ export default class TypeArray extends React.Component<
     if (!Array.isArray(value)) {
       value = [];
     }
+    this.setState({ collapsed: false });
     this.props.onChange([...value, createEmpty(this.props.schema.items)]);
   };
 
@@ -78,13 +79,11 @@ export default class TypeArray extends React.Component<
             )}&nbsp;
             <Icon name={this.state.collapsed ? "angle down" : "angle up"} />
           </ArrayButton>
-          {!this.state.collapsed && (
-            <div style={{ position: "absolute", right: 0, top: 0 }}>
-              <Button color="blue" onClick={this.onAdd}>
-                +
-              </Button>
-            </div>
-          )}
+          <div style={{ position: "absolute", right: 0, top: 0 }}>
+            <Button color="blue" onClick={this.onAdd}>
+              +
+            </Button>
+          </div>
         </Header>
         {!this.state.collapsed &&
           value.map((val: any, index: number) => (
@@ -103,6 +102,9 @@ export default class TypeArray extends React.Component<
                   settings={this.props.settings}
                   schema={this.props.schema.items}
                   showLabel={false}
+                  readonly={
+                    !!this.props.readonly || !!this.props.settings.readonly
+                  }
                   data={this.props.data}
                   label=""
                   onChange={(v: any) => this.handleChange(index, v)}

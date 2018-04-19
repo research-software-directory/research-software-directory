@@ -3,6 +3,8 @@ import { ISchema } from "../../interfaces/json-schema";
 import { IResource } from "../../interfaces/resource";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import resourceToString from "../../custom/resourceToString";
+import { ISettings } from "../../rootReducer";
 
 export interface IOwnProps {
   search: string;
@@ -13,9 +15,10 @@ interface IProps {
   data: IResource[];
   schema: ISchema;
   location: Location;
+  settings: ISettings;
 }
 
-const label = (item: any): string => JSON.stringify(item).substr(0, 10);
+const label = (item: any): string => resourceToString(item);
 const sortByLabel = (a: any, b: any) => label(a).localeCompare(label(b));
 
 export default class ResourceList extends React.PureComponent<
@@ -42,17 +45,13 @@ export default class ResourceList extends React.PureComponent<
           .sort(sortByLabel)
           .map((item, index) => (
             <Menu.Item key={index} draggable="true">
-              {item.primaryKey ? (
-                <Link
-                  draggable={false}
-                  to={`/${this.props.type}/${item.primaryKey.id}`}
-                  style={{ display: "block" }}
-                >
-                  {item.primaryKey.id}
-                </Link>
-              ) : (
-                <div>no PrimaryKey</div>
-              )}
+              <Link
+                draggable={false}
+                to={`/${this.props.type}/${item.primaryKey.id}`}
+                style={{ display: "block" }}
+              >
+                {resourceToString(item)}
+              </Link>
             </Menu.Item>
           ))}
       </div>
