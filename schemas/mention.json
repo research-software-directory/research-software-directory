@@ -1,37 +1,28 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
-    "title": "Mention schema",
-    "required": [
-        "createdAt",
-        "isCorporateBlog",
-        "primaryKey",
-        "title",
-        "type",
-        "updatedAt"
-    ],
     "properties": {
         "author": {
             "type": "string"
         },
         "createdAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "createdBy": {
             "type": "string"
         },
         "date": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "image": {
-            "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "type": "string"
         },
         "isCorporateBlog": {
-            "type": "boolean",
-            "default": false
+            "default": false,
+            "type": "boolean"
         },
         "primaryKey": {
             "$ref": "definitions.json/key/mention"
@@ -64,15 +55,15 @@
             "type": "string"
         },
         "updatedAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "updatedBy": {
             "type": "string"
         },
         "url": {
-            "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "type": "string"
         },
         "version": {
             "type": "number"
@@ -80,5 +71,14 @@
         "zoteroKey": {
             "type": "string"
         }
-    }
+    },
+    "required": [
+        "createdAt",
+        "isCorporateBlog",
+        "primaryKey",
+        "title",
+        "type",
+        "updatedAt"
+    ],
+    "title": "Mention schema"
 }

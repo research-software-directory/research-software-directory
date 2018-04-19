@@ -1,42 +1,20 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
-    "title": "Software schema",
-    "required": [
-        "brandName",
-        "bullets",
-        "conceptDOI",
-        "contributors",
-        "createdAt",
-        "getStartedURL",
-        "repositoryURLs",
-        "isFeatured",
-        "isPublished",
-        "license",
-        "primaryKey",
-        "programmingLanguage",
-        "readMore",
-        "related",
-        "shortStatement",
-        "slug",
-        "tags",
-        "testimonial",
-        "updatedAt"
-    ],
     "properties": {
         "brandName": {
-            "type": "string",
             "maxLength": 50,
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
         },
         "bullets": {
-            "type": "string",
+            "maxLength": 5000,
             "minLength": 20,
-            "maxLength": 5000
+            "type": "string"
         },
         "conceptDOI": {
-            "type": "string",
-            "format": "doi"
+            "format": "doi",
+            "type": "string"
         },
         "contributors": {
             "items": {
@@ -72,8 +50,8 @@
             "type": "array"
         },
         "createdAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "createdBy": {
             "type": "string"
@@ -81,13 +59,6 @@
         "getStartedURL": {
             "format": "uri",
             "type": "string"
-        },
-        "repositoryURLs": {
-            "items": {
-                "format": "uri",
-                "type": "string"
-            },
-            "type": "array"
         },
         "isFeatured": {
             "default": false,
@@ -472,30 +443,30 @@
             "type": "array"
         },
         "readMore": {
-            "type": "string",
-            "minLength": 200
+            "minLength": 200,
+            "type": "string"
         },
         "related": {
             "additionalProperties": false,
             "properties": {
-                "organizations": {
-                    "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "foreignKey": {
-                                "$ref": "definitions.json/key/organization"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
                 "mentions": {
                     "items": {
                         "additionalProperties": false,
                         "properties": {
                             "foreignKey": {
                                 "$ref": "definitions.json/key/mention"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "organizations": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/organization"
                             }
                         },
                         "type": "object"
@@ -535,14 +506,21 @@
             ],
             "type": "object"
         },
+        "repositoryURLs": {
+            "items": {
+                "format": "uri",
+                "type": "string"
+            },
+            "type": "array"
+        },
         "shortStatement": {
-            "minLength": 10,
             "maxLength": 300,
+            "minLength": 10,
             "type": "string"
         },
         "slug": {
-            "minLength": 1,
             "maxLength": 100,
+            "minLength": 1,
             "type": "string"
         },
         "tags": {
@@ -570,36 +548,58 @@
                 "additionalProperties": false,
                 "properties": {
                     "affiliation": {
-                        "type": "string",
+                        "maxLength": 100,
                         "minLength": 1,
-                        "maxLength": 100
+                        "type": "string"
                     },
                     "person": {
-                        "type": "string",
+                        "maxLength": 100,
                         "minLength": 1,
-                        "maxLength": 100
+                        "type": "string"
                     },
                     "text": {
-                        "type": "string",
+                        "maxLength": 500,
                         "minLength": 10,
-                        "maxLength": 500
+                        "type": "string"
                     }
                 },
                 "required": [
                     "affiliation",
-                    "text",
-                    "person"
+                    "person",
+                    "text"
                 ],
                 "type": "object"
             },
             "type": "array"
         },
         "updatedAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "updatedBy": {
             "type": "string"
         }
-    }
+    },
+    "required": [
+        "brandName",
+        "bullets",
+        "conceptDOI",
+        "contributors",
+        "createdAt",
+        "getStartedURL",
+        "repositoryURLs",
+        "isFeatured",
+        "isPublished",
+        "license",
+        "primaryKey",
+        "programmingLanguage",
+        "readMore",
+        "related",
+        "shortStatement",
+        "slug",
+        "tags",
+        "testimonial",
+        "updatedAt"
+    ],
+    "title": "Software schema"
 }

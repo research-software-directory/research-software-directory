@@ -1,11 +1,10 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
-    "title": "Organization schema",
     "properties": {
         "createdAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "createdBy": {
             "type": "string"
@@ -20,8 +19,8 @@
             "$ref": "definitions.json/key/organization"
         },
         "updatedAt": {
-            "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "type": "string"
         },
         "updatedBy": {
             "type": "string"
@@ -38,5 +37,6 @@
         "primaryKey",
         "updatedAt",
         "url"
-    ]
+    ],
+    "title": "Organization schema"
 }
