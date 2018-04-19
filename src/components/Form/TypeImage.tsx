@@ -76,7 +76,15 @@ export default class TypeImage extends React.Component<
   render() {
     return (
       <Horizontal>
-        <DropHere onDrop={this.onDrop} accept="image/*">
+        <Dropzone
+          style={{
+            height: "400px",
+            width: "100%",
+            border: "1px dashed black;"
+          }}
+          onDrop={this.onDrop}
+          accept="image/*"
+        >
           <p>
             Try dropping some files here, or click to select files to upload.
           </p>
@@ -87,7 +95,7 @@ export default class TypeImage extends React.Component<
               }`}
             />
           )}
-        </DropHere>
+        </Dropzone>
         {(this.state as any).fileDataUrl && (
           <div>
             <ImageModal id="imageModal" open={true} basic={true}>
@@ -117,6 +125,9 @@ export default class TypeImage extends React.Component<
     );
   }
 }
+
+console.log(typeof Modal, typeof Dropzone);
+
 const ImageModal = styled(Modal)`
   &#imageModal {
     width: 100%;
@@ -143,10 +154,4 @@ const Horizontal = styled.div`
   flex-direction: row;
   display: flex;
   align-items: center;
-`;
-
-const DropHere = styled(Dropzone)`
-  height: 400px;
-  width: 100%;
-  border: 1px dashed black;
 `;

@@ -140,10 +140,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-kAzzGY bOfWLD"
+  className="sc-kGXeez kYntIi"
 >
   <label
-    className="sc-cSHVUG CAuLq"
+    className="sc-kgoBCf kVSTZj"
   >
     Object
   </label>
