@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   isArraySchema,
   isBooleanSchema,
@@ -14,6 +15,24 @@ import TypeArray from "./TypeArray";
 import TypeBoolean from "./TypeBoolean";
 import TypeEnum from "./TypeStringEnum";
 import TypeForeignKey from "./TypeForeignKey";
+import { ISettingsProperty } from "../../rootReducer";
+
+type IFilterFunction = (
+  schema: ISchema,
+  settings: ISettingsProperty
+) => boolean;
+
+const registry: {
+  filter: IFilterFunction;
+  component: React.Component;
+}[] = [];
+
+export function registerFormComponent(
+  filter: IFilterFunction,
+  component: React.Component
+) {
+  registry.push({ filter, component });
+}
 
 export function getElement(schema: ISchema): any {
   return isObjectSchema(schema)

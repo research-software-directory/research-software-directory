@@ -23,7 +23,7 @@ const initReducer: Reducer<boolean> = (state, action) =>
 /**
  * Decode JWT, save token & claims
  */
-const jwtReducer: Reducer<IJWT> = (state, action) => {
+const jwtReducer: Reducer<IJWT | null> = (state, action) => {
   if (action.type === "JWT_CHANGED") {
     return {
       token: action.data,
@@ -35,13 +35,13 @@ const jwtReducer: Reducer<IJWT> = (state, action) => {
 };
 
 export const rootReducer = combineReducers({
-  route: routerReducer,
+  route: routerReducer as any,
   data: saveDataReducer("DATA_FETCHED"),
   schema: saveDataReducer("SCHEMA_FETCHED"),
   settings: saveDataReducer("SETTINGS_FETCHED"),
   jwt: jwtReducer,
   initialized: initReducer,
-  toastr: toastrReducer
+  toastr: toastrReducer as any
 });
 
 export interface ISettingsProperty {
