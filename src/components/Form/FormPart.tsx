@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IForeignKeySchema, ISchema } from "../../interfaces/json-schema";
 import { IProps } from "./IProps";
-import { getElement } from "./elementFactory";
+import { getComponent } from "./elementFactory";
 import styled, { StyledComponentClass } from "styled-components";
 import { debounce } from "../../utils/debounce";
 import * as Ajv from "ajv";
@@ -30,7 +30,7 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     const ajv = new Ajv({ schemaId: "auto" });
     ajv.addMetaSchema(metaSchema);
     /* https://www.crossref.org/blog/dois-and-matching-regular-expressions/ */
-    ajv.addFormat("doi", /^10.\d{4,9}\/[-._;()/:A-Z0-9]+$/i);
+    // ajv.addFormat("doi", /^10.\d{4,9}\/[-._;()/:A-Z0-9]+$/i);
     ajv.addFormat(
       "base64",
       /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/
@@ -74,7 +74,7 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     if (this.state.hasError) {
       return <ShowError>Error: {this.state.error.stack.toString()}</ShowError>;
     }
-    const Component = getElement(this.props.schema);
+    const Component = getComponent(this.props.schema, this.props.settings);
     return (
       <div
         style={{
@@ -113,17 +113,21 @@ const ShowError = styled.pre`
 `;
 
 const ErrorMessage = styled(Message)`
-  transition: opacity 0.5s !important;
-  &.message-enter {
+  transition: all 0.5s !important;
+  opacity: 0;
+  overflow: hidden;
+  &.message-exit {
+    transform: translateY(-25px) translateX(-15px);
     opacity: 0;
+  }
+  &.message-enter {
+    transform: translateY(25px);
   }
   &.message-enter-done {
+    transform: none;
     opacity: 1;
   }
-  &.message-exit {
-    opacity: 0;
-  }
   &:last-child {
-    margin-bottom: 2em !important;
+    //margin-bottom: 2em !important;
   }
 ` as StyledComponentClass<MessageProps, {}>;

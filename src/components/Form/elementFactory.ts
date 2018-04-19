@@ -16,6 +16,11 @@ import TypeBoolean from "./TypeBoolean";
 import TypeEnum from "./TypeStringEnum";
 import TypeForeignKey from "./TypeForeignKey";
 import { ISettingsProperty } from "../../rootReducer";
+import { IProps } from "./IProps";
+import TypeImage from "./TypeImage";
+
+abstract class FormComponentDummy extends React.Component<IProps<ISchema>> {}
+type FormComponent = typeof FormComponentDummy;
 
 type IFilterFunction = (
   schema: ISchema,
@@ -24,26 +29,43 @@ type IFilterFunction = (
 
 const registry: {
   filter: IFilterFunction;
-  component: React.Component;
+  component: FormComponent;
 }[] = [];
 
 export function registerFormComponent(
   filter: IFilterFunction,
-  component: React.Component
+  component: FormComponent
 ) {
   registry.push({ filter, component });
 }
 
-export function getElement(schema: ISchema): any {
-  return isObjectSchema(schema)
-    ? TypeObject
-    : isArraySchema(schema)
-      ? TypeArray
-      : isStringSchema(schema)
-        ? TypeString
-        : isStringEnumSchema(schema)
-          ? TypeEnum
-          : isBooleanSchema(schema)
-            ? TypeBoolean
-            : isForeignKeySchema(schema) ? TypeForeignKey : TypeDummy;
-}
+export const getComponent = (
+  schema: ISchema,
+  settings: ISettingsProperty
+): FormComponent =>
+  [...registry].reverse().find(({ filter }) => filter(schema, settings))!
+    .component;
+
+[
+  [() => true, TypeDummy],
+  [isObjectSchema, TypeObject],
+  [isArraySchema, TypeArray],
+  [isStringSchema, TypeString],
+  [isStringEnumSchema, TypeEnum],
+  [isBooleanSchema, TypeBoolean],
+  [isForeignKeySchema, TypeForeignKey],
+  [isObjectSchema, TypeObject]
+].forEach(([filter, component]) => {
+  registerFormComponent(filter as IFilterFunction, component as FormComponent);
+});
+
+/* For images */
+registerFormComponent(
+  (schema, _settings) =>
+    (isObjectSchema(schema) &&
+      schema.properties.data &&
+      isStringSchema(schema.properties.data) &&
+      schema.properties.data.format === "base64" &&
+      schema.properties.mimeType) as boolean,
+  TypeImage
+);
