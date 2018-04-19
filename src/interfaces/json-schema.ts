@@ -23,6 +23,7 @@ export interface IRootSchema extends IObjectSchema {
 export interface IArraySchema {
   type: "array";
   items: ISchema;
+  minItems?: number;
 }
 
 export interface IStringEnumSchema {

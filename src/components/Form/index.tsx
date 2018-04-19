@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { ISettings } from "../../rootReducer";
 import { ISchema } from "../../interfaces/json-schema";
-import { IData } from "../../interfaces/misc";
+import { IData } from "../../interfaces/resource";
 import { IResource } from "../../interfaces/resource";
 import FormPart from "./FormPart";
-
+import "./style.css";
 interface IConnectedProps {
   schema: { [key: string]: ISchema };
   data: IData;
@@ -33,10 +33,12 @@ export default class extends React.PureComponent<IProps, IState> {
       <div style={{ height: "100%" }}>
         <FormPart
           schema={this.props.schema[type]}
-          settings={this.props.settings.resources[type].fields}
+          readonly={false}
+          settings={this.props.settings.resources[type]}
           value={this.props.value}
           data={this.props.data}
           onChange={this.handleChange}
+          showLabel={false}
           label=""
         />
       </div>

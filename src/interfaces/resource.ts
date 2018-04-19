@@ -8,3 +8,7 @@ export type IResource = {
   [key: string]: any;
 };
 export type IResourceType = string;
+
+export interface IData {
+  [key: string]: IResource[];
+}

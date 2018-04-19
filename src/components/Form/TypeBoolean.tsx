@@ -2,6 +2,7 @@ import * as React from "react";
 import { Checkbox } from "semantic-ui-react";
 import { IProps } from "./IProps";
 import { IStringSchema } from "../../interfaces/json-schema";
+import styled from "styled-components";
 
 export default class TypeBoolean extends React.Component<
   IProps<IStringSchema>,
@@ -9,13 +10,32 @@ export default class TypeBoolean extends React.Component<
 > {
   render() {
     return (
-      <div>
+      <Horizontal>
         <Checkbox
           toggle={true}
           checked={!!this.props.value}
+          readOnly={!!this.props.readonly || !!this.props.settings.readonly}
           onChange={(_, elm) => this.props.onChange(elm.checked)}
         />
-      </div>
+        {this.props.showLabel !== false && (
+          <Label>
+            {(this.props.settings && this.props.settings.label) ||
+              this.props.label}
+          </Label>
+        )}
+      </Horizontal>
     );
   }
 }
+
+const Label = styled.label`
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 1em;
+`;
+
+const Horizontal = styled.div`
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+`;

@@ -22,6 +22,7 @@ export default class TypeStringEnum extends React.Component<
     return (
       <div>
         <Dropdown
+          disabled={!!this.props.readonly || !!this.props.settings.readonly}
           fluid={true}
           search={true}
           selection={true}

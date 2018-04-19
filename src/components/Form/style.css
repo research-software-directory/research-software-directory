@@ -1,0 +1,9 @@
+.form--array > section:nth-child(odd) {
+  background-color: #eee;
+}
+.form--array > section:nth-child(even) {
+  background-color: white;
+}
+.form--array > section:hover {
+  background-color: rgba(0, 0, 65, 0.2);
+}
