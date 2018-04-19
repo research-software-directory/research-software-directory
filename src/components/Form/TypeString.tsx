@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Input, InputProps } from "semantic-ui-react";
-import * as moment from "moment";
 
 import { IProps } from "./IProps";
 import styled, { StyledComponentClass } from "styled-components";
@@ -14,15 +13,6 @@ export default class TypeString extends React.Component<
     return newProps.value !== this.props.value;
   }
   render() {
-    let error = false;
-    if ("format" in this.props.schema) {
-      const format = this.props.schema.format;
-      if (format === "uri") {
-        error = !validUrl(this.props.value);
-      } else if (format === "date-time") {
-        error = !validDateTime(this.props.value);
-      }
-    }
     return (
       <Horizontal>
         {this.props.showLabel !== false && (
@@ -33,7 +23,6 @@ export default class TypeString extends React.Component<
         )}
         <TextInput
           disabled={!!this.props.readonly || !!this.props.settings.readonly}
-          error={error}
           size="large"
           defaultValue={this.props.value}
           onChange={(_, elm) => this.props.onChange(elm.value)}
@@ -41,22 +30,6 @@ export default class TypeString extends React.Component<
       </Horizontal>
     );
   }
-}
-
-function validUrl(value: string) {
-  try {
-    // tslint:disable-next-line:no-unused-expression
-    new URL(value);
-  } catch (error) {
-    if (error instanceof TypeError) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function validDateTime(value: string) {
-  return moment(value).isValid();
 }
 
 /*
