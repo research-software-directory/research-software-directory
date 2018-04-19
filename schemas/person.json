@@ -6,7 +6,7 @@
             "$ref": "definitions.json/blob"
         },
         "createdAt": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "createdBy": {
@@ -36,7 +36,7 @@
             "$ref": "definitions.json/key/person"
         },
         "updatedAt": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "updatedBy": {

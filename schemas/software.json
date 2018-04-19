@@ -13,7 +13,7 @@
             "type": "string"
         },
         "conceptDOI": {
-            "pattern": "^10\\.\\d{4,9}\/[-._;()\/:a-zA-Z0-9]+$",
+            "pattern": "^10\\.\\d{4,9}\/[-._;()/:a-zA-Z0-9]+$",
             "type": "string"
         },
         "contributors": {
@@ -50,7 +50,7 @@
             "type": "array"
         },
         "createdAt": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "createdBy": {
@@ -576,7 +576,7 @@
             "type": "array"
         },
         "updatedAt": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "updatedBy": {
