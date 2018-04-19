@@ -13,7 +13,7 @@
             "type": "string"
         },
         "conceptDOI": {
-            "pattern": "^10\.\d{4,9}\/[-._;()\/:a-zA-Z0-9]+$",
+            "pattern": "^10\\.\\d{4,9}\/[-._;()\/:a-zA-Z0-9]+$",
             "type": "string"
         },
         "contributors": {
@@ -516,7 +516,7 @@
         "shortStatement": {
             "maxLength": 300,
             "minLength": 10,
-            "pattern": "[a-zA-Z0-9,.;:-_\ ]+",
+            "pattern": "[a-zA-Z0-9,.;:-_ ]+",
             "type": "string"
         },
         "slug": {
@@ -562,7 +562,7 @@
                     "text": {
                         "maxLength": 500,
                         "minLength": 10,
-                        "pattern": "[a-zA-Z0-9\ !@#$%-_+=;:,.?]+",
+                        "pattern": "[a-zA-Z0-9 !@#$%-_+=;:,.?]+",
                         "type": "string"
                     }
                 },
