@@ -7,7 +7,7 @@ import { Message, Button, Tab } from "semantic-ui-react";
 import { debounce } from "../../utils/debounce";
 import { IJWT, ISettings } from "../../rootReducer";
 import { ISchema } from "../../interfaces/json-schema";
-import { IData } from "../../interfaces/misc";
+import { IData } from "../../interfaces/resource";
 import { IResource } from "../../interfaces/resource";
 import JsonEditor from "./JsonEditor";
 import Form from "../../containers/Form";

@@ -5,7 +5,7 @@ import { Image, Menu } from "semantic-ui-react";
 
 import { IJWT, ISettings } from "../../rootReducer";
 import { ISchema } from "../../interfaces/json-schema";
-import { IData } from "../../interfaces/misc";
+import { IData } from "../../interfaces/resource";
 
 import "../../style/Menu.css";
 import ResourceType from "./ResourceType";

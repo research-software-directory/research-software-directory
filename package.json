@@ -7,6 +7,7 @@
     "url": "https://github.com/research-software-directory/admin"
   },
   "dependencies": {
+    "ajv": "^6.4.0",
     "axios": "^0.18.0",
     "history": "^4.7.2",
     "immutability-helper": "^2.6.6",
@@ -23,6 +24,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-transition-group": "^2.3.1",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "semantic-ui-css": "^2.3.1",
