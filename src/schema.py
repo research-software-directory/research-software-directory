@@ -2,6 +2,7 @@ import json
 import os
 import re
 from glob import glob
+from json import JSONDecodeError
 
 
 def resolve(schema_name, schema_dict):
@@ -30,8 +31,11 @@ def get_schemas():
     for path in glob(os.path.join(os.environ.get('SCHEMAS_PATH'), '*.json')):
         file_name = path.split('/')[-1]
         schema_name = file_name.split('.')[0]
-        with open(path) as file:
-            schema[schema_name] = json.load(file)
+        try:
+            with open(path) as file:
+                schema[schema_name] = json.load(file)
+        except JSONDecodeError as e:
+            raise Exception('Error processing %s' % path) from e
 
     if os.environ.get('SCHEMA_RESOLVE_REFS', "1") == "1":
         for schema_name in schema:
