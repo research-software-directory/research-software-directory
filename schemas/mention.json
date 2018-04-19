@@ -6,14 +6,14 @@
             "type": "string"
         },
         "createdAt": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "createdBy": {
             "type": "string"
         },
         "date": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "image": {
@@ -55,7 +55,7 @@
             "type": "string"
         },
         "updatedAt": {
-            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
         },
         "updatedBy": {
