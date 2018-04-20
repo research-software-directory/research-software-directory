@@ -1,11 +1,18 @@
 import * as React from "react";
-import { IObjectSchema } from "../../interfaces/json-schema";
+import { IObjectSchema, isStringSchema } from "../../interfaces/json-schema";
 import FormPart from "./FormPart";
 import { IProps } from "./IProps";
 import styled from "styled-components";
 
 export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
   handleChange = (key: string) => (value: any) => {
+    if (isStringSchema(this.props.schema.properties[key]) && value === "") {
+      const cpy = { ...this.props.value };
+      delete cpy[key];
+      this.props.onChange(cpy);
+      return;
+    }
+
     this.props.onChange({ ...this.props.value, [key]: value });
   };
 

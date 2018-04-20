@@ -23,6 +23,21 @@ export default class TypeForeignKey extends React.Component<
     };
   }
 
+  validate() {
+    if (
+      !this.state.choices.find(choice => choice.key === this.props.value.id)
+    ) {
+      return [
+        {
+          message: `key "${this.props.value.id}" not found in collection "${
+            this.props.value.collection
+          }"`
+        }
+      ];
+    }
+    return [];
+  }
+
   computeChoices() {
     const foreignData = this.props.data[
       this.props.schema.properties.collection.enum[0]

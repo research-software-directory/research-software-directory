@@ -30,6 +30,12 @@ export default class TypeStringEnum extends React.Component<
           defaultValue={this.props.value}
           onChange={(_, elm) => this.props.onChange(elm.value)}
         />
+        {this.props.validationErrors &&
+          this.props.validationErrors.map((error, i) => (
+            <div key={i}>
+              <span style={{ color: "red" }}>{error.message}</span>
+            </div>
+          ))}
       </div>
     );
   }

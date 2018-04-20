@@ -14,6 +14,9 @@ export default class TypeString extends React.Component<
   constructor(props: IProps<IStringSchema>) {
     super(props);
     this.onChange = debounce(this.props.onChange, 300);
+    if (props.value === "" || props.value === null) {
+      this.props.onChange("");
+    }
   }
   render() {
     return (

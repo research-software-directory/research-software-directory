@@ -35,103 +35,92 @@ exports[`Storyshots Form elements Boolean 1`] = `
 
 exports[`Storyshots Form elements ForeignKey 1`] = `
 <div
-  className="sc-jTzLTM iLaoaZ"
+  className="sc-jzJRlG fBJUXc"
 >
   <div
-    className="sc-gqjmRU kvaxdu"
+    className="sc-jTzLTM egduXp"
   >
     <label
-      className="sc-VigVT iQkZUJ"
+      className="sc-fjdhpX kAOlOO"
     >
       ForeignKey
     </label>
   </div>
   <div
-    aria-busy={undefined}
-    aria-disabled={false}
-    aria-expanded={false}
-    className="ui fluid search selection dropdown"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    role="combobox"
     style={
       Object {
         "flex": 1,
       }
     }
-    tabIndex={undefined}
   >
-    <input
-      aria-autocomplete="list"
-      autoComplete="off"
-      className="search"
+    <div
+      aria-busy={undefined}
+      aria-disabled={false}
+      aria-expanded={false}
+      className="ui fluid search selection dropdown"
+      onBlur={[Function]}
       onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      role="combobox"
       style={
         Object {
-          "width": undefined,
+          "width": "100%",
         }
       }
-      tabIndex={0}
-      type="text"
-      value=""
-    />
-    <div
-      aria-live="polite"
-      className="text"
-      role="alert"
+      tabIndex={undefined}
     >
-      thing1
-    </div>
-    <i
-      aria-hidden="true"
-      className="dropdown icon"
-      onClick={[Function]}
-    />
-    <div
-      aria-multiselectable={undefined}
-      className="menu transition"
-      role="listbox"
-    >
-      <div
-        aria-checked={true}
-        aria-disabled={undefined}
-        aria-selected={true}
-        className="active selected item"
-        onClick={[Function]}
-        role="option"
+      <input
+        aria-autocomplete="list"
+        autoComplete="off"
+        className="search"
+        onChange={[Function]}
         style={
           Object {
-            "pointerEvents": "all",
+            "width": undefined,
           }
         }
+        tabIndex={0}
+        type="text"
+        value=""
+      />
+      <div
+        aria-live="polite"
+        className="text"
+        role="alert"
       >
-        <span
-          className="text"
-        >
-          thing1
-        </span>
+        thing1
       </div>
-      <div
-        aria-checked={false}
-        aria-disabled={undefined}
-        aria-selected={false}
-        className="item"
+      <i
+        aria-hidden="true"
+        className="dropdown icon"
         onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
+      />
+      <div
+        aria-multiselectable={undefined}
+        className="menu transition"
+        role="listbox"
       >
-        <span
-          className="text"
+        <div
+          aria-checked={true}
+          aria-disabled={undefined}
+          aria-selected={true}
+          className="active selected item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
         >
-          thing2
-        </span>
+          <span
+            className="text"
+          >
+            thing1
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -140,10 +129,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-kGXeez kYntIi"
+  className="sc-kpOJdX cUBYRo"
 >
   <label
-    className="sc-kgoBCf kVSTZj"
+    className="sc-kGXeez eIIwaK"
   >
     Object
   </label>
@@ -154,79 +143,105 @@ exports[`Storyshots Form elements Object 1`] = `
       }
     }
   >
-    <div
-      style={
-        Object {
-          "display": "flex",
-          "flexDirection": "column",
-          "justifyContent": "center",
-          "minHeight": "4em",
-        }
-      }
-    >
+    <div>
       <div
-        className="sc-bxivhb bfegXb"
-      >
-        <label
-          className="sc-ifAKCX bjCwCI"
-        >
-          prop1
-        </label>
-        <div
-          className="ui large input sc-htpNat gChKYK"
-        >
-          <input
-            defaultValue="asdasd"
-            disabled={false}
-            onChange={[Function]}
-            tabIndex={undefined}
-            type="text"
-          />
-        </div>
-      </div>
-      <div />
-    </div>
-    <div
-      style={
-        Object {
-          "display": "flex",
-          "flexDirection": "column",
-          "justifyContent": "center",
-          "minHeight": "4em",
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "marginBottom": ".5em",
+          }
         }
-      }
-    >
-      <div
-        className="sc-bwzfXH hPtagm"
       >
         <div
-          className="ui fitted toggle checkbox"
-          onChange={[Function]}
-          onClick={[Function]}
-          onMouseDown={[Function]}
+          className="sc-bxivhb bfegXb"
         >
-          <input
-            checked={false}
-            className="hidden"
-            id={undefined}
-            name={undefined}
-            onClick={[Function]}
-            readOnly={true}
-            tabIndex={0}
-            type="checkbox"
-            value={undefined}
-          />
           <label
-            htmlFor={undefined}
-          />
+            className="sc-ifAKCX bjCwCI"
+          >
+            prop1
+          </label>
+          <div
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <div
+              className="ui large input sc-htpNat daVAfG"
+            >
+              <input
+                defaultValue="asdasd"
+                disabled={false}
+                onChange={[Function]}
+                tabIndex={undefined}
+                type="text"
+              />
+            </div>
+          </div>
         </div>
-        <label
-          className="sc-bdVaJa iVzaAN"
+        <div
+          style={
+            Object {
+              "display": "none",
+            }
+          }
         >
-          prop2
-        </label>
+          []
+        </div>
       </div>
-      <div />
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "marginBottom": ".5em",
+          }
+        }
+      >
+        <div
+          className="sc-bwzfXH hPtagm"
+        >
+          <div
+            className="ui fitted toggle checkbox"
+            onChange={[Function]}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+          >
+            <input
+              checked={false}
+              className="hidden"
+              id={undefined}
+              name={undefined}
+              onClick={[Function]}
+              readOnly={true}
+              tabIndex={0}
+              type="checkbox"
+              value={undefined}
+            />
+            <label
+              htmlFor={undefined}
+            />
+          </div>
+          <label
+            className="sc-bdVaJa iVzaAN"
+          >
+            prop2
+          </label>
+        </div>
+        <div
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          []
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -342,42 +357,38 @@ exports[`Storyshots Form elements StringEnum 1`] = `
 
 exports[`Storyshots Form elements/Array default 1`] = `
 <section
-  className="form--array sc-gZMcBi fsdQsC"
+  className="sc-VigVT fIhGog"
 >
   <div
-    className="sc-htoDjs fHktW"
+    className="sc-dnqmqq bZUXvg"
+    style={
+      Object {
+        "backgroundColor": "#2185d0",
+      }
+    }
   >
-    <button
-      className="ui primary button sc-EHOje gUyRHv"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
+    <div
+      className="sc-iwsKbI hueoUn"
     >
-      Array
-       
-       
       <div
-        className="ui blue circular label"
+        className="sc-EHOje gUyRHv"
         onClick={[Function]}
       >
-        2
+        Array
+         
+         
+        <div
+          className="ui blue circular label"
+          onClick={[Function]}
+        >
+          2
+        </div>
+         
+        <i
+          aria-hidden="true"
+          className="angle up icon"
+        />
       </div>
-       
-      <i
-        aria-hidden="true"
-        className="angle up icon"
-      />
-    </button>
-    <div
-      style={
-        Object {
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    >
       <button
         className="ui blue button"
         disabled={undefined}
@@ -389,143 +400,175 @@ exports[`Storyshots Form elements/Array default 1`] = `
       </button>
     </div>
   </div>
-  <section
-    className="sc-gzVnrw isjAjx"
+  <div
+    className="sc-bZQynM jpdLmF"
   >
-    <div
-      className="sc-dnqmqq lnuUGd"
-    >
-      <button
-        className="ui secondary button sc-bZQynM bOrPFB"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        x
-      </button>
-    </div>
-    <div
-      className="sc-iwsKbI kVFGcj"
+    <section
+      className="sc-htoDjs dHjKTt"
     >
       <div
-        style={
-          Object {
-            "display": "flex",
-            "flexDirection": "column",
-            "justifyContent": "center",
-            "minHeight": "4em",
-          }
-        }
+        className="sc-gZMcBi fzilHm"
+      >
+        <button
+          className="ui secondary button sc-gzVnrw ibZhkv"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          x
+        </button>
+      </div>
+      <div
+        className="sc-gqjmRU iLgoQU"
       >
         <div
-          className="sc-bxivhb bfegXb"
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
+              "justifyContent": "center",
+              "marginBottom": ".5em",
+            }
+          }
         >
           <div
-            className="ui large input sc-htpNat gChKYK"
+            className="sc-bxivhb bfegXb"
           >
-            <input
-              defaultValue="asdasd"
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="text"
-            />
+            <div
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            >
+              <div
+                className="ui large input sc-htpNat daVAfG"
+              >
+                <input
+                  defaultValue="asdasd"
+                  disabled={false}
+                  onChange={[Function]}
+                  tabIndex={undefined}
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          >
+            []
           </div>
         </div>
-        <div />
       </div>
-    </div>
-  </section>
-  <section
-    className="sc-gzVnrw isjAjx"
-  >
-    <div
-      className="sc-dnqmqq lnuUGd"
-    >
-      <button
-        className="ui secondary button sc-bZQynM bOrPFB"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        x
-      </button>
-    </div>
-    <div
-      className="sc-iwsKbI kVFGcj"
+    </section>
+    <section
+      className="sc-htoDjs dHjKTt"
     >
       <div
-        style={
-          Object {
-            "display": "flex",
-            "flexDirection": "column",
-            "justifyContent": "center",
-            "minHeight": "4em",
-          }
-        }
+        className="sc-gZMcBi fzilHm"
+      >
+        <button
+          className="ui secondary button sc-gzVnrw ibZhkv"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          x
+        </button>
+      </div>
+      <div
+        className="sc-gqjmRU iLgoQU"
       >
         <div
-          className="sc-bxivhb bfegXb"
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
+              "justifyContent": "center",
+              "marginBottom": ".5em",
+            }
+          }
         >
           <div
-            className="ui large input sc-htpNat gChKYK"
+            className="sc-bxivhb bfegXb"
           >
-            <input
-              defaultValue="asdasddsa"
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="text"
-            />
+            <div
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            >
+              <div
+                className="ui large input sc-htpNat daVAfG"
+              >
+                <input
+                  defaultValue="asdasddsa"
+                  disabled={false}
+                  onChange={[Function]}
+                  tabIndex={undefined}
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          >
+            []
           </div>
         </div>
-        <div />
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </section>
 `;
 
 exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
 <section
-  className="form--array sc-gZMcBi dPXFYl"
+  className="sc-VigVT fIhGog"
 >
   <div
-    className="sc-htoDjs fHktW"
+    className="sc-dnqmqq bZUXvg"
+    style={
+      Object {
+        "backgroundColor": "#2185d0",
+      }
+    }
   >
-    <button
-      className="ui primary button sc-EHOje gUyRHv"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
+    <div
+      className="sc-iwsKbI hueoUn"
     >
-      Array
-       
-       
       <div
-        className="ui blue circular label"
+        className="sc-EHOje gUyRHv"
         onClick={[Function]}
       >
-        0
+        Array
+         
+         
+        <div
+          className="ui blue circular label"
+          onClick={[Function]}
+        >
+          0
+        </div>
+         
+        <i
+          aria-hidden="true"
+          className="angle up icon"
+        />
       </div>
-       
-      <i
-        aria-hidden="true"
-        className="angle up icon"
-      />
-    </button>
-    <div
-      style={
-        Object {
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    >
       <button
         className="ui blue button"
         disabled={undefined}
@@ -537,47 +580,46 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
       </button>
     </div>
   </div>
+  <div
+    className="sc-bZQynM jpdLmF"
+  />
 </section>
 `;
 
 exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
 <section
-  className="form--array sc-gZMcBi fsdQsC"
+  className="sc-VigVT fIhGog"
 >
   <div
-    className="sc-htoDjs fHktW"
+    className="sc-dnqmqq bZUXvg"
+    style={
+      Object {
+        "backgroundColor": "#2185d0",
+      }
+    }
   >
-    <button
-      className="ui primary button sc-EHOje gUyRHv"
-      disabled={undefined}
-      onClick={[Function]}
-      role="button"
-      tabIndex={undefined}
+    <div
+      className="sc-iwsKbI hueoUn"
     >
-      Array
-       
-       
       <div
-        className="ui blue circular label"
+        className="sc-EHOje gUyRHv"
         onClick={[Function]}
       >
-        2
+        Array
+         
+         
+        <div
+          className="ui blue circular label"
+          onClick={[Function]}
+        >
+          2
+        </div>
+         
+        <i
+          aria-hidden="true"
+          className="angle up icon"
+        />
       </div>
-       
-      <i
-        aria-hidden="true"
-        className="angle up icon"
-      />
-    </button>
-    <div
-      style={
-        Object {
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    >
       <button
         className="ui blue button"
         disabled={undefined}
@@ -589,102 +631,138 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       </button>
     </div>
   </div>
-  <section
-    className="sc-gzVnrw isjAjx"
+  <div
+    className="sc-bZQynM jpdLmF"
   >
-    <div
-      className="sc-dnqmqq lnuUGd"
-    >
-      <button
-        className="ui secondary button sc-bZQynM bOrPFB"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        x
-      </button>
-    </div>
-    <div
-      className="sc-iwsKbI kVFGcj"
+    <section
+      className="sc-htoDjs dHjKTt"
     >
       <div
-        style={
-          Object {
-            "display": "flex",
-            "flexDirection": "column",
-            "justifyContent": "center",
-            "minHeight": "4em",
-          }
-        }
+        className="sc-gZMcBi fzilHm"
+      >
+        <button
+          className="ui secondary button sc-gzVnrw ibZhkv"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          x
+        </button>
+      </div>
+      <div
+        className="sc-gqjmRU iLgoQU"
       >
         <div
-          className="sc-bxivhb bfegXb"
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
+              "justifyContent": "center",
+              "marginBottom": ".5em",
+            }
+          }
         >
           <div
-            className="ui large input sc-htpNat gChKYK"
+            className="sc-bxivhb bfegXb"
           >
-            <input
-              defaultValue="asdasd"
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="text"
-            />
+            <div
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            >
+              <div
+                className="ui large input sc-htpNat daVAfG"
+              >
+                <input
+                  defaultValue="asdasd"
+                  disabled={false}
+                  onChange={[Function]}
+                  tabIndex={undefined}
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          >
+            []
           </div>
         </div>
-        <div />
       </div>
-    </div>
-  </section>
-  <section
-    className="sc-gzVnrw isjAjx"
-  >
-    <div
-      className="sc-dnqmqq lnuUGd"
-    >
-      <button
-        className="ui secondary button sc-bZQynM bOrPFB"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        x
-      </button>
-    </div>
-    <div
-      className="sc-iwsKbI kVFGcj"
+    </section>
+    <section
+      className="sc-htoDjs dHjKTt"
     >
       <div
-        style={
-          Object {
-            "display": "flex",
-            "flexDirection": "column",
-            "justifyContent": "center",
-            "minHeight": "4em",
-          }
-        }
+        className="sc-gZMcBi fzilHm"
+      >
+        <button
+          className="ui secondary button sc-gzVnrw ibZhkv"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          x
+        </button>
+      </div>
+      <div
+        className="sc-gqjmRU iLgoQU"
       >
         <div
-          className="sc-bxivhb bfegXb"
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
+              "justifyContent": "center",
+              "marginBottom": ".5em",
+            }
+          }
         >
           <div
-            className="ui large input sc-htpNat gChKYK"
+            className="sc-bxivhb bfegXb"
           >
-            <input
-              defaultValue="asdasddsa"
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="text"
-            />
+            <div
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            >
+              <div
+                className="ui large input sc-htpNat daVAfG"
+              >
+                <input
+                  defaultValue="asdasddsa"
+                  disabled={false}
+                  onChange={[Function]}
+                  tabIndex={undefined}
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "none",
+              }
+            }
+          >
+            []
           </div>
         </div>
-        <div />
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </section>
 `;
 
@@ -698,15 +776,23 @@ exports[`Storyshots Form elements/String default 1`] = `
     String
   </label>
   <div
-    className="ui large input sc-htpNat gChKYK"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
   >
-    <input
-      defaultValue="Value here"
-      disabled={false}
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-    />
+    <div
+      className="ui large input sc-htpNat daVAfG"
+    >
+      <input
+        defaultValue="Value here"
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -721,15 +807,23 @@ exports[`Storyshots Form elements/String format=date-time invalid 1`] = `
     String
   </label>
   <div
-    className="ui large input sc-htpNat gChKYK"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
   >
-    <input
-      defaultValue="Not a date-time"
-      disabled={false}
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-    />
+    <div
+      className="ui large input sc-htpNat daVAfG"
+    >
+      <input
+        defaultValue="Not a date-time"
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -744,15 +838,23 @@ exports[`Storyshots Form elements/String format=date-time valid 1`] = `
     String
   </label>
   <div
-    className="ui large input sc-htpNat gChKYK"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
   >
-    <input
-      defaultValue="2017-11-14T13:37:17Z"
-      disabled={false}
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-    />
+    <div
+      className="ui large input sc-htpNat daVAfG"
+    >
+      <input
+        defaultValue="2017-11-14T13:37:17Z"
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -767,15 +869,23 @@ exports[`Storyshots Form elements/String format=uri invalid 1`] = `
     String
   </label>
   <div
-    className="ui large input sc-htpNat gChKYK"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
   >
-    <input
-      defaultValue="Not an uri"
-      disabled={false}
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-    />
+    <div
+      className="ui large input sc-htpNat daVAfG"
+    >
+      <input
+        defaultValue="Not an uri"
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -790,15 +900,23 @@ exports[`Storyshots Form elements/String format=uri valid 1`] = `
     String
   </label>
   <div
-    className="ui large input sc-htpNat gChKYK"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
   >
-    <input
-      defaultValue="https://example.com"
-      disabled={false}
-      onChange={[Function]}
-      tabIndex={undefined}
-      type="text"
-    />
+    <div
+      className="ui large input sc-htpNat daVAfG"
+    >
+      <input
+        defaultValue="https://example.com"
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -19478,26 +19596,6 @@ exports[`Storyshots Full app default 1`] = `
       Welcome
     </div>
   </div>
-</div>
-`;
-
-exports[`Storyshots JsonEditor default 1`] = `
-<div
-  style={
-    Object {
-      "height": "200px",
-    }
-  }
->
-  <div
-    id="test"
-    style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
-    }
-  />
 </div>
 `;
 

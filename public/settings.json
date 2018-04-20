@@ -113,7 +113,24 @@
     },
     "person": {
       "name": "Person",
-      "icon": "user"
+      "icon": "user",
+      "properties": {
+        "primaryKey": {
+          "readonly": true
+        },
+        "createdAt": {
+          "readonly": true
+        },
+        "createdBy": {
+          "readonly": true
+        },
+        "updatedAt": {
+          "readonly": true
+        },
+        "updatedBy": {
+          "readonly": true
+        }
+      }
     },
     "mention": {
       "name": "mention",

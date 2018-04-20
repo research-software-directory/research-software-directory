@@ -17,18 +17,18 @@ type ResizeFunction = (resolution: Dimensions) => Dimensions;
 const resizeBoundingBox = ({
   maxWidth,
   maxHeight
-}: { maxWidth: number; maxHeight: number }): ResizeFunction => ({
-  width,
-  height
-}: Dimensions) => {
+}: {
+  maxWidth: number;
+  maxHeight: number;
+}): ResizeFunction => ({ width, height }: Dimensions) => {
   let [newWidth, newHeight] = [width, height];
   if (maxWidth < newWidth) {
+    newHeight = maxWidth / width * newHeight;
     newWidth = maxWidth;
-    newHeight = newWidth / maxWidth * newHeight;
   }
   if (maxHeight < newHeight) {
+    newWidth = maxHeight / newHeight * newWidth;
     newHeight = maxHeight;
-    newWidth = newHeight / maxHeight * newWidth;
   }
   return { width: newWidth, height: newHeight };
 };
@@ -43,13 +43,10 @@ function resizedataURL(
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d") as any;
 
-      console.log(img.width, img.height);
-
       let { width, height } = resizeFunction({
         width: img.width,
         height: img.height
       });
-
       canvas.width = width;
       canvas.height = height;
 
@@ -108,7 +105,7 @@ export default class TypeImage extends React.Component<
     return (
       <Horizontal>
         {this.props.showLabel !== false && (
-          <div>
+          <div style={{ minWidth: "150px" }}>
             {(this.props.settings && this.props.settings.label) ||
               this.props.label}
           </div>
@@ -123,14 +120,17 @@ export default class TypeImage extends React.Component<
           onDrop={this.onDrop}
           accept="image/*"
         >
-          <p>
-            Try dropping some files here, or click to select files to upload.
-          </p>
+          <p>Drop image or click to select file.</p>
           {this.props.value && (
             <img
               src={`data:${this.props.value.mimeType};base64,${
                 this.props.value.data
               }`}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                border: "1px dashed red"
+              }}
             />
           )}
         </Dropzone>
@@ -139,7 +139,7 @@ export default class TypeImage extends React.Component<
             <ImageModal id="imageModal" open={true} basic={true}>
               <Cropper
                 src={(this.state as any).fileDataUrl}
-                style={{ height: 400, width: "90%" }}
+                style={{ height: "50%", minHeight: "400px", width: "90%" }}
                 ref={(ref: any) => (this._cropper = ref)}
                 onChange={console.log}
               />
@@ -163,8 +163,6 @@ export default class TypeImage extends React.Component<
     );
   }
 }
-
-console.log(typeof Modal, typeof Dropzone);
 
 const ImageModal = styled(Modal)`
   &#imageModal {
