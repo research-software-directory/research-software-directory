@@ -10,7 +10,7 @@
             </div>
 
             <div class="col-3-4 row contributing-organisations">
-                {% for contributingOrganization in template_data.related.organizations %}
+                {% for contributingOrganization in (template_data.related.organizations | sort(attribute='foreignKey.name')) %}
                 {% set org = contributingOrganization.foreignKey %}
                 <div class="organisation">
                 {% if org.website %}
