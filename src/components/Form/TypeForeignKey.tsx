@@ -8,6 +8,7 @@ import resourceToString from "../../custom/resourceToString";
 
 interface IState {
   choices: DropdownItemProps[];
+  isOpen: boolean;
 }
 
 export default class TypeForeignKey extends React.Component<
@@ -17,7 +18,8 @@ export default class TypeForeignKey extends React.Component<
   constructor(props: IProps<IForeignKeySchema>) {
     super(props);
     this.state = {
-      choices: this.computeChoices()
+      choices: this.computeChoices(),
+      isOpen: false
     };
   }
 
@@ -32,8 +34,9 @@ export default class TypeForeignKey extends React.Component<
     }));
   }
 
-  shouldComponentUpdate(newProps: IProps<IForeignKeySchema>) {
+  shouldComponentUpdate(newProps: IProps<IForeignKeySchema>, newState: IState) {
     return (
+      newState !== this.state ||
       newProps.value !== this.props.value ||
       newProps.data !== this.props.data ||
       newProps.validationErrors !== this.props.validationErrors
@@ -41,6 +44,15 @@ export default class TypeForeignKey extends React.Component<
   }
 
   render() {
+    const currentChoice = this.state.choices.find(
+      choice => choice.key === this.props.value.id
+    );
+    const options = this.state.isOpen
+      ? this.state.choices
+      : currentChoice
+        ? [currentChoice]
+        : [];
+
     return (
       <Container>
         <Left>
@@ -58,7 +70,7 @@ export default class TypeForeignKey extends React.Component<
             selection={true}
             fluid={true}
             search={true}
-            options={this.state.choices}
+            options={options}
             style={{ width: "100%" }}
             onChange={(_, field) =>
               this.props.onChange({
@@ -66,6 +78,8 @@ export default class TypeForeignKey extends React.Component<
                 collection: this.props.schema.properties.collection.enum[0]
               })
             }
+            onOpen={() => this.setState({ isOpen: true })}
+            onClose={() => this.setState({ isOpen: false })}
           />
           {this.props.validationErrors &&
             this.props.validationErrors.map((error, i) => (
