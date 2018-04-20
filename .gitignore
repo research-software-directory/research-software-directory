@@ -6,3 +6,4 @@ static/style/*.css.map
 .env
 .env.local
 .env.production
+__pycache__/
