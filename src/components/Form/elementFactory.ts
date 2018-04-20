@@ -36,15 +36,14 @@ export function registerFormComponent(
   filter: IFilterFunction,
   component: FormComponent
 ) {
-  registry.push({ filter, component });
+  registry.unshift({ filter, component });
 }
 
 export const getComponent = (
   schema: ISchema,
   settings: ISettingsProperty
 ): FormComponent =>
-  [...registry].reverse().find(({ filter }) => filter(schema, settings))!
-    .component;
+  registry.find(({ filter }) => filter(schema, settings))!.component;
 
 [
   [() => true, TypeDummy],

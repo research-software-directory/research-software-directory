@@ -20,13 +20,9 @@ export default class TypeArray extends React.Component<
     this.state = {
       collapsed: !(Array.isArray(props.value) || props.value.length === 0)
     };
-  }
-  shouldComponentUpdate(newProps: IProps<IArraySchema>, newState: IState) {
-    return (
-      newProps.value !== this.props.value ||
-      newProps.data !== this.props.data ||
-      newState !== this.state
-    );
+    if (!Array.isArray(props.value)) {
+      this.props.onChange([]);
+    }
   }
 
   handleChange(index: number, value: any) {
@@ -54,20 +50,19 @@ export default class TypeArray extends React.Component<
   render() {
     let value = this.props.value;
     if (!Array.isArray(value)) {
-      value = [];
+      return null;
     }
-    let error = false;
-    if ("minItems" in this.props.schema && this.props.schema.minItems) {
-      if (value.length < this.props.schema.minItems) {
-        error = true;
-      }
-    }
+    let error = !!(
+      this.props.validationErrors && this.props.validationErrors.length > 0
+    );
+
     return (
       <Container error={error} className="form--array">
         <Header>
           <ArrayButton
             primary={true}
             onClick={() => this.setState({ collapsed: !this.state.collapsed })}
+            style={{ backgroundColor: error ? "red" : "" }}
           >
             {(this.props.settings && this.props.settings.label) ||
               this.props.label}{" "}

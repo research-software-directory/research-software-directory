@@ -34,7 +34,9 @@ export default class TypeForeignKey extends React.Component<
 
   shouldComponentUpdate(newProps: IProps<IForeignKeySchema>) {
     return (
-      newProps.value !== this.props.value || newProps.data !== this.props.data
+      newProps.value !== this.props.value ||
+      newProps.data !== this.props.data ||
+      newProps.validationErrors !== this.props.validationErrors
     );
   }
 
@@ -49,21 +51,29 @@ export default class TypeForeignKey extends React.Component<
             </Label>
           )}
         </Left>
-        <Dropdown
-          disabled={!!this.props.readonly || !!this.props.settings.readonly}
-          defaultValue={this.props.value ? this.props.value.id : null}
-          selection={true}
-          fluid={true}
-          search={true}
-          options={this.state.choices}
-          style={{ flex: 1 }}
-          onChange={(_, field) =>
-            this.props.onChange({
-              id: field.value,
-              collection: this.props.schema.properties.collection.enum[0]
-            })
-          }
-        />
+        <div style={{ flex: 1 }}>
+          <Dropdown
+            disabled={!!this.props.readonly || !!this.props.settings.readonly}
+            defaultValue={this.props.value ? this.props.value.id : null}
+            selection={true}
+            fluid={true}
+            search={true}
+            options={this.state.choices}
+            style={{ width: "100%" }}
+            onChange={(_, field) =>
+              this.props.onChange({
+                id: field.value,
+                collection: this.props.schema.properties.collection.enum[0]
+              })
+            }
+          />
+          {this.props.validationErrors &&
+            this.props.validationErrors.map((error, i) => (
+              <div key={i}>
+                <span style={{ color: "red" }}>{error.message}</span>
+              </div>
+            ))}
+        </div>
       </Container>
     );
   }

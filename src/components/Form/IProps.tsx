@@ -1,5 +1,6 @@
 import { ISettingsProperty } from "../../rootReducer";
 import { IData } from "../../interfaces/resource";
+import * as Ajv from "ajv";
 
 export interface IProps<T> {
   schema: T;
@@ -10,4 +11,5 @@ export interface IProps<T> {
   onChange: (data: any) => any;
   label: string;
   showLabel?: boolean;
+  validationErrors?: Ajv.ErrorObject[];
 }

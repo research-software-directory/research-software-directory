@@ -2,11 +2,9 @@ import * as React from "react";
 import { IForeignKeySchema, ISchema } from "../../interfaces/json-schema";
 import { IProps } from "./IProps";
 import { getComponent } from "./elementFactory";
-import styled, { StyledComponentClass } from "styled-components";
+import styled from "styled-components";
 import { debounce } from "../../utils/debounce";
 import * as Ajv from "ajv";
-import { Message, MessageProps } from "semantic-ui-react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 interface IState {
   hasError: boolean;
@@ -78,29 +76,23 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     return (
       <div
         style={{
-          minHeight: "4em",
+          marginBottom: ".5em",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center"
         }}
       >
-        <Component {...this.props} />
-        <TransitionGroup>
-          {this.state.validationError
-            .filter(error => error.dataPath === "")
-            .map(error => (
-              <CSSTransition
-                key={error.keyword}
-                timeout={500}
-                classNames="message"
-              >
-                <ErrorMessage negative={true}>
-                  <Message.Header>{error.keyword}</Message.Header>
-                  {error.message}
-                </ErrorMessage>
-              </CSSTransition>
-            ))}
-        </TransitionGroup>
+        <Component
+          {...this.props}
+          validationErrors={this.state.validationError.filter(
+            error => error.dataPath === ""
+          )}
+        />
+        <div style={{ display: "none" }}>
+          {JSON.stringify(
+            this.state.validationError.filter(error => error.dataPath === "")
+          )}
+        </div>
       </div>
     );
   }
@@ -111,23 +103,3 @@ const ShowError = styled.pre`
   color: white;
   white-space: pre-wrap;
 `;
-
-const ErrorMessage = styled(Message)`
-  transition: all 0.5s !important;
-  opacity: 0;
-  overflow: hidden;
-  &.message-exit {
-    transform: translateY(-25px) translateX(-15px);
-    opacity: 0;
-  }
-  &.message-enter {
-    transform: translateY(25px);
-  }
-  &.message-enter-done {
-    transform: none;
-    opacity: 1;
-  }
-  &:last-child {
-    //margin-bottom: 2em !important;
-  }
-` as StyledComponentClass<MessageProps, {}>;

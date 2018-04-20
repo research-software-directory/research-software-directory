@@ -40,43 +40,57 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
   };
 
   render() {
-    const contents = Object.keys(this.props.schema.properties)
-      .sort(this.sortKeys)
-      .map((key: string) => (
-        <FormPart
-          key={key}
-          value={this.props.value ? this.props.value[key] : undefined}
-          settings={
-            (this.props.settings &&
-              this.props.settings.properties &&
-              this.props.settings.properties[key]) || { label: "" }
-          }
-          readonly={!!this.props.readonly || !!this.props.settings.readonly}
-          schema={this.props.schema.properties[key]}
-          data={this.props.data}
-          label={key}
-          onChange={this.handleChange(key)}
-        />
-      ));
-    if (!contents) {
-      return null;
-    }
-    return (
-      <Container>
-        {this.props.showLabel !== false && (
+    const contents = (
+      <div>
+        {Object.keys(this.props.schema.properties)
+          .sort(this.sortKeys)
+          .map((key: string) => (
+            <FormPart
+              key={key}
+              value={this.props.value ? this.props.value[key] : undefined}
+              settings={
+                (this.props.settings &&
+                  this.props.settings.properties &&
+                  this.props.settings.properties[key]) || { label: "" }
+              }
+              readonly={!!this.props.readonly || !!this.props.settings.readonly}
+              schema={this.props.schema.properties[key]}
+              data={this.props.data}
+              label={key}
+              onChange={this.handleChange(key)}
+            />
+          ))}
+        {this.props.validationErrors &&
+          this.props.validationErrors.map((error, i) => (
+            <div key={i}>
+              <span style={{ color: "red" }}>{error.message}</span>
+            </div>
+          ))}
+      </div>
+    );
+    // if (!contents) {
+    //   return null;
+    // }
+
+    if (this.props.showLabel !== false) {
+      return (
+        <Container>
           <Label>
             {(this.props.settings && this.props.settings.label) ||
               this.props.label}
           </Label>
-        )}
-        <div style={{ flex: 1 }}>{contents}</div>
-      </Container>
-    );
+          <div style={{ flex: 1 }}>{contents}</div>
+        </Container>
+      );
+    }
+
+    return contents;
   }
 }
 
 const Label = styled.label``;
 
 const Container = styled.div`
-  display: flex;
+  padding: 0.5em;
+  border: 1px dashed black;
 `;

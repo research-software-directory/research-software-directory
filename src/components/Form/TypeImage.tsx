@@ -11,17 +11,49 @@ type IState = {
   fileDataUrl: string | null;
 };
 
-function resizedataURL(dataURL: string, newWidth: number, newHeight: number) {
+type Dimensions = { width: number; height: number };
+type ResizeFunction = (resolution: Dimensions) => Dimensions;
+
+const resizeBoundingBox = ({
+  maxWidth,
+  maxHeight
+}: { maxWidth: number; maxHeight: number }): ResizeFunction => ({
+  width,
+  height
+}: Dimensions) => {
+  let [newWidth, newHeight] = [width, height];
+  if (maxWidth < newWidth) {
+    newWidth = maxWidth;
+    newHeight = newWidth / maxWidth * newHeight;
+  }
+  if (maxHeight < newHeight) {
+    newHeight = maxHeight;
+    newWidth = newHeight / maxHeight * newWidth;
+  }
+  return { width: newWidth, height: newHeight };
+};
+
+function resizedataURL(
+  dataURL: string,
+  resizeFunction: ResizeFunction
+): PromiseLike<string> {
   return new Promise(resolve => {
     const img = document.createElement("img");
     img.onload = function() {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d") as any;
 
-      canvas.width = newWidth;
-      canvas.height = newHeight;
+      console.log(img.width, img.height);
 
-      ctx.drawImage(img, 0, 0, newWidth, newHeight);
+      let { width, height } = resizeFunction({
+        width: img.width,
+        height: img.height
+      });
+
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.drawImage(img, 0, 0, width, height);
 
       resolve(canvas.toDataURL());
     };
@@ -60,11 +92,10 @@ export default class TypeImage extends React.Component<
 
   onCrop = async () => {
     const canvas = (this._cropper as any).cropper.getCroppedCanvas();
-    const dataURL: string = (await resizedataURL(
+    const dataURL: string = await resizedataURL(
       canvas.toDataURL(),
-      250,
-      250
-    )) as string;
+      resizeBoundingBox({ maxWidth: 300, maxHeight: 200 })
+    );
     const matches = dataURL.match(/^data:(.*?);base64,(.*)/);
     this.props.onChange({
       data: matches![2],
@@ -76,11 +107,18 @@ export default class TypeImage extends React.Component<
   render() {
     return (
       <Horizontal>
+        {this.props.showLabel !== false && (
+          <div>
+            {(this.props.settings && this.props.settings.label) ||
+              this.props.label}
+          </div>
+        )}
         <Dropzone
           style={{
-            height: "400px",
-            width: "100%",
-            border: "1px dashed black;"
+            height: "200px",
+            minWidth: "300px",
+            border: "1px dashed black",
+            overflow: "hidden"
           }}
           onDrop={this.onDrop}
           accept="image/*"
