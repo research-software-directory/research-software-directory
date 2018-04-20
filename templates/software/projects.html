@@ -8,7 +8,8 @@
             <div class="col-3-4">
                 <div class="row project-items">
 
-                    {% for project in template_data.related.projects | no_none_filter %}
+                    {% for fpproject in template_data.related.projects | no_none_filter %}
+                    {% with project = fpproject.foreignKey %}
                     <article class="project-item col-1-2">
                         <a href="{{project.url}}" target="_blank">
                             <div class="content">
@@ -22,16 +23,17 @@
                                     </p>
                                     <div class="author">
                                         <div class="author_name">
-                                            {{(project.team | pick_pi_filter).name}}
+                                            {{ project.principalInvestigator.name }}
                                         </div>
                                         <div class="author_university">
-                                            {{(project.team | pick_pi_filter).affiliation}}
+                                            {{ project.principalInvestigator.affiliation }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </article>
+                    {% endwith %}
                     {% endfor %}
 
                 </div>
