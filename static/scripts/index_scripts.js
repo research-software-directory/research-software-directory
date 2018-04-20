@@ -53,8 +53,8 @@ function initOverview(softwareData, organizationsData) {
         return function(sw) {
             if (orgs.length === 0) return true;
             var matches = 0;
-            sw.contributingOrganizations.forEach(function (org) {
-                if (orgs.includes(org.foreignKey.id)) {
+            sw.relatedOrganizations.forEach(function (org) {
+                if (orgs.includes(org.foreignKey.primaryKey.id)) {
                     matches += 1;
                 }
             });
@@ -182,7 +182,7 @@ function initOverview(softwareData, organizationsData) {
                 this.filteredSoftware
                     .forEach(function (sw) {
                         sw.relatedOrganizations.forEach(function (forg) {
-                            var org = partners.find(function(corg) { return corg.primaryKey.id === forg.foreignKey.id });
+                            var org = partners.find(function(corg) { return corg.primaryKey.id === forg.foreignKey.primaryKey.id });
                             if (org) {
                                 org['count'] = (org['count'] || 0) + 1;
                             }
