@@ -1,4 +1,5 @@
-{% if template_data.corporateProjects | no_none_filter %}
+{% if false %}
+{% if template_data.related.projects | no_none_filter %}
 <section class="" id="projects">
     <div class="container">
         <div class="row">
@@ -20,7 +21,7 @@
 
                 <div class="row project-items">
 
-                    {% for project in template_data.corporateProjects | no_none_filter %}
+                    {% for project in template_data.related.projects | no_none_filter %}
                     <article class="project-item col-1-2">
                         <a href="{{project.url}}" target="_blank">
                             <div class="content">
@@ -51,4 +52,5 @@
         </div>
     </div>
 </section>
+{% endif %}
 {% endif %}
