@@ -5,6 +5,7 @@ import pprint
 import re
 from py_w3c.validators.html.validator import HTMLValidator
 
+
 @pytest.fixture(autouse=True)
 def get():
     def _get(url):
@@ -17,6 +18,7 @@ def get():
 def get_mock(name):
     with open("mocks/%s" % name) as f:
         return f.read()
+
 
 def is_really_error(error):
     w3c_regex_whitelist = [
@@ -34,9 +36,9 @@ def is_really_error(error):
 def test_index(get):
     with requests_mock.mock() as m:
         m.get(api_url + '/software_cache?isPublished=true', text=get_mock('software.json'))
-        m.get(api_url + '/latest_mentions', text=get_mock('latest_mentions.json'))
+        m.get(api_url + '/mention?sort=date&direction=desc&limit=5', text=get_mock('latest_mentions.json'))
         m.get(api_url + '/organization', text=get_mock('organizations.json'))
-        m.get(api_url + '/corporate_blogs', text=get_mock('blogs.json'))
+        m.get(api_url + '/mention?isCorporateBlog=true&sort=date&direction=desc&limit=4', text=get_mock('blogs.json'))
         result = get('/')
 
         html_validator = HTMLValidator()
@@ -46,6 +48,7 @@ def test_index(get):
             pprint.pprint(errors)
 
         assert len(errors) == 0
+
 
 def test_xenon(get):
     with requests_mock.mock() as m:

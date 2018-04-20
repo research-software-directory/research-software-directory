@@ -1,3001 +1,432 @@
-[
-    {
-        "primaryKey": {
-            "id": "3d-e-chem-knime-pharmacophore",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-14T13:37:17Z",
-        "updatedAt": "2017-12-14T15:30:49Z",
-        "brandName": "KNIME Pharmacophore",
-        "bullets": "* For cheminformations which are working with pharmacphores in KNIME worklows.\n* Adds pharmacophore data type to KNIME\n",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "vua",
-                    "primaryKey": {
-                        "id": "vua",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:56Z",
-                    "name": "VU University Amsterdam",
-                    "url": "http://www.vu.nl/"
-                }
-            }
-        ],
-        "contributors": [],
-        "getStartedURL": "https://github.com/3D-e-Chem/knime-pharmacophore",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/3D-e-Chem/knime-pharmacophore"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "Java"
-        ],
-        "readMore": null,
-        "shortStatement": "A pharmacophore is an abstract description of molecular features that are necessary for molecular recognition of a ligand by a biological macromolecule. The KNIME nodes in this software allow you to read, write, align pharmacophores.",
-        "slug": "3d-e-chem-knime-pharmacophore",
-        "tags": [
-            "Workflow technologies"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
-        },
-        "totalCommits": 97,
-        "lastCommit": "2018-03-23T09:58:08Z",
-        "commits": {
-            "2017-06": 22,
-            "2017-07": 56,
-            "2017-08": 7,
-            "2017-09": 3,
-            "2017-10": 1,
-            "2017-11": 3,
-            "2018-02": 1,
-            "2018-03": 4
-        },
-        "citationCFF": null
+[{
+    "primaryKey": {
+      "id": "research-software-directory",
+      "collection": "software"
     },
-    {
-        "primaryKey": {
-            "id": "3d-e-chem-knime-plants",
-            "collection": "software"
+    "createdAt": "2018-01-22T09:21:00Z",
+    "updatedAt": "2018-03-14T13:28:55Z",
+    "brandName": "Research Software Directory",
+    "bullets": "* Improves findability of software packages\n* Makes scientific impact visible\n",
+    "conceptDOI": "10.5281/zenodo.1154131",
+    "contributors": [
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "t.klaver",
+            "collection": "person"
+          },
+          "createdAt": "",
+          "updatedAt": "2017-11-10T14:37:19Z",
+          "emailAddress": "t.klaver@esciencecenter.nl",
+          "familyNames": "Tom Klaver",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
         },
-        "createdAt": "2017-11-14T13:37:17Z",
-        "updatedAt": "2017-12-14T15:30:49Z",
-        "brandName": "KNIME PLANTS",
-        "bullets": "* Cheminformations who want to combine protein-ligand docking with other KNIME workflow steps\n* Makes it possible to generate a PLANTS config file, run the PLANTS executable and ingest the PLANTS output from a KNIME workflow\n* The KNIME nodes come bundle with a PLANTS executable, so it does not have to installed by user seperately\n* Used in workflow to perform a all vs all docking of all ligand-protein complexes of the Kinase and GPRC family in the protein data bank\n",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "vua",
-                    "primaryKey": {
-                        "id": "vua",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:56Z",
-                    "name": "VU University Amsterdam",
-                    "url": "http://www.vu.nl/"
-                }
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
             }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "s.verhoeven",
-                    "primaryKey": {
-                        "id": "s.verhoeven",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2018-01-08T12:08:08Z",
-                    "emailAddress": "s.verhoeven@esciencecenter.nl",
-                    "familyNames": "Stefan Verhoeven",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "https://github.com/3D-e-Chem/knime-plants",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/3D-e-Chem/knime-plants"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "Java"
-        ],
-        "readMore": null,
-        "shortStatement": "KNIME nodes to configure, run and analyze PLANTS protein-ligand docking",
-        "slug": "3d-e-chem-knime-plants",
-        "tags": [
-            "Machine learning"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "t.bakker",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:35:48Z",
+          "updatedAt": "2017-11-10T14:35:48Z",
+          "emailAddress": "",
+          "familyNames": "Tom Bakker",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
         },
-        "totalCommits": 78,
-        "lastCommit": "2018-03-23T09:58:08Z",
-        "commits": {
-            "2016-11": 2,
-            "2016-12": 13,
-            "2017-01": 1,
-            "2017-02": 5,
-            "2017-03": 15,
-            "2017-08": 17,
-            "2017-09": 15,
-            "2017-10": 1,
-            "2017-11": 3,
-            "2018-02": 4,
-            "2018-03": 2
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "v.hees",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2017-11-22T16:16:09Z",
+          "emailAddress": "v.hees@esciencecenter.nl",
+          "familyNames": "Vincent van Hees",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
         },
-        "citationCFF": null
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "a.mendrik",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:26:23Z",
+          "updatedAt": "2017-11-10T14:26:23Z",
+          "emailAddress": "",
+          "familyNames": "Adriënne Mendrik",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "j.maassen",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2017-11-10T14:17:41Z",
+          "emailAddress": "j.maassen@esciencecenter.nl",
+          "familyNames": "Jason Maassen",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "l.kulik",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2017-11-10T14:17:42Z",
+          "emailAddress": "l.kulik@esciencecenter.nl",
+          "familyNames": "Lode Kulik",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "j.spaaks",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2017-11-10T14:17:41Z",
+          "emailAddress": "j.spaaks@esciencecenter.nl",
+          "familyNames": "Jurriaan H. Spaaks",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": true,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "l.ridder",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2017-11-10T14:17:42Z",
+          "emailAddress": "l.ridder@esciencecenter.nl",
+          "familyNames": "Lars Ridder",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "w.vanhage",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2017-11-10T14:17:46Z",
+          "emailAddress": "w.vanhage@esciencecenter.nl",
+          "familyNames": "Willem van Hage",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "l.bogaardt",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:30:10Z",
+          "updatedAt": "2017-11-10T14:30:10Z",
+          "emailAddress": "",
+          "familyNames": "Laurens Bogaardt",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      },
+      {
+        "foreignKey": {
+          "primaryKey": {
+            "id": "s.verhoeven",
+            "collection": "person"
+          },
+          "createdAt": "2017-11-10T14:12:55Z",
+          "updatedAt": "2018-01-08T12:08:08Z",
+          "emailAddress": "s.verhoeven@esciencecenter.nl",
+          "familyNames": "Stefan Verhoeven",
+          "givenNames": null,
+          "nameParticle": null,
+          "nameSuffix": null
+        },
+        "isContactPerson": false,
+        "affiliations": [
+          {
+            "foreignKey": {
+              "primaryKey": {
+                "id": "nlesc",
+                "collection": "organization"
+              },
+              "createdAt": "2017-11-10T14:12:55Z",
+              "updatedAt": "2017-11-10T14:17:53Z",
+              "name": "Netherlands eScience Center",
+              "url": "http://www.esciencecenter.nl/"
+            }
+          }
+        ]
+      }
+    ],
+    "getStartedURL": "http://researchsoftwaredirectory.readthedocs.io/en/latest/",
+    "repositoryURLs": [
+      "https://github.com/research-software-directory/landing-page"
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "license": [
+      "Apache-2.0"
+    ],
+    "programmingLanguage": [
+      "Python",
+      "TypeScript",
+      "HTML",
+      "Shell scripts (bash, csh, ...)"
+    ],
+    "readMore": null,
+    "shortStatement": "The Research Software Directory aims to promote the impact, the exchange and re-use of research software.",
+    "slug": "research-software-directory",
+    "tags": [
+      "Visualization"
+    ],
+    "testimonials": [],
+    "related": {
+      "software": [],
+      "mentions": [
+        {
+          "foreignKey": {
+            "primaryKey": {
+              "collection": "mention",
+              "id": "A4VM84DE"
+            },
+            "version": 2771,
+            "title": "Screencast: Research Software Directory admin interface",
+            "type": "videoRecording",
+            "zoteroKey": "A4VM84DE",
+            "isCorporateBlog": false,
+            "date": "2018-02-15T00:00:00Z",
+            "url": "https://www.youtube.com/watch?v=xIa8PBN4lxQ",
+            "createdAt": "2018-04-20T11:38:00Z",
+            "updatedAt": "2018-04-20T11:38:00Z",
+            "createdBy": "Scraper",
+            "updatedBy": "Scraper"
+          }
+        },
+        {
+          "foreignKey": {
+            "primaryKey": {
+              "collection": "mention",
+              "id": "NDY56PVS"
+            },
+            "version": 2771,
+            "title": "Screencast: Research Software Directory",
+            "type": "videoRecording",
+            "zoteroKey": "NDY56PVS",
+            "isCorporateBlog": false,
+            "date": "2018-02-15T00:00:00Z",
+            "url": "https://www.youtube.com/watch?v=-eB5s54wRNE",
+            "createdAt": "2018-04-20T11:38:00Z",
+            "updatedAt": "2018-04-20T11:38:00Z",
+            "createdBy": "Scraper",
+            "updatedBy": "Scraper"
+          }
+        }
+      ],
+      "projects": [],
+      "organizations": []
     },
-    {
-        "primaryKey": {
-            "id": "3d-e-chem-sygma",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-14T13:13:32Z",
-        "updatedAt": "2017-12-20T08:43:40Z",
-        "brandName": "SyGMa",
-        "bullets": "- Predict human metabolites for a given (drug) molecule by:\n- Systematically applying chemical rules for phase 1 and phase 2 biotransformations\n- Ranking of predicted metabolites based on empirical success rates for each rule",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            },
-            {
-                "foreignKey": {
-                    "_id": "vua",
-                    "primaryKey": {
-                        "id": "vua",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:56Z",
-                    "name": "VU University Amsterdam",
-                    "url": "http://www.vu.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "l.ridder",
-                    "primaryKey": {
-                        "id": "l.ridder",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:42Z",
-                    "emailAddress": "l.ridder@esciencecenter.nl",
-                    "familyNames": "Lars Ridder",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "s.verhoeven",
-                    "primaryKey": {
-                        "id": "s.verhoeven",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2018-01-08T12:08:08Z",
-                    "emailAddress": "s.verhoeven@esciencecenter.nl",
-                    "familyNames": "Stefan Verhoeven",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "http://sygma.readthedocs.io",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/3D-e-Chem/sygma"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "GPL-3.0"
-        ],
-        "programmingLanguage": [
-            "Python"
-        ],
-        "readMore": "This tool is a reimplementation of the metabolic rules outlined in [Ridder, L., & Wagener, M. (2008) SyGMa: combining expert knowledge and empirical scoring in the prediction of metabolites. ChemMedChem, 3(5), 821-832.](http://onlinelibrary.wiley.com/doi/10.1002/cmdc.200700312/full)",
-        "shortStatement": "SyGMa provides fast and lightweight predictions of human metabolites to support discovery scientists design better and safer drugs  ",
-        "slug": "3d-e-chem-sygma",
-        "tags": [
-            "Workflow technologies"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": [
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                }
-            ]
-        },
-        "totalCommits": 61,
-        "lastCommit": "2018-03-19T12:37:28Z",
-        "commits": {
-            "2016-07": 11,
-            "2016-08": 27,
-            "2017-01": 2,
-            "2017-02": 19,
-            "2017-11": 1,
-            "2018-03": 1
-        },
-        "citationCFF": null
+    "totalCommits": 26,
+    "lastCommit": "2018-03-28T14:38:22Z",
+    "commits": {
+      "2018-01": 14,
+      "2018-02": 8,
+      "2018-03": 4
     },
-    {
-        "primaryKey": {
-            "id": "3d-e-chem-vm",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-10T14:12:55Z",
-        "updatedAt": "2018-01-08T12:04:47Z",
-        "brandName": "3D-e-Chem Virtual machine",
-        "bullets": "* Gives cheminformations that don't want to install lots of software a single command to get all the software they need to perform ligand binding site comparisons and GPCR research\n* The VM contains a fully functional cheminformatics infrastructure\n* The VM was used in several workshops, giving all participants the same environment and quick start\n",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "s.verhoeven",
-                    "primaryKey": {
-                        "id": "s.verhoeven",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2018-01-08T12:08:08Z",
-                    "emailAddress": "s.verhoeven@esciencecenter.nl",
-                    "familyNames": "Stefan Verhoeven",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "5ab8c31085414f2cfd644a02",
-                    "createdAt": 1522058000,
-                    "updatedAt": 1522058000,
-                    "primaryKey": {
-                        "collection": "person",
-                        "id": "5ab8c31085414f2cfd644a02"
-                    },
-                    "familyNames": "Ross McGuire",
-                    "emailAddress": null,
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "radboud.university.nijmegen",
-                            "primaryKey": {
-                                "id": "radboud.university.nijmegen",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:54Z",
-                            "name": "Radboud University Nijmegen",
-                            "url": "http://www.ru.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "https://3d-e-chem.github.io/3D-e-Chem-VM/",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/3D-e-Chem/3D-e-Chem-VM"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "YAML"
-        ],
-        "readMore": null,
-        "shortStatement": "3D-e-chem VM is freely available Virtual Machine (VM) encompassing tools, databases & workflows, including new resources developed for ligand binding site comparisons and GPCR research.",
-        "slug": "3d-e-chem-vm",
-        "tags": [
-            "Workflow technologies"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": [
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                }
-            ]
-        },
-        "totalCommits": 160,
-        "lastCommit": "2018-03-23T09:58:08Z",
-        "commits": {
-            "2016-01": 36,
-            "2016-02": 22,
-            "2016-03": 3,
-            "2016-04": 9,
-            "2016-05": 22,
-            "2016-06": 11,
-            "2016-07": 8,
-            "2016-08": 14,
-            "2016-09": 2,
-            "2016-11": 1,
-            "2017-01": 10,
-            "2017-03": 6,
-            "2017-04": 4,
-            "2017-11": 2,
-            "2017-12": 3,
-            "2018-02": 4,
-            "2018-03": 3
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "ahn2webviewer",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-10T14:12:55Z",
-        "updatedAt": "2017-12-14T14:26:03Z",
-        "brandName": "AHN2 pointcloud viewer",
-        "bullets": "* For all users interested in geo-data that need an intuitive interface to browse this data and / or extract parts of it for other uses, this webGL Pointcloud viewer is the best of the bunch, because it is the only one out there capable of displaying 640 billion points.  Geo-scientists, archeologists, spatial planners, biologists or environmentalists performing exploratory analysis of massive LiDAR data sets ('point clouds') composed by billions of points using Potree-powered web-based viewer. \n\n*  Tools to enable interactive web-based visual analytics on massive point clouds. \n\n* These are the only tools that enable interactive web-based visual analytics on massive point clouds. No other web-based tool can display a point cloud this massive. 640 billion points.\n\n*",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            },
-            {
-                "foreignKey": {
-                    "_id": "fugro",
-                    "primaryKey": {
-                        "id": "fugro",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:48Z",
-                    "name": "Fugro",
-                    "url": "http://www.fugro.nl/"
-                }
-            },
-            {
-                "foreignKey": {
-                    "_id": "potree",
-                    "primaryKey": {
-                        "id": "potree",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:54Z",
-                    "name": "Potree",
-                    "url": "http://potree.org"
-                }
-            },
-            {
-                "foreignKey": {
-                    "_id": "tu-delft",
-                    "primaryKey": {
-                        "id": "tu-delft",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:55Z",
-                    "name": "Delft University of Technology",
-                    "url": "http://www.tudelft.nl"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "m.vanmeersbergen",
-                    "primaryKey": {
-                        "id": "m.vanmeersbergen",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:42Z",
-                    "emailAddress": "m.vanmeersbergen@esciencecenter.nl",
-                    "familyNames": "Maarten van Meersbergen",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "o.rubi",
-                    "primaryKey": {
-                        "id": "o.rubi",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:45Z",
-                    "emailAddress": "o.rubi@esciencecenter.nl",
-                    "familyNames": "Oscar Martinez Rubi",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "s.verhoeven",
-                    "primaryKey": {
-                        "id": "s.verhoeven",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2018-01-08T12:08:08Z",
-                    "emailAddress": "s.verhoeven@esciencecenter.nl",
-                    "familyNames": "Stefan Verhoeven",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "http://ahn2.pointclouds.nl",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/ahn-pointcloud-viewer"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "JavaScript"
-        ],
-        "readMore": null,
-        "shortStatement": "WebGL point cloud visualization of AHN2. ",
-        "slug": "ahn2webviewer",
-        "tags": [
-            "Visualization",
-            "Big data",
-            "Real time data analysis"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [
-                {
-                    "foreignKey": {
-                        "_id": "massivepotreeconverter",
-                        "primaryKey": {
-                            "id": "massivepotreeconverter",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-10T14:12:55Z",
-                        "updatedAt": "2017-12-14T15:30:49Z",
-                        "brandName": "Massive-PotreeConverter",
-                        "bullets": "* For all users interested in geo-data that need an intuitive interface to browse this data and / or extract parts of it for other uses, this webGL Pointcloud viewer is the best of the bunch, because it is the only one out there capable of displaying 640 billion points.\n\n* Potree requires a data preparation phase that includes sorting and re-organizing points into an optimized data structure for efficient visualization. \n\n* Both tools are unique in terms of scalability and usability because these enable users to gain insights on large LiDAR data sets in short time (i.e. between data acquisition and the collection) and in an interactive way. \n\n*",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "nlesc",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "fugro",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "potree",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "tu-delft",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "o.rubi"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "m.vanmeersbergen"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "s.verhoeven"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": "https://github.com/NLeSC/Massive-PotreeConverter/blob/master/README.md",
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/NLeSC/Massive-PotreeConverter"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": true,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "Python"
-                        ],
-                        "readMore": null,
-                        "shortStatement": "Distributed generation of massive multi-resolution octrees (required by Potree-based renderers). ",
-                        "slug": "massivepotreeconverter",
-                        "tags": [
-                            "Optimized data handling",
-                            "Big data"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "ahn2webviewer",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": [
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "6WURICLY"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "mentions": [
-                {
-                    "foreignKey": null
-                }
-            ]
-        },
-        "totalCommits": 220,
-        "lastCommit": "2017-09-21T14:16:22Z",
-        "commits": {
-            "2015-05": 47,
-            "2015-06": 53,
-            "2015-07": 52,
-            "2015-09": 15,
-            "2015-10": 1,
-            "2017-09": 52
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "amber",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-16T14:22:26Z",
-        "updatedAt": "2017-12-14T14:26:35Z",
-        "brandName": "AMBER",
-        "bullets": "*  Real-time  radio transient searching pipeline\n* High-performance and portability",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            },
-            {
-                "foreignKey": {
-                    "_id": "astron",
-                    "primaryKey": {
-                        "id": "astron",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:47Z",
-                    "name": "ASTRON",
-                    "url": "http://www.astron.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "a.sclocco",
-                    "primaryKey": {
-                        "id": "a.sclocco",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:35:48Z",
-                    "updatedAt": "2017-11-16T15:52:31Z",
-                    "emailAddress": "a.sclocco@esciencecenter.nl",
-                    "familyNames": "Alessio Sclocco",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "j.attema",
-                    "primaryKey": {
-                        "id": "j.attema",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:41Z",
-                    "emailAddress": "j.attema@esciencecenter.nl",
-                    "familyNames": "Jisk Attema",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "https://github.com/AA-ALERT/AMBER",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/AA-ALERT/AMBER"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "C++",
-            "OpenCL"
-        ],
-        "readMore": null,
-        "shortStatement": "A real-time pipeline to search for Fast Radio Bursts (FRBs) and  other transient radio sources.",
-        "slug": "amber",
-        "tags": [
-            "Real time data analysis",
-            "Big data",
-            "High performance computing",
-            "GPU"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [
-                {
-                    "foreignKey": {
-                        "_id": "dedispersion",
-                        "primaryKey": {
-                            "id": "dedispersion",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-16T15:03:59Z",
-                        "updatedAt": "2017-12-14T15:13:00Z",
-                        "brandName": "Dedispersion",
-                        "bullets": "* High-performance and portable",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "nlesc",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "astron",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "a.sclocco"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.attema"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": "https://github.com/AA-ALERT/Dedispersion",
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/AA-ALERT/Dedispersion"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": true,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "C++",
-                            "OpenCL"
-                        ],
-                        "readMore": null,
-                        "shortStatement": "This library provides easy access to a high-performance, fully tuned radio astronomy dedispersion algorithm.",
-                        "slug": "dedispersion",
-                        "tags": [
-                            "Real time data analysis",
-                            "High performance computing",
-                            "GPU"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "astrodata",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": []
-                        }
-                    }
-                },
-                {
-                    "foreignKey": {
-                        "_id": "aa-alert-snr",
-                        "primaryKey": {
-                            "id": "aa-alert-snr",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-16T15:28:10Z",
-                        "updatedAt": "2017-12-14T14:56:55Z",
-                        "brandName": "SNR",
-                        "bullets": "* High-performance and portable",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "nlesc",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "astron",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "a.sclocco"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.attema"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": "https://github.com/AA-ALERT/SNR",
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/AA-ALERT/SNR"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": false,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "C++",
-                            "OpenCL"
-                        ],
-                        "readMore": null,
-                        "shortStatement": null,
-                        "slug": "aa-alert-snr",
-                        "tags": [
-                            "GPU",
-                            "High performance computing",
-                            "Big data"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "astrodata",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": []
-                        }
-                    }
-                },
-                {
-                    "foreignKey": {
-                        "_id": "astrodata",
-                        "primaryKey": {
-                            "id": "astrodata",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-16T15:28:10Z",
-                        "updatedAt": "2018-01-25T14:31:58Z",
-                        "brandName": "AstroData",
-                        "bullets": "",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "nlesc",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "astron",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "a.sclocco"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.attema"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": "https://github.com/AA-ALERT/AstroData",
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/AA-ALERT/AstroData"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": false,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "C++"
-                        ],
-                        "readMore": null,
-                        "shortStatement": null,
-                        "slug": "astrodata",
-                        "tags": [],
-                        "testimonial": [],
-                        "related": {
-                            "software": [],
-                            "mentions": []
-                        }
-                    }
-                },
-                {
-                    "foreignKey": {
-                        "_id": "aa-alert-integration",
-                        "primaryKey": {
-                            "id": "aa-alert-integration",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-16T15:37:52Z",
-                        "updatedAt": "2017-12-22T11:55:23Z",
-                        "brandName": "Integration",
-                        "bullets": "* High-performance and portable",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "nlesc",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "astron",
-                                    "collection": "organization"
-                                }
-                            },
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "a.sclocco"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.attema"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": "https://github.com/AA-ALERT/Integration",
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/AA-ALERT/Integration"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": false,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "C++",
-                            "OpenCL"
-                        ],
-                        "readMore": null,
-                        "shortStatement": null,
-                        "slug": "aa-alert-integration",
-                        "tags": [
-                            "Big data",
-                            "High performance computing",
-                            "GPU"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "astrodata",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": []
-                        }
-                    }
-                }
-            ],
-            "mentions": []
-        },
-        "totalCommits": 342,
-        "lastCommit": "2018-03-19T12:40:39Z",
-        "commits": {
-            "2015-03": 23,
-            "2015-04": 17,
-            "2015-09": 20,
-            "2015-10": 30,
-            "2015-11": 56,
-            "2015-12": 13,
-            "2016-10": 31,
-            "2016-11": 14,
-            "2017-02": 29,
-            "2017-03": 17,
-            "2017-04": 9,
-            "2017-05": 10,
-            "2017-06": 20,
-            "2017-10": 8,
-            "2017-11": 9,
-            "2017-12": 19,
-            "2018-01": 16,
-            "2018-03": 1
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "amuse",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-10T14:12:55Z",
-        "updatedAt": "2017-11-16T14:15:00Z",
-        "brandName": "The Astrophysical Multipurpose Software Environment",
-        "bullets": "* provides a homogeneous environment to design astrophysical simulations used by students and researchers\n* couples different simulation codes in a Python environment to be run locally or distributed\n* provides a very easy way to solve astronomical problems that involve complicated physical interactions \n* used for more than 40 scientific papers and PhD theses",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "leiden-university",
-                    "primaryKey": {
-                        "id": "leiden-university",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:51Z",
-                    "name": "Leiden University",
-                    "url": "https://www.universiteitleiden.nl/en/"
-                }
-            },
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "n.drost",
-                    "primaryKey": {
-                        "id": "n.drost",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:43Z",
-                    "emailAddress": "n.drost@esciencecenter.nl",
-                    "familyNames": "Niels Drost",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "i.pelupessy",
-                    "primaryKey": {
-                        "id": "i.pelupessy",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:30:10Z",
-                    "updatedAt": "2017-11-10T14:30:10Z",
-                    "emailAddress": "",
-                    "familyNames": "Inti Pelupessy",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "5ab8c31085414f2cfd644a03",
-                    "createdAt": 1522058001,
-                    "updatedAt": 1522058001,
-                    "primaryKey": {
-                        "collection": "person",
-                        "id": "5ab8c31085414f2cfd644a03"
-                    },
-                    "familyNames": "Simon Portegies Zwart",
-                    "emailAddress": null,
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": []
-            },
-            {
-                "foreignKey": {
-                    "_id": "5ab8c31085414f2cfd644a04",
-                    "createdAt": 1522058001,
-                    "updatedAt": 1522058001,
-                    "primaryKey": {
-                        "collection": "person",
-                        "id": "5ab8c31085414f2cfd644a04"
-                    },
-                    "familyNames": "Arjen van Elteren",
-                    "emailAddress": null,
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": []
-            },
-            {
-                "foreignKey": {
-                    "_id": "5ab8c31085414f2cfd644a05",
-                    "createdAt": 1522058001,
-                    "updatedAt": 1522058001,
-                    "primaryKey": {
-                        "collection": "person",
-                        "id": "5ab8c31085414f2cfd644a05"
-                    },
-                    "familyNames": "Steve McMillan",
-                    "emailAddress": null,
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": []
-            }
-        ],
-        "getStartedURL": "www.amusecode.org",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/amusecode/amuse"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [],
-        "programmingLanguage": [
-            "Python",
-            "Java",
-            "C++",
-            "C",
-            "FORTRAN",
-            "CUDA",
-            "OpenCL"
-        ],
-        "readMore": null,
-        "shortStatement": "AMUSE combines existing numerical codes in an easy to use Python framework. With AMUSE you can simulate objects such as star clusters, proto-planetary disks and galaxies.",
-        "slug": "amuse",
-        "tags": [
-            "Multi-scale & multi model simulations",
-            "High performance computing",
-            "Workflow technologies"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
-        },
-        "totalCommits": 4261,
-        "lastCommit": "2018-03-24T20:36:03Z",
-        "commits": {
-            "2012-01": 65,
-            "2012-02": 110,
-            "2012-03": 96,
-            "2012-04": 107,
-            "2012-05": 105,
-            "2012-06": 125,
-            "2012-07": 205,
-            "2012-08": 164,
-            "2012-09": 61,
-            "2012-10": 68,
-            "2012-11": 85,
-            "2012-12": 38,
-            "2013-01": 24,
-            "2013-02": 137,
-            "2013-03": 125,
-            "2013-04": 66,
-            "2013-05": 72,
-            "2013-06": 53,
-            "2013-07": 69,
-            "2013-08": 38,
-            "2013-09": 39,
-            "2013-10": 60,
-            "2013-11": 51,
-            "2013-12": 45,
-            "2014-01": 84,
-            "2014-02": 46,
-            "2014-03": 101,
-            "2014-04": 95,
-            "2014-05": 52,
-            "2014-06": 95,
-            "2014-07": 93,
-            "2014-08": 56,
-            "2014-09": 52,
-            "2014-10": 51,
-            "2014-11": 23,
-            "2014-12": 23,
-            "2015-01": 56,
-            "2015-02": 42,
-            "2015-03": 45,
-            "2015-04": 36,
-            "2015-05": 17,
-            "2015-06": 44,
-            "2015-07": 17,
-            "2015-08": 5,
-            "2015-09": 25,
-            "2015-10": 92,
-            "2015-11": 67,
-            "2015-12": 7,
-            "2016-01": 54,
-            "2016-02": 63,
-            "2016-03": 58,
-            "2016-04": 49,
-            "2016-05": 22,
-            "2016-06": 35,
-            "2016-07": 13,
-            "2016-08": 9,
-            "2016-09": 90,
-            "2016-10": 22,
-            "2016-11": 12,
-            "2016-12": 34,
-            "2017-01": 57,
-            "2017-02": 27,
-            "2017-03": 46,
-            "2017-04": 32,
-            "2017-05": 15,
-            "2017-06": 59,
-            "2017-07": 79,
-            "2017-08": 5,
-            "2017-09": 55,
-            "2017-10": 62,
-            "2017-11": 38,
-            "2017-12": 21,
-            "2018-01": 38,
-            "2018-02": 7,
-            "2018-03": 27
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "beyond-the-book",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-16T13:37:30Z",
-        "updatedAt": "2017-12-14T15:05:47Z",
-        "brandName": "Beyond the book",
-        "bullets": " * Provides humanities scholars with a tool to mine Wikipedia.\n * Mine Wikipedia revision history.\n * Ease of use for humanities scholars\n",
-        "citationcff": null,
-        "contributingOrganizations": [],
-        "contributors": [],
-        "getStartedURL": "",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/c-martinez/BeyondTheBook"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "Python"
-        ],
-        "readMore": null,
-        "shortStatement": "This scripts measure number of contributions to Wikipedia entries from individuals from different counties.  This can be used as a proxy to measure the cultural bias from a country towards a specific topic.",
-        "slug": "beyond-the-book",
-        "tags": [
-            "Text analysis & natural language processing"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": [
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                }
-            ]
-        },
-        "totalCommits": 37,
-        "lastCommit": "2017-11-16T14:09:53Z",
-        "commits": {
-            "2014-08": 5,
-            "2014-09": 5,
-            "2014-10": 8,
-            "2014-11": 1,
-            "2014-12": 1,
-            "2015-01": 3,
-            "2015-02": 1,
-            "2015-03": 3,
-            "2015-04": 5,
-            "2015-05": 2,
-            "2015-09": 1,
-            "2015-10": 1,
-            "2017-11": 1
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "cartodb-docker-image",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-14T13:37:17Z",
-        "updatedAt": "2017-12-14T15:05:47Z",
-        "brandName": "CartoDB Docker image",
-        "bullets": "* For people that want to run their own CartoDB instance\n* A fully functional version of https://carto.com/ running in a Docker container\n* CartoDB is a complicated and big software stack. The whole stack is contained inside this Docker image, ",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "uva",
-                    "primaryKey": {
-                        "id": "uva",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:56Z",
-                    "name": "University of Amsterdam",
-                    "url": "http://www.uva.nl"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "s.verhoeven",
-                    "primaryKey": {
-                        "id": "s.verhoeven",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2018-01-08T12:08:08Z",
-                    "emailAddress": "s.verhoeven@esciencecenter.nl",
-                    "familyNames": "Stefan Verhoeven",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "https://hub.docker.com/r/sverhoeven/cartodb/",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/sverhoeven/docker-cartodb"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "programmingLanguage": [
-            "Python",
-            "Ruby",
-            "C++"
-        ],
-        "readMore": null,
-        "shortStatement": "This docker container provides a fully working Cartodb development solution without the installation hassle.",
-        "slug": "cartodb-docker-image",
-        "tags": [
-            "Visualization"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
-        },
-        "totalCommits": 94,
-        "lastCommit": "2018-03-23T12:44:15Z",
-        "commits": {
-            "2014-11": 6,
-            "2014-12": 2,
-            "2015-01": 2,
-            "2015-02": 10,
-            "2015-05": 6,
-            "2015-07": 2,
-            "2015-08": 1,
-            "2015-12": 1,
-            "2016-02": 2,
-            "2016-03": 8,
-            "2016-07": 3,
-            "2016-08": 1,
-            "2016-09": 6,
-            "2017-04": 20,
-            "2017-06": 2,
-            "2017-07": 9,
-            "2017-08": 2,
-            "2017-09": 1,
-            "2017-11": 2,
-            "2018-02": 3,
-            "2018-03": 5
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "case-law-app",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-14T12:48:04Z",
-        "updatedAt": "2018-01-25T13:26:38Z",
-        "brandName": "Case Law App",
-        "bullets": "* Provides a graphical representation of Dutch case law for researchers\n* Allows exploring the network of citations between court decisions\n* Contains an example network about employer liability\n",
-        "citationcff": null,
-        "contributingOrganizations": [],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "d.vankuppevelt",
-                    "primaryKey": {
-                        "id": "d.vankuppevelt",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:39Z",
-                    "emailAddress": "d.vankuppevelt@esciencecenter.nl",
-                    "familyNames": "Dafne van Kuppevelt",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": "https://nlesc.github.io/case-law-app/",
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/case-law-app"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": true,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "JavaScript"
-        ],
-        "readMore": "The law is a text that describes what a person or legal entity can and cannot\ndo. However, the law is somewhat open to interpretation. This interpretation is\ndone by judges whenever a case is brought to court. Over time, the outcome of\nindividual cases build what is called _case law_.\n\nBecause consistency is crucial for the fair application of the law, cases often\nreference other cases: if the reasoning behind a ruling in one case also applies\nto another case, then the ruling should be the same. To warrant consistency it\nis thus paramount that any relevant rulings from previous cases are identified.\nConventionally, both the justice department and the defense depend on legal\nexperts to make this identification when preparing a case. However, court\nrulings are often difficult to understand, there is only limited time available,\nand even experts are not aware of all cases that may be relevant.\n\nTo help mitigate this situation, the Netherlands eScience Center worked together\nwith Maastricht University to develop an interactive visualization that assists\nthe legal community at large (prosecutors, judges, lawyers, legal aids, but also\nresearchers and students) in analyzing case law.\n\nThe visualization has been implemented as follows. The collective of cases that\ntogether make up case law can be thought of as a network, or _graph_. Each node\nin the graph represents a case, while the edges represent references to other\ncases. The graph is represented visually to make it easy for a non-technical\nuser to discover which cases are related. By using metrics from graph theory,\nsuch as _in-degree_, _out-degree_, _betweenness_, etc., the nodes in the graph\ncan be annotated with additional information. The additional information helps\na researcher quickly assess a node's importance.",
-        "shortStatement": "Web application for exploring the citation network of Dutch court decisions.",
-        "slug": "case-law-app",
-        "tags": [
-            "Visualization",
-            "Text analysis & natural language processing"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": [
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                },
-                {
-                    "foreignKey": null
-                }
-            ]
-        },
-        "totalCommits": 83,
-        "lastCommit": "2018-03-06T13:06:42Z",
-        "commits": {
-            "2017-01": 13,
-            "2017-02": 19,
-            "2017-03": 5,
-            "2017-04": 9,
-            "2017-05": 20,
-            "2017-06": 1,
-            "2017-07": 13,
-            "2017-08": 1,
-            "2018-03": 2
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "cclustera",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-10T14:12:55Z",
-        "updatedAt": "2017-12-14T15:13:00Z",
-        "brandName": "CClusTera",
-        "bullets": null,
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "s.georgievska",
-                    "primaryKey": {
-                        "id": "s.georgievska",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:46Z",
-                    "emailAddress": "s.georgievska@esciencecenter.nl",
-                    "familyNames": "Sonja Georgievska",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": null,
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/sonjageorgievska/CClusTera"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "AFL-3.0"
-        ],
-        "programmingLanguage": [
-            "JavaScript",
-            "Python",
-            "C++"
-        ],
-        "readMore": null,
-        "shortStatement": "A 3D web tool for interactive visualization of hierarchically clustered big data",
-        "slug": "cclustera",
-        "tags": [],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
-        },
-        "totalCommits": 67,
-        "lastCommit": "2016-09-12T11:33:12Z",
-        "commits": {
-            "2015-07": 7,
-            "2015-08": 3,
-            "2015-10": 6,
-            "2015-11": 10,
-            "2016-04": 9,
-            "2016-05": 7,
-            "2016-08": 14,
-            "2016-09": 11
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "cerise",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-14T13:13:32Z",
-        "updatedAt": "2018-01-17T14:19:34Z",
-        "brandName": "Cerise",
-        "bullets": "* Lets you make running workflows on HPC resources easy\n* You provides users with a CWL API, they combine tools into a workflow\n* Installs software, accepts workflows, stages files, executes\n* REST/CWL/Docker/Python client",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "vua",
-                    "primaryKey": {
-                        "id": "vua",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:56Z",
-                    "name": "VU University Amsterdam",
-                    "url": "http://www.vu.nl/"
-                }
-            }
-        ],
-        "contributors": [],
-        "getStartedURL": null,
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/MD-Studio/cerise"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "Python"
-        ],
-        "readMore": null,
-        "shortStatement": "Cerise is a service for running  CWL workflows on HPC resources. You add software, tool descriptions, and connection information, then your user runs workflows  whenever they want.",
-        "slug": "cerise",
-        "tags": [
-            "Optimized data handling",
-            "High performance computing",
-            "Workflow technologies"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [
-                {
-                    "foreignKey": {
-                        "_id": "xenon",
-                        "primaryKey": {
-                            "id": "xenon",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-10T14:12:55Z",
-                        "updatedAt": "2018-01-29T14:02:27Z",
-                        "brandName": "Xenon",
-                        "bullets": "* Provides an easy-to-use interface for distributed computing developers \n* Enables the use of different file transfer protocols and scheduling systems on remote machines \n* No need to learn and implement many different APIs\n* Successfully used in many eScience tools and projects",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "nlesc",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.maassen"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "s.verhoeven"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "n.drost"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "r.vannieuwpoort"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.borgdorff"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "c.meijer"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "b.vanwerkhoven"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "5ab8c31085414f2cfd644a27"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": []
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "j.spaaks"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": "https://github.com/NLeSC/Xenon",
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/NLeSC/Xenon"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": true,
-                        "isPublished": true,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "Java"
-                        ],
-                        "readMore": "Many applications use remote storage and compute resources. To do so, they need\nto include code to interact with the scheduling systems and file transfer\nprotocols used on those remote machines.\n\nUnfortunately, many different scheduler systems and file transfer protocols\nexist, often with completely different programming interfaces. This makes it\ndifficult for applications to switch to a different system or support multiple\nremote systems simultaneously.\n\nXenon solves this problem by providing a single programming interface to many\ndifferent types of remote resources. As a result, changing from one scheduler to\nanother, or from one file transfer protocol to another, becomes a matter of\nchanging just a few lines of code. This is obviously much cheaper in time and\nmoney than developing, debugging, and maintaining new code that implements the\nsame logic you had before, but for a different scheduler or a different file\ntransfer protocol.\n",
-                        "shortStatement": "If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you.",
-                        "slug": "xenon",
-                        "tags": [
-                            "Big data",
-                            "Optimized data handling",
-                            "High performance computing"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "pyxenon",
-                                        "collection": "software"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "id": "xenon-cli",
-                                        "collection": "software"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "id": "xenon-grpc",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": []
-                        }
-                    }
-                },
-                {
-                    "foreignKey": {
-                        "_id": "cerise-client",
-                        "primaryKey": {
-                            "id": "cerise-client",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-14T13:13:32Z",
-                        "updatedAt": "2018-01-17T14:19:58Z",
-                        "brandName": "Cerise Client",
-                        "bullets": "* Easy management of and access to Cerise workflow execution services from Python\n* The standard Python client library for Cerise\n* Start a Cerise Docker in one line of code\n* Submit a job, shut down the service, restart tomorrow to check your results",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "l.veen"
-                                },
-                                "isContactPerson": true,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        "getStartedURL": null,
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/MD-Studio/cerise-client"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": true,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "Python"
-                        ],
-                        "readMore": null,
-                        "shortStatement": "Cerise Client is a Python library for managing and accessing Cerise  workflow execution services. It lets you start and stop services and submit workflows to them.",
-                        "slug": "cerise-client",
-                        "tags": [
-                            "Workflow technologies",
-                            "High performance computing"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "cerise",
-                                        "collection": "software"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "id": "mdstudio",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": []
-                        }
-                    }
-                }
-            ],
-            "mentions": []
-        },
-        "totalCommits": 201,
-        "lastCommit": "2018-02-02T14:51:15Z",
-        "commits": {
-            "2017-02": 13,
-            "2017-03": 24,
-            "2017-04": 24,
-            "2017-05": 26,
-            "2017-06": 12,
-            "2017-07": 36,
-            "2017-08": 13,
-            "2017-09": 9,
-            "2017-10": 10,
-            "2017-11": 5,
-            "2017-12": 10,
-            "2018-01": 13,
-            "2018-02": 6
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "cerise-client",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-14T13:13:32Z",
-        "updatedAt": "2018-01-17T14:19:58Z",
-        "brandName": "Cerise Client",
-        "bullets": "* Easy management of and access to Cerise workflow execution services from Python\n* The standard Python client library for Cerise\n* Start a Cerise Docker in one line of code\n* Submit a job, shut down the service, restart tomorrow to check your results",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "vua",
-                    "primaryKey": {
-                        "id": "vua",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:56Z",
-                    "name": "VU University Amsterdam",
-                    "url": "http://www.vu.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "l.veen",
-                    "primaryKey": {
-                        "id": "l.veen",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:42Z",
-                    "emailAddress": "l.veen@esciencecenter.nl",
-                    "familyNames": "Lourens Veen",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": null,
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/MD-Studio/cerise-client"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "Python"
-        ],
-        "readMore": null,
-        "shortStatement": "Cerise Client is a Python library for managing and accessing Cerise  workflow execution services. It lets you start and stop services and submit workflows to them.",
-        "slug": "cerise-client",
-        "tags": [
-            "Workflow technologies",
-            "High performance computing"
-        ],
-        "testimonial": [],
-        "related": {
-            "software": [
-                {
-                    "foreignKey": {
-                        "_id": "cerise",
-                        "primaryKey": {
-                            "id": "cerise",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-14T13:13:32Z",
-                        "updatedAt": "2018-01-17T14:19:34Z",
-                        "brandName": "Cerise",
-                        "bullets": "* Lets you make running workflows on HPC resources easy\n* You provides users with a CWL API, they combine tools into a workflow\n* Installs software, accepts workflows, stages files, executes\n* REST/CWL/Docker/Python client",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [],
-                        "getStartedURL": null,
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/MD-Studio/cerise"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": true,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "Python"
-                        ],
-                        "readMore": null,
-                        "shortStatement": "Cerise is a service for running  CWL workflows on HPC resources. You add software, tool descriptions, and connection information, then your user runs workflows  whenever they want.",
-                        "slug": "cerise",
-                        "tags": [
-                            "Optimized data handling",
-                            "High performance computing",
-                            "Workflow technologies"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "xenon",
-                                        "collection": "software"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "id": "cerise-client",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": []
-                        }
-                    }
-                },
-                {
-                    "foreignKey": {
-                        "_id": "mdstudio",
-                        "primaryKey": {
-                            "id": "mdstudio",
-                            "collection": "software"
-                        },
-                        "createdAt": "2017-11-14T13:13:32Z",
-                        "updatedAt": "2017-12-14T15:30:49Z",
-                        "brandName": "MDStudio",
-                        "bullets": "* Molecular dynamics workflow creation and execution for biochemists\n* Micro-service based workflow management system\n* Flexible, interactive workflow execution locally or on HPC\n* Support for ATB, Gromacs, PLANTS, Paradocks, and many other tools",
-                        "citationcff": null,
-                        "contributingOrganizations": [
-                            {
-                                "foreignKey": {
-                                    "id": "vua",
-                                    "collection": "organization"
-                                }
-                            }
-                        ],
-                        "contributors": [
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "f.zapata"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": [
-                                    {
-                                        "foreignKey": {
-                                            "collection": "organization",
-                                            "id": "nlesc"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                "foreignKey": {
-                                    "collection": "person",
-                                    "id": "5ab8c31085414f2cfd644a15"
-                                },
-                                "isContactPerson": false,
-                                "affiliations": []
-                            }
-                        ],
-                        "getStartedURL": null,
-                        "githubURLs": [
-                            {
-                                "isCitationcffSource": false,
-                                "isCommitDataSource": true,
-                                "url": "https://github.com/MD-Studio/MDStudio"
-                            }
-                        ],
-                        "isCitable": false,
-                        "isFeatured": false,
-                        "isPublished": true,
-                        "license": [
-                            "Apache-2.0"
-                        ],
-                        "programmingLanguage": [
-                            "Python"
-                        ],
-                        "readMore": null,
-                        "shortStatement": "MDStudio provides biochemistry researchers in science and industry with the easiest and most flexible solution to running  molecular dynamics-based workflows. It is community-developed open source software.",
-                        "slug": "mdstudio",
-                        "tags": [
-                            "Real time data analysis",
-                            "High performance computing",
-                            "Workflow technologies"
-                        ],
-                        "testimonial": [],
-                        "related": {
-                            "software": [
-                                {
-                                    "foreignKey": {
-                                        "id": "cerise",
-                                        "collection": "software"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "id": "cerise-client",
-                                        "collection": "software"
-                                    }
-                                }
-                            ],
-                            "mentions": [
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "JB58V7MQ"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "93M8P57G"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "U49LQS8C"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "UNHDCL9R"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "F6ZBSZLR"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "JFRV66FB"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "MUJ2XX3D"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "ACTFSCWS"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "JT5NQPMH"
-                                    }
-                                },
-                                {
-                                    "foreignKey": {
-                                        "collection": "mention",
-                                        "id": "HPAM2EY8"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "mentions": []
-        },
-        "totalCommits": 47,
-        "lastCommit": "2018-02-07T14:45:06Z",
-        "commits": {
-            "2017-09": 9,
-            "2017-10": 14,
-            "2017-11": 8,
-            "2017-12": 10,
-            "2018-01": 3,
-            "2018-02": 3
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "cesium-ncwms",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-10T14:12:55Z",
-        "updatedAt": "2017-12-14T15:13:00Z",
-        "brandName": "Cesium-ncWMS",
-        "bullets": "* A Web-based 3D globe visualization for NetCDF data\n* Translates NetCDF data to WMS tiles, to Visual fireworks",
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "n.drost",
-                    "primaryKey": {
-                        "id": "n.drost",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:43Z",
-                    "emailAddress": "n.drost@esciencecenter.nl",
-                    "familyNames": "Niels Drost",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "m.vanmeersbergen",
-                    "primaryKey": {
-                        "id": "m.vanmeersbergen",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:42Z",
-                    "emailAddress": "m.vanmeersbergen@esciencecenter.nl",
-                    "familyNames": "Maarten van Meersbergen",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": null,
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/Cesium-NcWMS"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "JavaScript",
-            "Java"
-        ],
-        "readMore": null,
-        "shortStatement": "Web Application that visualizes NetCDF data in the Cesium 3D open source globe.",
-        "slug": "cesium-ncwms",
-        "tags": [],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
-        },
-        "totalCommits": 116,
-        "lastCommit": "2018-02-20T13:28:14Z",
-        "commits": {
-            "2014-07": 4,
-            "2014-08": 8,
-            "2014-09": 1,
-            "2014-10": 15,
-            "2014-11": 6,
-            "2014-12": 12,
-            "2015-02": 6,
-            "2015-03": 9,
-            "2015-04": 27,
-            "2015-05": 23,
-            "2016-07": 2,
-            "2016-08": 1,
-            "2017-02": 1,
-            "2018-02": 1
-        },
-        "citationCFF": null
-    },
-    {
-        "primaryKey": {
-            "id": "chemical-analytics-platform",
-            "collection": "software"
-        },
-        "createdAt": "2017-11-10T14:12:55Z",
-        "updatedAt": "2017-12-14T15:13:00Z",
-        "brandName": "Chemical Analytics Virtual Machine",
-        "bullets": null,
-        "citationcff": null,
-        "contributingOrganizations": [
-            {
-                "foreignKey": {
-                    "_id": "nlesc",
-                    "primaryKey": {
-                        "id": "nlesc",
-                        "collection": "organization"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2017-11-10T14:17:53Z",
-                    "name": "Netherlands eScience Center",
-                    "url": "http://www.esciencecenter.nl/"
-                }
-            }
-        ],
-        "contributors": [
-            {
-                "foreignKey": {
-                    "_id": "s.verhoeven",
-                    "primaryKey": {
-                        "id": "s.verhoeven",
-                        "collection": "person"
-                    },
-                    "createdAt": "2017-11-10T14:12:55Z",
-                    "updatedAt": "2018-01-08T12:08:08Z",
-                    "emailAddress": "s.verhoeven@esciencecenter.nl",
-                    "familyNames": "Stefan Verhoeven",
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": true,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "nlesc",
-                            "primaryKey": {
-                                "id": "nlesc",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:53Z",
-                            "name": "Netherlands eScience Center",
-                            "url": "http://www.esciencecenter.nl/"
-                        }
-                    }
-                ]
-            },
-            {
-                "foreignKey": {
-                    "_id": "5ab8c31085414f2cfd644a06",
-                    "createdAt": 1522058001,
-                    "updatedAt": 1522058001,
-                    "primaryKey": {
-                        "collection": "person",
-                        "id": "5ab8c31085414f2cfd644a06"
-                    },
-                    "familyNames": "Ross McGuire",
-                    "emailAddress": null,
-                    "givenNames": null,
-                    "nameParticle": null,
-                    "nameSuffix": null
-                },
-                "isContactPerson": false,
-                "affiliations": [
-                    {
-                        "foreignKey": {
-                            "_id": "radboud.university.nijmegen",
-                            "primaryKey": {
-                                "id": "radboud.university.nijmegen",
-                                "collection": "organization"
-                            },
-                            "createdAt": "2017-11-10T14:12:55Z",
-                            "updatedAt": "2017-11-10T14:17:54Z",
-                            "name": "Radboud University Nijmegen",
-                            "url": "http://www.ru.nl/"
-                        }
-                    }
-                ]
-            }
-        ],
-        "getStartedURL": null,
-        "githubURLs": [
-            {
-                "isCitationcffSource": false,
-                "isCommitDataSource": true,
-                "url": "https://github.com/NLeSC/Chemical-Analytics-Platform"
-            }
-        ],
-        "isCitable": false,
-        "isFeatured": false,
-        "isPublished": true,
-        "license": [
-            "Apache-2.0"
-        ],
-        "programmingLanguage": [
-            "YAML"
-        ],
-        "readMore": null,
-        "shortStatement": "Packer template to create Vagrant box with Knime inside",
-        "slug": "chemical-analytics-platform",
-        "tags": [],
-        "testimonial": [],
-        "related": {
-            "software": [],
-            "mentions": []
-        },
-        "totalCommits": 127,
-        "lastCommit": "2018-03-23T09:58:08Z",
-        "commits": {
-            "2015-08": 23,
-            "2015-09": 9,
-            "2015-11": 5,
-            "2016-01": 14,
-            "2016-02": 10,
-            "2016-03": 3,
-            "2016-04": 4,
-            "2016-05": 20,
-            "2016-06": 9,
-            "2016-07": 5,
-            "2016-08": 2,
-            "2016-09": 5,
-            "2017-01": 2,
-            "2017-03": 4,
-            "2017-05": 2,
-            "2017-11": 2,
-            "2018-01": 1,
-            "2018-02": 5,
-            "2018-03": 2
-        },
-        "citationCFF": null
+    "releases": {
+      "_id": "10.5281/zenodo.1154131",
+      "conceptDOI": "10.5281/zenodo.1154130",
+      "releases": [
+        {
+          "doi": "10.5281/zenodo.1154131",
+          "tagUrl": "https://github.com/research-software-directory/landing-page/tree/0.0.0",
+          "version": "0.0.0",
+          "publicationDate": "2018-01-17",
+          "isLast": true
+        }
+      ],
+      "createdAt": "2018-04-20T11:38:31Z"
     }
+  }
 ]
