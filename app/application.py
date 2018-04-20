@@ -11,7 +11,7 @@ from app.citation import get_citation
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = os.environ.get('BACKEND_URL')
+api_url = os.environ.get('BACKEND_URL', 'http://localhost:5001')
 
 
 @application.route('/sitemap.xml', methods=['GET'])
@@ -201,15 +201,6 @@ def markdown_filter(input_string):
     if not input_string:
         return ''
     return flask.Markup(markdown.markdown(input_string))
-
-
-@application.template_filter()
-def pick_pi_filter(team):
-    pis = list(filter(lambda x: x['role'] == 'Principal Investigator', team))
-    if len(pis) > 0:
-        return pis[0]
-    else:
-        return team[0]
 
 
 @application.template_filter()

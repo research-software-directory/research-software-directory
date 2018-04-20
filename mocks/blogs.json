@@ -1,202 +1,21 @@
 [
   {
-    "id": "62e03a895bae",
-    "url": "https://blog.esciencecenter.nl/https-blog-esciencecenter-nl-spot-visual-scientific-data-analytics-made-easy-62e03a895bae",
-    "image": "https://cdn-images-1.medium.com/max/1200/1*m1tuq42Vwl4bPaZIZLog0g.jpeg",
-    "title": "SPOT : Visual scientific data analytics made easy",
-    "author": "Faruk Diblen",
-    "datetime-published": "2018-01-16T10:21:57.168Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "98431969e2b8",
-    "url": "https://blog.esciencecenter.nl/introducing-nl-rse-98431969e2b8",
-    "image": "https://cdn-images-1.medium.com/max/1200/0*w8y_yDWcbi7OCF0o.",
-    "title": "Introducing: NL-RSE",
-    "author": "Netherlands eScience Center",
-    "datetime-published": "2017-12-20T17:52:53.185Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "dddfc6fd3866",
-    "url": "https://blog.esciencecenter.nl/digital-technologies-to-analyze-eyewitness-accounts-of-mass-violence-dddfc6fd3866",
-    "image": "https://cdn-images-1.medium.com/max/800/1*-YDWQk9Mzv_xb9zkY6XZVA.jpeg",
-    "title": "Digital technologies to analyze eyewitness accounts of mass violence",
-    "author": "Netherlands eScience Center",
-    "datetime-published": "2017-12-20T14:03:17.903Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "af95819af803",
-    "url": "https://blog.esciencecenter.nl/escience-is-about-being-bold-enough-to-ask-the-right-questions-at-the-right-time-af95819af803",
-    "image": "https://cdn-images-1.medium.com/max/800/1*iKLnA1ZxrXtILMGgGC-yZA.jpeg",
-    "title": "eScience is about being bold enough to ask the right questions at the right time",
-    "author": "Hanno Spreeuw",
-    "datetime-published": "2017-12-20T06:31:02.905Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "23bbda3a5d62",
-    "url": "https://blog.esciencecenter.nl/writing-testable-gpu-code-23bbda3a5d62",
-    "image": "https://cdn-images-1.medium.com/max/800/1*OtfM8fdvOaIT3OlaUfZBjw.jpeg",
-    "title": "Writing Testable GPU Code",
-    "author": "Ben van Werkhoven",
-    "datetime-published": "2017-12-18T07:57:13.830Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "420da40f547d",
-    "url": "https://blog.esciencecenter.nl/teaching-machines-to-recognize-cancer-420da40f547d",
-    "image": "https://cdn-images-1.medium.com/max/800/1*KLXCuQrISaB1OwwRDKOMdQ.jpeg",
-    "title": "Teaching machines to recognize cancer",
-    "author": "Netherlands eScience Center",
-    "datetime-published": "2017-10-18T07:38:13.247Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "5e31282a7ec4",
-    "url": "https://blog.esciencecenter.nl/demagification-of-python-git-and-shell-5e31282a7ec4",
-    "image": "https://cdn-images-1.medium.com/max/800/1*9RMXrTRWLqKKsDXsw8zmCw.jpeg",
-    "title": "Demagification of Python, Git and Shell",
-    "author": "Carlos Martinez-Ortiz",
-    "datetime-published": "2017-10-17T11:16:14.831Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "e1fce8b7e655",
-    "url": "https://blog.esciencecenter.nl/free-as-in-free-market-e1fce8b7e655",
-    "image": "https://cdn-images-1.medium.com/max/800/1*lOmZnKT6YzZqn0H5Jn-oAA.jpeg",
-    "title": "Free as in Free Market",
-    "author": "Lourens Veen",
-    "datetime-published": "2017-10-05T08:31:19.052Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "61ac81f36a87",
-    "url": "https://blog.esciencecenter.nl/10-ways-to-keep-your-successful-scientific-software-alive-61ac81f36a87",
-    "image": "https://cdn-images-1.medium.com/max/800/1*Z3U8YgT-cRE1HWas6sr_EA.jpeg",
-    "title": "10 Ways to keep your successful scientific software alive",
-    "author": "Vincent van Hees",
-    "datetime-published": "2017-09-11T08:26:00.786Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "6f0f0107c130",
-    "url": "https://blog.esciencecenter.nl/predicting-temperatures-in-your-street-6f0f0107c130",
-    "image": "https://cdn-images-1.medium.com/max/800/1*QMUb9qjiCmHbWME3fqD-Ow.gif",
-    "title": "Predicting temperatures in your street",
-    "author": "Ronald van Haren",
-    "datetime-published": "2017-08-23T11:17:44.403Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "6e02ea9468e",
+    "primaryKey": {
+      "collection": "mention",
+      "id": "4SVMY3V9"
+    },
+    "version": 2407,
+    "title": "Reading news, visually",
+    "type": "blogPost",
+    "zoteroKey": "4SVMY3V9",
+    "isCorporateBlog": true,
+    "date": "2017-08-07T00:00:00Z",
     "url": "https://blog.esciencecenter.nl/reading-news-visually-6e02ea9468e",
-    "image": "https://cdn-images-1.medium.com/max/800/1*36VvqJkQdxzrbozNMfi0og.png",
-    "title": "Reading News, visually.",
     "author": "Maarten van Meersbergen",
-    "datetime-published": "2017-08-07T09:01:00.990Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "8d2297cc3db3",
-    "url": "https://blog.esciencecenter.nl/understanding-cosmic-explosions-8d2297cc3db3",
-    "image": "https://cdn-images-1.medium.com/max/800/1*v6hL19U41_yaZkrLwG4SQw.jpeg",
-    "title": "An ambition for the global astronomical community",
-    "author": "Netherlands eScience Center",
-    "datetime-published": "2017-07-17T07:35:54.648Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "b9bd2ae8de1c",
-    "url": "https://blog.esciencecenter.nl/binge-watching-science-on-youtube-b9bd2ae8de1c",
-    "image": "https://cdn-images-1.medium.com/max/800/1*KqrRv97yYgVsXKx5zHlCCw.png",
-    "title": "Binge-watching science on YouTube: The good, the epic and the brilliant",
-    "author": "Maarten van Meersbergen",
-    "datetime-published": "2017-07-03T08:35:22.952Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "5d16bb6dd844",
-    "url": "https://blog.esciencecenter.nl/what-is-the-impact-of-visualization-on-science-5d16bb6dd844",
-    "image": "https://cdn-images-1.medium.com/max/800/1*KaZi1Mej2bsU6Gjvb8X0fw.jpeg",
-    "title": "What is the impact of visualization on science?",
-    "author": "Netherlands eScience Center",
-    "datetime-published": "2017-06-21T14:47:36.986Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "cd8030a4a145",
-    "url": "https://blog.esciencecenter.nl/a-license-to-science-cd8030a4a145",
-    "image": "https://cdn-images-1.medium.com/max/800/1*xp0qkMsh77QMu93QaIOGoQ.jpeg",
-    "title": "A license to science",
-    "author": "Lourens Veen",
-    "datetime-published": "2017-05-23T11:31:00.626Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "686ccf4d46aa",
-    "url": "https://blog.esciencecenter.nl/how-can-network-analysis-lead-to-a-new-way-of-studying-court-decisions-686ccf4d46aa",
-    "image": "https://cdn-images-1.medium.com/max/800/1*JEZ2M9ijnm67xFJzxR07dQ.jpeg",
-    "title": "How can network analysis lead to a new way of studying court decisions?",
-    "author": "Netherlands eScience Center",
-    "datetime-published": "2017-04-03T11:20:29.759Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "e47de8d29838",
-    "url": "https://blog.esciencecenter.nl/mcfly-time-series-classification-made-easy-e47de8d29838",
-    "image": "https://cdn-images-1.medium.com/max/800/1*sT8uHuUVZ-7OnowqXugn0A.png",
-    "title": "mcfly: time series classification made easy",
-    "author": "Dafne van Kuppevelt",
-    "datetime-published": "2017-03-20T09:02:00.946Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "6437889b33b4",
-    "url": "https://blog.esciencecenter.nl/reproducible-science-the-common-workflow-language-6437889b33b4",
-    "image": "https://cdn-images-1.medium.com/max/800/1*96JM9gX9m59kS6_fLFcSxg.png",
-    "title": "Reproducible Science: The Common Workflow Language",
-    "author": "Niels Drost",
-    "datetime-published": "2017-03-13T09:11:05.680Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "d0dfaf1f27f4",
-    "url": "https://blog.esciencecenter.nl/five-reasons-why-the-escience-center-blog-helps-science-d0dfaf1f27f4",
-    "image": "https://cdn-images-1.medium.com/max/800/1*FsiN9x7UpByRq7voZnb7eg.jpeg",
-    "title": "Five reasons why the eScience Center blog helps science",
-    "author": "Lode Kulik",
-    "datetime-published": "2017-03-02T10:05:18.272Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
-  },
-  {
-    "id": "3cf3c9272350",
-    "url": "https://blog.esciencecenter.nl/so-i-wanted-to-be-a-research-software-engineer-3cf3c9272350",
-    "image": "https://cdn-images-1.medium.com/max/800/1*vjpqYnxIjZTm9CFdKmoajA.jpeg",
-    "title": "So I wanted to be a Research Software Engineer",
-    "author": "Vincent van Hees",
-    "datetime-published": "2017-02-28T08:42:53.344Z",
-    "createdAt": 1517316645,
-    "updatedAt": 1517316645
+    "image": "https://cdn-images-1.medium.com/max/2000/1*36VvqJkQdxzrbozNMfi0og.png",
+    "createdAt": "2018-04-20T11:38:00Z",
+    "updatedAt": "2018-04-20T11:38:00Z",
+    "createdBy": "Scraper",
+    "updatedBy": "Scraper"
   }
 ]

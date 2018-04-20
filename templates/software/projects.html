@@ -1,4 +1,4 @@
-{% if template_data.corporateProjects | no_none_filter %}
+{% if template_data.related.projects | no_none_filter %}
 <section class="" id="projects">
     <div class="container">
         <div class="row">
@@ -6,21 +6,10 @@
                 <h2 class="subtitle text-blue">Projects with {{template_data.name}}</h2>
             </div>
             <div class="col-3-4">
-                {% if template_data.testimonial %}
-                <div class="testimonial">
-                    <blockquote>
-                    {{template_data.testimonial}}
-                    </blockquote>
-                </div>
-
-                <div class="testimonialby">
-                    – {{template_data.testimonialBy}}
-                </div>
-                {% endif %}
-
                 <div class="row project-items">
 
-                    {% for project in template_data.corporateProjects | no_none_filter %}
+                    {% for fpproject in template_data.related.projects | no_none_filter %}
+                    {% with project = fpproject.foreignKey %}
                     <article class="project-item col-1-2">
                         <a href="{{project.url}}" target="_blank">
                             <div class="content">
@@ -34,16 +23,17 @@
                                     </p>
                                     <div class="author">
                                         <div class="author_name">
-                                            {{(project.team | pick_pi_filter).name}}
+                                            {{ project.principalInvestigator.name }}
                                         </div>
                                         <div class="author_university">
-                                            {{(project.team | pick_pi_filter).affiliation}}
+                                            {{ project.principalInvestigator.affiliation }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </article>
+                    {% endwith %}
                     {% endfor %}
 
                 </div>

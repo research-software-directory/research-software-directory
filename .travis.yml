@@ -4,9 +4,4 @@ python:
 cache:
   pip: true
 script:
-- node node_modules/gulp/bin/gulp.js build-production
-- pip install py-w3c==0.3.1 pytest requests_mock
 - PYTHONPATH=. pytest
-notifications:
-  email:
-  - estep@esciencecenter.nl
