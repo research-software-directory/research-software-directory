@@ -2,17 +2,13 @@ import * as React from "react";
 import axios from "axios";
 
 import { RouteComponentProps } from "react-router";
-import { Message, Button, Tab } from "semantic-ui-react";
+import { Button, Message } from "semantic-ui-react";
 
-import { debounce } from "../../utils/debounce";
 import { IJWT, ISettings } from "../../rootReducer";
 import { ISchema } from "../../interfaces/json-schema";
 import { IData } from "../../interfaces/resource";
 import { IResource } from "../../interfaces/resource";
-import JsonEditor from "./JsonEditor";
 import Form from "../../containers/Form";
-
-const VALIDATE_DEBOUNCE_TIME = 500; // ms
 
 interface IConnectedProps {
   jwt: IJWT;
@@ -28,90 +24,36 @@ interface IState {
   loading: boolean;
   saving: boolean;
   data: IResource | null;
-  valid: boolean | null;
-  validationError: any;
+  validationErrors: any[];
 }
 
 type IProps = IConnectedProps &
   RouteComponentProps<{ resourceType: string; id: string }>;
 
-const validationMessage = (
-  valid: boolean | null,
-  validationError: string | null
-) => {
-  if (valid) {
-    return (
-      <Message
-        success={true}
-        header="Data valid"
-        content="Data has been validated"
-      />
-    );
-  } else if (valid === false) {
-    return (
-      <Message negative={true} header="Invalid" content={validationError} />
-    );
-  } else {
-    return (
-      <Message
-        color="yellow"
-        header="Validating..."
-        content="Validating data"
-      />
-    );
-  }
-};
-
 export default class Resource extends React.PureComponent<IProps, IState> {
   form: any = null;
-  editor: JsonEditor | null = null;
 
-  validate = debounce((s: string) => {
-    if (!this.isValidJSON(s)) {
-      this.setState({
-        valid: false,
-        validationError: "Syntax error"
-      });
-    } else {
-      const { resourceType, id } = this.props.match.params;
-      const { backendUrl } = this.props.settings;
-      axios
-        .patch(`${backendUrl}/${resourceType}/${id}?test`, s, {
-          headers: {
-            Authorization: `Bearer ${this.props.jwt.token}`
-          }
-        })
-        .then(() => {
-          this.setState({ valid: true });
-        })
-        .catch(response => {
-          this.setState({
-            valid: false,
-            validationError: `${(response.response.data.path || []).join(
-              " -> "
-            )}: ${response.response.data.error}`
-          });
-        });
-    }
-  }, VALIDATE_DEBOUNCE_TIME);
-
-  save(s: string) {
+  save() {
     this.setState({ saving: true });
     const { resourceType, id } = this.props.match.params;
     const { backendUrl } = this.props.settings;
     axios
-      .patch(`${backendUrl}/${resourceType}/${id}?save_history`, s, {
-        headers: {
-          Authorization: `Bearer ${this.props.jwt.token}`
+      .put(
+        `${backendUrl}/${resourceType}/${id}?save_history`,
+        this.state.data,
+        {
+          headers: {
+            Authorization: `Bearer ${this.props.jwt.token}`
+          }
         }
-      })
+      )
       .then(() => {
         this.setState({ saving: false });
         this.props.messageToastr("Saved");
       })
       .catch(response => {
         this.setState({ saving: false });
-        this.props.errorToastr(JSON.stringify(response));
+        this.props.errorToastr(JSON.stringify(response.response.data));
       });
   }
 
@@ -121,12 +63,17 @@ export default class Resource extends React.PureComponent<IProps, IState> {
       saving: false,
       loading: true,
       data: null,
-      valid: true,
-      validationError: null
+      validationErrors: []
     };
   }
 
-  async getData() {
+  asyncSetState = async (newState: any) => {
+    return new Promise(resolve => {
+      this.setState(newState, resolve);
+    });
+  };
+
+  async updateLocalData() {
     const { resourceType, id } = this.props.match.params;
     const { backendUrl } = this.props.settings;
     const result = await axios.get(`${backendUrl}/${resourceType}/${id}`, {
@@ -134,75 +81,50 @@ export default class Resource extends React.PureComponent<IProps, IState> {
         Authorization: `Bearer ${this.props.jwt.token}`
       }
     });
-    this.setState({ data: result.data, loading: false, valid: null });
-    this.validate(JSON.stringify(result.data));
+    await this.asyncSetState({ data: result.data, loading: false });
   }
 
-  componentDidMount() {
-    this.getData();
-  }
-
-  isValidJSON(s: string) {
-    try {
-      JSON.parse(s);
-    } catch {
-      return false;
+  async componentDidMount() {
+    await this.updateLocalData();
+    if (this.form) {
+      this.setState({ validationErrors: this.form.getValidationErrors() });
     }
-    return true;
   }
 
-  onChange(s: string) {
-    this.setState({ valid: null });
-    this.validate(s);
-  }
+  onChange = async (data: any) => {
+    await this.asyncSetState({ data });
+    await this.asyncSetState({
+      validationErrors: this.form.getValidationErrors(),
+      data
+    });
+  };
 
   render() {
     if (this.state.loading) {
       return null;
     }
-    const panes = [
-      {
-        menuItem: "JSON editor",
-        render: () => (
-          <Tab.Pane style={{ flex: 1 }}>
-            <JsonEditor
-              ref={elm => (this.editor = elm)}
-              value={JSON.stringify(this.state.data, null, 2)}
-              onChange={(s: string) => this.onChange(s)}
-            />
-          </Tab.Pane>
-        )
-      },
-      {
-        menuItem: "Form",
-        render: () => (
-          <Tab.Pane style={{ flex: 1, overflowY: "scroll" }}>
-            <Form
-              ref={(elm: any) => (this.form = elm)}
-              value={this.state.data!}
-              onChange={(data: any) => {
-                this.setState({ data });
-                // this.onChange(JSON.stringify(data));
-              }}
-            />
-          </Tab.Pane>
-        )
-      }
-    ];
 
     return (
       <div>
-        <div style={{ height: "calc(100vh - 200px)" }}>
-          <Tab
-            defaultActiveIndex={1}
-            style={{ display: "flex", flexDirection: "column", height: "100%" }}
-            panes={panes}
+        <div>
+          <Form
+            ref={(elm: any) => (this.form = elm && elm.getWrappedInstance())}
+            value={this.state.data!}
+            onChange={this.onChange}
           />
         </div>
-        {validationMessage(this.state.valid, this.state.validationError)}
+        {this.state.validationErrors.length > 0 && (
+          <Message error={true}>
+            {this.state.validationErrors.map((error, i) => (
+              <div key={i}>
+                {error.dataPath} {error.message}
+              </div>
+            ))}
+          </Message>
+        )}
         <Button
-          disabled={!this.state.valid || this.state.saving}
-          onClick={() => this.save(this.editor && this.editor.getValue())}
+          disabled={this.state.saving || this.state.validationErrors.length > 0}
+          onClick={() => this.save()}
         >
           {this.state.saving ? "Saving..." : "Save"}
         </Button>

@@ -23,6 +23,11 @@ interface IState {}
 type IProps = IConnectedProps & IOwnProps;
 
 export default class extends React.PureComponent<IProps, IState> {
+  _rootFormPart: any = null;
+
+  getValidationErrors = () =>
+    this._rootFormPart.getValidationErrors(this.props.value);
+
   handleChange = (newValue: any) => {
     this.props.onChange(newValue);
   };
@@ -32,6 +37,7 @@ export default class extends React.PureComponent<IProps, IState> {
     return (
       <div style={{ height: "100%" }}>
         <FormPart
+          ref={ref => (this._rootFormPart = ref)}
           schema={this.props.schema[type]}
           readonly={false}
           settings={this.props.settings.resources[type]}

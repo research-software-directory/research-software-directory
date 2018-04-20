@@ -13,4 +13,6 @@ const dispatchToProps = {
   push
 };
 
-export default connect(mapStateToProps, dispatchToProps)(Form);
+export default connect(mapStateToProps, dispatchToProps, null, {
+  withRef: true
+})(Form);

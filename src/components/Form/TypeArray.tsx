@@ -57,67 +57,73 @@ export default class TypeArray extends React.Component<
     );
 
     return (
-      <Container error={error} className="form--array">
-        <Header>
-          <ArrayButton
-            primary={true}
-            onClick={() => this.setState({ collapsed: !this.state.collapsed })}
-            style={{ backgroundColor: error ? "red" : "" }}
-          >
-            {(this.props.settings && this.props.settings.label) ||
-              this.props.label}{" "}
-            &nbsp;
-            {Array.isArray(this.props.value) && (
-              <Label color="blue" circular={true}>
-                {this.props.value.length}
-              </Label>
-            )}&nbsp;
-            <Icon name={this.state.collapsed ? "angle down" : "angle up"} />
-          </ArrayButton>
-          <div style={{ position: "absolute", right: 0, top: 0 }}>
+      <Container>
+        <Header style={{ backgroundColor: error ? "red" : "#2185d0" }}>
+          <HeaderContent>
+            <ArrayButton
+              onClick={() =>
+                this.setState({ collapsed: !this.state.collapsed })
+              }
+            >
+              {(this.props.settings && this.props.settings.label) ||
+                this.props.label}{" "}
+              &nbsp;
+              {Array.isArray(this.props.value) && (
+                <Label color="blue" circular={true}>
+                  {this.props.value.length}
+                </Label>
+              )}&nbsp;
+              <Icon name={this.state.collapsed ? "angle down" : "angle up"} />
+            </ArrayButton>
             <Button color="blue" onClick={this.onAdd}>
               +
             </Button>
-          </div>
+          </HeaderContent>
         </Header>
-        {!this.state.collapsed &&
-          value.map((val: any, index: number) => (
-            <ArrayItem key={index}>
-              <ItemLeft>
-                <DeleteButton
-                  secondary={true}
-                  onClick={() => this.onDelete(index)}
-                >
-                  x
-                </DeleteButton>
-              </ItemLeft>
-              <ItemRight>
-                <FormPart
-                  value={val}
-                  settings={this.props.settings}
-                  schema={this.props.schema.items}
-                  showLabel={false}
-                  readonly={
-                    !!this.props.readonly || !!this.props.settings.readonly
-                  }
-                  data={this.props.data}
-                  label=""
-                  onChange={(v: any) => this.handleChange(index, v)}
-                />
-              </ItemRight>
-            </ArrayItem>
-          ))}
+        <Contents>
+          {!this.state.collapsed &&
+            value.map((val: any, index: number) => (
+              <ArrayItem key={JSON.stringify(val) || index}>
+                <ItemLeft>
+                  <DeleteButton
+                    secondary={true}
+                    onClick={() => this.onDelete(index)}
+                  >
+                    x
+                  </DeleteButton>
+                </ItemLeft>
+                <ItemRight>
+                  <FormPart
+                    value={val}
+                    settings={this.props.settings}
+                    schema={this.props.schema.items}
+                    showLabel={false}
+                    readonly={
+                      !!this.props.readonly || !!this.props.settings.readonly
+                    }
+                    data={this.props.data}
+                    label=""
+                    onChange={(v: any) => this.handleChange(index, v)}
+                  />
+                </ItemRight>
+              </ArrayItem>
+            ))}
+        </Contents>
       </Container>
     );
   }
 }
 
-const ArrayButton = styled(Button)`
+const ArrayButton = styled.div`
   border: none;
   border-radius: 0 !important;
   width: 100%;
   text-align: left;
-` as StyledComponentClass<ButtonProps, {}>;
+`;
+
+const Contents = styled.div`
+  border: 1px solid #2185d0;
+`;
 
 const DeleteButton = styled(Button)`` as StyledComponentClass<ButtonProps, {}>;
 
@@ -125,10 +131,34 @@ const ArrayItem = styled.section`
   display: flex;
   flex-direction: row;
   padding: 0.5em;
+  &:nth-child(odd) {
+    background-color: #eee;
+  }
+  &:nth-child(even) {
+    background-color: white;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 65, 0.2);
+  }
 `;
 
 const Header = styled.div`
   position: relative;
+  min-width: 200px;
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 1em;
+  color: white;
+  font-weight: bold;
+  &:hover {
+    color: #ccc;
+  }
+`;
+
+const HeaderContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 const ItemLeft = styled.div`
@@ -142,10 +172,8 @@ const ItemRight = styled.div`
   flex: 1;
 `;
 
-interface IContainerProps {
-  error: boolean;
-}
+// interface IContainerProps {
+//   error: boolean;
+// }
 
-const Container = styled.section`
-  border: ${(p: IContainerProps) => `1px solid ${p.error ? "red" : "blue"}`};
-`;
+const Container = styled.section``;

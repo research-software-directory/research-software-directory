@@ -16,6 +16,8 @@ interface IState {
 export default class FormPart extends React.Component<IProps<ISchema>, IState> {
   validate: (newProps: IProps<ISchema>) => any;
   _ajvValidator: (value: any) => boolean | PromiseLike<any>;
+  _component: any;
+
   constructor(props: IProps<ISchema>) {
     super(props);
     this.state = {
@@ -25,7 +27,7 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
       info: null
     };
     const metaSchema = require("ajv/lib/refs/json-schema-draft-04.json");
-    const ajv = new Ajv({ schemaId: "auto" });
+    const ajv = new Ajv({ schemaId: "auto", allErrors: true });
     ajv.addMetaSchema(metaSchema);
     /* https://www.crossref.org/blog/dois-and-matching-regular-expressions/ */
     // ajv.addFormat("doi", /^10.\d{4,9}\/[-._;()/:A-Z0-9]+$/i);
@@ -39,13 +41,26 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
       $id: "bla"
     });
     this.validate = debounce(this._validate, 300);
-    this.validate(this.props);
+    this.validate(this.props.value);
   }
 
-  _validate(props: IProps<ISchema>) {
-    const isValid = this._ajvValidator(props.value);
+  getValidationErrors(value: any) {
+    let errors = [];
+    if (value !== undefined) {
+      const isValid = this._ajvValidator(value);
+      if (!isValid) {
+        errors = (this._ajvValidator as any).errors;
+      }
+    }
+    if (this._component && this._component.validate) {
+      errors.push(...this._component.validate());
+    }
+    return errors;
+  }
+
+  _validate(value: any) {
     this.setState({
-      validationError: isValid ? [] : (this._ajvValidator as any).errors
+      validationError: this.getValidationErrors(value)
     });
   }
 
@@ -64,7 +79,7 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
 
   componentWillReceiveProps(newProps: IProps<ISchema>) {
     if (newProps.value !== this.props.value) {
-      this.validate(newProps);
+      this.validate(newProps.value);
     }
   }
 
@@ -84,8 +99,9 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
       >
         <Component
           {...this.props}
+          ref={(ref: any) => (this._component = ref)}
           validationErrors={this.state.validationError.filter(
-            error => error.dataPath === ""
+            error => !error.dataPath || error.dataPath === ""
           )}
         />
         <div style={{ display: "none" }}>
