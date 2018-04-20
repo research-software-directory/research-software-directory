@@ -52,7 +52,7 @@ def sync_projects():
     to_save = list(map(transform_project, projects))
 
     token = generate_jwt_token()
-    resp = requests.patch(
+    resp = requests.put(
         os.environ.get('BACKEND_URL') + '/project',
         json=to_save,
         headers={'Authorization': 'Bearer %s' % token}

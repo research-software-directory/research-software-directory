@@ -113,7 +113,7 @@ def zotero_sync():
 
     if len(items_to_save) > 0:
         token = generate_jwt_token()
-        resp = requests.patch(
+        resp = requests.put(
             os.environ.get('BACKEND_URL') + '/mention',
             json=items_to_save,
             headers={'Authorization': 'Bearer %s' % token}
