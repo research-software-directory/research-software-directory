@@ -34,10 +34,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:41Z",
                 "emailAddress": "j.maassen@esciencecenter.nl",
-                "familyNames": "Jason Maassen",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "Maassen",
+                "givenNames": "Jason"
             },
             "isContactPerson": true,
             "affiliations": [
@@ -66,10 +64,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2018-01-08T12:08:08Z",
                 "emailAddress": "s.verhoeven@esciencecenter.nl",
-                "familyNames": "Stefan Verhoeven",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "Verhoeven",
+                "givenNames": "Stefan"
             },
             "isContactPerson": false,
             "affiliations": [
@@ -98,10 +94,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:43Z",
                 "emailAddress": "n.drost@esciencecenter.nl",
-                "familyNames": "Niels Drost",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "Drost",
+                "givenNames": "Niels"
             },
             "isContactPerson": false,
             "affiliations": [
@@ -130,10 +124,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:46Z",
                 "emailAddress": "r.vannieuwpoort@esciencecenter.nl",
-                "familyNames": "Rob van Nieuwpoort",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "van Nieuwpoort",
+                "givenNames": "Rob"
             },
             "isContactPerson": false,
             "affiliations": [
@@ -162,10 +154,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:41Z",
                 "emailAddress": "j.borgdorff@esciencecenter.nl",
-                "familyNames": "Joris Borgdorff",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "Borgdorff",
+                "givenNames": "Joris"
             },
             "isContactPerson": false,
             "affiliations": [
@@ -194,10 +184,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:39Z",
                 "emailAddress": "c.meijer@esciencecenter.nl",
-                "familyNames": "Christiaan Meijer",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "Meijer",
+                "givenNames": "Christiaan"
             },
             "isContactPerson": false,
             "affiliations": [
@@ -226,10 +214,8 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:38Z",
                 "emailAddress": "b.vanwerkhoven@esciencecenter.nl",
-                "familyNames": "Ben van Werkhoven",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "van Werkhoven",
+                "givenNames": "Ben"
             },
             "isContactPerson": false,
             "affiliations": [
@@ -257,11 +243,9 @@
                     "collection": "person",
                     "id": "5ab8c31085414f2cfd644a27"
                 },
-                "familyNames": "Piter T. de Boer",
-                "emailAddress": null,
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "de Boer",
+                "givenNames": "Piter",
+                "nameParticle": "T."
             },
             "isContactPerson": false,
             "affiliations": []
@@ -276,10 +260,9 @@
                 "createdAt": "2017-11-10T14:12:55Z",
                 "updatedAt": "2017-11-10T14:17:41Z",
                 "emailAddress": "j.spaaks@esciencecenter.nl",
-                "familyNames": "Jurriaan H. Spaaks",
-                "givenNames": null,
-                "nameParticle": null,
-                "nameSuffix": null
+                "familyNames": "Spaaks",
+                "givenNames": "Jurriaan",
+                "nameParticle": "H."
             },
             "isContactPerson": false,
             "affiliations": [
