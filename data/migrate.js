@@ -169,3 +169,10 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         }
     })
 });
+
+db.software.updateMany({createdBy: null}, {$set: { createdBy: 'Unknown' }});
+db.software.updateMany({updatedBy: null}, {$set: { updatedBy: 'Unknown' }});
+db.person.updateMany({createdBy: null}, {$set: { createdBy: 'Unknown' }});
+db.person.updateMany({updatedBy: null}, {$set: { updatedBy: 'Unknown' }});
+db.organization.updateMany({createdBy: null}, {$set: { createdBy: 'Unknown' }});
+db.organization.updateMany({updatedBy: null}, {$set: { updatedBy: 'Unknown' }});
