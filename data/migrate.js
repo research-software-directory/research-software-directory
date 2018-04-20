@@ -104,6 +104,9 @@ const mapContributors = (oldContributor, sw) => {
     }
 }
 
+const projectIdRemap = {};
+db.project.find({nlescWebsite: {'$ne': '', '$exists': true}}, {nlescWebsite:1}).forEach(r => projectIdRemap[r['_id']] = r['nlescWebsite'].substr(r['nlescWebsite'].lastIndexOf('/') + 1));
+
 db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
     let relatedMentions = [];
     if (sw.zoteroKey) {
@@ -143,7 +146,7 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         shortStatement:         sw.shortStatement || null,
         slug:                   sw.id,
         tags:                   sw.tags || [],
-        testimonial:            [],
+        testimonials:            [],
         related: {
             software: !sw.relatedSoftware ? [] : sw.relatedSoftware.map(rel => ({
                 foreignKey: {
@@ -154,7 +157,7 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
             mentions: relatedMentions,
             projects: (sw.usedInProject || []).map(project => ({
                foreignKey: {
-                    id: project,
+                    id: projectIdRemap[project] ? projectIdRemap[project] : project,
                     collection: 'project'
                }
             })),
