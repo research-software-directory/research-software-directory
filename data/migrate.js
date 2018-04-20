@@ -3,6 +3,9 @@ function convertDate(timestamp) {
     if (typeof timestamp === 'number') {
         return new Date(timestamp*1000).toISOString().substr(0,19)+'Z';
     }
+    else if (timestamp === "") {
+        return new Date(timestamp()*1000).toISOString().substr(0,19)+'Z';
+    }
     else {
         return timestamp;
     }
@@ -63,8 +66,8 @@ const mapContributors = (oldContributor, sw) => {
         const id = ObjectId().str;
         const person = {
             _id: id,
-            createdAt: timestamp(),
-            updatedAt: timestamp(),
+            createdAt: convertDate(timestamp()),
+            updatedAt: convertDate(timestamp()),
             primaryKey: {
                 collection: "person",
                 id: id

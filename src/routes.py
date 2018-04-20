@@ -128,7 +128,7 @@ def get_routes(db, schemas):
                     db[resource_type].insert(resource)
             return 'ok', 200
 
-    @api.route('/<resource_type>', methods=["PATCH"])
+    @api.route('/<resource_type>', methods=["PUT"])
     @require_permission(['write'])
     @jsonify
     def _update_or_insert(resource_type):
@@ -164,24 +164,26 @@ def get_routes(db, schemas):
 
                 resources_to_create.append(resource)
             else:
-                resource_id = old_resource.pop('_id')
-                resource_primary_key = old_resource.pop('primaryKey')
-                resource_created_at = old_resource.pop('createdAt')
-                resource_created_by = old_resource.pop('createdBy', None)
+                updated_resource = {}
+                updated_resource['createdAt'] = old_resource['createdAt']
+                updated_resource['createdBy'] = old_resource['createdBy']
+                updated_resource['primaryKey'] = old_resource['primaryKey']
+                updated_resource['updatedAt'] = time_now()
+                updated_resource['updatedBy'] = get_sub()
+
+                resource.pop('_id')
+                resource.pop('createdAt')
+                resource.pop('createdBy')
+                resource.pop('updatedAt')
+                resource.pop('updatedBy')
+                resource.pop('primaryKey')
 
                 # update resource dict with POSTed data
-                old_resource.update(resource)
+                updated_resource.update(resource)
 
-                # restore keys that cannot be changed on update
-                old_resource['updatedAt'] = time_now()
-                old_resource['updatedBy'] = get_sub()
-                old_resource['createdAt'] = resource_created_at
-                old_resource['createdBy'] = resource_created_by
-                old_resource['primaryKey'] = resource_primary_key
-
-                validate(old_resource, schemas.get(resource_type))
-                old_resource['_id'] = resource_id
-                resources_to_update.append(old_resource)
+                validate(updated_resource, schemas.get(resource_type))
+                updated_resource['_id'] = old_resource['_id']
+                resources_to_update.append(updated_resource)
 
         if 'test' not in flask.request.args:
             for resource in resources_to_create:
@@ -191,7 +193,7 @@ def get_routes(db, schemas):
 
         return 'ok', 200
 
-    @api.route('/<resource_type>/<id>', methods=["PATCH"])
+    @api.route('/<resource_type>/<id>', methods=["PUT"])
     @require_permission(['write'])
     @jsonify
     def _update_resource(resource_type, id):
@@ -220,33 +222,27 @@ def get_routes(db, schemas):
 
         # save keys that cannot be changed on update
         resource_id = resource.pop('_id')
-        resource_primary_key = resource.pop('primaryKey')
-        resource_created_at = resource.pop('createdAt')
-        resource_created_by = resource.pop('createdBy', None)
-
-        # update resource dict with POSTed data
-        resource.update(data)
 
         # restore keys that cannot be changed on update
-        resource['updatedAt'] = time_now()
-        resource['updatedBy'] = get_sub()
-        resource['createdAt'] = resource_created_at
-        resource['createdBy'] = resource_created_by
-        resource['primaryKey'] = resource_primary_key
+        data['updatedAt'] = time_now()
+        data['updatedBy'] = get_sub()
+        data['createdAt'] = resource.pop('createdAt')
+        data['createdBy'] = resource.pop('createdBy', 'Unknown')
+        data['primaryKey'] = resource.pop('primaryKey')
 
-        validate(resource, schemas.get(resource_type))
+        validate(data, schemas.get(resource_type))
 
         # _id is not part of the schema, so restore this after validation
-        resource['_id'] = resource_id
+        data['_id'] = resource_id
 
         if 'test' not in flask.request.args:
-            db[resource_type].update_one({'_id': resource_id}, {'$set': resource})
+            db[resource_type].update_one({'_id': resource_id}, {'$set': data})
 
         if 'save_history' in flask.request.args:
             old_data.pop('_id')
             db[resource_type+'_history'].insert(old_data)
 
-        return resource, 200
+        return data, 200
 
     @api.route('/')
     @require_permission(['read'])
