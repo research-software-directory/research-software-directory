@@ -14,3 +14,6 @@ gunicorn==19.7.1
 libsass==0.14.2
 git+https://github.com/citation-file-format/cff-converter-python.git
 pymongo==3.6.1
+requests-mock==1.4.0
+pytest==3.3.2
+py-w3c==0.3.1

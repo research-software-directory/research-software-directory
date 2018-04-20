@@ -11,7 +11,7 @@ from app.citation import get_citation
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = os.environ.get('BACKEND_URL')
+api_url = os.environ.get('BACKEND_URL', 'http://localhost:5001')
 
 
 @application.route('/sitemap.xml', methods=['GET'])
