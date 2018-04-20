@@ -46,8 +46,9 @@
                             <div class="contact_card_content">
                                 <div class="contributor_picture">
                                     <img
-                                        {%- if contactPerson.foreignKey.image %}
-                                            src="{{contactPerson.foreignKey.image}}" alt=""
+                                        {%- if contactPerson.foreignKey.avatar and contactPerson.foreignKey.avatar.data %}
+                                        {% set image = contactPerson.foreignKey.avatar %}
+                                            src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
                                         {% else %}
                                             src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
                                         {% endif %}
