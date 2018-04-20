@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { Router } from "react-router";
 import { history } from "../history";
 
-import JsonEditor from "../components/Resource/JsonEditor";
 import App from "../components/App";
 import MainMenu from "../components/Menu";
 import ResourceList from "../components/Menu/ResourceList";
@@ -55,12 +54,6 @@ storiesOf("Full app").add("default", () => (
   <Provider store={store}>
     <App />
   </Provider>
-));
-
-storiesOf("JsonEditor").add("default", () => (
-  <div style={{ height: "200px" }}>
-    <JsonEditor value="Asdasdasd" />
-  </div>
 ));
 
 storiesOf("Resource").add("default", () => (
