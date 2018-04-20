@@ -34,6 +34,7 @@ def get_date_for_zotero_item(item):
     try:
         return dateparser.parse(item['data']['date']).isoformat()[:19]+'Z'
     except:
+        logger.warning("Date problem in zotero item %s (was %s)" % (item['key'], item['data']['date']))
         return dateparser.parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
 
 
