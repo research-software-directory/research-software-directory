@@ -562,7 +562,7 @@
                     "text": {
                         "maxLength": 500,
                         "minLength": 10,
-                        "pattern": "^[a-zA-Z0-9 !@#$%-_+=;:,.?]+$",
+                        "pattern": "^[a-zA-Z0-9 !@#$%-_+=;:,.?'’]+$",
                         "type": "string"
                     }
                 },
