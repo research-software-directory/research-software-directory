@@ -545,7 +545,7 @@
             },
             "type": "array"
         },
-        "testimonial": {
+        "testimonials": {
             "items": {
                 "additionalProperties": false,
                 "properties": {
@@ -600,7 +600,7 @@
         "shortStatement",
         "slug",
         "tags",
-        "testimonial",
+        "testimonials",
         "updatedAt"
     ],
     "title": "Software schema"

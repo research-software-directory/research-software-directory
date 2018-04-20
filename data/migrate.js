@@ -143,7 +143,7 @@ db.software.find({primaryKey: { $exists: false }}).map(_=>_).forEach(sw => {
         shortStatement:         sw.shortStatement || null,
         slug:                   sw.id,
         tags:                   sw.tags || [],
-        testimonial:            [],
+        testimonials:            [],
         related: {
             software: !sw.relatedSoftware ? [] : sw.relatedSoftware.map(rel => ({
                 foreignKey: {
