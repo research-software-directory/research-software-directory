@@ -60,6 +60,7 @@ def cache_software():
             continue
         logger.log(logging.INFO, 'processing %s' % sw['brandName'])
         replace_foreign_keys(sw)
+        sw['related']['software'] = [s for s in sw['related']['software'] if s['foreignKey'] and s['foreignKey']['isPublished']]
         repository_urls = sw['repositoryURLs']
         sw['totalCommits'] = sum(map(lambda url: total_commits(url), repository_urls))
         sw['lastCommit'] = reduce(
