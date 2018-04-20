@@ -192,6 +192,14 @@ def human_date_filter(input_string):
 
 
 @application.template_filter()
+def human_name_filter(person):
+    name = person['givenNames']
+    if person['nameParticle']:
+        name += ' ' + person['nameParticle']
+    return name + ' ' + person['familyNames']
+
+
+@application.template_filter()
 def list_names_filter(contributors):
     return [c['name'] for c in contributors]
 

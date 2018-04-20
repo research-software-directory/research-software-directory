@@ -18,7 +18,7 @@
                                     {% for contributor in template_data.contributors %}
                                         <li class="col col-1-2">
                                             <div class="contributor_name">
-                                                {{contributor.foreignKey.familyNames}}
+                                                {{contributor.foreignKey | human_name_filter}}
                                             </div>
                                             {% if contributor.affiliations %}
                                             <div class="contributor_organisation">
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="contributor-info">
                                     <div class="contributor_name">
-                                        {{contactPerson.foreignKey.familyNames}}
+                                        {{contactPerson.foreignKey | human_name_filter }}
                                     </div>
                                     <div class="contributor_organisation">
                                         {{contactPerson.affiliations[0].foreignKey.name}}
