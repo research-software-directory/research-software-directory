@@ -204,15 +204,6 @@ def markdown_filter(input_string):
 
 
 @application.template_filter()
-def pick_pi_filter(team):
-    pis = list(filter(lambda x: x['role'] == 'Principal Investigator', team))
-    if len(pis) > 0:
-        return pis[0]
-    else:
-        return team[0]
-
-
-@application.template_filter()
 def no_none_filter(l):
     return list(filter(lambda x: x is not None, l))
 
