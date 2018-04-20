@@ -55,6 +55,9 @@ def last_commit_date(repository_url):
 
 def cache_software():
     for sw in db.software.find():
+        if not sw['isPublished']:
+            db.software_cache.delete_one({'_id': sw['_id']})
+            continue
         logger.log(logging.INFO, 'processing %s' % sw['brandName'])
         replace_foreign_keys(sw)
         replace_foreign_keys(sw['related'])
