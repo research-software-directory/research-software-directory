@@ -1,13 +1,14 @@
 /* This converts RSD data from version 1 to version 2 */
-function convertDate(timestamp) {
-    if (typeof timestamp === 'number') {
-        return new Date(timestamp*1000).toISOString().substr(0,19)+'Z';
+const timestamp = () => Math.round(Date.now()/1000);
+function convertDate(ts) {
+    if (typeof ts === 'number') {
+        return new Date(ts*1000).toISOString().substr(0,19)+'Z';
     }
-    else if (timestamp === "") {
+    else if (ts === "") {
         return new Date(timestamp()*1000).toISOString().substr(0,19)+'Z';
     }
     else {
-        return timestamp;
+        return ts;
     }
 }
 
@@ -39,7 +40,6 @@ db.person.find().map(_=>_).forEach(person => {
         nameSuffix:     null
     })
 })
-const timestamp = () => Math.round(Date.now()/1000);
 
 const mapContributors = (oldContributor, sw) => {
     if (typeof oldContributor === 'string') {
