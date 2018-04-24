@@ -2,11 +2,12 @@ import click
 import logging
 import sys
 
-from cache_software import cache_software
-from corporate import sync_people, sync_projects
-from github import sync_all as github_sync_all
+from util import db_connect
+# from cache_software import cache_software
+# from corporate import sync_people, sync_projects
+# from github import sync_all as github_sync_all
 from releases import sync_releases
-from zotero import zotero_sync
+# from zotero import zotero_sync
 
 
 class MaxLevel(object):
@@ -15,6 +16,7 @@ class MaxLevel(object):
 
     def filter(self, log_record):
         return log_record.levelno <= self.__level
+
 
 
 log_formatter = logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s')
@@ -35,6 +37,7 @@ logger.addHandler(stderr_handler)
 @click.command()
 @click.option('--task', required=1, help='Name of task.')
 def run_task(task):
+    db = db_connect()
     if task == 'github':
         github_sync_all()
     elif task == 'zotero':
@@ -46,7 +49,7 @@ def run_task(task):
     elif task == 'cache_software':
         cache_software()
     elif task == 'releases':
-        sync_releases()
+        sync_releases(db)
     else:
         raise Exception('No such task: ' + task)
 
