@@ -21,9 +21,10 @@ for var in ['AUTH_GITHUB_CLIENT_ID', 'AUTH_GITHUB_CLIENT_SECRET', 'AUTH_GITHUB_O
         raise Exception('%s not in environment' % var)
 
 app = application = Flask(__name__)
+url_prefix = os.environ.get('AUTH_ROOT', '')
 
 
-@app.route('/', methods=["GET"])
+@app.route(url_prefix + '/', methods=["GET"])
 def _root():
     return redirect('https://github.com/login/oauth/authorize/?client_id=%s' % os.environ.get('AUTH_GITHUB_CLIENT_ID'),
                     code=302)
@@ -76,7 +77,8 @@ class UserNotInOrganization(Exception):
                    os.environ.get('AUTH_GITHUB_ORGANIZATION')
                   )
 
-@app.route('/get_jwt', methods=["GET"])
+
+@app.route(url_prefix + '/get_jwt', methods=["GET"])
 def _login():
     try:
         code = request.args.get('code')
