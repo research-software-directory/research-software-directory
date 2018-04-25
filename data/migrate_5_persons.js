@@ -4,8 +4,8 @@ db.person.update({
     "$set": {
         "familyNames": "Debernardi",
         "givenNames": "Aletta",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -15,8 +15,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kuzniar",
         "givenNames": "Arnold",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -26,8 +26,8 @@ db.person.update({
     "$set": {
         "familyNames": "Mendrik",
         "givenNames": "Adriënne",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -37,8 +37,8 @@ db.person.update({
     "$set": {
         "familyNames": "clocco",
         "givenNames": "Alessio",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -49,7 +49,7 @@ db.person.update({
         "familyNames": "Ploeg",
         "givenNames": "Atze",
         "nameParticle": "van der",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -59,8 +59,8 @@ db.person.update({
     "$set": {
         "familyNames": "Andela",
         "givenNames": "Bouwe",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -71,7 +71,7 @@ db.person.update({
         "familyNames": "Vries",
         "givenNames": "Ben",
         "nameParticle": "de",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -82,7 +82,7 @@ db.person.update({
         "familyNames": "Es",
         "givenNames": "Bram",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -93,7 +93,7 @@ db.person.update({
         "familyNames": "Werkhoven",
         "givenNames": "Ben",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -103,8 +103,8 @@ db.person.update({
     "$set": {
         "familyNames": "Weel",
         "givenNames": "Berend",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -114,8 +114,8 @@ db.person.update({
     "$set": {
         "familyNames": "Martinez-Ortiz",
         "givenNames": "Carlos",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -125,8 +125,8 @@ db.person.update({
     "$set": {
         "familyNames": "Meijer",
         "givenNames": "Christiaan",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -136,8 +136,8 @@ db.person.update({
     "$set": {
         "familyNames": "Remenska",
         "givenNames": "Daniela",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -148,7 +148,7 @@ db.person.update({
         "familyNames": "Kuppevelt",
         "givenNames": "Dafne",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -158,8 +158,8 @@ db.person.update({
     "$set": {
         "familyNames": "Ranguelova",
         "givenNames": "Elena",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -169,8 +169,8 @@ db.person.update({
     "$set": {
         "familyNames": "Tjong Kim Sang",
         "givenNames": "Erik",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -180,8 +180,8 @@ db.person.update({
     "$set": {
         "familyNames": "Diblen",
         "givenNames": "Faruk",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -191,8 +191,8 @@ db.person.update({
     "$set": {
         "familyNames": "Seinstra",
         "givenNames": "Frank",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -202,8 +202,8 @@ db.person.update({
     "$set": {
         "familyNames": "Zapata",
         "givenNames": "Felipe",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -214,7 +214,7 @@ db.person.update({
         "familyNames": "Oord",
         "givenNames": "Gijs",
         "nameParticle": "van den",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -224,8 +224,8 @@ db.person.update({
     "$set": {
         "familyNames": "Spreeuw",
         "givenNames": "Hanno",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -235,8 +235,8 @@ db.person.update({
     "$set": {
         "familyNames": "Pelupessy",
         "givenNames": "Inti",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -246,8 +246,8 @@ db.person.update({
     "$set": {
         "familyNames": "Attema",
         "givenNames": "Jisk",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -257,8 +257,8 @@ db.person.update({
     "$set": {
         "familyNames": "Borgdorff",
         "givenNames": "Joris",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -268,8 +268,8 @@ db.person.update({
     "$set": {
         "familyNames": "Hidding",
         "givenNames": "Johannes",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -279,8 +279,8 @@ db.person.update({
     "$set": {
         "familyNames": "Maassen",
         "givenNames": "Jason",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -290,8 +290,8 @@ db.person.update({
     "$set": {
         "familyNames": "Spaaks",
         "givenNames": "Jurriaan H.",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -302,7 +302,7 @@ db.person.update({
         "familyNames": "Zwaan",
         "givenNames": "Janneke",
         "nameParticle": "van der",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -312,8 +312,8 @@ db.person.update({
     "$set": {
         "familyNames": "El-Hadji",
         "givenNames": "Karima",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -323,8 +323,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bogaardt",
         "givenNames": "Laurens",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -334,8 +334,8 @@ db.person.update({
     "$set": {
         "familyNames": "Buitinck",
         "givenNames": "Lars",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -345,8 +345,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kulik",
         "givenNames": "Lode",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -356,8 +356,8 @@ db.person.update({
     "$set": {
         "familyNames": "Ridder",
         "givenNames": "Lars",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -367,8 +367,8 @@ db.person.update({
     "$set": {
         "familyNames": "Veen",
         "givenNames": "Lourens",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -379,7 +379,7 @@ db.person.update({
         "familyNames": "Vos",
         "givenNames": "Martine",
         "nameParticle": "de",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -389,8 +389,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kuzak",
         "givenNames": "Mateusz",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -400,8 +400,8 @@ db.person.update({
     "$set": {
         "familyNames": "Sanders",
         "givenNames": "Marijn",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -412,7 +412,7 @@ db.person.update({
         "familyNames": "Meersbergen",
         "givenNames": "Maarten",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -422,8 +422,8 @@ db.person.update({
     "$set": {
         "familyNames": "Drost",
         "givenNames": "Niels ",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -433,8 +433,8 @@ db.person.update({
     "$set": {
         "familyNames": "Renaud",
         "givenNames": "Nicholas",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -444,8 +444,8 @@ db.person.update({
     "$set": {
         "familyNames": "Saïdi",
         "givenNames": "Noura",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -455,8 +455,8 @@ db.person.update({
     "$set": {
         "familyNames": "Martinez Rubi",
         "givenNames": "Oscar",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -467,7 +467,7 @@ db.person.update({
         "familyNames": "Rhee",
         "givenNames": "Otto",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -477,8 +477,8 @@ db.person.update({
     "$set": {
         "familyNames": "Aerts",
         "givenNames": "Patrick",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -488,8 +488,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bos",
         "givenNames": "Patrick",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -499,8 +499,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bakhshi",
         "givenNames": "Rena",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -510,8 +510,8 @@ db.person.update({
     "$set": {
         "familyNames": "Gonçalves",
         "givenNames": "Romulo",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -522,7 +522,7 @@ db.person.update({
         "familyNames": "Haren",
         "givenNames": "Ronald",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -533,7 +533,7 @@ db.person.update({
         "familyNames": "Nieuwpoort",
         "givenNames": "Rob",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -543,8 +543,8 @@ db.person.update({
     "$set": {
         "familyNames": "Branchett",
         "givenNames": "Susan",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -554,8 +554,8 @@ db.person.update({
     "$set": {
         "familyNames": "Georgievska",
         "givenNames": "Sonja",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -566,7 +566,7 @@ db.person.update({
         "familyNames": "Breugel",
         "givenNames": "Sacha",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -576,8 +576,8 @@ db.person.update({
     "$set": {
         "familyNames": "Verhoeven",
         "givenNames": "Stefan",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -587,8 +587,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bakker",
         "givenNames": "Tom",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -598,8 +598,8 @@ db.person.update({
     "$set": {
         "familyNames": "Klaver",
         "givenNames": "Tom",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -610,7 +610,7 @@ db.person.update({
         "familyNames": "Hees",
         "givenNames": "Vincent",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -620,8 +620,8 @@ db.person.update({
     "$set": {
         "familyNames": "Maccatrozzo",
         "givenNames": "Valentina",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -631,8 +631,8 @@ db.person.update({
     "$set": {
         "familyNames": "Hazeleger",
         "givenNames": "Wilco",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -642,8 +642,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kouw",
         "givenNames": "Wouter",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -654,7 +654,7 @@ db.person.update({
         "familyNames": "Hage",
         "givenNames": "Willem",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -664,8 +664,8 @@ db.person.update({
     "$set": {
         "familyNames": "Dzigan",
         "givenNames": "Yifat",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -675,8 +675,8 @@ db.person.update({
     "$set": {
         "familyNames": "Liu",
         "givenNames": "Yang",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -686,8 +686,8 @@ db.person.update({
     "$set": {
         "familyNames": "McGuire",
         "givenNames": "Ross",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -697,8 +697,8 @@ db.person.update({
     "$set": {
         "familyNames": "Portegies Zwart",
         "givenNames": "Simon",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -709,7 +709,7 @@ db.person.update({
         "familyNames": "Elteren",
         "givenNames": "Arjen",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -719,8 +719,8 @@ db.person.update({
     "$set": {
         "familyNames": "McMillan",
         "givenNames": "Steve",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -730,8 +730,8 @@ db.person.update({
     "$set": {
         "familyNames": "Vullings",
         "givenNames": "Erik",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -741,8 +741,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bähren",
         "givenNames": "L.",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -752,8 +752,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kaliyaperuma",
         "givenNames": "Rajaram",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -763,8 +763,8 @@ db.person.update({
     "$set": {
         "familyNames": "Gavai",
         "givenNames": "Anand",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -774,8 +774,8 @@ db.person.update({
     "$set": {
         "familyNames": "Olavo Bonino da Silva Santos",
         "givenNames": "Luiz",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -785,8 +785,8 @@ db.person.update({
     "$set": {
         "familyNames": "Vu",
         "givenNames": "Duong",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -796,8 +796,8 @@ db.person.update({
     "$set": {
         "familyNames": "Szoke",
         "givenNames": "Szanislo",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -807,8 +807,8 @@ db.person.update({
     "$set": {
         "familyNames": "Protic",
         "givenNames": "Zvezdan",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -818,8 +818,8 @@ db.person.update({
     "$set": {
         "familyNames": "Lee Davis",
         "givenNames": "Scott",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -829,8 +829,8 @@ db.person.update({
     "$set": {
         "familyNames": "Hoekstra",
         "givenNames": "Rinke",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -840,8 +840,8 @@ db.person.update({
     "$set": {
         "familyNames": "Meroño",
         "givenNames": "Albert",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -851,8 +851,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kooistra",
         "givenNames": "Albert J.",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -862,8 +862,8 @@ db.person.update({
     "$set": {
         "familyNames": "Sijbers",
         "givenNames": "Anneke",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -873,8 +873,8 @@ db.person.update({
     "$set": {
         "familyNames": "Singh",
         "givenNames": "Gurnoor",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -885,7 +885,7 @@ db.person.update({
         "familyNames": "Dijk",
         "givenNames": "Marc",
         "nameParticle": "van",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -895,8 +895,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bouten",
         "givenNames": "Willem",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -906,8 +906,8 @@ db.person.update({
     "$set": {
         "familyNames": "Vrugt",
         "givenNames": "Jasper A.",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -917,8 +917,8 @@ db.person.update({
     "$set": {
         "familyNames": "Mayer",
         "givenNames": "Markus",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -928,8 +928,8 @@ db.person.update({
     "$set": {
         "familyNames": "Bot",
         "givenNames": "Jan",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -939,8 +939,8 @@ db.person.update({
     "$set": {
         "familyNames": "Kooyman",
         "givenNames": "Maarten",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -950,8 +950,8 @@ db.person.update({
     "$set": {
         "familyNames": "Danezi",
         "givenNames": "Anatoli",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -961,8 +961,8 @@ db.person.update({
     "$set": {
         "familyNames": "Vandenakker",
         "givenNames": "M.",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -972,8 +972,8 @@ db.person.update({
     "$set": {
         "familyNames": "Wilson",
         "givenNames": "Robin",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -983,8 +983,8 @@ db.person.update({
     "$set": {
         "familyNames": "Verkerke",
         "givenNames": "Wouter",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -994,8 +994,8 @@ db.person.update({
     "$set": {
         "familyNames": "Croft",
         "givenNames": "Vince",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1005,8 +1005,8 @@ db.person.update({
     "$set": {
         "familyNames": "Burgard",
         "givenNames": "Carsten",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1017,7 +1017,7 @@ db.person.update({
         "familyNames": "Klis",
         "givenNames": "Martijn",
         "nameParticle": "van der",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
 
@@ -1027,8 +1027,8 @@ db.person.update({
     "$set": {
         "familyNames": "Hua Zhao",
         "givenNames": "Jing",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1038,8 +1038,8 @@ db.person.update({
     "$set": {
         "familyNames": "Fang",
         "givenNames": "Zhou",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1049,8 +1049,8 @@ db.person.update({
     "$set": {
         "familyNames": "Heywood",
         "givenNames": "Joe",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1060,8 +1060,8 @@ db.person.update({
     "$set": {
         "familyNames": "Mirkes",
         "givenNames": "Evgeny",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1071,8 +1071,8 @@ db.person.update({
     "$set": {
         "familyNames": "Sabia",
         "givenNames": "Séverine",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1082,8 +1082,8 @@ db.person.update({
     "$set": {
         "familyNames": "Migueles",
         "givenNames": "Jairo",
-        "nameParticle": null,
-        "nameSuffix": null
+        "nameParticle": "",
+        "nameSuffix": ""
     }
 });
 
@@ -1094,6 +1094,6 @@ db.person.update({
         "familyNames": "Boer",
         "givenNames": "Piter T.",
         "nameParticle": "de",
-        "nameSuffix": null
+        "nameSuffix": ""
     }
 });
