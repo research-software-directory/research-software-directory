@@ -92,3 +92,9 @@ To keep the frontend dumb the software records must be de-normalized with
 python app.py --task cache_software
 ```
 
+# Docker
+
+Build with
+```bash
+docker build -t rsd/tasks .
+```

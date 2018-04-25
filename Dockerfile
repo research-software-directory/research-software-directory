@@ -1,16 +1,16 @@
 FROM python:3.6-alpine
 
-RUN (apk update && apk add g++ make git)
+RUN apk --no-cache add g++ git
 
-RUN (mkdir /app)
+RUN mkdir /app
 
-COPY ./requirements.txt /app
+COPY requirements.txt /app/
 
 WORKDIR /app
 
 RUN pip install -r /app/requirements.txt
 
-COPY . /app
+COPY . /app/
 
 ENTRYPOINT ["python", "app.py"]
 
