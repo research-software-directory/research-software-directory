@@ -32,8 +32,8 @@ python entry.py
 
 Run in production mode with Docker using:
 ```
-docker build . -t rsd-frontend
-docker run --env-file .env --rm -it --name test -p5004:5004 rsd-frontend
+docker build -t rsd/frontend .
+docker run --env-file .env --rm -it --name test -p5004:5004 rsd/frontend
 ```
 
 # Develop
