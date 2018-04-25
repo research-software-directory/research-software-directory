@@ -3,11 +3,11 @@ import logging
 import sys
 
 from util import db_connect
-# from cache_software import cache_software
-# from corporate import sync_people, sync_projects
-# from github import sync_all as github_sync_all
+from cache_software import cache_software
+from corporate import sync_people, sync_projects
+from github import sync_all as github_sync_all
 from releases import sync_releases
-# from zotero import zotero_sync
+from zotero import zotero_sync
 
 
 class MaxLevel(object):
@@ -16,7 +16,6 @@ class MaxLevel(object):
 
     def filter(self, log_record):
         return log_record.levelno <= self.__level
-
 
 
 log_formatter = logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s')
@@ -46,10 +45,10 @@ def run_task(task):
         sync_people()
     elif task == 'projects':
         sync_projects()
-    elif task == 'cache_software':
-        cache_software()
     elif task == 'releases':
         sync_releases(db)
+    elif task == 'cache_software':
+        cache_software()
     else:
         raise Exception('No such task: ' + task)
 
