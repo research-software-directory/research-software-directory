@@ -47,3 +47,10 @@ AUTH_GITHUB_CLIENT_SECRET=
 AUTH_GITHUB_ORGANIZATION=nlesc
 AUTH_CALLBACK_URL=http://localhost:3000
 ```
+
+# Docker
+
+The Docker image can be build using
+```bash
+docker build -t rsd/auth .
+``
