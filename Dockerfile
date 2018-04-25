@@ -1,21 +1,17 @@
-FROM node:8.2.1
+FROM node:8.11.1
 
-#RUN mkdir /app
-#
-#WORKDIR /app
-#
-#RUN apt-get update
-#RUN apt-get -y install nginx
-#COPY ./nginx.conf /etc/nginx/sites-enabled/default
-#
-#COPY ./package.json /app
-#COPY ./package-lock.json /app
-#RUN npm install
-#COPY ./tsconfig.json /app
-#COPY ./tslint.json /app
-#COPY ./src /app/src
-#COPY ./public /app/public
-#
-#RUN npm run build
-#
-#CMD nginx -g "daemon off;"
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY package.json tsconfig.json tslint.json /app/
+COPY src /app/src/
+COPY public /app/public/
+
+RUN yarn
+RUN yarn build
+
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=0 /app/build /usr/share/nginx/html
+VOLUME /usr/share/nginx/html

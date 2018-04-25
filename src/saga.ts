@@ -10,7 +10,7 @@ import { push } from "react-router-redux";
 import { IStoreState } from "./rootReducer";
 import config from "./config";
 
-const SETTINGS_URL = "/settings.json";
+const SETTINGS_URL = "/admin/settings.json";
 
 const errorAction = (message: string) =>
   toastrActions.add({
