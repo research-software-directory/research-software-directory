@@ -35,7 +35,7 @@ db.person.update({
     "familyNames": "Alessio Sclocco"
 }, {
     "$set": {
-        "familyNames": "clocco",
+        "familyNames": "Sclocco",
         "givenNames": "Alessio",
         "nameParticle": "",
         "nameSuffix": ""
