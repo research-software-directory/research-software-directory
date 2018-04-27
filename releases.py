@@ -35,6 +35,8 @@ class ReleaseScraper:
     """
 
     def __init__(self, doi):
+        if doi is None:
+            raise ValueError("Record has no doi value of any kind")
         self.doi = doi
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
         self.releases = None
@@ -144,7 +146,8 @@ class ReleaseScraper:
 
 def sync_releases(db):
     db.release.create_index([('conceptDOI', 1)])
-    software_items = db.software.find({"conceptDOI": {"$nin": [None]}}, {"conceptDOI": 1, "brandName": 1})
+    count = db.software.count()
+    software_items = db.software.find({}, {"conceptDOI": 1, "brandName": 1})
     for item_index, software_item in enumerate(software_items):
         conceptdoi = software_item['conceptDOI']
         try:
@@ -155,9 +158,9 @@ def sync_releases(db):
                 'releases': scraper.releases,
                 'createdAt': datetime.utcnow().replace(microsecond=0).isoformat()+'Z'
             }
-            print("{0}/{1} \"{2}\": {3} OK".format(item_index+1, software_items.retrieved,
+            print("{0}/{1} \"{2}\": {3} OK".format(item_index+1, count,
                                                    software_item["brandName"], conceptdoi))
             db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
         except (KeyError, ValueError) as e:
-            print("{0}/{1} \"{2}\": {3} {4}".format(item_index+1, software_items.retrieved,
+            print("{0}/{1} \"{2}\": {3} {4}".format(item_index+1, count,
                                                     software_item["brandName"], conceptdoi, str(e)))
