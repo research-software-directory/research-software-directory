@@ -49,7 +49,7 @@ class ReleaseScraper:
             raise ValueError("is not a concept doi.")
         self.fetch_zenodo_data_versioned_dois()
         self.filter_zenodo_data_versioned_dois()
-        #self.sort_zenodo_data_versioned_dois()
+        self.reverse_sort_zenodo_data_versioned_dois()
         self.generate_files()
 
     def filter_zenodo_data_versioned_dois(self):
@@ -144,8 +144,8 @@ class ReleaseScraper:
     def is_zenodo_doi(self):
         return self.doi.startswith('10.5281/zenodo.')
 
-    def sort_zenodo_data_versioned_dois(self):
-        raise Warning("Still have to implement that")
+    def reverse_sort_zenodo_data_versioned_dois(self):
+        self.releases.sort(key=lambda x: x['tag'], reverse=True)
 
 
 def sync_releases(db):
