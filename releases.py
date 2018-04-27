@@ -70,7 +70,7 @@ class ReleaseScraper:
             doi = hit["metadata"]["doi"]
             date_published = hit["metadata"]["publication_date"]
             url = select_github_url()
-            tag = re.sub('^.*(/tree/v?)', '', url)
+            tag = re.sub('^.*(/tree/)', '', url)
             self.releases.append({
                 "datePublished": date_published,
                 "doi": doi,
