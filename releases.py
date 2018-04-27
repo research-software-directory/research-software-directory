@@ -1,6 +1,5 @@
 from datetime import datetime
 import re
-import yaml
 
 import requests
 from cff_converter_python import Citation
@@ -98,10 +97,11 @@ class ReleaseScraper:
         cff_file = dict(found=[False] * n, appears_valid_cff=[False] * n)
         for release_index, release in enumerate(self.releases):
             try:
-                yamlstr = 'doi: "{0}"\ndate-released: {1}\nversion: {2}'
-                override = yaml.safe_load(yamlstr.format(release["doi"],
-                                                         release["datePublished"],
-                                                         release["tag"]))
+                override = {
+                    "doi": release["doi"],
+                    "date-released": datetime.strptime(release["datePublished"], "%Y-%m-%d").date(),
+                    "version": release["tag"]
+                }
                 remove = ["commit"]
                 citation = Citation(release["url"], override=override, remove=remove)
                 cff_file["found"][release_index] = True
