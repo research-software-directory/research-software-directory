@@ -72,6 +72,7 @@ class ReleaseScraper:
             url = select_github_url()
             tag = re.sub('^.*(/tree/)', '', url)
             self.releases.append({
+                "citability": "doi-only",
                 "datePublished": date_published,
                 "doi": doi,
                 "files": files,
@@ -115,6 +116,7 @@ class ReleaseScraper:
                         "endnote": citation.as_enw(),
                         "ris": citation.as_ris()
                     })
+                    release["citability"] = "full"
                     cff_file["appears_valid_cff"][release_index] = True
                 except Exception:
                     continue
