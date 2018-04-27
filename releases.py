@@ -51,6 +51,10 @@ class ReleaseScraper:
         self.filter_zenodo_data_versioned_dois()
         self.reverse_sort_zenodo_data_versioned_dois()
         self.generate_files()
+        self.determine_citability()
+
+    def determine_citability(self):
+        self.isCitable = True in [release["citability"] in ["doi-only", "full"] for release in self.releases]
 
     def filter_zenodo_data_versioned_dois(self):
         def select_github_url():
