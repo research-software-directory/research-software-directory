@@ -19,8 +19,10 @@ class ReleaseScraper:
         7. generate bibtex, ris, endnote, and codemeta strings
 
     After initialization, the ReleaseScraper instance has a field .releases which is 
-    an object with the following layout:
+    an array of objects with the following layout:
     {
+        "citability": "doi-only"
+        "datePublished": "2018-03-14"
         "doi": "10.5281/zenodo.597993",
         "files": {
             "bibtex": "file contents",
