@@ -100,7 +100,8 @@ class ReleaseScraper:
                 override = yaml.safe_load(yamlstr.format(release["doi"],
                                                          release["datePublished"],
                                                          release["tag"]))
-                citation = Citation(release["url"], override=override)
+                remove = ["commit"]
+                citation = Citation(release["url"], override=override, remove=remove)
                 cff_file["found"][release_index] = True
                 try:
                     release["files"] = dict({
