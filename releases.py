@@ -42,6 +42,7 @@ class ReleaseScraper:
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
         self.releases = None
         self.isCitable = None
+        self.latest_codemeta = None
         if not self.is_zenodo_doi():
             raise ValueError("is not a Zenodo doi.")
         self.fetch_zenodo_data_conceptdoi()
@@ -52,9 +53,16 @@ class ReleaseScraper:
         self.reverse_sort_zenodo_data_versioned_dois()
         self.generate_files()
         self.determine_citability()
+        self.determine_latest_codemeta()
 
     def determine_citability(self):
         self.isCitable = True in [release["citability"] in ["doi-only", "full"] for release in self.releases]
+
+    def determine_latest_codemeta(self):
+        for release in self.releases:
+            if "codemeta" in release["files"].keys():
+                self.latest_codemeta = release["files"]["codemeta"]
+                return
 
     def filter_zenodo_data_versioned_dois(self):
         def select_github_url():
@@ -68,13 +76,13 @@ class ReleaseScraper:
 
         self.releases = list()
         hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]
-        # already include the 'files' key here, even though we're only filling it later:
+        # already include the "files" key here, even though we're only filling it later:
         files = dict()
         for hit in hits:
             doi = hit["metadata"]["doi"]
             date_published = hit["metadata"]["publication_date"]
             url = select_github_url()
-            tag = re.sub('^.*(/tree/)', '', url)
+            tag = re.sub("^.*(/tree/)", "", url)
             self.releases.append({
                 "citability": "doi-only",
                 "datePublished": date_published,
@@ -85,8 +93,8 @@ class ReleaseScraper:
         return self
 
     def fetch_zenodo_data_conceptdoi(self):
-        zenodo_id = self.doi.replace('10.5281/zenodo.', '')
-        url = 'https://zenodo.org/api/records/' + zenodo_id
+        zenodo_id = self.doi.replace("10.5281/zenodo.", "")
+        url = "https://zenodo.org/api/records/" + zenodo_id
         r = requests.get(url)
         r.raise_for_status()
         self.zenodo_data["conceptdoi"] = r.json()
@@ -146,25 +154,27 @@ class ReleaseScraper:
         return self.doi == self.zenodo_data["conceptdoi"]["conceptdoi"]
 
     def is_zenodo_doi(self):
-        return self.doi.startswith('10.5281/zenodo.')
+        return self.doi.startswith("10.5281/zenodo.")
 
     def reverse_sort_zenodo_data_versioned_dois(self):
-        self.releases.sort(key=lambda x: x['tag'], reverse=True)
+        self.releases.sort(key=lambda x: x["tag"], reverse=True)
 
 
 def sync_releases(db):
-    db.release.create_index([('conceptDOI', 1)])
+    db.release.create_index([("conceptDOI", 1)])
     count = db.software.count()
     software_items = db.software.find({}, {"conceptDOI": 1, "brandName": 1})
     for item_index, software_item in enumerate(software_items):
-        conceptdoi = software_item['conceptDOI']
+        conceptdoi = software_item["conceptDOI"]
         try:
             scraper = ReleaseScraper(conceptdoi)
             document = {
-                '_id': conceptdoi,
-                'conceptDOI': conceptdoi,
-                'releases': scraper.releases,
-                'createdAt': datetime.utcnow().replace(microsecond=0).isoformat()+'Z'
+                "_id": conceptdoi,
+                "conceptDOI": conceptdoi,
+                "isCitable" : scraper.isCitable,
+                "latestCodemeta": scraper.latest_codemeta,
+                "releases": scraper.releases,
+                "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
             }
             print("{0}/{1} \"{2}\": {3} OK".format(item_index+1, count,
                                                    software_item["brandName"], conceptdoi))
