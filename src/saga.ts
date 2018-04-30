@@ -10,10 +10,7 @@ import { push } from "react-router-redux";
 import { IStoreState } from "./rootReducer";
 import config from "./config";
 
-const SETTINGS_URL =
-  process.env.NODE_ENV === "production"
-    ? "/admin/settings.json"
-    : "/settings.json";
+const SETTINGS_URL = `${process.env.PUBLIC_URL}/settings.json`;
 
 const errorAction = (message: string) =>
   toastrActions.add({
