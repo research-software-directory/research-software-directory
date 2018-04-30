@@ -41,7 +41,8 @@ FLASK_APP=`pwd`/entry.py flask generate_jwt --sub test_user -p write -p read  # 
 ```
 Or run through Docker:
 ```
-docker build . -t data-api && docker run --env-file ./.env -p 5001:8000 -it --name data-api data-api
+docker build -t rsd/backend .
+docker run --env-file ./.env -p 5001:8000 -it --name rsd-backend rsd/backend
 ```
 
 ### Usage

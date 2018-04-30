@@ -1,8 +1,9 @@
-import flask
+import os
 import datetime
-import pymongo
 import copy
 
+import flask
+import pymongo
 from flask_cors import CORS
 from jsonschema import validate
 from bson.objectid import ObjectId
@@ -16,7 +17,7 @@ def time_now():
 
 
 def get_routes(db, schemas):
-    api = flask.Blueprint("api", __name__)
+    api = flask.Blueprint("api", __name__, url_prefix=os.environ.get('BACKEND_ROOT', '/'))
     cors = CORS(api, resources={r"*": {"origins": "*"}})
 
     @api.route('/<resource_type>/<id>', methods=["GET"])
