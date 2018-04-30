@@ -58,7 +58,7 @@
       <div id="noscript_projects" class="row">
         {%- for software in template_data -%}
           <li class="col-1-4">
-            <a href="/software/{{software.id}}">{{software.name}}</a>
+            <a href="/software/{{software.primaryKey.id}}">{{software.brandName}}</a>
           </li>
         {%- endfor -%}
       </div>
@@ -102,29 +102,28 @@
 
             <div class="filter-group">
               <div class="filter-group_title" @click="organizationsFilterOpen = !organizationsFilterOpen">
-                Partner organizations
+                Organizations
                 <span class="toggle-button">
                   [[ organizationsFilterOpen ? '-' : '+' ]]
                 </span>
               </div>
           
               <transition-group 
-              tag="ul"
-              class="filter-list"
-              v-bind:css="false"
-              v-on:before-enter="filtersBeforeEnter"
-              v-on:enter="filtersEnter"
-              v-on:before-leave="filtersBeforeLeave"
-              v-on:leave="filtersLeave">
-              
-              <li v-for="(org, index) in organizationsWithCount" v-bind:data-index="index" :key="org" v-if="organizationsFilterOpen" :class="org.count === 0 ? 'empty' : ''">
-                <label :for="org.id" class="checkbox">
-                  <input type="checkbox" name="checkbox" :id="org.id" v-model="filter.organizations" :value="org.id">
-                  <div class="custom-checkbox"></div> 
-                  <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
-                </label>
-              </li>
-
+                tag="ul"
+                class="filter-list"
+                v-bind:css="false"
+                v-on:before-enter="filtersBeforeEnter"
+                v-on:enter="filtersEnter"
+                v-on:before-leave="filtersBeforeLeave"
+                v-on:leave="filtersLeave"
+              >
+                <li v-for="(org, index) in organizationsWithCount" v-bind:data-index="index" :key="org" v-if="organizationsFilterOpen" :class="org.count === 0 ? 'empty' : ''">
+                  <label :for="org.id" class="checkbox">
+                    <input type="checkbox" name="checkbox" :id="org.primaryKey.id" v-model="filter.organizations" :value="org.primaryKey.id">
+                    <div class="custom-checkbox"></div>
+                    <span class="text">[[org.name]] <strong>([[ org.count ]])</strong></span>
+                  </label>
+                </li>
               </transition-group>
 
             </div>
@@ -143,20 +142,20 @@
       <div class="col-3-4" id="software_list">
 
         <transition-group appear name="slide-fade" tag="div" class="software_list_wrap">
-        <a v-for="sw in pagedSoftware" v-bind:key="sw" :href="'/software/' + sw.id" class="software_item bg-light" :class="{ highlighted: sw.highlighted }">
-          <div class="code">[[sw.code]]</div>
-          <h2 class="name">[[sw.name]]</h2>
-          <p class="short">[[sw.shortStatement]]</p>
-          
-          <div class="software_data">
-              <span class="last-update">[[sw.lastUpdateAgo]]</span>
+          <a v-for="sw in pagedSoftware" v-bind:key="sw" :href="'/software/' + (sw.slug || sw.primaryKey.id)" class="software_item bg-light" :class="{ highlighted: sw.isFeatured }">
+            <div class="code">[[sw.brandName.slice(0,2)]]</div>
+            <h2 class="name">[[sw.brandName]]</h2>
+            <p class="short">[[sw.shortStatement]]</p>
 
-              <div v-if="sw.highlighted" class="highlighted">
-                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-featured"></use></svg>
-                <span>Featured</span>
-              </div>
-          </div>
-        </a>
+            <div class="software_data">
+                <span class="last-update">[[sw.lastUpdateAgo]]</span>
+
+                <div v-if="sw.isFeatured" class="highlighted">
+                  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-featured"></use></svg>
+                  <span>Featured</span>
+                </div>
+            </div>
+          </a>
         </transition-group>
        
         
@@ -213,7 +212,7 @@
                 <div class="image-container">
                     <img src="{{post.image}}">
                 </div>
-                <p class="author">By {{post.author}} | {{ post.datetime }}</p>
+                <p class="author">By {{post.author}} | {{ post.date | human_date_filter }}</p>
                 <p class="title">{{post.title}}</p>
               </a>
             {% endfor %}
@@ -240,22 +239,22 @@
             {% for mention in latest_mentions %}
             <li>
 
-                {% if mention.data.url %}
+                {% if mention.url %}
 
-                <a href="{{mention.data.url}}" target="_blank" class="mention_content bg-light">
+                <a href="{{mention.url}}" target="_blank" class="mention_content bg-light">
                     <div class="mention_info">
-                        <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
-                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehumanFilter }}</div>
+                        <div class="mention_title">{{mention.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
                     </div>
-                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                    <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
                 </a>
                 {% else %}
                 <div class="mention_content bg-light">
                     <div class="mention_info">
-                        <div class="mention_title">{{mention.data.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
-                        <div class="mention_post-date">{{ mention.updatedAt | strfdatehumanFilter }}</div>
+                        <div class="mention_title">{{mention.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
                     </div>
-                    <div class="mention_location">{{ mention.data.meetingName if 'meetingName' in mention.data else '' }}</div>
+                    <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
                 </div>
                 {% endif %}
 
