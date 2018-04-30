@@ -15,6 +15,7 @@
                 "type": "boolean"
             },
             "lastCommit": {
+                "format": "date-time",
                 "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
                 "type": "string"
             },
@@ -29,6 +30,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "createdAt": {
+                                            "format": "date-time",
                                             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
                                             "type": "string"
                                         },
@@ -37,6 +39,7 @@
                                             "type": "string"
                                         },
                                         "datePublished": {
+                                            "format": "date-time",
                                             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
                                             "type": "string"
                                         },
@@ -88,6 +91,7 @@
                                             "type": "string"
                                         },
                                         "updatedAt": {
+                                            "format": "date-time",
                                             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
                                             "type": "string"
                                         },
