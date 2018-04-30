@@ -5,10 +5,12 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json tsconfig.json tslint.json /app/
+
+RUN yarn
+
 COPY src /app/src/
 COPY public /app/public/
 
-RUN yarn
 RUN yarn build
 
 FROM nginx:alpine
