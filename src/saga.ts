@@ -10,6 +10,8 @@ import { push } from "react-router-redux";
 import { IStoreState } from "./rootReducer";
 import config from "./config";
 
+// process.env.PUBLIC_URL is /admin when the project is built with yarn build,
+// otherwise it is "" with yarn start
 const SETTINGS_URL = `${process.env.PUBLIC_URL}/settings.json`;
 
 const errorAction = (message: string) =>
