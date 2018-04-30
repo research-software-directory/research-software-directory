@@ -47,9 +47,7 @@ export default class ResourceList extends React.PureComponent<
             <Menu.Item key={index} draggable="true">
               <Link
                 draggable={false}
-                to={`${process.env.PUBLIC_URL}/${this.props.type}/${
-                  item.primaryKey.id
-                }`}
+                to={`/${this.props.type}/${item.primaryKey.id}`}
                 style={{ display: "block" }}
               >
                 {resourceToString(item)}

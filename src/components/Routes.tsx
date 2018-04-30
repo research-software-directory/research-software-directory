@@ -4,15 +4,8 @@ import Resource from "../containers/Resource";
 
 const routesRender = ({ location }: { location: any }) => (
   <Switch key={location.pathname} location={location}>
-    <Route
-      path={`${process.env.PUBLIC_URL}/:resourceType/:id`}
-      component={Resource}
-    />
-    <Route
-      exact={true}
-      path={`${process.env.PUBLIC_URL}/`}
-      component={() => <div>Welcome</div>}
-    />
+    <Route path="/:resourceType/:id" component={Resource} />
+    <Route exact={true} path="/" component={() => <div>Welcome</div>} />
   </Switch>
 );
 
