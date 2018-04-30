@@ -1,58 +1,28 @@
 import logging
-
+import jwt
 import click
+import time
+import os
 
+from src.permission import Permission
 logger = logging.getLogger(__name__)
 
 
-def init(app, service_controller, db):
-    @app.cli.command('impact_report')
-    @click.argument('id')
-    def _report(id):
-        service_controller.impact_report.generate_impact_report(id)
+def init(app, db, schema):
+    @app.cli.command('generate_jwt')
+    @click.option('--sub', required=True, help='Identity (name of user, software etc).')
+    @click.option('--permissions', '-p', required=True, multiple=True)
+    def _generate_jwt(permissions, sub):
+        for p in permissions:
+            if not Permission.has_value(p):
+                raise ValueError('\'' + p + '\' is not a valid permission')
+        payload = {
+            'sub': sub,
+            'subType': 'CLI_ISSUED',
+            'permissions': list(permissions),
+            'iat': round(time.time())
+        }
+        issued_jwt = jwt.encode(payload, os.environ.get('JWT_SECRET'), algorithm='HS256')
 
-    @app.cli.command('report_all')
-    def _report_all():
-        i = 1
-        softwares = db.software.all()
-        for software in softwares:
-            print('(%i / %i) generating report for %s' % (i, softwares.count(), software['id']))
-            service_controller.impact_report.generate_impact_report(software['id'])
-            i += 1
-
-    @app.cli.command('export')
-    @click.argument('filename')
-    def _export(filename):
-        """export database to `filename` (.tar.gz)"""
-        service_controller.import_export.data_export(filename)
-
-    @app.cli.command('import')
-    @click.argument('filename')
-    def _import(filename):
-        """import exported `filename` to database"""
-        service_controller.import_export.data_import(filename)
-
-    @app.cli.command('commits')
-    @click.argument('repo')
-    def _commits(repo):
-        service_controller.github.update_commits(repo)
-
-    @app.cli.command('import_old_data')
-    def _import_oringinal():
-        service_controller.original_data_importer.import_original()
-
-    @app.cli.command('verify_data')
-    def _verify_data():
-        service_controller.schema.verify_data()
-
-    @app.cli.command('set_descriptions')
-    def _descriptions():
-        service_controller.original_data_importer.set_descriptions()
-
-    @app.cli.command('list_projects')
-    def _projects():
-        service_controller.zotero.list_projects()
-
-    @app.cli.command('zotero_sync_publications')
-    def _zotero_publications():
-        service_controller.zotero.sync_publications()
+        print(payload)
+        print(issued_jwt.decode('ascii'))

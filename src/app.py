@@ -1,36 +1,66 @@
 import logging
-from flask import Flask
+import os
+import sys
 
-from src.database.database_mongo import MongoDatabase
+from flask import Flask
+from pymongo import MongoClient
+from src import commands
+from src import error_handlers
 from src.routes import get_routes
-from src.extensions import resize
-from src.service_controller import ServiceController
-from src.settings import settings
-import src.commands as commands
-import src.error_handlers as error_handlers
+from src.schema import get_schemas
+
+
+class MaxLevel(object):
+    def __init__(self, level):
+        self.__level = level
+
+    def filter(self, log_record):
+        return log_record.levelno <= self.__level
+
+
+log_formatter = logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s')
+stdout_handler = logging.StreamHandler(stream=sys.stdout)
+stdout_handler.addFilter(MaxLevel(logging.WARNING))
+stdout_handler.setFormatter(log_formatter)
+
+stderr_handler = logging.StreamHandler()
+stderr_handler.setLevel(logging.ERROR)
+stderr_handler.setFormatter(log_formatter)
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-logger.addHandler(handler)
-handler.setFormatter(logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s'))
-logger.info('Starting')
+logger.addHandler(stdout_handler)
+logger.addHandler(stderr_handler)
+
+required_environmental_variables = [
+    "DATABASE_HOST",
+    "DATABASE_PORT",
+    "DATABASE_NAME",
+    "JWT_SECRET",
+    "SCHEMAS_PATH"
+]
+
+for var in required_environmental_variables:
+    if not os.environ.get(var):
+        raise EnvironmentError("%s not set (add to environment)" % var)
 
 
-def create_app(database=None):
+def create_app(db=None, schemas=None):
     app = Flask(__name__)
-    if database:
-        db = database
-    else:
-        db = MongoDatabase(settings['DATABASE_HOST'],
-                           settings['DATABASE_PORT'],
-                           settings['DATABASE_NAME'],
-                           )
-    service_controller = ServiceController(db, settings)
-    register_extensions(app)
+    if not db:
+        db = MongoClient(host=os.environ.get('DATABASE_HOST'),
+                         port=int(os.environ.get('DATABASE_PORT')),
+                         connectTimeoutMS=100,
+                         serverSelectionTimeoutMS=100
+                         )[os.environ.get('DATABASE_NAME')]
+
+    if not schemas:
+        schemas = get_schemas()
+
     register_error_handlers(app)
-    register_blueprints(app, service_controller, db)
-    register_commands(app, service_controller, db)
+    register_blueprints(app, db, schemas)
+    register_commands(app, db, schemas)
+
     return app
 
 
@@ -38,24 +68,10 @@ def register_error_handlers(app):
     error_handlers.init(app)
 
 
-def register_blueprints(app, service_controller, db):
-    routes = get_routes(service_controller, db)
-    logger.info('123')
+def register_blueprints(app, db, schemas):
+    routes = get_routes(db, schemas)
     app.register_blueprint(routes)
 
 
-def register_extensions(app):
-    pass
-
-
-def register_commands(app, service_controller, db):
-    commands.init(app, service_controller, db)
-
-
-def setup_service_controller(app):
-    app['test'] = 5
-
-
-if __name__ == "__main__":
-    app = create_app()
-    app.run(host='0.0.0.0', port=5001)
+def register_commands(app, db, schemas):
+    commands.init(app, db, schemas)

@@ -1,19 +1,17 @@
-FROM python:3.6
+FROM python:3.6-alpine
 
-#ENV PYTHONUNBUFFERED 1
+RUN apk --no-cache add g++
 
-RUN groupadd -r flask \
-    && useradd -r -g flask flask
-
-COPY ./requirements.txt /requirements.txt
+COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 COPY . /app
-RUN chown -R flask /app
-USER flask
+RUN adduser -S rsd_backend
+USER rsd_backend
 
 WORKDIR /app
 
 STOPSIGNAL SIGINT
 
-CMD gunicorn --workers 3 --max-requests 10 --bind 0.0.0.0:8000 --access-logfile /log/reqlog --error-logfile /log/errlog entry:application
+CMD gunicorn --preload --workers 3 --max-requests 10 --timeout 15 --bind 0.0.0.0:5001 --access-logfile - --error-logfile - entry:application
+EXPOSE 5001

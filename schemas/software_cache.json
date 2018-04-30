@@ -1,0 +1,200 @@
+{
+    "allOf": [{
+        "$ref": "software.json"
+    }, {
+        "properties": {
+            "commits": {
+                "patternProperties": {
+                    "^\\d{4}-\\{2}$": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "isCitable": {
+                "type": "boolean"
+            },
+            "lastCommit": {
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                "type": "string"
+            },
+            "related": {
+                "additionalProperties": false,
+                "properties": {
+                    "mentions": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "foreignKey": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "createdAt": {
+                                            "format": "date-time",
+                                            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                                            "type": "string"
+                                        },
+                                        "createdBy": {
+                                            "enum": ["zotero.py"],
+                                            "type": "string"
+                                        },
+                                        "datePublished": {
+                                            "format": "date-time",
+                                            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                                            "type": "string"
+                                        },
+                                        "isCorporateBlog": {
+                                            "type": "boolean"
+                                        },
+                                        "primaryKey": {
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "collection": {
+                                                    "enum": ["mention"],
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "pattern": "^[A-Z0-9]+$",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "collection",
+                                                "id"
+                                            ],
+                                            "type": "object"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "type": {
+                                            "enum": [
+                                                "blogPost",
+                                                "book",
+                                                "bookSection",
+                                                "computerProgram",
+                                                "conferencePaper",
+                                                "document",
+                                                "interview",
+                                                "journalArticle",
+                                                "magazineArticle",
+                                                "manuscript",
+                                                "newspaperArticle",
+                                                "presentation",
+                                                "radioBroadcast",
+                                                "report",
+                                                "thesis",
+                                                "videoRecording",
+                                                "webpage"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "updatedAt": {
+                                            "format": "date-time",
+                                            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                                            "type": "string"
+                                        },
+                                        "updatedBy": {
+                                            "enum": ["zotero.py"],
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "format": "uri",
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "integer"
+                                        },
+                                        "zoteroKey": {
+                                            "pattern": "^[A-Z0-9]+$",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "createdAt",
+                                        "createdBy",
+                                        "datePublished",
+                                        "isCorporateBlog",
+                                        "primaryKey",
+                                        "title",
+                                        "type",
+                                        "updatedAt",
+                                        "updatedBy",
+                                        "url",
+                                        "version",
+                                        "zoteroKey"
+                                    ],
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "foreignKey"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "mentions"
+                ],
+                "type": "object"
+            },
+            "releases": {
+                "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "doi": {
+                            "type": "string"
+                        },
+                        "files": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "bibtex": {
+                                    "type": "string"
+                                },
+                                "cff": {
+                                    "type": "string"
+                                },
+                                "endnote": {
+                                    "type": "string"
+                                },
+                                "ris": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "bibtex",
+                                "cff",
+                                "endnote",
+                                "ris"
+                            ],
+                            "type": "object"
+                        },
+                        "tag": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "doi",
+                        "files",
+                        "tag"
+                    ]
+                },
+                "type": "array"
+            },
+            "totalCommits": {
+                "type": "integer"
+            }
+        },
+        "required": [
+            "commits",
+            "isCitable",
+            "lastCommit",
+            "releases",
+            "totalCommits"
+        ],
+        "title": "Software schema including derived properties"
+    }]
+}

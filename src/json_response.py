@@ -3,18 +3,18 @@
 import flask
 import json
 
-from src.database.database import Record
-
-
-class Encoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Record):
-            return obj.to_dict()
-        return json.JSONEncoder.default(self, obj)
-
 
 def dumps(data):
-    return json.dumps(data, cls=Encoder)
+    if isinstance(data, list):
+        for row in data:
+            if isinstance(row, dict) and '_id' in row.keys():
+                del row['_id']
+
+    elif isinstance(data, dict):
+        if '_id' in data.keys():
+            del data['_id']
+
+    return json.dumps(data)
 
 
 def json_response(json_string, status=200):

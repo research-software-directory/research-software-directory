@@ -1,6 +1,6 @@
 import time
 
-from src.helpers import util
+from src import util
 
 
 def test_rate_limit():
@@ -14,6 +14,3 @@ def test_rate_limit():
 
     assert 2 < (time.time() - start_time) < 2.5
 
-
-def test_worker():
-    util.worker('--help')   # just try not to crash?

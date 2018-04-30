@@ -1,4 +1,8 @@
 import traceback
+
+from jsonschema import ValidationError
+from pymongo.errors import ServerSelectionTimeoutError
+
 from src.json_response import jsonify
 from src.exceptions import RouteException
 import logging
@@ -31,7 +35,7 @@ def init(app):
             "class": exception.__class__.__name__,
             "traceback": traceback.format_tb(exception.__traceback__),
         }
-        logger.warning(str_format_exception(exception))
+        logger.warning('general exception: ' + str_format_exception(exception))
         return data, 500
 
     @app.errorhandler(404)
@@ -43,3 +47,23 @@ def init(app):
             "traceback": traceback.format_tb(exception.__traceback__),
         }
         return data, 404
+
+    @app.errorhandler(ValidationError)
+    @jsonify
+    def _validation_error(exception):
+        data = {
+            "error": exception.message,
+            "class": "ValidationError",
+            "path": list(exception.absolute_path)
+        }
+        return data, 400
+
+    @app.errorhandler(ServerSelectionTimeoutError)
+    @jsonify
+    def _mongo_connect_error(exception):
+        data = {
+            "error": "Couldn't connect to Mongo database: " + str(exception),
+            "class": "ServerSelectionTimeoutError",
+        }
+        logger.error('Could not connect to Mongo')
+        return data, 500

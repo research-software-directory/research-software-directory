@@ -1,6 +1,8 @@
 .vscode
 .env
 .env.local
+.env.production
+schema-fixtures/
 db/
 # Jekyll
 _site
@@ -29,6 +31,7 @@ parts/
 sdist/
 var/
 *.egg-info/
+
 .installed.cfg
 *.egg
 
@@ -73,5 +76,3 @@ target/
 # from the README)
 .env3
 
-settings.json
-settings.remote.json
