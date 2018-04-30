@@ -97,5 +97,13 @@
   "lint-staged": {
     "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"]
   },
-  "homepage": "https://www.research-software.nl/admin/"
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5001"
+    },
+    "/auth": {
+      "target": "http://localhost:5002"
+    }
+  },
+  "homepage": "https://research-software.nl/admin"
 }

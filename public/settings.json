@@ -1,6 +1,6 @@
 {
-  "backendUrl": "http://localhost:5001",
-  "authUrl": "http://localhost:5002",
+  "backendUrl": "/api",
+  "authUrl": "/auth",
   "resources": {
     "software": {
       "name": "Software",
