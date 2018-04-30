@@ -96,5 +96,6 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,json,css,md}": ["prettier --write", "git add"]
-  }
+  },
+  "homepage": "https://www.research-software.nl/admin/"
 }
