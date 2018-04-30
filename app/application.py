@@ -1,35 +1,18 @@
-import datetime
+from dateutil import parser
 import json
-import random
-
 import flask
 import markdown
 import requests
-
-import dateparser
 import htmlmin
 import ago
 import os
 
-from app import plot_commits
 from app.citation import get_citation
-from app.corporate_scraper.Scraper import BlogPostScraper, ProjectScraper
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
-api_url = os.environ.get('API_URL', 'https://api.research-software.nl')
-#api_url = 'http://172.19.0.1:5001'
+api_url = os.environ.get('BACKEND_URL', 'http://localhost:5001')
 
-def format_software(sw):
-    sw['lastUpdateAgo'] = 'Last update: ' + ago.human(sw.get('lastUpdate'), precision=1)
-
-def get_blogs():
-    return requests.get(api_url + '/corporate_blogs').json()
-
-def get_projects():
-    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
-        include_deep_info=True)
-    return scraper.projects
 
 @application.route('/sitemap.xml', methods=['GET'])
 def sitemap():
@@ -37,31 +20,43 @@ def sitemap():
     all_software = requests.get(url).json()
 
     response = flask.Response(flask.render_template('sitemap.xml',
-                                 data=all_software
-                                 ))
+                                                    data=all_software
+                                                    ))
     response.headers["Content-Type"] = "application/xml"
     return response
 
+
+def serialize_software_list(swlist):
+    def sw_dict(sw):
+        last_update = sw.get('lastCommit', sw.get('updatedAt')) or '2015-01-01T12:00:00Z'
+        return {
+            'lastUpdate': last_update,
+            'lastUpdateAgo': ago.human(str_to_datetime(last_update), precision=1),
+            'tags': sw.get('tags'),
+            'primaryKey': sw.get('primaryKey'),
+            'brandName': sw.get('brandName'),
+            'shortStatement': sw.get('shortStatement'),
+            'isFeatured': sw.get('isFeatured'),
+            'relatedOrganizations': sw.get('related').get('organizations'),
+        }
+    return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
+
+
 @application.route('/', methods=['GET'])
 def index():
-    url = api_url + '/software?published=true'
-    latest_mentions = requests.get(api_url + '/latest_mentions').json()
-    organizations = requests.get(api_url + '/organizations').json()
+    url = api_url + '/software_cache?isPublished=true'
+    latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
+    organizations = requests.get(api_url + '/organization').json()
     all_software = requests.get(url).json()
-    for sw in all_software:
-        format_software(sw)
-    blog_posts = get_blogs()[:4]
-    for post in blog_posts:
-        format = "%B %d, %Y"
-        post['datetime'] = dateparser.parse(post['datetime-published']).strftime(format)
+    blog_posts = requests.get(api_url + '/mention?isCorporateBlog=true&sort=date&direction=desc&limit=4').json()
 
-    return htmlmin.minify(flask.render_template('index_template.html',
+    return flask.render_template('index_template.html',
                                  template_data=all_software,
-                                 data_json=flask.Markup(json.dumps(all_software)),
+                                 data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
                                  latest_mentions=latest_mentions,
                                  blog_posts=blog_posts
-                                 ))
+                                 )
 
 
 def set_markdown(software, fields):
@@ -71,16 +66,14 @@ def set_markdown(software, fields):
         else:
             software[field] = None
 
+
 @application.route('/software/<software_id>')
 def software_product_page_template(software_id):
-    url = api_url + "/software/%s" % software_id
+    url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
-    if ("error" in software_dictionary):
+    if "error" in software_dictionary:
         return flask.redirect("/", code=302)
-    set_markdown(software_dictionary, ['statement', 'shortStatement','readMore'])
-
-    for sw in software_dictionary['relatedSoftware']:
-        format_software(sw)
+    set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
     organisation_logos = {"astron": "astron.gif", "cbs-knaw": "cbs-knaw.png", "commit": "commit.png", "cwi": "cwi.png",
                           "dans": "dans.jpg", "deltares": "deltares.jpe", "dtl": "dtl.png", "fugro": "fugro.png",
@@ -115,37 +108,42 @@ def software_product_page_template(software_id):
         'webpage': {"singular": "Web page", "plural": "Web pages"},
     }
 
-    software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
-    software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
-    
-    if len(software_dictionary['contributingOrganization']) == 1 and software_dictionary['contributingOrganization'][0]['id'] == 'nlesc':
-        software_dictionary['contributingOrganization'] = []
-    
-    commits_data = get_commits_data(software_id)
-    if commits_data and 'last' in commits_data:
-        commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
-    commits_data = flask.Markup(commits_data)
+    # software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
+    # software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
 
-    return htmlmin.minify(flask.render_template('software_template.html',
+    # if len(software_dictionary['contributingOrganization']) == 1 and software_dictionary['contributingOrganization'][0]['id'] == 'nlesc':
+    #     software_dictionary['contributingOrganization'] = []
+
+    # commits_data = get_commits_data(software_id)
+    # if commits_data and 'last' in commits_data:
+    #     commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
+    # commits_data = flask.Markup(commits_data)
+
+    return flask.render_template('software/software_template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
                                  organisation_logos=organisation_logos,
                                  mention_types=mention_types,
-                                 commits_data=commits_data,
-                                 ))
+                                 )
+
 
 @application.route('/cite/<software_id>')
 def cite(software_id):
-    url = api_url + "/software/%s" % software_id
+    url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
 
     if "error" in software_dictionary:
         return "not found", 404
-    if not 'githubid' in software_dictionary:
+    if 'conceptDOI' not in software_dictionary:
         return "not found", 404
 
+    citation_cff_urls = list(map(
+        lambda github_url: github_url['url'],
+        filter(lambda x: x['isCitationcffSource'], software_dictionary['githubURLs'])
+    ))
+
     try:
-        mime, extension, data = get_citation(software_dictionary.get('githubid'), flask.request.args.get('format'))
+        mime, extension, data = get_citation(citation_cff_urls[0], flask.request.args.get('format'))
     except Exception:
         return "unknown format '%s'" % flask.request.args.get('format'), 400
 
@@ -155,60 +153,68 @@ def cite(software_id):
         headers={"Content-disposition": "attachment; filename=citation.%s" % extension}
     )
 
+
 @application.route('/about')
 def about_template():
     return htmlmin.minify(flask.render_template('about_template.html'))
+
 
 @application.errorhandler(404)
 def page_not_found(e):
     return flask.redirect("/", code=302)
 
 
-def get_commits_data(software_id, current_ym=datetime.date.today().year * 12 + datetime.date.today().month):
-    url = api_url + "/software/%s/commits" % software_id
-    commits = requests.get(url).json()
-    if commits and len(commits) > 0:
-        commits_data = plot_commits.bin_commits_data(sorted(commits, key=lambda k: k['date'], reverse=True), current_ym)
-    else:
-        commits_data = None
+def str_to_datetime(input_string):
+    return parser.parse(input_string)
 
-    return commits_data
 
 @application.template_filter()
-def strftimeFilter(millis):
-    format = "%Y-%m-%d %H:%M:%S"
-    return datetime.datetime.fromtimestamp(millis).strftime(format)
+def brand_code_filter(input_string):
+    return input_string[:2].capitalize()
+
 
 @application.template_filter()
-def strfdatehumanFilter(millis):
-    format = "%B %d, %Y"
-    return datetime.datetime.fromtimestamp(millis).strftime(format)
+def date_time_filter(input_string):
+    output_format = "%Y-%m-%d %H:%M:%S"
+    return str_to_datetime(input_string).strftime(output_format)
+
 
 @application.template_filter()
-def strfdateFilter(millis):
-    format = "%Y/%m/%d"
-    return datetime.datetime.fromtimestamp(millis).strftime(format)
+def date_filter(input_string):
+    output_format = "%Y-%m-%d"
+    return str_to_datetime(input_string).strftime(output_format)
+
 
 @application.template_filter()
-def strfdatedashFilter(millis):
-    format = "%Y-%m-%d"
-    return datetime.datetime.fromtimestamp(millis).strftime(format)
+def human_date_filter(input_string):
+    output_format = "%B %d, %Y"
+    return str_to_datetime(input_string).strftime(output_format)
+
 
 @application.template_filter()
-def listNamesFilter(contributors):
+def human_name_filter(person):
+    name = person['givenNames']
+    if 'nameParticle' in person and person['nameParticle']:
+        name += ' ' + person['nameParticle']
+    return name + ' ' + person['familyNames']
+
+
+@application.template_filter()
+def list_names_filter(contributors):
     return [c['name'] for c in contributors]
 
-@application.template_filter()
-def pickPIFilter(team):
-    pis = list(filter(lambda x: x['role'] == 'Principal Investigator', team))
-    if len(pis) > 0:
-        return pis[0]
-    else:
-        return team[0]
 
 @application.template_filter()
-def noNoneFilter(l):
+def markdown_filter(input_string):
+    if not input_string:
+        return ''
+    return flask.Markup(markdown.markdown(input_string))
+
+
+@application.template_filter()
+def no_none_filter(l):
     return list(filter(lambda x: x is not None, l))
+
 
 @application.route('/favicon.ico')
 def serve_favicon():

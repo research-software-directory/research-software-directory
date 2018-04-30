@@ -562,15 +562,15 @@ section{
 // }
 
 
-// Projects
-// -----------------------------------
-
-#projects{
+// Testimonials
+// ----------------------------------
+#testimonials{
     .container{
         padding-top: 65px;
         padding-bottom: 65px;
     }
 }
+
 .testimonial {
     background-color: $primaryColor;
     padding: 2.25em;
@@ -599,10 +599,22 @@ section{
         border-right: 16px solid $primaryColor;
     }
 }
+
 .testimonialby {
     margin: 20px 0 4em;
     padding-left: 96px;
 }
+
+// Projects
+// -----------------------------------
+
+#projects{
+    .container{
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+}
+
 .project-items {
     display: flex;
     justify-content: space-between;

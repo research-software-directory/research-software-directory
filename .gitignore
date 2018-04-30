@@ -1,5 +1,8 @@
 .idea/*
 */**/__pycache__/*
 node_modules
-static/style/*.css
-static/scripts/*.js
+.env
+.env.local
+.env.production
+__pycache__/
+.cache

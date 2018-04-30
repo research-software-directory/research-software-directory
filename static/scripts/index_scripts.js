@@ -1,9 +1,21 @@
+/* index_scripts.js
+ * This file runs on top of the software overview page (/templates/index_template.html).
+ * It is served as-is, so please keep everything ES5 compatible.
+*/
+
 /*** Copyright 2013 Teun Duynstee Licensed under the Apache License, Version 2.0 ***/
 var firstBy=function(){function n(n){return n}function t(n){return"string"==typeof n?n.toLowerCase():n}function r(r,e){if(e="number"==typeof e?{direction:e}:e||{},"function"!=typeof r){var i=r;r=function(n){return n[i]?n[i]:""}}if(1===r.length){var u=r,o=e.ignoreCase?t:n;r=function(n,t){return o(u(n))<o(u(t))?-1:o(u(n))>o(u(t))?1:0}}return-1===e.direction?function(n,t){return-r(n,t)}:r}function e(n,t){var i="function"==typeof this&&this,u=r(n,t),o=i?function(n,t){return i(n,t)||u(n,t)}:u;return o.thenBy=e,o}return e}();
 /*** https://github.com/component/debounce ***/
 function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(t,l-c):(e=null,u||(i=n.apply(o,a),o=a=null))}var e,a,o,r,i;null==l&&(l=100);var c=function(){o=this,a=arguments,r=Date.now();var c=u&&!e;return e||(e=setTimeout(t,l)),c&&(i=n.apply(o,a),o=a=null),i};return c.clear=function(){e&&(clearTimeout(e),e=null)},c.flush=function(){e&&(i=n.apply(o,a),o=a=null,clearTimeout(e),e=null)},c}
 
+function filterUnique(value, index, arr) {
+    return arr.indexOf(value) === index;
+}
+
 var gaSearch = debounce(function(search) {
+    /*
+    Sends search terms to google analytics
+    */
     if (window.ga) {
         ga('send', 'event', 'search', search);
     }
@@ -41,8 +53,8 @@ function initOverview(softwareData, organizationsData) {
         return function(sw) {
             if (orgs.length === 0) return true;
             var matches = 0;
-            sw.contributingOrganization.forEach(function (org) {
-                if (orgs.includes(org)) {
+            sw.relatedOrganizations.forEach(function (org) {
+                if (orgs.includes(org.foreignKey.primaryKey.id)) {
                     matches += 1;
                 }
             });
@@ -53,12 +65,10 @@ function initOverview(softwareData, organizationsData) {
     function filterSearch(searchTerm) {
         return function (sw) {
             if (!searchTerm) return true;
-            var fields = sw.name + " " + sw.tagLine + ' ' + sw.tags.join(" ");
+            var fields = sw.brandName + " " + sw.shortStatement + ' ' + sw.tags.join(" ");
             return fields.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         }
     }
-
-
 
     var v = new Vue({
         el: '#overview',
@@ -150,38 +160,36 @@ function initOverview(softwareData, organizationsData) {
                 return counts;
             },
 
+            /* organizations for which there is at least one software item with this org as contributingOrganization */
             partnerOrganizations: function() {
-                var orgCounts = JSON.parse(JSON.stringify(this.organizations));
-                this.software
-                    .forEach(function (sw) {
-                        sw.contributingOrganization.forEach(function (orgId) {
-                            var org = orgCounts.find(function(corg) { return corg.id === orgId });
-                            if (org) {
-                                org['isPartner'] = true;
-                            }
-                        });
-                    });
+                // all contributing organization ids (map, flatten, filter unique)
+                var contributingOrganizationIds = [].concat.apply(
+                    [],
+                    this.software.map(function(sw) { return sw.relatedOrganizations; })
+                )
+                .map(function(org) { return org.foreignKey.primaryKey.id; })
+                .filter(filterUnique);
 
-                return orgCounts.filter(function(org) { return org.hasOwnProperty('isPartner')});
+                var orgCopy = JSON.parse(JSON.stringify(this.organizations));
+                return orgCopy.filter(
+                    function(org) { return contributingOrganizationIds.indexOf(org.primaryKey.id) !== -1 }
+                );
             },
 
             organizationsWithCount: function () {
                 var partners = this.partnerOrganizations;
-                partners.forEach(function(org) { org['count'] = 0});
+                partners.forEach(function(partner) { partner['count'] = 0; });
                 this.filteredSoftware
                     .forEach(function (sw) {
-                        sw.contributingOrganization.forEach(function (orgId) {
-                            var org = partners.find(function(corg) { return corg.id === orgId });
+                        sw.relatedOrganizations.forEach(function (forg) {
+                            var org = partners.find(function(corg) { return corg.primaryKey.id === forg.foreignKey.primaryKey.id });
                             if (org) {
                                 org['count'] = (org['count'] || 0) + 1;
                             }
                         });
                     });
-
                 return partners;
             },
-
-
 
             filteredSoftware: function () {
                 return this.software
@@ -193,7 +201,7 @@ function initOverview(softwareData, organizationsData) {
 
             sortedSoftware: function () {
                 function updatedSorter(a, b) {
-                    return b.lastUpdate - a.lastUpdate;
+                    return b.lastUpdate > a.lastUpdate ? 1 : (a.lastUpdate > b.lastUpdate ? -1 : 0)
                 }
 
                 function keyCountSorter(key) {
@@ -203,9 +211,9 @@ function initOverview(softwareData, organizationsData) {
                 }
 
                 function promoteHighlighted(a, b) {
-                    if (a.highlighted && b.highlighted) return 0;
-                    else if (a.highlighted) return -1;
-                    else if (b.highlighted) return 1;
+                    if (a.isFeatured && b.isFeatured) return 0;
+                    else if (a.isFeatured) return -1;
+                    else if (b.isFeatured) return 1;
                     return 0;
                 }
 
@@ -263,7 +271,7 @@ function initOverview(softwareData, organizationsData) {
             }
         }
     });
-
+    window.v = v;
     window.addEventListener('resize', debounce(function(event) {
         v.device = getDevice();
     }, 200));
