@@ -172,12 +172,12 @@ def get_routes(db, schemas):
                 updated_resource['updatedAt'] = time_now()
                 updated_resource['updatedBy'] = get_sub()
 
-                resource.pop('_id')
-                resource.pop('createdAt')
-                resource.pop('createdBy')
-                resource.pop('updatedAt')
-                resource.pop('updatedBy')
-                resource.pop('primaryKey')
+                resource.pop('_id', None)
+                resource.pop('createdAt', None)
+                resource.pop('createdBy', None)
+                resource.pop('updatedAt', None)
+                resource.pop('updatedBy', None)
+                resource.pop('primaryKey', None)
 
                 # update resource dict with POSTed data
                 updated_resource.update(resource)
