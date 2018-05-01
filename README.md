@@ -16,9 +16,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1.  Clone repository
 2.  Use node version `^8.0`, eg using [nvm](#install-node-using-nvm)
-3.  Install dependencies: `npm install`
-4.  Run tests `npm run test`
-5.  Start app in dev server: `npm start`
+3.  Install yarn, `npm install -g yarn`
+4.  Install dependencies: `yarn`
+5.  To run tests: `yarn test`
+6.  Start app in dev server: `yarn start`
 
 ## Install node using NVM
 
@@ -38,10 +39,10 @@ This settings file should be overriden in production.
 To build the app for production run:
 
 ```bash
-npm run build
+yarn build
 ```
 
-The app is build in the `build/` directory.
+The deployable app will build to the `build/` directory.
 
 # Docker
 
