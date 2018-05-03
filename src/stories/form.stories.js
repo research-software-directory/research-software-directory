@@ -11,16 +11,6 @@ import TypeArray from "../components/Form/TypeArray";
 import TypeForeignKey from "../components/Form/TypeForeignKey";
 
 storiesOf("Form elements")
-  .add("Boolean", () => (
-    <TypeBoolean
-      schema={null}
-      value={true}
-      settings={{}}
-      onChange={action("change")}
-      label="Boolean"
-    />
-  ))
-
   .add("StringEnum", () => (
     <TypeStringEnum
       schema={{ enum: ["option1", "option2", "option3"] }}
@@ -194,5 +184,49 @@ storiesOf("Form elements/String")
       }}
       onChange={action("change")}
       label="String"
+    />
+  ))
+  .add("with help", () => (
+    <TypeString
+      schema={{
+        type: "string"
+      }}
+      value={"Value here"}
+      settings={{
+        help: "Some useful help message"
+      }}
+      onChange={action("change")}
+      label="String"
+    />
+  ));
+
+storiesOf("Form elements/Boolean")
+  .add("Checked", () => (
+    <TypeBoolean
+      schema={null}
+      value={true}
+      settings={{}}
+      onChange={action("change")}
+      label="Boolean"
+    />
+  ))
+  .add("Unchecked", () => (
+    <TypeBoolean
+      schema={null}
+      value={false}
+      settings={{}}
+      onChange={action("change")}
+      label="Boolean"
+    />
+  ))
+  .add("with help", () => (
+    <TypeBoolean
+      schema={null}
+      value={true}
+      settings={{
+        help: "Some useful help message"
+      }}
+      onChange={action("change")}
+      label="Boolean"
     />
   ));

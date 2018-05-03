@@ -1,47 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Form elements Boolean 1`] = `
-<div
-  className="sc-bwzfXH hPtagm"
->
-  <div
-    className="ui checked fitted toggle checkbox"
-    onChange={[Function]}
-    onClick={[Function]}
-    onMouseDown={[Function]}
-  >
-    <input
-      checked={true}
-      className="hidden"
-      id={undefined}
-      name={undefined}
-      onClick={[Function]}
-      readOnly={true}
-      tabIndex={0}
-      type="checkbox"
-      value={undefined}
-    />
-    <label
-      htmlFor={undefined}
-    />
-  </div>
-  <label
-    className="sc-bdVaJa iVzaAN"
-  >
-    Boolean
-  </label>
-</div>
-`;
-
 exports[`Storyshots Form elements ForeignKey 1`] = `
 <div
-  className="sc-cSHVUG btqosa"
+  className="sc-kAzzGY bzHKik"
 >
   <div
-    className="sc-fjdhpX xgaXU"
+    className="sc-jzJRlG kDwWVt"
   >
     <label
-      className="sc-jzJRlG bskdia"
+      className="sc-cSHVUG jTVEeu"
     >
       ForeignKey
     </label>
@@ -129,10 +96,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-dxgOiQ iecwDh"
+  className="sc-ckVGcZ iXAqrG"
 >
   <label
-    className="sc-kpOJdX kAzjOl"
+    className="sc-dxgOiQ hTjMfW"
   >
     Object
   </label>
@@ -155,10 +122,10 @@ exports[`Storyshots Form elements Object 1`] = `
         }
       >
         <div
-          className="sc-bxivhb bfegXb"
+          className="sc-ifAKCX bNIpav"
         >
           <label
-            className="sc-ifAKCX bjCwCI"
+            className="sc-EHOje jpYqWO"
           >
             prop1
           </label>
@@ -170,7 +137,7 @@ exports[`Storyshots Form elements Object 1`] = `
             }
           >
             <div
-              className="ui large input sc-htpNat daVAfG"
+              className="ui large input sc-bxivhb jcNPuI"
             >
               <input
                 defaultValue="asdasd"
@@ -203,34 +170,42 @@ exports[`Storyshots Form elements Object 1`] = `
         }
       >
         <div
-          className="sc-bwzfXH hPtagm"
+          className="sc-htpNat kXYjeN"
         >
-          <div
-            className="ui fitted toggle checkbox"
-            onChange={[Function]}
-            onClick={[Function]}
-            onMouseDown={[Function]}
-          >
-            <input
-              checked={false}
-              className="hidden"
-              id={undefined}
-              name={undefined}
-              onClick={[Function]}
-              readOnly={true}
-              tabIndex={0}
-              type="checkbox"
-              value={undefined}
-            />
-            <label
-              htmlFor={undefined}
-            />
-          </div>
           <label
-            className="sc-bdVaJa iVzaAN"
+            className="sc-bwzfXH kuMnGb"
           >
             prop2
           </label>
+          <div
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <div
+              className="ui fitted toggle checkbox"
+              onChange={[Function]}
+              onClick={[Function]}
+              onMouseDown={[Function]}
+            >
+              <input
+                checked={false}
+                className="hidden"
+                id={undefined}
+                name={undefined}
+                onClick={[Function]}
+                readOnly={true}
+                tabIndex={0}
+                type="checkbox"
+                value={undefined}
+              />
+              <label
+                htmlFor={undefined}
+              />
+            </div>
+          </div>
         </div>
         <div
           style={
@@ -357,10 +332,10 @@ exports[`Storyshots Form elements StringEnum 1`] = `
 
 exports[`Storyshots Form elements/Array default 1`] = `
 <section
-  className="sc-jTzLTM eCMmlJ"
+  className="sc-fjdhpX nsimD"
 >
   <div
-    className="sc-iwsKbI VQaYb"
+    className="sc-gZMcBi hIUZVf"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -368,10 +343,10 @@ exports[`Storyshots Form elements/Array default 1`] = `
     }
   >
     <div
-      className="sc-gZMcBi cxZEQT"
+      className="sc-gqjmRU dRclRz"
     >
       <div
-        className="sc-bZQynM Mlldo"
+        className="sc-gzVnrw eIZqNZ"
         onClick={[Function]}
       >
         Array
@@ -401,16 +376,16 @@ exports[`Storyshots Form elements/Array default 1`] = `
     </div>
   </div>
   <div
-    className="sc-gzVnrw dGQjKD"
+    className="sc-htoDjs iDTTLV"
   >
     <section
-      className="sc-dnqmqq ifMFUP"
+      className="sc-iwsKbI eEWFkx"
     >
       <div
-        className="sc-gqjmRU fBsMFx"
+        className="sc-VigVT bCFLqi"
       >
         <button
-          className="ui secondary button sc-htoDjs bZzhDu"
+          className="ui secondary button sc-dnqmqq bDsesi"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -420,7 +395,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
         </button>
       </div>
       <div
-        className="sc-VigVT gtJKdb"
+        className="sc-jTzLTM hkePkA"
       >
         <div
           style={
@@ -433,7 +408,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
           }
         >
           <div
-            className="sc-bxivhb bfegXb"
+            className="sc-ifAKCX bNIpav"
           >
             <div
               style={
@@ -443,7 +418,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
               }
             >
               <div
-                className="ui large input sc-htpNat daVAfG"
+                className="ui large input sc-bxivhb jcNPuI"
               >
                 <input
                   defaultValue="asdasd"
@@ -468,13 +443,13 @@ exports[`Storyshots Form elements/Array default 1`] = `
       </div>
     </section>
     <section
-      className="sc-dnqmqq ifMFUP"
+      className="sc-iwsKbI eEWFkx"
     >
       <div
-        className="sc-gqjmRU fBsMFx"
+        className="sc-VigVT bCFLqi"
       >
         <button
-          className="ui secondary button sc-htoDjs bZzhDu"
+          className="ui secondary button sc-dnqmqq bDsesi"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -484,7 +459,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
         </button>
       </div>
       <div
-        className="sc-VigVT gtJKdb"
+        className="sc-jTzLTM hkePkA"
       >
         <div
           style={
@@ -497,7 +472,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
           }
         >
           <div
-            className="sc-bxivhb bfegXb"
+            className="sc-ifAKCX bNIpav"
           >
             <div
               style={
@@ -507,7 +482,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
               }
             >
               <div
-                className="ui large input sc-htpNat daVAfG"
+                className="ui large input sc-bxivhb jcNPuI"
               >
                 <input
                   defaultValue="asdasddsa"
@@ -537,10 +512,10 @@ exports[`Storyshots Form elements/Array default 1`] = `
 
 exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
 <section
-  className="sc-jTzLTM eCMmlJ"
+  className="sc-fjdhpX nsimD"
 >
   <div
-    className="sc-iwsKbI VQaYb"
+    className="sc-gZMcBi hIUZVf"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -548,10 +523,10 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
     }
   >
     <div
-      className="sc-gZMcBi cxZEQT"
+      className="sc-gqjmRU dRclRz"
     >
       <div
-        className="sc-bZQynM Mlldo"
+        className="sc-gzVnrw eIZqNZ"
         onClick={[Function]}
       >
         Array
@@ -581,17 +556,17 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
     </div>
   </div>
   <div
-    className="sc-gzVnrw dGQjKD"
+    className="sc-htoDjs iDTTLV"
   />
 </section>
 `;
 
 exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
 <section
-  className="sc-jTzLTM eCMmlJ"
+  className="sc-fjdhpX nsimD"
 >
   <div
-    className="sc-iwsKbI VQaYb"
+    className="sc-gZMcBi hIUZVf"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -599,10 +574,10 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
     }
   >
     <div
-      className="sc-gZMcBi cxZEQT"
+      className="sc-gqjmRU dRclRz"
     >
       <div
-        className="sc-bZQynM Mlldo"
+        className="sc-gzVnrw eIZqNZ"
         onClick={[Function]}
       >
         Array
@@ -632,16 +607,16 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
     </div>
   </div>
   <div
-    className="sc-gzVnrw dGQjKD"
+    className="sc-htoDjs iDTTLV"
   >
     <section
-      className="sc-dnqmqq ifMFUP"
+      className="sc-iwsKbI eEWFkx"
     >
       <div
-        className="sc-gqjmRU fBsMFx"
+        className="sc-VigVT bCFLqi"
       >
         <button
-          className="ui secondary button sc-htoDjs bZzhDu"
+          className="ui secondary button sc-dnqmqq bDsesi"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -651,7 +626,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
         </button>
       </div>
       <div
-        className="sc-VigVT gtJKdb"
+        className="sc-jTzLTM hkePkA"
       >
         <div
           style={
@@ -664,7 +639,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
           }
         >
           <div
-            className="sc-bxivhb bfegXb"
+            className="sc-ifAKCX bNIpav"
           >
             <div
               style={
@@ -674,7 +649,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
               }
             >
               <div
-                className="ui large input sc-htpNat daVAfG"
+                className="ui large input sc-bxivhb jcNPuI"
               >
                 <input
                   defaultValue="asdasd"
@@ -699,13 +674,13 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       </div>
     </section>
     <section
-      className="sc-dnqmqq ifMFUP"
+      className="sc-iwsKbI eEWFkx"
     >
       <div
-        className="sc-gqjmRU fBsMFx"
+        className="sc-VigVT bCFLqi"
       >
         <button
-          className="ui secondary button sc-htoDjs bZzhDu"
+          className="ui secondary button sc-dnqmqq bDsesi"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -715,7 +690,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
         </button>
       </div>
       <div
-        className="sc-VigVT gtJKdb"
+        className="sc-jTzLTM hkePkA"
       >
         <div
           style={
@@ -728,7 +703,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
           }
         >
           <div
-            className="sc-bxivhb bfegXb"
+            className="sc-ifAKCX bNIpav"
           >
             <div
               style={
@@ -738,7 +713,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
               }
             >
               <div
-                className="ui large input sc-htpNat daVAfG"
+                className="ui large input sc-bxivhb jcNPuI"
               >
                 <input
                   defaultValue="asdasddsa"
@@ -766,12 +741,143 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
 </section>
 `;
 
-exports[`Storyshots Form elements/String default 1`] = `
+exports[`Storyshots Form elements/Boolean Checked 1`] = `
 <div
-  className="sc-bxivhb bfegXb"
+  className="sc-htpNat kXYjeN"
 >
   <label
-    className="sc-ifAKCX bjCwCI"
+    className="sc-bwzfXH kuMnGb"
+  >
+    Boolean
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div
+      className="ui checked fitted toggle checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        id={undefined}
+        name={undefined}
+        onClick={[Function]}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value={undefined}
+      />
+      <label
+        htmlFor={undefined}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/Boolean Unchecked 1`] = `
+<div
+  className="sc-htpNat kXYjeN"
+>
+  <label
+    className="sc-bwzfXH kuMnGb"
+  >
+    Boolean
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div
+      className="ui fitted toggle checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+    >
+      <input
+        checked={false}
+        className="hidden"
+        id={undefined}
+        name={undefined}
+        onClick={[Function]}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value={undefined}
+      />
+      <label
+        htmlFor={undefined}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/Boolean with help 1`] = `
+<div
+  className="sc-htpNat kXYjeN"
+>
+  <label
+    className="sc-bwzfXH kuMnGb"
+  >
+    Boolean
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div
+      className="sc-bdVaJa lphAHV"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some useful help message",
+        }
+      }
+    />
+    <div
+      className="ui checked fitted toggle checkbox"
+      onChange={[Function]}
+      onClick={[Function]}
+      onMouseDown={[Function]}
+    >
+      <input
+        checked={true}
+        className="hidden"
+        id={undefined}
+        name={undefined}
+        onClick={[Function]}
+        readOnly={true}
+        tabIndex={0}
+        type="checkbox"
+        value={undefined}
+      />
+      <label
+        htmlFor={undefined}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/String default 1`] = `
+<div
+  className="sc-ifAKCX bNIpav"
+>
+  <label
+    className="sc-EHOje jpYqWO"
   >
     String
   </label>
@@ -783,7 +889,7 @@ exports[`Storyshots Form elements/String default 1`] = `
     }
   >
     <div
-      className="ui large input sc-htpNat daVAfG"
+      className="ui large input sc-bxivhb jcNPuI"
     >
       <input
         defaultValue="Value here"
@@ -799,10 +905,10 @@ exports[`Storyshots Form elements/String default 1`] = `
 
 exports[`Storyshots Form elements/String format=date-time invalid 1`] = `
 <div
-  className="sc-bxivhb bfegXb"
+  className="sc-ifAKCX bNIpav"
 >
   <label
-    className="sc-ifAKCX bjCwCI"
+    className="sc-EHOje jpYqWO"
   >
     String
   </label>
@@ -814,7 +920,7 @@ exports[`Storyshots Form elements/String format=date-time invalid 1`] = `
     }
   >
     <div
-      className="ui large input sc-htpNat daVAfG"
+      className="ui large input sc-bxivhb jcNPuI"
     >
       <input
         defaultValue="Not a date-time"
@@ -830,10 +936,10 @@ exports[`Storyshots Form elements/String format=date-time invalid 1`] = `
 
 exports[`Storyshots Form elements/String format=date-time valid 1`] = `
 <div
-  className="sc-bxivhb bfegXb"
+  className="sc-ifAKCX bNIpav"
 >
   <label
-    className="sc-ifAKCX bjCwCI"
+    className="sc-EHOje jpYqWO"
   >
     String
   </label>
@@ -845,7 +951,7 @@ exports[`Storyshots Form elements/String format=date-time valid 1`] = `
     }
   >
     <div
-      className="ui large input sc-htpNat daVAfG"
+      className="ui large input sc-bxivhb jcNPuI"
     >
       <input
         defaultValue="2017-11-14T13:37:17Z"
@@ -861,10 +967,10 @@ exports[`Storyshots Form elements/String format=date-time valid 1`] = `
 
 exports[`Storyshots Form elements/String format=uri invalid 1`] = `
 <div
-  className="sc-bxivhb bfegXb"
+  className="sc-ifAKCX bNIpav"
 >
   <label
-    className="sc-ifAKCX bjCwCI"
+    className="sc-EHOje jpYqWO"
   >
     String
   </label>
@@ -876,7 +982,7 @@ exports[`Storyshots Form elements/String format=uri invalid 1`] = `
     }
   >
     <div
-      className="ui large input sc-htpNat daVAfG"
+      className="ui large input sc-bxivhb jcNPuI"
     >
       <input
         defaultValue="Not an uri"
@@ -892,10 +998,10 @@ exports[`Storyshots Form elements/String format=uri invalid 1`] = `
 
 exports[`Storyshots Form elements/String format=uri valid 1`] = `
 <div
-  className="sc-bxivhb bfegXb"
+  className="sc-ifAKCX bNIpav"
 >
   <label
-    className="sc-ifAKCX bjCwCI"
+    className="sc-EHOje jpYqWO"
   >
     String
   </label>
@@ -907,7 +1013,7 @@ exports[`Storyshots Form elements/String format=uri valid 1`] = `
     }
   >
     <div
-      className="ui large input sc-htpNat daVAfG"
+      className="ui large input sc-bxivhb jcNPuI"
     >
       <input
         defaultValue="https://example.com"
@@ -923,10 +1029,10 @@ exports[`Storyshots Form elements/String format=uri valid 1`] = `
 
 exports[`Storyshots Form elements/String multiline 1`] = `
 <div
-  className="sc-bxivhb bfegXb"
+  className="sc-ifAKCX bNIpav"
 >
   <label
-    className="sc-ifAKCX bjCwCI"
+    className="sc-EHOje jpYqWO"
   >
     String
   </label>
@@ -938,7 +1044,7 @@ exports[`Storyshots Form elements/String multiline 1`] = `
     }
   >
     <textarea
-      className="sc-EHOje ifwCT"
+      className="sc-bZQynM dzZVTh"
       defaultValue="A
 multiline
 field"
@@ -955,6 +1061,45 @@ field"
       }
       value={undefined}
     />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/String with help 1`] = `
+<div
+  className="sc-ifAKCX bNIpav"
+>
+  <label
+    className="sc-EHOje jpYqWO"
+  >
+    String
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div
+      className="sc-bdVaJa lphAHV"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some useful help message",
+        }
+      }
+    />
+    <div
+      className="ui large input sc-bxivhb jcNPuI"
+    >
+      <input
+        defaultValue="Value here"
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;

@@ -6,6 +6,7 @@ import { IProps } from "./IProps";
 import styled, { StyledComponentClass } from "styled-components";
 import { IStringSchema } from "../../interfaces/json-schema";
 import { debounce } from "../../utils/debounce";
+import { Help } from "./Help";
 
 export default class TypeString extends React.Component<
   IProps<IStringSchema>,
@@ -35,6 +36,9 @@ export default class TypeString extends React.Component<
           </Label>
         )}
         <div style={{ flex: 1 }}>
+          {this.props.settings.help && (
+            <Help message={this.props.settings.help} />
+          )}
           <InputField
             {...inputFieldProps}
             disabled={!!this.props.readonly || !!this.props.settings.readonly}
