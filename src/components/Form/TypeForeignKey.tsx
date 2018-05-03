@@ -39,13 +39,12 @@ export default class TypeForeignKey extends React.Component<
   }
 
   computeChoices() {
-    const foreignData = this.props.data[
-      this.props.schema.properties.collection.enum[0]
-    ];
+    const foreignType = this.props.schema.properties.collection.enum[0];
+    const foreignData = this.props.data[foreignType];
     return foreignData.map((item: IResource) => ({
       key: item.primaryKey.id,
       value: item.primaryKey.id,
-      text: resourceToString(item)
+      text: resourceToString(item, this.props.resourceTemplates[foreignType])
     }));
   }
 

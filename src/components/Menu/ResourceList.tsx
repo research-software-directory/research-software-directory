@@ -4,7 +4,7 @@ import { IResource } from "../../interfaces/resource";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import resourceToString from "../../custom/resourceToString";
-import { ISettings } from "../../rootReducer";
+import { ISettingResource } from "../../rootReducer";
 
 export interface IOwnProps {
   search: string;
@@ -15,11 +15,13 @@ interface IProps {
   data: IResource[];
   schema: ISchema;
   location: Location;
-  settings: ISettings;
+  settings: ISettingResource;
 }
 
-const label = (item: any): string => resourceToString(item);
-const sortByLabel = (a: any, b: any) => label(a).localeCompare(label(b));
+const label = (item: any, template: string): string =>
+  resourceToString(item, template);
+const sortByLabel = (template: string) => (a: any, b: any) =>
+  label(a, template).localeCompare(label(b, template));
 
 export default class ResourceList extends React.PureComponent<
   IProps & IOwnProps,
@@ -29,7 +31,7 @@ export default class ResourceList extends React.PureComponent<
     const lowerCase = search.toLowerCase();
 
     return (
-      label(item)
+      label(item, this.template)
         .toLowerCase()
         .indexOf(lowerCase) !== -1 ||
       ("description" in item &&
@@ -37,12 +39,16 @@ export default class ResourceList extends React.PureComponent<
     );
   };
 
+  get template() {
+    return this.props.settings.itemLabelTemplate;
+  }
+
   render() {
     return (
       <div>
         {this.props.data
           .filter(this.searchFilter(this.props.search))
-          .sort(sortByLabel)
+          .sort(sortByLabel(this.template))
           .map((item, index) => (
             <Menu.Item key={index} draggable="true">
               <Link
@@ -50,7 +56,7 @@ export default class ResourceList extends React.PureComponent<
                 to={`/${this.props.type}/${item.primaryKey.id}`}
                 style={{ display: "block" }}
               >
-                {resourceToString(item)}
+                {resourceToString(item, this.template)}
               </Link>
             </Menu.Item>
           ))}

@@ -44,12 +44,21 @@ export const rootReducer = combineReducers({
   toastr: toastrReducer as any
 });
 
+export interface ISettingResource {
+  properties: { [key: string]: ISettingsProperty };
+  readonly?: boolean;
+  label: string;
+  icon: SemanticICONS;
+  itemLabelTemplate: string;
+}
+
 export interface ISettingsProperty {
   properties: { [key: string]: ISettingsProperty };
   readonly?: boolean;
   label?: string;
-  icon?: SemanticICONS;
-  [key: string]: any;
+  sortIndex?: number;
+  multiline?: boolean;
+  help?: string;
 }
 
 export interface ISettings {
