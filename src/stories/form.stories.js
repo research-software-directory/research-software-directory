@@ -61,17 +61,20 @@ storiesOf("Form elements")
           {
             primaryKey: {
               id: "thing1"
-            }
+            },
+            name: "thing1"
           },
           {
             primaryKey: {
               id: "thing2"
-            }
+            },
+            name: "things2"
           }
         ]
       }}
       value={{ collection: "things", id: "thing1" }}
-      settings={{}}
+      resourceTemplates={{ things: "{{ name }}" }}
+      setting={{ readonly: false }}
       onChange={action("change")}
       label="ForeignKey"
     />
