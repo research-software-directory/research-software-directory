@@ -1,6 +1,6 @@
 FROM python:3.6-alpine
 
-RUN (apk update && apk add g++ make git)
+RUN (apk update && apk add g++ make)
 
 RUN (mkdir /app)
 
@@ -12,6 +12,6 @@ RUN pip install -r /app/requirements.txt
 
 COPY . /app
 
-ENTRYPOINT ["python", "app.py"]
+COPY ./crontab /var/spool/cron/crontabs/root
 
-CMD ["--help"]
+CMD crond -d7 -f

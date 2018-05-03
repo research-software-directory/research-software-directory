@@ -1,0 +1,6 @@
+# min	hour	day	month	weekday	command
+0	1	*	*	*	cd /app && python app.py --task github
+30	1	*	*	*	cd /app && python app.py --task releases
+0	2	*	*	*	cd /app && python app.py --task zotero
+30	2	*	*	*	cd /app && python app.py --task projects
+*/5	*	*	*	*	cd /app && python app.py --task cache_software
