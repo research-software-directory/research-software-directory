@@ -68,6 +68,7 @@
     "lint-staged": "^7.0.4",
     "prettier": "^1.11.1",
     "react-scripts-ts": "^2.14.0",
+    "react-test-renderer": "^16.3.2",
     "reduce-reducers": "^0.1.2",
     "ts-jest": "^22.4.2",
     "webpack": "^4.5.0"
