@@ -1,8 +1,8 @@
 FROM python:3.6-alpine
 
-RUN (apk update && apk add g++ make)
+RUN apk update && apk add g++ make
 
-RUN (mkdir /app)
+RUN mkdir /app
 
 COPY ./requirements.txt /app
 

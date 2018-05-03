@@ -22,6 +22,7 @@ https://www.zotero.org/groups/ page. For example for the Netherlands eScience ce
 The Zotero group identifier must be set as value for the ZOTERO_LIBRARY environment variable.
 
 The API key can be created at https://www.zotero.org/settings/keys
+The API key must be granted read only permission on the group.
 The Zotero API key must be set as value for the ZOTERO_API_KEY environment variable.
 
 To save the mentions into the database the location of the backend server and a jwt secret must be configured.
@@ -92,3 +93,10 @@ To keep the frontend dumb the software records must be de-normalized with
 python app.py --task cache_software
 ```
 
+# Docker
+
+Build with
+```bash
+docker build -t rsd/tasks .
+
+```
