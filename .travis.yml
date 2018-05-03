@@ -4,6 +4,7 @@ python:
 cache:
   pip: true
 install:
+- pip install -r requirements.txt
 - pip install pytest py-w3c
 script:
 - PYTHONPATH=. pytest
