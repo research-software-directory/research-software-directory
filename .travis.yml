@@ -14,4 +14,4 @@ install:
 script:
 - PYTHONPATH=`pwd` pytest --cov=src
 after_success:
-- curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/backend/trigger/$DOCKERHUB_TRIGGER_TOKEN
+- curl -L -X POST https://registry.hub.docker.com/u/$TRAVIS_REPO_SLUG/trigger/$DOCKERHUB_TRIGGER_TOKEN
