@@ -12,4 +12,5 @@ export interface IProps<T> {
   label: string;
   showLabel?: boolean;
   validationErrors?: Ajv.ErrorObject[];
+  resourceTemplates: { [key: string]: string };
 }

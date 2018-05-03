@@ -34,6 +34,13 @@ export default class extends React.PureComponent<IProps, IState> {
 
   render() {
     const type = this.props.value.primaryKey.collection;
+    const templates = Object.keys(this.props.settings.resources).reduce(
+      (a, k) => {
+        a[k] = this.props.settings.resources[k].itemLabelTemplate;
+        return a;
+      },
+      {}
+    );
     return (
       <div style={{ height: "100%" }}>
         <FormPart
@@ -46,6 +53,7 @@ export default class extends React.PureComponent<IProps, IState> {
           onChange={this.handleChange}
           showLabel={false}
           label=""
+          resourceTemplates={templates}
         />
       </div>
     );

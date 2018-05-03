@@ -77,6 +77,7 @@ storiesOf("Menu")
         data={data.software}
         schema={schema}
         location={null}
+        settings={settings.resources["software"]}
         push={action("push")}
       />
     </RouteAndRedux>

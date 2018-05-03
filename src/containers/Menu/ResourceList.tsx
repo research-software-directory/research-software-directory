@@ -5,7 +5,7 @@ import ResourceList, { IOwnProps } from "../../components/Menu/ResourceList";
 const mapStateToProps = (state: IStoreState, ownProps: IOwnProps) => ({
   data: state.data[ownProps.type],
   schema: state.schema[ownProps.type],
-  settings: state.settings[ownProps.type],
+  settings: state.settings.resources[ownProps.type],
   location: state.route.location
 });
 

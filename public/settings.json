@@ -5,8 +5,8 @@
     "software": {
       "name": "Software",
       "label": "Software",
+      "itemLabelTemplate": "{{ brandName }}",
       "icon": "file code outline",
-      "sortBy": "brandName",
       "properties": {
         "brandName": {
           "label": "brandName",
@@ -114,6 +114,8 @@
     "person": {
       "name": "Person",
       "icon": "user",
+      "itemLabelTemplate":
+        "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
       "properties": {
         "primaryKey": {
           "readonly": true
@@ -135,16 +137,19 @@
     "mention": {
       "name": "mention",
       "icon": "book",
+      "itemLabelTemplate": "{{ title }}",
       "readonly": true
     },
     "project": {
       "name": "Project",
       "icon": "lab",
+      "itemLabelTemplate": "{{ title }}",
       "readonly": true
     },
     "organization": {
       "name": "Organization",
-      "icon": "university"
+      "icon": "university",
+      "itemLabelTemplate": "{{ name }}"
     }
   }
 }

@@ -104,6 +104,7 @@ export default class TypeArray extends React.Component<
                     data={this.props.data}
                     label=""
                     onChange={(v: any) => this.handleChange(index, v)}
+                    resourceTemplates={this.props.resourceTemplates}
                   />
                 </ItemRight>
               </ArrayItem>
