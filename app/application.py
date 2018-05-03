@@ -7,8 +7,6 @@ import htmlmin
 import ago
 import os
 
-from app.citation import get_citation
-
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
 api_url = os.environ.get('BACKEND_URL', 'http://localhost:5001')
@@ -103,30 +101,30 @@ def software_product_page_template(software_id):
 
 @application.route('/cite/<software_id>')
 def cite(software_id):
-    url = api_url + "/software_cache/%s" % software_id
-    software_dictionary = requests.get(url).json()
-
-    if "error" in software_dictionary:
-        return "not found", 404
-    if 'conceptDOI' not in software_dictionary:
-        return "not found", 404
-
-    citation_cff_urls = list(map(
-        lambda github_url: github_url['url'],
-        filter(lambda x: x['isCitationcffSource'], software_dictionary['githubURLs'])
-    ))
-
-    try:
-        mime, extension, data = get_citation(citation_cff_urls[0], flask.request.args.get('format'))
-    except Exception:
-        return "unknown format '%s'" % flask.request.args.get('format'), 400
-
-    return flask.Response(
-        data,
-        mimetype=mime,
-        headers={"Content-disposition": "attachment; filename=citation.%s" % extension}
-    )
-
+    # url = api_url + "/software_cache/%s" % software_id
+    # software_dictionary = requests.get(url).json()
+    #
+    # if "error" in software_dictionary:
+    #     return "not found", 404
+    # if 'conceptDOI' not in software_dictionary:
+    #     return "not found", 404
+    #
+    # citation_cff_urls = list(map(
+    #     lambda github_url: github_url['url'],
+    #     filter(lambda x: x['isCitationcffSource'], software_dictionary['githubURLs'])
+    # ))
+    #
+    # try:
+    #     mime, extension, data = get_citation(citation_cff_urls[0], flask.request.args.get('format'))
+    # except Exception:
+    #     return "unknown format '%s'" % flask.request.args.get('format'), 400
+    #
+    # return flask.Response(
+    #     data,
+    #     mimetype=mime,
+    #     headers={"Content-disposition": "attachment; filename=citation.%s" % extension}
+    # )
+    pass
 
 @application.route('/about')
 def about_template():
