@@ -1,1 +1,1 @@
-__all__ = ['Flask', 'json', 'jsonify', 'markdown']
+__all__ = ['Flask', 'json', 'markdown']

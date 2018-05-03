@@ -16,11 +16,7 @@
                 {% if org.website %}
                     <a href="{{org.website}}" target="_blank">
                 {% endif %}
-                {% if organisation_logos[org.primaryKey.id] %}
-                    <img src="{{url_for('static', filename='logos/'+organisation_logos[org.primaryKey.id])}}" alt="{{org.name}}">
-                {% else %}
-                    {{org.name}}
-                {% endif %}
+                {{org.name}}
                 {% if org.website %}
                     </a>
                 {% endif %}

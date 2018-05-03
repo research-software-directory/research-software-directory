@@ -3,5 +3,7 @@ python:
 - 3.6
 cache:
   pip: true
+install:
+- pip install pytest py-w3c
 script:
 - PYTHONPATH=. pytest
