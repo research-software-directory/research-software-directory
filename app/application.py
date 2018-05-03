@@ -75,20 +75,6 @@ def software_product_page_template(software_id):
         return flask.redirect("/", code=302)
     set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
-    organisation_logos = {"astron": "astron.gif", "cbs-knaw": "cbs-knaw.png", "commit": "commit.png", "cwi": "cwi.png",
-                          "dans": "dans.jpg", "deltares": "deltares.jpe", "dtl": "dtl.png", "fugro": "fugro.png",
-                          "geodan": "geodan.gif", "huygens": "huygens.png", "icl": "icl.jpg", "ign": "ign.jpg",
-                          "jhu": "jhu.png", "knir": "knir.png", "knmi": "knmi.png",
-                          "leiden-university": "leiden-university.png", "lumc": "lumc.png", "meertens": "meertens.png",
-                          "monetdb": "monetdb.png", "nfi": "nfi.gif", "nikhef": "nikhef.jpg", "nlesc": "nlesc.png",
-                          "ntu": "ntu.gif", "oracle": "oracle.png", "potree": "potree.png",
-                          "radboud.university.nijmegen": "radboud.university.nijmegen.png",
-                          "rijkswaterstaat": "rijkswaterstaat.png", "spinlab": "spinlab.jpg",
-                          "surfsara": "surfsara.png", "tno": "tno.jpg", "tudelft": "tu-delft.png",
-                          "university.of.groningen": "university.of.groningen.png",
-                          "university.of.southampton": "university.of.southampton.svg", "upv": "upv.png",
-                          "utwente": "utwente.png", "uu": "uu.svg", "uva": "uva.jpg", "vua": "vua.png",
-                          "wur": "wur.jpg"}
     mention_types = {
         'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
         'book': {"singular": "Book", "plural": "Books"},
@@ -108,21 +94,9 @@ def software_product_page_template(software_id):
         'webpage': {"singular": "Web page", "plural": "Web pages"},
     }
 
-    # software_dictionary['mentionCount'] = sum([len(software_dictionary['mentions'][key]) for key in software_dictionary['mentions']])
-    # software_dictionary['contributorCount'] = len(software_dictionary['contributor'])
-
-    # if len(software_dictionary['contributingOrganization']) == 1 and software_dictionary['contributingOrganization'][0]['id'] == 'nlesc':
-    #     software_dictionary['contributingOrganization'] = []
-
-    # commits_data = get_commits_data(software_id)
-    # if commits_data and 'last' in commits_data:
-    #     commits_data['last'] = dateparser.parse(commits_data['last']).strftime("%B %d, %Y")
-    # commits_data = flask.Markup(commits_data)
-
     return flask.render_template('software/software_template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
-                                 organisation_logos=organisation_logos,
                                  mention_types=mention_types,
                                  )
 
