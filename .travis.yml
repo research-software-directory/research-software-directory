@@ -9,5 +9,5 @@ install:
 script:
   - yarn test
   - yarn build
-after_script:
-  - curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/admin/trigger/4cca74d7-eb82-4b1f-aee2-0db404088049
+after_success:
+  - curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/admin/trigger/$DOCKERHUB_TRIGGER_TOKEN
