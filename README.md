@@ -1,7 +1,6 @@
 # Frontend website of Research Software Directory
 
 [![TravisCIBadge](https://travis-ci.org/research-software-directory/frontend.svg?branch=master)](https://travis-ci.org/research-software-directory/frontend)
-[![Docker badge](https://dockerbuildbadges.quelltext.eu/status.svg?organization=rsdnlesc&repository=frontend)](https://hub.docker.com/r/rsdnlesc/frontend/)
 
 Visitors of the Research Software Directory website will request pages from this web application.
 
