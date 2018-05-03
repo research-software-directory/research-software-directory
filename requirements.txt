@@ -7,4 +7,4 @@ htmlmin==0.1.12
 pprint==0.1
 gunicorn==19.7.1
 libsass==0.14.2
-cffconvert==0.0.3
+dateparser==0.7.0
