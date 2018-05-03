@@ -35,13 +35,13 @@ exports[`Storyshots Form elements Boolean 1`] = `
 
 exports[`Storyshots Form elements ForeignKey 1`] = `
 <div
-  className="sc-jzJRlG fBJUXc"
+  className="sc-cSHVUG btqosa"
 >
   <div
-    className="sc-jTzLTM egduXp"
+    className="sc-fjdhpX xgaXU"
   >
     <label
-      className="sc-fjdhpX kAOlOO"
+      className="sc-jzJRlG bskdia"
     >
       ForeignKey
     </label>
@@ -129,10 +129,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-kpOJdX cUBYRo"
+  className="sc-dxgOiQ iecwDh"
 >
   <label
-    className="sc-kGXeez eIIwaK"
+    className="sc-kpOJdX kAzjOl"
   >
     Object
   </label>
@@ -357,10 +357,10 @@ exports[`Storyshots Form elements StringEnum 1`] = `
 
 exports[`Storyshots Form elements/Array default 1`] = `
 <section
-  className="sc-VigVT fIhGog"
+  className="sc-jTzLTM eCMmlJ"
 >
   <div
-    className="sc-dnqmqq bZUXvg"
+    className="sc-iwsKbI VQaYb"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -368,10 +368,10 @@ exports[`Storyshots Form elements/Array default 1`] = `
     }
   >
     <div
-      className="sc-iwsKbI hueoUn"
+      className="sc-gZMcBi cxZEQT"
     >
       <div
-        className="sc-EHOje gUyRHv"
+        className="sc-bZQynM Mlldo"
         onClick={[Function]}
       >
         Array
@@ -401,16 +401,16 @@ exports[`Storyshots Form elements/Array default 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM jpdLmF"
+    className="sc-gzVnrw dGQjKD"
   >
     <section
-      className="sc-htoDjs dHjKTt"
+      className="sc-dnqmqq ifMFUP"
     >
       <div
-        className="sc-gZMcBi fzilHm"
+        className="sc-gqjmRU fBsMFx"
       >
         <button
-          className="ui secondary button sc-gzVnrw ibZhkv"
+          className="ui secondary button sc-htoDjs bZzhDu"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -420,7 +420,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
         </button>
       </div>
       <div
-        className="sc-gqjmRU iLgoQU"
+        className="sc-VigVT gtJKdb"
       >
         <div
           style={
@@ -468,13 +468,13 @@ exports[`Storyshots Form elements/Array default 1`] = `
       </div>
     </section>
     <section
-      className="sc-htoDjs dHjKTt"
+      className="sc-dnqmqq ifMFUP"
     >
       <div
-        className="sc-gZMcBi fzilHm"
+        className="sc-gqjmRU fBsMFx"
       >
         <button
-          className="ui secondary button sc-gzVnrw ibZhkv"
+          className="ui secondary button sc-htoDjs bZzhDu"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -484,7 +484,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
         </button>
       </div>
       <div
-        className="sc-gqjmRU iLgoQU"
+        className="sc-VigVT gtJKdb"
       >
         <div
           style={
@@ -537,10 +537,10 @@ exports[`Storyshots Form elements/Array default 1`] = `
 
 exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
 <section
-  className="sc-VigVT fIhGog"
+  className="sc-jTzLTM eCMmlJ"
 >
   <div
-    className="sc-dnqmqq bZUXvg"
+    className="sc-iwsKbI VQaYb"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -548,10 +548,10 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
     }
   >
     <div
-      className="sc-iwsKbI hueoUn"
+      className="sc-gZMcBi cxZEQT"
     >
       <div
-        className="sc-EHOje gUyRHv"
+        className="sc-bZQynM Mlldo"
         onClick={[Function]}
       >
         Array
@@ -581,17 +581,17 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM jpdLmF"
+    className="sc-gzVnrw dGQjKD"
   />
 </section>
 `;
 
 exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
 <section
-  className="sc-VigVT fIhGog"
+  className="sc-jTzLTM eCMmlJ"
 >
   <div
-    className="sc-dnqmqq bZUXvg"
+    className="sc-iwsKbI VQaYb"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -599,10 +599,10 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
     }
   >
     <div
-      className="sc-iwsKbI hueoUn"
+      className="sc-gZMcBi cxZEQT"
     >
       <div
-        className="sc-EHOje gUyRHv"
+        className="sc-bZQynM Mlldo"
         onClick={[Function]}
       >
         Array
@@ -632,16 +632,16 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
     </div>
   </div>
   <div
-    className="sc-bZQynM jpdLmF"
+    className="sc-gzVnrw dGQjKD"
   >
     <section
-      className="sc-htoDjs dHjKTt"
+      className="sc-dnqmqq ifMFUP"
     >
       <div
-        className="sc-gZMcBi fzilHm"
+        className="sc-gqjmRU fBsMFx"
       >
         <button
-          className="ui secondary button sc-gzVnrw ibZhkv"
+          className="ui secondary button sc-htoDjs bZzhDu"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -651,7 +651,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
         </button>
       </div>
       <div
-        className="sc-gqjmRU iLgoQU"
+        className="sc-VigVT gtJKdb"
       >
         <div
           style={
@@ -699,13 +699,13 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       </div>
     </section>
     <section
-      className="sc-htoDjs dHjKTt"
+      className="sc-dnqmqq ifMFUP"
     >
       <div
-        className="sc-gZMcBi fzilHm"
+        className="sc-gqjmRU fBsMFx"
       >
         <button
-          className="ui secondary button sc-gzVnrw ibZhkv"
+          className="ui secondary button sc-htoDjs bZzhDu"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -715,7 +715,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
         </button>
       </div>
       <div
-        className="sc-gqjmRU iLgoQU"
+        className="sc-VigVT gtJKdb"
       >
         <div
           style={
@@ -917,6 +917,44 @@ exports[`Storyshots Form elements/String format=uri valid 1`] = `
         type="text"
       />
     </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/String multiline 1`] = `
+<div
+  className="sc-bxivhb bfegXb"
+>
+  <label
+    className="sc-ifAKCX bjCwCI"
+  >
+    String
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <textarea
+      className="sc-EHOje ifwCT"
+      defaultValue="A
+multiline
+field"
+      disabled={false}
+      error={undefined}
+      onChange={[Function]}
+      onInput={[Function]}
+      rows={3}
+      size="large"
+      style={
+        Object {
+          "resize": "none",
+        }
+      }
+      value={undefined}
+    />
   </div>
 </div>
 `;

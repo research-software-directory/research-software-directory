@@ -14,7 +14,8 @@
         },
         "bullets": {
           "label": "bullets",
-          "sortIndex": 100
+          "sortIndex": 100,
+          "multiline": true
         },
         "citationcff": {
           "label": "citationcff",
@@ -75,13 +76,15 @@
           "label": "programmingLanguage"
         },
         "readMore": {
-          "label": "readMore"
+          "label": "readMore",
+          "multiline": true
         },
         "related": {
           "label": "Related"
         },
         "shortStatement": {
-          "label": "shortStatement"
+          "label": "shortStatement",
+          "multiline": true
         },
         "slug": {
           "label": "slug"

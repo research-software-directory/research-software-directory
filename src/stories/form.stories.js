@@ -182,4 +182,17 @@ storiesOf("Form elements/String")
       onChange={action("change")}
       label="String"
     />
+  ))
+  .add("multiline", () => (
+    <TypeString
+      schema={{
+        type: "string"
+      }}
+      value={"A\nmultiline\nfield"}
+      settings={{
+        multiline: true
+      }}
+      onChange={action("change")}
+      label="String"
+    />
   ));

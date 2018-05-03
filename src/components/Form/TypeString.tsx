@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Input, InputProps } from "semantic-ui-react";
+import { Input, InputProps, TextAreaProps } from "semantic-ui-react";
+import { TextArea } from "semantic-ui-react";
 
 import { IProps } from "./IProps";
 import styled, { StyledComponentClass } from "styled-components";
@@ -19,6 +20,12 @@ export default class TypeString extends React.Component<
     }
   }
   render() {
+    const InputField = this.props.settings.multiline
+      ? FullWidthTextArea
+      : TextInput;
+    const inputFieldProps = this.props.settings.multiline
+      ? { autoHeight: true }
+      : {};
     return (
       <Horizontal>
         {this.props.showLabel !== false && (
@@ -28,11 +35,12 @@ export default class TypeString extends React.Component<
           </Label>
         )}
         <div style={{ flex: 1 }}>
-          <TextInput
+          <InputField
+            {...inputFieldProps}
             disabled={!!this.props.readonly || !!this.props.settings.readonly}
             size="large"
             defaultValue={this.props.value}
-            onChange={(_, elm) => this.onChange(elm.value)}
+            onChange={(_: any, elm: any) => this.onChange(elm.value)}
             error={
               this.props.validationErrors &&
               this.props.validationErrors.length > 0
@@ -68,3 +76,8 @@ const Label = styled.label`
   min-width: 150px;
   font-weight: bold;
 `;
+
+const FullWidthTextArea = styled(TextArea)`
+  width: 100%;
+  resize: vertical;
+` as StyledComponentClass<TextAreaProps, {}>;
