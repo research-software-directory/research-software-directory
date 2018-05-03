@@ -5,6 +5,5 @@ ago==0.0.92
 htmlmin==0.1.12
 pprint==0.1
 gunicorn==19.7.1
-libsass==0.14.2
-dateparser==0.7.0
+dateutils==0.6.6
 requests-mock==1.4.0
