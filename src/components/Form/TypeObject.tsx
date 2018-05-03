@@ -30,16 +30,13 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
       return 1;
     }
     if (
-      this.props.settings &&
       this.props.settings.properties &&
       this.props.settings.properties[a] &&
-      this.props.settings.properties[b] &&
-      this.props.settings.properties[a].sortIndex &&
-      this.props.settings.properties[b].sortIndex
+      this.props.settings.properties[b]
     ) {
       return (
-        this.props.settings.properties[a].sortIndex -
-        this.props.settings.properties[b].sortIndex
+        this.props.settings.properties[a].sortIndex! -
+        this.props.settings.properties[b].sortIndex!
       );
     } else {
       return 0;
@@ -65,6 +62,7 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
               data={this.props.data}
               label={key}
               onChange={this.handleChange(key)}
+              resourceTemplates={this.props.resourceTemplates}
             />
           ))}
         {this.props.validationErrors &&

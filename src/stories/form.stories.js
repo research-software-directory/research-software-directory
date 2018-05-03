@@ -74,7 +74,7 @@ storiesOf("Form elements")
       }}
       value={{ collection: "things", id: "thing1" }}
       resourceTemplates={{ things: "{{ name }}" }}
-      setting={{ readonly: false }}
+      settings={{ readonly: false }}
       onChange={action("change")}
       label="ForeignKey"
     />

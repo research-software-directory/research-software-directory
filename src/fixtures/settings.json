@@ -1,28 +1,155 @@
 {
-  "backendUrl": "http://localhost:5001",
-  "authUrl": "http://localhost:5002",
+  "backendUrl": "/api",
+  "authUrl": "/auth",
   "resources": {
     "software": {
       "name": "Software",
+      "label": "Software",
+      "itemLabelTemplate": "{{ brandName }}",
       "icon": "file code outline",
-      "displayName": ["brandName"],
-      "fields": {}
+      "properties": {
+        "brandName": {
+          "label": "brandName",
+          "sortIndex": 200
+        },
+        "bullets": {
+          "label": "bullets",
+          "sortIndex": 100
+        },
+        "citationcff": {
+          "label": "citationcff",
+          "sortIndex": 300
+        },
+        "contributingOrganizations": {
+          "label": "contributingOrganizations",
+          "sortIndex": 400
+        },
+        "contributors": {
+          "label": "contributors",
+          "properties": {
+            "foreignKey": { "label": "Person" },
+            "isContactPerson": {
+              "label": "Is this person the contact person?"
+            },
+            "affiliations": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Organization"
+                }
+              }
+            }
+          }
+        },
+        "createdAt": {
+          "label": "createdAt",
+          "readonly": true
+        },
+        "createdBy": {
+          "label": "createdBy",
+          "readonly": true
+        },
+        "getStartedURL": {
+          "label": "getStartedURL"
+        },
+        "repositoryURLs": {
+          "label":
+            "SCM Repository urls (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)"
+        },
+        "isCitable": {
+          "label": "isCitable"
+        },
+        "isFeatured": {
+          "label": "isFeatured"
+        },
+        "isPublished": {
+          "label": "isPublished"
+        },
+        "license": {
+          "label": "license"
+        },
+        "primaryKey": {
+          "label": "primaryKey",
+          "readonly": true
+        },
+        "programmingLanguage": {
+          "label": "programmingLanguage"
+        },
+        "readMore": {
+          "label": "readMore"
+        },
+        "related": {
+          "label": "Related"
+        },
+        "shortStatement": {
+          "label": "shortStatement"
+        },
+        "slug": {
+          "label": "slug"
+        },
+        "tags": {
+          "label": "tags"
+        },
+        "testimonial": {
+          "label": "testimonial",
+          "properties": {
+            "person": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Person"
+                }
+              }
+            }
+          }
+        },
+        "updatedAt": {
+          "label": "updatedAt",
+          "readonly": true
+        },
+        "updatedBy": {
+          "label": "updatedBy",
+          "readonly": true
+        }
+      }
     },
     "person": {
       "name": "Person",
-      "icon": "user"
+      "icon": "user",
+      "itemLabelTemplate":
+        "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
+      "properties": {
+        "primaryKey": {
+          "readonly": true
+        },
+        "createdAt": {
+          "readonly": true
+        },
+        "createdBy": {
+          "readonly": true
+        },
+        "updatedAt": {
+          "readonly": true
+        },
+        "updatedBy": {
+          "readonly": true
+        }
+      }
     },
     "mention": {
       "name": "mention",
-      "icon": "book"
+      "icon": "book",
+      "itemLabelTemplate": "{{ title }}",
+      "readonly": true
     },
     "project": {
       "name": "Project",
-      "icon": "lab"
+      "icon": "lab",
+      "itemLabelTemplate": "{{ title }}",
+      "readonly": true
     },
     "organization": {
       "name": "Organization",
-      "icon": "university"
+      "icon": "university",
+      "itemLabelTemplate": "{{ name }}"
     }
   }
 }

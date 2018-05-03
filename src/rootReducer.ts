@@ -53,7 +53,7 @@ export interface ISettingResource {
 }
 
 export interface ISettingsProperty {
-  properties: { [key: string]: ISettingsProperty };
+  properties?: { [key: string]: ISettingsProperty };
   readonly?: boolean;
   label?: string;
   sortIndex?: number;
