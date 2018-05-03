@@ -1,13 +1,10 @@
 FROM python:3.6-alpine
 WORKDIR /src
 
-RUN apk --no-cache add git g++
-
 COPY requirements.txt /src/
 RUN pip3 install -r requirements.txt
 
 COPY . /src
-RUN (sassc --style=compressed --sourcemap style/rsd.scss static/style/rsd.scss.css)
 
 STOPSIGNAL SIGINT
 
