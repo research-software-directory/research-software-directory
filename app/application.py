@@ -14,7 +14,7 @@ api_url = os.environ.get('BACKEND_URL', 'http://localhost:5001')
 
 @application.route('/sitemap.xml', methods=['GET'])
 def sitemap():
-    url = api_url + '/software?published=true'
+    url = api_url + '/software?isPublished=true'
     all_software = requests.get(url).json()
 
     response = flask.Response(flask.render_template('sitemap.xml',
