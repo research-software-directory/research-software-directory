@@ -174,7 +174,7 @@ def human_name_filter(person):
     name = person.get('givenNames', '')
     if 'nameParticle' in person and person['nameParticle']:
         name += ' ' + person['nameParticle']
-    return name + ' ' + person['familyNames']
+    return name + ' ' + person.get('familyNames', '')
 
 
 @application.template_filter()
