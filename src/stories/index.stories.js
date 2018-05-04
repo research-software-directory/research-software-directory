@@ -66,6 +66,10 @@ mock
   .onGet("/api/organization/nlesc")
   .reply(200, data.organization.find(d => d.primaryKey.id === "nlesc"));
 
+mock
+  .onGet("/api/person/s.verhoeven")
+  .reply(200, data.person.find(d => d.primaryKey.id === "s.verhoeven"));
+
 const RouteAndRedux = ({ children }) => (
   <Provider store={store}>
     <Router history={history}>{children}</Router>
@@ -141,6 +145,20 @@ storiesOf("Resource/Organization", module).add(
   )
 );
 
+storiesOf("Resource/Person", module).add("s.verhoeven", () => (
+  <Provider store={store}>
+    <Resource
+      jwt={jwtData}
+      schema={schema}
+      data={data}
+      settings={settings}
+      messageToastr={action("messageToastr")}
+      errorToastr={action("errorToastr")}
+      push={action("push")}
+      match={{ params: { resourceType: "person", id: "s.verhoeven" } }}
+    />
+  </Provider>
+));
 storiesOf("Menu", module)
   .add("ResourceList", () => (
     <RouteAndRedux>

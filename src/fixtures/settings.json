@@ -177,19 +177,56 @@
       "itemLabelTemplate":
         "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
       "properties": {
-        "primaryKey": {
-          "readonly": true
+        "givenNames": {
+          "label": "Given name",
+          "sortIndex": 1
+        },
+        "nameParticle": {
+          "label": "Particle",
+          "help": "For example the 'H.' in 'Jurriaan H. Spaaks'",
+          "sortIndex": 2
+        },
+        "familyNames": {
+          "label": "Family name",
+          "sortIndex": 3
+        },
+        "nameSuffix": {
+          "label": "Suffix",
+          "sortIndex": 4
+        },
+        "emailAddress": {
+          "label": "Email address",
+          "help":
+            "Used as contact method for a contact person of a software item",
+          "sortIndex": 5
+        },
+        "avatar": {
+          "label": "Avatar",
+          "sortIndex": 6
         },
         "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001,
           "readonly": true
         },
         "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002,
           "readonly": true
         },
         "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003,
           "readonly": true
         },
         "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004,
+          "readonly": true
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005,
           "readonly": true
         }
       }

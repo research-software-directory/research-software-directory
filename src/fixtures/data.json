@@ -677,17 +677,16 @@
       "nameSuffix": null
     },
     {
-      "primaryKey": {
-        "id": "s.verhoeven",
-        "collection": "person"
-      },
+      "primaryKey": { "id": "s.verhoeven", "collection": "person" },
       "createdAt": "2017-11-10T14:12:55Z",
       "updatedAt": "2018-01-08T12:08:08Z",
       "emailAddress": "s.verhoeven@esciencecenter.nl",
-      "familyNames": "Stefan Verhoeven",
-      "givenNames": null,
-      "nameParticle": null,
-      "nameSuffix": null
+      "familyNames": "Verhoeven",
+      "givenNames": "Stefan",
+      "nameParticle": "",
+      "nameSuffix": "",
+      "createdBy": "Unknown",
+      "updatedBy": "Unknown"
     },
     {
       "primaryKey": {

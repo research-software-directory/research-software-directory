@@ -6524,24 +6524,6 @@ exports[`Storyshots Full app default 1`] = `
               >
                 <a
                   draggable={false}
-                  href="/person/s.verhoeven"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "display": "block",
-                    }
-                  }
-                >
-                    Stefan Verhoeven
-                </a>
-              </div>
-              <div
-                className="item"
-                draggable="true"
-                onClick={[Function]}
-              >
-                <a
-                  draggable={false}
                   href="/person/5ab8c31085414f2cfd644a05"
                   onClick={[Function]}
                   style={
@@ -6803,6 +6785,24 @@ exports[`Storyshots Full app default 1`] = `
                   }
                 >
                     Zvezdan Protic
+                </a>
+              </div>
+              <div
+                className="item"
+                draggable="true"
+                onClick={[Function]}
+              >
+                <a
+                  draggable={false}
+                  href="/person/s.verhoeven"
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "display": "block",
+                    }
+                  }
+                >
+                  Stefan  Verhoeven
                 </a>
               </div>
             </div>
@@ -25195,24 +25195,6 @@ exports[`Storyshots Menu Full menu 1`] = `
             >
               <a
                 draggable={false}
-                href="/person/s.verhoeven"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "display": "block",
-                  }
-                }
-              >
-                  Stefan Verhoeven
-              </a>
-            </div>
-            <div
-              className="item"
-              draggable="true"
-              onClick={[Function]}
-            >
-              <a
-                draggable={false}
                 href="/person/5ab8c31085414f2cfd644a05"
                 onClick={[Function]}
                 style={
@@ -25474,6 +25456,24 @@ exports[`Storyshots Menu Full menu 1`] = `
                 }
               >
                   Zvezdan Protic
+              </a>
+            </div>
+            <div
+              className="item"
+              draggable="true"
+              onClick={[Function]}
+            >
+              <a
+                draggable={false}
+                href="/person/s.verhoeven"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "display": "block",
+                  }
+                }
+              >
+                Stefan  Verhoeven
               </a>
             </div>
           </div>
@@ -45991,6 +45991,10 @@ exports[`Storyshots Menu ResourceType 1`] = `
 `;
 
 exports[`Storyshots Resource/Mention xenon-tutorial 1`] = `null`;
+
+exports[`Storyshots Resource/Organization Netherlands eScience Center 1`] = `null`;
+
+exports[`Storyshots Resource/Person s.verhoeven 1`] = `null`;
 
 exports[`Storyshots Resource/Project andi 1`] = `null`;
 
