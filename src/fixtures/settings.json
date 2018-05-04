@@ -177,19 +177,56 @@
       "itemLabelTemplate":
         "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
       "properties": {
-        "primaryKey": {
-          "readonly": true
+        "givenNames": {
+          "label": "Given name",
+          "sortIndex": 1
+        },
+        "nameParticle": {
+          "label": "Particle",
+          "help": "For example the 'H.' in 'Jurriaan H. Spaaks'",
+          "sortIndex": 2
+        },
+        "familyNames": {
+          "label": "Family name",
+          "sortIndex": 3
+        },
+        "nameSuffix": {
+          "label": "Suffix",
+          "sortIndex": 4
+        },
+        "emailAddress": {
+          "label": "Email address",
+          "help":
+            "Used as contact method for a contact person of a software item",
+          "sortIndex": 5
+        },
+        "avatar": {
+          "label": "Avatar",
+          "sortIndex": 6
         },
         "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001,
           "readonly": true
         },
         "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002,
           "readonly": true
         },
         "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003,
           "readonly": true
         },
         "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004,
+          "readonly": true
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005,
           "readonly": true
         }
       }
@@ -198,18 +235,168 @@
       "name": "mention",
       "icon": "book",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true
+      "readonly": true,
+      "properties": {
+        "title": {
+          "label": "Title",
+          "sortIndex": 1
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 2
+        },
+        "date": {
+          "label": "Date",
+          "sortIndex": 3
+        },
+        "author": {
+          "label": "Author",
+          "sortIndex": 4
+        },
+        "type": {
+          "label": "Type",
+          "sortIndex": 5
+        },
+        "isCorporateBlog": {
+          "label": "Is corporate blog",
+          "sortIndex": 6
+        },
+        "image": {
+          "label": "Image URL",
+          "help": "Image URL for corporate blog mentions",
+          "sortIndex": 7
+        },
+        "zoteroKey": {
+          "label": "Zotero key",
+          "sortIndex": 500
+        },
+        "version": {
+          "label": "Zotero version",
+          "sortIndex": 501
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005
+        }
+      }
     },
     "project": {
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true
+      "readonly": true,
+      "properties": {
+        "title": {
+          "label": "Title",
+          "sortIndex": 1
+        },
+        "subtitle": {
+          "label": "Subtitle",
+          "sortIndex": 2
+        },
+        "principalInvestigator": {
+          "label": "Principal investigator (PI)",
+          "sortIndex": 3,
+          "properties": {
+            "affiliation": {
+              "label": "Affilliation",
+              "sortIndex": 2
+            },
+            "name": {
+              "label": "Name",
+              "sortIndex": 1
+            }
+          }
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 4
+        },
+        "image": {
+          "label": "Image URL",
+          "sortIndex": 5
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005
+        }
+      }
     },
     "organization": {
       "name": "Organization",
       "icon": "university",
-      "itemLabelTemplate": "{{ name }}"
+      "itemLabelTemplate": "{{ name }}",
+      "properties": {
+        "name": {
+          "label": "Name",
+          "sortIndex": 1
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 2
+        },
+        "logo": {
+          "label": "Logo",
+          "sortIndex": 3
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001,
+          "readonly": true
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002,
+          "readonly": true
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003,
+          "readonly": true
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004,
+          "readonly": true
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005,
+          "readonly": true
+        }
+      }
     }
   }
 }

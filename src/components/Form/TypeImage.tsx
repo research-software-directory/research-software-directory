@@ -105,7 +105,7 @@ export default class TypeImage extends React.Component<
     return (
       <Horizontal>
         {this.props.showLabel !== false && (
-          <div style={{ minWidth: "150px" }}>
+          <div style={{ minWidth: "150px", fontWeight: "bold" }}>
             {(this.props.settings && this.props.settings.label) ||
               this.props.label}
           </div>

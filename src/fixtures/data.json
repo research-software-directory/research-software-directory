@@ -677,17 +677,16 @@
       "nameSuffix": null
     },
     {
-      "primaryKey": {
-        "id": "s.verhoeven",
-        "collection": "person"
-      },
+      "primaryKey": { "id": "s.verhoeven", "collection": "person" },
       "createdAt": "2017-11-10T14:12:55Z",
       "updatedAt": "2018-01-08T12:08:08Z",
       "emailAddress": "s.verhoeven@esciencecenter.nl",
-      "familyNames": "Stefan Verhoeven",
-      "givenNames": null,
-      "nameParticle": null,
-      "nameSuffix": null
+      "familyNames": "Verhoeven",
+      "givenNames": "Stefan",
+      "nameParticle": "",
+      "nameSuffix": "",
+      "createdBy": "Unknown",
+      "updatedBy": "Unknown"
     },
     {
       "primaryKey": {
@@ -2952,7 +2951,8 @@
       "createdAt": "2018-03-29T13:18:51Z",
       "updatedAt": "2018-03-29T13:18:51Z",
       "createdBy": "scrapers",
-      "updatedBy": "scrapers"
+      "updatedBy": "scrapers",
+      "isCorporateBlog": false
     },
     {
       "primaryKey": {
@@ -26601,10 +26601,7 @@
       "updatedBy": "scrapers"
     },
     {
-      "primaryKey": {
-        "collection": "project",
-        "id": "https://www.esciencecenter.nl/project/andi"
-      },
+      "primaryKey": { "collection": "project", "id": "andi" },
       "url": "https://www.esciencecenter.nl/project/andi",
       "image": "https://www.esciencecenter.nl/img/projects/1.P051-small.jpg",
       "title": "ANDI",
@@ -26613,10 +26610,10 @@
         "name": "Prof. Ben Schmand",
         "affiliation": "University of Amsterdam"
       },
-      "createdAt": "2018-03-29T11:38:42Z",
-      "updatedAt": "2018-03-29T11:40:03Z",
-      "createdBy": "scrapers",
-      "updatedBy": "scrapers"
+      "createdAt": "2018-05-02T02:30:47Z",
+      "updatedAt": "2018-05-02T02:30:47Z",
+      "createdBy": "Scraper",
+      "updatedBy": "Scraper"
     },
     {
       "primaryKey": {
