@@ -12,10 +12,10 @@ db = pymongo.MongoClient(host=os.environ.get('DATABASE_HOST'),
 
 logger = logging.getLogger(__name__)
 
-
+# Replace foreign keys in resource (modifies resource).
 def replace_foreign_keys(resource):
     if isinstance(resource, dict):
-        for key in resource.keys():
+        for key in list(resource):
             if key == 'foreignKey' and resource['foreignKey'] and 'collection' in resource['foreignKey'] and 'id' in resource['foreignKey']:
                 foreign_resource = db[resource['foreignKey']['collection']].find_one(
                     {'primaryKey.id': resource['foreignKey']['id']}
@@ -23,15 +23,18 @@ def replace_foreign_keys(resource):
                 if not foreign_resource:
                     logger.error(' not found: ' +
                                  resource['foreignKey']['collection'] + ' ' + resource['foreignKey']['id'])
-                    resource['foreignKey'] = None
+                    del resource['foreignKey']
                     continue
                 resource['foreignKey'] = foreign_resource
                 del resource['foreignKey']['_id']
             else:
                 replace_foreign_keys(resource[key])
     if isinstance(resource, list):
+        list_has_foreign_keys = len(resource) > 0 and 'foreignKey' in resource[0]
         for item in resource:
             replace_foreign_keys(item)
+        if list_has_foreign_keys: # filter out unresolvable items
+            resource[:] = [item for item in resource if 'foreignKey' in item]
 
 
 def get_binned_commits(repository_urls):
