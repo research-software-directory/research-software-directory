@@ -11,8 +11,8 @@
     </url>
     {% for sw in data -%}
         <url>
-            <loc>https://www.research-software.nl/software/{{sw.id}}</loc>
-            <lastmod>{{sw.lastUpdate | strfdatedash}}</lastmod>
+            <loc>https://www.research-software.nl/software/{{sw.slug}}</loc>
+            <lastmod>{{sw.updatedAt | date_filter}}</lastmod>
             <changefreq>weekly</changefreq>
         </url>
     {%- endfor %}
