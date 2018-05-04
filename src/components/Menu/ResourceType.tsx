@@ -55,7 +55,7 @@ export default class ResourceType extends React.PureComponent<IProps, IState> {
         </Menu.Header>
         <AnimateHeight duration={1000} height={this.state.open ? "auto" : 0}>
           <Menu className="submenu" inverted={true} vertical={true}>
-            {this.props.readonly || (
+            {!this.props.readonly && (
               <Button secondary={true} onClick={this.add} title="Add">
                 <Icon name="add" />
               </Button>
