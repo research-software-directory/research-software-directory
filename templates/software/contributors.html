@@ -7,33 +7,31 @@
             <div class="col-3-4">
                 <div class="row">
                     {% if template_data.contributors %}
-                        {% if template_data.contributors|length > 6 %}
-                            <div class="col col-2-3 contributors_list long-list">
-                                <ul class="row">
+                        {% set longlist = template_data.contributors|length > 6 %}
+                        <div class="col col-2-3 contributors_list {{'long-list' if longlist}}">
+                            <ul class="row">
+                                {% if longlist %}
                                     <li style="width:100%" class="gradient gradient--gray"></li>
-                        {% else %}
-                            <div class="col col-2-3 contributors_list">
-                                <ul class="row">
-                        {% endif %}
-                                    {% for contributor in template_data.contributors %}
-                                        <li class="col col-1-2">
-                                            <div class="contributor_name">
-                                                {{contributor.foreignKey | human_name_filter}}
-                                            </div>
-                                            {% if contributor.affiliations %}
+                                {% endif %}
+                                {% for contributor in template_data.contributors %}
+                                    <li class="col col-1-2">
+                                        <div class="contributor_name">
+                                            {{contributor.foreignKey | human_name_filter}}
+                                        </div>
+                                        {% if contributor.affiliations %}
                                             <div class="contributor_organisation">
                                                 {{contributor.affiliations[0].foreignKey.name}}
                                             </div>
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                                {% if template_data.contributors|length > 6 %}
-                                    <div class="button button--filled-dark show-all-contributors">
-                                        <span><svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
-                                        <span class="button_text">Show all contributors</span>
-                                    </div>
-                                {% endif %}
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {% if longlist %}
+                                <div class="button button--filled-dark show-all-contributors">
+                                    <span><svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
+                                    <span class="button_text">Show all contributors</span>
+                                </div>
+                            {% endif %}
                             </div>
                     {% endif %}
 
