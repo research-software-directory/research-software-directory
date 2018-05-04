@@ -4,12 +4,6 @@ import requests
 import pytest
 import glob
 
-import pprint
-import re
-from py_w3c.validators.html.validator import HTMLValidator
-
-import json
-
 from tests.helpers import get_mock, isValidHTML
 
 
