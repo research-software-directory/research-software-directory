@@ -700,7 +700,7 @@ section{
             margin: 0 -10px 15px;
             li {
                 padding: 0 10px;
-                margin-bottom: 2em;
+                margin-top: 2em;
                 width: 50%;
 
                 @include bp(max, $phablet ){
