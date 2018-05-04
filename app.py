@@ -2,6 +2,7 @@ import click
 import logging
 import sys
 
+from util import db_connect
 from cache_software import cache_software
 from corporate import sync_people, sync_projects
 from github import sync_all as github_sync_all
@@ -35,6 +36,7 @@ logger.addHandler(stderr_handler)
 @click.command()
 @click.option('--task', required=1, help='Name of task.')
 def run_task(task):
+    db = db_connect()
     if task == 'github':
         github_sync_all()
     elif task == 'zotero':
@@ -43,10 +45,10 @@ def run_task(task):
         sync_people()
     elif task == 'projects':
         sync_projects()
+    elif task == 'releases':
+        sync_releases(db)
     elif task == 'cache_software':
         cache_software()
-    elif task == 'releases':
-        sync_releases()
     else:
         raise Exception('No such task: ' + task)
 
