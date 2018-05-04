@@ -1,4 +1,4 @@
-from app.application import api_url, application
+from app.application import application
 import requests_mock
 import pytest
 

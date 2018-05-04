@@ -25,18 +25,3 @@ def test_index(get):
         result = get('/')
 
     assert isValidHTML(result)
-
-#
-#
-# def test_xenon(get):
-#     with requests_mock.mock() as m:
-#         m.get(api_url + '/software_cache/xenon', text=get_mock('software/xenon.json'))
-#         result = get('/software/xenon')
-#         print(result)
-#         html_validator = HTMLValidator()
-#         html_validator.validate_fragment(result)
-#         errors = list(filter(is_really_error, html_validator.errors))
-#         if len(errors) != 0:
-#             pprint.pprint(errors)
-#
-#         assert len(errors) == 0
