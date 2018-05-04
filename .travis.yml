@@ -15,6 +15,5 @@ script:
 - PYTHONPATH=`pwd` pytest --cov=src
 after_success:
 - if [[ $TRAVIS_BRANCH == 'master' ]]; then
-    curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/backend/trigger/$DOCKERHUB_TRIGGER_TOKEN
+    curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/backend/trigger/$DOCKERHUB_TRIGGER_TOKEN;
   fi
-
