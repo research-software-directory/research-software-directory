@@ -171,7 +171,7 @@ def human_date_filter(input_string):
 
 @application.template_filter()
 def human_name_filter(person):
-    name = person.get('givenNames', '')
+    name = person.get('givenNames') or ''
     if 'nameParticle' in person and person['nameParticle']:
         name += ' ' + person.get('nameParticle', '')
     return name + ' ' + person.get('familyNames', '')
