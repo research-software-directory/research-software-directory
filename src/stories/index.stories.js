@@ -62,6 +62,10 @@ mock
   .onGet("/api/mention/QLEK6HLW")
   .reply(200, data.mention.find(d => d.primaryKey.id === "QLEK6HLW"));
 
+mock
+  .onGet("/api/organization/nlesc")
+  .reply(200, data.organization.find(d => d.primaryKey.id === "nlesc"));
+
 const RouteAndRedux = ({ children }) => (
   <Provider store={store}>
     <Router history={history}>{children}</Router>
@@ -118,6 +122,24 @@ storiesOf("Resource/Mention", module).add("xenon-tutorial", () => (
     />
   </Provider>
 ));
+
+storiesOf("Resource/Organization", module).add(
+  "Netherlands eScience Center",
+  () => (
+    <Provider store={store}>
+      <Resource
+        jwt={jwtData}
+        schema={schema}
+        data={data}
+        settings={settings}
+        messageToastr={action("messageToastr")}
+        errorToastr={action("errorToastr")}
+        push={action("push")}
+        match={{ params: { resourceType: "organization", id: "nlesc" } }}
+      />
+    </Provider>
+  )
+);
 
 storiesOf("Menu", module)
   .add("ResourceList", () => (

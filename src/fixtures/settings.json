@@ -320,7 +320,46 @@
     "organization": {
       "name": "Organization",
       "icon": "university",
-      "itemLabelTemplate": "{{ name }}"
+      "itemLabelTemplate": "{{ name }}",
+      "properties": {
+        "name": {
+          "label": "Name",
+          "sortIndex": 1
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 2
+        },
+        "logo": {
+          "label": "Logo",
+          "sortIndex": 3
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001,
+          "readonly": true
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002,
+          "readonly": true
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003,
+          "readonly": true
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004,
+          "readonly": true
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005,
+          "readonly": true
+        }
+      }
     }
   }
 }
