@@ -87,7 +87,7 @@ def sync_releases():
             continue
         try:
             record = fetch_release(doi)
-            db.release.insert(record)
+            db.release.update({'_id': record['_id']}, record, upsert=True)
         except (KeyError, ValueError,) as e:
             print('Skipping: ' + doi)
             print(e)
