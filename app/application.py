@@ -173,7 +173,7 @@ def human_date_filter(input_string):
 def human_name_filter(person):
     name = person.get('givenNames', '')
     if 'nameParticle' in person and person['nameParticle']:
-        name += ' ' + person['nameParticle']
+        name += ' ' + person.get('nameParticle', '')
     return name + ' ' + person.get('familyNames', '')
 
 
