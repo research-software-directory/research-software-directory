@@ -840,7 +840,7 @@ exports[`Storyshots Form elements/Boolean with help 1`] = `
     }
   >
     <div
-      className="sc-bdVaJa lphAHV"
+      className="sc-bdVaJa hjasLL"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Some useful help message",
@@ -1082,7 +1082,7 @@ exports[`Storyshots Form elements/String with help 1`] = `
     }
   >
     <div
-      className="sc-bdVaJa lphAHV"
+      className="sc-bdVaJa hjasLL"
       dangerouslySetInnerHTML={
         Object {
           "__html": "Some useful help message",
