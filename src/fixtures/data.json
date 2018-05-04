@@ -24605,163 +24605,81 @@
       }
     },
     {
-      "primaryKey": {
-        "id": "xenon",
-        "collection": "software"
-      },
+      "primaryKey": { "id": "xenon", "collection": "software" },
       "createdAt": "2017-11-10T14:12:55Z",
-      "updatedAt": "2018-01-29T14:02:27Z",
+      "updatedAt": "2018-04-15T20:53:17Z",
       "brandName": "Xenon",
       "bullets":
         "* Provides an easy-to-use interface for distributed computing developers \n* Enables the use of different file transfer protocols and scheduling systems on remote machines \n* No need to learn and implement many different APIs\n* Successfully used in many eScience tools and projects",
-      "citationcff": null,
-      "contributingOrganizations": [
-        {
-          "foreignKey": {
-            "id": "nlesc",
-            "collection": "organization"
-          }
-        }
-      ],
+      "conceptDOI": "10.5281/zenodo.597993",
       "contributors": [
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "j.maassen"
-          },
+          "foreignKey": { "collection": "person", "id": "j.maassen" },
           "isContactPerson": true,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "s.verhoeven"
-          },
+          "foreignKey": { "collection": "person", "id": "s.verhoeven" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "n.drost"
-          },
+          "foreignKey": { "collection": "person", "id": "n.drost" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "r.vannieuwpoort"
-          },
+          "foreignKey": { "collection": "person", "id": "r.vannieuwpoort" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "j.borgdorff"
-          },
+          "foreignKey": { "collection": "person", "id": "j.borgdorff" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "c.meijer"
-          },
+          "foreignKey": { "collection": "person", "id": "c.meijer" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "b.vanwerkhoven"
-          },
+          "foreignKey": { "collection": "person", "id": "b.vanwerkhoven" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         },
         {
           "foreignKey": {
             "collection": "person",
-            "id": "5ab8c31085414f2cfd644a27"
+            "id": "5ae85e700bd42f30d8877d5c"
           },
           "isContactPerson": false,
           "affiliations": []
         },
         {
-          "foreignKey": {
-            "collection": "person",
-            "id": "j.spaaks"
-          },
+          "foreignKey": { "collection": "person", "id": "j.spaaks" },
           "isContactPerson": false,
           "affiliations": [
-            {
-              "foreignKey": {
-                "collection": "organization",
-                "id": "nlesc"
-              }
-            }
+            { "foreignKey": { "collection": "organization", "id": "nlesc" } }
           ]
         }
       ],
       "getStartedURL": "https://github.com/NLeSC/Xenon",
-      "githubURLs": [
-        {
-          "isCitationcffSource": false,
-          "isCommitDataSource": true,
-          "url": "https://github.com/NLeSC/Xenon"
-        }
-      ],
-      "isCitable": false,
+      "repositoryURLs": ["https://github.com/NLeSC/Xenon"],
       "isFeatured": true,
       "isPublished": true,
       "license": ["Apache-2.0"],
@@ -24776,30 +24694,69 @@
         "Optimized data handling",
         "High performance computing"
       ],
-      "testimonial": [],
+      "testimonials": [],
       "related": {
         "software": [
+          { "foreignKey": { "id": "pyxenon", "collection": "software" } },
+          { "foreignKey": { "id": "xenon-cli", "collection": "software" } },
+          { "foreignKey": { "id": "xenon-grpc", "collection": "software" } }
+        ],
+        "mentions": [
+          { "foreignKey": { "collection": "mention", "id": "XRA6XBNB" } },
+          { "foreignKey": { "collection": "mention", "id": "4YFQQKF2" } },
+          { "foreignKey": { "collection": "mention", "id": "QLEK6HLW" } },
+          { "foreignKey": { "collection": "mention", "id": "RJSMU2ZG" } },
+          { "foreignKey": { "collection": "mention", "id": "IKDX5IJ2" } },
+          { "foreignKey": { "collection": "mention", "id": "QDDQUR8S" } }
+        ],
+        "projects": [
           {
             "foreignKey": {
-              "id": "pyxenon",
-              "collection": "software"
+              "id":
+                "chemical-informatics-for-metabolite-identification-and-biochemical-network",
+              "collection": "project"
+            }
+          },
+          { "foreignKey": { "id": "abc-muse", "collection": "project" } },
+          { "foreignKey": { "id": "amuse", "collection": "project" } },
+          {
+            "foreignKey": {
+              "id": "enabling-dynamic-services",
+              "collection": "project"
+            }
+          },
+          { "foreignKey": { "id": "esalsa", "collection": "project" } },
+          {
+            "foreignKey": {
+              "id": "mapping-the-via-appia-in-3d",
+              "collection": "project"
             }
           },
           {
             "foreignKey": {
-              "id": "xenon-cli",
-              "collection": "software"
+              "id": "visualizing-uncertainty-and-perspective-plus",
+              "collection": "project"
             }
           },
           {
             "foreignKey": {
-              "id": "xenon-grpc",
-              "collection": "software"
+              "id": "visualizing-uncertainty-and-perspectives",
+              "collection": "project"
+            }
+          },
+          {
+            "foreignKey": {
+              "id": "googling-the-cancer-genome",
+              "collection": "project"
             }
           }
         ],
-        "mentions": []
-      }
+        "organizations": [
+          { "foreignKey": { "id": "nlesc", "collection": "organization" } }
+        ]
+      },
+      "createdBy": "Unknown",
+      "updatedBy": "Unknown"
     },
     {
       "primaryKey": {

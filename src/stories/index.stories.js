@@ -17,6 +17,12 @@ import Resource from "../components/Resource";
 const settings = require("../fixtures/settings.json");
 const data = require("../fixtures/data.json");
 const schema = require("../fixtures/schema.json");
+var axios = require("axios");
+var MockAdapter = require("axios-mock-adapter");
+
+// This sets the mock adapter on the default instance
+var mock = new MockAdapter(axios);
+
 const jwtData = {
   token: "asdasd",
   claims: {
@@ -44,6 +50,10 @@ const store = createStore(state => state, {
 
 history.listen(action("routing event"));
 
+mock
+  .onGet("/api/software/xenon")
+  .reply(200, data.software.find(d => d.primaryKey.id === "xenon"));
+
 const RouteAndRedux = ({ children }) => (
   <Provider store={store}>
     <Router history={history}>{children}</Router>
@@ -56,16 +66,19 @@ storiesOf("Full app", module).add("default", () => (
   </Provider>
 ));
 
-storiesOf("Resource", module).add("default", () => (
-  <Resource
-    jwt={jwtData}
-    schema={schema}
-    data={data}
-    settings={settings}
-    messageToastr={action("messageToastr")}
-    errorToastr={action("errorToastr")}
-    push={action("push")}
-  />
+storiesOf("Resource/Software", module).add("xenon", () => (
+  <Provider store={store}>
+    <Resource
+      jwt={jwtData}
+      schema={schema}
+      data={data}
+      settings={settings}
+      messageToastr={action("messageToastr")}
+      errorToastr={action("errorToastr")}
+      push={action("push")}
+      match={{ params: { resourceType: "software", id: "xenon" } }}
+    />
+  </Provider>
 ));
 
 storiesOf("Menu", module)

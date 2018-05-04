@@ -9,23 +9,27 @@
       "icon": "file code outline",
       "properties": {
         "brandName": {
-          "label": "brandName",
-          "sortIndex": 200
+          "label": "Brand name",
+          "sortIndex": 1
         },
         "bullets": {
-          "label": "bullets",
-          "sortIndex": 100
+          "label": "Bullet list",
+          "sortIndex": 100,
+          "multiline": true,
+          "help":
+            "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
         },
         "citationcff": {
           "label": "citationcff",
           "sortIndex": 300
         },
         "contributingOrganizations": {
-          "label": "contributingOrganizations",
+          "label": "Contributing organizations",
           "sortIndex": 400
         },
         "contributors": {
-          "label": "contributors",
+          "label": "Contributors",
+          "sortIndex": 600,
           "properties": {
             "foreignKey": { "label": "Person" },
             "isContactPerson": {
@@ -40,57 +44,111 @@
             }
           }
         },
+        "conceptDOI": {
+          "label": "Concept DOI",
+          "sortIndex": 500,
+          "help":
+            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not an URL"
+        },
         "createdAt": {
-          "label": "createdAt",
+          "label": "Created at",
+          "sortIndex": 1000,
           "readonly": true
         },
         "createdBy": {
-          "label": "createdBy",
+          "label": "Created by",
+          "sortIndex": 1000,
           "readonly": true
         },
         "getStartedURL": {
-          "label": "getStartedURL"
+          "label": "Getting started URL",
+          "sortIndex": 500
         },
         "repositoryURLs": {
-          "label":
-            "SCM Repository urls (e.g. https://github.com/3D-e-Chem/3D-e-Chem-VM)"
-        },
-        "isCitable": {
-          "label": "isCitable"
+          "sortIndex": 580,
+          "label": "GitHub repository URL's"
         },
         "isFeatured": {
-          "label": "isFeatured"
+          "sortIndex": 20,
+          "label": "Is featured",
+          "help": "Use with caution, not everything can be featured"
         },
         "isPublished": {
-          "label": "isPublished"
+          "sortIndex": 10,
+          "label": "Is published"
         },
         "license": {
-          "label": "license"
+          "sortIndex": 550,
+          "label": "License(s)"
         },
         "primaryKey": {
-          "label": "primaryKey",
+          "label": "Primary key",
+          "sortIndex": 1000,
           "readonly": true
         },
         "programmingLanguage": {
-          "label": "programmingLanguage"
+          "sortIndex": 560,
+          "label": "Programming language(s)"
         },
         "readMore": {
-          "label": "readMore"
+          "label": "Read more",
+          "sortIndex": 300,
+          "multiline": true,
+          "help": "Text shown when Read more button is pressed"
         },
         "related": {
-          "label": "Related"
+          "sortIndex": 650,
+          "label": "Related",
+          "properties": {
+            "mentions": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "organizations": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "projects": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "software": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            }
+          }
         },
         "shortStatement": {
-          "label": "shortStatement"
+          "label": "shortStatement",
+          "multiline": true,
+          "sortIndex": 50,
+          "help":
+            "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
         },
         "slug": {
-          "label": "slug"
+          "sortIndex": 520,
+          "label": "slug",
+          "help": "Human readable identifier in url for this item"
         },
         "tags": {
-          "label": "tags"
+          "label": "tags",
+          "sortIndex": 800
         },
-        "testimonial": {
-          "label": "testimonial",
+        "testimonials": {
+          "sortIndex": 680,
+          "label": "Testimonials",
           "properties": {
             "person": {
               "properties": {
@@ -102,11 +160,13 @@
           }
         },
         "updatedAt": {
-          "label": "updatedAt",
+          "label": "Updated at",
+          "sortIndex": 1000,
           "readonly": true
         },
         "updatedBy": {
-          "label": "updatedBy",
+          "label": "Updated by",
+          "sortIndex": 1000,
           "readonly": true
         }
       }
