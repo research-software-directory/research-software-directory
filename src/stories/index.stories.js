@@ -50,13 +50,13 @@ const RouteAndRedux = ({ children }) => (
   </Provider>
 );
 
-storiesOf("Full app").add("default", () => (
+storiesOf("Full app", module).add("default", () => (
   <Provider store={store}>
     <App />
   </Provider>
 ));
 
-storiesOf("Resource").add("default", () => (
+storiesOf("Resource", module).add("default", () => (
   <Resource
     jwt={jwtData}
     schema={schema}
@@ -68,7 +68,7 @@ storiesOf("Resource").add("default", () => (
   />
 ));
 
-storiesOf("Menu")
+storiesOf("Menu", module)
   .add("ResourceList", () => (
     <RouteAndRedux>
       <ResourceList
