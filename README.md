@@ -20,6 +20,16 @@ Setup `.env` file, see `.env.example` as an example.
 
 Setup environmental variables: `export $(cat .env | xargs)`
 
+# Test
+
+Run unit tests with fixtures:
+```bash
+PYTHONPATH=. pytest
+```
+You can also test against live data, it will check if all pages render:
+```bash
+BACKEND_URL=https://test.research-software.nl/api PYTHONPATH=. pytest --live -v
+```
 # Run
 
 Before running the installation and configuration must be completed.

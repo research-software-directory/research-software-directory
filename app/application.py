@@ -46,14 +46,12 @@ def index():
     latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
     organizations = requests.get(api_url + '/organization').json()
     all_software = requests.get(url).json()
-    blog_posts = requests.get(api_url + '/mention?isCorporateBlog=true&sort=date&direction=desc&limit=4').json()
 
     return flask.render_template('index_template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
                                  latest_mentions=latest_mentions,
-                                 blog_posts=blog_posts
                                  )
 
 
