@@ -10,7 +10,7 @@ import TypeObject from "../components/Form/TypeObject";
 import TypeArray from "../components/Form/TypeArray";
 import TypeForeignKey from "../components/Form/TypeForeignKey";
 
-storiesOf("Form elements")
+storiesOf("Form elements", module)
   .add("StringEnum", () => (
     <TypeStringEnum
       schema={{ enum: ["option1", "option2", "option3"] }}
@@ -70,7 +70,7 @@ storiesOf("Form elements")
     />
   ));
 
-storiesOf("Form elements/Array")
+storiesOf("Form elements/Array", module)
   .add("default", () => (
     <TypeArray
       schema={{
@@ -113,7 +113,7 @@ storiesOf("Form elements/Array")
     />
   ));
 
-storiesOf("Form elements/String")
+storiesOf("Form elements/String", module)
   .add("default", () => (
     <TypeString
       schema={{
@@ -200,7 +200,7 @@ storiesOf("Form elements/String")
     />
   ));
 
-storiesOf("Form elements/Boolean")
+storiesOf("Form elements/Boolean", module)
   .add("Checked", () => (
     <TypeBoolean
       schema={null}
