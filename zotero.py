@@ -4,7 +4,7 @@ https://pyzotero.readthedocs.io/en/latest/#retrieving-version-information
 """
 
 import logging
-import dateparser
+from dateutil.parser import parse
 import requests
 from bs4 import BeautifulSoup
 from pyzotero import zotero
@@ -26,16 +26,15 @@ def get_last_version():
     last_version_item = requests.get(
         os.environ.get('BACKEND_URL') + '/mention?sort=version&direction=desc&limit=1'
     ).json()
-
     return 0 if len(last_version_item) == 0 else last_version_item[0]['version']
 
 
 def get_date_for_zotero_item(item):
     try:
-        return dateparser.parse(item['data']['date']).isoformat()[:19]+'Z'
+        return parse(item['data']['date']).isoformat()[:19]+'Z'
     except:
         logger.warning("Date problem in zotero item %s (was %s)" % (item['key'], item['data']['date']))
-        return dateparser.parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
+        return parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
 
 
 # DOIs can be either an URL or just the identifier, so make sure its a URL
