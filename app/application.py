@@ -40,10 +40,18 @@ def serialize_software_list(swlist):
     return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
 
 
+def get_mentions(software_list):
+    nested_mentions = list(map(lambda sw: sw['related'].get('mentions', []), software_list))
+    mentions = [item['foreignKey'] for sublist in nested_mentions for item in sublist]
+    unique_mentions = []
+    for mention in mentions:
+        if True not in [m['primaryKey']['id'] == mention['primaryKey']['id'] for m in unique_mentions]:
+            unique_mentions.append(mention)
+    return sorted(unique_mentions, key=lambda m: m['date'], reverse=True)
+
 @application.route('/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
-    latest_mentions = requests.get(api_url + '/mention?sort=date&direction=desc&limit=5').json()
     organizations = requests.get(api_url + '/organization').json()
     all_software = requests.get(url).json()
 
@@ -51,7 +59,7 @@ def index():
                                  template_data=all_software,
                                  data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
-                                 latest_mentions=latest_mentions,
+                                 mentions=get_mentions(all_software),
                                  )
 
 
