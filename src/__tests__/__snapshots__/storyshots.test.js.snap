@@ -1174,6 +1174,19 @@ exports[`Storyshots Full app default 1`] = `
           <div
             className="ui inverted vertical submenu menu"
           >
+            <button
+              className="ui secondary button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+              title="Add"
+            >
+              <i
+                aria-hidden="true"
+                className="add icon"
+              />
+            </button>
             <div
               className="ui icon input submenu-search inverted"
             >
@@ -4971,6 +4984,19 @@ exports[`Storyshots Full app default 1`] = `
           <div
             className="ui inverted vertical submenu menu"
           >
+            <button
+              className="ui secondary button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+              title="Add"
+            >
+              <i
+                aria-hidden="true"
+                className="add icon"
+              />
+            </button>
             <div
               className="ui icon input submenu-search inverted"
             >
@@ -18972,6 +18998,19 @@ exports[`Storyshots Full app default 1`] = `
           <div
             className="ui inverted vertical submenu menu"
           >
+            <button
+              className="ui secondary button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+              title="Add"
+            >
+              <i
+                aria-hidden="true"
+                className="add icon"
+              />
+            </button>
             <div
               className="ui icon input submenu-search inverted"
             >
@@ -19845,6 +19884,19 @@ exports[`Storyshots Menu Full menu 1`] = `
         <div
           className="ui inverted vertical submenu menu"
         >
+          <button
+            className="ui secondary button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Add"
+          >
+            <i
+              aria-hidden="true"
+              className="add icon"
+            />
+          </button>
           <div
             className="ui icon input submenu-search inverted"
           >
@@ -23642,6 +23694,19 @@ exports[`Storyshots Menu Full menu 1`] = `
         <div
           className="ui inverted vertical submenu menu"
         >
+          <button
+            className="ui secondary button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Add"
+          >
+            <i
+              aria-hidden="true"
+              className="add icon"
+            />
+          </button>
           <div
             className="ui icon input submenu-search inverted"
           >
@@ -37643,6 +37708,19 @@ exports[`Storyshots Menu Full menu 1`] = `
         <div
           className="ui inverted vertical submenu menu"
         >
+          <button
+            className="ui secondary button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Add"
+          >
+            <i
+              aria-hidden="true"
+              className="add icon"
+            />
+          </button>
           <div
             className="ui icon input submenu-search inverted"
           >
@@ -42223,6 +42301,19 @@ exports[`Storyshots Menu ResourceType 1`] = `
       <div
         className="ui inverted vertical submenu menu"
       >
+        <button
+          className="ui secondary button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+          title="Add"
+        >
+          <i
+            aria-hidden="true"
+            className="add icon"
+          />
+        </button>
         <div
           className="ui icon input submenu-search inverted"
         >
