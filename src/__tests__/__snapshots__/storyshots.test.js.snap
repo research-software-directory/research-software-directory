@@ -2,13 +2,13 @@
 
 exports[`Storyshots Form elements ForeignKey 1`] = `
 <div
-  className="sc-kAzzGY bzHKik"
+  className="sc-kgoBCf emYCld"
 >
   <div
-    className="sc-jzJRlG kDwWVt"
+    className="sc-kAzzGY cVYLVb"
   >
     <label
-      className="sc-cSHVUG jTVEeu"
+      className="sc-chPdSV kRMdaV"
     >
       ForeignKey
     </label>
@@ -96,10 +96,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-ckVGcZ iXAqrG"
+  className="sc-eNQAEJ bAckRy"
 >
   <label
-    className="sc-dxgOiQ hTjMfW"
+    className="sc-jKJlTe loXQau"
   >
     Object
   </label>
@@ -223,107 +223,122 @@ exports[`Storyshots Form elements Object 1`] = `
 `;
 
 exports[`Storyshots Form elements StringEnum 1`] = `
-<div>
-  <div
-    aria-busy={undefined}
-    aria-disabled={false}
-    aria-expanded={false}
-    className="ui fluid search selection dropdown"
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    role="combobox"
-    tabIndex={undefined}
+<div
+  className="sc-gzVnrw eVRMlI"
+>
+  <label
+    className="sc-htoDjs xqnXk"
   >
-    <input
-      aria-autocomplete="list"
-      autoComplete="off"
-      className="search"
-      onChange={[Function]}
-      style={
-        Object {
-          "width": undefined,
-        }
+    StringEnum
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
       }
-      tabIndex={0}
-      type="text"
-      value=""
-    />
+    }
+  >
     <div
-      aria-live="polite"
-      className="text"
-      role="alert"
-    >
-      option1
-    </div>
-    <i
-      aria-hidden="true"
-      className="dropdown icon"
+      aria-busy={undefined}
+      aria-disabled={false}
+      aria-expanded={false}
+      className="ui fluid search selection dropdown"
+      onBlur={[Function]}
+      onChange={[Function]}
       onClick={[Function]}
-    />
-    <div
-      aria-multiselectable={undefined}
-      className="menu transition"
-      role="listbox"
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      role="combobox"
+      tabIndex={undefined}
     >
-      <div
-        aria-checked={true}
-        aria-disabled={undefined}
-        aria-selected={true}
-        className="active selected item"
-        onClick={[Function]}
-        role="option"
+      <input
+        aria-autocomplete="list"
+        autoComplete="off"
+        className="search"
+        onChange={[Function]}
         style={
           Object {
-            "pointerEvents": "all",
+            "width": undefined,
           }
         }
+        tabIndex={0}
+        type="text"
+        value=""
+      />
+      <div
+        aria-live="polite"
+        className="text"
+        role="alert"
       >
-        <span
-          className="text"
-        >
-          option1
-        </span>
+        option1
       </div>
-      <div
-        aria-checked={false}
-        aria-disabled={undefined}
-        aria-selected={false}
-        className="item"
+      <i
+        aria-hidden="true"
+        className="dropdown icon"
         onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
-      >
-        <span
-          className="text"
-        >
-          option2
-        </span>
-      </div>
+      />
       <div
-        aria-checked={false}
-        aria-disabled={undefined}
-        aria-selected={false}
-        className="item"
-        onClick={[Function]}
-        role="option"
-        style={
-          Object {
-            "pointerEvents": "all",
-          }
-        }
+        aria-multiselectable={undefined}
+        className="menu transition"
+        role="listbox"
       >
-        <span
-          className="text"
+        <div
+          aria-checked={true}
+          aria-disabled={undefined}
+          aria-selected={true}
+          className="active selected item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
         >
-          option3
-        </span>
+          <span
+            className="text"
+          >
+            option1
+          </span>
+        </div>
+        <div
+          aria-checked={false}
+          aria-disabled={undefined}
+          aria-selected={false}
+          className="item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
+        >
+          <span
+            className="text"
+          >
+            option2
+          </span>
+        </div>
+        <div
+          aria-checked={false}
+          aria-disabled={undefined}
+          aria-selected={false}
+          className="item"
+          onClick={[Function]}
+          role="option"
+          style={
+            Object {
+              "pointerEvents": "all",
+            }
+          }
+        >
+          <span
+            className="text"
+          >
+            option3
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -332,10 +347,10 @@ exports[`Storyshots Form elements StringEnum 1`] = `
 
 exports[`Storyshots Form elements/Array default 1`] = `
 <section
-  className="sc-fjdhpX nsimD"
+  className="sc-cSHVUG CAuLq"
 >
   <div
-    className="sc-gZMcBi hIUZVf"
+    className="sc-VigVT ddVmTT"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -343,10 +358,10 @@ exports[`Storyshots Form elements/Array default 1`] = `
     }
   >
     <div
-      className="sc-gqjmRU dRclRz"
+      className="sc-jTzLTM izCUzN"
     >
       <div
-        className="sc-gzVnrw eIZqNZ"
+        className="sc-dnqmqq Uvyxt"
         onClick={[Function]}
       >
         Array
@@ -376,16 +391,16 @@ exports[`Storyshots Form elements/Array default 1`] = `
     </div>
   </div>
   <div
-    className="sc-htoDjs iDTTLV"
+    className="sc-iwsKbI gWnLoY"
   >
     <section
-      className="sc-iwsKbI eEWFkx"
+      className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-VigVT bCFLqi"
+        className="sc-fjdhpX bptgT"
       >
         <button
-          className="ui secondary button sc-dnqmqq bDsesi"
+          className="ui secondary button sc-gZMcBi giNnHm"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -395,7 +410,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
         </button>
       </div>
       <div
-        className="sc-jTzLTM hkePkA"
+        className="sc-jzJRlG jJoVZS"
       >
         <div
           style={
@@ -443,13 +458,13 @@ exports[`Storyshots Form elements/Array default 1`] = `
       </div>
     </section>
     <section
-      className="sc-iwsKbI eEWFkx"
+      className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-VigVT bCFLqi"
+        className="sc-fjdhpX bptgT"
       >
         <button
-          className="ui secondary button sc-dnqmqq bDsesi"
+          className="ui secondary button sc-gZMcBi giNnHm"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -459,7 +474,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
         </button>
       </div>
       <div
-        className="sc-jTzLTM hkePkA"
+        className="sc-jzJRlG jJoVZS"
       >
         <div
           style={
@@ -512,10 +527,10 @@ exports[`Storyshots Form elements/Array default 1`] = `
 
 exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
 <section
-  className="sc-fjdhpX nsimD"
+  className="sc-cSHVUG CAuLq"
 >
   <div
-    className="sc-gZMcBi hIUZVf"
+    className="sc-VigVT ddVmTT"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -523,10 +538,10 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
     }
   >
     <div
-      className="sc-gqjmRU dRclRz"
+      className="sc-jTzLTM izCUzN"
     >
       <div
-        className="sc-gzVnrw eIZqNZ"
+        className="sc-dnqmqq Uvyxt"
         onClick={[Function]}
       >
         Array
@@ -556,17 +571,17 @@ exports[`Storyshots Form elements/Array minItems=1 invalid 1`] = `
     </div>
   </div>
   <div
-    className="sc-htoDjs iDTTLV"
+    className="sc-iwsKbI gWnLoY"
   />
 </section>
 `;
 
 exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
 <section
-  className="sc-fjdhpX nsimD"
+  className="sc-cSHVUG CAuLq"
 >
   <div
-    className="sc-gZMcBi hIUZVf"
+    className="sc-VigVT ddVmTT"
     style={
       Object {
         "backgroundColor": "#2185d0",
@@ -574,10 +589,10 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
     }
   >
     <div
-      className="sc-gqjmRU dRclRz"
+      className="sc-jTzLTM izCUzN"
     >
       <div
-        className="sc-gzVnrw eIZqNZ"
+        className="sc-dnqmqq Uvyxt"
         onClick={[Function]}
       >
         Array
@@ -607,16 +622,16 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
     </div>
   </div>
   <div
-    className="sc-htoDjs iDTTLV"
+    className="sc-iwsKbI gWnLoY"
   >
     <section
-      className="sc-iwsKbI eEWFkx"
+      className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-VigVT bCFLqi"
+        className="sc-fjdhpX bptgT"
       >
         <button
-          className="ui secondary button sc-dnqmqq bDsesi"
+          className="ui secondary button sc-gZMcBi giNnHm"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -626,7 +641,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
         </button>
       </div>
       <div
-        className="sc-jTzLTM hkePkA"
+        className="sc-jzJRlG jJoVZS"
       >
         <div
           style={
@@ -674,13 +689,13 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       </div>
     </section>
     <section
-      className="sc-iwsKbI eEWFkx"
+      className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-VigVT bCFLqi"
+        className="sc-fjdhpX bptgT"
       >
         <button
-          className="ui secondary button sc-dnqmqq bDsesi"
+          className="ui secondary button sc-gZMcBi giNnHm"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -690,7 +705,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
         </button>
       </div>
       <div
-        className="sc-jTzLTM hkePkA"
+        className="sc-jzJRlG jJoVZS"
       >
         <div
           style={
@@ -17127,7 +17142,7 @@ exports[`Storyshots Full app default 1`] = `
               >
                 <a
                   draggable={false}
-                  href="/project/https://www.esciencecenter.nl/project/andi"
+                  href="/project/andi"
                   onClick={[Function]}
                   style={
                     Object {
@@ -35798,7 +35813,7 @@ exports[`Storyshots Menu Full menu 1`] = `
             >
               <a
                 draggable={false}
-                href="/project/https://www.esciencecenter.nl/project/andi"
+                href="/project/andi"
                 onClick={[Function]}
                 style={
                   Object {
@@ -45974,5 +45989,9 @@ exports[`Storyshots Menu ResourceType 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots Resource/Mention xenon-tutorial 1`] = `null`;
+
+exports[`Storyshots Resource/Project andi 1`] = `null`;
 
 exports[`Storyshots Resource/Software xenon 1`] = `null`;
