@@ -204,7 +204,59 @@
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true
+      "readonly": true,
+      "properties": {
+        "title": {
+          "label": "Title",
+          "sortIndex": 1
+        },
+        "subtitle": {
+          "label": "Subtitle",
+          "sortIndex": 2
+        },
+        "principalInvestigator": {
+          "label": "Principal investigator (PI)",
+          "sortIndex": 3,
+          "properties": {
+            "affiliation": {
+              "label": "Affilliation",
+              "sortIndex": 2
+            },
+            "name": {
+              "label": "Name",
+              "sortIndex": 1
+            }
+          }
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 4
+        },
+        "image": {
+          "label": "Image URL",
+          "sortIndex": 5
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005
+        }
+      }
     },
     "organization": {
       "name": "Organization",

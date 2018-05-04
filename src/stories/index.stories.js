@@ -54,6 +54,10 @@ mock
   .onGet("/api/software/xenon")
   .reply(200, data.software.find(d => d.primaryKey.id === "xenon"));
 
+mock
+  .onGet("/api/project/andi")
+  .reply(200, data.project.find(d => d.primaryKey.id === "andi"));
+
 const RouteAndRedux = ({ children }) => (
   <Provider store={store}>
     <Router history={history}>{children}</Router>
@@ -77,6 +81,21 @@ storiesOf("Resource/Software", module).add("xenon", () => (
       errorToastr={action("errorToastr")}
       push={action("push")}
       match={{ params: { resourceType: "software", id: "xenon" } }}
+    />
+  </Provider>
+));
+
+storiesOf("Resource/Project", module).add("andi", () => (
+  <Provider store={store}>
+    <Resource
+      jwt={jwtData}
+      schema={schema}
+      data={data}
+      settings={settings}
+      messageToastr={action("messageToastr")}
+      errorToastr={action("errorToastr")}
+      push={action("push")}
+      match={{ params: { resourceType: "project", id: "andi" } }}
     />
   </Provider>
 ));
