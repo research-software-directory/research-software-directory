@@ -9,4 +9,6 @@ install:
 script:
   - yarn test && yarn build
 after_success:
-  - curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/admin/trigger/$DOCKERHUB_TRIGGER_TOKEN
+  - if [[ $TRAVIS_BRANCH == 'master' ]]; then
+    curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/admin/trigger/$DOCKERHUB_TRIGGER_TOKEN
+    fi
