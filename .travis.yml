@@ -7,4 +7,4 @@ install:
 - pip install -r requirements.txt
 - pip install pytest py-w3c
 script:
-- PYTHONPATH=. pytest
+- BACKEND_URL=https://test.research-software.nl/api PYTHONPATH=. pytest --live
