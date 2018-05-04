@@ -8,7 +8,7 @@ COPY . /src
 
 STOPSIGNAL SIGINT
 
-CMD gunicorn --preload --workers 3 --max-requests 10 --timeout 15 --bind 0.0.0.0:5004 --access-logfile - --error-logfile - entry:application
+CMD sh -c "mkdir -p /shared_static && cp -r /src/static/* /shared_static && gunicorn --preload --workers 3 --max-requests 10 --timeout 15 --bind 0.0.0.0:5004 --access-logfile - --error-logfile - entry:application"
 
 EXPOSE 5004
-VOLUME /src/static
+
