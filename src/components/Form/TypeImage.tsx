@@ -141,6 +141,7 @@ export default class TypeImage extends React.Component<
                 src={(this.state as any).fileDataUrl}
                 style={{ height: "50%", minHeight: "400px", width: "90%" }}
                 ref={(ref: any) => (this._cropper = ref)}
+                autoCropArea={1}
                 onChange={console.log}
               />
               <Buttons>
