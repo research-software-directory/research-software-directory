@@ -225,7 +225,7 @@
 {% endif %}
 
 
-{% if latest_mentions %}
+{% if mentions %}
   <section id="latest_mentions">
     <div class="container">
       <div class="row">
@@ -236,7 +236,7 @@
     
         <div class="col-2-3">
           <ul>
-            {% for mention in latest_mentions %}
+            {% for mention in mentions[:5]  %}
             <li>
 
                 {% if mention.url %}
