@@ -508,11 +508,17 @@
             "type": "object"
         },
         "repositoryURLs": {
-            "items": {
-                "format": "uri",
-                "type": "string"
+            "additionalProperties": false,
+            "properties": {
+                "github": {
+                    "type": "array",
+                    "items": {
+                        "format": "uri",
+                        "type": "string"
+                    }
+                }
             },
-            "type": "array"
+            "type": "object"
         },
         "shortStatement": {
             "maxLength": 300,
