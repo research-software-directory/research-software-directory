@@ -8,20 +8,34 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "createdBy": { "type": "string" },
+      "createdBy": {
+        "type": "string"
+      },
       "logo": {
         "properties": {
-          "data": { "format": "base64", "type": "string" },
-          "mimeType": { "type": "string" }
+          "data": {
+            "format": "base64",
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          }
         },
         "type": "object"
       },
-      "name": { "type": "string" },
+      "name": {
+        "type": "string"
+      },
       "primaryKey": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["organization"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["organization"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -31,8 +45,13 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "updatedBy": { "type": "string" },
-      "url": { "format": "uri", "type": "string" }
+      "updatedBy": {
+        "type": "string"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
+      }
     },
     "required": ["createdAt", "logo", "name", "primaryKey", "updatedAt", "url"],
     "title": "Organization schema"
@@ -43,8 +62,13 @@
     "properties": {
       "avatar": {
         "properties": {
-          "data": { "format": "base64", "type": "string" },
-          "mimeType": { "type": "string" }
+          "data": {
+            "format": "base64",
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          }
         },
         "type": "object"
       },
@@ -53,17 +77,39 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "createdBy": { "type": "string" },
-      "emailAddress": { "format": "email", "type": "string" },
-      "familyNames": { "minLength": 1, "type": "string" },
-      "givenNames": { "minLength": 1, "type": "string" },
-      "nameParticle": { "minLength": 1, "type": "string" },
-      "nameSuffix": { "minLength": 1, "type": "string" },
+      "createdBy": {
+        "type": "string"
+      },
+      "emailAddress": {
+        "format": "email",
+        "type": "string"
+      },
+      "familyNames": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "givenNames": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "nameParticle": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "nameSuffix": {
+        "minLength": 1,
+        "type": "string"
+      },
       "primaryKey": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["person"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["person"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -73,7 +119,9 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "updatedBy": { "type": "string" }
+      "updatedBy": {
+        "type": "string"
+      }
     },
     "required": ["createdAt", "familyNames", "primaryKey", "updatedAt"],
     "title": "Person schema"
@@ -87,13 +135,23 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "createdBy": { "type": "string" },
-      "image": { "format": "uri", "type": "string" },
+      "createdBy": {
+        "type": "string"
+      },
+      "image": {
+        "format": "uri",
+        "type": "string"
+      },
       "primaryKey": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["project"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["project"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -101,20 +159,33 @@
       "principalInvestigator": {
         "additionalProperties": false,
         "properties": {
-          "affiliation": { "type": "string" },
-          "name": { "type": "string" }
+          "affiliation": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
         },
         "type": "object"
       },
-      "subtitle": { "type": "string" },
-      "title": { "type": "string" },
+      "subtitle": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
       "updatedAt": {
         "format": "date-time",
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "updatedBy": { "type": "string" },
-      "url": { "format": "uri", "type": "string" }
+      "updatedBy": {
+        "type": "string"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
+      }
     },
     "required": [
       "createdAt",
@@ -134,8 +205,16 @@
         "$schema": "http://json-schema.org/draft-04/schema",
         "additionalProperties": false,
         "properties": {
-          "brandName": { "maxLength": 50, "minLength": 1, "type": "string" },
-          "bullets": { "maxLength": 5000, "minLength": 20, "type": "string" },
+          "brandName": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "bullets": {
+            "maxLength": 5000,
+            "minLength": 20,
+            "type": "string"
+          },
           "conceptDOI": {
             "pattern": "^10\\.\\d{4,9}/[\\-._;()/:a-zA-Z0-9]+$",
             "type": "string"
@@ -155,8 +234,13 @@
                   },
                   "type": "array"
                 },
-                "foreignKey": { "$ref": "definitions.json/key/person" },
-                "isContactPerson": { "default": false, "type": "boolean" }
+                "foreignKey": {
+                  "$ref": "definitions.json/key/person"
+                },
+                "isContactPerson": {
+                  "default": false,
+                  "type": "boolean"
+                }
               },
               "required": ["affiliations", "foreignKey", "isContactPerson"],
               "type": "object"
@@ -169,10 +253,21 @@
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
           },
-          "createdBy": { "type": "string" },
-          "getStartedURL": { "format": "uri", "type": "string" },
-          "isFeatured": { "default": false, "type": "boolean" },
-          "isPublished": { "default": false, "type": "boolean" },
+          "createdBy": {
+            "type": "string"
+          },
+          "getStartedURL": {
+            "format": "uri",
+            "type": "string"
+          },
+          "isFeatured": {
+            "default": false,
+            "type": "boolean"
+          },
+          "isPublished": {
+            "default": false,
+            "type": "boolean"
+          },
           "license": {
             "items": {
               "enum": [
@@ -509,7 +604,9 @@
             "minItems": 1,
             "type": "array"
           },
-          "primaryKey": { "$ref": "definitions.json/key/software" },
+          "primaryKey": {
+            "$ref": "definitions.json/key/software"
+          },
           "programmingLanguage": {
             "items": {
               "enum": [
@@ -545,7 +642,10 @@
             "minItems": 1,
             "type": "array"
           },
-          "readMore": { "minLength": 200, "type": "string" },
+          "readMore": {
+            "minLength": 200,
+            "type": "string"
+          },
           "related": {
             "additionalProperties": false,
             "properties": {
@@ -553,7 +653,9 @@
                 "items": {
                   "additionalProperties": false,
                   "properties": {
-                    "foreignKey": { "$ref": "definitions.json/key/mention" }
+                    "foreignKey": {
+                      "$ref": "definitions.json/key/mention"
+                    }
                   },
                   "type": "object"
                 },
@@ -575,7 +677,9 @@
                 "items": {
                   "additionalProperties": false,
                   "properties": {
-                    "foreignKey": { "$ref": "definitions.json/key/project" }
+                    "foreignKey": {
+                      "$ref": "definitions.json/key/project"
+                    }
                   },
                   "type": "object"
                 },
@@ -585,7 +689,9 @@
                 "items": {
                   "additionalProperties": false,
                   "properties": {
-                    "foreignKey": { "$ref": "definitions.json/key/software" }
+                    "foreignKey": {
+                      "$ref": "definitions.json/key/software"
+                    }
                   },
                   "type": "object"
                 },
@@ -596,8 +702,17 @@
             "type": "object"
           },
           "repositoryURLs": {
-            "items": { "format": "uri", "type": "string" },
-            "type": "array"
+            "additionalProperties": false,
+            "properties": {
+              "github": {
+                "type": "array",
+                "items": {
+                  "format": "uri",
+                  "type": "string"
+                }
+              }
+            },
+            "type": "object"
           },
           "shortStatement": {
             "maxLength": 300,
@@ -662,7 +777,9 @@
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
             "type": "string"
           },
-          "updatedBy": { "type": "string" }
+          "updatedBy": {
+            "type": "string"
+          }
         },
         "required": [
           "brandName",
@@ -689,10 +806,16 @@
       {
         "properties": {
           "commits": {
-            "patternProperties": { "^\\d{4}-\\{2}$": { "type": "integer" } },
+            "patternProperties": {
+              "^\\d{4}-\\{2}$": {
+                "type": "integer"
+              }
+            },
             "type": "object"
           },
-          "isCitable": { "type": "boolean" },
+          "isCitable": {
+            "type": "boolean"
+          },
           "lastCommit": {
             "format": "date-time",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
@@ -724,7 +847,9 @@
                             "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
                           "type": "string"
                         },
-                        "isCorporateBlog": { "type": "boolean" },
+                        "isCorporateBlog": {
+                          "type": "boolean"
+                        },
                         "primaryKey": {
                           "additionalProperties": false,
                           "properties": {
@@ -732,12 +857,18 @@
                               "enum": ["mention"],
                               "type": "string"
                             },
-                            "id": { "pattern": "^[A-Z0-9]+$", "type": "string" }
+                            "id": {
+                              "pattern": "^[A-Z0-9]+$",
+                              "type": "string"
+                            }
                           },
                           "required": ["collection", "id"],
                           "type": "object"
                         },
-                        "title": { "type": "string", "minLength": 1 },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
                         "type": {
                           "enum": [
                             "blogPost",
@@ -770,8 +901,13 @@
                           "enum": ["zotero.py"],
                           "type": "string"
                         },
-                        "url": { "format": "uri", "type": "string" },
-                        "version": { "type": "integer" },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "version": {
+                          "type": "integer"
+                        },
                         "zoteroKey": {
                           "pattern": "^[A-Z0-9]+$",
                           "type": "string"
@@ -807,25 +943,39 @@
             "items": {
               "additionalProperties": false,
               "properties": {
-                "doi": { "type": "string" },
+                "doi": {
+                  "type": "string"
+                },
                 "files": {
                   "additionalProperties": false,
                   "properties": {
-                    "bibtex": { "type": "string" },
-                    "cff": { "type": "string" },
-                    "endnote": { "type": "string" },
-                    "ris": { "type": "string" }
+                    "bibtex": {
+                      "type": "string"
+                    },
+                    "cff": {
+                      "type": "string"
+                    },
+                    "endnote": {
+                      "type": "string"
+                    },
+                    "ris": {
+                      "type": "string"
+                    }
                   },
                   "required": ["bibtex", "cff", "endnote", "ris"],
                   "type": "object"
                 },
-                "tag": { "type": "string" }
+                "tag": {
+                  "type": "string"
+                }
               },
               "required": ["doi", "files", "tag"]
             },
             "type": "array"
           },
-          "totalCommits": { "type": "integer" }
+          "totalCommits": {
+            "type": "integer"
+          }
         },
         "required": [
           "commits",
@@ -842,30 +992,47 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
-      "author": { "type": "string" },
+      "author": {
+        "type": "string"
+      },
       "createdAt": {
         "format": "date-time",
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "createdBy": { "type": "string" },
+      "createdBy": {
+        "type": "string"
+      },
       "date": {
         "format": "date-time",
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "image": { "format": "uri", "type": "string" },
-      "isCorporateBlog": { "default": false, "type": "boolean" },
+      "image": {
+        "format": "uri",
+        "type": "string"
+      },
+      "isCorporateBlog": {
+        "default": false,
+        "type": "boolean"
+      },
       "primaryKey": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["mention"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["mention"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
       },
-      "title": { "type": "string" },
+      "title": {
+        "type": "string"
+      },
       "type": {
         "enum": [
           "attachment",
@@ -895,10 +1062,19 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "updatedBy": { "type": "string" },
-      "url": { "format": "uri", "type": "string" },
-      "version": { "type": "number" },
-      "zoteroKey": { "type": "string" }
+      "updatedBy": {
+        "type": "string"
+      },
+      "url": {
+        "format": "uri",
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      },
+      "zoteroKey": {
+        "type": "string"
+      }
     },
     "required": [
       "createdAt",
@@ -914,8 +1090,16 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
-      "brandName": { "maxLength": 50, "minLength": 1, "type": "string" },
-      "bullets": { "maxLength": 5000, "minLength": 20, "type": "string" },
+      "brandName": {
+        "maxLength": 50,
+        "minLength": 1,
+        "type": "string"
+      },
+      "bullets": {
+        "maxLength": 5000,
+        "minLength": 20,
+        "type": "string"
+      },
       "conceptDOI": {
         "pattern": "^10\\.\\d{4,9}/[\\-._;()/:a-zA-Z0-9]+$",
         "type": "string"
@@ -935,7 +1119,9 @@
                         "enum": ["organization"],
                         "type": "string"
                       },
-                      "id": { "type": "string" }
+                      "id": {
+                        "type": "string"
+                      }
                     },
                     "required": ["collection", "id"],
                     "type": "object"
@@ -947,13 +1133,21 @@
             "foreignKey": {
               "additionalProperties": false,
               "properties": {
-                "collection": { "enum": ["person"], "type": "string" },
-                "id": { "type": "string" }
+                "collection": {
+                  "enum": ["person"],
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
               },
               "required": ["collection", "id"],
               "type": "object"
             },
-            "isContactPerson": { "default": false, "type": "boolean" }
+            "isContactPerson": {
+              "default": false,
+              "type": "boolean"
+            }
           },
           "required": ["affiliations", "foreignKey", "isContactPerson"],
           "type": "object"
@@ -966,10 +1160,21 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "createdBy": { "type": "string" },
-      "getStartedURL": { "format": "uri", "type": "string" },
-      "isFeatured": { "default": false, "type": "boolean" },
-      "isPublished": { "default": false, "type": "boolean" },
+      "createdBy": {
+        "type": "string"
+      },
+      "getStartedURL": {
+        "format": "uri",
+        "type": "string"
+      },
+      "isFeatured": {
+        "default": false,
+        "type": "boolean"
+      },
+      "isPublished": {
+        "default": false,
+        "type": "boolean"
+      },
       "license": {
         "items": {
           "enum": [
@@ -1309,8 +1514,13 @@
       "primaryKey": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["software"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["software"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -1350,7 +1560,10 @@
         "minItems": 1,
         "type": "array"
       },
-      "readMore": { "minLength": 200, "type": "string" },
+      "readMore": {
+        "minLength": 200,
+        "type": "string"
+      },
       "related": {
         "additionalProperties": false,
         "properties": {
@@ -1361,8 +1574,13 @@
                 "foreignKey": {
                   "additionalProperties": false,
                   "properties": {
-                    "collection": { "enum": ["mention"], "type": "string" },
-                    "id": { "type": "string" }
+                    "collection": {
+                      "enum": ["mention"],
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
                   },
                   "required": ["collection", "id"],
                   "type": "object"
@@ -1383,7 +1601,9 @@
                       "enum": ["organization"],
                       "type": "string"
                     },
-                    "id": { "type": "string" }
+                    "id": {
+                      "type": "string"
+                    }
                   },
                   "required": ["collection", "id"],
                   "type": "object"
@@ -1400,8 +1620,13 @@
                 "foreignKey": {
                   "additionalProperties": false,
                   "properties": {
-                    "collection": { "enum": ["project"], "type": "string" },
-                    "id": { "type": "string" }
+                    "collection": {
+                      "enum": ["project"],
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
                   },
                   "required": ["collection", "id"],
                   "type": "object"
@@ -1418,8 +1643,13 @@
                 "foreignKey": {
                   "additionalProperties": false,
                   "properties": {
-                    "collection": { "enum": ["software"], "type": "string" },
-                    "id": { "type": "string" }
+                    "collection": {
+                      "enum": ["software"],
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
                   },
                   "required": ["collection", "id"],
                   "type": "object"
@@ -1434,8 +1664,17 @@
         "type": "object"
       },
       "repositoryURLs": {
-        "items": { "format": "uri", "type": "string" },
-        "type": "array"
+        "additionalProperties": false,
+        "properties": {
+          "github": {
+            "type": "array",
+            "items": {
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        },
+        "type": "object"
       },
       "shortStatement": {
         "maxLength": 300,
@@ -1478,7 +1717,11 @@
               "minLength": 1,
               "type": "string"
             },
-            "person": { "maxLength": 100, "minLength": 1, "type": "string" },
+            "person": {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
             "text": {
               "maxLength": 500,
               "minLength": 10,
@@ -1496,7 +1739,9 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "updatedBy": { "type": "string" }
+      "updatedBy": {
+        "type": "string"
+      }
     },
     "required": [
       "brandName",
@@ -1523,8 +1768,13 @@
   "definitions": {
     "blob": {
       "properties": {
-        "data": { "format": "base64", "type": "string" },
-        "mimeType": { "type": "string" }
+        "data": {
+          "format": "base64",
+          "type": "string"
+        },
+        "mimeType": {
+          "type": "string"
+        }
       },
       "type": "object"
     },
@@ -1532,8 +1782,13 @@
       "mention": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["mention"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["mention"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -1541,8 +1796,13 @@
       "organization": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["organization"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["organization"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -1550,8 +1810,13 @@
       "person": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["person"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["person"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -1559,8 +1824,13 @@
       "project": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["project"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["project"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -1568,8 +1838,13 @@
       "software": {
         "additionalProperties": false,
         "properties": {
-          "collection": { "enum": ["software"], "type": "string" },
-          "id": { "type": "string" }
+          "collection": {
+            "enum": ["software"],
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
         },
         "required": ["collection", "id"],
         "type": "object"
@@ -1585,7 +1860,10 @@
         "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
         "type": "string"
       },
-      "repositoryURL": { "format": "uri", "type": "string" }
+      "repositoryURL": {
+        "format": "uri",
+        "type": "string"
+      }
     },
     "required": ["date", "repositoryURL"],
     "title": "Commit schema"

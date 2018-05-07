@@ -24679,7 +24679,7 @@
         }
       ],
       "getStartedURL": "https://github.com/NLeSC/Xenon",
-      "repositoryURLs": ["https://github.com/NLeSC/Xenon"],
+      "repositoryURLs": { "github": ["https://github.com/NLeSC/Xenon"] },
       "isFeatured": true,
       "isPublished": true,
       "license": ["Apache-2.0"],

@@ -96,10 +96,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-kkGfuU cnbAdQ"
+  className="sc-hSdWYo fdMGfB"
 >
   <label
-    className="sc-kEYyzF gfWKdx"
+    className="sc-iAyFgw gPlgsX"
   >
     Object
   </label>
@@ -1259,19 +1259,16 @@ exports[`Storyshots Full app default 1`] = `
           <div
             className="ui inverted vertical submenu menu"
           >
-            <button
-              className="ui secondary button"
-              disabled={undefined}
+            <a
+              href="/software"
               onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
               title="Add"
             >
               <i
                 aria-hidden="true"
                 className="add icon"
               />
-            </button>
+            </a>
             <div
               className="ui icon input submenu-search inverted"
             >
@@ -5069,19 +5066,16 @@ exports[`Storyshots Full app default 1`] = `
           <div
             className="ui inverted vertical submenu menu"
           >
-            <button
-              className="ui secondary button"
-              disabled={undefined}
+            <a
+              href="/person"
               onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
               title="Add"
             >
               <i
                 aria-hidden="true"
                 className="add icon"
               />
-            </button>
+            </a>
             <div
               className="ui icon input submenu-search inverted"
             >
@@ -19083,19 +19077,16 @@ exports[`Storyshots Full app default 1`] = `
           <div
             className="ui inverted vertical submenu menu"
           >
-            <button
-              className="ui secondary button"
-              disabled={undefined}
+            <a
+              href="/organization"
               onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
               title="Add"
             >
               <i
                 aria-hidden="true"
                 className="add icon"
               />
-            </button>
+            </a>
             <div
               className="ui icon input submenu-search inverted"
             >
@@ -19969,19 +19960,16 @@ exports[`Storyshots Menu Full menu 1`] = `
         <div
           className="ui inverted vertical submenu menu"
         >
-          <button
-            className="ui secondary button"
-            disabled={undefined}
+          <a
+            href="/software"
             onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
             title="Add"
           >
             <i
               aria-hidden="true"
               className="add icon"
             />
-          </button>
+          </a>
           <div
             className="ui icon input submenu-search inverted"
           >
@@ -23779,19 +23767,16 @@ exports[`Storyshots Menu Full menu 1`] = `
         <div
           className="ui inverted vertical submenu menu"
         >
-          <button
-            className="ui secondary button"
-            disabled={undefined}
+          <a
+            href="/person"
             onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
             title="Add"
           >
             <i
               aria-hidden="true"
               className="add icon"
             />
-          </button>
+          </a>
           <div
             className="ui icon input submenu-search inverted"
           >
@@ -37793,19 +37778,16 @@ exports[`Storyshots Menu Full menu 1`] = `
         <div
           className="ui inverted vertical submenu menu"
         >
-          <button
-            className="ui secondary button"
-            disabled={undefined}
+          <a
+            href="/organization"
             onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
             title="Add"
           >
             <i
               aria-hidden="true"
               className="add icon"
             />
-          </button>
+          </a>
           <div
             className="ui icon input submenu-search inverted"
           >
@@ -42386,19 +42368,16 @@ exports[`Storyshots Menu ResourceType 1`] = `
       <div
         className="ui inverted vertical submenu menu"
       >
-        <button
-          className="ui secondary button"
-          disabled={undefined}
+        <a
+          href="/software"
           onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
           title="Add"
         >
           <i
             aria-hidden="true"
             className="add icon"
           />
-        </button>
+        </a>
         <div
           className="ui icon input submenu-search inverted"
         >
@@ -46158,5 +46137,1556 @@ exports[`Storyshots Resource/Organization Netherlands eScience Center 1`] = `nul
 exports[`Storyshots Resource/Person s.verhoeven 1`] = `null`;
 
 exports[`Storyshots Resource/Project andi 1`] = `null`;
+
+exports[`Storyshots Resource/Software empty 1`] = `
+<div>
+  <div>
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "marginBottom": ".5em",
+          }
+        }
+      >
+        <div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Brand name
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui large input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue=""
+                    disabled={false}
+                    onChange={[Function]}
+                    tabIndex={undefined}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-htpNat kXYjeN"
+            >
+              <label
+                className="sc-bwzfXH kuMnGb"
+              >
+                Is published
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui fitted toggle checkbox"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                >
+                  <input
+                    checked={false}
+                    className="hidden"
+                    id={undefined}
+                    name={undefined}
+                    onClick={[Function]}
+                    readOnly={true}
+                    tabIndex={0}
+                    type="checkbox"
+                    value={undefined}
+                  />
+                  <label
+                    htmlFor={undefined}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-htpNat kXYjeN"
+            >
+              <label
+                className="sc-bwzfXH kuMnGb"
+              >
+                Is featured
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-bdVaJa hjasLL"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Use with caution, not everything can be featured",
+                    }
+                  }
+                />
+                <div
+                  className="ui fitted toggle checkbox"
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                >
+                  <input
+                    checked={false}
+                    className="hidden"
+                    id={undefined}
+                    name={undefined}
+                    onClick={[Function]}
+                    readOnly={true}
+                    tabIndex={0}
+                    type="checkbox"
+                    value={undefined}
+                  />
+                  <label
+                    htmlFor={undefined}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                shortStatement
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-bdVaJa hjasLL"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>",
+                    }
+                  }
+                />
+                <textarea
+                  className="sc-bZQynM dzZVTh"
+                  defaultValue=""
+                  disabled={false}
+                  error={false}
+                  onChange={[Function]}
+                  onInput={[Function]}
+                  rows={3}
+                  size="large"
+                  style={
+                    Object {
+                      "resize": "none",
+                    }
+                  }
+                  value={undefined}
+                />
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Bullet list
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-bdVaJa hjasLL"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>",
+                    }
+                  }
+                />
+                <textarea
+                  className="sc-bZQynM dzZVTh"
+                  defaultValue=""
+                  disabled={false}
+                  error={false}
+                  onChange={[Function]}
+                  onInput={[Function]}
+                  rows={3}
+                  size="large"
+                  style={
+                    Object {
+                      "resize": "none",
+                    }
+                  }
+                  value={undefined}
+                />
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Read more
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-bdVaJa hjasLL"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Text shown when Read more button is pressed",
+                    }
+                  }
+                />
+                <textarea
+                  className="sc-bZQynM dzZVTh"
+                  defaultValue=""
+                  disabled={false}
+                  error={false}
+                  onChange={[Function]}
+                  onInput={[Function]}
+                  rows={3}
+                  size="large"
+                  style={
+                    Object {
+                      "resize": "none",
+                    }
+                  }
+                  value={undefined}
+                />
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Getting started URL
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui large input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue=""
+                    disabled={false}
+                    onChange={[Function]}
+                    tabIndex={undefined}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Concept DOI
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-bdVaJa hjasLL"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "The <a href=\\"https://help.zenodo.org/#versioning\\">Zenodo concept DOI</a>. Not an URL",
+                    }
+                  }
+                />
+                <div
+                  className="ui large input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue=""
+                    disabled={false}
+                    onChange={[Function]}
+                    tabIndex={undefined}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                slug
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-bdVaJa hjasLL"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Human readable identifier in url for this item",
+                    }
+                  }
+                />
+                <div
+                  className="ui large input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue={undefined}
+                    disabled={false}
+                    onChange={[Function]}
+                    tabIndex={undefined}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <section
+              className="sc-cSHVUG CAuLq"
+            >
+              <div
+                className="sc-VigVT ddVmTT"
+                style={
+                  Object {
+                    "backgroundColor": "#2185d0",
+                  }
+                }
+              >
+                <div
+                  className="sc-jTzLTM izCUzN"
+                >
+                  <div
+                    className="sc-dnqmqq Uvyxt"
+                    onClick={[Function]}
+                  >
+                    License(s)
+                     
+                     
+                    <div
+                      className="ui blue circular label"
+                      onClick={[Function]}
+                    >
+                      0
+                    </div>
+                     
+                    <i
+                      aria-hidden="true"
+                      className="angle up icon"
+                    />
+                  </div>
+                  <button
+                    className="ui blue button"
+                    disabled={undefined}
+                    onClick={[Function]}
+                    role="button"
+                    tabIndex={undefined}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div
+                className="sc-iwsKbI gWnLoY"
+              />
+            </section>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <section
+              className="sc-cSHVUG CAuLq"
+            >
+              <div
+                className="sc-VigVT ddVmTT"
+                style={
+                  Object {
+                    "backgroundColor": "#2185d0",
+                  }
+                }
+              >
+                <div
+                  className="sc-jTzLTM izCUzN"
+                >
+                  <div
+                    className="sc-dnqmqq Uvyxt"
+                    onClick={[Function]}
+                  >
+                    Programming language(s)
+                     
+                     
+                    <div
+                      className="ui blue circular label"
+                      onClick={[Function]}
+                    >
+                      0
+                    </div>
+                     
+                    <i
+                      aria-hidden="true"
+                      className="angle up icon"
+                    />
+                  </div>
+                  <button
+                    className="ui blue button"
+                    disabled={undefined}
+                    onClick={[Function]}
+                    role="button"
+                    tabIndex={undefined}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div
+                className="sc-iwsKbI gWnLoY"
+              />
+            </section>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-hSdWYo fdMGfB"
+            >
+              <label
+                className="sc-iAyFgw gPlgsX"
+              >
+                GitHub repository URL's
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                        "marginBottom": ".5em",
+                      }
+                    }
+                  >
+                    <section
+                      className="sc-cSHVUG CAuLq"
+                    >
+                      <div
+                        className="sc-VigVT ddVmTT"
+                        style={
+                          Object {
+                            "backgroundColor": "#2185d0",
+                          }
+                        }
+                      >
+                        <div
+                          className="sc-jTzLTM izCUzN"
+                        >
+                          <div
+                            className="sc-dnqmqq Uvyxt"
+                            onClick={[Function]}
+                          >
+                            github
+                             
+                             
+                            <div
+                              className="ui blue circular label"
+                              onClick={[Function]}
+                            >
+                              0
+                            </div>
+                             
+                            <i
+                              aria-hidden="true"
+                              className="angle up icon"
+                            />
+                          </div>
+                          <button
+                            className="ui blue button"
+                            disabled={undefined}
+                            onClick={[Function]}
+                            role="button"
+                            tabIndex={undefined}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        className="sc-iwsKbI gWnLoY"
+                      />
+                    </section>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    >
+                      []
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <section
+              className="sc-cSHVUG CAuLq"
+            >
+              <div
+                className="sc-VigVT ddVmTT"
+                style={
+                  Object {
+                    "backgroundColor": "#2185d0",
+                  }
+                }
+              >
+                <div
+                  className="sc-jTzLTM izCUzN"
+                >
+                  <div
+                    className="sc-dnqmqq Uvyxt"
+                    onClick={[Function]}
+                  >
+                    Contributors
+                     
+                     
+                    <div
+                      className="ui blue circular label"
+                      onClick={[Function]}
+                    >
+                      0
+                    </div>
+                     
+                    <i
+                      aria-hidden="true"
+                      className="angle up icon"
+                    />
+                  </div>
+                  <button
+                    className="ui blue button"
+                    disabled={undefined}
+                    onClick={[Function]}
+                    role="button"
+                    tabIndex={undefined}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div
+                className="sc-iwsKbI gWnLoY"
+              />
+            </section>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-hSdWYo fdMGfB"
+            >
+              <label
+                className="sc-iAyFgw gPlgsX"
+              >
+                Related
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                        "marginBottom": ".5em",
+                      }
+                    }
+                  >
+                    <section
+                      className="sc-cSHVUG CAuLq"
+                    >
+                      <div
+                        className="sc-VigVT ddVmTT"
+                        style={
+                          Object {
+                            "backgroundColor": "#2185d0",
+                          }
+                        }
+                      >
+                        <div
+                          className="sc-jTzLTM izCUzN"
+                        >
+                          <div
+                            className="sc-dnqmqq Uvyxt"
+                            onClick={[Function]}
+                          >
+                            mentions
+                             
+                             
+                            <div
+                              className="ui blue circular label"
+                              onClick={[Function]}
+                            >
+                              0
+                            </div>
+                             
+                            <i
+                              aria-hidden="true"
+                              className="angle up icon"
+                            />
+                          </div>
+                          <button
+                            className="ui blue button"
+                            disabled={undefined}
+                            onClick={[Function]}
+                            role="button"
+                            tabIndex={undefined}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        className="sc-iwsKbI gWnLoY"
+                      />
+                    </section>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    >
+                      []
+                    </div>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                        "marginBottom": ".5em",
+                      }
+                    }
+                  >
+                    <section
+                      className="sc-cSHVUG CAuLq"
+                    >
+                      <div
+                        className="sc-VigVT ddVmTT"
+                        style={
+                          Object {
+                            "backgroundColor": "#2185d0",
+                          }
+                        }
+                      >
+                        <div
+                          className="sc-jTzLTM izCUzN"
+                        >
+                          <div
+                            className="sc-dnqmqq Uvyxt"
+                            onClick={[Function]}
+                          >
+                            organizations
+                             
+                             
+                            <div
+                              className="ui blue circular label"
+                              onClick={[Function]}
+                            >
+                              0
+                            </div>
+                             
+                            <i
+                              aria-hidden="true"
+                              className="angle up icon"
+                            />
+                          </div>
+                          <button
+                            className="ui blue button"
+                            disabled={undefined}
+                            onClick={[Function]}
+                            role="button"
+                            tabIndex={undefined}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        className="sc-iwsKbI gWnLoY"
+                      />
+                    </section>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    >
+                      []
+                    </div>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                        "marginBottom": ".5em",
+                      }
+                    }
+                  >
+                    <section
+                      className="sc-cSHVUG CAuLq"
+                    >
+                      <div
+                        className="sc-VigVT ddVmTT"
+                        style={
+                          Object {
+                            "backgroundColor": "#2185d0",
+                          }
+                        }
+                      >
+                        <div
+                          className="sc-jTzLTM izCUzN"
+                        >
+                          <div
+                            className="sc-dnqmqq Uvyxt"
+                            onClick={[Function]}
+                          >
+                            projects
+                             
+                             
+                            <div
+                              className="ui blue circular label"
+                              onClick={[Function]}
+                            >
+                              0
+                            </div>
+                             
+                            <i
+                              aria-hidden="true"
+                              className="angle up icon"
+                            />
+                          </div>
+                          <button
+                            className="ui blue button"
+                            disabled={undefined}
+                            onClick={[Function]}
+                            role="button"
+                            tabIndex={undefined}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        className="sc-iwsKbI gWnLoY"
+                      />
+                    </section>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    >
+                      []
+                    </div>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "justifyContent": "center",
+                        "marginBottom": ".5em",
+                      }
+                    }
+                  >
+                    <section
+                      className="sc-cSHVUG CAuLq"
+                    >
+                      <div
+                        className="sc-VigVT ddVmTT"
+                        style={
+                          Object {
+                            "backgroundColor": "#2185d0",
+                          }
+                        }
+                      >
+                        <div
+                          className="sc-jTzLTM izCUzN"
+                        >
+                          <div
+                            className="sc-dnqmqq Uvyxt"
+                            onClick={[Function]}
+                          >
+                            software
+                             
+                             
+                            <div
+                              className="ui blue circular label"
+                              onClick={[Function]}
+                            >
+                              0
+                            </div>
+                             
+                            <i
+                              aria-hidden="true"
+                              className="angle up icon"
+                            />
+                          </div>
+                          <button
+                            className="ui blue button"
+                            disabled={undefined}
+                            onClick={[Function]}
+                            role="button"
+                            tabIndex={undefined}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        className="sc-iwsKbI gWnLoY"
+                      />
+                    </section>
+                    <div
+                      style={
+                        Object {
+                          "display": "none",
+                        }
+                      }
+                    >
+                      []
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <section
+              className="sc-cSHVUG CAuLq"
+            >
+              <div
+                className="sc-VigVT ddVmTT"
+                style={
+                  Object {
+                    "backgroundColor": "#2185d0",
+                  }
+                }
+              >
+                <div
+                  className="sc-jTzLTM izCUzN"
+                >
+                  <div
+                    className="sc-dnqmqq Uvyxt"
+                    onClick={[Function]}
+                  >
+                    Testimonials
+                     
+                     
+                    <div
+                      className="ui blue circular label"
+                      onClick={[Function]}
+                    >
+                      0
+                    </div>
+                     
+                    <i
+                      aria-hidden="true"
+                      className="angle up icon"
+                    />
+                  </div>
+                  <button
+                    className="ui blue button"
+                    disabled={undefined}
+                    onClick={[Function]}
+                    role="button"
+                    tabIndex={undefined}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div
+                className="sc-iwsKbI gWnLoY"
+              />
+            </section>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <section
+              className="sc-cSHVUG CAuLq"
+            >
+              <div
+                className="sc-VigVT ddVmTT"
+                style={
+                  Object {
+                    "backgroundColor": "#2185d0",
+                  }
+                }
+              >
+                <div
+                  className="sc-jTzLTM izCUzN"
+                >
+                  <div
+                    className="sc-dnqmqq Uvyxt"
+                    onClick={[Function]}
+                  >
+                    tags
+                     
+                     
+                    <div
+                      className="ui blue circular label"
+                      onClick={[Function]}
+                    >
+                      0
+                    </div>
+                     
+                    <i
+                      aria-hidden="true"
+                      className="angle up icon"
+                    />
+                  </div>
+                  <button
+                    className="ui blue button"
+                    disabled={undefined}
+                    onClick={[Function]}
+                    role="button"
+                    tabIndex={undefined}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div
+                className="sc-iwsKbI gWnLoY"
+              />
+            </section>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Created at
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui large disabled input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue="2018-05-07T14:54:42Z"
+                    disabled={true}
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Created by
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui large disabled input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue="Tommos0"
+                    disabled={true}
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Updated by
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui large disabled input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue="Tommos0"
+                    disabled={true}
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-ifAKCX bNIpav"
+            >
+              <label
+                className="sc-EHOje jpYqWO"
+              >
+                Updated at
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <div
+                  className="ui large disabled input sc-bxivhb jcNPuI"
+                >
+                  <input
+                    defaultValue="2018-05-07T14:54:42Z"
+                    disabled={true}
+                    onChange={[Function]}
+                    tabIndex={-1}
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexDirection": "column",
+                "justifyContent": "center",
+                "marginBottom": ".5em",
+              }
+            }
+          >
+            <div
+              className="sc-hMqMXs iLsirh"
+            >
+              <label
+                className="sc-kEYyzF bZRYDN"
+              >
+                Primary key
+              </label>
+              <div
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                software
+                 / 
+                some random id
+              </div>
+            </div>
+            <div
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              []
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          []
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    className="ui button"
+    disabled={undefined}
+    onClick={[Function]}
+    role="button"
+    tabIndex={undefined}
+  >
+    Save
+  </button>
+</div>
+`;
 
 exports[`Storyshots Resource/Software xenon 1`] = `null`;

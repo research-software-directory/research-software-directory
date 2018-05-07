@@ -43,28 +43,32 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
     }
   };
 
+  renderItem = (key: string) => {
+    return (
+      <FormPart
+        key={key}
+        value={this.props.value ? this.props.value[key] : undefined}
+        settings={
+          (this.props.settings &&
+            this.props.settings.properties &&
+            this.props.settings.properties[key]) || { label: "" }
+        }
+        readonly={!!this.props.readonly || !!this.props.settings.readonly}
+        schema={this.props.schema.properties[key]}
+        data={this.props.data}
+        label={key}
+        onChange={this.handleChange(key)}
+        resourceTemplates={this.props.resourceTemplates}
+      />
+    );
+  };
+
   render() {
     const contents = (
       <div>
         {Object.keys(this.props.schema.properties)
           .sort(this.sortKeys)
-          .map((key: string) => (
-            <FormPart
-              key={key}
-              value={this.props.value ? this.props.value[key] : undefined}
-              settings={
-                (this.props.settings &&
-                  this.props.settings.properties &&
-                  this.props.settings.properties[key]) || { label: "" }
-              }
-              readonly={!!this.props.readonly || !!this.props.settings.readonly}
-              schema={this.props.schema.properties[key]}
-              data={this.props.data}
-              label={key}
-              onChange={this.handleChange(key)}
-              resourceTemplates={this.props.resourceTemplates}
-            />
-          ))}
+          .map(this.renderItem)}
         {this.props.validationErrors &&
           this.props.validationErrors.map((error, i) => (
             <div key={i}>
@@ -73,9 +77,6 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
           ))}
       </div>
     );
-    // if (!contents) {
-    //   return null;
-    // }
 
     if (this.props.showLabel !== false) {
       return (
