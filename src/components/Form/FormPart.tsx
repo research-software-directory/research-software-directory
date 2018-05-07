@@ -5,6 +5,7 @@ import { getComponent } from "./elementFactory";
 import styled from "styled-components";
 import { debounce } from "../../utils/debounce";
 import * as Ajv from "ajv";
+import TypeObject from "./TypeObject";
 
 interface IState {
   hasError: boolean;
@@ -87,7 +88,15 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     if (this.state.hasError) {
       return <ShowError>Error: {this.state.error.stack.toString()}</ShowError>;
     }
-    const Component = getComponent(this.props.schema, this.props.settings);
+    let Component = getComponent(this.props.schema, this.props.settings);
+    if (Component === undefined) {
+      if (process.env.NODE_ENV === "test" || process.env.STORYBOOK_ENABLED) {
+        // Fallback to object when component was not found
+        Component = TypeObject;
+      } else {
+        return <ShowError>Error: Unable to render form part</ShowError>;
+      }
+    }
     return (
       <div
         style={{

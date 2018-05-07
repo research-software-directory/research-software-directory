@@ -6,7 +6,8 @@ import {
   isStringEnumSchema,
   isForeignKeySchema,
   isObjectSchema,
-  isStringSchema
+  isStringSchema,
+  isNumberSchema
 } from "../../interfaces/json-schema";
 import TypeString from "./TypeString";
 import TypeDummy from "./TypeDummy";
@@ -15,6 +16,7 @@ import TypeArray from "./TypeArray";
 import TypeBoolean from "./TypeBoolean";
 import TypeEnum from "./TypeStringEnum";
 import TypeForeignKey from "./TypeForeignKey";
+import { TypeNumber } from "./TypeNumber";
 import { ISettingsProperty } from "../../rootReducer";
 import { IProps } from "./IProps";
 import TypeImage from "./TypeImage";
@@ -52,6 +54,7 @@ export const getComponent = (
   [isStringSchema, TypeString],
   [isStringEnumSchema, TypeEnum],
   [isBooleanSchema, TypeBoolean],
+  [isNumberSchema, TypeNumber],
   [isForeignKeySchema, TypeForeignKey],
   [isObjectSchema, TypeObject]
 ].forEach(([filter, component]) => {
