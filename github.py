@@ -58,7 +58,7 @@ def get_repo_urls_to_sync():
     :return: list of Github repos (full urls)
     """
     nested_urls = map(
-        lambda sw: [url for url in sw['repositoryURLs'] if is_github_url(url)],
+        lambda sw: [url for url in sw['repositoryURLs']['github'] if is_github_url(url)],
         db.software.find()
     )
     return set(flatten(nested_urls))
@@ -134,6 +134,7 @@ def set_num_new_commits(repo):
     repo.new_commits = int(re.match(r'.*per_page=1&page=(\d*)>; rel="last"', link).group(1))
     return repo
 
+
 def async_until_rate_limit_exceeds(func, args):
     with concurrent.futures.ThreadPoolExecutor(max_workers=25) as executor:
         futures = [executor.submit(func, arg) for arg in args]
@@ -142,10 +143,6 @@ def async_until_rate_limit_exceeds(func, args):
                 for f in futures:
                     f.cancel()
                 return
-            try:
-                print("%s: %s" % (future.result().name, future.result().new_commits))
-            except Exception:
-                pass
 
 
 def sync_all():
@@ -159,12 +156,3 @@ def sync_all():
     for repo in repos:
         logger.info("%s: %s", repo.name, repo.new_commits)
     async_until_rate_limit_exceeds(sync_github_repo, repos)
-
-
-
-
-    # for url in urls:
-    #     try:
-    #         new_commits = sync_github_repo(url)
-    #     except Exception as e:
-    #         logger.error('Error trying to sync ' + url + ' ' + str(e))
