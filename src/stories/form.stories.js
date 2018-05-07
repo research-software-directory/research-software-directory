@@ -9,6 +9,7 @@ import TypeStringEnum from "../components/Form/TypeStringEnum";
 import TypeObject from "../components/Form/TypeObject";
 import TypeArray from "../components/Form/TypeArray";
 import TypeForeignKey from "../components/Form/TypeForeignKey";
+import { TypeNumber } from "../components/Form/TypeNumber";
 
 storiesOf("Form elements", module)
   .add("StringEnum", () => (
@@ -228,5 +229,29 @@ storiesOf("Form elements/Boolean", module)
       }}
       onChange={action("change")}
       label="Boolean"
+    />
+  ));
+
+storiesOf("Form elements/Number", module)
+  .add("with help", () => (
+    <TypeNumber
+      schema={null}
+      value={42}
+      settings={{
+        help: "Some useful help message"
+      }}
+      onChange={action("change")}
+      label="Number"
+    />
+  ))
+  .add("read only", () => (
+    <TypeNumber
+      schema={null}
+      value={42}
+      settings={{
+        readonly: true
+      }}
+      onChange={action("change")}
+      label="Number"
     />
   ));

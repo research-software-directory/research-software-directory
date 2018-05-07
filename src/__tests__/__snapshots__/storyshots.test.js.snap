@@ -96,10 +96,10 @@ exports[`Storyshots Form elements ForeignKey 1`] = `
 
 exports[`Storyshots Form elements Object 1`] = `
 <div
-  className="sc-eNQAEJ bAckRy"
+  className="sc-kkGfuU cnbAdQ"
 >
   <label
-    className="sc-jKJlTe loXQau"
+    className="sc-kEYyzF gfWKdx"
   >
     Object
   </label>
@@ -881,6 +881,76 @@ exports[`Storyshots Form elements/Boolean with help 1`] = `
       />
       <label
         htmlFor={undefined}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/Number read only 1`] = `
+<div
+  className="sc-kpOJdX UpgUc"
+>
+  <label
+    className="sc-dxgOiQ CbeaR"
+  >
+    Number
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div
+      className="ui large disabled input sc-kGXeez hdOaOS"
+    >
+      <input
+        defaultValue={42}
+        disabled={true}
+        onChange={[Function]}
+        tabIndex={-1}
+        type="number"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Form elements/Number with help 1`] = `
+<div
+  className="sc-kpOJdX UpgUc"
+>
+  <label
+    className="sc-dxgOiQ CbeaR"
+  >
+    Number
+  </label>
+  <div
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <div
+      className="sc-bdVaJa hjasLL"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Some useful help message",
+        }
+      }
+    />
+    <div
+      className="ui large input sc-kGXeez hdOaOS"
+    >
+      <input
+        defaultValue={42}
+        disabled={false}
+        onChange={[Function]}
+        tabIndex={undefined}
+        type="number"
       />
     </div>
   </div>

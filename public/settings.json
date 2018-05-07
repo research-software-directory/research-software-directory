@@ -66,7 +66,7 @@
         },
         "repositoryURLs": {
           "sortIndex": 580,
-          "label": "GitHub repository URL's"
+          "label": "Code repository URL's"
         },
         "isFeatured": {
           "sortIndex": 20,
@@ -131,7 +131,7 @@
           }
         },
         "shortStatement": {
-          "label": "shortStatement",
+          "label": "Short statement",
           "multiline": true,
           "sortIndex": 50,
           "help":
@@ -139,7 +139,7 @@
         },
         "slug": {
           "sortIndex": 520,
-          "label": "slug",
+          "label": "Slug",
           "help": "Human readable identifier in url for this item"
         },
         "tags": {

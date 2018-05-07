@@ -40,6 +40,10 @@ export interface IStringSchema {
   format?: string;
 }
 
+export interface INumberSchema {
+  type: "number";
+}
+
 export interface IForeignKeySchema {
   type: "object";
   required: ["collection", "id"];
@@ -77,6 +81,10 @@ export function isStringEnumSchema(schema: any): schema is IStringEnumSchema {
 
 export function isBooleanSchema(schema: any): schema is IBooleanSchema {
   return schema.type === "boolean";
+}
+
+export function isNumberSchema(schema: any): schema is INumberSchema {
+  return schema.type === "number";
 }
 
 export function isStringSchema(schema: any): schema is IStringSchema {
