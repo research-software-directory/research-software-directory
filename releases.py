@@ -41,7 +41,7 @@ class ReleaseScraper:
         self.doi = doi
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
         self.releases = None
-        self.isCitable = None
+        self.isCitable = False
         self.latest_codemeta = None
         if not self.is_zenodo_doi():
             raise ValueError("is not a Zenodo doi.")
@@ -118,12 +118,12 @@ class ReleaseScraper:
                     "version": release["tag"]
                 }
                 remove = ["commit"]
-                citation = Citation(release["url"], override=override, remove=remove)
+                citation = Citation(url=release["url"], override=override, remove=remove)
                 cff_file["found"][release_index] = True
                 try:
                     release["files"] = dict({
                         "bibtex": citation.as_bibtex(),
-                        "cff": citation.file_contents,
+                        "cff": citation.cffstr,
                         "codemeta": citation.as_codemeta(),
                         "endnote": citation.as_enw(),
                         "ris": citation.as_ris()
@@ -171,7 +171,7 @@ def sync_releases(db):
             document = {
                 "_id": conceptdoi,
                 "conceptDOI": conceptdoi,
-                "isCitable" : scraper.isCitable,
+                "isCitable": scraper.isCitable,
                 "latestCodemeta": scraper.latest_codemeta,
                 "releases": scraper.releases,
                 "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
