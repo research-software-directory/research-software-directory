@@ -1,8 +1,11 @@
+import logging
 from datetime import datetime
 import re
 
 import requests
 from cffconvert import Citation
+
+logger = logging.getLogger(__name__)
 
 
 class ReleaseScraper:
@@ -176,9 +179,9 @@ def sync_releases(db):
                 "releases": scraper.releases,
                 "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
             }
-            print("{0}/{1} \"{2}\": {3} OK".format(item_index+1, count,
+            logger.info("{0}/{1} \"{2}\": {3} OK".format(item_index+1, count,
                                                    software_item["brandName"], conceptdoi))
             db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
         except (KeyError, ValueError) as e:
-            print("{0}/{1} \"{2}\": {3} {4}".format(item_index+1, count,
+            logger.info("{0}/{1} \"{2}\": {3} {4}".format(item_index+1, count,
                                                     software_item["brandName"], conceptdoi, str(e)))

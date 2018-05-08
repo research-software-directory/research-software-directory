@@ -60,7 +60,3 @@ def sync_projects():
     if resp.status_code != 200:
         raise Exception('error saving projects', str(resp.json()))
 
-
-def sync_people():
-    people = get_people()
-    print(people)

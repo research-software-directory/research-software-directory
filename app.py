@@ -4,7 +4,7 @@ import sys
 
 from util import db_connect
 from cache_software import cache_software
-from corporate import sync_people, sync_projects
+from corporate import sync_projects
 from github import sync_all as github_sync_all
 from releases import sync_releases
 from zotero import zotero_sync
@@ -41,8 +41,6 @@ def run_task(task):
         github_sync_all()
     elif task == 'zotero':
         zotero_sync()
-    elif task == 'people':
-        sync_people()
     elif task == 'projects':
         sync_projects()
     elif task == 'releases':
