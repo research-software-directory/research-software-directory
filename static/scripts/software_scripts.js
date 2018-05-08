@@ -66,29 +66,6 @@ document.onkeydown = KeyPress;
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    
-    if( document.querySelector('.dropdown') ){
-        var dropdowns = document.querySelectorAll('.dropdown');
-
-        // Add click event listener to each dropdown (in case more dropdowns will be used in the future)
-        for ( i = 0; i < dropdowns.length; i++ ) { 
-            dropdowns[i].querySelector('.dropdown_button').addEventListener('click', function() {
-                this.parentNode.classList.toggle('is-active');
-            });
-        }
-        
-        document.addEventListener('click', function(event) {
-            // If the click happened inside the the container, bail
-            if ( event.target.closest('.dropdown') ) return;
-
-            // If document contains an active dropdown, remove is-active
-            if ( document.querySelector('.dropdown.is-active') ) {
-                document.querySelector('.dropdown.is-active').classList.remove('is-active');
-            }
-
-        }, false);
-    }
-
     if( document.querySelector('.read-more_button') ){
         document.querySelector('.read-more_button').addEventListener('click', function() {
 
@@ -207,24 +184,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
         });
-
-        // Download file selection
-        if (dropDownOptions) for ( i = 0; i < dropDownOptions.length; i++ ) {
-            dropDownOptions[i].addEventListener('click', function() {
-                dropDownPanel.querySelector('.is-active').classList.remove('is-active');
-                
-                this.classList.toggle('is-active');
-                
-                var selectedText = this.querySelector('.text').textContent;
-                var selectedUrl = this.getAttribute('data-download-url');
-                
-                dropDownButton.querySelector('.text').textContent = selectedText;
-                downloadButton.setAttribute('href', selectedUrl);
-               
-                dropDownPanel.parentElement.classList.toggle('is-active');
-            });
-        }
-  
     }
 });
 

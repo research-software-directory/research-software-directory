@@ -242,12 +242,6 @@ function initOverview(softwareData, organizationsData) {
                 return Math.ceil(this.filteredSoftware.length / this.pageSize);
             },
 
-            searchFields: function () {
-                this.software.map(function (sw) {
-                    return "test";
-                });
-            },
-
             pageSize: function() {
                 return {
                     phone: 5,

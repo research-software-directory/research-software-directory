@@ -49,6 +49,7 @@ def get_mentions(software_list):
             unique_mentions.append(mention)
     return sorted(unique_mentions, key=lambda m: m['date'], reverse=True)
 
+
 @application.route('/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
@@ -107,30 +108,24 @@ def software_product_page_template(software_id):
 
 @application.route('/cite/<software_id>')
 def cite(software_id):
-    # url = api_url + "/software_cache/%s" % software_id
-    # software_dictionary = requests.get(url).json()
-    #
-    # if "error" in software_dictionary:
-    #     return "not found", 404
-    # if 'conceptDOI' not in software_dictionary:
-    #     return "not found", 404
-    #
-    # citation_cff_urls = list(map(
-    #     lambda github_url: github_url['url'],
-    #     filter(lambda x: x['isCitationcffSource'], software_dictionary['githubURLs'])
-    # ))
-    #
-    # try:
-    #     mime, extension, data = get_citation(citation_cff_urls[0], flask.request.args.get('format'))
-    # except Exception:
-    #     return "unknown format '%s'" % flask.request.args.get('format'), 400
-    #
-    # return flask.Response(
-    #     data,
-    #     mimetype=mime,
-    #     headers={"Content-disposition": "attachment; filename=citation.%s" % extension}
-    # )
-    pass
+    url = api_url + "/software_cache/%s" % software_id
+    software_dictionary = requests.get(url).json()
+    if "error" in software_dictionary:
+        return flask.redirect("/", code=302)
+
+    releases = software_dictionary['releases']['releases']
+
+    for release in releases:
+        if release['tag'] == flask.request.args.get('version'):
+            for file_format in release['files'].keys():
+                if file_format == flask.request.args.get('format'):
+                    return flask.Response(
+                        release['files'][file_format],
+                        headers={"Content-disposition": "attachment; filename=%s.%s" % (software_id, file_format)}
+                    )
+
+    return flask.abort(404)
+
 
 @application.route('/about')
 def about_template():
@@ -188,6 +183,14 @@ def markdown_filter(input_string):
         return ''
     return flask.Markup(markdown.markdown(input_string))
 
+
+@application.template_filter()
+def releases_filter(releases):
+    return [{
+        'doi': release['doi'],
+        'tag': release['tag'],
+        'citability': release['citability']
+    } for release in releases]
 
 @application.template_filter()
 def no_none_filter(l):
