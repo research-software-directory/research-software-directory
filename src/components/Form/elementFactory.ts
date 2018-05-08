@@ -7,7 +7,8 @@ import {
   isForeignKeySchema,
   isObjectSchema,
   isStringSchema,
-  isNumberSchema
+  isNumberSchema,
+  isPrimaryKeySchema
 } from "../../interfaces/json-schema";
 import TypeString from "./TypeString";
 import TypeDummy from "./TypeDummy";
@@ -20,13 +21,15 @@ import { TypeNumber } from "./TypeNumber";
 import { ISettingsProperty } from "../../rootReducer";
 import { IProps } from "./IProps";
 import TypeImage from "./TypeImage";
+import { TypePrimaryKey } from "./TypePrimaryKey";
 
 abstract class FormComponentDummy extends React.Component<IProps<ISchema>> {}
 type FormComponent = typeof FormComponentDummy;
 
 type IFilterFunction = (
   schema: ISchema,
-  settings: ISettingsProperty
+  settings: ISettingsProperty,
+  key: string
 ) => boolean;
 
 const registry: {
@@ -43,9 +46,10 @@ export function registerFormComponent(
 
 export const getComponent = (
   schema: ISchema,
-  settings: ISettingsProperty
+  settings: ISettingsProperty,
+  key: string
 ): FormComponent =>
-  registry.find(({ filter }) => filter(schema, settings))!.component;
+  registry.find(({ filter }) => filter(schema, settings, key))!.component;
 
 [
   [() => true, TypeDummy],
@@ -56,6 +60,7 @@ export const getComponent = (
   [isBooleanSchema, TypeBoolean],
   [isNumberSchema, TypeNumber],
   [isForeignKeySchema, TypeForeignKey],
+  [isPrimaryKeySchema, TypePrimaryKey],
   [isObjectSchema, TypeObject]
 ].forEach(([filter, component]) => {
   registerFormComponent(filter as IFilterFunction, component as FormComponent);

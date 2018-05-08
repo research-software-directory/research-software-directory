@@ -88,7 +88,11 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     if (this.state.hasError) {
       return <ShowError>Error: {this.state.error.stack.toString()}</ShowError>;
     }
-    let Component = getComponent(this.props.schema, this.props.settings);
+    let Component = getComponent(
+      this.props.schema,
+      this.props.settings,
+      this.props.label
+    );
     if (Component === undefined) {
       if (process.env.NODE_ENV === "test" || process.env.STORYBOOK_ENABLED) {
         // Fallback to object when component was not found

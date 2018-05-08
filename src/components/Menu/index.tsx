@@ -20,6 +20,7 @@ interface IProps {
 
 export default class MainMenu extends React.PureComponent<IProps, {}> {
   render() {
+    const resources = this.props.settings.resources;
     return (
       <Menu
         id="main_menu"
@@ -31,12 +32,13 @@ export default class MainMenu extends React.PureComponent<IProps, {}> {
           <Image avatar={true} src={this.props.jwt.claims.user.image} />&nbsp;
           {this.props.jwt.claims.user.name}
         </Menu.Item>
-        {Object.keys(this.props.settings.resources).map((type: string) => (
+        {Object.keys(resources).map((type: string) => (
           <ResourceType
             key={type}
             type={type}
-            icon={this.props.settings.resources[type].icon}
+            icon={resources[type].icon}
             defaultOpen={false}
+            readonly={resources[type].readonly}
           />
         ))}
       </Menu>

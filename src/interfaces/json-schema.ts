@@ -2,6 +2,7 @@ export type ISchema =
   | IObjectSchema
   | IArraySchema
   | IBooleanSchema
+  | INumberSchema
   | IStringSchema
   | IStringEnumSchema;
 
@@ -33,6 +34,7 @@ export interface IStringEnumSchema {
 
 export interface IBooleanSchema {
   type: "boolean";
+  default?: boolean;
 }
 
 export interface IStringSchema {
@@ -100,4 +102,12 @@ export function isForeignKeySchema(schema: any): schema is IForeignKeySchema {
     "collection" in schema.properties &&
     "id" in schema.properties
   );
+}
+
+export function isPrimaryKeySchema(
+  schema: any,
+  _settings: any,
+  key: string
+): schema is IForeignKeySchema {
+  return key === "primaryKey" && isForeignKeySchema(schema);
 }

@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Divider, Icon, Input, Menu } from "semantic-ui-react";
-
 import AnimateHeight from "react-animate-height";
-import ResourceList from "../../containers/Menu/ResourceList";
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs";
+import { Link } from "react-router-dom";
+
+import ResourceList from "../../containers/Menu/ResourceList";
 
 interface IState {
   open: boolean;
@@ -14,6 +15,7 @@ interface IProps {
   defaultOpen: boolean;
   type: string;
   icon: SemanticICONS;
+  readonly?: boolean;
 }
 
 export default class ResourceType extends React.PureComponent<IProps, IState> {
@@ -50,6 +52,11 @@ export default class ResourceType extends React.PureComponent<IProps, IState> {
         </Menu.Header>
         <AnimateHeight duration={1000} height={this.state.open ? "auto" : 0}>
           <Menu className="submenu" inverted={true} vertical={true}>
+            {!this.props.readonly && (
+              <Link to={`/${this.props.type}`} title="Add">
+                <Icon name="add" />
+              </Link>
+            )}
             <Input
               className="submenu-search inverted"
               icon={<Icon name="search" inverted={true} />}
