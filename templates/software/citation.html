@@ -2,10 +2,32 @@
 {% if template_data.conceptDOI %}
 <section id="cite-this">
     <div class="container">
-        <div class="row bg-dark citation-block">
+        <div class="row bg-dark citation-block" :style="releases && 'min-height: 16em'">
 
             <div class="col-1-3">
                 <h2 class="subtitle">Cite this software</h2>
+                {% if template_data.releases.releases %}
+                <div class="citation-block_version">
+                     <h5>Choose a version:</h5>
+                     <div class="row">
+                        <div :class="['dropdown', versionDropdownOpen && 'is-active']" @click="versionDropdownOpen = !versionDropdownOpen">
+                            <div class="dropdown_button dropdown_button--light">
+                                <span class="text">[[ releases[selectedIndex].tag ]]</span>
+                                <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
+                            </div>
+                            <div class="dropdown_panel dropdown_panel--light">
+                                <ul>
+                                    <li v-for="(release, index) in releases" :class="releases[selectedIndex] === release && 'is-active'">
+                                        <span class="inside">
+                                            <span class="text" @click="selectedIndex = index">[[release.tag]]</span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
 
             <div class="col-2-3 content">
@@ -14,7 +36,9 @@
                     <div class="row">
                         <div class="doi_url">
                             <span class="gradient"></span>
-                            <span id="doi">{{ template_data.conceptDOI }}</span>
+                            <span id="doi">
+                                [[ releases.length > 0 ? releases[selectedIndex].doi : conceptDOI ]]
+                            </span>
                         </div>
                         <div class="button button--filled-blue copy" href="#">
                             <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-clipboard"></use></svg></span>
@@ -23,23 +47,25 @@
                     </div>
                 </div>
 
-                <div class="citation-block_download">
+                <div class="citation-block_download" v-if="releases.length > 0 && releases[selectedIndex].citability === 'full'">
                     <h5>Choose a citation style:</h5>
                     <div class="row">
-                        <div class="dropdown">
+                        <div :class="['dropdown', fileFormatDropdownOpen && 'is-active']" @click="fileFormatDropdownOpen = !fileFormatDropdownOpen">
                             <div class="dropdown_button dropdown_button--light">
-                                <span class="text">BibTeX</span>
+                                <span class="text">[[ fileFormats[selectedFileFormatIndex].name ]]</span>
                                 <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
                             </div>
                             <div class="dropdown_panel dropdown_panel--light">
                                 <ul>
-                                    <li data-download-url="/cite/{{template_data.primaryKey.id}}?format=bibtex" class="is-active"><span class="inside"><span class="text">BibTeX</span></span></li>
-                                    <li data-download-url="/cite/{{template_data.primaryKey.id}}?format=enw"><span class="inside"><span class="text">EndNote .enw</span></span></li>
-                                    <li data-download-url="/cite/{{template_data.primaryKey.id}}?format=ris"><span class="inside"><span class="text">RIS</span></span></li>
+                                    <li v-for="(format, index) in fileFormats" @click="selectedFileFormatIndex = index">
+                                        <span class="inside">
+                                            <span class="text">[[ format.name ]]</span>
+                                        </span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="button button--filled-blue download" href="/cite/{{template_data.primaryKey.id}}?format=bibtex" download>
+                        <a class="button button--filled-blue download" :href="'/cite/{{template_data.slug}}?version='+encodeURI(releases[selectedIndex].tag)+'&format='+fileFormats[selectedFileFormatIndex].extension" download>
                             <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-download"></use></svg></span>
                             <span>Download file</span>
                         </a>
@@ -48,5 +74,26 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        var v = new Vue({
+            el: '#cite-this',
+            delimiters: ["[[", "]]"],
+            data: {
+                conceptDOI: {{ template_data.conceptDOI | tojson | safe }},
+                releases: {{ template_data.releases.releases | sort(attribute='datePublished', reverse=True) | releases_filter | tojson | safe }},
+                selectedIndex: 0,
+                versionDropdownOpen: false,
+                fileFormatDropdownOpen: false,
+                fileFormats: [
+                    { extension: 'bibtex', name: 'BibTeX' },
+                    { extension: 'endnote', name: 'Endnote' },
+                    { extension: 'ris', name: 'RIS' }
+                ],
+                selectedFileFormatIndex: 0
+            }
+        })
+    </script>
 </section>
 {% endif %}
