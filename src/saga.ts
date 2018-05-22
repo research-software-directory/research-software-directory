@@ -9,6 +9,7 @@ import { actions as toastrActions } from "react-redux-toastr";
 import { push } from "react-router-redux";
 import { IStoreState } from "./rootReducer";
 import config from "./config";
+import fixtures from "./fixtures";
 
 // process.env.PUBLIC_URL is /admin when the project is built with yarn build,
 // otherwise it is "" with yarn start
@@ -31,7 +32,7 @@ const errorAction = (message: string) =>
 function* fetchSettings() {
   try {
     const response = config.useFixtures
-      ? { data: require("./fixtures/settings.json") }
+      ? { data: fixtures.settings }
       : yield fetch(SETTINGS_URL);
     yield put({
       type: "SETTINGS_FETCHED",
@@ -78,7 +79,7 @@ const getJWT = (authUrl: string) =>
           window.location.href = authUrl;
           return;
         } else {
-          jwt = require("./fixtures/jwt.json") as string;
+          jwt = JSON.stringify(fixtures.jwt);
         }
       }
       localStorage.setItem("jwt", jwt);
@@ -109,7 +110,7 @@ function* authorizedFetch(url: string, requestConfig?: AxiosRequestConfig) {
 function* fetchData() {
   const settings = yield select((state: any) => state.settings);
   const result = config.useFixtures
-    ? { data: require("./fixtures/data.json") }
+    ? { data: fixtures.data }
     : yield authorizedFetch(settings.backendUrl);
   yield put({
     type: "DATA_FETCHED",
@@ -120,7 +121,7 @@ function* fetchData() {
 function* fetchSchema() {
   const settings = yield select((state: any) => state.settings);
   const result = config.useFixtures
-    ? { data: require("./fixtures/schema.json") }
+    ? { data: fixtures.schema }
     : yield authorizedFetch(settings.backendUrl + "/schema");
   yield put({
     type: "SCHEMA_FETCHED",
