@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { Router } from "react-router";
 import { history } from "../history";
 
-import App from "../components/App";
 import MainMenu from "../components/Menu";
 import ResourceList from "../components/Menu/ResourceList";
 import ResourceType from "../components/Menu/ResourceType";
@@ -76,12 +75,6 @@ const RouteAndRedux = ({ children }) => (
     <Router history={history}>{children}</Router>
   </Provider>
 );
-
-storiesOf("Full app", module).add("default", () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-));
 
 storiesOf("Resource/Software", module)
   .add("xenon", () => (

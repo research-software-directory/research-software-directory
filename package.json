@@ -14,7 +14,7 @@
     "moment": "^2.22.0",
     "mustache": "^2.3.0",
     "react": "^16.3.1",
-    "react-animate-height": "^1.0.1",
+    "react-animate-height": "^2.0.1",
     "react-cropper": "^1.0.1",
     "react-day-picker": "^7.1.4",
     "react-dom": "^16.3.1",
