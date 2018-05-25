@@ -23,3 +23,7 @@ class UnauthorizedException(RouteException):
 class NotFoundException(RouteException):
     def __init__(self, message, status_code=404, data=None, *args):
         super().__init__(message, status_code, data, *args)
+
+class HasLinksException(RouteException):
+    def __init__(self, message, status_code=406, data=None, *args):
+        super().__init__(message, status_code, data, *args)

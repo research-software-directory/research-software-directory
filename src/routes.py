@@ -11,6 +11,8 @@ from bson.objectid import ObjectId
 from src import exceptions
 from src.json_response import jsonify
 from src.permission import require_permission, get_sub
+from src.util import find_data_links
+
 
 def time_now():
     return datetime.datetime.utcnow().replace(microsecond=0).isoformat()+'Z'
@@ -127,7 +129,7 @@ def get_routes(db, schemas):
                 add_fields_and_validate(resource)
                 if 'test' not in flask.request.args:
                     db[resource_type].insert(resource)
-            return 'ok', 200
+            return {"ok": True}, 200
 
     @api.route('/<resource_type>', methods=["PUT"])
     @require_permission(['write'])
@@ -192,7 +194,7 @@ def get_routes(db, schemas):
             for resource in resources_to_update:
                 db[resource_type].update_one({'_id': resource['_id']}, {'$set': resource})
 
-        return 'ok', 200
+        return {"ok": True}, 200
 
     @api.route('/<resource_type>/<id>', methods=["PUT"])
     @require_permission(['write'])
@@ -270,5 +272,43 @@ def get_routes(db, schemas):
     @jsonify
     def _schema():
         return schemas, 200
+
+    @api.route('/<resource_type>/<id>/links')
+    @jsonify
+    def _links(resource_type, id):
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
+
+        resource = None
+        if 'slug' in schemas[resource_type]['properties'].keys():
+            resource = db[resource_type].find_one({'slug': id})
+        if not resource:
+            resource = db[resource_type].find_one({'primaryKey.id': id})
+        if not resource:
+            raise exceptions.NotFoundException('Resource not found')
+
+        return find_data_links(db, schemas, resource_type, id), 200
+
+    @api.route('/<resource_type>/<id>', methods=["DELETE"])
+    @require_permission(['write'])
+    @jsonify
+    def _delete(resource_type, id):
+        if resource_type not in schemas.keys():
+            raise exceptions.NotFoundException('Resource of type \'%s\' not found' % resource_type)
+
+        resource = None
+        if 'slug' in schemas[resource_type]['properties'].keys():
+            resource = db[resource_type].find_one({'slug': id})
+        if not resource:
+            resource = db[resource_type].find_one({'primaryKey.id': id})
+        if not resource:
+            raise exceptions.NotFoundException('Resource not found')
+
+        links = find_data_links(db, schemas, resource_type, id)
+        if links:
+            raise exceptions.HasLinksException('Cannot delete resource (links exist)', data=links)
+
+        db[resource_type].remove({"_id": resource['_id']})
+        return {"ok": True}, 200
 
     return api

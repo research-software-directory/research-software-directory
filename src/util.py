@@ -36,3 +36,76 @@ def rate_limit(name, calls, period):
             return func(*args, **kwargs)
         return func_wrapper
     return wrapper
+
+
+def find_schema_links(resource_type, schemas):
+    """
+    returns a dict with schema and paths pointing to resource_type
+    e.g.
+    find_schema_links("person", schemas) should return:
+    {
+        "software": [
+            [
+                "contributors",
+                "foreignKey"
+            ]
+        ]
+    },
+
+    Because software->contributors->foreignKey is a link to a person.
+    """
+    def parse_property(property, foreign_resource_type, path, results):
+        if len(path) > 0 and path[-1] == 'foreignKey' and property['properties']['collection']['enum'][0] == foreign_resource_type:
+            results.append(path)
+
+        elif "properties" in property: # has sub properties
+            for property_name in property['properties']:
+                parse_property(
+                    property['properties'][property_name],
+                    foreign_resource_type, path[:] + [property_name],
+                    results
+                )
+
+        elif property.get('type') == 'array':
+            parse_property(
+                property['items'],
+                foreign_resource_type, path,
+                results
+            )
+
+    results = {}
+    for schema_name in schemas.keys():
+        schema = schemas[schema_name]
+        if '$schema' in schema:  # filters out weird stuff like software_cache
+            result = []
+            parse_property(schema, resource_type, [], result)
+            if len(result) > 0:
+                results[schema_name] = result
+
+    return results
+
+
+def find_data_links(db, schemas, resource_type, id):
+    # find links to resource_type/id in all data, returns array of paths
+    def get_links_to_id(id, resource, path_to_link, current_path, matches):
+        if path_to_link[0] == 'foreignKey':
+            if resource['foreignKey'].get('id') == id:
+                matches.append(current_path)
+        else:
+            sub_resource = resource.get(path_to_link[0])
+            if isinstance(sub_resource, list):
+                for idx, item in enumerate(sub_resource):
+                    get_links_to_id(id, item, path_to_link[1:], current_path + [path_to_link[0], idx], matches)
+            elif isinstance(sub_resource, dict):
+                get_links_to_id(id, sub_resource, path_to_link[1:], current_path + [path_to_link[0]], matches)
+
+    schema_links = find_schema_links(resource_type, schemas)
+    data_links = []
+
+    for schema_name in schema_links.keys():
+        resources = db[schema_name].find()
+        for resource in resources:
+            for path in schema_links[schema_name]:
+                get_links_to_id(id, resource, path, [schema_name, resource['primaryKey']['id']], data_links)
+
+    return data_links
