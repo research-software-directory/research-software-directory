@@ -1,5 +1,7 @@
 import initStoryshots from "@storybook/addon-storyshots";
 
-initStoryshots({
-  /* configuration options */
+test.skip("storyshots", () => {
+  initStoryshots({
+    /* configuration options */
+  });
 });
