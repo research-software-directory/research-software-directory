@@ -4,7 +4,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-COPY package.json tsconfig.json tslint.json /app/
+COPY package.json tsconfig.json tsconfig.prod.json tslint.json /app/
 
 RUN yarn
 
