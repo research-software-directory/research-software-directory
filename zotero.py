@@ -16,9 +16,9 @@ logger = logging.getLogger(__name__)
 
 
 def get_project_keys(client):
-    collections = client.collections_top()
+    collections = client.everything(client.collections_top())
     projects_collection = [c for c in collections if c['data']['name'] == 'Projects'][0]
-    projects = client.collections_sub(projects_collection['key'])
+    projects = client.everything(client.collections_sub(projects_collection['key']))
     return list(map(lambda x: x['key'], projects))
 
 
@@ -85,34 +85,37 @@ def zotero_sync():
         if 'title' not in item['data'] or not item['data']['title']:
             continue
         item_collection_keys = item['data'].get('collections', [])
-        if len(set.intersection(set(item_collection_keys), set(project_keys))) > 0:
-            # item is part of a project
-            to_save = {
-                'primaryKey': {
-                    'collection': 'mention',
-                    'id': item['key']
-                },
-                'version': item['version'],
-                'title': item['data'].get('title', ''),
-                'type': item['data']['itemType'],
-                'zoteroKey': item['key'],
-                'isCorporateBlog': False,
-                'date': get_date_for_zotero_item(item)
-            }
-            url = get_url_for_zotero_item(item)
-            if url:
-                to_save['url'] = url
+        if len(set.intersection(set(item_collection_keys), set(project_keys))) == 0:
+            logger.warning("%s is not part of a project" % item['key'])
+            continue
+        # item is part of a project
+        to_save = {
+            'primaryKey': {
+                'collection': 'mention',
+                'id': item['key']
+            },
+            'version': item['version'],
+            'title': item['data'].get('title', ''),
+            'type': item['data']['itemType'],
+            'zoteroKey': item['key'],
+            'isCorporateBlog': False,
+            'date': get_date_for_zotero_item(item)
+        }
+        url = get_url_for_zotero_item(item)
+        if url:
+            to_save['url'] = url
 
-            if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
-                (author, image) = get_blog_fields(item)
-                to_save['isCorporateBlog'] = True
-                to_save['author'] = author
-                to_save['image'] = image
+        if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
+            (author, image) = get_blog_fields(item)
+            to_save['isCorporateBlog'] = True
+            to_save['author'] = author
+            to_save['image'] = image
 
-            items_to_save.append(to_save)
+        items_to_save.append(to_save)
 
     if len(items_to_save) > 0:
         token = generate_jwt_token()
+        logger.info("Items to save: %s" % len(items_to_save))
         resp = requests.put(
             os.environ.get('BACKEND_URL') + '/mention',
             json=items_to_save,
