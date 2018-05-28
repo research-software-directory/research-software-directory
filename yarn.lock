@@ -359,9 +359,9 @@
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@types/showdown/-/showdown-1.7.3.tgz#94d384d9f9e58b2f30d8c3a1c60088db7c73e78c"
 
-"@types/sinon@^4.3.1":
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.3.3.tgz#97cbbfddc3282b5fd40c7abf80b99db426fd4237"
+"@types/sinon@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-5.0.0.tgz#e5d49a422f64b2c658bbeb8529679c9a6a0b5a3a"
 
 "@types/uuid@^3.4.3":
   version "3.4.3"
