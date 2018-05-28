@@ -1,5 +1,5 @@
 <!-- Cite this software -->
-{% if template_data.conceptDOI %}
+{% if template_data.isCitable and template_data.conceptDOI %}
 <section id="cite-this">
     <div class="container">
         <div class="row bg-dark citation-block" :style="releases && 'min-height: 16em'">
