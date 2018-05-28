@@ -15,10 +15,13 @@ before_install:
   - chmod 600 github_deploy_key
   - eval $(ssh-agent -s)
   - ssh-add github_deploy_key
+  - yarn global add greenkeeper-lockfile
 install:
   - yarn
+before_script: greenkeeper-lockfile-update
 script:
   - yarn test && yarn build
+after_script: greenkeeper-lockfile-upload
 after_success:
   - if [[ $TRAVIS_BRANCH == 'master' ]]; then
     curl -L -X POST https://registry.hub.docker.com/u/rsdnlesc/admin/trigger/$DOCKERHUB_TRIGGER_TOKEN;
