@@ -7,8 +7,8 @@ cache:
 before_install:
   - >-
     openssl aes-256-cbc 
-    -K $encrypted_xxxxxxxxxxxx_key 
-    -iv $encrypted_xxxxxxxxxxxx_iv 
+    -K $encrypted_3dc2464b40f8_key
+    -iv $encrypted_3dc2464b40f8_iv 
     -in github_deploy_key.enc 
     -out github_deploy_key 
     -d
