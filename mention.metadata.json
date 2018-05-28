@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"rsd.mention"},{"v":2,"key":{"zoteroKey":1.0},"name":"zoteroKey_1","ns":"rsd.mention"},{"v":2,"key":{"primaryKey.id":1.0},"name":"primaryKey.id_1","ns":"rsd.mention"}],"uuid":"e18713bee86b452d983a93d2a3df6038"}
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"rsd.mention"}],"uuid":"e1aaaee07bf54608a2fb36f1d8a22023"}
