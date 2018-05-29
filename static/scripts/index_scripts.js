@@ -252,10 +252,15 @@ function initOverview(softwareData, organizationsData) {
         },
 
         watch: {
+            page: {
+                handler: function () { window.scrollTo(0,0); }
+            },
             sort: {
-                handler: function () { this.page = 1; } },
+                handler: function () { this.page = 1; }
+            },
             pageSize: {
-                handler: function () { this.page = 1; } },
+                handler: function () { this.page = 1; }
+            },
             filter: {
                 handler: function () { this.page = 1; },
                 deep: true
