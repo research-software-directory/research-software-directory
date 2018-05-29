@@ -72,7 +72,10 @@ def cache_software():
             None
         )
         sw['commits'] = get_binned_commits(repository_urls)
+        
+        sw['isCitable'] = False
         if 'conceptDOI' in sw:
             sw['releases'] = db.release.find_one({'_id': sw['conceptDOI']})
+            sw['isCitable'] = sw['releases']['isCitable']
 
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
