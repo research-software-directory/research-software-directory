@@ -1,12 +1,12 @@
 <!-- Cite this software -->
-{% if template_data.isCitable and template_data.conceptDOI %}
+{% if template_data.isCitable %}
 <section id="cite-this">
     <div class="container">
         <div class="row bg-dark citation-block" :style="releases && 'min-height: 16em'">
 
             <div class="col-1-3">
                 <h2 class="subtitle">Cite this software</h2>
-                {% if template_data.releases.releases %}
+                {% if template_data.releases %}
                 <div class="citation-block_version">
                      <h5>Choose a version:</h5>
                      <div class="row">
@@ -82,13 +82,13 @@
             delimiters: ["[[", "]]"],
             data: {
                 conceptDOI: {{ template_data.conceptDOI | tojson | safe }},
-                releases: {{ template_data.releases.releases | sort(attribute='datePublished', reverse=True) | releases_filter | tojson | safe }},
+                releases: {{ template_data.releases | sort(attribute='datePublished', reverse=True) | releases_filter | tojson | safe }},
                 selectedIndex: 0,
                 versionDropdownOpen: false,
                 fileFormatDropdownOpen: false,
                 fileFormats: [
                     { extension: 'bibtex', name: 'BibTeX' },
-                    { extension: 'endnote', name: 'Endnote' },
+                    { extension: 'endnote', name: 'EndNote' },
                     { extension: 'ris', name: 'RIS' }
                 ],
                 selectedFileFormatIndex: 0
