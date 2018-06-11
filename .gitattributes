@@ -1,0 +1,5 @@
+secretfile filter=git-crypt diff=git-crypt
+*/**/*.key filter=git-crypt diff=git-crypt
+*/**/.env.local filter=git-crypt diff=git-crypt
+.env.local filter=git-crypt diff=git-crypt
+*/**/.env.prd filter=git-crypt diff=git-crypt

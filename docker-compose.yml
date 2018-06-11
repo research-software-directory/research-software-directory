@@ -1,0 +1,92 @@
+version: '3'
+
+services:
+  mongo:
+    image: "mongo:3.6"
+    volumes:
+      - ./db:/data/db
+    command: --bind_ip 0.0.0.0
+
+  auth:
+    image: rsdnlesc/auth-github
+    build:
+      context: ./auth-github
+    env_file:
+      - .env
+
+  backend:
+    image: rsdnlesc/backend
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  admin:
+    image: rsdnlesc/admin
+    build:
+      context: ./admin
+    volumes:
+      - rsd_static_admin:/build
+    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
+
+  frontend:
+    build:
+      context: ./frontend
+    image: rsdnlesc/frontend
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    volumes:
+      - rsd_static_frontend:/shared_static
+
+  tasks:
+    image: rsdnlesc/tasks
+    build:
+      context: ./tasks-nlesc
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - mongo
+
+  nginx:
+    image: rsdnlesc/nginx_proxy
+    build:
+      context: ./config/nginx_proxy
+    volumes:
+      - ./cert:/cert
+      - acme:/acme
+      - rsd_static_admin:/static_admin:ro
+      - rsd_static_frontend:/static_frontend:ro
+    depends_on:
+      - frontend
+      - backend
+      - admin
+      - auth
+    env_file:
+      - .env
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+
+  certbot:
+    image: "certbot/certbot"
+    volumes:
+      - ./cert:/cert
+      - ./config/certbot.sh:/certbot.sh
+      - ./letsencrypt:/etc/letsencrypt
+      - acme:/acme
+    command: sh /certbot.sh
+    entrypoint: ""
+    env_file:
+      - .env
+    depends_on:
+      - nginx
+volumes:
+  rsd_static_admin:
+  rsd_static_frontend:
+  acme:

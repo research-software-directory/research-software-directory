@@ -1,0 +1,10 @@
+cert
+db
+.idea
+log
+acme
+.cache
+hosts
+letsencrypt
+playbook.retry
+.env.local

@@ -1,0 +1,67 @@
+proxy_cache_path /tmp/cache keys_zone=app_cache:10m levels=1:2 inactive=30m max_size=100m;
+proxy_cache_key "$scheme$request_method$host$request_uri";
+
+# Frontend
+server {
+    listen 443;
+    listen [::]:443;
+
+    server_name ${DOMAIN} www.${DOMAIN} test.${DOMAIN};
+
+    ssl on;
+    ssl_certificate /cert/fullchain.pem;
+    ssl_certificate_key /cert/privkey.pem;
+
+    location /static {
+        alias /static_frontend;
+    }
+
+    # Github auth
+    location /auth {
+        proxy_pass http://auth:5002;
+    }
+
+    # API Backend
+    location /api {
+        proxy_pass http://backend:5001;
+    }
+
+    location /admin {
+         alias /static_admin;
+         try_files $uri /admin/index.html;
+    }
+
+    location / {
+        proxy_cache app_cache;
+        add_header X-Proxy-Cache $upstream_cache_status;
+        proxy_cache_valid 200 30m;
+        proxy_pass http://frontend:5004;
+    }
+}
+
+# HTTPS Catch all -> forward to www.domain
+server {
+    listen 443 default_server;
+    listen [::]:443 default_server;
+
+    server_name _;
+
+    ssl on;
+    ssl_certificate /cert/fullchain.pem;
+    ssl_certificate_key /cert/privkey.pem;
+
+    return 301 https://www.${DOMAIN};
+}
+
+# HTTP Catch all + Certbot challenge response
+server {
+    listen 0.0.0.0:80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    location /.well-known {
+        alias /acme/.well-known;
+    }
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}

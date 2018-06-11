@@ -10,3 +10,9 @@
 [submodule "readthedocs"]
 	path = readthedocs
 	url = https://github.com/research-software-directory/readthedocs
+[submodule "tasks-nlesc"]
+	path = tasks-nlesc
+	url = git@github.com:research-software-directory/tasks-nlesc.git
+[submodule "auth-github"]
+	path = auth-github
+	url = git@github.com:research-software-directory/auth-github.git
