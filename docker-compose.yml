@@ -69,9 +69,6 @@ services:
       - auth
     env_file:
       - .env
-    ports:
-      - 443:443
-      - 80:80
     restart: unless-stopped
 
   certbot:
