@@ -5,6 +5,9 @@ services:
     image: "mongo:3.6"
     volumes:
       - ./db:/data/db
+      - ./config/mongo.sh:/mongo.sh
+      - ./db-dump:/db-dump-initial
+    entrypoint: /mongo.sh
     command: --bind_ip 0.0.0.0
 
   auth:

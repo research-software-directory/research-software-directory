@@ -3,6 +3,7 @@ db
 .idea
 log
 acme
+.env
 .cache
 hosts
 letsencrypt
