@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  test:
+    image: rsdnlesc/tests
+    build:
+      context: ./tests
+    volumes:
+      - /var/lib/docker.sock:/var/lib/docker.sock
+    depends_on:
+      - mongo
+      - backend
+      - frontend
+      - admin
+      - auth
+      - nginx

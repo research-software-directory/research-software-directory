@@ -1,0 +1,4 @@
+before-install:
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml build
+script:
+  - docker-compose -f docker-compose.yml -f docker-compose.test.yml run test

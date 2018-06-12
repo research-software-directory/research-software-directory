@@ -9,3 +9,4 @@ hosts
 letsencrypt
 playbook.retry
 .env.local
+node_modules

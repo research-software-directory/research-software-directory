@@ -35,9 +35,9 @@ services:
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
 
   frontend:
+    image: rsdnlesc/frontend
     build:
       context: ./frontend
-    image: rsdnlesc/frontend
     depends_on:
       - backend
     env_file:
