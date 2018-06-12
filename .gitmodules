@@ -12,7 +12,7 @@
 	url = https://github.com/research-software-directory/readthedocs
 [submodule "tasks-nlesc"]
 	path = tasks-nlesc
-	url = git@github.com:research-software-directory/tasks-nlesc.git
+	url = https://github.com/research-software-directory/tasks-nlesc
 [submodule "auth-github"]
 	path = auth-github
-	url = git@github.com:research-software-directory/auth-github.git
+	url = https://github.com/research-software-directory/auth-github
