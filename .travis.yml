@@ -9,5 +9,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - cp .env.example .env
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml build
+  - docker --version
+  - docker-compose --version
 script:
   - docker-compose -f docker-compose.yml -f docker-compose.test.yml run test
