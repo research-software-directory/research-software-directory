@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-sleep 10
+sleep 20
 
 assert_service_available()
 {
@@ -11,8 +11,6 @@ assert_service_available()
 }
 
 docker ps
-docker logs researchsoftwaredirectory_nginx_1
-docker logs researchsoftwaredirectory_auth_1
 
 assert_service_available nginx 80
 assert_service_available backend 5001
