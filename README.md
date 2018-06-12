@@ -60,7 +60,7 @@ ZOTERO_API_KEY
 ## Start the complete stack using ``docker-compose``
 
 ```bash
-docker-compose --file docker-compose.yml up --build
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 ```
 
 
