@@ -15,14 +15,14 @@ tmux split-window -v
 tmux select-pane -t 0
 tmux send-keys "docker run -p 27017:27017 -v `pwd`/db:/data/db mongo:3.6 --bind_ip 0.0.0.0" C-m
 tmux select-pane -t 1
-tmux send-keys "cd ../backend && export \$(cat .env | xargs) && workon rsd-backend && python entry.py" C-m
+tmux send-keys "export \$(cat .env | xargs) && cd backend && workon rsd-backend && python entry.py" C-m
 tmux select-pane -t 2
-tmux send-keys "cd ../auth-github && export \$(cat .env | xargs) && workon rsd-github-auth && python app.py" C-m
+tmux send-keys "export \$(cat .env | xargs) && cd auth-github && workon rsd-github-auth && python app.py" C-m
 tmux select-pane -t 3
-tmux send-keys "cd ../admin && yarn start" C-m
+tmux send-keys "export \$(cat .env | xargs) && cd admin && yarn start" C-m
 tmux select-pane -t 4
-tmux send-keys "cd ../frontend && export \$(cat .env | xargs) && workon rsd-frontend && python entry.py" C-m
+tmux send-keys "export \$(cat .env | xargs) && cd frontend && workon rsd-frontend && python entry.py" C-m
 tmux select-pane -t 5
-tmux send-keys "cd ../tasks-nlesc && export \$(cat .env | xargs) && workon rsd-tasks" C-m "python app.py --task "
+tmux send-keys "export \$(cat .env | xargs) && cd tasks-nlesc && workon rsd-tasks" C-m "python app.py --task "
 
 tmux attach -t rsd-stack
