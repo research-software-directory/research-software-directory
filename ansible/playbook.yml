@@ -7,17 +7,17 @@
       name: xfsprogs
       state: latest
 
+  - name: Docker
+    yum:
+      name: docker
+      state: latest
+
   - name: Add ec2-user to docker group
     user:
       name: ec2-user
       append: yes
       groups:
         - docker
-
-  - name: Docker
-    yum: 
-      name: docker
-      state: latest
 
   - name: Dockerd
     service:
@@ -98,6 +98,11 @@
       minute: 0
       job: "/bin/bash /home/ec2-user/rsd/config/backup.sh"
 
+  - name: RSD home
+    file:
+      path: /home/ec2-user/rsd
+      state: directory
+
   - name: Create symlink for db directory
     file:
       src: /data/db
@@ -119,21 +124,17 @@
       state: link
       force: yes
 
-  - name: RSD home
-    file:
-      path: /home/ec2-user/rsd
-      state: directory
-
   - name: Copy (rsync) current directory
     synchronize:
-      src: ..
+      # ansible runs from a subfolder, so rsd directory will be ../../ apparently
+      src: ../../
       dest: /home/ec2-user/rsd
       rsync_opts:
-        - "--exclude 'admin/node_modules'"
-        - "--exclude 'admin/dist'"
-        - "--exclude 'cert'"
-        - "--exclude 'letsencrypt'"
-        - "--exclude 'db'"
+        - "--exclude=admin/node_modules"
+        - "--exclude=admin/dist"
+        - "--exclude=cert"
+        - "--exclude=letsencrypt"
+        - "--exclude=db"
 
 #  - name: Clone RSD stack repo
 #    git:
