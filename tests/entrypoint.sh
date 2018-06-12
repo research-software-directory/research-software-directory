@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+sleep 10
+
 assert_service_available()
 {
     if ! nc -z -w1 $1 $2; then
