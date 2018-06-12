@@ -5,7 +5,6 @@ services:
     image: "mongo:3.6"
     volumes:
       - ./db:/data/db
-    volumes:
       - ./config/mongo.sh:/mongo.sh
       - ./db-dump:/db-dump-initial
     entrypoint: /mongo.sh
