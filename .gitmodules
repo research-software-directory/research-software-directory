@@ -16,3 +16,6 @@
 [submodule "auth-github"]
 	path = auth-github
 	url = https://github.com/research-software-directory/auth-github
+[submodule "db-dump"]
+	path = db-dump
+	url = https://github.com/research-software-directory/db-dump
