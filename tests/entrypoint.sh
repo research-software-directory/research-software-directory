@@ -10,6 +10,8 @@ assert_service_available()
     fi
 }
 
+docker ps
+
 assert_service_available nginx 80
 assert_service_available backend 5001
 assert_service_available frontend 5004
