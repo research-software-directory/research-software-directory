@@ -47,7 +47,7 @@ AUTH_GITHUB_CLIENT_*
  - https://github.com/settings/developers -> oath app -> new oauth app 
  - client id -> AUTH_GITHUB_CLIENT_ID
  - secret -> AUTH_GITHUB_CLIENT_SECRET
- - Authorization callback url: https://localhost:80/auth/get_jwt
+ - Authorization callback url: https://localhost/auth/get_jwt
 GITHUB_ACCESS_TOKEN: https://github.com/settings/tokens -> personal acces token -> generate new token (no need to edit permissions/scope?
 
 ZOTERO_API_KEY
