@@ -1,6 +1,9 @@
 version: '3'
 
 services:
+  admin:
+    image: node:9.11.1-alpine
+
   test:
     image: rsdnlesc/tests
     build:
@@ -11,6 +14,5 @@ services:
       - mongo
       - backend
       - frontend
-      - admin
       - auth
       - nginx

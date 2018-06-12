@@ -28,8 +28,6 @@ services:
 
   admin:
     image: rsdnlesc/admin
-    build:
-      context: ./admin
     volumes:
       - rsd_static_admin:/build
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"

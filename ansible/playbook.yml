@@ -152,6 +152,7 @@
       project_src: /home/ec2-user/rsd
       files:
         - docker-compose.yml
+        - docker-compose.prod.yml
 
   - name: Prune old Docker images
     command: docker system prune -f
