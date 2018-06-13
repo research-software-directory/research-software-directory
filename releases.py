@@ -21,7 +21,7 @@ class ReleaseScraper:
         6. validate the cff
         7. generate bibtex, ris, endnote, and codemeta strings
 
-    After initialization, the ReleaseScraper instance has a field .releases which is 
+    After initialization, the ReleaseScraper instance has a field .releases which is
     an array of objects with one of the following layouts:
     {
         "citability": "full"
@@ -48,7 +48,8 @@ class ReleaseScraper:
 
     def __init__(self, doi):
         self.latest_codemeta = None
-        self.releases = None
+        self.releases = list()
+        self.is_citable = False
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
         self.message = None
 
@@ -65,10 +66,9 @@ class ReleaseScraper:
             return
 
         if requests.get("https://dx.doi.org/%s" % doi).status_code == 200:
-            self.isCitable = True
+            self.is_citable = True
             self.doi = doi
         else:
-            self.isCitable = False
             self.message = "error resolving doi."
             return
 
@@ -82,6 +82,10 @@ class ReleaseScraper:
             return
 
         self.fetch_zenodo_data_versioned_dois()
+        if "hits" not in self.zenodo_data["versioned_dois"]:
+            self.message = "record doesn't seem to be resulting from GitHub-Zenodo integration."
+            return
+
         self.filter_zenodo_data_versioned_dois()
         self.reverse_sort_zenodo_data_versioned_dois()
         self.generate_files()
@@ -99,31 +103,38 @@ class ReleaseScraper:
 
     def filter_zenodo_data_versioned_dois(self):
         def select_github_url():
-            for item in hit["metadata"]["related_identifiers"]:
-                if item["scheme"] == "url" and item["relation"] == "isSupplementTo" and\
-                        item["identifier"].startswith("https://github.com/"):
-                    return item["identifier"]
+            github_link = None
+            for identifier in hit["metadata"]["related_identifiers"]:
+                if identifier["scheme"] == "url" and \
+                        identifier["relation"] == "isSupplementTo" and \
+                        identifier["identifier"].startswith("https://github.com/"):
+                    github_link = identifier["identifier"]
                 else:
                     # Associated Zenodo record does not contain a related identifier with "isSupplementTo" relation
-                    # that points to GitHub.
+                    # that points to GitHub. Continue with the next related identifier:
                     continue
+            return github_link
 
-        self.releases = list()
         hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]
         # already include the "files" key here, even though we're only filling it later:
         files = dict()
         for hit in hits:
-            doi = hit["metadata"]["doi"]
-            date_published = hit["metadata"]["publication_date"]
-            url = select_github_url()
-            tag = re.sub("^.*(/tree/)", "", url)
-            self.releases.append({
-                "citability": "doi-only",
-                "datePublished": date_published,
-                "doi": doi,
-                "files": files,
-                "tag": tag,
-                "url": url})
+            try:
+                doi = hit["metadata"]["doi"]
+                date_published = hit["metadata"]["publication_date"]
+                url = select_github_url()
+                if url is not None:
+                    tag = re.sub("^.*(/tree/)", "", url)
+                    self.releases.append({
+                        "citability": "doi-only",
+                        "datePublished": date_published,
+                        "doi": doi,
+                        "files": files,
+                        "tag": tag,
+                        "url": url})
+            except Exception as e:
+                print("Something unexpected happened when trying to retrieve versioned doi info" +
+                      " but I'll try to continue. {0}".format(e))
         return self
 
     def fetch_zenodo_data_conceptdoi(self):
@@ -135,7 +146,7 @@ class ReleaseScraper:
         return self
 
     def fetch_zenodo_data_versioned_dois(self):
-        url = "https://zenodo.org/api/records?q=conceptdoi:\"{0}\"&all_versions=true".format(self.doi)
+        url = "https://zenodo.org/api/records?q=conceptdoi:\"{0}\"&all_versions=true&size=100".format(self.doi)
         r = requests.get(url)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
@@ -174,9 +185,7 @@ class ReleaseScraper:
         return self
 
     def is_concept_doi(self):
-        if "conceptdoi" not in self.zenodo_data["conceptdoi"]:
-            raise ValueError("Zenodo record has no associated conceptdoi: won't be able to retrieve any versions.")
-        return self.doi == self.zenodo_data["conceptdoi"]["conceptdoi"]
+        return "conceptdoi" in self.zenodo_data["conceptdoi"] and self.doi == self.zenodo_data["conceptdoi"]["conceptdoi"]
 
     def is_zenodo_doi(self):
         return self.doi.startswith("10.5281/zenodo.")
@@ -192,9 +201,11 @@ def sync_releases(db):
     software_items = db.software.find({}, {"conceptDOI": 1, "brandName": 1})
     for item_index, software_item in enumerate(software_items):
         conceptdoi = software_item["conceptDOI"]
+
         scraper = ReleaseScraper(conceptdoi)
         document = {
             "_id": conceptdoi,
+            "isCitable": scraper.is_citable,
             "conceptDOI": conceptdoi,
             "latestCodemeta": scraper.latest_codemeta,
             "releases": scraper.releases,

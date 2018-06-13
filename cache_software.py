@@ -73,8 +73,9 @@ def cache_software():
         )
         sw['commits'] = get_binned_commits(repository_urls)
         release_document = db.release.find_one({'_id': sw['conceptDOI']})
-        sw['releases'] = release_document['releases']
-        sw['isCitable'] = release_document['isCitable']
-        sw['latest_codemeta'] = release_document['latest_codemeta']
+        if release_document:
+            sw['releases'] = release_document['releases']
+            sw['isCitable'] = release_document['isCitable']
+            sw['latestCodemeta'] = release_document['latestCodemeta']
 
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
