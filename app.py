@@ -97,7 +97,12 @@ def _login():
                 'image': user_profile.get('avatar_url')
             }
         }
+
+        logger.info(payload)
+
         issued_jwt = jwt.encode(payload, os.environ.get('JWT_SECRET'), algorithm='HS256').decode('ascii')
+
+        logger.info(issued_jwt)
 
         return redirect(os.environ.get('AUTH_CALLBACK_URL') + '?jwt=' + issued_jwt), 302
 
