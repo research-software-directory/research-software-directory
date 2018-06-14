@@ -36,6 +36,7 @@ def serialize_software_list(swlist):
             'shortStatement': sw.get('shortStatement'),
             'isFeatured': sw.get('isFeatured'),
             'relatedOrganizations': sw.get('related').get('organizations'),
+            'slug': sw.get('slug'),
         }
     return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
 
