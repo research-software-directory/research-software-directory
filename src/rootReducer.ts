@@ -6,7 +6,7 @@ import { reducer as toastrReducer, ToastrState } from "react-redux-toastr";
 import { IData } from "./interfaces/resource";
 import { ISchema } from "./interfaces/json-schema";
 import { SemanticICONS } from "semantic-ui-react/dist/commonjs";
-
+import * as jwtDecode from "jwt-decode";
 /**
  * General reducer that updates state with action.claims for type `actionType`
  * @param actionType  type of actions to process
@@ -27,7 +27,7 @@ const jwtReducer: Reducer<IJWT | null> = (state, action) => {
   if (action.type === "JWT_CHANGED") {
     return {
       token: action.data,
-      claims: JSON.parse(atob(action.data.split(".")[1]))
+      claims: jwtDecode(action.data)
     };
   } else {
     return state || null;
