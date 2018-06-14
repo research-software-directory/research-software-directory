@@ -113,7 +113,7 @@ def cite(software_id):
     if "error" in software_dictionary:
         return flask.redirect("/", code=302)
 
-    releases = software_dictionary['releases']['releases']
+    releases = software_dictionary['releases']
 
     for release in releases:
         if release['tag'] == flask.request.args.get('version'):
