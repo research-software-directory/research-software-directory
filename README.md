@@ -61,9 +61,13 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     git add, commit, and push
 
 1. Make sure that everything is pushed, and actually works if you follow the steps
+
+    ```bash
     cd $(mktemp -d)
     git clone --recursive https://github.com/research-software-directory/research-software-directory.git .
     cd research-software-directory/
+    ```
+    
 1. Copy your env file into research-software-directory, or create a new one (see notes in 'For users' section above)
 1  Run the stack
 
