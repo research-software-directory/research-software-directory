@@ -11,17 +11,17 @@ Basically, these are the steps to get a copy of https://research-software.nl run
 1. create the environmental variables
 1. start the complete stack using ``docker-compose``
 
-For details, see below:
+For details, see below.
 
-**Try it out step 1/3: clone this repo**
+**Try it out, step 1/3: clone this repo**
 
-Make sure to use the ``--recursive``, we use ``git submodules``.
+Make sure to use the ``--recursive`` flag, because this repository has ``git submodules``.
 
 ```bash
 git clone --recursive https://github.com/research-software-directory/research-software-directory.git
 ```
 
-**Try it out step 2/3: create the environment variables**
+**Try it out, step 2/3: create the environment variables**
 
 ```bash
 cd research-software-directory
@@ -43,7 +43,7 @@ ZOTERO_API_KEY
   - create new private key
   - group permissions: read only
   
-**Try it out step 3/3: start the complete stack using ``docker-compose``**
+**Try it out, step 3/3: start the complete stack using ``docker-compose``**
 
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
