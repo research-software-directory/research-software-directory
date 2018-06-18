@@ -69,7 +69,7 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     ```
     
 1. Copy your env file into research-software-directory, or create a new one (see notes in 'For users' section above)
-1  Run the stack
+1. Run the stack
 
     ```bash
     docker-compose --file docker-compose.yml up --build
