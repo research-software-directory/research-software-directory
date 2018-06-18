@@ -72,7 +72,7 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 1. Run the stack
 
     ```bash
-    docker-compose --file docker-compose.yml up --build
+    docker-compose --file docker-compose.yml --file docker-compose.prod.yml up --build
     ```
     
 1. In a browser, open 
