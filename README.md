@@ -76,9 +76,9 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     ```
     
 1. In a browser, open 
-    - http://localhost (should show a local instance of the Research Software Directory)
-    - http://localhost/admin (should show the Admin interface to the local instance of the Research Software Directory)
-    - http://localhost/api/software (should show a JSON representation of all software in the local instance of the Research Software Directory)
+    - ``http://localhost`` (should show a local instance of the Research Software Directory)
+    - ``http://localhost/admin`` (should show the Admin interface to the local instance of the Research Software Directory)
+    - ``http://localhost/api/software`` (should show a JSON representation of all software in the local instance of the Research Software Directory)
     
     verify that it all works as it should.
 
