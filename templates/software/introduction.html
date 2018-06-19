@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col col-3-4">
-                {% if template_data.name %}
-                <h1 class="title name">{{template_data.name}}</h1>
+                {% if template_data.brandName %}
+                <h1 class="title name">{{template_data.brandName}}</h1>
                 {% endif %}
                 {% if template_data.contributor %}
                 <div class="by">By <strong>{{", ".join(template_data.contributor|list_names_filter)}}</strong></div>
