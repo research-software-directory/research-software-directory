@@ -64,7 +64,7 @@ def get_blog_fields(zotero_item):
         data = requests.get(zotero_item['data']['url']).text
         soup = BeautifulSoup(data, 'html.parser')
         author = soup.select('header a.ds-link')[0].string
-        image = soup.select('figure img')[0].attrs['src']
+        image = soup.find("meta", property ="og:image").attrs["content"]
         return author, image
     except:
         return None, None
