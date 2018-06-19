@@ -65,7 +65,6 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     ```bash
     cd $(mktemp -d)
     git clone --recursive https://github.com/research-software-directory/research-software-directory.git .
-    cd research-software-directory/
     ```
     
 1. Copy your env file into research-software-directory, or create a new one (see notes in 'For users' section above)
@@ -79,7 +78,9 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     - ``http://localhost`` (should show a local instance of the Research Software Directory)
     - ``http://localhost/admin`` (should show the Admin interface to the local instance of the Research Software Directory)
     - ``http://localhost/api/software`` (should show a JSON representation of all software in the local instance of the Research Software Directory)
-    
+    - ``http://localhost/software/xenon`` (should show a product page (here: Xenon) in the local instance of the Research Software Directory)
+    - ``http://localhost/api/software/xenon`` (should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory)
+
     verify that it all works as it should.
 
 
