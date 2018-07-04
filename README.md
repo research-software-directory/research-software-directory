@@ -5,6 +5,33 @@
 
 # For users
 
+The Research Software Directory is a content management system that is tailored
+to software.
+
+The idea is that institutes for whom research software is an important output,
+can run their own instance of the Research Software Directory. The system is
+designed to be flexible enough to allow for different data sources, database
+schemas, and so on. By default, the Research Software Directory is set up to
+collect data from GitHub, Zenodo, Zotero, as well as Medium blogs.
+
+For each software package, a product page can be created on the Research
+Software Directory if the software is deemed useful to others. While the content
+shown on the product page can be completely customized, by default it includes a
+_Mentions_ section, which can be used to characterize the context in which the
+software exists. The context may include links to scientific papers, but is
+certainly broader than that: for example, there may be links to web applications
+that demonstrate the use of the software, there may be links to videos on
+YouTube, tutorials on readthedocs.io or Jupyter notebooks, or there may be links
+to blog posts; really, anything that helps visitors decide if the software could
+be useful for them.
+
+The Research Software Directory improves findability of software packages,
+partly because it provides metadata that helps search engines understand what
+the software is about, but more importantly because of the human centered text
+snippets that must be provided for each software package. After all, discovery
+of a software package is often not so much about finding it but knowing that you
+found it.
+
 ## Try it out
 
 Basically, these are the steps to get a copy of https://research-software.nl running locally (including data):
