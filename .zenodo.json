@@ -1,8 +1,4 @@
 {
-    "description": "The Research Software Directory aims to promote the impact, the exchange and re-use of research software.",
-    "license": "Apache-2.0",
-    "title": "Research Software Directory",
-    "upload_type": "software",
     "creators": [
         {
             "affiliation": "Netherlands eScience Center",
@@ -10,27 +6,15 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Klaver, Tom"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
             "name": "Maassen, Jason"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Bakker, Tom"
+            "name": "Klaver, Tom"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "van Hees, Vincent"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Mendrik, Adriënne"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Kulik, Lode"
+            "name": "Verhoeven, Stefan"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -42,11 +26,23 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
+            "name": "Kulik, Lode"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Bakker, Tom"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van Hees, Vincent"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
             "name": "Bogaardt, Laurens"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Verhoeven, Stefan"
+            "name": "Mendrik, Adriënne"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -65,13 +61,15 @@
             "name": "van Nieuwpoort, Rob"
         }
     ],
-    "access_right": "open",
     "keywords": [
-        "FAIR",
-        "software",
-        "science gateways",
-        "findable software",
-        "software sustainability",
-        "citable software"
-    ]
+        "FAIR for software",
+        "reproducible research",
+        "research software",
+        "RSE",
+        "re-usable software"
+    ],
+    "license": {
+        "id": "Apache-2.0"
+    },
+    "title": "Research Software Directory"
 }
