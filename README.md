@@ -59,10 +59,12 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     git submodule update --remote --merge
     # check the status
     git submodule status
-    # if there are any SHAs preceded by a plus sign, you need to git add them, e.g.
+    # if there are any SHAs preceded by a plus sign, you need
+    # to git add them, e.g.
     git add db-dump 
     git commit -m "updated db-dump submodule to the latest version"
     ```
+
 1. Gather information on submodules such that it will make it to Zenodo, e.g.
 
     ```bash
@@ -70,11 +72,16 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     ```
 
 1. Write the release notes, include the content of submodules.sha.txt
+1. Update CITATION.cff
+1. Generate the metadata file for Zenodo using [cffconvert](https://pypi.org/project/cffconvert/).
 
     ```bash
-    git add, commit, and push
+    pip install cffconvert
+    cffconvert --outputformat zenodo --ignore-suspect-keys --outfile .zenodo.json
     ```
-
+    ```bash
+    # git add, commit, and push everything
+    ```
 1. Make sure that everything is pushed, and actually works if you follow the steps
 
     ```bash
@@ -90,11 +97,11 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
     ```
     
 1. In a browser, open 
-    - ``http://localhost`` (should show a local instance of the Research Software Directory)
-    - ``http://localhost/admin`` (should show the Admin interface to the local instance of the Research Software Directory)
-    - ``http://localhost/api/software`` (should show a JSON representation of all software in the local instance of the Research Software Directory)
-    - ``http://localhost/software/xenon`` (should show a product page (here: Xenon) in the local instance of the Research Software Directory)
-    - ``http://localhost/api/software/xenon`` (should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory)
+    - [``http://localhost``](http://localhost) (should show a local instance of the Research Software Directory)
+    - [``http://localhost/admin``](http://localhost/admin) (should show the Admin interface to the local instance of the Research Software Directory)
+    - [``http://localhost/api/software``](http://localhost/api/software) (should show a JSON representation of all software in the local instance of the Research Software Directory)
+    - [``http://localhost/software/xenon``](http://localhost/software/xenon) (should show a product page (here: Xenon) in the local instance of the Research Software Directory)
+    - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) (should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory)
 
     verify that it all works as it should.
 
