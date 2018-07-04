@@ -53,12 +53,27 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 
 ## Making a release
 
-1. Write the release notes
+1. Update the submodules to the latest version that the remote knows about
+
+    ```bash
+    git submodule update --remote --merge
+    # check the status
+    git submodule status
+    # if there are any SHAs preceded by a plus sign, you need to git add them, e.g.
+    git add db-dump 
+    git commit -m "updated db-dump submodule to the latest version"
+    ```
 1. Gather information on submodules such that it will make it to Zenodo, e.g.
 
     ```bash
-    git submodule status > submodules.sha.txt or the readme or something
+    git submodule status > submodules.sha.txt
+    ```
+
+1. Write the release notes, include the content of submodules.sha.txt
+
+    ```bash
     git add, commit, and push
+    ```
 
 1. Make sure that everything is pushed, and actually works if you follow the steps
 
