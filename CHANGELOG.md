@@ -3,6 +3,7 @@
 First stable release.
 
 Names below refer to repositories within the https://github.com/research-software-directory/ GitHub organization.
+
 submodules SHAs:
 ```
  6856e70204eac7e0bb5b63cd0c391b13917966d9 admin (v1-140-g6856e70)
