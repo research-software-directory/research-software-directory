@@ -36,13 +36,13 @@ found it.
 
 Basically, these are the steps to get a copy of https://research-software.nl running locally (including data):
 
-1. clone this repo
-1. create the environmental variables
-1. start the complete stack using ``docker-compose``
+1. Clone this repo
+1. Configure
+1. Start the complete stack using ``docker-compose``
 
 For details, see below.
 
-**Try it out, step 1/3: clone this repo**
+**Try it out, step 1/3: Clone this repo**
 
 Make sure to use the ``--recursive`` flag, because this repository has ``git submodules``.
 
@@ -50,29 +50,43 @@ Make sure to use the ``--recursive`` flag, because this repository has ``git sub
 git clone --recursive https://github.com/research-software-directory/research-software-directory.git
 ```
 
-**Try it out, step 2/3: create the environment variables**
+**Try it out, step 2/3: Configure**
+
+The research software directory is configured using a file with environment variables called `.env`.
+An example config file (`.env.example`) is available, use it as a starting point.
 
 ```bash
 cd research-software-directory
 cp .env.example .env
 ```
 
-(edit .env)
+The config file has some place holder values (`changeme`) they must be set by editing the `.env` file.
+Below are instructions how to get the different tokens and keys.
 
-
-AUTH_GITHUB_CLIENT_*
- - https://github.com/settings/developers -> oath app -> new oauth app 
- - client id -> AUTH_GITHUB_CLIENT_ID
- - secret -> AUTH_GITHUB_CLIENT_SECRET
- - Authorization callback url: https://localhost/auth/get_jwt
-GITHUB_ACCESS_TOKEN: https://github.com/settings/tokens -> personal acces token -> generate new token (no need to edit permissions/scope?
-
-ZOTERO_API_KEY
-  - https://www.zotero.org/settings/keys
-  - create new private key
-  - group permissions: read only
+* AUTH_GITHUB_ORGANIZATION
+  1. Set to GitHub organization name which users should be member of to login to admin site
+* AUTH_GITHUB_CLIENT_ID + AUTH_GITHUB_CLIENT_SECRET
+  1. Goto https://github.com/settings/developers -> OAuth Apps -> New OAuth App
+  2. Set Authorization callback url: https://localhost/auth/get_jwt (replace localhost with the domain the site will be accessible on)
+  3. Register application
+     * Use Client ID as value for AUTH_GITHUB_CLIENT_ID
+     * Use Client Secret as value for AUTH_GITHUB_CLIENT_SECRET
+* GITHUB_ACCESS_TOKEN
+  1. Goto https://github.com/settings/tokens
+  2. Generate new token
+  3. Select no scopes
+  4. Use token as value for GITHUB_ACCESS_TOKEN
+* ZOTERO_API_KEY
+  1. https://www.zotero.org/settings/keys
+  2. Create new private key
+  3. Group permissions: Read Only
+  4. Use api key as value for ZOTERO_API_KEY
+* ZOTERO_LIBRARY
+  1. The Zotero group identifier, for example `1689348` is the identifier for group https://www.zotero.org/groups/1689348/netherlands_escience_center
+* JWT_SECRET
+  1. Generate a random string (eg. `openssl rand -base64 32`) and use as value for JWT_SECRET
   
-**Try it out, step 3/3: start the complete stack using ``docker-compose``**
+**Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)**
 
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
