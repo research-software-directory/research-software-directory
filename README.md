@@ -96,7 +96,11 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 
 # For developers
 
-Refer to the Frequently Asked Questions ([FAQ](https://github.com/research-software-directory/research-software-directory/blob/master/faq.md)).
+Refer to the Frequently Asked Questions ([FAQ](https://github.com/research-software-directory/research-software-directory/blob/master/faq.md)):
+
+1. [How do I change the font?](faq.md/#how-do-i-change-the-font?)
+1. [How do I change the logo?](faq.md/#how-do-i-change-logo?)
+1. [How do I change the colors?](faq.md/#how-do-i-change-the-colors?)
 
 # For maintainers
 
