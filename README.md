@@ -2,8 +2,8 @@
 [![Build Status](https://travis-ci.org/research-software-directory/research-software-directory.svg?branch=master)](https://travis-ci.org/research-software-directory/research-software-directory)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1154130.svg)](https://doi.org/10.5281/zenodo.1154130)
 
-This README file has 3 sections, with documentation for [users](#For-users), for 
-[developers](#For-developers), and for [maintainers](#For-maintainers).
+This README file has 3 sections, with documentation for [users](#for-users), for 
+[developers](#for-developers), and for [maintainers](#for-maintainers).
 
 # For users
 
@@ -96,11 +96,11 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 
 # For developers
 
-Refer to the Frequently Asked Questions ([FAQ](https://github.com/research-software-directory/research-software-directory/blob/master/faq.md)):
+Refer to the Frequently Asked Questions ([FAQ](faq.md)):
 
-1. [How do I change the font?](faq.md/#how-do-i-change-the-font?)
-1. [How do I change the logo?](faq.md/#how-do-i-change-logo?)
-1. [How do I change the colors?](faq.md/#how-do-i-change-the-colors?)
+1. [How do I change the font?](faq.md#how-do-i-change-the-font?)
+1. [How do I change the logo?](faq.md#how-do-i-change-logo?)
+1. [How do I change the colors?](faq.md#how-do-i-change-the-colors?)
 
 # For maintainers
 
