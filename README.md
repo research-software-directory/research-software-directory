@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/research-software-directory/research-software-directory.svg?branch=master)](https://travis-ci.org/research-software-directory/research-software-directory)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1154130.svg)](https://doi.org/10.5281/zenodo.1154130)
 
+This README file has 3 sections, with documentation for [users](#For-users), for 
+[developers](#For-developers), and for [maintainers](#For-maintainers).
 
 # For users
 
@@ -91,6 +93,10 @@ Below are instructions how to get the different tokens and keys.
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 ```
+
+# For developers
+
+Refer to the Frequently Asked Questions ([FAQ](https://github.com/research-software-directory/research-software-directory/blob/master/faq.md)).
 
 # For maintainers
 
