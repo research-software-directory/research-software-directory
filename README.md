@@ -2,8 +2,8 @@
 [![Build Status](https://travis-ci.org/research-software-directory/research-software-directory.svg?branch=master)](https://travis-ci.org/research-software-directory/research-software-directory)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1154130.svg)](https://doi.org/10.5281/zenodo.1154130)
 
-This README file has 3 sections, with documentation for [users](#For-users), for 
-[developers](#For-developers), and for [maintainers](#For-maintainers).
+This README file has 3 sections, with documentation for [users](#for-users), for 
+[developers](#for-developers), and for [maintainers](#for-maintainers).
 
 # For users
 
