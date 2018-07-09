@@ -96,7 +96,7 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 
 # For developers
 
-Refer to the Frequently Asked Questions ([FAQ](https://github.com/research-software-directory/research-software-directory/blob/master/faq.md)).
+Refer to the Frequently Asked Questions ([FAQ](faq.md)).
 
 # For maintainers
 
