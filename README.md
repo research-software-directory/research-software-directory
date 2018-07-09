@@ -98,9 +98,19 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 
 Refer to the Frequently Asked Questions ([FAQ](faq.md)):
 
+## Frontend
+
 1. [How do I change the font?](faq.md#how-do-i-change-the-font?)
 1. [How do I change the logo?](faq.md#how-do-i-change-logo?)
 1. [How do I change the colors?](faq.md#how-do-i-change-the-colors?)
+
+## Admin interface
+
+1. ...
+
+## Scrapers
+   
+1. ...
 
 # For maintainers
 
