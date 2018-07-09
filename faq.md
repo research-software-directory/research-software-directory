@@ -2,24 +2,42 @@
 
 Contents
 
-1. [How do I change the font?](#how-do-i-change-the-font)
-1. [How do I change the logo?](#how-do-i-change-logo)
-1. [How do I change the colors?](#how-do-i-change-the-colors)
+## Frontend
+
+1. [How do I change the font?](faq.md#how-do-i-change-the-font?)
+1. [How do I change the logo?](faq.md#how-do-i-change-logo?)
+1. [How do I change the colors?](faq.md#how-do-i-change-the-colors?)
+
+## Admin interface
+
+1. ...
+
+## Scrapers
+   
+1. ...
 
 
-## How do I change the font?
+## Frontend
+
+### How do I change the font?
 
 this is how you do it.
 
 
-## How do I change the logo?
+### How do I change the logo?
 
 this is how you do it.
 
 
-## How do I change the colors?
+### How do I change the colors?
 
 this is how you do it.
 
+## Admin interface
 
+### ...
+
+## Scrapers
+
+### ...
 
