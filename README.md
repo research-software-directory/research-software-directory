@@ -101,7 +101,7 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 Let's say you followed the steps above, and have a running instance of the
 Research Software Directory. Now you may want to make some changes to bring the
 frontend in line with your institute's branding. For example, you could follow
-the steps outlined [here](faq/how-do-i-change-the-font) to change the fonts.
+the steps outlined [here](faq/how-do-i-change-the-font.md) to change the fonts.
 
 Now the question is, after making your changes, how do you get to see them?
 Here's how:
