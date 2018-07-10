@@ -91,7 +91,7 @@ Below are instructions how to get the different tokens and keys.
 **Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)**
 
 ```bash
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+docker-compose --file docker-compose.yml --file docker-compose.prod.yml up --build
 ```
 
 # For developers
