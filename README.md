@@ -16,8 +16,13 @@ designed to be flexible enough to allow for different data sources, database
 schemas, and so on. By default, the Research Software Directory is set up to
 collect data from GitHub, Zenodo, Zotero, as well as Medium blogs.
 
-For each software package, a product page can be created on the Research
-Software Directory if the software is deemed useful to others. While the content
+For each software package, a _product page_ can be created on the Research
+Software Directory if the software is deemed useful to others. Here is an
+example of what a product page may look like:
+
+![images/20180627-webcapture-xenon.png](images/20180627-webcapture-xenon.png)
+
+While the content
 shown on the product page can be completely customized, by default it includes a
 _Mentions_ section, which can be used to characterize the context in which the
 software exists. The context may include links to scientific papers, but is
@@ -33,6 +38,8 @@ the software is about, but more importantly because of the human centered text
 snippets that must be provided for each software package. After all, discovery
 of a software package is often not so much about finding it but knowing that you
 found it.
+
+
 
 ## Try it out
 
