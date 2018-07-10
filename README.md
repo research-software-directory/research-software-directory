@@ -176,7 +176,7 @@ Refer to the Frequently Asked Questions ([FAQ](faq/contents.md)) for more detail
 answers to specific questions:
 
 1. [How do I change the font?](faq/how-do-i-change-the-font.md)
-1. [How do I change the logo?](faq/how-do-i-change-logo.md)
+1. [How do I change the logo?](faq/how-do-i-change-the-logo.md)
 1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
 
 # For maintainers
