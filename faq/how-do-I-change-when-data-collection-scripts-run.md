@@ -1,4 +1,4 @@
-# How do I change when data collection scripts run.md
+# How do I change when data collection scripts run?
 
 ## Relevant files
 
