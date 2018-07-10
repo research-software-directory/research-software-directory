@@ -141,7 +141,7 @@ Here's how:
     docker rm tmpufoyhj4z6k_frontend_1
     ```
 
-    Check which images you have with ``docker images``, remove by ID as appropriate:
+    Check which images you have with ``docker images``, remove by ID as appropriate with ``docker rmi <IMAGE ID>``:
 
     ```
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
@@ -160,9 +160,6 @@ Here's how:
     nginx                  1.13.12-alpine      ebe2c7c61055        3 months ago        18MB
     ```
 
-    ```
-    docker rmi 1cf1300f8ff9
-    ```
 
 1. Now build a new container, with new content, using:
 
