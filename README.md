@@ -178,14 +178,6 @@ answers to specific questions:
 1. [How do I change the logo?](faq/how-do-i-change-logo.md)
 1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
 
-## Admin interface
-
-1. ...
-
-## Scrapers
-   
-1. ...
-
 # For maintainers
 
 ## Making a release
