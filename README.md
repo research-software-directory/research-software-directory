@@ -96,11 +96,87 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
 
 # For developers
 
-Refer to the Frequently Asked Questions ([FAQ](faq.md)):
+## General workflow when making changes
 
-1. [How do I change the font?](faq.md#how-do-i-change-the-font?)
-1. [How do I change the logo?](faq.md#how-do-i-change-logo?)
-1. [How do I change the colors?](faq.md#how-do-i-change-the-colors?)
+Let's say you followed the steps above, and have a running instance of the
+Research Software Directory. Now you may want to make some changes to bring the
+frontend in line with your institute's branding. For example, you could follow
+the steps outlined [here](faq.md#how-do-i-change-the-font) to change the fonts.
+
+Now the question is, after making your changes, how do you get to see them?
+Here's how:
+
+1. go to the terminal where you started ``docker-compose``
+1. Use Ctrl+C to stop the running instance of Research Software Directory
+1. Check which docker containers you have with:
+
+    ```
+    docker ps -a
+    ```
+
+    for example, mine says:
+
+    ```
+    CONTAINER ID        IMAGE                  COMMAND                   CREATED             STATUS                       PORTS               NAMES
+    a570e0cc8ea8        certbot/certbot        "sh /certbot.sh"          3 minutes ago       Exited (1) 3 minutes ago                         tmpufoyhj4z6k_certbot_1
+    b15cabf82f23        rsdnlesc/nginx_proxy   "/bin/sh -c 'sh /sta…"    3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_nginx_1
+    5e7ab363a5ba        rsdnlesc/frontend      "/bin/sh -c 'sh -c \"…"   3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_frontend_1
+    b7b24d3ce94b        rsdnlesc/tasks         "/bin/sh -c 'crond -…"    3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_tasks_1
+    8703e87e709f        rsdnlesc/backend       "/bin/sh -c 'gunicor…"    3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_backend_1
+    531a6d53430b        rsdnlesc/admin         "sh -c 'rm -rf /buil…"    3 minutes ago       Exited (0) 3 minutes ago                         tmpufoyhj4z6k_admin_1
+    d90006bc24ff        mongo:3.6              "/mongo.sh --bind_ip…"    3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_mongo_1
+    34739f47c066        rsdnlesc/auth-github   "/bin/sh -c 'gunicor…"    3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_auth_1
+    ```
+
+    Use ``docker rm`` to delete the frontend container:
+
+    ```
+    docker rm tmpufoyhj4z6k_frontend_1
+    ```
+
+    Check which images you have with ``docker images``, remove the frontend one:
+
+    ```
+    REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+    rsdnlesc/tasks         latest              9db08e8cee63        5 minutes ago       112MB
+    rsdnlesc/nginx_proxy   latest              7464658d4907        5 minutes ago       22.2MB
+    rsdnlesc/frontend      latest              1cf1300f8ff9        5 minutes ago       108MB
+    rsdnlesc/backend       latest              db04aa6963f9        5 minutes ago       107MB
+    rsdnlesc/auth-github   latest              35c7621b8bdf        5 minutes ago       106MB
+    rsdnlesc/admin         latest              f5de3ab5f77a        6 minutes ago       26.3MB
+    <none>                 <none>              f2ba918b63de        6 minutes ago       1.48GB
+    python                 3.6-alpine          951c2507873b        3 days ago          88MB
+    nginx                  alpine              920e5c5c8bed        3 days ago          18.6MB
+    mongo                  3.6                 bbed8d0e01c1        13 days ago         368MB
+    certbot/certbot        latest              aee207f30a81        3 weeks ago         116MB
+    node                   8.11.1              78f8aef50581        2 months ago        673MB
+    nginx                  1.13.12-alpine      ebe2c7c61055        3 months ago        18MB
+    ```
+
+    ```
+    docker rmi 1cf1300f8ff9
+    ```
+
+1. We should rebuild (only) the docker container that we have updated, i.e. the one that was built from ``rsdnlesc/frontend``. To do so, we can use ``docker rm`` followed by the name of the container to remove the old container:
+
+    ```
+    docker rm tmpzed1arlrtr_frontend_1
+    ```
+
+1. And then build a new container, with new content, using:
+
+    ```
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+    ```
+
+## Frequently Asked Questions
+
+Refer to the Frequently Asked Questions ([FAQ](faq/contents.md)) for more detailed
+answers to specific questions:
+
+1. [How do I change the font?](faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](faq/how-do-i-change-logo.md)
+1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
 
 # For maintainers
 
