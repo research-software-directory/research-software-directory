@@ -157,13 +157,7 @@ Here's how:
     docker rmi 1cf1300f8ff9
     ```
 
-1. We should rebuild (only) the docker container that we have updated. To do so, we can use ``docker rm`` followed by the name of the container to remove the old container, e.g. for the frontend container:
-
-    ```
-    docker rm tmpzed1arlrtr_frontend_1
-    ```
-
-1. And then build a new container, with new content, using:
+1. Now build a new container, with new content, using:
 
     ```
     docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
