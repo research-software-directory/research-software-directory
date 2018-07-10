@@ -106,7 +106,7 @@ the steps outlined [here](faq/how-do-i-change-the-font.md) to change the fonts.
 Now the question is, after making your changes, how do you get to see them?
 Here's how:
 
-1. go to the terminal where you started ``docker-compose``
+1. Go to the terminal where you started ``docker-compose``
 1. Use Ctrl+C to stop the running instance of Research Software Directory
 1. Check which docker containers you have with:
 
@@ -128,13 +128,13 @@ Here's how:
     34739f47c066        rsdnlesc/auth-github   "/bin/sh -c 'gunicor…"    3 minutes ago       Exited (137) 7 seconds ago                       tmpufoyhj4z6k_auth_1
     ```
 
-    Use ``docker rm`` to delete the frontend container:
+    Use ``docker rm`` to delete the container you want to update, e.g. the frontend container:
 
     ```
     docker rm tmpufoyhj4z6k_frontend_1
     ```
 
-    Check which images you have with ``docker images``, remove the frontend one:
+    Check which images you have with ``docker images``, remove by ID as appropriate:
 
     ```
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
@@ -157,7 +157,7 @@ Here's how:
     docker rmi 1cf1300f8ff9
     ```
 
-1. We should rebuild (only) the docker container that we have updated, i.e. the one that was built from ``rsdnlesc/frontend``. To do so, we can use ``docker rm`` followed by the name of the container to remove the old container:
+1. We should rebuild (only) the docker container that we have updated. To do so, we can use ``docker rm`` followed by the name of the container to remove the old container, e.g. for the frontend container:
 
     ```
     docker rm tmpzed1arlrtr_frontend_1
