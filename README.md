@@ -176,7 +176,7 @@ Refer to the Frequently Asked Questions ([FAQ](faq/contents.md)) for more detail
 answers to specific questions:
 
 1. [How do I change the font?](faq/how-do-i-change-the-font.md)
-1. [How do I change the logo?](faq/how-do-i-change-logo.md)
+1. [How do I change the logo?](faq/how-do-i-change-the-logo.md)
 1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
 
 # For maintainers
@@ -216,10 +216,11 @@ answers to specific questions:
 
     ```bash
     cd $(mktemp -d)
-    git clone --recursive https://github.com/research-software-directory/research-software-directory.git .
+    git clone --recursive https://github.com/research-software-directory/research-software-directory.git
+    cd research-software-directory
     ```
     
-1. Copy your env file into research-software-directory, or create a new one (see notes in 'For users' section above)
+1. Copy your ``.env`` file into ``research-software-directory``, or create a new one (see notes in 'For users' section above)
 1. Run the stack
 
     ```bash
