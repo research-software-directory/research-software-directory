@@ -1,12 +1,25 @@
 # How do I change the colors?
 
-This article is a stub.
+Which colors you see on the frontend is governed by the style file ``frontend/static/style/rsd.scss.css``. This file is generated from SCSS source
+files. In a nutshell, these are the steps to change the colors (more
+details below):
 
-## Update the CSS with the new colors
+1. Update the SCSS variables.
+1. Recompile the CSS from its SCSS source files.
+
+## 1. Update the CSS variables
 
 ### Relevant files
 
 - ``frontend/style/settings/_variables.scss``
+
+
+## 2. Recompile the CSS
+
+### Relevant files
+
+- ``frontend/static/style/rsd.scss.css``
+- ``frontend/static/style/rsd.scss.css.map``
 
 
 For this step, you'll need a program that can compile SCSS files into CSS. For
