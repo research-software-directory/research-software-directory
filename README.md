@@ -174,18 +174,18 @@ Here's how:
 
 ## Frequently Asked Questions
 
-Refer to the Frequently Asked Questions ([FAQ](faq/contents.md)) for more detailed
+Refer to the Frequently Asked Questions for more detailed
 answers to specific questions:
 
 ### Frontend
 
-1. [How do I change the font?](how-do-i-change-the-font.md)
-1. [How do I change the logo?](how-do-i-change-the-logo.md)
-1. [How do I change the colors?](how-do-i-change-the-colors.md)
+1. [How do I change the font?](faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](faq/how-do-i-change-the-logo.md)
+1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
 
 ### Tasks
 
-1. [How do I change when data collection scripts run?](how-do-I-change-when-data-collection-scripts-run.md)
+1. [How do I change when data collection scripts run?](faq/how-do-I-change-when-data-collection-scripts-run.md)
 
 ---
 
