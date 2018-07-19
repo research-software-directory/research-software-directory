@@ -1,4 +1,5 @@
 from dateutil import parser
+from datetime import datetime
 import json
 import flask
 import markdown
@@ -42,13 +43,37 @@ def serialize_software_list(swlist):
 
 
 def get_mentions(software_list):
-    nested_mentions = list(map(lambda sw: sw['related'].get('mentions', []), software_list))
-    mentions = [item['foreignKey'] for sublist in nested_mentions for item in sublist]
-    unique_mentions = []
-    for mention in mentions:
-        if True not in [m['primaryKey']['id'] == mention['primaryKey']['id'] for m in unique_mentions]:
-            unique_mentions.append(mention)
-    return sorted(unique_mentions, key=lambda m: m['date'], reverse=True)
+    # 1. collect all related mentions from the individual software pages into 1 
+    #    dict, using the database's primary key as key to ensure each item is unique
+    # 2. omit items from the list that are in the future (because of the date somebody entered)
+    # 3. sort the list by date
+    # 4. use slicing in index_template.html to display the top N items
+
+    now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
+    if software_list is None:
+        return []
+    else:
+        mentions = dict()
+        for software in software_list:
+            for mention in software['related']['mentions']:
+
+                # check that all the necessary information is present
+                requireds = ['date', 'primaryKey', 'url', 'title']
+                if False in [required in mention['foreignKey'].keys() for required in requireds]: continue
+
+                date = mention['foreignKey']['date']
+                key = mention['foreignKey']['primaryKey']['id']
+                url = mention['foreignKey']['url']
+                title = mention['foreignKey']['title']
+
+                # check that the item's date is somwhere in the past
+                if date < now:
+                    mentions[key] = {
+                        'date': date,
+                        'title': title,
+                        'url': url
+                    }
+        return sorted(mentions.values(), key=lambda mention: mention['date'], reverse=True)
 
 
 @application.route('/', methods=['GET'])
