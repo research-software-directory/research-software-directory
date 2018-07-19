@@ -49,10 +49,10 @@ def get_mentions(software_list):
     # 3. sort the list by date
     # 4. use slicing in index_template.html to display the top N items
 
-    now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
     if software_list is None:
         return []
     else:
+        now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
         mentions = dict()
         for software in software_list:
             for mention in software['related']['mentions']:
