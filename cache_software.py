@@ -57,7 +57,8 @@ def last_commit_date(repository_url):
 
 
 def cache_software():
-    for sw in db.software.find():
+    db_software = db.software.find()
+    for sw in db_software:
         if not sw['isPublished']:
             db.software_cache.delete_one({'_id': sw['_id']})
             continue
@@ -79,3 +80,9 @@ def cache_software():
             sw['latestCodemeta'] = release_document['latestCodemeta']
 
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
+
+    software_ids = list(map(lambda x: x['primaryKey']['id'], db.software.find()))
+    for cache_item in db.software_cache.find():
+        if not cache_item['primaryKey']['id'] in software_ids:
+            logger.log(logging.INFO, 'Deleting from cache: %s' % cache_item['brandName'])
+            db.software_cache.delete_one({'_id': cache_item['_id']})
