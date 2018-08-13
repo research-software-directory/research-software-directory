@@ -91,7 +91,9 @@ class ProjectScraper(AbstractScraper):
             project["title"] = project_soup.find("div", class_="text").find("a", class_="title").string
             project["subtitle"] = project_soup.find("div", class_="text").find("a", class_="subtitle").string
             project["image"] = project_soup.find("div", class_="image").find("img")["src"]
-            project["url"] = project_soup.find("div", class_="text").find("a", class_="title")["href"]
+
+            project_href = project_soup.find("div", class_="text").find("a", class_="title")["href"]
+            project["url"] = re.sub(r'^//', 'https://', project_href)
 
             if self.include_deep_info:
                 logger.info(project["url"])
