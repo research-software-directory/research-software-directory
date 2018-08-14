@@ -114,17 +114,17 @@ function initOverview(softwareData, organizationsData) {
         },
         data: {
             tags: [
-                "Visualization",
-                "Image processing",
-                "Machine learning",
-                "Text analysis & natural language processing",
-                "Real time data analysis",
-                "Optimized data handling",
                 "Big data",
-                "Inter-operability & linked data",
-                "Multi-scale & multi model simulations",
-                "High performance computing",
                 "GPU",
+                "High performance computing",
+                "Image processing",
+                "Inter-operability & linked data",
+                "Machine learning",
+                "Multi-scale & multi model simulations",
+                "Optimized data handling",
+                "Real time data analysis",
+                "Text analysis & natural language processing",
+                "Visualization",
                 "Workflow technologies"
             ],
             sorters: ['Last updated', 'Most updates', 'Most mentions'],
@@ -162,6 +162,12 @@ function initOverview(softwareData, organizationsData) {
 
             /* organizations for which there is at least one software item with this org as contributingOrganization */
             partnerOrganizations: function() {
+
+                var alphabeticallyByName = function (obj1, obj2) {
+                    var locale = undefined;
+                    var options = {sensitivity: 'base'};  // case-insensitive
+                    return obj1.name.localeCompare(obj2.name, locale, options);
+                }
                 // all contributing organization ids (map, flatten, filter unique)
                 var contributingOrganizationIds = [].concat.apply(
                     [],
@@ -169,11 +175,12 @@ function initOverview(softwareData, organizationsData) {
                 )
                 .map(function(org) { return org.foreignKey.primaryKey.id; })
                 .filter(filterUnique);
-
+                // create a deep copy of the array of organizations
                 var orgCopy = JSON.parse(JSON.stringify(this.organizations));
-                return orgCopy.filter(
-                    function(org) { return contributingOrganizationIds.indexOf(org.primaryKey.id) !== -1 }
-                );
+                return orgCopy.filter(function(org) {
+                    return contributingOrganizationIds.indexOf(org.primaryKey.id) !== -1 
+                })
+                .sort(alphabeticallyByName);
             },
 
             organizationsWithCount: function () {
