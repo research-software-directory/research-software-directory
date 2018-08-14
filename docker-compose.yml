@@ -26,6 +26,7 @@ services:
     depends_on:
       - mongo
 
+
   admin:
     image: rsdnlesc/admin
     volumes:
@@ -53,13 +54,20 @@ services:
       - backend
       - mongo
 
+  nginx_ssl:
+    image: rsdnlesc/docker-term-letsencrypt
+    volumes:
+      - ./cert:/cert
+      - ./letsencrypt:/etc/letsencrypt
+    env_file:
+      - .env
+    restart: unless-stopped
+
   nginx:
     image: rsdnlesc/nginx_proxy
     build:
       context: ./config/nginx_proxy
     volumes:
-      - ./cert:/cert
-      - acme:/acme
       - rsd_static_admin:/static_admin:ro
       - rsd_static_frontend:/static_frontend:ro
     depends_on:
@@ -71,20 +79,6 @@ services:
       - .env
     restart: unless-stopped
 
-  certbot:
-    image: "certbot/certbot"
-    volumes:
-      - ./cert:/cert
-      - ./config/certbot.sh:/certbot.sh
-      - ./letsencrypt:/etc/letsencrypt
-      - acme:/acme
-    command: sh /certbot.sh
-    entrypoint: ""
-    env_file:
-      - .env
-    depends_on:
-      - nginx
 volumes:
   rsd_static_admin:
   rsd_static_frontend:
-  acme:

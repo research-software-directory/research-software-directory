@@ -4,7 +4,7 @@ services:
   admin:
     build:
       context: ./admin
-  nginx:
+  nginx_ssl:
     ports:
       - 443:443
       - 80:80
