@@ -28,6 +28,8 @@ def serialize_software_list(swlist):
     def sw_dict(sw):
         last_update = sw.get('lastCommit', sw.get('updatedAt')) or '2015-01-01T12:00:00Z'
         return {
+            'numCommits': sw.get('totalCommits'),
+            'numMentions': len(sw.get('related').get('mentions')),
             'lastUpdate': last_update,
             'lastUpdateAgo': ago.human(str_to_datetime(last_update), precision=1),
             'tags': sw.get('tags'),
