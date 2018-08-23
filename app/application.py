@@ -38,7 +38,8 @@ def serialize_software_list(swlist):
             'brandName': sw.get('brandName'),
             'shortStatement': sw.get('shortStatement'),
             'isFeatured': sw.get('isFeatured'),
-            'relatedOrganizations': sw.get('related').get('organizations'),
+            'relatedOrganizations': [
+                { 'foreignKey': { key: org['foreignKey'][key] for key in ['primaryKey', 'name'] } } for org in sw.get('related').get('organizations')],
             'slug': sw.get('slug'),
         }
     return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
@@ -81,7 +82,9 @@ def get_mentions(software_list):
 @application.route('/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
-    organizations = requests.get(api_url + '/organization').json()
+    organizations = [
+        { key: org[key] for key in ['primaryKey', 'name'] } for org in requests.get(api_url + '/organization').json()
+    ]
     all_software = requests.get(url).json()
 
     return flask.render_template('index_template.html',
