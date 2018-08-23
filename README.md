@@ -28,7 +28,7 @@ PYTHONPATH=. pytest
 ```
 You can also test against live data, it will check if all pages render:
 ```bash
-BACKEND_URL=https://test.research-software.nl/api PYTHONPATH=. pytest --live -v
+BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live -v
 ```
 # Run
 
