@@ -190,13 +190,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 document.addEventListener("DOMContentLoaded", function(event) {
     var plotElm = document.getElementById("commitsPlot");
 
-    var currentMonth = (new Date()).getMonth();
+    var currentMonth = (new Date()).getMonth() + 1;
     var currentYear = (new Date()).getFullYear();
     var month = currentMonth;
     var year = currentYear - 5;
     var x = [];
     var y = [];
-    while (month < currentMonth || year < currentYear) {
+    while (month < currentMonth + 1 || year < currentYear) {
         var i = year + '-' + ('0' + month).substr(-2);
         x.push(i);
         y.push(commitsData[i] || 0);
