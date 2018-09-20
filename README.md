@@ -216,7 +216,7 @@ answers to specific questions:
 1. Generate the metadata file for Zenodo using [cffconvert](https://pypi.org/project/cffconvert/).
 
     ```bash
-    pip install cffconvert
+    pip install --user cffconvert
     cffconvert --outputformat zenodo --ignore-suspect-keys --outfile .zenodo.json
     ```
     ```bash
