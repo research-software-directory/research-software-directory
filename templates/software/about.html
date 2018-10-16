@@ -47,6 +47,17 @@
                     <li>{{license}}</li>
                     {% endfor %}
                 </ul>
+
+                {% if template_data.repositoryURLs.github | length >= 1 %}
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#source-code"></use></svg>Source code</h5>
+                <ul class="githublogo">
+                    <li>
+                        <a href="{{template_data.repositoryURLs.github[0]}}" target="_blank">
+                            <img src="/static/icons/github-logo.png" >
+                        </a>
+                    </li>
+                </ul>
+                {% endif%}
             </div>
 
         </div>
