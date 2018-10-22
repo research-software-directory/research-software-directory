@@ -47,10 +47,11 @@ let add_repositories = (doc) => {
 db.software_cache.find({"isPublished": true}).forEach(add_repositories);
 
 // number of scientific publications
+let scipubs = new Set(["conferencePaper", "journalArticle"]);
 let add_scipubs = (doc) => {
     overview[doc.brandName.toLowerCase()].scipubs = 0;
     doc.related.mentions.forEach((mention) => {
-        if (mention.foreignKey.type == "conferencePaper" || mention.foreignKey.type == "journalArticle"  ) {
+        if (scipubs.has(mention.foreignKey.type)) {
             overview[doc.brandName.toLowerCase()].scipubs += 1;
         };
     });
@@ -58,23 +59,33 @@ let add_scipubs = (doc) => {
 db.software_cache.find({"isPublished": true}).forEach(add_scipubs);
 
 // number of mainstream media publications
+let mmpubs = new Set(["blogPost",
+                      "interview",
+                      "magazineArticle", 
+                      "newspaperArticle",
+                      "radioBroadcast",
+                      "videoRecording"]);
 let add_mmpubs = (doc) => {
     overview[doc.brandName.toLowerCase()].mmpubs = 0;
     doc.related.mentions.forEach((mention) => {
-        if (mention.foreignKey.type == "blogPost" ||
-            mention.foreignKey.type == "interview" ||
-            mention.foreignKey.type == "magazineArticle" ||
-            mention.foreignKey.type == "newspaperArticle" ||
-            mention.foreignKey.type == "radioBroadcast" ||
-            mention.foreignKey.type == "videoRecording") {
+        if (mmpubs.has(mention.foreignKey.type)) {
             overview[doc.brandName.toLowerCase()].mmpubs += 1;
         };
     });
 }
 db.software_cache.find({"isPublished": true}).forEach(add_mmpubs);
 
+// number of publications (any type)
+let add_totalpubs = (doc) => {
+    overview[doc.brandName.toLowerCase()].totalpubs = 0;
+    doc.related.mentions.forEach((mention) => {
+        overview[doc.brandName.toLowerCase()].totalpubs += 1;
+    });
+}
+db.software_cache.find({"isPublished": true}).forEach(add_totalpubs);
+
 let print_overview = () => {
-    print("brandName,contributors,commits,organizations,projects,scientific publications,mainstream media")
+    print("brandName,contributors,commits,organizations,projects,scientific publications,mainstream media, total publications (any type)")
     Object.keys(overview).sort().forEach((key) => {
         print(key + ',' +
             overview[key].contributors + ',' + 
@@ -82,7 +93,8 @@ let print_overview = () => {
             overview[key].organizations + ',' + 
             overview[key].projects + ',' + 
             overview[key].scipubs + ',' + 
-            overview[key].mmpubs )
+            overview[key].mmpubs + ',' + 
+            overview[key].totalpubs )
     })
 
 }
