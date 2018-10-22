@@ -108,17 +108,44 @@
                 };
                 items.filter((item) => {return item.isPublished}).forEach(add_mmpubs);
 
+
+
+                // number of unique publications of any type
+                const allpubs = new Set();
+                let add_pubs = (doc) => {
+                    doc.related.mentions.forEach((mention) => {
+                        allpubs.add(mention.foreignKey.primaryKey.id);
+                    });
+                };
+                items.filter((item) => {return item.isPublished}).forEach(add_pubs);
+
+
+
+                // number of unique permissively licensed brands
+                const permissive_license_types = new Set(["Apache-2.0",
+                                                          "GPL-2.0",
+                                                          "GPL-3.0",
+                                                          "LGPL-2.0",
+                                                          "MIT"])
+                const permissively_licensed = items.filter((item) => {return item.isPublished})
+                .filter((item) => {return permissive_license_types.has(item.license[0])});
+
+
+
                 const print_overview = () => {
-                    document.write("<p>published brands:          " + brands.length + "</p>")
+                    document.write("<p>published brands: " + brands.length + "</p>")
                     document.write("<p>published brands with doi: " + citable_brands.length + "</p>")
-                    document.write("<p>unique contributors:              " + contributors.size + "</p>")
-                    document.write("<p>commits:                   " + number_of_commits + "</p>")
-                    document.write("<p>unique organizations:             " + organizations.size + "</p>")
-                    document.write("<p>unique projects:                  " + projects.size + "</p>")
-                    document.write("<p>unique repositories:              " + repositories.size + "</p>")
-                    document.write("<p>unique scientific publications:                   " + scipubs.size + "</p>")
-                    document.write("<p>unique mainstream media publications:                    " + mmpubs.size + "</p>")
+                    document.write("<p>unique contributors: " + contributors.size + "</p>")
+                    document.write("<p>commits: " + number_of_commits + "</p>")
+                    document.write("<p>unique organizations: " + organizations.size + "</p>")
+                    document.write("<p>unique projects: " + projects.size + "</p>")
+                    document.write("<p>unique repositories: " + repositories.size + "</p>")
+                    document.write("<p>unique scientific publications: " + scipubs.size + "</p>")
+                    document.write("<p>unique mainstream media publications: " + mmpubs.size + "</p>")
+                    document.write("<p>total number of unique publications of any type: " + allpubs.size + "</p>")
+                    document.write("<p>permissive license (Apache-2.0, GPL-2.0, GPL-3.0, LGPL-2.0, MIT): " + permissively_licensed.length + "</p>")
                 }
+
                 print_overview();
             })
             .catch(function(error) {
