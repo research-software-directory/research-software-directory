@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script type="application/javascript">
+            const url = 'https://www.research-software.nl/api/software_cache';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then((items) => {
+
+                const filterer = (item) => {
+                    return item.testimonials.length > 0
+                }
+                const mapper = (item) => {
+                    return {
+                        brandName: item.brandName, 
+                        url: "https://www.research-software.nl/software/" + item.slug,
+                        testimonials: item.testimonials.map((testimonial) => {return '"' + testimonial.text + '" ' + testimonial.person + ", " + testimonial.affiliation})
+                    }
+                }
+
+                const filtered = items.filter(filterer);
+                const mapped = filtered.map(mapper);
+                mapped.forEach((testimonial) => {
+                    document.write("<p>brand: <a href='" + testimonial.url + "'>" + testimonial.brandName + "</a></p><p>testimonials: " + testimonial.testimonials.join() + "</p>")
+                    console.log(testimonial)
+                })
+
+            })
+            .catch(function(error) {
+                console.log(JSON.stringify(error));
+            });
+        </script>
+    </head>
+
+    <body>
+    </body>
+</html>
