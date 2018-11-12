@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="application/javascript">
+            const url = 'https://www.research-software.nl/api/software_cache';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then((items) => {
+
+                document.write("<h1>Mentions without a URL</h1>")
+                let total_mentions = 0;
+                document.write("<ol>")
+                items.forEach((item) => {
+                    item.related.mentions.forEach((mention) => {
+                        if (mention.foreignKey.url === undefined) {
+                            let s = "<li><a href='https://research-software.nl/software/" + item.slug + "'>" + item.slug + "</a>: mention \"" + mention.foreignKey.title + "\" should have a URL.</li>";
+                            document.write(s);
+                        } 
+                        total_mentions += 1;
+                    })
+                })
+                document.write("</ol>");
+                document.write("<p>total number of mentions: " + total_mentions.toString() + "</p>");
+
+            })
+            .catch(function(error) {
+                console.log(JSON.stringify(error));
+            });
+        </script>
+    </head>
+
+    <body>
+    </body>
+</html>
