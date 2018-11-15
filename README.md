@@ -31,9 +31,9 @@ The items on the  dropdown list are harvested once every 24 hours from the [Neth
 
 So, if you have a new blog post, new paper, or a new screencast that you want to add as a mention to a product page, you need to add the new item to Zotero (and then wait a bit, see section [_How/when do I get to see my changes?_](#howwhen-do-i-get-to-see-my-changes) below). For detailed guidance on how to add various types of records to Zotero, go [here](zotero.md).
 
-Finally, the work that you do happens within a project, for which there should be a project description on [esciencecenter.nl/projects](https://esciencecenter.nl/projects). These are harvested automatically, no action needed.
+Finally, the work that you do happens within a project, for which there should be a project description on [esciencecenter.nl/projects](https://esciencecenter.nl/projects). These are harvested automatically, no action needed on your part.
 
-Hopefully this clarifies where the various data are coming from. The next step is to establish links between the parts, e.g. linking a paper to a software. This is done by hand via the Admin interface.
+Hopefully this clarifies where the various data are coming from. The next step is to establish links between the parts, e.g. linking a paper to a software. This is done by hand via the Admin interface (see sections below).
 
 ## How do I add a new ``Software`` to the Research Software Directory?
 
