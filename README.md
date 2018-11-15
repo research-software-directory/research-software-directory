@@ -85,9 +85,9 @@ That depends. There are delays involved, and you'll need to use [_the query tric
 
 ### Delays
 
-Your changes/additions to the Admin interface, Zotero, GitHub or other places do not show up immediately. The length of delay is either 5 minutes or 24 hours.
+Your changes/additions to the Admin interface, Zotero, GitHub or other places do not show up immediately. The length of delay is either (up to) 5 minutes or (up to) 24 hours.
 
-If your change only involves the Research Software Directory's Admin interface, the delay is 5 minutes. For example when you add a pre-existing ``Mention`` to a ``Software`` and press ``Save``, the corresponding database collection is updated immediately but the data needed for populating the product page template is collected [at every 5th minute](https://crontab.guru/#*/5_*_*_*_*) so you may have to wait a bit.
+If your change only involves the Research Software Directory's Admin interface, the delay is up to a maximum of 5 minutes. For example when you add a pre-existing ``Mention`` to a ``Software`` and press ``Save``, the corresponding database collection is updated immediately but the data needed for populating the product page template is collected [at every 5th minute](https://crontab.guru/#*/5_*_*_*_*) so you may have to wait a bit.
 
 If your change involves an external data source, e.g. you have
 1. new commits on GitHub,
@@ -95,7 +95,7 @@ If your change involves an external data source, e.g. you have
 1. a new project on esciencecenter.nl/projects,
 1. a new mention in Zotero,
 
-you will only see the resulting data show up in the Research Software Directory's Admin interface after 24 hours (the data harvesting scripts run overnight).
+you will only see the resulting data show up in the Research Software Directory's Admin interface after a maximum of 24 hours (the data harvesting scripts run overnight).
 
 ### The query trick
 
