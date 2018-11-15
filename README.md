@@ -16,7 +16,7 @@ A group administrator needs to grant you access, so be aware it may take a while
 
 # Delays
 
-Your changes/additions to Admin interface, Zotero, GitHub or other places do not show up immediately. The length of delay is either 5 minutes or 24 hours.
+Your changes/additions to the Admin interface, Zotero, GitHub or other places do not show up immediately. The length of delay is either 5 minutes or 24 hours.
 
 If your change only involves the Research Software Directory's Admin interface, the delay is 5 minutes. For example when you add a pre-existing ``Mention`` to a ``Software`` and press ``Save``, the corresponding database collection is updated immediately but the data needed for populating the product page template is collected [at every 5th minute](https://crontab.guru/#*/5_*_*_*_*) so you may have to wait a bit.
 
@@ -32,7 +32,7 @@ you will only see the resulting data show up in the Research Software Directory'
 
 Second, note that both your browser and the Research Software Directory server cache data for performance reasons. This means that when you ask to see a product page, you will likely get to see an old version of that page, because the browser knows it recently downloaded the data for that page, so it assumes it doesn't need to download it again. You can easily circumvent this behavior using the so-called _query_ part of URLs. Let's say you want to see  https://www.research-software.nl/software/xenon
 but you want to make sure that it really is the latest version, not some cached version. You can do so by appending a question mark followed by some random characters, for example https://www.research-software.nl/software/xenon?29837498y3490y
-(``?29837498y3490y`` is the query part of the URL). The browser considers this a previously unseen web page because the URL is different, and will therefore show you the latest data. 
+(``?29837498y3490y`` is the query part of the URL). This way, both the browser and server consider it a previously unseen web page because the URL is different, and will therefore show you the latest data. 
 
 # FAQ
 
