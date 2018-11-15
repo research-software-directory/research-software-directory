@@ -42,7 +42,8 @@ Hopefully this clarifies where the various data are coming from. The next step i
 1. Check that the software you want to add doesn't exist yet by searching via the
 search box. If the search comes up empty, add the new software by clicking the
 blue ``+`` symbol.
-1. TODO
+1. You should now see a form. Each field has a brief explanation of what you should fill in. Additionally, there is formal form validation, e.g. to make sure that URLs are valid, and to make sure you don't accidentally skip required fields. Complete the form. Don't worry about mistakes, you can always come back later and fix it.
+1. Set the ``isPublished`` slider near the top of the page to the right to have it included in [research-software.nl](https://research-software.nl).
 1. **Don't forget** to click ``Save`` when you're done.
 1. Refer to section [_Delays_](#delays) and section [_The query trick_](#the-query-trick) to know when you get to see your changes.
 
