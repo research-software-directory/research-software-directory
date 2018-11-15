@@ -35,7 +35,7 @@ Finally, the work that you do happens within a project, for which there should b
 
 Hopefully this clarifies where the various data are coming from. The next step is to establish links between the parts, e.g. linking a paper to a software. This is done by hand via the Admin interface (see sections below).
 
-## How do I add a new ``Software`` to the Research Software Directory?
+## How do I add a new ``Software``?
 
 1. Go to the Research Software Directory's admin interface (https://www.research-software.nl/admin/).
 1. In the left pane, select ``Software``
@@ -46,7 +46,7 @@ blue ``+`` symbol.
 1. **Don't forget** to click ``Save`` when you're done.
 1. Refer to section [_Delays_](#delays) and section [_The query trick_](#the-query-trick) to know when you get to see your changes.
 
-## How do I add a new ``Person`` to the Research Software Directory?
+## How do I add a new ``Person``?
 
 1. Go to the Research Software Directory's admin interface (https://www.research-software.nl/admin/).
 1. In the left pane, select ``Person``
@@ -58,11 +58,11 @@ blue ``+`` symbol.
 1. Optionally, provide an image of the person
 1. **Don't forget** to click ``Save`` when you're done.
 
-## How do I add a new ``Mention`` to the Research Software Directory?
+## How do I add a new ``Mention``?
 
 You can't. The list of Mentions is harvested via Zotero's API once per 24 hours.
 
-## How do I add a new ``Project`` to the Research Software Directory?
+## How do I add a new ``Project``?
 
 You can't. The list of projects is harvested once per 24 hours from
 https://www.esciencecenter.nl/projects.
@@ -71,7 +71,7 @@ At the time of writing that site is maintained by Sacha. If you want to add a
 project, ask Sacha to add it via the content management system. You'll probably
 need to supply a description of what it is that is being done in your project.
 
-## How do I add a new ``Organization`` to the Research Software Directory?
+## How do I add a new ``Organization``?
 
 1. Go to the Research Software Directory's admin interface (https://www.research-software.nl/admin/).
 1. In the left pane, select ``Organization``
