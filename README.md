@@ -76,6 +76,7 @@ need to supply a description of what it is that is being done in your project.
 
 1. Go to the Research Software Directory's admin interface (https://www.research-software.nl/admin/).
 1. In the left pane, select ``Organization``
+1. Check that the organization you want to add doesn't exist yet by searching via the search box. If the search comes up empty, add the new organization by clicking the blue ``+`` symbol.
 1. Fill the name of the organization and provide a URL
 1. Optionally, provide the organization's logo as an image
 1. **Don't forget** to click ``Save`` when you're done.
