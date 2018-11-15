@@ -24,9 +24,12 @@ So, now the question is: what does this all mean for how you do your day-to-day 
 
 However, product pages are not only about source code; they also aim to provide context. An important part of this are the _mentions_ that you'll see on most product pages. You can control which mentions should appear on a product page by selecting them via the dropdown list in the Admin interface. 
 
-The items on the  dropdown list are harvested once every 24 hours from the [Netherlands eScience Center group on Zotero](https://www.zotero.org/groups/1689348). For reference, Zotero is the place where we keep track of NLeSC's _output_ and _impact_. Output includes all the things we produced, be it code, data, videos, documentation, papers, posters, demos, etc; impact includes things we did not produce but that makes use of things we produced, e.g. a paper written by an external party which uses software developed by us.
+The items on the  dropdown list are harvested once every 24 hours from the [Netherlands eScience Center group on Zotero](https://www.zotero.org/groups/1689348). For reference, Zotero is the place where we keep track of NLeSC's _output_ and _impact_:
 
-So, if you have a new blog post, new paper, or a new screencast that you want to add as a mention to a product page, you need to add the new item to Zotero (and then wait a bit, see section _How/when do I get to see my changes?_ below). For detailed guidance on how to add various types of records to Zotero, go [here](zotero.html).
+- Output includes all the things we produced, be it code, data, videos, documentation, papers, posters, demos, etc.
+- Impact includes things we did not produce but that makes use of things we produced, e.g. a paper written by an external party which uses software developed by us.
+
+So, if you have a new blog post, new paper, or a new screencast that you want to add as a mention to a product page, you need to add the new item to Zotero (and then wait a bit, see section _How/when do I get to see my changes?_ below). For detailed guidance on how to add various types of records to Zotero, go [here](zotero.md).
 
 Finally, the work that you do happens within a project, for which there should be a project description on [esciencecenter.nl/projects](https://esciencecenter.nl/projects). These are harvested automatically, no action needed.
 
