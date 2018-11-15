@@ -29,7 +29,7 @@ The items on the  dropdown list are harvested once every 24 hours from the [Neth
 - Output includes all the things we produced, be it code, data, videos, documentation, papers, posters, demos, etc.
 - Impact includes things we did not produce but that makes use of things we produced, e.g. a paper written by an external party which uses software developed by us.
 
-So, if you have a new blog post, new paper, or a new screencast that you want to add as a mention to a product page, you need to add the new item to Zotero (and then wait a bit, see section _How/when do I get to see my changes?_ below). For detailed guidance on how to add various types of records to Zotero, go [here](zotero.md).
+So, if you have a new blog post, new paper, or a new screencast that you want to add as a mention to a product page, you need to add the new item to Zotero (and then wait a bit, see section [_How/when do I get to see my changes?_](#howwhen-do-i-get-to-see-my-changes) below). For detailed guidance on how to add various types of records to Zotero, go [here](zotero.md).
 
 Finally, the work that you do happens within a project, for which there should be a project description on [esciencecenter.nl/projects](https://esciencecenter.nl/projects). These are harvested automatically, no action needed.
 
