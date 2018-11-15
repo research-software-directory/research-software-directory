@@ -44,7 +44,7 @@ search box. If the search comes up empty, add the new software by clicking the
 blue ``+`` symbol.
 1. TODO
 1. **Don't forget** to click ``Save`` when you're done.
-1. Refer to section _Delays_ and section _The query trick_ to know when you get to see your changes.
+1. Refer to section [_Delays_](#delays) and section [_The query trick_](#the-query-trick) to know when you get to see your changes.
 
 ## How do I add a new ``Person`` to the Research Software Directory?
 
@@ -81,7 +81,7 @@ need to supply a description of what it is that is being done in your project.
 
 ## How/when do I get to see my changes?
 
-That depends. There are delays involved, and you'll need to use _the query trick_.
+That depends. There are delays involved, and you'll need to use [_the query trick_](#the-query-trick).
 
 ### Delays
 
