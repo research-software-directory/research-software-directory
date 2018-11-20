@@ -58,7 +58,7 @@ with the link to the raster image as used on your institute website, e.g.:
 You may need to either use a ``style`` tag (not preferred)
 
 ```
-<img src="https://www.esciencecenter.nl/img/cdn/logo_escience_center.png" style="some style here"\>
+<img src="https://www.esciencecenter.nl/img/cdn/logo_escience_center.png" style="some style here" />
 ```
 
 or include some styling in ``_header.scss`` in order to set some of the ``img``'s style properties such as its height. 
