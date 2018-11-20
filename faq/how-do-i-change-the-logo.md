@@ -52,7 +52,7 @@ and replace this part:
 with the link to the raster image as used on your institute website, e.g.:
 
 ```
-<img src="https://www.esciencecenter.nl/img/cdn/logo_escience_center.png" \>
+<img src="https://www.esciencecenter.nl/img/cdn/logo_escience_center.png" />
 ```
 
 You may need to either use a ``style`` tag (not preferred)
