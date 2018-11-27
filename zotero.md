@@ -1,186 +1,132 @@
+# Create account and install
 
-*Note: Use the **offline** version of Zotero, the web client functionality is very limited, can't add by DOI etc.*
-* [Create account](https://www.zotero.org/user/register/)
-*Note: if you use Lastpass and register, it will **not** popup and ask to save the password, so save it beforehand!*
-* Login
-* Go to [Netherlands eScience group](https://www.zotero.org/groups/1689348/netherlands_escience_center)
-* Click `join`
-* [Download Zotero](https://www.zotero.org/download/)
-* Install Zotero
+1. Create an account with Zotero at
+[zotero.org/user/register](https://www.zotero.org/user/register/). Note:
+Lastpass will **not** popup and ask to save the password, so **save it
+beforehand**!
+1. Login.
+1. Go to the Netherlands eScience group on
+[zotero.org/groups](https://www.zotero.org/groups/1689348/netherlands_escience_center).
+1. Click `Join`. Be aware that a group administrator needs to grant you access
+to the group so it may take a while, depending on people's availability.
+1. From here on out, use the offline client. Download it from
+[zotero.org](https://www.zotero.org/download/).
+1. Install Zotero.
 
-In Zotero:
-* Go to `edit`/`Preferences`/`Sync`
-* Enter username & password -> OK
-* Click sync button ![sync-button](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-sync-button.png)
-* Netherlands eScience Center should appear under `Group Libraries`.
+# Configure Zotero client
 
-### Open project
+Once the Zotero application is running:
 
-* Click  `Netherlands eScience Center` / `Group Libraries`.
-* Zotero projects are not searchable; find your project [in this table ](projects.md).
+1. Go to `Edit`/`Preferences`/`Sync`
+1. Enter username & password -> OK
+1. Click the `sync` button:
 
-If you have papers that are not directly connected to a project, but which are
-linked to the eScience Center, please add them to the `Miscellaneous` folder (on
-the same level as `Projects`
+    ![sync-button](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-sync-button.png)
 
-### Adding items
+1. Netherlands eScience Center should appear under `Group Libraries`.
 
-Items can be added by DOI (preferred), or manually if there is no DOI. Most
-entry boxes in Zotero supply a drop down menu with suggestions after typing a
-few letters.
+# General workflow for adding items
 
-1. Synchronize with the Zotero server (top right of the window, the reload button)
-2. Create a new item:
-   * If you have a DOI, click `Add item(s) by Identifier` ![add-by-identifier](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-add-by-identifier.png). Enter one or more DOI(s), separated with a space.
-   * Items without a DOI can be added from `File` -> `New Item` -> `'type'`.
-3. Check if the metadata in the `Info` tab is correct:
-   * In the right-hand panel, select the `Info` tab
-   * Check the `Item Type` (top of the list)
-   * Depending on the item (see the list below) fill in the `Type` (near the top of the list) and/or `Extra` (near the bottom of the list) fields.
-4. To distinguish our `domain` and `escience` output, please add a tag:
-   * In the right-hand panel, select the `Tags` tab
-   * Add a tag `domain` or `escience`
-5. After adding you items, synchronize with the Zotero server again.
+Make sure the item you want to add has some sort of identifier such as a DOI or
+a URL; without it, whatever you're adding is just hearsay.
 
-#### About names
+1. Synchronize with the Zotero server.
+1. On the right-hand side, select the folder that you want to add an item to. Refer
+to [this table](projects.md) to find the right project number.
+1. Click the `Add by identifier` button.
 
-Please check if the names are entered correctly in for instance the `Author` or
-`Programmer` fields. We are using the `firstname`, `lastname` format, where each
-is in its own input field. You can switch between single and two field entry by
-pressing the small button next to the names. Prefixes (`de`, `van der`, etc.)
-should be included in the lastname so for `Jan de Groot` use lastname `de
-Groot`.
+    ![add-by-identifier](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-add-by-identifier.png)
 
-#### About dates
+    Fill in your item's DOI.
 
-Please refrain from using date ranges (eg. no `4-5th december 2013`), and just
-use a single date (the first day of the range). To differentiate days from
-months, please use `yyyy-mm-dd`, or `mm-dd-yyyy`. If the year is last it will be
-parsed as `mm-dd-yyyy` and zotero will also show it as such, so **`dd-mm-yyyy`
-will not parse correctly**. If the day is unknown, use `mm yyyy`, eg `05 2014`
-for May 2014.
+1. Wait, you're not done yet! Verify that the metadata in the `Info` tab is
+correct, as follows:
+   1. In the right-hand panel, select the `Info` tab
+   1. Verify that the `Item Type` (top of the list) is correct.
+   1. For some `Item Type`s, you need to fill in `Type` as well (see the list below).
+   1. Verify that any names have been entered correctly, for instance in the `Author` or
+   `Programmer` fields. We are using the `firstname`, `lastname` format, where each
+   is in its own input field. You can switch between single and two field entry by
+   pressing the small button next to the names. Prefixes (`de`, `van der`, etc.)
+   should be included in the lastname so for `Jan de Groot` use lastname `de
+   Groot`.
+   1. Verify that the dates have been entered correctly. Use a single date (don't
+   use date ranges). Because dates are tricky, Zotero shows a string such as
+   `y m d` or `d m y` next to each date, to show what each number represents.
+1. If everything looks good, synchronize with the Zotero server again.
 
-### Types of output
 
-Below is a list of output we would like to keep track of, with a short description.
-Pick the one that best describes your output, and fill out the metadata required.
-By default Zotero shows a much larger list of metadata, please fill out the others entries as good as possible.
+# `Item type`-specific information
 
-If you have an item that doesn't fit, please [open an issue in this GitHub
-repository](https://github.com/research-software-directory/issues/new) and we'll
-figure it out & update this document.
+Below is a list of output we would like to keep track of, with a short
+description. Pick the one that best describes your output, and fill out the
+metadata required. By default Zotero shows a much larger list of metadata,
+please fill out the others entries as good as possible.
 
-#### Papers
+If you have an item that doesn't fit, please [open an issue
+here](https://github.com/research-software-directory/issues) and we'll figure it
+out & update this document.
+
+## Papers
 
 These are peer reviewed papers, and typically have a DOI already. If you do not
 have a DOI yet, for instance, when the paper is under submission or in
-preparation, add it as a [Manuscript](#manuscript) first. Once you have a DOI,
+preparation, add it as a `Manuscript` first (see below). Once you have a DOI,
 add the paper as `Journal Article` or `Conference Paper` and remove the
-manuscript entry. Depending on the domain, there may be differences between the
-two categories, please choose the one most representative for your paper.
+manuscript entry (again, see below for the instructions on how to add a `Journal
+Article` or a `Conference Paper`). Depending on the domain, there may be
+differences between the two categories, choose the one you think is most
+appropriate for your paper.
 
-#### Software
+## Software
 
-For software, there are two separate cases:
-1. Software that is written by us, and that has a clear separate repository. We
-have (or can get) a DOI for the software.
-2. External software that we made a (significant) contribution to, or software we
-cannot (or do not want) to get a separate DOI for.
+You don't need to add `Software` items to Zotero. We keep track of our software
+output via the Research Software Directory. If you have a software package that
+you want to add, use the Research Software Directory's Admin interface as
+explained [here](README.md).
 
-Other cases, like bug fixes or minor features, do not have to be added to the RSD.
+## Datasets
 
-*Case 1:*
-
-* Get a DOI for software via [Zenodo](https://zenodo.org/). Anything with a GitHub
-repository can be added. If that is not possible, you can upload a (zip) file of
-the source code or repository instead.
-* Wait until the DOI has been synchronized through Crossref.org (It can take a
-couple of hours after creating a Zenodo DOI before it is available).
-* Add software to project by its DOI.
-* On the `Info` tab, make sure that the `Item Type` is set to `Computer Program`.
-_NOTE: The DOI should now have (automagically) appeared at the `Extra` field_
-
-*Case 2:*
-
-* add a new item with `Computer Program` as `Item Type`.
-* On the `Info` tab, fill in the `Title` field  and set the `URL` to the Github
-URL.
-* Also on the `Info` tab, Add `Type: feature` to the `Extra` field.
-
-**It is not necessary to fill out any other fields for software, all metadata is
-maintained in the RSD admin tool**
-
-#### Datasets
-
-Datasets will be a new feature in an upcomming Zetore release. For now, set
+Datasets will be a new feature in an upcoming Zotero release. For now, set
 `Item Type` to `Journal Article`. In order to distinguish dataset items from
-regular journal articles inside Zotero, the following should be added on a
+regular journal articles, the following should be added on a
 separate line into the `Extra` field: `itemType: Dataset`.
 
-_Note that this is inconsistent with the naming scheme in this manual._
-
-#### Conference poster or presentation
+## Conference poster or presentation slides
 
 Use `Item Type` `Presentation`, set the field `Type` to either `Conference
-Poster` or `Conference Presentation`.
+Poster` or `Conference Presentation`. Note that you need to upload the poster or
+slides to Zenodo, FigShare, or some other place that provides a DOI. Since
+Zotero does not have a DOI field for `Presentation`s, use the URL field for this
+purpose (e.g. https://doi.org &lt;yourdoi&gt;).
 
-#### Workshop, lecture, or demonstration
+## Workshop, lecture, or demonstration
 
 Use `Item Type` `Presentation`, set the field `Type` to `Workshop`, `Lecture`,
 or `Demonstration`.
 
-#### Other Presentations
-
-Please add presentations if they are external, e.g. not presentations held at
-the eScience Center or at project partners' locations. If you want to publish
-the slides this can be done at [Zenodo](www.zenodo.org) or
-[Figshare](www.figshare.com); both will provide a DOI and online viewer. Use
-`Item Type` `Presentation`.
-
-#### Manuscript
+## Manuscript
 
 These are peer reviewed publications in submission, under review, or in preparation.
-Use `Item Type` `Manuscript`, add to the `Extra` field:
-- `submittedAt: date`
-- `submittedTo: journal`
+Use `Item Type` `Manuscript`.
 
-#### Report
-If you have scientific output that has not been peer reviewed, use `Item Type`
-`Report`. For instance: reports, white papers, etc.
+## Report
 
-If available, add the DOI to the `Extra` field as `DOI: `
+For items that have not been peer reviewed, such as internal reports, white
+papers, etc., use `Item Type` `Report`. Make sure to upload a copy of the item
+to Zenodo, FigShare or an other place that provides a DOI. The item's URL should
+point to https://doi.org &lt;yourdoi&gt;.
 
-#### Thesis
+## Thesis
 
 A PhD, Master, or Bachelor thesis. Set `Item Type` to `Thesis` and fill in
-`Bachelor`, `Master`, `PhD` in the `Type` field. If relevant, enter
-`Supervisor:` and or `Promotor:` `Co-promotor:` with the appropriate name to the
-`Extra` field.
+`Bachelor`, `Master`, `PhD` in the `Type` field.
 
-#### Other types
+## Other types
 
 Please choose the most appropriate type from `Blogpost`, `Book`, `Book Section`,
 `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio
 Broadcast`, `TV Broadcast`, `Video Recording`, `Webpage`. And make a best-effort
 at filling out the other metadata on the `Info` tab.
 
-### Linking output
-
-For the RSD we would like to show the links between projects, people, papers,
-software, and data. Output is already linked to projects via the folders in the
-Zotero library, and it is also linked to persons via the `Author` metadata.
-However, for presentations and publications covering a specific piece of
-software or dataset we need to enter this link manually.
-1. Select the item, `Computer Program` or dataset (which is a `Journal Article`
-with `Extra` set to `itemType: Dataset`)
-2. In the right hand panel, select the `Related` tab
-3. Press the `Add` button
-4. Select the related output from the pop up window.
-5. Press `Ok`
-6. Sync the Zotero library
-
-
-## Example: eSalsa
-
-![esalsa_example](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-esalsa-example.png)
 
