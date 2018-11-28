@@ -5,7 +5,7 @@
 Lastpass will **not** popup and ask to save the password, so **save it
 beforehand**!
 1. Login.
-1. Go to the Netherlands eScience group on
+1. Go to the Netherlands eScience Center group on
 [zotero.org/groups](https://www.zotero.org/groups/1689348/netherlands_escience_center).
 1. Click `Join`. Be aware that a group administrator needs to grant you access
 to the group so it may take a while, depending on people's availability.
