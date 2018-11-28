@@ -32,9 +32,10 @@ logger.setLevel(logging.INFO)
 logger.addHandler(stdout_handler)
 logger.addHandler(stderr_handler)
 
+choices = click.Choice(['github', 'zotero', 'projects', 'releases', 'cache_software', 'all'])
 
 @click.command()
-@click.option('--task', required=1, help='Name of task.')
+@click.option('--task', required=1, help='Which task to run.', type=choices)
 def run_task(task):
     db = db_connect()
     if task == 'github':
@@ -46,6 +47,12 @@ def run_task(task):
     elif task == 'releases':
         sync_releases(db)
     elif task == 'cache_software':
+        cache_software()
+    elif task == 'all':
+        github_sync_all()
+        sync_releases(db)
+        zotero_sync()
+        sync_projects()
         cache_software()
     else:
         raise Exception('No such task: ' + task)
