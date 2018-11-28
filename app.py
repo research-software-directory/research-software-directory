@@ -47,6 +47,12 @@ def run_task(task):
         sync_releases(db)
     elif task == 'cache_software':
         cache_software()
+    elif task == 'all':
+        github_sync_all()
+        sync_releases(db)
+        zotero_sync()
+        sync_projects()
+        cache_software()
     else:
         raise Exception('No such task: ' + task)
 
