@@ -164,7 +164,8 @@ using the so-called _query_ part of URLs. Let's say you want to see
 https://www.research-software.nl/software/xenon but you want to make sure that
 it really is the latest version, not some cached version. You can do so by
 appending a question mark followed by some random characters, for example
-https://www.research-software.nl/software/xenon?29837498y3490y
-(``?29837498y3490y`` is the query part of the URL). This way, both the browser
+https://www.research-software.nl/software/xenon?somerandomstring
+(``?somerandomstring`` is the query part of the URL). This way, both the browser
 and server consider it a previously unseen web page because the URL is
-different, and will therefore show you the latest data. 
+different, and will therefore show you the latest data. You'll need to come up 
+with a different value for ``randomstring`` every time you reload the data.
