@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <div class="status_chart">
+    <div>
       <p>Status Chart Goes Here!</p>
       <div class="shadow">
-        <List>
-          <Chart :loaded="loaded" :data="data"></Chart>
-        </List>
+        <List :loaded="loaded" :data="data"></List>
       </div>
     </div>
   </div>
@@ -13,14 +11,13 @@
 
 <script>
 import axios from "axios";
-import Chart from "./components/Chart.vue";
+
 import List from "./components/List.vue";
 var margin = { left: 100, right: 10, top: 10, bottom: 150 };
 export default {
   name: "App",
   components: {
-    List,
-    Chart
+    List
   },
   data() {
     return {
@@ -33,9 +30,7 @@ export default {
       axios
         .get("https://www.research-software.nl/api/software_cache")
         .then(response => {
-          this.data = response.data.sort(
-            (a, b) => b.totalCommits - a.totalCommits
-          );
+          this.data = response.data;
           this.loaded = true;
         });
     }
@@ -49,9 +44,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
-.status_chart {
-  margin: 30px;
-}
 .shadow {
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14),
     0 1px 14px 0 rgba(0, 0, 0, 0.12);

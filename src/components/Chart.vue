@@ -1,19 +1,32 @@
-<template>
-  <div id="chart-area"></div>
-</template>
-
+<template></template>
+<style>
+.toolTip {
+  position: absolute;
+  display: none;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+}
+</style>
 <script>
 import * as d3 from "d3";
 const margin = { top: 20, right: 0, bottom: 30, left: 40 };
 const height = 500;
-const width = 700;
+
 export default {
   name: "Chart",
   props: {
     loaded: false,
-    data: null
+    data: null,
+    type: ""
   },
-
+  data() {
+    return {
+      width: 500
+    };
+  },
   watch: {
     loaded(isloaded) {
       if (isloaded) {
@@ -21,6 +34,7 @@ export default {
       }
     }
   },
+
   methods: {
     getScales() {
       var x = d3
@@ -30,7 +44,7 @@ export default {
             return d.brandName;
           })
         )
-        .range([0, width])
+        .range([0, this.width])
         .paddingInner(0.3)
         .paddingOuter(0.3);
 
@@ -39,7 +53,7 @@ export default {
         .domain([
           0,
           d3.max(this.data, d => {
-            return d.totalCommits;
+            return d.value;
           })
         ])
         .range([height, 0]);
@@ -47,12 +61,16 @@ export default {
     },
     drawChart() {
       const scale = this.getScales();
-      console.log(d3.select("#chart-area"));
+      var chartArea = this.$el.parentElement;
+      var tooltip = d3
+        .select("#" + chartArea.id)
+        .append("div")
+        .attr("class", "toolTip");
 
       var svg = d3
-        .select("#chart-area")
+        .select("#" + chartArea.id)
         .append("svg")
-        .attr("width", width + margin.left + margin.right)
+        .attr("width", this.width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
       var g = svg
         .append("g")
@@ -60,11 +78,11 @@ export default {
       //X label
       g.append("text")
         .attr("class", "x axis label")
-        .attr("x", width / 2)
-        .attr("y", height + 140)
+        .attr("x", this.width / 2)
+        .attr("y", height + 30)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
-        .text("Tools");
+        .text(this.type);
       var xAxisCall = d3.axisBottom(scale.x).tickSize(0);
       xAxisCall.tickFormat((domain, number) => {
         return "";
@@ -87,22 +105,36 @@ export default {
           return scale.x(d.brandName);
         })
         .attr("y", d => {
-          return scale.y(d.totalCommits);
+          return scale.y(d.value);
         })
         .attr("width", scale.x.bandwidth)
         .attr("height", d => {
-          return height - scale.y(d.totalCommits);
+          return height - scale.y(d.value);
         })
-        .attr("fill", "orange");
-
-      console.log(this.loaded, this.data);
+        .attr("fill", "orange")
+        .on("mousemove", d => {
+          return tooltip
+            .style("left", d3.event.pageX - 50 + "px")
+            .style("top", d3.event.pageY - 70 + "px")
+            .style("display", "inline-block")
+            .html(d.brandName + "<br/>" + d.value);
+        })
+        .on("mouseout", () => {
+          tooltip.style("display", "none");
+        });
+    },
+    handleResize() {
+      if (window.innerWidth < 550) {
+        this.width = 300;
+      }
     }
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize.bind(this));
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize.bind(this));
   }
 };
 </script>
-<style scoped>
-#chart-area {
-  width: 50%;
-  height: 100%;
-}
-</style>

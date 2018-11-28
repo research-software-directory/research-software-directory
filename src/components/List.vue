@@ -1,14 +1,19 @@
 <template>
-  <div id="list" class="grid">
-    <div class="grid-item">
-      <slot></slot>
-    </div>
-    <div class="grid-item">1</div>
-    <div class="grid-item">1</div>
-    <div class="grid-item">1</div>
-    <div class="grid-item">1</div>
-    <div class="grid-item">1</div>
-    <div class="grid-item">1</div>
+  <div id="list">
+    <section class="columns">
+      <div class="column" id="commits-chart">
+        <Chart type="commits" :data="commits" :loaded="loaded"></Chart>
+      </div>
+      <div class="column" id="contributes-chart">
+        <Chart type="contributes" :data="contributors" :loaded="loaded"></Chart>
+      </div>
+      <div class="column" id="mentions-chart">
+        <Chart type="mentions" :data="mentions" :loaded="loaded"></Chart>
+      </div>
+      <div class="column" id="demo-chart">
+        <Chart type="contributes" :data="contributors" :loaded="loaded"></Chart>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -20,27 +25,75 @@
 * {
   box-sizing: border-box;
 }
-
-.grid {
-  max-width: 1800px;
-  margin: 30px auto;
-  padding: 0 20px;
-  width: 100%;
-  display: grid;
-  /* Define Auto Row size */
-  grid-auto-rows: 550px;
-  /*Define our columns */
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-gap: 1em;
+.columns {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 5px 0;
 }
-.grid-item {
-  border-radius: 10px;
-  border: 1px solid;
+
+.column {
+  flex: 1;
+  border: 1px solid gray;
+  margin: 2px;
+  padding: 10px;
+}
+.demo {
+  width: 300px;
+  background-color: brown;
+  height: 700px;
 }
 </style>
 <script>
+import Chart from "./Chart.vue";
 export default {
-  name: "List"
+  name: "List",
+  components: {
+    Chart
+  },
+  props: {
+    loaded: false,
+    data: null
+  },
+  data() {
+    return {
+      commits: [],
+      contributors: [],
+      mentions: []
+    };
+  },
+  watch: {
+    loaded(isloaded) {
+      if (isloaded) {
+        this.getData();
+        this.sortData();
+      }
+    }
+  },
+  methods: {
+    getData() {
+      this.data.map((el, i) => {
+        this.contributors.push({
+          brandName: el.brandName,
+          value: el.contributors.length
+        });
+        this.commits.push({
+          brandName: el.brandName,
+          value: el.totalCommits
+        });
+
+        this.mentions.push({
+          brandName: el.brandName,
+          value: el.related.mentions.length
+        });
+      }, this);
+    },
+    sortData() {
+      this.commits = this.commits.sort((a, b) => b.value - a.value);
+      this.contributors = this.contributors.sort((a, b) => b.value - a.value);
+      this.mentions = this.mentions.sort((a, b) => b.value - a.value);
+    }
+  }
 };
 </script>
 
