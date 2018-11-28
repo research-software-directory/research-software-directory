@@ -88,15 +88,19 @@ explained [here](README.md).
 ## Datasets
 
 Datasets will be a new feature in an upcoming Zotero release. For now, set
-`Item Type` to `Journal Article`. In order to distinguish dataset items from
+`Item Type` to `Journal Article`. 
+If you don't have a DOI for the dataset yet, make sure to [upload a copy of the item
+to Zenodo](https://zenodo.org/deposit/new), FigShare or an other place that provides a DOI. The item's URL should
+point to https://doi.org &lt;yourdoi&gt;.
+In order to distinguish dataset items from
 regular journal articles, the following should be added on a
 separate line into the `Extra` field: `itemType: Dataset`.
 
 ## Conference poster or presentation slides
 
 Use `Item Type` `Presentation`, set the field `Type` to either `Conference
-Poster` or `Conference Presentation`. Note that you need to upload the poster or
-slides to Zenodo, FigShare, or some other place that provides a DOI. Since
+Poster` or `Conference Presentation`. Note that you need to [upload the poster or
+slides to Zenodo](https://zenodo.org/deposit/new), FigShare, or some other place that provides a DOI. Since
 Zotero does not have a DOI field for `Presentation`s, use the URL field for this
 purpose (e.g. https://doi.org &lt;yourdoi&gt;).
 
@@ -113,8 +117,8 @@ Use `Item Type` `Manuscript`.
 ## Report
 
 For items that have not been peer reviewed, such as internal reports, white
-papers, etc., use `Item Type` `Report`. Make sure to upload a copy of the item
-to Zenodo, FigShare or an other place that provides a DOI. The item's URL should
+papers, etc., use `Item Type` `Report`. Make sure to [upload a copy of the item
+to Zenodo](https://zenodo.org/deposit/new), FigShare or an other place that provides a DOI. The item's URL should
 point to https://doi.org &lt;yourdoi&gt;.
 
 ## Thesis
