@@ -168,4 +168,4 @@ https://www.research-software.nl/software/xenon?somerandomstring
 (``?somerandomstring`` is the query part of the URL). This way, both the browser
 and server consider it a previously unseen web page because the URL is
 different, and will therefore show you the latest data. You'll need to come up 
-with a different value for ``randomstring`` every time you reload the data.
+with a different value for ``somerandomstring`` every time you reload the data.
