@@ -50,8 +50,8 @@ place where we keep track of NLeSC's _output_ and _impact_:
 - Output includes all the things we produced, be it code, data, videos,
 documentation, papers, posters, demos, etc.
 - Impact includes things we did not produce but that makes use of things we
-produced, e.g. a paper written by an external party which uses software
-developed by us.
+produced, e.g. a paper, data or software created by an external party which uses software
+developed by us
 
 So, if you have a new blog post, new paper, or a new screencast that you want to
 add as a mention to a product page, you need to add the new item to Zotero (and
