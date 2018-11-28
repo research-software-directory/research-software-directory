@@ -26,7 +26,7 @@ administrator needs to grant you access, so be aware it may take a while.
 ## Basic workflow
 
 The blog mentions that the Research Software Directory harvests various types of
-data, which are then combined using the Admin interface, as follows:
+data, which are then combined using its Admin interface, as follows:
 
 ![data-sources.svg](data-sources.svg)
 
@@ -40,7 +40,7 @@ related boxes (``GitHub``, ``Zenodo`` and ``CITATION.cff``) are already covered.
 However, product pages are not only about source code; they also aim to provide
 context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
-selecting them via the dropdown list in the Admin interface. 
+selecting them via the dropdown list in the Admin interface of the RSD. 
 
 The items on the  dropdown list are harvested once every 24 hours from the
 [Netherlands eScience Center group on
