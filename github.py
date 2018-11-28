@@ -119,7 +119,7 @@ def sync_github_repo(repo):
     if len(commits) > 0:
         save_commits(repo, commits)
 
-    logger.info(repo.name + ' Done`')
+    logger.info(repo.name + ' Done')
 
     return len(commits)
 
