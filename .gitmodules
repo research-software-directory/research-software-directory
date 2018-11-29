@@ -1,12 +1,12 @@
 [submodule "admin"]
 	path = admin
-	url = https://github.com/research-software-directory/admin
+	url = https://github.com/process-project/RSD-admin
 [submodule "frontend"]
 	path = frontend
-	url = https://github.com/research-software-directory/frontend
+	url = https://github.com/process-project/RSD-frontend
 [submodule "backend"]
 	path = backend
-	url = https://github.com/research-software-directory/backend
+	url = https://github.com/process-project/RSD-backend
 [submodule "readthedocs"]
 	path = readthedocs
 	url = https://github.com/research-software-directory/readthedocs
