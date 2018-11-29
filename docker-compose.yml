@@ -11,14 +11,14 @@ services:
     command: --bind_ip 0.0.0.0
 
   auth:
-    image: rsdnlesc/auth-github
+    image: rsdprocess/auth-github
     build:
       context: ./auth-github
     env_file:
       - .env
 
   backend:
-    image: rsdnlesc/backend
+    image: rsdprocess/backend
     build:
       context: ./backend
     env_file:
@@ -28,13 +28,13 @@ services:
 
 
   admin:
-    image: rsdnlesc/admin
+    image: rsdprocess/admin
     volumes:
       - rsd_static_admin:/build
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
 
   frontend:
-    image: rsdnlesc/frontend
+    image: rsdprocess/frontend
     build:
       context: ./frontend
     depends_on:
@@ -45,7 +45,7 @@ services:
       - rsd_static_frontend:/shared_static
 
   tasks:
-    image: rsdnlesc/tasks
+    image: rsdprocess/tasks
     build:
       context: ./tasks-nlesc
     env_file:
@@ -64,7 +64,7 @@ services:
     restart: unless-stopped
 
   nginx:
-    image: rsdnlesc/nginx_proxy
+    image: rsdprocess/nginx_proxy
     build:
       context: ./config/nginx_proxy
     volumes:
