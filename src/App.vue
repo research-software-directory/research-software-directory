@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      data: [],
+      data: null,
       loaded: false
     };
   },
@@ -30,6 +30,7 @@ export default {
       axios
         .get("https://www.research-software.nl/api/software_cache")
         .then(response => {
+          debugger;
           this.data = response.data;
           this.loaded = true;
         });
