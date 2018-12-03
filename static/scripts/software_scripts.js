@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var plotData = {
         fill: "none",
         line: { shape: "spline" },
-        marker: {color: "rgb(0,163,227"},
+        marker: {color: "rgb(0,163,227)"},
         mode: "lines",
         x: x,
         y: y,
