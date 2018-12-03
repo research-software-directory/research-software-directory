@@ -196,12 +196,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var year = currentYear - 5;
     var x = [];
     var y = [];
-    while (month < currentMonth + 1 || year < currentYear) {
+    while (!(month > currentMonth && year >= currentYear)) {
+        if (month > 12) { month = 1; year += 1; }
         var i = year + '-' + ('0' + month).substr(-2);
         x.push(i);
         y.push(commitsData[i] || 0);
         month += 1;
-        if (month > 12) { month = 1; year += 1; }
     }
     var plotData = {
         fill: "none",
