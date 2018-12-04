@@ -4,9 +4,9 @@ services:
   mongo:
     image: "mongo:3.6"
     volumes:
-      - ./db:/data/db
-      - ./config/mongo.sh:/mongo.sh
-      - ./db-dump:/db-dump-initial
+      - ../db:/data/db
+      - ../config/mongo.sh:/mongo.sh
+      - ../db-dump:/db-dump-initial
     entrypoint: /mongo.sh
     command: --bind_ip 0.0.0.0
 
@@ -57,8 +57,8 @@ services:
   nginx_ssl:
     image: rsdnlesc/docker-term-letsencrypt
     volumes:
-      - ./cert:/cert
-      - ./letsencrypt:/etc/letsencrypt
+      - ../cert:/cert
+      - ../letsencrypt:/etc/letsencrypt
     env_file:
       - .env
     restart: unless-stopped
