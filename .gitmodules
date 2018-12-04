@@ -4,9 +4,6 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/process-project/RSD-backend
-[submodule "tasks-nlesc"]
-	path = tasks-nlesc
- 	url = https://github.com/research-software-directory/tasks-nlesc
 [submodule "auth-github"]
 	path = auth-github
 	url = https://github.com/research-software-directory/auth-github
