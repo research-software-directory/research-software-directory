@@ -13,14 +13,14 @@ services:
   auth:
     image: rsdprocess/auth-github
     build:
-      context: ./auth-github
+      context: ../auth-github
     env_file:
       - .env
 
   backend:
     image: rsdprocess/backend
     build:
-      context: ./backend
+      context: ../backend
     env_file:
       - .env
     depends_on:
@@ -36,7 +36,7 @@ services:
   frontend:
     image: rsdprocess/frontend
     build:
-      context: ./frontend
+      context: ../frontend
     depends_on:
       - backend
     env_file:
@@ -47,7 +47,7 @@ services:
   tasks:
     image: rsdprocess/tasks
     build:
-      context: ./tasks-nlesc
+      context: ../tasks-nlesc
     env_file:
       - .env
     depends_on:
@@ -66,7 +66,7 @@ services:
   nginx:
     image: rsdprocess/nginx_proxy
     build:
-      context: ./config/nginx_proxy
+      context: ../config/nginx_proxy
     volumes:
       - rsd_static_admin:/static_admin:ro
       - rsd_static_frontend:/static_frontend:ro
