@@ -1,3 +1,0 @@
-[submodule "auth-github"]
-	path = auth-github
-	url = https://github.com/research-software-directory/auth-github
