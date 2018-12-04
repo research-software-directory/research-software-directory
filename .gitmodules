@@ -1,9 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/process-project/RSD-frontend
-[submodule "backend"]
-	path = backend
-	url = https://github.com/process-project/RSD-backend
 [submodule "auth-github"]
 	path = auth-github
 	url = https://github.com/research-software-directory/auth-github
