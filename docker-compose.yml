@@ -13,7 +13,7 @@ services:
   auth:
     image: rsdprocess/auth-github
     build:
-      context: ../auth-github
+      context: ../rsd-auth-github
     env_file:
       - .env
 
