@@ -1,5 +1,7 @@
 FROM python:3.6-alpine
 
+RUN apk add --no-cache git build-base
+
 RUN mkdir /app
 
 COPY ./requirements.txt /app
