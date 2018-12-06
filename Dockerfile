@@ -1,6 +1,5 @@
 FROM python:3.6-alpine
 
-RUN apk add --update build-base
 
 RUN mkdir /app
 
@@ -8,9 +7,9 @@ COPY ./requirements.txt /app
 
 WORKDIR /app
 
-RUN pip install -r /app/requirements.txt
-
-RUN apk del build-base
+RUN apk add --update build-base && \
+    pip install -r /app/requirements.txt && \
+    apk del build-base
 
 COPY . /app
 
