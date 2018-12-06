@@ -8,7 +8,7 @@ export default {
 </script>
 <style scoped>
 .Loader {
-  color: #942192;
+  color: orange;
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;

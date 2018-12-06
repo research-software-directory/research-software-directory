@@ -27,14 +27,6 @@ export default {
       width: 500
     };
   },
-  // watch: {
-  //   loaded(isloaded) {
-  //     if (isloaded) {
-  //       debugger;
-  //       this.drawChart();
-  //     }
-  //   }
-  // },
 
   methods: {
     getScales() {
@@ -76,7 +68,7 @@ export default {
       var g = svg
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-      //X label
+
       g.append("text")
         .attr("class", "x axis label")
         .attr("x", this.width / 2)
@@ -124,19 +116,14 @@ export default {
           tooltip.style("display", "none");
         });
     },
-    updateChart() {
-      d3.selectAll("svg").attr("width", 300);
-    },
 
     handleResize() {
       if (window.innerWidth < 550) {
-        //this.updateChart();
         this.width = 300;
       }
     }
   },
   mounted() {
-    debugger;
     this.drawChart();
   },
   created() {

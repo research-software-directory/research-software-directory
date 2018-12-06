@@ -21,40 +21,6 @@
   </div>
 </template>
 
-
-
-
-
-<style scoped>
-* {
-  box-sizing: border-box;
-}
-.columns {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: 5px 0;
-}
-
-.column {
-  flex: 1;
-  border: 1px solid gray;
-  margin: 2px;
-  padding: 10px;
-  cursor: move;
-}
-.remove-item {
-  float: right;
-  color: #a45;
-  opacity: 0.5;
-}
-
-.column:hover .remove-item {
-  opacity: 1;
-  font-size: 28px;
-  cursor: pointer;
-}
-</style>
 <script>
 import Chart from "./Chart.vue";
 export default {
@@ -63,7 +29,6 @@ export default {
     Chart
   },
   props: {
-    loaded: Boolean,
     data: null
   },
   data() {
@@ -81,16 +46,7 @@ export default {
       return this.dragging > -1;
     }
   },
-  watch: {
-    loaded(isloaded) {
-      debugger;
-      if (isloaded) {
-        this.getData();
-        this.sortData();
-        this.setCharts();
-      }
-    }
-  },
+
   methods: {
     setCharts() {
       this.charts = [
@@ -176,8 +132,6 @@ export default {
     }
   },
   mounted() {
-    debugger;
-
     this.getData();
     this.sortData();
     this.setCharts();
@@ -185,3 +139,31 @@ export default {
 };
 </script>
 
+<style scoped>
+* {
+  box-sizing: border-box;
+}
+.columns {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.column {
+  flex: 1;
+  border: 1px solid gray;
+  margin: 2px;
+  padding: 10px;
+}
+.remove-item {
+  float: right;
+  color: #a45;
+  opacity: 0.5;
+}
+
+.column:hover .remove-item {
+  opacity: 1;
+  cursor: pointer;
+}
+</style>
