@@ -236,3 +236,20 @@ def serve_favicon():
 @application.route('/robots.txt')
 def serve_robots():
     return application.send_static_file('robots.txt')
+
+@application.route('/oai-pmh')
+def oai_pmh():
+
+    verb = flask.request.args.get('verb')
+    print(verb)
+    assert verb=="ListRecords", "Only OAI-PMH verb 'ListRecords' is supported at the moment."
+
+    metadata_prefix = flask.request.args.get('metadataPrefix')
+    print(metadata_prefix)
+    assert metadata_prefix=="datacite4", "'datacite4' is the only supported format."
+
+    rendered_template = flask.render_template('rsd-list-records-datacite4.xml')
+    response = flask.Response(rendered_template)
+    response.headers['Content-Type'] = 'application/xml'
+
+    return response
