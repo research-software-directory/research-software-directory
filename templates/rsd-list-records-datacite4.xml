@@ -1,0 +1,252 @@
+<ns0:OAI-PMH xmlns:ns0="http://www.openarchives.org/OAI/2.0/" xmlns:ns2="http://datacite.org/schema/kernel-4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <ns0:responseDate>2019-01-15T17:17:05Z</ns0:responseDate>
+  <ns0:request metadataPrefix="datacite4" verb="ListRecords">https://zenodo.org/oai2d</ns0:request>
+  <ns0:ListRecords>
+  <ns0:record>
+      <ns0:header>
+        <ns0:identifier>oai:zenodo.org:1212224</ns0:identifier>
+        <ns0:datestamp>2018-04-04T09:42:23Z</ns0:datestamp>
+        <ns0:setSpec>software</ns0:setSpec>
+      </ns0:header>
+      <ns0:metadata>
+        <ns2:resource xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4.1/metadata.xsd">
+          <ns2:identifier identifierType="DOI">10.5281/zenodo.1212224</ns2:identifier>
+          <ns2:creators>
+            <ns2:creator>
+              <ns2:creatorName>Stefan Verhoeven</ns2:creatorName>
+              <ns2:affiliation>Netherlands eScience Center</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Marton Vass</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Albert Kooistra</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Chris de Graaf</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Ross McGuire</ns2:creatorName>
+              <ns2:affiliation>UMC Nijmegen</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Tina Ritschel</ns2:creatorName>
+              <ns2:affiliation>UMC Nijmegen</ns2:affiliation>
+            </ns2:creator>
+          </ns2:creators>
+          <ns2:titles>
+            <ns2:title>KNIME nodes for Kripo</ns2:title>
+          </ns2:titles>
+          <ns2:publisher>Zenodo</ns2:publisher>
+          <ns2:publicationYear>2018</ns2:publicationYear>
+          <ns2:dates>
+            <ns2:date dateType="Issued">2018-04-04</ns2:date>
+          </ns2:dates>
+          <ns2:resourceType resourceTypeGeneral="Software" />
+          <ns2:alternateIdentifiers>
+            <ns2:alternateIdentifier alternateIdentifierType="url">https://zenodo.org/record/1212224</ns2:alternateIdentifier>
+          </ns2:alternateIdentifiers>
+          <ns2:relatedIdentifiers>
+            <ns2:relatedIdentifier relatedIdentifierType="URL" relationType="IsSupplementTo">https://github.com/3D-e-Chem/knime-kripodb/tree/v2.4.1</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="IsReferencedBy">10.5281/zenodo.1209369</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="Cites">10.1186/1758-2946-6-S1-O26</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="IsVersionOf">10.5281/zenodo.597262</ns2:relatedIdentifier>
+          </ns2:relatedIdentifiers>
+          <ns2:version>v2.4.1</ns2:version>
+          <ns2:rightsList>
+            <ns2:rights rightsURI="http://www.opensource.org/licenses/GPL-3.0">GNU General Public License v3.0 only</ns2:rights>
+            <ns2:rights rightsURI="info:eu-repo/semantics/openAccess">Open Access</ns2:rights>
+          </ns2:rightsList>
+          <ns2:descriptions>
+            <ns2:description descriptionType="Abstract">&lt;p&gt;&lt;a href="http://www.knime.org"&gt;KNIME&lt;/a&gt; nodes for KripoDB (&lt;a href="https://github.com/3D-e-Chem/kripodb"&gt;https://github.com/3D-e-Chem/kripodb&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;KripoDB is a Python package used to interact with Kripo fragment, fingerprint and similarity data files.&lt;/p&gt;
+
+&lt;p&gt;KRIPO stands for Key Representation of Interaction in POckets, see &lt;a href="http://dx.doi.org/10.1186/1758-2946-6-S1-O26"&gt;reference&lt;/a&gt; for more information.&lt;/p&gt;
+
+&lt;p&gt;Requires &lt;a href="https://github.com/3D-e-Chem/kripodb"&gt;KripoDB&lt;/a&gt; v2.3.0 or higher.&lt;/p&gt;
+
+&lt;p&gt;Fixed&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Last update of web service in node description [#28]&lt;/li&gt;
+&lt;/ul&gt;</ns2:description>
+          </ns2:descriptions>
+        </ns2:resource>
+      </ns0:metadata>
+    </ns0:record>
+  <ns0:record>
+      <ns0:header>
+        <ns0:identifier>oai:zenodo.org:1306066</ns0:identifier>
+        <ns0:datestamp>2018-07-05T14:53:47Z</ns0:datestamp>
+        <ns0:setSpec>software</ns0:setSpec>
+      </ns0:header>
+      <ns0:metadata>
+        <ns2:resource xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4.1/metadata.xsd">
+          <ns2:identifier identifierType="DOI">10.5281/zenodo.1306066</ns2:identifier>
+          <ns2:creators>
+            <ns2:creator>
+              <ns2:creatorName>Stefan Verhoeven</ns2:creatorName>
+              <ns2:affiliation>Netherlands eScience Center</ns2:affiliation>
+            </ns2:creator>
+          </ns2:creators>
+          <ns2:titles>
+            <ns2:title>KNIME pharmacophore nodes</ns2:title>
+          </ns2:titles>
+          <ns2:publisher>Zenodo</ns2:publisher>
+          <ns2:publicationYear>2018</ns2:publicationYear>
+          <ns2:dates>
+            <ns2:date dateType="Issued">2018-07-05</ns2:date>
+          </ns2:dates>
+          <ns2:resourceType resourceTypeGeneral="Software" />
+          <ns2:alternateIdentifiers>
+            <ns2:alternateIdentifier alternateIdentifierType="url">https://zenodo.org/record/1306066</ns2:alternateIdentifier>
+          </ns2:alternateIdentifiers>
+          <ns2:relatedIdentifiers>
+            <ns2:relatedIdentifier relatedIdentifierType="URL" relationType="IsSupplementTo">https://github.com/3D-e-Chem/knime-pharmacophore/tree/v1.0.2</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="IsVersionOf">10.5281/zenodo.997332</ns2:relatedIdentifier>
+          </ns2:relatedIdentifiers>
+          <ns2:version>v1.0.2</ns2:version>
+          <ns2:rightsList>
+            <ns2:rights rightsURI="http://www.opensource.org/licenses/Apache-2.0">Apache License 2.0</ns2:rights>
+            <ns2:rights rightsURI="info:eu-repo/semantics/openAccess">Open Access</ns2:rights>
+          </ns2:rightsList>
+          <ns2:descriptions>
+            <ns2:description descriptionType="Abstract">&lt;p&gt;&lt;a href="https://www.knime.com"&gt;KNIME&lt;/a&gt; plugin with nodes to convert and align pharmacophores.&lt;/p&gt;
+&lt;p&gt;A pharmacophore is an abstract description of molecular features that are necessary for molecular recognition of a ligand by a biological macromolecule.
+Nodes in this plugin allow for converting pharmacophores, from and to molecules, by mapping elements to pharmacophore type and, reading from or writing to the phar file format used by the &lt;a href="http://silicos-it.be.s3-website-eu-west-1.amazonaws.com/software/align-it/1.0.4/align-it.html#pharmacophores"&gt;Silicos IT align-it tool&lt;/a&gt;.
+This plugin adds the Pharmacophore (Phar) data type to KNIME, allowing nodes to read/write/manipulate pharmacophores inside KNIME like the &lt;a href="https://github.com/3D-e-Chem/knime-silicos-it"&gt;Silicos-it align-it&lt;/a&gt;, &lt;a href="https://github.com/3D-e-Chem/knime-kripodb"&gt;Kripo pharmacophore retrieval&lt;/a&gt; and &lt;a href="https://github.com/3D-e-Chem/knime-molviewer"&gt;molviewer pharmacophore viewer&lt;/a&gt; nodes.&lt;/p&gt;
+Fixed
+&lt;ul&gt;
+&lt;li&gt;PharmacophorePoint#toArray method uses current locale [#9]&lt;/li&gt;
+&lt;/ul&gt;</ns2:description>
+          </ns2:descriptions>
+        </ns2:resource>
+      </ns0:metadata>
+    </ns0:record>
+  <ns0:record>
+      <ns0:header>
+        <ns0:identifier>oai:zenodo.org:1168400</ns0:identifier>
+        <ns0:datestamp>2018-02-08T13:13:20Z</ns0:datestamp>
+        <ns0:setSpec>software</ns0:setSpec>
+      </ns0:header>
+      <ns0:metadata>
+        <ns2:resource xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4.1/metadata.xsd">
+          <ns2:identifier identifierType="DOI">10.5281/zenodo.1168400</ns2:identifier>
+          <ns2:creators>
+            <ns2:creator>
+              <ns2:creatorName>Stefan Verhoeven</ns2:creatorName>
+              <ns2:affiliation>Nederlands eScience Center</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>George Kanev</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Albert J. Kooistra</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Marton Vass</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Ross McGuire</ns2:creatorName>
+              <ns2:affiliation>Radboud UMC</ns2:affiliation>
+            </ns2:creator>
+            <ns2:creator>
+              <ns2:creatorName>Chris de Graaf</ns2:creatorName>
+              <ns2:affiliation>Vrije Universiteit Amsterdam</ns2:affiliation>
+            </ns2:creator>
+          </ns2:creators>
+          <ns2:titles>
+            <ns2:title>3D-e-Chem/knime-plants: v0.3.4</ns2:title>
+          </ns2:titles>
+          <ns2:publisher>Zenodo</ns2:publisher>
+          <ns2:publicationYear>2018</ns2:publicationYear>
+          <ns2:dates>
+            <ns2:date dateType="Issued">2018-02-07</ns2:date>
+          </ns2:dates>
+          <ns2:resourceType resourceTypeGeneral="Software" />
+          <ns2:alternateIdentifiers>
+            <ns2:alternateIdentifier alternateIdentifierType="url">https://zenodo.org/record/1168400</ns2:alternateIdentifier>
+          </ns2:alternateIdentifiers>
+          <ns2:relatedIdentifiers>
+            <ns2:relatedIdentifier relatedIdentifierType="URL" relationType="IsSupplementTo">https://github.com/3D-e-Chem/knime-plants/tree/v0.3.4</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="References">10.1007/11839088_22</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="IsReferencedBy">10.1002/cmdc.201700754</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="IsVersionOf">10.5281/zenodo.997272</ns2:relatedIdentifier>
+          </ns2:relatedIdentifiers>
+          <ns2:version>v0.3.4</ns2:version>
+          <ns2:rightsList>
+            <ns2:rights rightsURI="http://www.opensource.org/licenses/Apache-2.0">Apache License 2.0</ns2:rights>
+            <ns2:rights rightsURI="info:eu-repo/semantics/openAccess">Open Access</ns2:rights>
+          </ns2:rightsList>
+          <ns2:descriptions>
+            <ns2:description descriptionType="Abstract">&lt;p&gt;KNIME nodes to configure, run and analyze &lt;a href="http://www.mnf.uni-tuebingen.de/fachbereiche/pharmazie-und-biochemie/pharmazie/pharmazeutische-chemie/pd-dr-t-exner/research/plants.html"&gt;PLANTS protein-ligand docking&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fixed&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;On KNIME startup a PLANTS error appears (&lt;a href="https://github.com/3D-e-Chem/knime-plants/issues/13"&gt;#13&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;</ns2:description>
+          </ns2:descriptions>
+        </ns2:resource>
+      </ns0:metadata>
+    </ns0:record>
+  <ns0:record>
+      <ns0:header>
+        <ns0:identifier>oai:zenodo.org:1168379</ns0:identifier>
+        <ns0:datestamp>2018-02-07T16:07:20Z</ns0:datestamp>
+        <ns0:setSpec>software</ns0:setSpec>
+      </ns0:header>
+      <ns0:metadata>
+        <ns2:resource xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4.1/metadata.xsd">
+          <ns2:identifier identifierType="DOI">10.5281/zenodo.1168379</ns2:identifier>
+          <ns2:creators>
+            <ns2:creator>
+              <ns2:creatorName>Stefan Verhoeven</ns2:creatorName>
+              <ns2:nameIdentifier nameIdentifierScheme="ORCID" schemeURI="http://orcid.org/">0000-0002-5821-2060</ns2:nameIdentifier>
+              <ns2:affiliation>Nederlands eScience Center</ns2:affiliation>
+            </ns2:creator>
+          </ns2:creators>
+          <ns2:titles>
+            <ns2:title>3D-e-Chem/knime-python-wrapper: v2.0.1</ns2:title>
+          </ns2:titles>
+          <ns2:publisher>Zenodo</ns2:publisher>
+          <ns2:publicationYear>2018</ns2:publicationYear>
+          <ns2:dates>
+            <ns2:date dateType="Issued">2018-02-07</ns2:date>
+          </ns2:dates>
+          <ns2:resourceType resourceTypeGeneral="Software" />
+          <ns2:alternateIdentifiers>
+            <ns2:alternateIdentifier alternateIdentifierType="url">https://zenodo.org/record/1168379</ns2:alternateIdentifier>
+          </ns2:alternateIdentifiers>
+          <ns2:relatedIdentifiers>
+            <ns2:relatedIdentifier relatedIdentifierType="URL" relationType="IsSupplementTo">https://github.com/3D-e-Chem/knime-python-wrapper/tree/v2.0.1</ns2:relatedIdentifier>
+            <ns2:relatedIdentifier relatedIdentifierType="DOI" relationType="IsVersionOf">10.5281/zenodo.597238</ns2:relatedIdentifier>
+          </ns2:relatedIdentifiers>
+          <ns2:version>v2.0.1</ns2:version>
+          <ns2:rightsList>
+            <ns2:rights rightsURI="http://www.opensource.org/licenses/GPL-3.0">GNU General Public License v3.0 only</ns2:rights>
+            <ns2:rights rightsURI="info:eu-repo/semantics/openAccess">Open Access</ns2:rights>
+          </ns2:rightsList>
+          <ns2:descriptions>
+            <ns2:description descriptionType="Abstract">&lt;p&gt;Abstract Python wrapper KNIME node and helpers. Used for development of KNIME nodes calling Python scripts.&lt;/p&gt;
+
+&lt;p&gt;Version 2 allows nodes to use Python version 2 or 3 and different serializers.&lt;/p&gt;
+
+&lt;p&gt;Changed&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Replaced PythonKernel from org.knime.python to org.knime.python2 (#4)&lt;/li&gt;
+&lt;/ul&gt;</ns2:description>
+          </ns2:descriptions>
+        </ns2:resource>
+      </ns0:metadata>
+    </ns0:record>
+  </ns0:ListRecords>
+</ns0:OAI-PMH>
