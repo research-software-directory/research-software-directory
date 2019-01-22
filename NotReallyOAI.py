@@ -46,6 +46,10 @@ def list_records():
 
     for i_conceptdoi, conceptdoi in enumerate(conceptdois):
         
+        if conceptdoi is None:
+            logger.warn(" %d/%d: conceptDOI is None" % (i_conceptdoi + 1, n_conceptdois))
+            continue
+
         try:
             logger.info(" %d/%d: processing %s" % (i_conceptdoi + 1, n_conceptdois, conceptdoi))
 
