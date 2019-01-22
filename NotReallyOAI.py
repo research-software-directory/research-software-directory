@@ -31,7 +31,7 @@ def list_records():
     logger.info("Still need to enrich and correct the metadata. Currectly serving Zenodo's metadata as-is.")
     
     # get the conceptdois from /api/software
-    response = requests.get('https://research-software.nl/api/software')
+    response = requests.get(os.environ.get('BACKEND_URL') + '/software')
     conceptdois = [software["conceptDOI"] for software in response.json() if software["isPublished"]]
 
     # for each conceptdoi, get the datacite4 using Zenodo's OAI-PMH GetRecord
