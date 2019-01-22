@@ -241,15 +241,24 @@ def serve_robots():
 def oai_pmh():
 
     verb = flask.request.args.get('verb')
-    print(verb)
-    assert verb=="ListRecords", "Only OAI-PMH verb 'ListRecords' is supported at the moment."
+    supported_verbs = ["ListRecords", "GetRecord"]
+    assert verb in supported_verbs, "OAI-PMH verb should be 'ListRecords' or 'GetRecord'; other verbs are not supported at the moment."
 
     metadata_prefix = flask.request.args.get('metadataPrefix')
-    print(metadata_prefix)
     assert metadata_prefix=="datacite4", "'datacite4' is the only supported format."
 
-    rendered_template = flask.render_template('rsd-list-records-datacite4.xml')
-    response = flask.Response(rendered_template)
-    response.headers['Content-Type'] = 'application/xml'
+    oaipmh_cache_dir = os.path.join('/', 'static', 'oaipmh-cache')
 
-    return response
+    if verb=='ListRecords':
+        d = os.path.join(oaipmh_cache_dir,'datacite4')
+        f = 'listrecords.xml'
+        return flask.send_from_directory(d, f, as_attachment=False)
+    elif verb=='GetRecord':
+        identifier = flask.request.args.get('identifier')
+        assert identifier[:15]=="oai:zenodo.org:", "'oai:zenodo.org:<record_number>' is the only supported identifier format at the moment."
+        d = os.path.join(oaipmh_cache_dir,'datacite4')
+        f = 'record-' + identifier.split(':')[-1] + '.xml'
+        return flask.send_from_directory(d, f, as_attachment=False)
+    else:
+        raise Exception("verb should be one of [" + ", ".join(supported_verbs) + "].")
+
