@@ -85,8 +85,3 @@ def list_records():
                    encoding='UTF-8',
                    xml_declaration=True,
                    method='xml')
-
-    # (generate this mocked ListRecords result periodically from the tasks container, cache the result somehow)
-    # 
-    # create a route in frontend:
-    # research-software.nl/oai-pmh?verb=ListRecords&metadataPrefix=datacite4
