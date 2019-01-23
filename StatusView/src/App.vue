@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <p>Reasearch Software Directory</p>
+      <p>Research Software Directory</p>
       <div class="shadow">
         <PieChart v-if="loaded" :data="data"></PieChart>
         <List v-if="loaded" :data="data"></List>
