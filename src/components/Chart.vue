@@ -13,7 +13,7 @@
 <script>
 import * as d3 from "d3";
 const margin = { top: 20, right: 0, bottom: 30, left: 40 };
-const height = 500;
+const height = 250;
 
 export default {
   name: "Chart",
