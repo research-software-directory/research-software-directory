@@ -77,9 +77,17 @@ services:
       - backend
       - admin
       - auth
+      - graphs
     env_file:
       - .env
     restart: unless-stopped
+
+  graphs:
+    image: rsdnlesc/graphs
+    build: 
+      context: ./stats
+    ports:
+      - "8080:8080/tcp"
 
 volumes:
   rsd_static_admin:
