@@ -14,3 +14,10 @@ EXPOSE 8080
 
 # not how it should be, but this works at least:
 CMD ["python", "-m", "SimpleHTTPServer", "8080"]
+
+
+# build this file with
+# docker build --tag statusview .
+
+# start the webserver with
+# docker run --publish 8080:8080 statusview
