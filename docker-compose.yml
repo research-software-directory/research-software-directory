@@ -87,7 +87,7 @@ services:
     build: 
       context: ./stats
     ports:
-      - "8080:8080/tcp"
+      - "8080:8080"
 
 volumes:
   rsd_static_admin:
