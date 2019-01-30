@@ -240,12 +240,21 @@ def serve_robots():
 @application.route('/oai-pmh')
 def oai_pmh():
 
-    verb = flask.request.args.get('verb')
     supported_verbs = ["ListRecords", "GetRecord"]
-    assert verb in supported_verbs, "OAI-PMH verb should be 'ListRecords' or 'GetRecord'; other verbs are not supported at the moment."
+    verb = flask.request.args.get('verb')
+    if not verb in supported_verbs:
+        response = flask.make_response("OAI-PMH verb should be one of [" +
+                   ", ".join(supported_verbs) + "]; other verbs are not " +
+                   "supported at the moment.")
+        return response
 
+    supported_metadata_prefixes = ["datacite4"]
     metadata_prefix = flask.request.args.get('metadataPrefix')
-    assert metadata_prefix=="datacite4", "'datacite4' is the only supported format."
+    if not metadata_prefix in supported_metadata_prefixes:
+        response = flask.make_response("'metadataPrefix' should be one of [" +
+                   ", ".join(supported_metadata_prefixes) + "]; other verbs " +
+                   "are not supported at the moment.")
+        return response
 
     oaipmh_cache_dir = os.path.join('/', 'static', 'oaipmh-cache')
 
@@ -255,10 +264,13 @@ def oai_pmh():
         return flask.send_from_directory(d, f, as_attachment=False)
     elif verb=='GetRecord':
         identifier = flask.request.args.get('identifier')
-        assert identifier[:15]=="oai:zenodo.org:", "'oai:zenodo.org:<record_number>' is the only supported identifier format at the moment."
+        if identifier is None:
+            response = flask.make_response("You need to specify an identifier.")
+            return response
+        if not identifier[:15]=="oai:zenodo.org:":
+            response = flask.make_response("'oai:zenodo.org:<record_number>' is the only supported identifier format at the moment.")
+            return response
         d = os.path.join(oaipmh_cache_dir,'datacite4')
         f = 'record-' + identifier.split(':')[-1] + '.xml'
         return flask.send_from_directory(d, f, as_attachment=False)
-    else:
-        raise Exception("verb should be one of [" + ", ".join(supported_verbs) + "].")
 
