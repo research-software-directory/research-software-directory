@@ -26,6 +26,7 @@ services:
     depends_on:
       - mongo
 
+
   admin:
     image: rsdnlesc/admin
     volumes:
@@ -42,7 +43,6 @@ services:
       - .env
     volumes:
       - rsd_static_frontend:/shared_static
-      - ./oaipmh-cache:/static/oaipmh-cache
 
   tasks:
     image: rsdnlesc/tasks
@@ -53,8 +53,6 @@ services:
     depends_on:
       - backend
       - mongo
-    volumes:
-      - ./oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
     image: rsdnlesc/docker-term-letsencrypt
