@@ -8,7 +8,7 @@ from corporate import sync_projects
 from github import sync_all as github_sync_all
 from releases import sync_releases
 from zotero import zotero_sync
-from NotReallyOAI import list_records
+from oaipmh import list_records
 
 
 class MaxLevel(object):

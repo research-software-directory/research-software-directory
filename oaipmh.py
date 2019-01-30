@@ -29,7 +29,7 @@ def list_records():
         return root_elem
 
     logger.info("Still need to enrich and correct the metadata. Currectly serving Zenodo's metadata as-is.")
-    
+
     # get the conceptdois from /api/software
     response = requests.get(os.environ.get('BACKEND_URL') + '/software')
     conceptdois = [software["conceptDOI"] for software in response.json() if software["isPublished"]]
@@ -45,7 +45,7 @@ def list_records():
         os.mkdir(oaipmh_cache_dir)
 
     for i_conceptdoi, conceptdoi in enumerate(conceptdois):
-        
+
         if conceptdoi is None:
             logger.warn(" %d/%d: conceptDOI is None" % (i_conceptdoi + 1, n_conceptdois))
             continue
