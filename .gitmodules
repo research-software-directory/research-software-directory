@@ -7,6 +7,3 @@
 [submodule "tasks-nlesc"]
 	path = tasks-nlesc
  	url = https://github.com/research-software-directory/tasks-nlesc
-[submodule "db-dump"]
-	path = db-dump
-	url = https://github.com/research-software-directory/db-dump
