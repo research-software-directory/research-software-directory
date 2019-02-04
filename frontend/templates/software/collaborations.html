@@ -1,0 +1,36 @@
+{% if template_data.related.organizations %}
+<section class="" id="collaborations">
+    <div class="container">
+
+        <div class="divider"></div>
+
+        <div class="row">
+            <div class="col-1-4">
+                <h2 class="subtitle text-blue">Participating organizations</h2>
+            </div>
+
+            <div class="col-3-4 row contributing-organisations">
+                {% for organization in (template_data.related.organizations | sort(attribute='foreignKey.name')) %}
+                    {% set org = organization.foreignKey %}
+                    <div class="organisation">
+                        {% if org.website %}
+                            <a href="{{org.website}}" target="_blank">
+                        {% endif %}
+                        {% if org.logo and org.logo.data %}
+                            <img
+                                src="data:{{org.logo.mimeType}};base64,{{org.logo.data}}" alt=""
+                            />
+                        {% else %}
+                            {{org.name}}
+                        {% endif %}
+                        {% if org.website %}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endif %}

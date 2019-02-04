@@ -1,0 +1,39 @@
+//	RSD main scss file
+//	==========================================================================
+
+//	Settings
+//  --------------------------------------------------
+@import "settings/variables";
+// @import "settings/mediaqueries";
+@import "settings/mixins";
+
+
+//	Base
+//  --------------------------------------------------
+@import "base/resets";
+@import "base/fonts";
+@import "base/typography";
+@import "base/scaffolding";
+
+//	Elements
+//  --------------------------------------------------
+@import "elements/buttons";
+@import "elements/checkboxes";
+@import "elements/dropdown";
+
+
+//	Components
+//  --------------------------------------------------
+@import "components/header";
+@import "components/footer";
+
+
+//	Templates
+//  --------------------------------------------------
+@import "templates/index";
+@import "templates/software";
+@import "templates/aboutrsd";
+
+//	Beamer mode
+//  --------------------------------------------------
+@import "beamer-mode";

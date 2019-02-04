@@ -1,0 +1,31 @@
+<section class="bg-light" id="get-started">
+    <div class="container">
+
+        <div class="row">
+
+            {% if template_data.getStartedURL %}
+            <div class="col col-1-4">
+                <a href="{{template_data.getStartedURL}}" target="_blank">
+                    <div class="button button--big button--filled-blue">
+                        <span class="button_text">Get started</span>
+                        <span class="button_icon">
+                            <svg class="icon" viewBox="0 0 15 15"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+
+
+            {% if template_data.commits %}
+            <div class="col col-3-4 chart">
+                <div class="software_commitsPlot" id="commitsPlot"></div>
+                <div class="software_commitsStat" id="commitsStat">
+                    <b>{{template_data.totalCommits}} commits</b> | Last update: <b>{{template_data.lastCommit | human_date_filter }}</b>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</section>

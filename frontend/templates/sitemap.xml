@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.research-software.nl/</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://www.research-software.nl/about</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    {% for sw in data -%}
+        <url>
+            <loc>https://www.research-software.nl/software/{{sw.slug}}</loc>
+            <lastmod>{{sw.updatedAt | date_filter}}</lastmod>
+            <changefreq>weekly</changefreq>
+        </url>
+    {%- endfor %}
+</urlset>

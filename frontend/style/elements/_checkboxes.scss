@@ -1,0 +1,78 @@
+// Custom checkboxes
+// ------------------------------------
+
+// The label is clickable to toggle the checkbox
+label.checkbox {
+
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 0.5rem 0 !important;
+
+    // Hide the original checkbox
+    input {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+
+    // This is a div to simulate a custom styled checkbox
+    .custom-checkbox {
+        flex-shrink:0;
+        position: relative;
+        height: 15px;
+        width: 15px;
+        margin-top: 2px;
+        border: 1px solid $black;
+        
+        // The after element will act as indicator if checkbox is checked or not
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-color: $dark;
+        }
+    }
+    .text {
+        padding-left: 0.5em;
+        font-size: 1.6rem;
+        font-family: $primaryFontLight;
+        strong{
+            font-family: $primaryFont;
+            font-weight: 400;
+        }
+    }
+
+    // On hover over label
+    &:hover {
+        .custom-checkbox:after {
+            backface-visibility: hidden;
+            opacity: 0.15;
+        }
+    }
+
+    // When checkbox is checked
+    input{
+        &:checked {
+            ~ .custom-checkbox:after {
+                background-color: $black;
+                opacity: 1;
+                transform: scale(0.8);
+            }
+            &:hover {
+                ~ .custom-checkbox:after {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+    
+}

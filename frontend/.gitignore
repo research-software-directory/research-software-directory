@@ -1,0 +1,9 @@
+.idea/*
+*/**/__pycache__/*
+node_modules
+.env
+.env.local
+.env.production
+__pycache__/
+.cache
+.pytest_cache/
