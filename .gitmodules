@@ -1,9 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/research-software-directory/frontend
-[submodule "backend"]
-	path = backend
-	url = https://github.com/research-software-directory/backend
 [submodule "readthedocs"]
 	path = readthedocs
 	url = https://github.com/research-software-directory/readthedocs
