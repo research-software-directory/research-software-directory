@@ -236,3 +236,41 @@ def serve_favicon():
 @application.route('/robots.txt')
 def serve_robots():
     return application.send_static_file('robots.txt')
+
+@application.route('/oai-pmh')
+def oai_pmh():
+
+    supported_verbs = ["ListRecords", "GetRecord"]
+    verb = flask.request.args.get('verb')
+    if not verb in supported_verbs:
+        response = flask.make_response("OAI-PMH verb should be one of [" +
+                   ", ".join(supported_verbs) + "]; other verbs are not " +
+                   "supported at the moment.")
+        return response
+
+    supported_metadata_prefixes = ["datacite4"]
+    metadata_prefix = flask.request.args.get('metadataPrefix')
+    if not metadata_prefix in supported_metadata_prefixes:
+        response = flask.make_response("'metadataPrefix' should be one of [" +
+                   ", ".join(supported_metadata_prefixes) + "]; other verbs " +
+                   "are not supported at the moment.")
+        return response
+
+    oaipmh_cache_dir = os.path.join('/', 'static', 'oaipmh-cache')
+
+    if verb=='ListRecords':
+        d = os.path.join(oaipmh_cache_dir,'datacite4')
+        f = 'listrecords.xml'
+        return flask.send_from_directory(d, f, as_attachment=False)
+    elif verb=='GetRecord':
+        identifier = flask.request.args.get('identifier')
+        if identifier is None:
+            response = flask.make_response("You need to specify an identifier.")
+            return response
+        if not identifier[:15]=="oai:zenodo.org:":
+            response = flask.make_response("'oai:zenodo.org:<record_number>' is the only supported identifier format at the moment.")
+            return response
+        d = os.path.join(oaipmh_cache_dir,'datacite4')
+        f = 'record-' + identifier.split(':')[-1] + '.xml'
+        return flask.send_from_directory(d, f, as_attachment=False)
+
