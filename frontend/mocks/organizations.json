@@ -1,0 +1,22 @@
+[
+  {
+    "primaryKey": {
+      "id": "nlesc",
+      "collection": "organization"
+    },
+    "createdAt": "2017-11-10T14:12:55Z",
+    "updatedAt": "2017-11-10T14:17:53Z",
+    "name": "Netherlands eScience Center",
+    "url": "http://www.esciencecenter.nl/"
+  },
+  {
+    "primaryKey": {
+      "id": "nikhef",
+      "collection": "organization"
+    },
+    "createdAt": "2017-11-10T14:12:55Z",
+    "updatedAt": "2017-11-10T14:17:53Z",
+    "name": "NIKHEF",
+    "url": "http://www.nikhef.nl/"
+  }
+]

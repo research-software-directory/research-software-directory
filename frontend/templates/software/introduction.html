@@ -1,0 +1,36 @@
+<section class="" id="introduction">
+    <div class="container">
+        <div class="row">
+            <div class="col col-3-4">
+                {% if template_data.brandName %}
+                <h1 class="title name">{{template_data.brandName}}</h1>
+                {% endif %}
+                {% if template_data.contributor %}
+                <div class="by">By <strong>{{", ".join(template_data.contributor|list_names_filter)}}</strong></div>
+                {% endif %}
+                {% if template_data.contributingOrganization %}
+                <div class="contributingOrganizationJoin">{{", ".join(template_data.contributingOrganization|list_names_filter)}}</div>
+                {% endif %}
+                {% if template_data.shortStatement %}
+                <div class="shortStatement">{{template_data.shortStatement}}</div>
+                {% endif %}
+            </div>
+
+            <div class="col col-1-4">
+                <div class="highlight-data">
+                    {% if template_data.related.mentions %}
+                        <div class="data">
+                            <div class="num">{{ template_data.related.mentions | length }}</div>
+                            <div class="text">{{ 'mentions' if template_data.related.mentions | length >1 else 'mention' }}</div>
+                        </div>
+                    {% endif %}
+                    <div class="data">
+                        <div class="num">{{ template_data.contributors | length }}</div>
+                        <div class="text">{{ 'contributors' if template_data.contributors | length >1 else 'contributor' }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
