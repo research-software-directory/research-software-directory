@@ -1,20 +1,17 @@
 version: '3'
 
 services:
-  mongo:
-    image: "mongo:3.6"
+
+  admin:
+    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
+    container_name: rsd-admin
     volumes:
-      - ./docker-volumes/db:/data/db
-      - ./config/mongo.sh:/mongo.sh
-      - ./docker-volumes/db-init:/db-init
-    entrypoint: /mongo.sh
-    command: --bind_ip 0.0.0.0
-    container_name: rsd-database
+      - rsd_static_admin:/build
 
   auth:
     build:
       context: ./auth-github
-    container_name: rsd-admin-authentication
+    container_name: rsd-authentication
     env_file:
       - .env
 
@@ -22,16 +19,19 @@ services:
     build:
       context: ./backend
     container_name: rsd-backend
+    depends_on:
+      - database
     env_file:
       - .env
-    depends_on:
-      - mongo
 
-  admin:
-    container_name: rsd-admin
+  database:
+    build:
+      context: ./database
+    command: --bind_ip 0.0.0.0
+    container_name: rsd-database
+    entrypoint: /mongo.sh
     volumes:
-      - rsd_static_admin:/build
-    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
+      - ./docker-volumes/db:/data/db
 
   frontend:
     build:
@@ -45,35 +45,20 @@ services:
       - rsd_static_frontend:/shared_static
       - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
 
-  tasks:
-    build:
-      context: ./tasks
-    container_name: rsd-tasks
+  nginx_ssl:
+    container_name: rsd-nginx-ssl
     env_file:
       - .env
-    depends_on:
-      - backend
-      - mongo
-    volumes:
-      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
-
-  nginx_ssl:
     image: rsdnlesc/docker-term-letsencrypt
-    container_name: rsd-nginx-ssl
+    restart: unless-stopped
     volumes:
       - ./docker-volumes/cert:/cert
       - ./docker-volumes/letsencrypt:/etc/letsencrypt
-    env_file:
-      - .env
-    restart: unless-stopped
 
   reverse-proxy:
     build:
       context: ./reverse-proxy
     container_name: rsd-reverse-proxy
-    volumes:
-      - rsd_static_admin:/static_admin:ro
-      - rsd_static_frontend:/static_frontend:ro
     depends_on:
       - frontend
       - backend
@@ -82,6 +67,21 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    volumes:
+      - rsd_static_admin:/static_admin:ro
+      - rsd_static_frontend:/static_frontend:ro
+
+  tasks:
+    build:
+      context: ./tasks
+    container_name: rsd-tasks
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - database
+    volumes:
+      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
 volumes:
   rsd_static_admin:
