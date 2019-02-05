@@ -47,7 +47,7 @@ services:
   tasks:
     image: rsdnlesc/tasks
     build:
-      context: ./tasks-nlesc
+      context: ./tasks
     env_file:
       - .env
     depends_on:
