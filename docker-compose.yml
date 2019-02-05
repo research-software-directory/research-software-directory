@@ -3,6 +3,8 @@ version: '3'
 services:
 
   admin:
+    build:
+      context: ./admin
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
     container_name: rsd-admin
     volumes:

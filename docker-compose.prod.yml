@@ -1,9 +1,6 @@
 version: '3'
 
 services:
-  admin:
-    build:
-      context: ./admin
   nginx_ssl:
     ports:
       - 443:443
