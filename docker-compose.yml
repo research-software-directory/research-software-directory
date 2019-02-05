@@ -52,6 +52,9 @@ services:
     env_file:
       - .env
     image: rsdnlesc/docker-term-letsencrypt
+    ports:
+      - 443:443
+      - 80:80
     restart: unless-stopped
     volumes:
       - ./docker-volumes/cert:/cert
