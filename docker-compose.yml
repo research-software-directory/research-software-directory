@@ -4,9 +4,9 @@ services:
   mongo:
     image: "mongo:3.6"
     volumes:
-      - ./db:/data/db
+      - ./docker-volumes/db:/data/db
       - ./config/mongo.sh:/mongo.sh
-      - ./db-dump:/db-dump-initial
+      - ./docker-volumes/db-init:/db-init
     entrypoint: /mongo.sh
     command: --bind_ip 0.0.0.0
 
@@ -42,7 +42,7 @@ services:
       - .env
     volumes:
       - rsd_static_frontend:/shared_static
-      - ./oaipmh-cache:/static/oaipmh-cache
+      - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
 
   tasks:
     image: rsdnlesc/tasks
@@ -54,13 +54,13 @@ services:
       - backend
       - mongo
     volumes:
-      - ./oaipmh-cache:/oaipmh-cache
+      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
     image: rsdnlesc/docker-term-letsencrypt
     volumes:
-      - ./cert:/cert
-      - ./letsencrypt:/etc/letsencrypt
+      - ./docker-volumes/cert:/cert
+      - ./docker-volumes/letsencrypt:/etc/letsencrypt
     env_file:
       - .env
     restart: unless-stopped
