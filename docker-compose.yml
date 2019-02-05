@@ -9,33 +9,34 @@ services:
       - ./docker-volumes/db-init:/db-init
     entrypoint: /mongo.sh
     command: --bind_ip 0.0.0.0
+    container_name: rsd-database
 
   auth:
-    image: rsdnlesc/auth-github
     build:
       context: ./auth-github
+    container_name: rsd-admin-authentication
     env_file:
       - .env
 
   backend:
-    image: rsdnlesc/backend
     build:
       context: ./backend
+    container_name: rsd-backend
     env_file:
       - .env
     depends_on:
       - mongo
 
   admin:
-    image: rsdnlesc/admin
+    container_name: rsd-admin
     volumes:
       - rsd_static_admin:/build
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
 
   frontend:
-    image: rsdnlesc/frontend
     build:
       context: ./frontend
+    container_name: rsd-frontend
     depends_on:
       - backend
     env_file:
@@ -45,9 +46,9 @@ services:
       - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
 
   tasks:
-    image: rsdnlesc/tasks
     build:
       context: ./tasks
+    container_name: rsd-tasks
     env_file:
       - .env
     depends_on:
@@ -58,6 +59,7 @@ services:
 
   nginx_ssl:
     image: rsdnlesc/docker-term-letsencrypt
+    container_name: rsd-nginx-ssl
     volumes:
       - ./docker-volumes/cert:/cert
       - ./docker-volumes/letsencrypt:/etc/letsencrypt
@@ -65,10 +67,10 @@ services:
       - .env
     restart: unless-stopped
 
-  nginx:
-    image: rsdnlesc/nginx_proxy
+  reverse-proxy:
     build:
-      context: ./config/nginx_proxy
+      context: ./reverse-proxy
+    container_name: rsd-reverse-proxy
     volumes:
       - rsd_static_admin:/static_admin:ro
       - rsd_static_frontend:/static_frontend:ro
