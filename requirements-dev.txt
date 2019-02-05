@@ -1,2 +1,0 @@
-pytest==3.3.2
-pytest-runner==4.2
