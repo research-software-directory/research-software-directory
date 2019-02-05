@@ -2,6 +2,3 @@ version: '3'
 
 services:
   nginx_ssl:
-    ports:
-      - 443:443
-      - 80:80
