@@ -74,7 +74,6 @@ export default {
           return el;
         }
       });
-      debugger;
       this.drawChart(this.mention[0].mentionTypes, this.mention[0].name);
     },
     countType(types) {
