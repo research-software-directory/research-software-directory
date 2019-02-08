@@ -50,7 +50,7 @@ services:
   graphs:
     build:
       context: ./graphs
-    container-name: rsd-graphs
+    container_name: rsd-graphs
     env_file:
       - .env
 
