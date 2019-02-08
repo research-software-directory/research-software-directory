@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script type="application/javascript">
+        // retrieve the conceptdoi for published items, so we can tell DANS
+        // about those items
+
+        const url = 'https://www.research-software.nl/api/software_cache';
+
+        let filterer = (item) => {
+            return item.isPublished
+        }
+        let mapper = (item) => {
+            return {
+                brandName: item.brandName,
+                conceptDOI: item.conceptDOI
+            }
+        }
+        fetch(url)
+        .then((resp) => resp.json())
+        .then((items) => {
+            const get_apa6_citation = (doc) => {
+                if (doc.conceptDOI !== '10.0000/FIXME') {
+                    fetch('http://api.citeas.org/product/' + doc.conceptDOI)
+                    .then((resp) => resp.json())
+                    .then((doc) => {
+                        // citations[0] is apa6 style
+                        // console.log(doc);
+                        citations.push(doc.citations[0]);
+                        document.write("<p>" + doc.citations[0].citation + "</p>");
+                    })
+                }
+            }
+            const filtered = items.filter(filterer);
+            const mapped = filtered.map(mapper);
+            const citations = [];
+            mapped.forEach(get_apa6_citation);
+        })
+        .catch(function(error) {
+            console.log(JSON.stringify(error));
+        });
+        </script>
+    </head>
+
+    <body>
+    </body>
+</html>
