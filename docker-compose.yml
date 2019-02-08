@@ -47,6 +47,13 @@ services:
       - rsd_static_frontend:/shared_static
       - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
 
+  graphs:
+    build:
+      context: ./graphs
+    container-name: rsd-graphs
+    env_file:
+      - .env
+
   nginx_ssl:
     container_name: rsd-nginx-ssl
     env_file:
