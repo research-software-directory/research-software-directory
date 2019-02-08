@@ -12,15 +12,21 @@ to accomplish with it.
 ## Accounts
 
 To populate the Research Software Directory with your content, you'll need
-accounts for GitHub and for Zotero. You'll also need to be a member of the
-Netherlands eScience Center group on Zotero, which you can request here
-https://www.zotero.org/groups/1689348. A group administrator needs to grant you
-access, so be aware it may take a while.
+accounts for GitHub and for Zotero.
+
+On GitHub, you need to be a member of the NLeSC organization, and that
+membership should be public. [This
+website](https://github.com/orgs/NLeSC/people) will tell you if you meet those
+criteria.
+
+On Zotero, you'll need to be a member of the Netherlands eScience Center group,
+which you can request here https://www.zotero.org/groups/1689348. A group
+administrator needs to grant you access, so be aware it may take a while.
 
 ## Basic workflow
 
 The blog mentions that the Research Software Directory harvests various types of
-data, which are then combined using the Admin interface, as follows:
+data, which are then combined using its Admin interface, as follows:
 
 ![data-sources.svg](data-sources.svg)
 
@@ -34,7 +40,7 @@ related boxes (``GitHub``, ``Zenodo`` and ``CITATION.cff``) are already covered.
 However, product pages are not only about source code; they also aim to provide
 context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
-selecting them via the dropdown list in the Admin interface. 
+selecting them via the dropdown list in the Admin interface of the RSD. 
 
 The items on the  dropdown list are harvested once every 24 hours from the
 [Netherlands eScience Center group on
@@ -44,8 +50,8 @@ place where we keep track of NLeSC's _output_ and _impact_:
 - Output includes all the things we produced, be it code, data, videos,
 documentation, papers, posters, demos, etc.
 - Impact includes things we did not produce but that makes use of things we
-produced, e.g. a paper written by an external party which uses software
-developed by us.
+produced, e.g. a paper, data or software created by an external party which uses software
+developed by us
 
 So, if you have a new blog post, new paper, or a new screencast that you want to
 add as a mention to a product page, you need to add the new item to Zotero (and
@@ -158,7 +164,8 @@ using the so-called _query_ part of URLs. Let's say you want to see
 https://www.research-software.nl/software/xenon but you want to make sure that
 it really is the latest version, not some cached version. You can do so by
 appending a question mark followed by some random characters, for example
-https://www.research-software.nl/software/xenon?29837498y3490y
-(``?29837498y3490y`` is the query part of the URL). This way, both the browser
+https://www.research-software.nl/software/xenon?somerandomstring
+(``?somerandomstring`` is the query part of the URL). This way, both the browser
 and server consider it a previously unseen web page because the URL is
-different, and will therefore show you the latest data. 
+different, and will therefore show you the latest data. You'll need to come up 
+with a different value for ``somerandomstring`` every time you reload the data.
