@@ -2,4 +2,4 @@ before_install:
   - cp .env.example .env
   - docker-compose --project-name rsd build
 script:
-  - docker-compose --project-name rsd --file docker-compose.test.yml run test
+  - docker-compose --project-name rsd --file docker-compose.yml --file docker-compose.test.yml run test
