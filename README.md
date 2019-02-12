@@ -203,7 +203,7 @@ answers to specific questions:
 
 ### Tasks
 
-1. [How do I change when data collection scripts run?](docs/faq/how-do-I-change-when-data-collection-scripts-run.md)
+1. [How do I change when data collection scripts run?](docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
 
 ---
 
