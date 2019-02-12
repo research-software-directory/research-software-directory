@@ -66,6 +66,8 @@ services:
     volumes:
       - ./docker-volumes/cert:/cert
       - ./docker-volumes/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - reverse-proxy
 
   reverse-proxy:
     build:
@@ -76,6 +78,7 @@ services:
       - backend
       - admin
       - auth
+      - graphs
     env_file:
       - .env
     restart: unless-stopped
