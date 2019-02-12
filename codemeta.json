@@ -6,6 +6,7 @@
     "@type": "SoftwareSourceCode",
     "author": [
         {
+            "@id": "https://orcid.org/0000-0002-7064-4069",
             "@type": "Person",
             "affiliation": {
                 "@type": "Organization",
@@ -20,19 +21,11 @@
                 "@type": "Organization",
                 "legalName": "Netherlands eScience Center"
             },
-            "familyName": "Maassen",
-            "givenName": "Jason"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
             "familyName": "Klaver",
             "givenName": "Tom"
         },
         {
+            "@id": "https://orcid.org/0000-0002-5821-2060",
             "@type": "Person",
             "affiliation": {
                 "@type": "Organization",
@@ -40,108 +33,9 @@
             },
             "familyName": "Verhoeven",
             "givenName": "Stefan"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "van Hage",
-            "givenName": "Willem"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Ridder",
-            "givenName": "Lars"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Kulik",
-            "givenName": "Lode"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Bakker",
-            "givenName": "Tom"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "van Hees",
-            "givenName": "Vincent"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Bogaardt",
-            "givenName": "Laurens"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Mendrik",
-            "givenName": "Adriënne"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "van Es",
-            "givenName": "Bram"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Attema",
-            "givenName": "Jisk"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "Ranguelova",
-            "givenName": "Elena"
-        },
-        {
-            "@type": "Person",
-            "affiliation": {
-                "@type": "Organization",
-                "legalName": "Netherlands eScience Center"
-            },
-            "familyName": "van Nieuwpoort",
-            "givenName": "Rob"
         }
     ],
-    "codeRepository": "https://github.com/research-software-directory",
+    "codeRepository": "https://github.com/research-software-directory/research-software-directory",
     "keywords": [
         "FAIR for software",
         "reproducible research",
