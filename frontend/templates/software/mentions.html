@@ -1,0 +1,74 @@
+{% if template_data.related.mentions %}
+<section class="bg-dark" id="mentions">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-1-4">
+                <h2 class="subtitle">Mentions</h2>
+            </div>
+
+            <div class="col-3-4">
+                {% set blog = template_data.related.mentions | map(attribute="foreignKey") | selectattr("isCorporateBlog") | first %}
+                {% if blog %}
+                <a href="{{blog.url}}" target="_blank" class="mention_blog-post row">
+                    <div class="image-container">
+                        <img src="{{ blog.image }}">
+                    </div>
+                    <div class="data">
+
+                        <h3 class="title">{{ blog.title }}</h3>
+                        <p class="author">By {{ blog.author }}</p>
+                        <p class="date">{{ blog.date | human_date_filter }}</p>
+
+                        <div class="visit-blog text-underline">Visit our blog</div>
+                    </div>
+                </a>
+                {% endif %}
+
+                <div class="divider"></div>
+                {% for type, items in template_data.related.mentions | map(attribute="foreignKey") | selectattr("isCorporateBlog", "ne", True) | groupby('type') %}
+                <div class="mention">
+                    <div class="mention_button">
+                        <h3>
+                            <span class="amount">{{items|length}}</span>
+                            {% if type in mention_types %}
+                            <span class="category">{{mention_types[type].singular if items|length == 1 else mention_types[type].plural}}</span>
+                            {% else %}
+                            <span class="category">{{type}}</span>
+                            {% endif%}
+                        </h3>
+                        <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg>
+                    </div>
+                    <div class="mention_list" style="height: 0">
+                        <ul>
+                        {% for item in items %}
+                            <li>
+                            {% if item.url %}
+
+                            <a class="mention_content" href="{{item.url}}" target="_blank">
+                                <div class="mention_title">{{item.title}} <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+
+                                <div class="mention_post-date">{{item.date | human_date_filter}}</div>
+                            </a>
+
+                            {% else %}
+                            <div class="mention_content">
+                                <div class="mention_title">{{item.title}}</div>
+                                <div class="mention_post-date">{{item.date | human_date_filter}}</div>
+                            </div>
+                            {% endif %}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="divider"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div>
+</section>
+{% endif %}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {%- block head -%}
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="robots" content="INDEX,FOLLOW" />
+            <link rel="shortcut icon" href="/static/favicon.ico"/>
+            <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style/rsd.scss.css')}}">
+            <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111275282-1"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'UA-111275282-1', { anonymize_ip: true });
+              document.addEventListener("DOMContentLoaded", function () {
+                  document.querySelectorAll("a[href^='http']:not([href*='research-software.nl'])").forEach(function (elm) {
+                      elm.addEventListener('click', function (e) {
+                          gtag('event', 'click', {
+                              event_category: 'outbound',
+                              event_label: elm.href,
+                              transport_type: 'beacon',
+                              event_callback: function() { document.location = elm.href }
+                          });
+                          return false;
+                      });
+                  });
+              });
+            </script>
+        {%- endblock -%}
+    </head>
+
+    <body>
+        <svg style="position: absolute; width: 0; height: 0; overflow: hidden;"><use href="{{url_for('static', filename='icons/icons.svg')}}"></use></svg>
+        
+        <div id="layout_container">
+            <header id="header">
+                <div class="container">
+                    
+                    <div id="header_logo">
+                        <a href="/">
+                            <img src="https://www.process-project.eu/wp-content/uploads/2018/03/PROCESS_LOGO-e1521828071145.png" \>
+
+                            {% block rsd_home %}
+                            <div id="header_text">
+                                research software directory
+                            </div>
+                            {% endblock %}
+                        </a>
+                    </div>
+
+                    <div id="header_links">
+                        {% block find_software %}
+                        <a href="/">Find software</a>
+                        {% endblock %}
+                        {% block about_rsd %}
+                        <a href="/about">About the directory</a>
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="divider"></div>    
+                </div>
+            </header>
+            <div id="body" style="background-color:white;">
+                {%- block content -%}{%- endblock -%}
+            </div>
+            {% include 'footer_template.html' %}
+        </div>
+    </body>
+</html>
+

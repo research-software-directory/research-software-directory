@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "properties": {
+        "createdAt": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "createdBy": {
+            "type": "string"
+        },
+        "image": {
+            "format": "uri",
+            "type": "string"
+        },
+        "primaryKey": {
+            "$ref": "definitions.json/key/project"
+        },
+        "principalInvestigator": {
+            "additionalProperties": false,
+            "properties": {
+                "affiliation": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "updatedAt": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "updatedBy": {
+            "type": "string"
+        },
+        "url": {
+            "format": "uri",
+            "type": "string"
+        }
+    },
+    "required": [
+        "createdAt",
+        "image",
+        "primaryKey",
+        "principalInvestigator",
+        "subtitle",
+        "title",
+        "updatedAt",
+        "url"
+    ],
+    "title": "Project schema"
+}

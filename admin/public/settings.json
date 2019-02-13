@@ -1,0 +1,326 @@
+{
+  "backendUrl": "/api",
+  "authUrl": "/auth",
+  "resources": {
+    "software": {
+      "name": "Software",
+      "label": "Software",
+      "itemLabelTemplate": "{{ brandName }}",
+      "icon": "file code outline",
+      "properties": {
+        "brandName": {
+          "label": "Brand name",
+          "sortIndex": 1
+        },
+        "bullets": {
+          "label": "Bullet list",
+          "sortIndex": 100,
+          "multiline": true,
+          "help":
+            "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
+        },
+        "citationcff": {
+          "label": "citationcff",
+          "sortIndex": 300
+        },
+        "contributingOrganizations": {
+          "label": "Contributing organizations",
+          "sortIndex": 400
+        },
+        "contributors": {
+          "label": "Contributors",
+          "sortIndex": 600,
+          "properties": {
+            "foreignKey": { "label": "Person" },
+            "isContactPerson": {
+              "label": "Is this person the contact person?"
+            },
+            "affiliations": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Organization"
+                }
+              }
+            }
+          }
+        },
+        "conceptDOI": {
+          "label": "Concept DOI",
+          "sortIndex": 500,
+          "help":
+            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not an URL"
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1000,
+          "readonly": true
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1000,
+          "readonly": true
+        },
+        "getStartedURL": {
+          "label": "Getting started URL",
+          "sortIndex": 500
+        },
+        "repositoryURLs": {
+          "sortIndex": 580,
+          "label": "Code repository URL's"
+        },
+        "isFeatured": {
+          "sortIndex": 20,
+          "label": "Is featured",
+          "help": "Use with caution, not everything can be featured"
+        },
+        "isPublished": {
+          "sortIndex": 10,
+          "label": "Is published"
+        },
+        "license": {
+          "sortIndex": 550,
+          "label": "License(s)"
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1000,
+          "readonly": true
+        },
+        "programmingLanguage": {
+          "sortIndex": 560,
+          "label": "Programming language(s)"
+        },
+        "readMore": {
+          "label": "Read more",
+          "sortIndex": 300,
+          "multiline": true,
+          "help": "Text shown when Read more button is pressed"
+        },
+        "related": {
+          "sortIndex": 650,
+          "label": "Related",
+          "properties": {
+            "mentions": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "organizations": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "projects": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "software": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            }
+          }
+        },
+        "shortStatement": {
+          "label": "Short statement",
+          "multiline": true,
+          "sortIndex": 50,
+          "help":
+            "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
+        },
+        "slug": {
+          "sortIndex": 520,
+          "label": "Slug",
+          "help": "Human readable identifier in url for this item"
+        },
+        "tags": {
+          "label": "tags",
+          "sortIndex": 800
+        },
+        "testimonials": {
+          "sortIndex": 680,
+          "label": "Testimonials",
+          "properties": {
+            "person": {
+              "properties": {
+                "foreignKey": {
+                  "label": "Person"
+                }
+              }
+            }
+          }
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1000,
+          "readonly": true
+        },
+        "updatedBy": {
+          "label": "Updated by",
+          "sortIndex": 1000,
+          "readonly": true
+        }
+      }
+    },
+    "person": {
+      "name": "Person",
+      "icon": "user",
+      "itemLabelTemplate":
+        "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
+      "properties": {
+        "primaryKey": {
+          "readonly": true
+        },
+        "createdAt": {
+          "readonly": true
+        },
+        "createdBy": {
+          "readonly": true
+        },
+        "updatedAt": {
+          "readonly": true
+        },
+        "updatedBy": {
+          "readonly": true
+        }
+      }
+    },
+    "mention": {
+      "name": "mention",
+      "icon": "book",
+      "itemLabelTemplate": "{{ title }}",
+      "readonly": true,
+      "properties": {
+        "title": {
+          "label": "Title",
+          "sortIndex": 1
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 2
+        },
+        "date": {
+          "label": "Date",
+          "sortIndex": 3
+        },
+        "author": {
+          "label": "Author",
+          "sortIndex": 4
+        },
+        "type": {
+          "label": "Type",
+          "sortIndex": 5
+        },
+        "isCorporateBlog": {
+          "label": "Is corporate blog",
+          "sortIndex": 6
+        },
+        "image": {
+          "label": "Image URL",
+          "help": "Image URL for corporate blog mentions",
+          "sortIndex": 7
+        },
+        "zoteroKey": {
+          "label": "Zotero key",
+          "sortIndex": 500
+        },
+        "version": {
+          "label": "Zotero version",
+          "sortIndex": 501
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005
+        }
+      }
+    },
+    "project": {
+      "name": "Project",
+      "icon": "lab",
+      "itemLabelTemplate": "{{ title }}",
+      "readonly": false,
+      "properties": {
+        "title": {
+          "label": "Title",
+          "sortIndex": 1
+        },
+        "subtitle": {
+          "label": "Subtitle",
+          "sortIndex": 2
+        },
+        "principalInvestigator": {
+          "label": "Principal investigator (PI)",
+          "sortIndex": 3,
+          "properties": {
+            "affiliation": {
+              "label": "Affilliation",
+              "sortIndex": 2
+            },
+            "name": {
+              "label": "Name",
+              "sortIndex": 1
+            }
+          }
+        },
+        "url": {
+          "label": "URL",
+          "sortIndex": 4
+        },
+        "image": {
+          "label": "Image URL",
+          "sortIndex": 5
+        },
+        "createdAt": {
+          "label": "Created at",
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "sortIndex": 1002
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Created by",
+          "sortIndex": 1004
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "sortIndex": 1005
+        }
+      }
+    },
+    "organization": {
+      "name": "Organization",
+      "icon": "university",
+      "itemLabelTemplate": "{{ name }}"
+    }
+  }
+}

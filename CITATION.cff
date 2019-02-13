@@ -5,10 +5,7 @@ authors:
     affiliation: "Netherlands eScience Center"
     family-names: Spaaks
     given-names: "Jurriaan H."
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Maassen
-    given-names: Jason
+    orcid: "https://orcid.org/0000-0002-7064-4069"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Klaver
@@ -17,56 +14,9 @@ authors:
     affiliation: "Netherlands eScience Center"
     family-names: Verhoeven
     given-names: Stefan
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Hage
-    given-names: Willem
-    name-particle: van
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Ridder
-    given-names: Lars
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Kulik
-    given-names: Lode
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Bakker
-    given-names: Tom
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Hees
-    given-names: Vincent
-    name-particle: van
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Bogaardt
-    given-names: Laurens
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Mendrik
-    given-names: Adriënne
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Es
-    given-names: Bram
-    name-particle: van
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Attema
-    given-names: Jisk
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Ranguelova
-    given-names: Elena
-  - 
-    affiliation: "Netherlands eScience Center"
-    family-names: Nieuwpoort
-    given-names: Rob
-    name-particle: van
+    orcid: "https://orcid.org/0000-0002-5821-2060"
 cff-version: "1.0.3"
-date-released: 2018-07-05
+date-released: 2019-02-21
 doi: 10.5281/zenodo.1154130
 keywords: 
   - "FAIR for software"
@@ -76,6 +26,6 @@ keywords:
   - "re-usable software"
 license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
-repository-code: "https://github.com/research-software-directory"
+repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
-version: "1.0.0"
+version: "1.1.0"
