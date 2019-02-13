@@ -20,7 +20,7 @@ For each software package, a _product page_ can be created on the Research
 Software Directory if the software is deemed useful to others. Here is an
 example of what a product page may look like:
 
-![images/20180627-webcapture-xenon.png](images/20180627-webcapture-xenon.png)
+![docs/images/20180627-webcapture-xenon.png](docs/images/20180627-webcapture-xenon.png)
 
 While the content
 shown on the product page can be completely customized, by default it includes a
@@ -131,7 +131,7 @@ Open a web browser to verify that everything works as it should.
 Let's say you followed the steps above, and have a running instance of the
 Research Software Directory. Now you may want to make some changes to bring the
 frontend in line with your institute's branding. For example, you could follow
-the steps outlined [here](faq/how-do-i-change-the-font.md) to change the fonts.
+the steps outlined [here](docs/faq/how-do-i-change-the-font.md) to change the fonts.
 
 Now the question is, after making your changes, how do you get to see them?
 Here's how:
@@ -197,13 +197,13 @@ answers to specific questions:
 
 ### Frontend
 
-1. [How do I change the font?](faq/how-do-i-change-the-font.md)
-1. [How do I change the logo?](faq/how-do-i-change-the-logo.md)
-1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
+1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
+1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
 
 ### Tasks
 
-1. [How do I change when data collection scripts run?](faq/how-do-I-change-when-data-collection-scripts-run.md)
+1. [How do I change when data collection scripts run?](docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
 
 ---
 

@@ -1,13 +1,9 @@
 {
-    "description": "<p>The Research Software Directory is a content management system that is tailored to software.</p><p>The idea is that institutes for whom research software is an important output, can run their own instance of the Research Software Directory. The system is designed to be flexible enough to allow for different data sources, database schemas, and so on. By default, the Research Software Directory is set up to collect data from GitHub, Zenodo, Zotero, as well as Medium blogs. </p><p>For each software package, a product page can be created on the Research Software Directory if the software is deemed useful to others. While the content shown on the product page can be completely customized, by default it includes a <i>Mentions</i> section, which can be used to characterize the context in which the software exists. The context may include links to scientific papers, but is certainly broader than that: for example, there may be links to web applications that demonstrate the use of the software, there may be links to videos on YouTube, tutorials on readthedocs.io or Jupyter notebooks, or there may be links to blog posts; really, anything that helps visitors decide if the software could be useful for them.</p><p>The Research Software Directory improves findability of software packages, partly because it provides metadata that helps search engines understand what the software is about, but more importantly because of the human centered text snippets that must be provided for each software package. After all, discovery of a software package is often not so much about finding it but knowing that you found it.",
     "creators": [
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Spaaks, Jurriaan H."
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Maassen, Jason"
+            "name": "Spaaks, Jurriaan H.",
+            "orcid": "0000-0002-7064-4069"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -15,51 +11,8 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Verhoeven, Stefan"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "van Hage, Willem"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Ridder, Lars"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Kulik, Lode"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Bakker, Tom"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "van Hees, Vincent"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Bogaardt, Laurens"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Mendrik, Adriënne"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "van Es, Bram"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Attema, Jisk"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "Ranguelova, Elena"
-        },
-        {
-            "affiliation": "Netherlands eScience Center",
-            "name": "van Nieuwpoort, Rob"
+            "name": "Verhoeven, Stefan",
+            "orcid": "0000-0002-5821-2060"
         }
     ],
     "keywords": [
