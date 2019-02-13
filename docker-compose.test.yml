@@ -5,14 +5,13 @@ services:
     image: node:9.11.1-alpine
 
   test:
-    image: rsdnlesc/tests
     build:
       context: ./tests
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
-      - mongo
-      - backend
-      - frontend
       - auth
-      - nginx
+      - backend
+      - database
+      - frontend
+      - reverse-proxy
