@@ -263,7 +263,7 @@
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true,
+      "readonly": false,
       "properties": {
         "title": {
           "label": "Title",

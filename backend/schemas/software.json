@@ -535,16 +535,19 @@
         "tags": {
             "items": {
                 "enum": [
-                    "Big data",
-                    "GPU",
-                    "High performance computing",
+                    "Medical image data",
+                    "Astronomy",
+                    "Ancillary pricing",
+                    "Agro Copernicus",
+                    "Global disaster risk",
+                    "Data services",
+                    "Compute services",
+                    "Service orchestration",
+                    "User interfaces",
+                    "Validation",
                     "Image processing",
-                    "Inter-operability & linked data",
                     "Machine learning",
                     "Multi-scale & multi model simulations",
-                    "Optimized data handling",
-                    "Real time data analysis",
-                    "Text analysis & natural language processing",
                     "Visualization",
                     "Workflow technologies"
                 ],

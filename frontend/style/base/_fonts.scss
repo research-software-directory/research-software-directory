@@ -1,45 +1,31 @@
-// ========================================
-// Lineto - Akkurat
-// ========================================
-
-
-// Akkurat Bold
+// Raleway Bold
 // ----------------------------------------
 @font-face {
-    font-family: "Akkurat-bold";
+    font-family: "Raleway-Bold";
     
-    src: url('fonts/akkurat/lineto-akkurat-bold.eot');
-    src: url('fonts/akkurat/lineto-akkurat-bold.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-bold.woff') format('woff'),
-         url('fonts/akkurat/lineto-akkurat-bold.ttf') format('truetype');
+    src: url('fonts/raleway/Raleway-Bold.ttf') format('truetype');
 
     font-weight: normal;
     font-style: normal;
 }
 
-// Akkurat Regular
+// Raleway Regular
 // ----------------------------------------
 @font-face {
-    font-family: "Akkurat";
+    font-family: "Raleway-Regular";
     
-    src: url('fonts/akkurat/lineto-akkurat-regular.eot');
-    src: url('fonts/akkurat/lineto-akkurat-regular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-regular.woff') format('woff'),
-         url('fonts/akkurat/lineto-akkurat-regular.ttf') format('truetype');
+    src: url('fonts/raleway/Raleway-Regular.ttf') format('truetype');
 
     font-weight: normal;
     font-style: normal;     
 }
 
-// Akkurat Light
+// Raleway Light
 // ----------------------------------------
 @font-face {
-    font-family: "Akkurat-light";
+    font-family: "Raleway-Light";
     
-    src: url('fonts/akkurat/lineto-akkurat-light.eot');
-    src: url('fonts/akkurat/lineto-akkurat-light.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-light.woff') format('woff'),
-         url('fonts/akkurat/lineto-akkurat-light.ttf') format('truetype');
+    src: url('fonts/raleway/Raleway-Light.ttf') format('truetype');
 
     font-weight: normal;
     font-style: normal;  

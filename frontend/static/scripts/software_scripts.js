@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var plotData = {
         fill: "none",
         line: { shape: "spline" },
-        marker: {color: "rgb(0,163,227)"},
+        marker: {color: "rgb(22, 169, 191)"},
         mode: "lines",
         x: x,
         y: y,
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         paper_bgcolor: "rgba(0,0,0,0)",
         plot_bgcolor: "rgba(0,0,0,0)",
         line: {
-            color: "rgb(0,163,227)"
+            color: "rgb(22, 169, 191)"
         }
     };
     Plotly.newPlot(plotElm, [plotData], layout, {displayModeBar: false, staticPlot: true});
