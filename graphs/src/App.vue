@@ -33,7 +33,7 @@ export default {
   methods: {
     getData() {
       axios
-        .get("https://www.research-software.nl/api/software_cache")
+        .get("/api/software_cache")
         .then(response => {
           this.data = response.data;
           this.loaded = true;
