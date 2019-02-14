@@ -4,7 +4,6 @@ import sys
 
 from util import db_connect
 from cache_software import cache_software
-from corporate import sync_projects
 from github import sync_all as github_sync_all
 from releases import sync_releases
 from zotero import zotero_sync
@@ -33,7 +32,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(stdout_handler)
 logger.addHandler(stderr_handler)
 
-choices = click.Choice(['github', 'zotero', 'projects', 'releases', 'cache_software', 'oai-pmh', 'all'])
+choices = click.Choice(['github', 'zotero', 'releases', 'cache_software', 'oai-pmh', 'all'])
 
 @click.command()
 @click.option('--task', required=1, help='Which task to run.', type=choices)
@@ -43,8 +42,6 @@ def run_task(task):
         github_sync_all()
     elif task == 'zotero':
         zotero_sync()
-    elif task == 'projects':
-        sync_projects()
     elif task == 'releases':
         sync_releases(db)
     elif task == 'oai-pmh':
@@ -55,7 +52,6 @@ def run_task(task):
         github_sync_all()
         sync_releases(db)
         zotero_sync()
-        sync_projects()
         list_records()
         cache_software()
     else:
