@@ -1,24 +1,21 @@
-FROM node:8.11.1
+FROM node:8.11.1 as builder
 
-RUN mkdir /app
-
+# make the 'app' folder the current working directory
 WORKDIR /app
 
-COPY index.html webpack.config.js package.json yarn.lock /app/
-COPY src /app/src
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
 
-RUN npm install yarn
-RUN yarn install
-RUN yarn build
+# install project dependencies
+RUN npm install
 
-# not how it should be, but this works at least:
-CMD ["python", "-m", "SimpleHTTPServer", "8080"]
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
 
-EXPOSE 8080
+# build app for production with minification
+RUN npm run build
 
-
-# build this file with
-# docker build --tag graphs
-
-# start the webserver with
-# docker run --publish 8080:8080 graphs
+FROM nginx:alpine
+# The graphs visualization is hosted on the rsd under /graphs/
+COPY --from=builder /app/dist /usr/share/nginx/html/graphs
+EXPOSE 80

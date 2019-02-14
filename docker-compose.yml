@@ -51,8 +51,11 @@ services:
     build:
       context: ./graphs
     container_name: rsd-graphs
+    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     env_file:
       - .env
+    volumes:
+      - rsd_static_graphs:/build
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
@@ -85,6 +88,7 @@ services:
     volumes:
       - rsd_static_admin:/static_admin:ro
       - rsd_static_frontend:/static_frontend:ro
+      - rsd_static_graphs:/static_graphs:ro
 
   tasks:
     build:
@@ -101,3 +105,4 @@ services:
 volumes:
   rsd_static_admin:
   rsd_static_frontend:
+  rsd_static_graphs:
