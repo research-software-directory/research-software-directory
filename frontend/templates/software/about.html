@@ -1,0 +1,66 @@
+<section class="" id="about">
+    <div class="container">
+        <div class="row">
+
+            {% if template_data.bullets %}
+            <div class="statement col-3-4">
+                <h2 class="subtitle text-blue">What {{template_data.brandName}} can do for you</h2>
+                {{template_data.bullets | markdown_filter }}
+
+                {% if template_data.readMore | markdown_filter %}
+                <div class="read-more">
+                    <div class="read-more_content" style="height:0;">{{template_data.readMore}}</div>
+
+                    <div class="read-more_button button button--outlined">
+                        <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
+                        <span class="button_text">Read more</span>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+            <div class="specifications col-1-4">
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+                {% if template_data.tags %}
+                <ul class="tags">
+                    {% for tag in template_data.tags %}
+                        <li class="bg-light">{{tag}}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <i>No tags available</i>
+                {% endif%}
+
+
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-brackets"></use></svg>Programming Language</h5>
+                <ul class="languages">
+                    {% for language in template_data.programmingLanguage %}
+                        <li>{{language}}</li>
+                    {% endfor %}
+                </ul>
+
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-paperclip"></use></svg>License</h5>
+                <ul class="licenses">
+                    {% for license in template_data.license %}
+                    <li>{{license}}</li>
+                    {% endfor %}
+                </ul>
+
+                {% if template_data.repositoryURLs.github | length >= 1 %}
+                <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#source-code"></use></svg>Source code</h5>
+                <ul class="githublogo">
+                    <li>
+                        <a href="{{template_data.repositoryURLs.github[0]}}" target="_blank">
+                            <img src="/static/icons/github-logo.png" >
+                        </a>
+                    </li>
+                </ul>
+                {% endif%}
+            </div>
+
+        </div>
+
+    </div>
+</section>

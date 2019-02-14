@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-MONGO_CONTAINER=$(docker ps --format "{{.Names}}" | grep mongo)
+MONGO_CONTAINER=rsd-database
 docker exec ${MONGO_CONTAINER} mongodump -d rsd -o /dump --excludeCollection=commit --excludeCollection=software_cache --excludeCollection=release
 docker cp ${MONGO_CONTAINER}:/dump/rsd /home/ec2-user/db-dump
 cd /home/ec2-user/db-dump/rsd

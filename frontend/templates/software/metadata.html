@@ -1,0 +1,5 @@
+{% if template_data.latestCodemeta %}
+    <script type="application/ld+json">
+        {{ template_data.latestCodemeta | safe }}
+    </script>
+{% endif %}

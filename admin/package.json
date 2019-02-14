@@ -1,0 +1,112 @@
+{
+  "name": "research-software-directory-admin",
+  "version": "2.0.0",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/research-software-directory/admin"
+  },
+  "dependencies": {
+    "ajv": "^6.4.0",
+    "axios": "^0.18.0",
+    "history": "^4.7.2",
+    "immutability-helper": "^2.6.6",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.22.0",
+    "mustache": "^2.3.0",
+    "react": "^16.3.1",
+    "react-animate-height": "^2.0.1",
+    "react-cropper": "^1.0.1",
+    "react-day-picker": "^7.1.4",
+    "react-dom": "^16.3.1",
+    "react-dropzone": "^4.2.9",
+    "react-json-pretty": "^1.7.6",
+    "react-overlays": "^0.8.3",
+    "react-redux": "^5.0.7",
+    "react-redux-toastr": "^7.2.3",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-transition-group": "^2.3.1",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "0.76.0",
+    "showdown": "^1.8.6",
+    "showdown-htmlescape": "^0.1.9",
+    "styled-components": "^3.2.5",
+    "typescript": "^2.8.1",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.0",
+    "@storybook/addon-links": "^3.4.0",
+    "@storybook/addon-storyshots": "^3.4.0",
+    "@storybook/addons": "^3.4.0",
+    "@storybook/react": "^3.4.0",
+    "@types/classnames": "^2.2.3",
+    "@types/history": "^4.6.2",
+    "@types/jest": "^22.2.2",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/mustache": "^0.8.30",
+    "@types/nock": "^9.1.2",
+    "@types/node": "^10.0.3",
+    "@types/react": "^16.3.5",
+    "@types/react-cropper": "^0.10.2",
+    "@types/react-dom": "^16.0.4",
+    "@types/react-dropzone": "^4.2.0",
+    "@types/react-json-pretty": "^1.3.3",
+    "@types/react-overlays": "^0.8.2",
+    "@types/react-redux": "^6.0.0",
+    "@types/react-redux-toastr": "^7.0.10",
+    "@types/react-router-dom": "^4.2.6",
+    "@types/react-router-redux": "^5.0.13",
+    "@types/react-test-renderer": "^16.0.1",
+    "@types/showdown": "^1.7.3",
+    "@types/sinon": "^5.0.0",
+    "@types/uuid": "^3.4.3",
+    "awesome-typescript-loader": "^4.0.1",
+    "axios-mock-adapter": "^1.15.0",
+    "babel-core": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.4",
+    "prettier": "^1.13.0",
+    "react-scripts-ts": "^2.14.0",
+    "react-test-renderer": "^16.3.2",
+    "reduce-reducers": "^0.2.0",
+    "ts-jest": "^22.4.2",
+    "webpack": "^4.5.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "awesome-typescript-loader"
+    ]
+  },
+  "scripts": {
+    "start": "PORT=8000 react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
+    "testcoverage": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --coverage",
+    "eject": "react-scripts-ts eject",
+    "lint": "tslint --project \"tsconfig.json\" -t stylish",
+    "precommit": "lint-staged",
+    "storybook": "STORYBOOK_ENABLED=1 start-storybook -p 6006",
+    "build-storybook": "STORYBOOK_ENABLED=1 build-storybook"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5001"
+    },
+    "/auth": {
+      "target": "http://localhost:5002"
+    }
+  },
+  "homepage": "https://research-software.nl/admin"
+}
