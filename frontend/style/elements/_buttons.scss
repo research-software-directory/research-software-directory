@@ -1,0 +1,99 @@
+
+.button{
+    cursor: pointer; 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7em 1.3em;
+
+    font-size: 1.6rem;
+    
+    .icon{
+        fill: $white;
+        display: block;
+        width: 1em;
+        height: 1em;
+    }
+
+    span:first-child{
+        margin-right: 1em;
+    }
+
+
+    &--big{
+        font-size: 2.4rem;
+        
+        .icon{
+            width: 0.8em;
+            height: 0.8em;
+        }
+
+        span:first-child{
+            margin-right: 1.2em;
+        }
+
+        @include bp(max, $phablet){
+            font-size: 2rem;
+        }
+    }
+
+
+
+    &--filled-blue{
+        // margin-top: 1px;
+        // margin-bottom: 1px;
+        background-color: $primaryColor;
+        color: $white;
+        font-family: $primaryFontBold;
+
+        &:hover{
+            background-color: $mid;
+            color: $white;
+        }
+        &:focus, &:visited{
+            color: $white;
+        }
+    }
+
+    &--filled-dark{
+        // margin-top: 1px;
+        // margin-bottom: 1px;
+        background-color: $dark;
+        color: $white;
+        font-family: $primaryFontBold;
+        
+        &:hover{
+            background-color: $mid;
+            color: $white;
+        }
+
+        &:focus, &:visited{
+            color: $white;
+        }
+    }
+
+
+    &--outlined{
+        color: currentColor;
+        border: 1px solid currentColor;
+        .icon{
+            transform: scale(0.8);
+            fill: currentColor;
+        }
+        &:hover{
+            color: $primaryColor;
+        }
+        &:focus, &:visited{
+            color: $primaryColor;
+        }
+    }
+    
+    &_text{
+        flex-shrink: 0;
+    }
+
+    // &:focus, &:visited{
+    //     color: inherit;
+    // }
+}
+

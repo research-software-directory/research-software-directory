@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "properties": {
+        "date": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "repositoryURL": {
+            "format": "uri",
+            "type": "string"
+        }
+    },
+    "required": [
+        "date",
+        "repositoryURL"
+    ],
+    "title": "Commit schema"
+}

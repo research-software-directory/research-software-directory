@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"rsd.release"},{"v":2,"key":{"conceptDOI":1},"name":"conceptDOI_1","ns":"rsd.release"}],"uuid":"3d5484403cb24e2383f32857f4bdf0f0"}

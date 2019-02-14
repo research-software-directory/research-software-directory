@@ -1,85 +1,102 @@
 version: '3'
 
 services:
-  mongo:
-    image: "mongo:3.6"
+
+  admin:
+    build:
+      context: ./admin
+    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
+    container_name: rsd-admin
     volumes:
-      - ./db:/data/db
-      - ./config/mongo.sh:/mongo.sh
-      - ./db-dump:/db-dump-initial
-    entrypoint: /mongo.sh
-    command: --bind_ip 0.0.0.0
+      - rsd_static_admin:/build
 
   auth:
-    image: rsdnlesc/auth-github
     build:
       context: ./auth-github
+    container_name: rsd-authentication
     env_file:
       - .env
 
   backend:
-    image: rsdnlesc/backend
     build:
       context: ./backend
+    container_name: rsd-backend
+    depends_on:
+      - database
     env_file:
       - .env
-    depends_on:
-      - mongo
 
-  admin:
-    image: rsdnlesc/admin
+  database:
+    build:
+      context: ./database
+    command: --bind_ip 0.0.0.0
+    container_name: rsd-database
+    entrypoint: /mongo.sh
     volumes:
-      - rsd_static_admin:/build
-    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
+      - ./docker-volumes/db:/data/db
 
   frontend:
-    image: rsdnlesc/frontend
     build:
       context: ./frontend
+    container_name: rsd-frontend
     depends_on:
       - backend
     env_file:
       - .env
     volumes:
       - rsd_static_frontend:/shared_static
-      - ./oaipmh-cache:/static/oaipmh-cache
+      - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
 
-  tasks:
-    image: rsdnlesc/tasks
+  graphs:
     build:
-      context: ./tasks-nlesc
+      context: ./graphs
+    container_name: rsd-graphs
     env_file:
       - .env
-    depends_on:
-      - backend
-      - mongo
-    volumes:
-      - ./oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
-    image: rsdnlesc/docker-term-letsencrypt
-    volumes:
-      - ./cert:/cert
-      - ./letsencrypt:/etc/letsencrypt
+    container_name: rsd-nginx-ssl
     env_file:
       - .env
+    image: rsdnlesc/docker-term-letsencrypt
+    ports:
+      - 443:443
+      - 80:80
     restart: unless-stopped
-
-  nginx:
-    image: rsdnlesc/nginx_proxy
-    build:
-      context: ./config/nginx_proxy
     volumes:
-      - rsd_static_admin:/static_admin:ro
-      - rsd_static_frontend:/static_frontend:ro
+      - ./docker-volumes/cert:/cert
+      - ./docker-volumes/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - reverse-proxy
+
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+    container_name: rsd-reverse-proxy
     depends_on:
       - frontend
       - backend
       - admin
       - auth
+      - graphs
     env_file:
       - .env
     restart: unless-stopped
+    volumes:
+      - rsd_static_admin:/static_admin:ro
+      - rsd_static_frontend:/static_frontend:ro
+
+  tasks:
+    build:
+      context: ./tasks
+    container_name: rsd-tasks
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - database
+    volumes:
+      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
 volumes:
   rsd_static_admin:
