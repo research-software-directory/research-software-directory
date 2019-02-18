@@ -16,6 +16,10 @@ authors:
     family-names: Verhoeven
     given-names: Stefan
     orcid: "https://orcid.org/0000-0002-5821-2060"
+  -
+    affiliation: "Netherlands eScience Center"
+    family-names: Pawar
+    given-names: Pushpanjali
 cff-version: "1.0.3"
 date-released: 2019-02-21
 doi: 10.5281/zenodo.1154130
@@ -23,10 +27,13 @@ keywords:
   - "FAIR for software"
   - "reproducible research"
   - "research software"
+  - "research software engineering"
   - RSE
-  - "re-usable software"
+  - "reusable software"
+  - current research information system
+  - CRIS
 license: Apache-2.0
-message: "If you use this software, please cite it using these metadata."
+message: "Please refer to the Research Software Directory using the metadata from this file."
 repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
 version: "1.1.0"
