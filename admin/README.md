@@ -9,8 +9,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Dependencies
 
-* Auth service e.g. [github-auth](https://github.com/research-software-directory/research-software-directory/auth-github).
-* Data api service like [rsd-backend](https://github.com/research-software-directory/research-software-directory/backend).
+* Auth service e.g. [github-auth](/auth-github).
+* Data api service like [backend](/backend).
 
 # Installation
 
@@ -52,5 +52,5 @@ Build with
 docker build --tag rsd_admin .
 ```
 
-The Docker image should not be used directly and alone as the code expects the [backend server](https://github.com/research-software-directory/research-software-directory/backend) to be running at `/api` and the [auth server](https://github.com/research-software-directory/research-software-directory/auth-github) to be running at `/auth` which are not part of the image.
+The Docker image should not be used directly and alone as the code expects the [backend server](/backend) to be running at `/api` and the [auth server](/auth-github) to be running at `/auth` which are not part of the image.
 The image should be used as part of a Docker compose see https://github.com/research-software-directory/research-software-directory
