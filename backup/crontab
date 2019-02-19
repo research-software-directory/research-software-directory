@@ -1,3 +1,3 @@
 # make backups every day at 04:00 UTC
 # https://crontab.guru/#0_4_*_*_*
-* * * * * cd /app && /bin/sh ./backup.sh
+0 4 * * * cd /app && /bin/sh ./backup.sh
