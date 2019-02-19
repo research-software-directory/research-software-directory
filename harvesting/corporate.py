@@ -3,24 +3,13 @@ import logging
 import os
 import requests
 
-from Scraper import BlogPostScraper, ProjectScraper, PersonScraper
+from Scraper import ProjectScraper
 from util import generate_jwt_token
 
 logger = logging.getLogger(__name__)
 
 
 def get_projects():
-    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
-                             include_deep_info=True)
-    return scraper.projects
-
-
-def get_people():
-    scraper = PersonScraper(baseurl="https://www.esciencecenter.nl/people")
-    return scraper.people
-
-
-def sync_projects():
     def transform_project(from_scraper): #  to Project according to Schema
 
         principal_investigators = [person for person in from_scraper['team'] if person['role'] == 'Principal Investigator']
@@ -47,9 +36,10 @@ def sync_projects():
             'principalInvestigator': pi
         }
 
-    projects = get_projects()
+    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
+                             include_deep_info=True)
 
-    to_save = list(map(transform_project, projects))
+    to_save = list(map(transform_project, scraper.projects))
 
     token = generate_jwt_token()
     resp = requests.put(

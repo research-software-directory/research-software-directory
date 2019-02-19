@@ -54,6 +54,18 @@ services:
     env_file:
       - .env
 
+  harvesting:
+    build:
+      context: ./harvesting
+    container_name: rsd-harvesting
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - database
+    volumes:
+      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
+
   nginx_ssl:
     container_name: rsd-nginx-ssl
     env_file:
@@ -85,18 +97,6 @@ services:
     volumes:
       - rsd_static_admin:/static_admin:ro
       - rsd_static_frontend:/static_frontend:ro
-
-  tasks:
-    build:
-      context: ./tasks
-    container_name: rsd-tasks
-    env_file:
-      - .env
-    depends_on:
-      - backend
-      - database
-    volumes:
-      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
 volumes:
   rsd_static_admin:
