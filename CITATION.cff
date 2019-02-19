@@ -9,6 +9,10 @@ authors:
     orcid: "https://orcid.org/0000-0002-7064-4069"
   - 
     affiliation: "Netherlands eScience Center"
+    family-names: Maassen
+    given-names: Jason
+  - 
+    affiliation: "Netherlands eScience Center"
     family-names: Klaver
     given-names: Tom
   - 
@@ -20,6 +24,54 @@ authors:
     affiliation: "Netherlands eScience Center"
     family-names: Pawar
     given-names: Pushpanjali
+  -
+    affiliation: "Netherlands eScience Center"
+    family-names: Hage
+    given-names: Willem
+    name-particle: van
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Ridder
+    given-names: Lars
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Kulik
+    given-names: Lode
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Bakker
+    given-names: Tom
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Hees
+    given-names: Vincent
+    name-particle: van
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Bogaardt
+    given-names: Laurens
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Mendrik
+    given-names: Adriënne
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Es
+    given-names: Bram
+    name-particle: van
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Attema
+    given-names: Jisk
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Ranguelova
+    given-names: Elena
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Nieuwpoort
+    given-names: Rob
+    name-particle: van
 cff-version: "1.0.3"
 date-released: 2019-02-21
 doi: 10.5281/zenodo.1154130
