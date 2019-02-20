@@ -1,3 +1,20 @@
+# 1.1.0
+
+- added a simple OAI-PMH interface to allow harvesting of metadata about the 
+items in the Research Software Directory in datacite4 format. The interface
+implementation is not complete; at the moment, the OAI-PMH verbs ``ListRecord``
+and ``GetRecords`` are implemented (but without any time based slicing such as
+using ``from`` or ``until``, and without subsetting based on ``set``)
+- added a service that visualizes the state of the Research Software Directory 
+instance as simple graphs, e.g. histograms of how many contributors there are 
+per software package.
+- no longer using git submodules, this should make installing a lot easier. 
+Having a monolithic repo also means that it is easier to see diffs between an 
+'upstream' instance of the Research Software Direcotry, and one of its
+descendants. Finally, archiving of the software via Zenodo works better for a
+monorepo than for a repo with multiple submodules.
+- bugfixes
+
 # 1.0.0
 
 First stable release.

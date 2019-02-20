@@ -195,7 +195,7 @@ class ReleaseScraper:
         return self
 
 
-def sync_releases(db):
+def get_citations(db):
     db.release.create_index([("conceptDOI", 1)])
     count = db.software.count()
     software_items = db.software.find({}, {"conceptDOI": 1, "brandName": 1})

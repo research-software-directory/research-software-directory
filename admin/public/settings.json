@@ -48,7 +48,7 @@
           "label": "Concept DOI",
           "sortIndex": 500,
           "help":
-            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not an URL"
+            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not a URL"
         },
         "createdAt": {
           "label": "Created at",
@@ -66,7 +66,7 @@
         },
         "repositoryURLs": {
           "sortIndex": 580,
-          "label": "Code repository URL's"
+          "label": "Code repository URLs"
         },
         "isFeatured": {
           "sortIndex": 20,
@@ -265,20 +265,74 @@
       "itemLabelTemplate": "{{ title }}",
       "readonly": false,
       "properties": {
+        "image": {
+          "label": "Image URL",
+          "sortIndex": 5
+        },
         "title": {
           "label": "Title",
-          "sortIndex": 1
+          "sortIndex": 10
         },
         "subtitle": {
           "label": "Subtitle",
-          "sortIndex": 2
+          "sortIndex": 20
+        },
+        "description": {
+            "label": "Project description",
+            "multiline": true,
+            "sortIndex": 30
+        },
+        "source-code": {
+            "help": "All source code associated with the project as produced by NLeSC.", 
+            "label": "Source code",
+            "properties": {
+                "link": {
+                    "help": "Link to publicly accessible source code repositories, e.g. GitHub, GitLab, or BitBucket",
+                    "sortIndex": 10
+                },
+                "description": {
+                    "help": "A brief description of what the link points to.",
+                    "sortIndex": 20
+                }
+            },
+            "sortIndex": 31
+        },
+        "output": {
+            "help": "Outcomes of the project that were produced by NLeSC.", 
+            "label": "Output",
+            "properties": {
+                "link": {
+                    "help": "It is preferred to link to persistent sources, e.g. Zenodo or FigShare",
+                    "sortIndex": 10
+                },
+                "description": {
+                    "help": "<p>A brief description of what the link points to, e.g.</p><ul><li>Tutorial on readthedocs.io</li><li>YouTube video about the rationale of the project</li><li>Peer-reviewed paper about the methods.</li><li>etc.</li></ul>",
+                    "sortIndex": 20
+                }
+            },
+            "sortIndex": 33
+        },
+        "impact": {
+            "help": "Outcomes of the project that were produced by others.",
+            "label": "Impact", 
+            "properties": {
+                "link": {
+                    "help": "It is preferred to link to persistent sources, e.g. Zenodo or FigShare",
+                    "sortIndex": 10
+                },
+                "description": {
+                    "help": "<p>A brief description of what the link points to, e.g.</p><ul><li>Tutorial on readthedocs.io</li><li>YouTube video about the rationale of the project</li><li>Peer-reviewed paper about the methods.</li><li>etc.</li></ul>",
+                    "sortIndex": 20
+                }
+            },
+            "sortIndex": 35
         },
         "principalInvestigator": {
-          "label": "Principal investigator (PI)",
-          "sortIndex": 3,
+          "label": "Principal investigator",
+          "sortIndex": 40,
           "properties": {
             "affiliation": {
-              "label": "Affilliation",
+              "label": "Affiliation",
               "sortIndex": 2
             },
             "name": {
@@ -286,14 +340,6 @@
               "sortIndex": 1
             }
           }
-        },
-        "url": {
-          "label": "URL",
-          "sortIndex": 4
-        },
-        "image": {
-          "label": "Image URL",
-          "sortIndex": 5
         },
         "createdAt": {
           "label": "Created at",

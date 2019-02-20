@@ -1,3 +1,0 @@
-# min	hour	day	month	weekday	command
-0	*	*	*	*	cd /app && python app.py --task all
-*/5	*	*	*	*	cd /app && python app.py --task cache_software
