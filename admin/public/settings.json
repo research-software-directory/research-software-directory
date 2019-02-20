@@ -48,7 +48,7 @@
           "label": "Concept DOI",
           "sortIndex": 500,
           "help":
-            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not an URL"
+            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not a URL"
         },
         "createdAt": {
           "label": "Created at",
@@ -66,7 +66,7 @@
         },
         "repositoryURLs": {
           "sortIndex": 580,
-          "label": "Code repository URL's"
+          "label": "Code repository URLs"
         },
         "isFeatured": {
           "sortIndex": 20,
