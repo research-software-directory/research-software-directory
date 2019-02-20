@@ -10,9 +10,56 @@
         "createdBy": {
             "type": "string"
         },
+        "description": {
+            "maxLength": 5000,
+            "minLength": 200,
+            "type": "string"
+        },
         "image": {
             "format": "uri",
             "type": "string"
+        },
+        "impact": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "description": {
+                        "maxLength": 100,
+                        "minLength": 10,
+                        "type": "string"
+                    },
+                    "link": {
+                        "format": "uri",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "link"
+                ]
+            },
+            "type": "array"
+        },
+        "output": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "description": {
+                        "maxLength": 100,
+                        "minLength": 10,
+                        "type": "string"
+                    },                
+                    "link": {
+                        "format": "uri",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "link"
+                ]
+            },
+            "type": "array"
         },
         "primaryKey": {
             "$ref": "definitions.json/key/project"
@@ -29,6 +76,27 @@
             },
             "type": "object"
         },
+        "source-code": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "description": {
+                        "maxLength": 100,
+                        "minLength": 10,
+                        "type": "string"
+                    },
+                    "link": {
+                        "format": "uri",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "link"
+                ]
+            },
+            "type": "array"
+        },
         "subtitle": {
             "type": "string"
         },
@@ -42,21 +110,18 @@
         },
         "updatedBy": {
             "type": "string"
-        },
-        "url": {
-            "format": "uri",
-            "type": "string"
         }
     },
     "required": [
         "createdAt",
+        "description",
         "image",
         "primaryKey",
         "principalInvestigator",
         "subtitle",
+        "output",
         "title",
-        "updatedAt",
-        "url"
+        "updatedAt"
     ],
     "title": "Project schema"
 }
