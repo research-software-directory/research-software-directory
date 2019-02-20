@@ -33,7 +33,7 @@ def get_date_for_zotero_item(item):
     try:
         return parse(item['data']['date']).isoformat()[:19]+'Z'
     except:
-        logger.warning("Date problem in zotero item %s (was %s; key=%s)" % (item['data']['title'], item['data']['date'], item['key']))
+        logger.warning("Date problem in zotero item %s (was %s)" % (item['key'], item['data']['date']))
         return parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
 
 
@@ -70,7 +70,7 @@ def get_blog_fields(zotero_item):
         return None, None
 
 
-def zotero_sync():
+def get_mentions():
     client = zotero.Zotero(os.environ.get('ZOTERO_LIBRARY'), 'group', os.environ.get('ZOTERO_API_KEY'))
 
     items = (client.everything(client.items(since=get_last_version())))
