@@ -97,6 +97,14 @@ If you want to fetch data from all sources, use:
 python app.py harvest all
 ```
 
+Once the data have been fetched, data from different collections need to be
+combined into one document such that it can be fed to the ``frontend``'s template.
+Combining is done with the ``resolve`` task, as follows:
+
+```bash
+python app.py resolve
+```
+
 # Docker
 
 Build with
