@@ -1,14 +1,14 @@
-FROM python:3.6-alpine
+FROM openjdk:8-alpine
 
-RUN apk update && apk add --no-cache mongodb-tools git gradle
+RUN apk add --no-cache mongodb-tools curl
 
 RUN mkdir /app
 COPY ./backup.sh /app/backup.sh
 COPY ./crontab /var/spool/cron/crontabs/root
 
 WORKDIR /app
-RUN git clone https://github.com/NLeSC/xenon-cli.git && cd xenon-cli && git checkout v2.4.0 && ./gradlew installShadowDist
+RUN wget https://github.com/NLeSC/xenon-cli/releases/download/v2.4.0/xenon-cli-shadow-2.4.0.tar && tar -xf xenon-cli-shadow-2.4.0.tar
 
-ENV PATH "$PATH:/app/xenon-cli/build/install/xenon-cli-shadow/bin/"
+ENV PATH "$PATH:/app/xenon-cli-shadow-2.4.0/bin/"
 
 CMD crond -d7 -f
