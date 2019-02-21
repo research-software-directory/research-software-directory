@@ -70,25 +70,31 @@ python app.py --help
 The mentions can be fetched from Zotero using
 
 ```bash
-python app.py --harvest mentions
+python app.py harvest mentions
 ```
 
 The Github commits can be fetched using
 
 ```bash
-python app.py --harvest commits
+python app.py harvest commits
 ```
 
 The projects can be fetched from the corporate site using
 
 ```bash
-python app.py --harvest projects
+python app.py harvest projects
 ```
 
-The releases of each software can be fetch using
+The releases of each software can be fetched using
 
 ```bash
-python app.py --harvest citations
+python app.py harvest citations
+```
+
+If you want to fetch data from all sources, use:
+
+```bash
+python app.py harvest all
 ```
 
 # Docker
