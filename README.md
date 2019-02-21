@@ -20,7 +20,7 @@ For each software package, a _product page_ can be created on the Research
 Software Directory if the software is deemed useful to others. Here is an
 example of what a product page may look like:
 
-![docs/images/20180627-webcapture-xenon.png](docs/images/20180627-webcapture-xenon.png)
+![/docs/images/20180627-webcapture-xenon.png](/docs/images/20180627-webcapture-xenon.png)
 
 While the content
 shown on the product page can be completely customized, by default it includes a
