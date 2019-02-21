@@ -26,6 +26,15 @@ services:
     env_file:
       - .env
 
+  backup:
+    build:
+      context: ./backup
+    container_name: rsd-backup
+    depends_on:
+      - database
+    env_file:
+      - .env
+
   database:
     build:
       context: ./database

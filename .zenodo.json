@@ -2,8 +2,11 @@
     "creators": [
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Spaaks, Jurriaan H.",
-            "orcid": "0000-0002-7064-4069"
+            "name": "Spaaks, Jurriaan H."
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Maassen, Jason"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -11,8 +14,51 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Verhoeven, Stefan",
-            "orcid": "0000-0002-5821-2060"
+            "name": "Verhoeven, Stefan"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van Hage, Willem"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Ridder, Lars"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Kulik, Lode"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Bakker, Tom"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van Hees, Vincent"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Bogaardt, Laurens"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Mendrik, Adriënne"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van Es, Bram"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Attema, Jisk"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Ranguelova, Elena"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "van Nieuwpoort, Rob"
         }
     ],
     "keywords": [
