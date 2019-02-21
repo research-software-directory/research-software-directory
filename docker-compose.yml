@@ -26,6 +26,15 @@ services:
     env_file:
       - .env
 
+  backup:
+    build:
+      context: ./backup
+    container_name: rsd-backup
+    depends_on:
+      - database
+    env_file:
+      - .env
+
   database:
     build:
       context: ./database
@@ -51,8 +60,23 @@ services:
     build:
       context: ./graphs
     container_name: rsd-graphs
+    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     env_file:
       - .env
+    volumes:
+      - rsd_static_graphs:/build
+
+  harvesting:
+    build:
+      context: ./harvesting
+    container_name: rsd-harvesting
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - database
+    volumes:
+      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
@@ -85,19 +109,9 @@ services:
     volumes:
       - rsd_static_admin:/static_admin:ro
       - rsd_static_frontend:/static_frontend:ro
-
-  tasks:
-    build:
-      context: ./tasks
-    container_name: rsd-tasks
-    env_file:
-      - .env
-    depends_on:
-      - backend
-      - database
-    volumes:
-      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
+      - rsd_static_graphs:/static_graphs:ro
 
 volumes:
   rsd_static_admin:
   rsd_static_frontend:
+  rsd_static_graphs:
