@@ -11,4 +11,4 @@ playbook.retry
 .env.local
 node_modules
 oaipmh-cache
-
+rsd-secrets.env
