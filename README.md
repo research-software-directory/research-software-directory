@@ -81,15 +81,15 @@ git clone https://github.com/research-software-directory/research-software-direc
 
 ### Try it out, step 2/3: Configure
 
-The research software directory is configured using a file with environment variables called `.env`.
-An example config file (`.env.example`) is available, use it as a starting point.
+The research software directory is configured using a file with environment variables called `rsd-secrets.env`.
+An example config file (`rsd-secrets.env.example`) is available, use it as a starting point.
 
 ```bash
 cd research-software-directory
-cp .env.example .env
+cp rsd-secrets.env.example rsd-secrets.env
 ```
 
-The config file has some placeholder values (`changeme`); they must be set by editing the `.env` file.
+The config file has some placeholder values (`changeme`); they must be set by editing the `rsd-secrets.env` file.
 Below are instructions on how to get the different tokens and keys.
 
 * AUTH_GITHUB_ORGANIZATION
