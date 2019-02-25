@@ -15,7 +15,10 @@ services:
       context: ./auth-github
     container_name: rsd-authentication
     env_file:
-      - .env
+      - rsd-secrets.env
+    environment:
+      - AUTH_CALLBACK_URL=/admin
+      - AUTH_ROOT=/auth
 
   backend:
     build:
@@ -24,8 +27,14 @@ services:
     depends_on:
       - database
     env_file:
-      - .env
-
+      - rsd-secrets.env
+    environment:
+      - BACKEND_ROOT=/api
+      - DATABASE_HOST=database
+      - DATABASE_NAME=rsd
+      - DATABASE_PORT=27017
+      - SCHEMAS_PATH=schemas
+      
   backup:
     build:
       context: ./backup
@@ -33,7 +42,11 @@ services:
     depends_on:
       - database
     env_file:
-      - .env
+      - rsd-secrets.env
+    environment:
+      - DATABASE_HOST=database
+      - DATABASE_NAME=rsd
+      - DATABASE_PORT=27017
 
   database:
     build:
@@ -51,7 +64,9 @@ services:
     depends_on:
       - backend
     env_file:
-      - .env
+      - rsd-secrets.env
+    environment:
+      - BACKEND_URL=http://backend:5001/api
     volumes:
       - rsd_static_frontend:/shared_static
       - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
@@ -62,7 +77,7 @@ services:
     container_name: rsd-graphs
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     env_file:
-      - .env
+      - rsd-secrets.env
     volumes:
       - rsd_static_graphs:/build
 
@@ -70,18 +85,25 @@ services:
     build:
       context: ./harvesting
     container_name: rsd-harvesting
-    env_file:
-      - .env
     depends_on:
       - backend
       - database
+    env_file:
+      - rsd-secrets.env
+    environment:
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=rsd
+      - DATABASE_HOST=database
+      - BACKEND_URL=http://backend:5001/api
     volumes:
       - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
     env_file:
-      - .env
+      - rsd-secrets.env
+    environment:
+      - SSL_FORWARD=http://reverse-proxy:80
     image: rsdnlesc/docker-term-letsencrypt
     ports:
       - 443:443
@@ -104,7 +126,7 @@ services:
       - auth
       - graphs
     env_file:
-      - .env
+      - rsd-secrets.env
     restart: unless-stopped
     volumes:
       - rsd_static_admin:/static_admin:ro
