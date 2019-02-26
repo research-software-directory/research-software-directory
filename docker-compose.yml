@@ -99,7 +99,6 @@ services:
   nginx_ssl:
     container_name: rsd-nginx-ssl
     environment:
-      - DOMAIN
       - SSL_ADMIN_EMAIL
       - SSL_DOMAINS
       - SSL_FORWARD=http://reverse-proxy:80
