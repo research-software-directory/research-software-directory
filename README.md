@@ -8,6 +8,9 @@ This README file has the following sections:
 - [What is the Research Software Directory?](#what-is-the-research-software-directory)
 - [How do I enter data into an instance of the Research Software Directory?](#how-do-i-enter-data-into-an-instance-of-the-research-software-directory)
 - [Documentation for developers](#documentation-for-developers)
+    - [Try it out locally](#try-it-out-locally)
+    - [Customize your instance of the Research Software Directory](#customize-your-instance-of-the-research-software-directory)
+    - [Make your instance available to others](#make-your-instance-available-to-others)
 - [Documentation for maintainers](#documentation-for-maintainers)
 
 
@@ -51,7 +54,7 @@ The process is described [here](/docs/instruction/README.md).
 
 # Documentation for developers
 
-## Try it out
+## Try it out locally
 
 Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
 
@@ -166,7 +169,9 @@ Open a web browser to verify that everything works as it should.
 - [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format. 
 ---
 
-## General workflow when making changes
+## Customize your instance of the Research Software Directory
+
+### General workflow when making changes
 
 Let's say you followed the steps above, and have a running instance of the
 Research Software Directory. Now you may want to make some changes to bring the
@@ -230,22 +235,26 @@ Here's how:
     docker-compose -p rsd up --build
     ```
 
-## Frequently Asked Questions
+### Frequently Asked Questions
 
 Refer to the Frequently Asked Questions for more detailed
 answers to specific questions:
 
-### Frontend
+#### Frontend
 
 1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
 1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
 1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
 
-### Harvesting
+#### Harvesting
 
 1. [How do I change when data collection scripts run?](docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
 
----
+
+
+## Make your instance available to others
+
+TODO
 
 # Documentation for maintainers
 
