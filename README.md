@@ -226,13 +226,12 @@ Here's how:
     ```
     docker rmi rsd_frontend
     ```
-1. Make changes to the source code of the service whose container and image your just removed
+1. Make changes to the source code of the service whose container and image you just removed
 1. Rebuild containers as necessary, using:
 
     ```
-    docker-compose --project-name rsd up --build
-    # shorthand:
-    docker-compose -p rsd up --build
+    docker-compose --project-name rsd build frontend
+    docker-compose --project-name rsd up frontend
     ```
 
 ### Frequently Asked Questions
