@@ -129,7 +129,7 @@ Below are instructions on how to get the different tokens and keys.
 
 ```bash
 # add the environment variables from rsd-secrets.env to the current terminal:
-export $(cat rsd-secrets.env | xargs)
+source rsd-secrets.env
 
 # start the full stack using docker-compose:
 docker-compose --project-name rsd up --build
