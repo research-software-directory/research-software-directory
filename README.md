@@ -7,7 +7,7 @@ This README file has the following sections:
 
 - [What is the Research Software Directory?](#what-is-the-research-software-directory)
 - [How do I enter data into an instance of the Research Software Directory?](#how-do-i-enter-data-into-an-instance-of-the-research-software-directory)
-- [Documentation for developers](#documentation-for-maintainers)
+- [Documentation for developers](#documentation-for-developers)
 - [Documentation for maintainers](#documentation-for-maintainers)
 
 
@@ -270,7 +270,7 @@ answers to specific questions:
     cd research-software-directory
     ```
 
-1. Follow the notes from the ['For developers'](#for-developers) section above, and verify that it all works as it should.
+1. Follow the notes from the ['For developers'](#documentation-for-developers) section above, and verify that it all works as it should.
 1. Use GitHub's ``Draft a new release`` button [here](https://github.com/research-software-directory/research-software-directory/releases) to make a release.
 
 
