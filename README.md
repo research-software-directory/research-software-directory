@@ -270,7 +270,7 @@ answers to specific questions:
     cd research-software-directory
     ```
 
-1. Follow the notes from the 'For users' section above, and verify that it all works as it should.
+1. Follow the notes from the ['For developers'](#for-developers) section above, and verify that it all works as it should.
 1. Use GitHub's ``Draft a new release`` button [here](https://github.com/research-software-directory/research-software-directory/releases) to make a release.
 
 
