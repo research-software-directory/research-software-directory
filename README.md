@@ -260,6 +260,19 @@ TODO
 
 # Documentation for maintainers
 
+## Visualizing ``docker-compose.yml``
+
+It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
+Use https://github.com/pmsipilot/docker-compose-viz to generate a png image.
+
+```
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
+```
+
+For example,
+
+![/docs/images/docker-compose.png](/docs/images/docker-compose.png)
+
 ## Making a release
 
 1. Write the release notes
