@@ -75,6 +75,10 @@ here:
 You'll need a minimum of about 3 GB free disk space to 
 store the images, containers and volumes that we will be making. 
 
+Optionally, add yourself to the ``docker`` group following the instructions
+[here](https://docs.docker.com/install/linux/linux-postinstall/) (our
+documentation assumes that you did).
+
 ### Try it out, step 1/3: Fork and clone
 
 Click the ``Fork`` button on
