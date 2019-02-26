@@ -14,11 +14,14 @@ services:
     build:
       context: ./auth-github
     container_name: rsd-authentication
-    env_file:
-      - rsd-secrets.env
     environment:
       - AUTH_CALLBACK_URL=/admin
+      - AUTH_GITHUB_CLIENT_ID
+      - AUTH_GITHUB_CLIENT_SECRET
+      - AUTH_GITHUB_ORGANIZATION
       - AUTH_ROOT=/auth
+      - DOMAIN
+      - JWT_SECRET
 
   backend:
     build:
@@ -26,13 +29,12 @@ services:
     container_name: rsd-backend
     depends_on:
       - database
-    env_file:
-      - rsd-secrets.env
     environment:
       - BACKEND_ROOT=/api
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
+      - JWT_SECRET
       - SCHEMAS_PATH=schemas
       
   backup:
@@ -41,9 +43,8 @@ services:
     container_name: rsd-backup
     depends_on:
       - database
-    env_file:
-      - rsd-secrets.env
     environment:
+      - BACKUP_CMD
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
@@ -63,8 +64,6 @@ services:
     container_name: rsd-frontend
     depends_on:
       - backend
-    env_file:
-      - rsd-secrets.env
     environment:
       - BACKEND_URL=http://backend:5001/api
     volumes:
@@ -76,8 +75,6 @@ services:
       context: ./graphs
     container_name: rsd-graphs
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
-    env_file:
-      - rsd-secrets.env
     volumes:
       - rsd_static_graphs:/build
 
@@ -88,21 +85,24 @@ services:
     depends_on:
       - backend
       - database
-    env_file:
-      - rsd-secrets.env
     environment:
-      - DATABASE_PORT=27017
-      - DATABASE_NAME=rsd
-      - DATABASE_HOST=database
       - BACKEND_URL=http://backend:5001/api
+      - DATABASE_HOST=database
+      - DATABASE_NAME=rsd
+      - DATABASE_PORT=27017
+      - GITHUB_ACCESS_TOKEN
+      - JWT_SECRET
+      - ZOTERO_API_KEY
+      - ZOTERO_LIBRARY
     volumes:
       - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
-    env_file:
-      - rsd-secrets.env
     environment:
+      - DOMAIN
+      - SSL_ADMIN_EMAIL
+      - SSL_DOMAINS
       - SSL_FORWARD=http://reverse-proxy:80
     image: rsdnlesc/docker-term-letsencrypt
     ports:
@@ -125,8 +125,8 @@ services:
       - admin
       - auth
       - graphs
-    env_file:
-      - rsd-secrets.env
+    environment:
+      - DOMAIN
     restart: unless-stopped
     volumes:
       - rsd_static_admin:/static_admin:ro
