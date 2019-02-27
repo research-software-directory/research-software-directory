@@ -10,7 +10,7 @@ mongodump --host ${DATABASE_HOST} \
 echo 'compressing the mongodump result...' && \
 tar --create --gzip --file /app/rsd-backup.tar.gz --directory /dump/rsd . && \
 echo 'transferring the tar.gz file using xenon...' && \
-$(echo ${BACKUP_CMD}) && \
+${BACKUP_CMD} && \
 echo 'done.'
 
 # rsd-backup-$(date -Iseconds).tar.gz
