@@ -128,6 +128,10 @@ Below are instructions on how to get the different tokens and keys.
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
 ```bash
+# add the environment variables from rsd-secrets.env to the current terminal:
+source rsd-secrets.env
+
+# start the full stack using docker-compose:
 docker-compose --project-name rsd up --build
 # shorthand:
 docker-compose -p rsd up --build
