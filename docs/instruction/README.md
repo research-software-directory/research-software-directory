@@ -28,7 +28,7 @@ administrator needs to grant you access, so be aware it may take a while.
 The blog mentions that the Research Software Directory harvests various types of
 data, which are then combined using its Admin interface, as follows:
 
-![data-sources.svg](data-sources.svg)
+![/docs/images/data-sources.svg](/docs/images/data-sources.svg)
 
 So, now the question is: what does this all mean for how you do your day-to-day
 work? The answer is, as long as you use public source code repositories on
