@@ -110,6 +110,8 @@ Below are instructions on how to get the different tokens and keys.
   3. Register application
      * Use Client ID as value for AUTH_GITHUB_CLIENT_ID
      * Use Client Secret as value for AUTH_GITHUB_CLIENT_SECRET
+* BACKUP_CMD
+  1. this environment variable is only used during deployment (see [section below](#make-your-instance-available-to-others-by-hosting-it-online-deployment)); leave its value like it is for now
 * GITHUB_ACCESS_TOKEN
   1. Goto https://github.com/settings/tokens
   2. Generate new token
