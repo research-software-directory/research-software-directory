@@ -15,11 +15,13 @@ services:
       context: ./auth-github
     container_name: rsd-authentication
     environment:
+      # user should not have to change the values of the following environment variables:
       - AUTH_CALLBACK_URL=/admin
+      - AUTH_ROOT=/auth
+      # user needs to assign values to the following environment variables:
       - AUTH_GITHUB_CLIENT_ID
       - AUTH_GITHUB_CLIENT_SECRET
       - AUTH_GITHUB_ORGANIZATION
-      - AUTH_ROOT=/auth
       - JWT_SECRET
 
   backend:
@@ -29,13 +31,15 @@ services:
     depends_on:
       - database
     environment:
+      # user should not have to change the values of the following environment variables:
       - BACKEND_ROOT=/api
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
+      - SCHEMAS_PATH=schemas
+      # user needs to assign values to the following environment variables:
       - DOMAIN
       - JWT_SECRET
-      - SCHEMAS_PATH=schemas
       
   backup:
     build:
@@ -44,10 +48,12 @@ services:
     depends_on:
       - database
     environment:
-      - BACKUP_CMD
+      # user should not have to change the values of the following environment variables:
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
+      # user needs to assign values to the following environment variables:
+      - BACKUP_CMD
 
   database:
     build:
@@ -65,6 +71,7 @@ services:
     depends_on:
       - backend
     environment:
+      # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
     volumes:
       - rsd_static_frontend:/shared_static
@@ -86,10 +93,12 @@ services:
       - backend
       - database
     environment:
+      # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
+      # user needs to assign values to the following environment variables:
       - GITHUB_ACCESS_TOKEN
       - JWT_SECRET
       - ZOTERO_API_KEY
@@ -100,9 +109,11 @@ services:
   nginx_ssl:
     container_name: rsd-nginx-ssl
     environment:
+      # user should not have to change the values of the following environment variables:
+      - SSL_FORWARD=http://reverse-proxy:80
+      # user needs to assign values to the following environment variables:
       - SSL_ADMIN_EMAIL
       - SSL_DOMAINS
-      - SSL_FORWARD=http://reverse-proxy:80
     image: rsdnlesc/docker-term-letsencrypt
     ports:
       - 443:443
