@@ -10,7 +10,7 @@ This README file has the following sections:
 - [Documentation for developers](#documentation-for-developers)
     - [Try it out locally](#try-it-out-locally)
     - [Customize your instance of the Research Software Directory](#customize-your-instance-of-the-research-software-directory)
-    - [Make your instance available to others](#make-your-instance-available-to-others)
+    - [Make your instance available to others by hosting it online (deployment)](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
 - [Documentation for maintainers](#documentation-for-maintainers)
 
 
