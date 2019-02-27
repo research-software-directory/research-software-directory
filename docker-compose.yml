@@ -14,11 +14,15 @@ services:
     build:
       context: ./auth-github
     container_name: rsd-authentication
-    env_file:
-      - rsd-secrets.env
     environment:
+      # user should not have to change the values of the following environment variables:
       - AUTH_CALLBACK_URL=/admin
       - AUTH_ROOT=/auth
+      # user needs to assign values to the following environment variables:
+      - AUTH_GITHUB_CLIENT_ID
+      - AUTH_GITHUB_CLIENT_SECRET
+      - AUTH_GITHUB_ORGANIZATION
+      - JWT_SECRET
 
   backend:
     build:
@@ -26,14 +30,16 @@ services:
     container_name: rsd-backend
     depends_on:
       - database
-    env_file:
-      - rsd-secrets.env
     environment:
+      # user should not have to change the values of the following environment variables:
       - BACKEND_ROOT=/api
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
       - SCHEMAS_PATH=schemas
+      # user needs to assign values to the following environment variables:
+      - DOMAIN
+      - JWT_SECRET
       
   backup:
     build:
@@ -41,12 +47,13 @@ services:
     container_name: rsd-backup
     depends_on:
       - database
-    env_file:
-      - rsd-secrets.env
     environment:
+      # user should not have to change the values of the following environment variables:
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
+      # user needs to assign values to the following environment variables:
+      - BACKUP_CMD
 
   database:
     build:
@@ -63,9 +70,8 @@ services:
     container_name: rsd-frontend
     depends_on:
       - backend
-    env_file:
-      - rsd-secrets.env
     environment:
+      # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
     volumes:
       - rsd_static_frontend:/shared_static
@@ -76,8 +82,6 @@ services:
       context: ./graphs
     container_name: rsd-graphs
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
-    env_file:
-      - rsd-secrets.env
     volumes:
       - rsd_static_graphs:/build
 
@@ -88,22 +92,28 @@ services:
     depends_on:
       - backend
       - database
-    env_file:
-      - rsd-secrets.env
     environment:
-      - DATABASE_PORT=27017
-      - DATABASE_NAME=rsd
-      - DATABASE_HOST=database
+      # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
+      - DATABASE_HOST=database
+      - DATABASE_NAME=rsd
+      - DATABASE_PORT=27017
+      # user needs to assign values to the following environment variables:
+      - GITHUB_ACCESS_TOKEN
+      - JWT_SECRET
+      - ZOTERO_API_KEY
+      - ZOTERO_LIBRARY
     volumes:
       - ./docker-volumes/oaipmh-cache:/oaipmh-cache
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
-    env_file:
-      - rsd-secrets.env
     environment:
+      # user should not have to change the values of the following environment variables:
       - SSL_FORWARD=http://reverse-proxy:80
+      # user needs to assign values to the following environment variables:
+      - SSL_ADMIN_EMAIL
+      - SSL_DOMAINS
     image: rsdnlesc/docker-term-letsencrypt
     ports:
       - 443:443
@@ -125,8 +135,6 @@ services:
       - admin
       - auth
       - graphs
-    env_file:
-      - rsd-secrets.env
     restart: unless-stopped
     volumes:
       - rsd_static_admin:/static_admin:ro
