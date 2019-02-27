@@ -21,7 +21,7 @@ Once the Zotero application is running:
 1. Enter username & password -> OK
 1. Click the `sync` button:
 
-    ![sync-button](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-sync-button.png)
+    ![sync-button](/docs/images/zotero-sync-button.png)
 
 1. Netherlands eScience Center should appear under `Group Libraries`.
 
@@ -35,7 +35,7 @@ a URL; without it, whatever you're adding is just hearsay.
 to [this table](projects.md) to find the right project number.
 1. Click the `Add by identifier` button.
 
-    ![add-by-identifier](https://raw.githubusercontent.com/research-software-directory/instruction/master/zotero-add-by-identifier.png)
+    ![add-by-identifier](/docs/images/zotero-add-by-identifier.png)
 
     Fill in your item's DOI.
 

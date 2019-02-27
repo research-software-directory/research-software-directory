@@ -1,5 +1,6 @@
 before_install:
-  - cp .env.example .env
+  - cp rsd-secrets.env.example rsd-secrets.env
+  - source rsd-secrets.env
   - docker-compose --project-name rsd build
 script:
   - docker-compose --project-name rsd --file docker-compose.yml --file docker-compose.test.yml run test
