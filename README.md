@@ -75,6 +75,10 @@ here:
 You'll need a minimum of about 3 GB free disk space to 
 store the images, containers and volumes that we will be making. 
 
+Optionally, add yourself to the ``docker`` group following the instructions
+[here](https://docs.docker.com/install/linux/linux-postinstall/) (our
+documentation assumes that you did).
+
 ### Try it out, step 1/3: Fork and clone
 
 Click the ``Fork`` button on
@@ -124,6 +128,10 @@ Below are instructions on how to get the different tokens and keys.
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
 ```bash
+# add the environment variables from rsd-secrets.env to the current terminal:
+source rsd-secrets.env
+
+# start the full stack using docker-compose:
 docker-compose --project-name rsd up --build
 # shorthand:
 docker-compose -p rsd up --build
@@ -259,6 +267,19 @@ answers to specific questions:
 TODO
 
 # Documentation for maintainers
+
+## Visualizing ``docker-compose.yml``
+
+It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
+Use https://github.com/pmsipilot/docker-compose-viz to generate a png image.
+
+```
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
+```
+
+For example,
+
+![/docs/images/docker-compose.png](/docs/images/docker-compose.png)
 
 ## Making a release
 
