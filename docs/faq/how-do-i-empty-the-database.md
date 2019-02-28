@@ -3,12 +3,7 @@
 Obviously, this part of the documentation can lead to the **LOSS OF DATA**. Make
 sure you have copies of all data that you care about. 
 
-Before you start make sure that:
-
-- ``docker images`` shows the ``rsd_`` images
-- ``docker ps -a`` shows the ``rsd-`` docker containers
-
-Add the environment variables to the terminal:
+Assuming that ``docker images`` shows the ``rsd_`` images, and ``docker ps -a`` shows the ``rsd-`` docker containers, add the environment variables to the terminal:
 
 ```
 source rsd-secrets.env
