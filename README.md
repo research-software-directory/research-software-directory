@@ -328,17 +328,11 @@ Here's how:
 Refer to the Frequently Asked Questions for more detailed
 answers to specific questions:
 
-#### Frontend
-
 1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
 1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
 1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
-
-#### Harvesting
-
 1. [How do I change when data collection scripts run?](docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
-
-
+1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
 
 ## Make your instance available to others by hosting it online (deployment)
 
