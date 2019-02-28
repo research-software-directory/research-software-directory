@@ -220,6 +220,7 @@ start harvesting data from external sources such as GitHub, Zotero, Zenodo, etc.
 To do so, open a new terminal and run
 
 ```bash
+source rsd-secrets.env
 docker-compose --project-name rsd exec harvesting python app.py harvest all
 ```
 
