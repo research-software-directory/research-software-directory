@@ -343,11 +343,11 @@ TODO
 The backup service contains a program ([Xenon](https://github.com/xenon-middleware/xenon)) that can copy to a range of storage providers. We use it to make backups of the MongoDB database every day, which we store on Amazon's S3. For this, we configured the environmental variable ``BACKUP_CMD`` as follows (see explanation below):
 
 ```
-BACKUP_CMD="xenon filesystem s3 \
+BACKUP_CMD='xenon filesystem s3 \
 --location http://s3-us-west-2.amazonaws.com/nyor-yiwy-fepm-dind/ \
 --username AKIAJ52LWSUUKATRQZ2A \
 --password xQ3ezZLKN7XcxIwRko2xkKhV9gdJ5etA4OyLbXN/ \
-upload rsd-backup.tar.gz /rsd-backups/nlesc/rsd-backup-$(date --utc -Idate).tar.gz"
+upload rsd-backup.tar.gz /rsd-backups/nlesc/rsd-backup-$(date --utc -Idate).tar.gz'
 ```
 
 - The bucket name is ``nyor-yiwy-fepm-dind``. It is physically located in zone ``us-west-2``.
