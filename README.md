@@ -281,15 +281,15 @@ It is suggested that you first do one or more of:
 1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
 1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
 
-Then, learn how to make changes (additions) to the schema:
+Then, learn how to add properties to the schema:
 
-1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
 1. [How do I add properties to the data schema?](docs/faq/how-do-i-add-properties-to-the-schema.md)
 
 Finally, learn how to empty the database, such that you can replace the sample
 data with your own: 
 
 1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
+
 
 ### General workflow when making changes
 
