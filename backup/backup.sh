@@ -1,4 +1,4 @@
-echo $PATH && \
+export BACKUP_DATE=$(date --utc -Iseconds) && \
 echo 'dumping the contents of the database...' &&
 mongodump --host ${DATABASE_HOST} \
  --port ${DATABASE_PORT} \
@@ -10,7 +10,5 @@ mongodump --host ${DATABASE_HOST} \
 echo 'compressing the mongodump result...' && \
 tar --create --gzip --file /app/rsd-backup.tar.gz --directory /dump/rsd . && \
 echo 'transferring the tar.gz file using xenon...' && \
-${BACKUP_CMD} && \
+$(echo ${BACKUP_CMD}) && \
 echo 'done.'
-
-# rsd-backup-$(date -Iseconds).tar.gz
