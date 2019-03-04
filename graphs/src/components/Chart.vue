@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <div></div>
+</template>
 <style>
 .toolTip {
   position: absolute;
@@ -13,14 +15,12 @@
 <script>
 import * as d3 from "d3";
 const margin = { top: 20, right: 0, bottom: 30, left: 40 };
-const height = 250;
+const height = 300;
 
 export default {
   name: "Chart",
   props: {
-    loaded: false,
-    data: null,
-    type: ""
+    data: null
   },
   data() {
     return {
@@ -75,9 +75,9 @@ export default {
         .attr("y", height + 30)
         .attr("font-size", "20px")
         .attr("text-anchor", "middle")
-        .text(this.type);
+        .text(this.$attrs.type);
       var xAxisCall = d3.axisBottom(scale.x).tickSize(0);
-      xAxisCall.tickFormat((domain, number) => {
+      xAxisCall.tickFormat(() => {
         return "";
       });
       g.append("g")
@@ -94,7 +94,7 @@ export default {
       bars
         .enter()
         .append("rect")
-        .attr("x", (d, i) => {
+        .attr("x", d => {
           return scale.x(d.brandName);
         })
         .attr("y", d => {
