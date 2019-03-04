@@ -33,7 +33,7 @@ def get_date_for_zotero_item(item):
     try:
         return parse(item['data']['date']).isoformat()[:19]+'Z'
     except:
-        logger.warning("Date problem in zotero item %s (was %s)" % (item['key'], item['data']['date']))
+        logger.warning("Date problem in zotero item %s (was %s; key=%s)" % (item['data']['title'], item['data']['date'], item['key']))
         return parse(item['data']['dateAdded']).isoformat()[:19] + 'Z'
 
 
@@ -63,14 +63,14 @@ def get_blog_fields(zotero_item):
     try:
         data = requests.get(zotero_item['data']['url']).text
         soup = BeautifulSoup(data, 'html.parser')
-        author = soup.select('header a.ds-link')[0].string
+        author = soup.select('a.ds-link')[0].contents[0]
         image = soup.find("meta", property ="og:image").attrs["content"]
         return author, image
     except:
         return None, None
 
 
-def zotero_sync():
+def get_mentions():
     client = zotero.Zotero(os.environ.get('ZOTERO_LIBRARY'), 'group', os.environ.get('ZOTERO_API_KEY'))
 
     items = (client.everything(client.items(since=get_last_version())))
@@ -83,10 +83,11 @@ def zotero_sync():
 
     for item in items:
         if 'title' not in item['data'] or not item['data']['title']:
+            logger.warning("%s does not have a title" % item['key'])
             continue
         item_collection_keys = item['data'].get('collections', [])
         if len(set.intersection(set(item_collection_keys), set(project_keys))) == 0:
-            logger.warning("%s is not part of a project" % item['key'])
+            logger.warning("'%s' is not part of a project (key = %s)" % (item['data']['title'], item['key']))
             continue
         # item is part of a project
         to_save = {
