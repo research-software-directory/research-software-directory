@@ -86,7 +86,7 @@ https://github.com/research-software-directory/research-software-directory/ to
 fork to your own GitHub organization or GitHub profile, then:
 
 ```bash
-git clone https://github.com/research-software-directory/research-software-directory.git
+git clone https://github.com/<your-github-organization>/research-software-directory.git
 ```
 
 ### Try it out, step 2/3: Configure
@@ -261,15 +261,39 @@ Open a web browser to verify that everything works as it should.
 
 ## Customize your instance of the Research Software Directory
 
-### General workflow when making changes
 
 Let's say you followed the steps above, and have a running instance of the
-Research Software Directory. Now you may want to make some changes to bring the
-frontend in line with your institute's branding. For example, you could follow
-the steps outlined [here](docs/faq/how-do-i-change-the-font.md) to change the fonts.
+Research Software Directory. Now it is time to start customizing your Research
+Software Directory. We have prepared some FAQs for customizations that are
+common. For example, you can read up on the following topics:
 
-Now the question is, after making your changes, how do you get to see them?
-Here's how:
+1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
+1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
+1. [How do I change when data collection scripts run?](docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
+1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
+1. [How do I make changes to the admin interface?](docs/faq/how-do-i-make-changes-to-the-admin-interface.md)
+1. [How do I add properties to the data schema?](docs/faq/how-do-i-add-properties-to-the-data-schema.md)
+
+It is suggested that you first do one or more of:
+
+1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
+1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
+
+Then, learn how to add properties to the schema:
+
+1. [How do I add properties to the data schema?](docs/faq/how-do-i-add-properties-to-the-schema.md)
+
+Finally, learn how to empty the database, such that you can replace the sample
+data with your own: 
+
+1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
+
+
+### General workflow when making changes
+
+After making your changes, here's how you get to see them:
 
 1. Go to the terminal where you started ``docker-compose``
 1. Use Ctrl+C to stop the running instance of Research Software Directory
@@ -323,17 +347,6 @@ Here's how:
     docker-compose --project-name rsd build frontend
     docker-compose --project-name rsd up frontend
     ```
-
-### Frequently Asked Questions
-
-Refer to the Frequently Asked Questions for more detailed
-answers to specific questions:
-
-1. [How do I change the font?](docs/faq/how-do-i-change-the-font.md)
-1. [How do I change the logo?](docs/faq/how-do-i-change-the-logo.md)
-1. [How do I change the colors?](docs/faq/how-do-i-change-the-colors.md)
-1. [How do I change when data collection scripts run?](docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
-1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
 
 ## Make your instance available to others by hosting it online (deployment)
 
