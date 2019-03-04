@@ -86,7 +86,7 @@ https://github.com/research-software-directory/research-software-directory/ to
 fork to your own GitHub organization or GitHub profile, then:
 
 ```bash
-git clone https://github.com/research-software-directory/research-software-directory.git
+git clone https://github.com/<your-github-organization>/research-software-directory.git
 ```
 
 ### Try it out, step 2/3: Configure
