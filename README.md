@@ -361,14 +361,15 @@ BACKUP_CMD='xenon filesystem s3 \
 --location http://s3-us-west-2.amazonaws.com/nyor-yiwy-fepm-dind/ \
 --username AKIAJ52LWSUUKATRQZ2A \
 --password xQ3ezZLKN7XcxIwRko2xkKhV9gdJ5etA4OyLbXN/ \
-upload rsd-backup.tar.gz /rsd-backups/nlesc/rsd-backup-$(date --utc -Idate).tar.gz'
+upload rsd-backup.tar.gz /rsd-backups/nlesc/rsd-backup-$BACKUP_DATE.tar.gz'
 ```
 
 - The bucket name is ``nyor-yiwy-fepm-dind``. It is physically located in zone ``us-west-2``.
 - We access the bucket using a limited-privileges IAM user, for whom we created an access key (it has been deactivated since)
     - Access key ID is ``AKIAJ52LWSUUKATRQZ2A``
     - Secret access key is ``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``
-- ``rsd-backup.tar.gz`` is the name of the backup archive as it is called inside the container; ``/rsd-backups/nlesc/rsd-backup-$(date --utc -Idate).tar.gz`` is the path inside the bucket. It includes the date to avoid overwriting previously existing archives.
+- ``BACKUP_DATE`` is set by the backup script
+- ``rsd-backup.tar.gz`` is the name of the backup archive as it is called inside the container; ``/rsd-backups/nlesc/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside the bucket. It includes the date to avoid overwriting previously existing archives.
 
 # Documentation for maintainers
 
