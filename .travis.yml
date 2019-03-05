@@ -32,7 +32,7 @@ jobs:
       before_install:
         - cd backend
       install:
-        - pip install pytest pytest-cov coveralls
+        - pip install pytest==4.3.0 pytest-cov coveralls
         - pip install -r requirements.txt
       script:
         - PYTHONPATH=`pwd` pytest --cov=src
