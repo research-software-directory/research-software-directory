@@ -7,7 +7,7 @@ stages:
 jobs:
   include:
     - stage: "Tests"
-      name: "Admin test"
+      name: "Admin tests"
       language: node_js
       node_js:
         - "8"
@@ -22,10 +22,12 @@ jobs:
       script:
         - yarn test && yarn build
 
-    - name: "Backend test"
+    - name: "Backend tests"
       language: python
       python:
         - 3.6
+      cache:
+        pip: true
       services:
         - docker
         - mongodb
@@ -36,6 +38,21 @@ jobs:
         - pip install -r requirements.txt
       script:
         - PYTHONPATH=`pwd` pytest --cov=src
+
+    - name: "Frontend tests"
+      language: python
+      python:
+        - 3.6
+      cache:
+        pip: true
+      before_install:
+        - cd frontend
+      install:
+        - pip install -r requirements.txt
+        - pip install pytest py-w3c
+      script:
+        - BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
+
 
     - stage: "docker-compose integration tests"
       before_install:
