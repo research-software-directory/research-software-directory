@@ -463,7 +463,7 @@ are no users.
 1. Click the ``Add user`` button in the top left corner.
 1. Choose your user name. I chose to call mine ``rsd-backup-maker``. For this
 user, check the checkbox labeled ``Programmatic access``. This user won't need
-``AWS Management Console access``. so leave that box unchecked.
+``AWS Management Console access``, so leave that box unchecked.
 1. In the lower right corner, click the ``Next: Permissions`` button.
 1. Select ``Add user to group``, and make user ``rsd-backup-maker`` a member of
 group ``s3-users``.
@@ -508,7 +508,7 @@ variable ``BACKUP_CMD`` as follows (see explanation below):
     ``rsd-backup.tar.gz`` is the name of the backup archive as it is called
     inside the container.
 
-    ``/rsd-backups/nlesc/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside
+    ``/rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside
     the bucket. It includes the date to avoid overwriting previously existing
     archives.
 
