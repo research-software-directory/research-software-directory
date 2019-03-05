@@ -1,6 +1,63 @@
-before_install:
-  - cp rsd-secrets.env.example rsd-secrets.env
-  - source rsd-secrets.env
-  - docker-compose --project-name rsd build
-script:
-  - docker-compose --project-name rsd --file docker-compose.yml --file docker-compose.test.yml run test
+stages:
+  - "Tests"
+  - "docker-compose integration tests"
+#  - name: "Docker build & push"
+#    if: branch = master
+
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Admin tests"
+      language: node_js
+      node_js:
+        - "8"
+      cache:
+        directories:
+          - node_modules
+#          - /home/travis/.cache/Cypress
+      before_install:
+        - cd admin
+      install:
+        - yarn
+      script:
+        - yarn test && yarn build
+
+    - name: "Backend tests"
+      language: python
+      python:
+        - 3.6
+      cache:
+        pip: true
+      services:
+        - docker
+        - mongodb
+      before_install:
+        - cd backend
+      install:
+        - pip install pytest==4.3.0 pytest-cov coveralls
+        - pip install -r requirements.txt
+      script:
+        - PYTHONPATH=`pwd` pytest --cov=src
+
+    - name: "Frontend tests"
+      language: python
+      python:
+        - 3.6
+      cache:
+        pip: true
+      before_install:
+        - cd frontend
+      install:
+        - pip install -r requirements.txt
+        - pip install pytest py-w3c
+      script:
+        - BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
+
+
+    - stage: "docker-compose integration tests"
+      before_install:
+        - cp rsd-secrets.env.example rsd-secrets.env
+        - source rsd-secrets.env
+        - docker-compose --project-name rsd build
+      script:
+        - docker-compose --project-name rsd --file docker-compose.yml --file docker-compose.test.yml run test
