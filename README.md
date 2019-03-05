@@ -202,6 +202,12 @@ openssl rand -base64 32
 
 Assign the result to ``JWT_SECRET``.
 
+#### ``DOMAIN``, ``SSL_ADMIN_EMAIL``, and ``SSL_DOMAINS``
+
+These environment variables are not relevant when you're running your instance
+locally. Leave their values like they are in ``rsd-secrets.env.example`` for the
+time being. We will revisit them in the section about deployment
+[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment)).
 
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
