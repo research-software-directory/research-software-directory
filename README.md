@@ -202,6 +202,12 @@ openssl rand -base64 32
 
 Assign the result to ``JWT_SECRET``.
 
+#### ``DOMAIN``, ``SSL_ADMIN_EMAIL``, and ``SSL_DOMAINS``
+
+These environment variables are not relevant when you're running your instance
+locally. Leave their values like they are in ``rsd-secrets.env.example`` for the
+time being. We will revisit them in the section about deployment
+[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment)).
 
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
@@ -351,26 +357,167 @@ After making your changes, here's how you get to see them:
 
 ## Make your instance available to others by hosting it online (deployment)
 
-TODO
+Amazon Web Services (AWS) is a online service provider that offers all kinds of
+services relating to compute, storage, and hosting. The Netherlands eScience
+Center uses AWS to run their instance of the Research Software Directory. This
+section describes how to deploy your own customized instance of the Research
+Software Directory to AWS.
 
-### Making a backup to Amazon's S3 storage using Xenon
+Go to https://aws.amazon.com/console/. Once there, you'll see something like:
 
-The backup service contains a program ([Xenon](https://github.com/xenon-middleware/xenon)) that can copy to a range of storage providers. We use it to make backups of the MongoDB database every day, which we store on Amazon's S3. For this, we configured the environmental variable ``BACKUP_CMD`` as follows (see explanation below):
+[![AWS Management Console login](/docs/images/aws-management-console-login.png)](/docs/images/aws-management-console-login.png)
 
-```
-BACKUP_CMD='xenon filesystem s3 \
---location http://s3-us-west-2.amazonaws.com/nyor-yiwy-fepm-dind/ \
---username AKIAJ52LWSUUKATRQZ2A \
---password xQ3ezZLKN7XcxIwRko2xkKhV9gdJ5etA4OyLbXN/ \
-upload rsd-backup.tar.gz /rsd-backups/nlesc/rsd-backup-$BACKUP_DATE.tar.gz'
-```
+Create a free account if you don't already have one, and subsequently click
+``Sign In to the Console``.
 
-- The bucket name is ``nyor-yiwy-fepm-dind``. It is physically located in zone ``us-west-2``.
-- We access the bucket using a limited-privileges IAM user, for whom we created an access key (it has been deactivated since)
-    - Access key ID is ``AKIAJ52LWSUUKATRQZ2A``
-    - Secret access key is ``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``
-- ``BACKUP_DATE`` is set by the backup script
-- ``rsd-backup.tar.gz`` is the name of the backup archive as it is called inside the container; ``/rsd-backups/nlesc/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside the bucket. It includes the date to avoid overwriting previously existing archives.
+Once in the console, you'll be presented with an overview of all the services
+that Amazon Web Services has to offer:
+
+[![AWS Management Console Services Overview](/docs/images/aws-management-console-services-overview.png)](/docs/images/aws-management-console-services-overview.png)
+
+It's easy to get lost in this plethora of services, but for running an instance of the Research Software Directory, you'll only need 3 of them:
+
+1. **EC2**: this is where we will run your customized instance of the Research
+Software Directory and host it online; [jump to the EC2 section](/README.md#configuring-ec2)
+1. **IAM**: we use this to create a user with limited privileges, so we don't
+have to use root credentials when we don't have to; [jump to the IAM section](/README.md#configuring-iam)
+1. **S3**: this is where we will store our daily backups; [jump to the S3 section](/README.md#configuring-s3)
+
+### Configuring EC2
+
+In the ``All Services`` overview, click ``EC2`` or use this link
+https://console.aws.amazon.com/ec2.
+
+1. go to machine types, select ``t2.small``. dynamic, pay as you go contract.
+1. select some ubuntu flavor OS
+1. bring the instance up
+1. make a note of your instance's public IP
+1. set access to the instance over SSH using IP range based on your current IP
+plus a ``/24`` mask
+1. acquire ssh keys somehow
+1. check permissions on the keyfile
+1. on your own machine use a terminal to log in to your instance
+1. ``ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>``
+1. install ``docker``, ``docker-compose``; add user to the group ``docker``
+1. ``cd ~ && mkdir rsd && cd rsd``
+1. the machine should have ``git`` installed, use it to ``git clone`` your
+customized rsd instance into the current directory as follows: ``git clone
+https://github.com/<your-github-organization>/research-software-directory.git .``
+(Note the dot at the end)
+1. open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
+the Amazon machine as follows:
+    
+    ```bash
+    scp -i path-to-the-keyfile ./rsd-secrets.env \
+    ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
+    ```
+1. make a second key pair ``AUTH_GITHUB_CLIENT_ID`` and
+``AUTH_GITHUB_CLIENT_SECRET``, update the Amazon copy of ``rsd-secrets.env``
+1. Start the Research Software Directory instance with:
+
+    ```bash
+    cd ~/rsd
+    source rsd-secrets.env
+    docker-compose --project-name rsd up --build &
+    ```
+1. On your local machine, open a new terminal. Connect to the Amazon instance,
+run the harvesters, and resolve the foreign keys:
+
+    ```bash
+    ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>
+
+    cd ~/rsd
+
+    source rsd-secrets.env
+
+    docker-compose --project-name rsd exec harvesting \
+    python app.py harvest all
+
+    docker-compose --project-name rsd exec harvesting \
+    python app.py resolve
+    ```
+
+At this point we should have a world-reachable, custom instance of the Research
+Software Directory running at ``https://<your-instance-public-ip>/``. However,
+if we go there using a browser like Firefox or Google Chrome, we get a warning
+that the connection is not secure.
+
+To fix this, we need to configure the security credentials, but this in turn
+requires us to claim a domain / configure DNS, e.g. using noip.com. Here's how:
+
+1. claim (sub)domain of noip, or talk to your system administrator to get a name
+associated with your institute's domain.
+1. Once you have the name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
+``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
+well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
+have).
+
+### Configuring IAM
+
+1. In the ``All Services`` overview, click ``IAM`` or use this link
+https://console.aws.amazon.com/iam.
+1. In the menu on the left, click ``Groups``.
+1. Click the ``Create New Group`` button.
+1. Name the group ``s3-users``.
+1. When asked to attach a (security) policy, use the search bar to find
+``AmazonS3FullAccess`` and check its checkbox.
+1. Click the ``Next step`` button in the lower right corner.
+1. Review your group, go back if need be. When you're ready, click the ``Create
+Group`` button in the lower right corner.
+1. Now you should be presented with a group, but the group is still empty; there
+are no users.
+1. In the menu on the left, click ``Users``.
+1. Click the ``Add user`` button in the top left corner.
+1. Choose your user name. I chose to call mine ``rsd-backup-maker``. For this
+user, check the checkbox labeled ``Programmatic access``. This user won't need
+``AWS Management Console access``, so leave that box unchecked.
+1. In the lower right corner, click the ``Next: Permissions`` button.
+1. Select ``Add user to group``, and make user ``rsd-backup-maker`` a member of
+group ``s3-users``.
+1. In the lower right corner, click the ``Next: Tags`` button. We don't need to
+assign any tags, so proceed to the next page by clicking ``Next: Review``. Go
+back if you need to, but if everything looks OK, click ``Create User``. You will
+be presented with the new user's credentials. Download the CSV file now; we'll
+use the ``Access key ID`` and the ``Secret access key`` later to set up the
+backup mechanism.
+
+### Configuring S3
+
+In the ``All Services`` overview, click ``S3`` or use this link https://console.aws.amazon.com/s3.
+
+1. create a bucket with a random name (bucket names must be globally unique; websites like https://www.random.org/strings/ are useful to get a random string)
+1. in that bucket, make a directory, e.g. ``rsd-backups``
+1. The backup service contains a program
+([Xenon](https://github.com/xenon-middleware/xenon)) that can copy to a range of
+storage providers. We use it to make backups of the MongoDB database every day,
+which we store on Amazon's S3. For this, we configured the environmental
+variable ``BACKUP_CMD`` as follows (see explanation below):
+
+    ```
+    BACKUP_CMD='xenon filesystem s3 \
+    --location http://s3-us-west-2.amazonaws.com/nyor-yiwy-fepm-dind/ \
+    --username AKIAJ52LWSUUKATRQZ2A \
+    --password xQ3ezZLKN7XcxIwRko2xkKhV9gdJ5etA4OyLbXN/ \
+    upload rsd-backup.tar.gz /rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz'
+    ```
+
+    The bucket name is ``nyor-yiwy-fepm-dind``. It is physically located in zone ``us-west-2``.
+
+    We access the bucket using a limited-privileges IAM user, for whom we 
+    created an access key (it has been deactivated since)
+    
+    Access key ID is ``AKIAJ52LWSUUKATRQZ2A``
+    
+    Secret access key is ``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``
+
+    ``BACKUP_DATE`` is set by the backup script (``/backup/backup.sh``)
+
+    ``rsd-backup.tar.gz`` is the name of the backup archive as it is called
+    inside the container.
+
+    ``/rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside
+    the bucket. It includes the date to avoid overwriting previously existing
+    archives.
 
 # Documentation for maintainers
 
