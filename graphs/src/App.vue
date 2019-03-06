@@ -16,7 +16,6 @@ import axios from "axios";
 import Spinner from "./components/Spinner.vue";
 import List from "./components/List.vue";
 import PieChart from "./components/PieChart.vue";
-var margin = { left: 100, right: 10, top: 10, bottom: 150 };
 export default {
   name: "App",
   components: {

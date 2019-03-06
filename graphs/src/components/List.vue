@@ -75,6 +75,7 @@ export default {
     getData() {
       this.data.map((el, i) => {
         this.contributors.push({
+          index: i,
           brandName: el.brandName,
           value: el.contributors.length
         });
@@ -110,14 +111,20 @@ export default {
     removeItem(item) {
       this.charts.splice(this.charts.indexOf(item), 1);
     },
-    dragEnter(ev) {},
-    dragLeave(ev) {},
+    dragEnter(ev) {
+      ev.target.style.marginTop = "2px";
+      ev.target.style.marginBottom = "2px";
+    },
+    dragLeave(ev) {
+      ev.target.style.marginTop = "2px";
+      ev.target.style.marginBottom = "2px";
+    },
     dragFinish(to, ev) {
       this.moveItem(this.dragging, to);
       ev.target.style.marginTop = "2px";
       ev.target.style.marginBottom = "2px";
     },
-    dragEnd(ev) {
+    dragEnd() {
       this.dragging = -1;
     },
     moveItem(from, to) {

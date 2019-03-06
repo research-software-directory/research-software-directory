@@ -1,10 +1,16 @@
 FROM python:3.6-alpine
+
+RUN apk update && apk add --no-cache build-base
+
 WORKDIR /src
 
 COPY requirements.txt /src/
+
 RUN pip3 install -r requirements.txt
 
 COPY . /src
+
+RUN pysassc --style=compressed --sourcemap style/rsd.scss static/style/rsd.scss.css
 
 STOPSIGNAL SIGINT
 

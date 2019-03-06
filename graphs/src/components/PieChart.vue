@@ -33,12 +33,10 @@ svg {
 <script>
 import * as d3 from "d3";
 const margin = { top: 20, right: 0, bottom: 30, left: 40 };
-const height = 500;
 
 export default {
   name: "PieChart",
   props: {
-    loaded: false,
     data: null
   },
   data() {
@@ -52,13 +50,13 @@ export default {
 
   methods: {
     getData() {
-      this.data.map((el, i) => {
+      this.data.map(el => {
         this.toolsWithMentions.push({
           name: el.brandName,
           mentions: el.related.mentions
         });
       });
-      this.toolsWithMentions.map((el, i) => {
+      this.toolsWithMentions.map(el => {
         return this.mentions.push({
           name: el.name,
           types: el.mentions.map(elem => {
@@ -74,6 +72,7 @@ export default {
           return el;
         }
       });
+
       this.drawChart(this.mention[0].mentionTypes, this.mention[0].name);
     },
     countType(types) {
@@ -114,8 +113,9 @@ export default {
         .attr("class", "pie")
         .attr("width", width)
         .attr("height", height);
-      var title = svg
-        .append("text")
+
+      var chart_title = svg.append("text");
+      chart_title
         .attr("x", width / 2)
         .attr("y", margin.top)
         .attr("text-anchor", "middle")
@@ -139,9 +139,7 @@ export default {
           return d.value;
         })
         .sort(null);
-
-      var path = g
-        .selectAll("path")
+      g.selectAll("path")
         .data(pie(data))
         .enter()
         .append("g")
@@ -177,7 +175,7 @@ export default {
             .style("fill", "white")
             .style("opacity", 0.75);
         })
-        .on("mousemove", function(d) {
+        .on("mousemove", function() {
           let mousePosition = d3.mouse(this);
           let x = mousePosition[0] + width / 2;
           let y = mousePosition[1] + height / 2 - tooltipMargin;
@@ -200,14 +198,14 @@ export default {
             .style("opacity", 1)
             .attr("transform", `translate(${x}, ${y})`);
         })
-        .on("mouseout", function(d) {
+        .on("mouseout", function() {
           d3.select("svg")
             .style("cursor", "none")
             .select(".tooltip")
             .remove();
           d3.selectAll("path").style("opacity", opacity);
         })
-        .on("touchstart", function(d) {
+        .on("touchstart", function() {
           d3.select("svg").style("cursor", "none");
         })
         .each(function(d, i) {

@@ -7,3 +7,4 @@ pprint==0.1
 gunicorn==19.7.1
 dateutils==0.6.6
 requests-mock==1.4.0
+libsass==0.17.0
