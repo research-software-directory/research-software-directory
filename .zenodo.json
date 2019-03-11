@@ -2,11 +2,13 @@
     "creators": [
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Spaaks, Jurriaan H."
+            "name": "Spaaks, Jurriaan H.",
+            "orcid": "0000-0002-7064-4069"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Maassen, Jason"
+            "name": "Maassen, Jason",
+            "orcid": "0000-0002-8172-4865"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -14,15 +16,22 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Verhoeven, Stefan"
+            "name": "Verhoeven, Stefan",
+            "orcid": "0000-0002-5821-2060"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "van Hage, Willem"
+            "name": "Pawar, Pushpanjali"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Ridder, Lars"
+            "name": "van Hage, Willem",
+            "orcid": "0000-0002-6478-3003"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Ridder, Lars",
+            "orcid": "0000-0002-7635-9533"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -34,15 +43,18 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "van Hees, Vincent"
+            "name": "van Hees, Vincent",
+            "orcid": "0000-0003-0182-9008"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Bogaardt, Laurens"
+            "name": "Bogaardt, Laurens",
+            "orcid": "0000-0002-7712-6627"
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Mendrik, Adriënne"
+            "name": "Mendrik, Adriënne",
+            "orcid": "0000-0001-6631-7068"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -50,7 +62,8 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Attema, Jisk"
+            "name": "Attema, Jisk",
+            "orcid": "0000-0002-0948-1176"
         },
         {
             "affiliation": "Netherlands eScience Center",
@@ -58,15 +71,18 @@
         },
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "van Nieuwpoort, Rob"
+            "name": "van Nieuwpoort, Rob",
+            "orcid": "0000-0002-2947-9444"
         }
     ],
     "keywords": [
+        "Current Research Information Systems",
         "FAIR for software",
+        "re-usable software",
         "reproducible research",
         "research software",
-        "RSE",
-        "re-usable software"
+        "CRIS",
+        "RSE"
     ],
     "license": {
         "id": "Apache-2.0"
