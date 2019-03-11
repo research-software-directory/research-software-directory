@@ -83,11 +83,13 @@ cff-version: "1.0.3"
 date-released: 2018-07-05
 doi: 10.5281/zenodo.1154130
 keywords: 
+  - "Current Research Information Systems"
   - "FAIR for software"
+  - "re-usable software"
   - "reproducible research"
   - "research software"
+  - CRIS
   - RSE
-  - "re-usable software"
 license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
 repository-code: "https://github.com/research-software-directory/research-software-directory"
