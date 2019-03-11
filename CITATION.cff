@@ -90,6 +90,6 @@ keywords:
   - "re-usable software"
 license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
-repository-code: "https://github.com/research-software-directory"
+repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
 version: "1.0.0"
