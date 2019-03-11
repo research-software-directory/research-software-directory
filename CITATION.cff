@@ -5,10 +5,12 @@ authors:
     affiliation: "Netherlands eScience Center"
     family-names: Spaaks
     given-names: "Jurriaan H."
+    orcid: "https://orcid.org/0000-0002-7064-4069"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Maassen
     given-names: Jason
+    orcid: "https://orcid.org/0000-0002-8172-4865"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Klaver
@@ -17,6 +19,7 @@ authors:
     affiliation: "Netherlands eScience Center"
     family-names: Verhoeven
     given-names: Stefan
+    orcid: "https://orcid.org/0000-0002-5821-2060"
   -
     affiliation: "Netherlands eScience Center"
     family-names: Pawar
@@ -26,10 +29,12 @@ authors:
     family-names: Hage
     given-names: Willem
     name-particle: van
+    orcid: "https://orcid.org/0000-0002-6478-3003"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Ridder
     given-names: Lars
+    orcid: "https://orcid.org/0000-0002-7635-9533"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Kulik
@@ -43,14 +48,17 @@ authors:
     family-names: Hees
     given-names: Vincent
     name-particle: van
+    orcid: "https://orcid.org/0000-0003-0182-9008"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Bogaardt
     given-names: Laurens
+    orcid: "https://orcid.org/0000-0002-7712-6627"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Mendrik
     given-names: Adriënne
+    orcid: "https://orcid.org/0000-0001-6631-7068"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Es
@@ -60,6 +68,7 @@ authors:
     affiliation: "Netherlands eScience Center"
     family-names: Attema
     given-names: Jisk
+    orcid: "https://orcid.org/0000-0002-0948-1176"
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Ranguelova
@@ -69,6 +78,7 @@ authors:
     family-names: Nieuwpoort
     given-names: Rob
     name-particle: van
+    orcid: "https://orcid.org/0000-0002-2947-9444"
 cff-version: "1.0.3"
 date-released: 2018-07-05
 doi: 10.5281/zenodo.1154130
