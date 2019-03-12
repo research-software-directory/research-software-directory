@@ -106,6 +106,25 @@
                 "id"
             ],
             "type": "object"
+        },
+        "release": {
+            "additionalProperties": false,
+            "properties": {
+                "collection": {
+                    "enum": [
+                        "release"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "collection",
+                "id"
+            ],
+            "type": "object"
         }
     }
 }
