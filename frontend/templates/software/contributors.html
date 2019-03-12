@@ -57,7 +57,9 @@
                                         {{contactPerson.foreignKey | human_name_filter }}
                                     </div>
                                     <div class="contributor_organisation">
+                                        {% if contactPerson.affiliations %}
                                         {{contactPerson.affiliations[0].foreignKey.name}}
+                                        {% endif %}
                                     </div>
                                     <div class="contributor_email">
                                         <a href="mailto:{{contactPerson.foreignKey.emailAddress}}">
