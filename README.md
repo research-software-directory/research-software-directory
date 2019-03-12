@@ -518,6 +518,10 @@ variable ``BACKUP_CMD`` as follows (see explanation below):
     the bucket. It includes the date to avoid overwriting previously existing
     archives.
 
+## Making your instance part of your domain
+
+TODO
+
 # Documentation for maintainers
 
 ## Visualizing ``docker-compose.yml``
