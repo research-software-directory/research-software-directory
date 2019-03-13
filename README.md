@@ -554,11 +554,11 @@ https://console.aws.amazon.com/s3.
 websites like https://www.random.org/strings/ are useful to get a random string)
 1. in that bucket, make a directory, e.g. ``rsd-backups``
 1. The backup service contains a program
-([Xenon](https://github.com/xenon-middleware/xenon)) that can copy to a range of
-storage providers. You can use it to make backups of the MongoDB database every day,
+([xenon-cli](https://github.com/xenon-middleware/xenon-cli)) that can copy to a range of
+storage providers. You can use it to make daily backups of the MongoDB database,
 and store the backups on Amazon's S3. For this, configure the environmental
 variable ``BACKUP_CMD`` as follows (naturally, you'll need to use a different
-location, user, and password; see explanation below):
+location, username, and password; see explanation below):
 
     ```
     BACKUP_CMD='xenon filesystem s3 \
