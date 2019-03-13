@@ -584,7 +584,7 @@ location, username, and password; see explanation below):
 1. Test the setup by stopping the Research Software Directory on Amazon, by
 
     ```
-    ssh into the remote machine
+    #ssh into the remote machine
     cd rsd
     docker-compose -p rsd stop
     # update BACKUP_CMD by editing the rsd-secrets.env file
@@ -593,7 +593,7 @@ location, username, and password; see explanation below):
     ```
     Wait until the Research Software Directory is up and running again, then open a second terminal and
     ```
-    ssh into the remote machine
+    #ssh into the remote machine
     cd rsd
     docker-compose -p rsd exec backup /bin/sh
     /app # /bin/sh backup.sh
