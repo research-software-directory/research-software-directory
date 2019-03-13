@@ -124,7 +124,7 @@ not used as far as I can tell.
 Set it to http://localhost/auth/get_jwt for now. We will revisit
 ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET`` in the section about
 deployment
-[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment))
+[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
 1. Click ``Register application``
 1. Assign the ``Client ID`` as value for ``AUTH_GITHUB_CLIENT_ID`` and assign
 the ``Client Secret`` as value for ``AUTH_GITHUB_CLIENT_SECRET``
@@ -186,7 +186,7 @@ This environment variable is used for making a daily backup of the database with
 software, people, projects, etc. As it is typically only used during deployment,
 leave its value like it is for now; we will revisit it in the section about
 deployment
-[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment)).
+[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment).
 
 
 #### ``JWT_SECRET``
@@ -207,7 +207,7 @@ Assign the result to ``JWT_SECRET``.
 These environment variables are not relevant when you're running your instance
 locally. Leave their values like they are in ``rsd-secrets.env.example`` for the
 time being. We will revisit them in the section about deployment
-[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment)).
+[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment).
 
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
@@ -374,7 +374,8 @@ that Amazon Web Services has to offer:
 
 [![AWS Management Console Services Overview](/docs/images/aws-management-console-services-overview.png)](/docs/images/aws-management-console-services-overview.png)
 
-It's easy to get lost in this plethora of services, but for running an instance of the Research Software Directory, you'll only need 3 of them:
+It's easy to get lost in this plethora of services, but for running an instance
+of the Research Software Directory, you'll only need 3 of them:
 
 1. **EC2**: this is where we will run your customized instance of the Research
 Software Directory and host it online; [jump to the EC2 section](/README.md#configuring-ec2)
@@ -416,11 +417,17 @@ writable, and executable by user only).
 1. Make a note of your instance's public IPv4, e.g. ``3.92.182.176``
 1. On your own machine use a terminal to log in to your instance
 1. ``ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>``
-1. Once logged in to the remote machine, install ``docker``, and
-``docker-compose``; add user to the group ``docker``, same as before (see
-section _Documentation for developers_
-[above](/README.md#documentation-for-developers).
-1. Make a new directory and change into it: ``cd ~ && mkdir rsd && cd rsd``
+1. Once logged in to the remote machine, install ``docker`` and
+``docker-compose``, then add user ``ubuntu`` to the group ``docker``, same as
+before (see section _Documentation for developers_
+[above](/README.md#documentation-for-developers)).
+1. Make a new directory and change into it:
+
+    ```
+    cd ~
+    mkdir rsd
+    cd rsd
+    ```
 1. The machine should have ``git`` installed, use it to ``git clone`` your
 customized Research Software Directory instance into the current directory as
 follows:
@@ -442,7 +449,7 @@ the Amazon machine as follows:
 [above](/README.md#auth_github_client_id-and-auth_github_client_secret) to make
 a second key pair ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``.
 However, let this one's ``Authorization callback url`` be ``https://`` plus your
-instance's domain name plus ``/auth/get_jwt``. Update the Amazon copy of
+instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
 ``rsd-secrets.env`` according to the new client ID and secret.
 1. Start the Research Software Directory instance with:
 
@@ -474,17 +481,40 @@ if we go there using a browser like Firefox or Google Chrome, we get a warning
 that the connection is not secure.
 
 To fix this, we need to configure the security credentials, but this in turn
-requires us to claim a domain / configure DNS, e.g. using noip.com. Here's how:
+requires us to claim a domain and configure a DNS record. There are free
+services available that you can use for this, e.g. https://noip.com. Here's how:
 
-1. claim (sub)domain of noip, or talk to your system administrator to get a name
-associated with your institute's domain.
-1. Once you have the name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
+1. Go to https://noip.com, sign up and log in.
+1. Under My services, find ``DNS Records``
+1. Click the ``Add a hostname`` button
+1. Choose your free (sub)domain name, e.g. I chose ``myrsd.ddns.net``
+1. Fill in the IP address of your Amazon machine. In my case,
+``https://myrsd.ddns.net`` will serve as an alias for ``https://3.92.182.176``
+1. Once you have the (sub)domain name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
 ``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
 well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
 have).
+1. Fill in your e-mail for ``SSL_ADMIN_EMAIL``.
 1. Finally, revisit your OAuth app here https://github.com/settings/developers,
-replace the Amazon IP address with in the ``Authorization callback url`` with
+replace the Amazon IP address in the ``Authorization callback url`` with
 your freshly minted domain name.
+1. Now, stop the Research Software Directory if it is still running with Ctrl-c
+or ``docker-compose -p rsd stop``.
+1. Update the environment variables by ``source``ing your secrets again:
+
+    ```
+    cd ~/rsd
+    source rsd-secrets.env
+    ```
+1. Start the Research Software Directory back up
+
+    ```
+    cd ~/rsd
+    docker-compose -p rsd up
+    ```
+1. Pointing your browser to your (sub)domain name should now show your instance
+of the Research Software Directory (although be aware that sometimes it takes a
+while before the domain name resolves to the IP address.
 
 ### Configuring IAM
 
@@ -525,9 +555,10 @@ websites like https://www.random.org/strings/ are useful to get a random string)
 1. in that bucket, make a directory, e.g. ``rsd-backups``
 1. The backup service contains a program
 ([Xenon](https://github.com/xenon-middleware/xenon)) that can copy to a range of
-storage providers. We use it to make backups of the MongoDB database every day,
-which we store on Amazon's S3. For this, we configured the environmental
-variable ``BACKUP_CMD`` as follows (see explanation below):
+storage providers. You can use it to make backups of the MongoDB database every day,
+and store the backups on Amazon's S3. For this, configure the environmental
+variable ``BACKUP_CMD`` as follows (naturally, you'll need to use a different
+location, user, and password; see explanation below):
 
     ```
     BACKUP_CMD='xenon filesystem s3 \
@@ -537,23 +568,36 @@ variable ``BACKUP_CMD`` as follows (see explanation below):
     upload rsd-backup.tar.gz /rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz'
     ```
 
-    The bucket name is ``nyor-yiwy-fepm-dind``. It is physically located in zone ``us-west-2``.
-
-    We access the bucket using a limited-privileges IAM user, for whom we 
-    created an access key (it has been deactivated since)
-    
-    Access key ID is ``AKIAJ52LWSUUKATRQZ2A``
-    
-    Secret access key is ``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``
-
-    ``BACKUP_DATE`` is set by the backup script (``/backup/backup.sh``)
-
-    ``rsd-backup.tar.gz`` is the name of the backup archive as it is called
-    inside the container.
-
-    ``/rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside
+    - The bucket name is ``nyor-yiwy-fepm-dind``. It is physically located in
+    zone ``us-west-2``.
+    - We access the bucket as a limited-privileges IAM user, for whom we
+    created an access key (it has been deactivated since). The Access key ID is
+    ``AKIAJ52LWSUUKATRQZ2A``, and its corresponding Secret access key is
+    ``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``.
+    - The variable ``BACKUP_DATE`` is set by the backup script (see
+    [``/backup/backup.sh``](/backup/backup.sh)); no need to change this for your application.
+    - ``rsd-backup.tar.gz`` is the name of the backup archive as it is called
+    inside the container; no need to change this for your application.
+    - ``/rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside
     the bucket. It includes the date to avoid overwriting previously existing
-    archives.
+    archives; no need to change this for your application.
+1. Test the setup by stopping the Research Software Directory on Amazon, by
+
+    ```
+    ssh into the remote machine
+    cd rsd
+    docker-compose -p rsd stop
+    # update BACKUP_CMD by editing the rsd-secrets.env file
+    source rsd-secrets.env
+    docker-compose -p rsd up
+    ```
+    Wait until the Research Software Directory is up and running again, then open a second terminal and
+    ```
+    ssh into the remote machine
+    cd rsd
+    docker-compose -p rsd exec backup /bin/sh
+    /app # /bin/sh backup.sh
+    ```
 
 # Documentation for maintainers
 
