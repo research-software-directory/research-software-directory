@@ -387,31 +387,63 @@ have to use root credentials when we don't have to; [jump to the IAM section](/R
 In the ``All Services`` overview, click ``EC2`` or use this link
 https://console.aws.amazon.com/ec2.
 
-1. go to machine types, select ``t2.small``. dynamic, pay as you go contract.
-1. select some ubuntu flavor OS
-1. bring the instance up
-1. make a note of your instance's public IP
-1. set access to the instance over SSH using IP range based on your current IP
-plus a ``/24`` mask
-1. acquire ssh keys somehow
-1. check permissions on the keyfile
-1. on your own machine use a terminal to log in to your instance
+<!-- TODO how to configure default zone -->
+
+1. Click the blue ``Launch instance`` button
+1. Scroll down to where it says ``Ubuntu Server 18.04 LTS``, click ``Select``
+1. Choose instance type ``t2.small``
+1. Proceed in the wizard by clicking ``Next`` until you get to ``Configure
+Security Group``. It should already have one rule listed. However, its security
+settings should be a bit more secure, because currently it allows SSH
+connections from any IP. Click the ``Source`` dropdown button, select ``My IP``.
+1. Now click the blue ``Review and Launch`` button in the lower right corner
+1. In the ``Review`` screen,  click the blue ``Launch`` button in the lower
+right corner to bring the instance up
+1. In the ``Keypair`` popup, select ``Create a new key pair``, try to give it a
+meaningful name, e.g. ``rsd-instance-on-aws`` or something
+1. Click ``Download Key Pair``, save the ``*.pem`` file in ``~/.ssh`` on your
+local machine, then click ``Launch Instances`` (it takes a moment to
+initialize).
+1. On your local machine, open a terminal and go to ``~/.ssh``. Change the
+permissions of the key file to octal 400 (readable only by user):
+
+    ```
+    chmod 400 <the keyfile>
+    ```
+1. Verify that the ``.ssh`` directory itself has octal permission 700 (readable,
+writable, and executable by user only).
+1. Go back to Amazon, click ``View instances``
+1. Make a note of your instance's public IPv4, e.g. ``3.92.182.176``
+1. On your own machine use a terminal to log in to your instance
 1. ``ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>``
-1. install ``docker``, ``docker-compose``; add user to the group ``docker``
-1. ``cd ~ && mkdir rsd && cd rsd``
-1. the machine should have ``git`` installed, use it to ``git clone`` your
-customized rsd instance into the current directory as follows: ``git clone
-https://github.com/<your-github-organization>/research-software-directory.git .``
-(Note the dot at the end)
-1. open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
+1. Once logged in to the remote machine, install ``docker``, and
+``docker-compose``; add user to the group ``docker``, same as before (see
+section _Documentation for developers_
+[above](/README.md#documentation-for-developers).
+1. Make a new directory and change into it: ``cd ~ && mkdir rsd && cd rsd``
+1. The machine should have ``git`` installed, use it to ``git clone`` your
+customized Research Software Directory instance into the current directory as
+follows:
+
+    ```
+    git clone https://github.com/<your-github-organization>/research-software-directory.git .
+    ```
+    (Note the dot at the end)
+
+1. Open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
 the Amazon machine as follows:
     
     ```bash
+    cd <where rsd-secrets.env is>
     scp -i path-to-the-keyfile ./rsd-secrets.env \
     ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
     ```
-1. make a second key pair ``AUTH_GITHUB_CLIENT_ID`` and
-``AUTH_GITHUB_CLIENT_SECRET``, update the Amazon copy of ``rsd-secrets.env``
+1. Follow the instructions
+[above](/README.md#auth_github_client_id-and-auth_github_client_secret) to make
+a second key pair ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``.
+However, let this one's ``Authorization callback url`` be ``https://`` plus your
+instance's domain name plus ``/auth/get_jwt``. Update the Amazon copy of
+``rsd-secrets.env`` according to the new client ID and secret.
 1. Start the Research Software Directory instance with:
 
     ```bash
@@ -450,6 +482,9 @@ associated with your institute's domain.
 ``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
 well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
 have).
+1. Finally, revisit your OAuth app here https://github.com/settings/developers,
+replace the Amazon IP address with in the ``Authorization callback url`` with
+your freshly minted domain name.
 
 ### Configuring IAM
 
@@ -482,9 +517,11 @@ backup mechanism.
 
 ### Configuring S3
 
-In the ``All Services`` overview, click ``S3`` or use this link https://console.aws.amazon.com/s3.
+In the ``All Services`` overview, click ``S3`` or use this link
+https://console.aws.amazon.com/s3.
 
-1. create a bucket with a random name (bucket names must be globally unique; websites like https://www.random.org/strings/ are useful to get a random string)
+1. create a bucket with a random name (bucket names must be globally unique;
+websites like https://www.random.org/strings/ are useful to get a random string)
 1. in that bucket, make a directory, e.g. ``rsd-backups``
 1. The backup service contains a program
 ([Xenon](https://github.com/xenon-middleware/xenon)) that can copy to a range of
@@ -517,10 +554,6 @@ variable ``BACKUP_CMD`` as follows (see explanation below):
     ``/rsd-backups/rsd-backup-$BACKUP_DATE.tar.gz`` is the path inside
     the bucket. It includes the date to avoid overwriting previously existing
     archives.
-
-## Making your instance part of your domain
-
-TODO
 
 # Documentation for maintainers
 
