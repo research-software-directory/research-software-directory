@@ -197,7 +197,7 @@
     "mention": {
       "name": "mention",
       "icon": "book",
-      "itemLabelTemplate": "{{ title }}",
+      "itemLabelTemplate": "{{ title }} ({{ date }})",
       "readonly": true,
       "properties": {
         "title": {

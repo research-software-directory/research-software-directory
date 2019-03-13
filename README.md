@@ -267,7 +267,6 @@ Open a web browser to verify that everything works as it should.
 
 ## Customize your instance of the Research Software Directory
 
-### General workflow when making changes
 
 Let's say you followed the steps above, and have a running instance of the
 Research Software Directory. Now it is time to start customizing your Research
@@ -519,6 +518,10 @@ variable ``BACKUP_CMD`` as follows (see explanation below):
     the bucket. It includes the date to avoid overwriting previously existing
     archives.
 
+## Making your instance part of your domain
+
+TODO
+
 # Documentation for maintainers
 
 ## Visualizing ``docker-compose.yml``
@@ -559,5 +562,31 @@ For example,
 1. Follow the notes from the ['For developers'](#documentation-for-developers) section above, and verify that it all works as it should.
 1. Use GitHub's ``Draft a new release`` button [here](https://github.com/research-software-directory/research-software-directory/releases) to make a release.
 
+## Pulling in changes from upstream using a three-way merge
 
+Set ``UPSTREAM`` and ``DOWNSTREAM`` to the different sources you want to
+three-way merge between, e.g.
 
+```bash
+UPSTREAM=https://github.com/research-software-directory/research-software-directory.git
+DOWNSTREAM=https://github.com/process-project/research-software-directory.git
+```
+
+Then:
+
+```bash
+cd $(mktemp -d)
+mkdir left middle right
+cd left && git clone $UPSTREAM . && cd -
+cd middle && git clone $DOWNSTREAM . && git branch develop && git checkout develop && cd -
+cd right && git clone $DOWNSTREAM . && cd -
+meld left middle right &
+```
+
+You should only make changes to the ``middle`` one. When you're done making your changes,
+
+```bash
+git add <the files>
+git commit
+git push origin develop
+```

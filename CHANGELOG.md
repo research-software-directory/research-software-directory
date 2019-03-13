@@ -14,6 +14,7 @@ Having a monolithic repo also means that it is easier to see diffs between an
 descendants. Finally, archiving of the software via Zenodo works better for a
 monorepo than for a repo with multiple submodules.
 - bugfixes
+- added a lot of documentation
 
 # 1.0.0
 
