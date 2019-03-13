@@ -29,7 +29,8 @@
                                 }
                             }
                         },
-                        "type": "array"
+                        "type": "array",
+                        "uniqueItems": true
                     },
                     "foreignKey": {
                         "$ref": "definitions.json/key/person"
@@ -47,7 +48,8 @@
                 "type": "object"
             },
             "minItems": 1,
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
         },
         "createdAt": {
             "format": "date-time",
@@ -403,7 +405,8 @@
                 "type": "string"
             },
             "minItems": 1,
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
         },
         "primaryKey": {
             "$ref": "definitions.json/key/software"
@@ -441,7 +444,8 @@
                 "type": "string"
             },
             "minItems": 1,
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
         },
         "readMore": {
             "minLength": 200,
@@ -460,7 +464,8 @@
                         },
                         "type": "object"
                     },
-                    "type": "array"
+                    "type": "array",
+                    "uniqueItems": true
                 },
                 "organizations": {
                     "items": {
@@ -472,7 +477,8 @@
                         },
                         "type": "object"
                     },
-                    "type": "array"
+                    "type": "array",
+                    "uniqueItems": true
                 },
                 "projects": {
                     "items": {
@@ -484,7 +490,8 @@
                         },
                         "type": "object"
                     },
-                    "type": "array"
+                    "type": "array",
+                    "uniqueItems": true
                 },
                 "software": {
                     "items": {
@@ -496,7 +503,8 @@
                         },
                         "type": "object"
                     },
-                    "type": "array"
+                    "type": "array",
+                    "uniqueItems": true
                 }
             },
             "required": [
@@ -511,11 +519,12 @@
             "additionalProperties": false,
             "properties": {
                 "github": {
-                    "type": "array",
                     "items": {
                         "format": "uri",
                         "type": "string"
-                    }
+                    },
+                    "type": "array",
+                    "uniqueItems": true
                 }
             },
             "type": "object"
@@ -553,7 +562,8 @@
                 ],
                 "type": "string"
             },
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
         },
         "testimonials": {
             "items": {
@@ -582,7 +592,8 @@
                 ],
                 "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "uniqueItems": true
         },
         "updatedAt": {
             "format": "date-time",

@@ -92,12 +92,8 @@ export default {
         return { name: key, value: data[key] };
       });
 
-      var text = "";
-
       var width = 400;
       var height = 430;
-      var thickness = 40;
-      var duration = 750;
       var padding = 10;
       var opacity = 0.8;
       var opacityHover = 1;
