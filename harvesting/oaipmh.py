@@ -39,10 +39,10 @@ def list_records():
 
     n_conceptdois = len(conceptdois)
 
-    oaipmh_cache_dir = os.path.join('/', 'oaipmh-cache', 'datacite4')
+    oaipmh_cache_dir = os.path.join(os.getcwd(), 'oaipmh-cache', 'datacite4')
 
     if not os.path.isdir(oaipmh_cache_dir):
-        os.mkdir(oaipmh_cache_dir)
+        os.mkdirs(oaipmh_cache_dir)
 
     for i_conceptdoi, conceptdoi in enumerate(conceptdois):
 
