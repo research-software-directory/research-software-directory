@@ -70,12 +70,21 @@ def get_blog_fields(zotero_item):
         return None, None
 
 
-def get_mentions():
+def get_mentions(since_version=None):
     client = zotero.Zotero(os.environ.get('ZOTERO_LIBRARY'), 'group', os.environ.get('ZOTERO_API_KEY'))
 
-    items = (client.everything(client.items(since=get_last_version())))
+    their_last_version = client.last_modified_version()
+    our_last_version = get_last_version()
+    logger.log(logging.INFO, ('Database collection \'mention\' is currently at version %d; Zotero library %s is cur' +
+               'rently at version %d.') % (our_last_version, os.environ.get('ZOTERO_LIBRARY'), their_last_version))
+    if since_version is None:
+        since_version = our_last_version
 
-    logger.log(logging.INFO, str(len(items)) + ' new/updated zotero items')
+    items = (client.everything(client.items(since=since_version)))
+
+    logger.log(logging.INFO, 'Found %d new or updated items in Zotero library %s since version %d.' % (len(items),
+               os.environ.get('ZOTERO_LIBRARY'),
+               since_version))
 
     items_to_save = []
 
