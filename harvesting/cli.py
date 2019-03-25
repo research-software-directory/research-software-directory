@@ -54,9 +54,10 @@ def harvest_commits():
 
 @harvest_group.command('mentions')
 @click.option('--since-version', 'since_version', type=int)
-def harvest_mentions(since_version=None):
+@click.option('--keys', 'keys', type=str)
+def harvest_mentions(since_version=None, keys=None):
     """Harvest mentions from Zotero"""
-    get_mentions(since_version=since_version)
+    get_mentions(since_version=since_version, keys=keys)
 
 
 @harvest_group.command('projects')
