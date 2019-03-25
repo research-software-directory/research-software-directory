@@ -12,6 +12,7 @@ db = pymongo.MongoClient(host=os.environ.get('DATABASE_HOST'),
 
 logger = logging.getLogger(__name__)
 
+
 # Replace foreign keys in resource (modifies resource).
 def replace_foreign_keys(resource):
     if isinstance(resource, dict):
