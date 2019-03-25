@@ -104,7 +104,7 @@ services:
       - ZOTERO_API_KEY
       - ZOTERO_LIBRARY
     volumes:
-      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
+      - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
