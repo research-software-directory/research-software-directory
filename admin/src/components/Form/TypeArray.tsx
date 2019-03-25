@@ -82,7 +82,7 @@ export default class TypeArray extends React.Component<
         <Contents>
           {!this.state.collapsed &&
             value.map((val: any, index: number) => (
-              <ArrayItem key={value.length + '_' + index}>
+              <ArrayItem key={value.length + "_" + index}>
                 <ItemLeft>
                   <DeleteButton
                     secondary={true}
