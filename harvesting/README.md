@@ -71,6 +71,9 @@ The mentions can be fetched from Zotero using
 
 ```bash
 python app.py harvest mentions
+python app.py harvest mentions --help
+python app.py harvest mentions --since-version VERSION
+python app.py harvest mentions --keys STRING
 ```
 
 The Github commits can be fetched using
@@ -89,6 +92,12 @@ The releases of each software can be fetched using
 
 ```bash
 python app.py harvest citations
+```
+
+The metadata of each software can be fetched using
+
+```bash
+python app.py harvest metadata
 ```
 
 If you want to fetch data from all sources, use:
