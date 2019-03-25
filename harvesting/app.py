@@ -53,7 +53,7 @@ def harvest_commits():
     get_commits()
 
 
-@harvest_group.command('mentions', help='Harvest mentions from Zotero library ' + os.environ.get('ZOTERO_LIBRARY', 'not specified'))
+@harvest_group.command('mentions', help='Harvest mentions from Zotero library ' + os.environ.get('ZOTERO_LIBRARY', '<not specified>'))
 @click.option('--since-version', 'since_version', type=int, help='Retrieve Zotero items starting from this version regardless of what the local latest version is. For example, \'--since-version 4835\'.')
 @click.option('--keys', 'keys', type=str, help='Retrieve Zotero items matching the supplied comma-separated string. For example, \'--keys DQYQKKZ4,GZJ5CEKK\'')
 def harvest_mentions(since_version=None, keys=None):
@@ -74,7 +74,7 @@ def harvest_citations():
 
 @harvest_group.command('metadata')
 def harvest_metadata():
-    """harvest metadata"""
+    """Harvest metadata"""
     list_records()
 
 
