@@ -14,6 +14,7 @@ def is_really_error(error):
         r'An “img” element must have an “alt” attribute, except under certain conditions.*',
         r'Attribute “.*?” not allowed.*',
         r'Element “li” not allowed as child of element “.*?” in this context.*',
+        r'Element “a” is missing required attribute “href”.'
     ]
 
     for regex in w3c_regex_whitelist:
