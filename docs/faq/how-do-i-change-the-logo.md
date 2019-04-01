@@ -78,6 +78,4 @@ pysassc --style=compressed --sourcemap style/rsd.scss static/style/rsd.scss.css
 
 Afterwards, your new ``img`` style should be included in ``static/style/rsd.scss.css``.
 
-Refer to the [general workflow when making changes](../README.md#general-workflow-when-making-changes) to update the Docker
-container with the new content.
-
+Refer to the [general workflow when making changes](/README.md#general-workflow-when-making-changes) to update the Docker container with the new content.
