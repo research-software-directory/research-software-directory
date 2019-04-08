@@ -28,25 +28,19 @@
                 <div class="container">
                     
                     <div id="header_logo">
-                        <a href="/">
+                        <a href="https://www.esciencecenter.nl">
                             {% with position="header" %}
                             {% include 'logo.html' %}
                             {% endwith %}
-
-                            {% block rsd_home %}
-                            <div id="header_text">
-                                research software directory
-                            </div>
-                            {% endblock %}
                         </a>
                     </div>
 
                     <div id="header_links">
                         {% block find_software %}
-                        <a href="/">Find software</a>
+                        <a href="/">Search the directory</a>
                         {% endblock %}
                         {% block about_rsd %}
-                        <a href="/about">About the directory</a>
+                        <a href="/about">About</a>
                         {% endblock %}
                     </div>
                 </div>
