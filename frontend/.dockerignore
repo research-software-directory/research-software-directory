@@ -1,1 +1,4 @@
 node_modules
+.git
+static/style/rsd.scss.css
+static/style/rsd.scss.css.map
