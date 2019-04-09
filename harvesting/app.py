@@ -76,7 +76,11 @@ def harvest_citations():
 @click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
 def harvest_metadata(dois=None):
     """Harvest metadata"""
-    list_records(dois.split(','))
+    if dois is None:
+        pass
+    else:
+        dois = dois.split(',')
+    list_records(dois)
 
 
 @harvest_group.command('all')
