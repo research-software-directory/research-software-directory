@@ -98,6 +98,9 @@ The metadata of each software can be fetched using
 
 ```bash
 python app.py harvest metadata
+python app.py harvest metadata --help
+python app.py harvest metadata --dois STRING
+
 ```
 
 If you want to fetch data from all sources, use:
