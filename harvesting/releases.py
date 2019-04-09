@@ -66,7 +66,8 @@ class ReleaseScraper:
             self.message = "doi should not be an empty string."
             return
 
-        if requests.get("https://doi.org/%s" % doi).status_code == 200:
+        url = "https://doi.org/{0}".format(doi)
+        if requests.get(url).status_code == requests.codes.ok:
             self.is_citable = True
             self.doi = doi
         else:
