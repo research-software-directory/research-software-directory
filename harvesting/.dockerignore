@@ -1,0 +1,11 @@
+__pycache__
+oaipmh-cache
+.gitignore
+
+# virtual environment files
+venv3
+venv36
+venv37
+
+# pycharm editor files
+.idea
