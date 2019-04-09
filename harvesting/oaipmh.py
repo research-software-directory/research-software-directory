@@ -39,7 +39,7 @@ def list_records(dois):
         conceptdois = []
         for doi in dois:
             release = ReleaseScraper(doi)
-            if release.message == 'OK':
+            if release.doi is not None and release.is_zenodo_doi() and release.is_concept_doi():
                 conceptdois.append(doi)
                 logger.info('{0}: {1}'.format(doi, 'doi is a Zenodo conceptdoi'))
             else:
@@ -60,7 +60,7 @@ def list_records(dois):
     for i_conceptdoi, conceptdoi in enumerate(conceptdois):
 
         if conceptdoi is None:
-            logger.warn(" %d/%d: conceptDOI is None" % (i_conceptdoi + 1, n_conceptdois))
+            logger.warning(" %d/%d: conceptDOI is None" % (i_conceptdoi + 1, n_conceptdois))
             continue
 
         try:

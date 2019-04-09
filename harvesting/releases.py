@@ -52,6 +52,7 @@ class ReleaseScraper:
         self.is_citable = False
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
         self.message = None
+        self.doi = None
 
         if doi is None:
             self.message = "record has no doi value of any kind."
