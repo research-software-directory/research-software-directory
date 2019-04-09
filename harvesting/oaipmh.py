@@ -3,11 +3,12 @@ import os
 import logging
 from datetime import datetime
 import requests
+from releases import ReleaseScraper
 
 logger = logging.getLogger(__name__)
 
 
-def list_records():
+def list_records(dois):
 
     def build_oaipmh_elem():
 
@@ -30,9 +31,19 @@ def list_records():
 
     logger.info("Still need to enrich and correct the metadata. Currectly serving Zenodo's metadata as-is.")
 
-    # get the conceptdois from /api/software
-    response = requests.get(os.environ.get('BACKEND_URL') + '/software')
-    conceptdois = [software["conceptDOI"] for software in response.json() if software["isPublished"]]
+    if dois is None:
+        # get the conceptdois from /api/software
+        response = requests.get(os.environ.get('BACKEND_URL') + '/software')
+        conceptdois = [software["conceptDOI"] for software in response.json() if software["isPublished"]]
+    else:
+        conceptdois = []
+        for doi in dois:
+            release = ReleaseScraper(doi)
+            if release.message == 'OK':
+                conceptdois.append(doi)
+                logger.info('{0}: {1}'.format(doi, 'doi is a Zenodo conceptdoi'))
+            else:
+                logger.error('{0}: {1}'.format(doi, release.message))
 
     # for each conceptdoi, get the datacite4 using Zenodo's OAI-PMH GetRecord
     oaipmh_elem = build_oaipmh_elem()
@@ -53,7 +64,7 @@ def list_records():
             continue
 
         try:
-            logger.info(" %d/%d: processing %s" % (i_conceptdoi + 1, n_conceptdois, conceptdoi))
+            logger.info(" %d/%d: retrieving datacite4 metadata for %s" % (i_conceptdoi + 1, n_conceptdois, conceptdoi))
 
             response = requests.get('https://doi.org/{conceptdoi}'.format(conceptdoi=conceptdoi))
             if response.status_code != requests.codes.ok:
