@@ -66,16 +66,19 @@ def harvest_projects():
     get_projects()
 
 
-@harvest_group.command('citations')
-def harvest_citations():
-    """Harvest citation metadata using Zenodo.org and GitHub.com APIs"""
-    get_citations(db)
+@harvest_group.command('citations', help='Harvest citation metadata using Zenodo, GitHub, and CITATION.cff files')
+@click.option('--dois', 'dois', type=str, help='Harvest only citation metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
+def harvest_citations(dois=None):
+    if dois is None:
+        pass
+    else:
+        dois = dois.split(',')
+    get_citations(db, dois)
 
 
 @harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo')
 @click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
 def harvest_metadata(dois=None):
-    """Harvest metadata"""
     if dois is None:
         pass
     else:

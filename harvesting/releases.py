@@ -1,6 +1,7 @@
 import logging
 from datetime import datetime
 import re
+import os
 
 import requests
 from cffconvert import Citation
@@ -51,6 +52,7 @@ class ReleaseScraper:
         self.releases = list()
         self.is_citable = False
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
+        self.title = None
         self.message = None
         self.doi = None
 
@@ -152,6 +154,7 @@ class ReleaseScraper:
         r = requests.get(url)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
+        self.title = self.zenodo_data["versioned_dois"]["hits"]["hits"][-1]["metadata"]["title"]
         return self
 
     def generate_files(self):
@@ -187,7 +190,8 @@ class ReleaseScraper:
         return self
 
     def is_concept_doi(self):
-        return "conceptdoi" in self.zenodo_data["conceptdoi"] and self.doi == self.zenodo_data["conceptdoi"]["conceptdoi"]
+        return "conceptdoi" in self.zenodo_data["conceptdoi"] and \
+               self.doi == self.zenodo_data["conceptdoi"]["conceptdoi"]
 
     def is_zenodo_doi(self):
         return self.doi.startswith("10.5281/zenodo.")
@@ -197,22 +201,31 @@ class ReleaseScraper:
         return self
 
 
-def get_citations(db):
-    db.release.create_index([("conceptDOI", 1)])
-    count = db.software.count()
-    software_items = db.software.find({}, {"conceptDOI": 1, "brandName": 1})
-    for item_index, software_item in enumerate(software_items):
-        conceptdoi = software_item["conceptDOI"]
+def get_citations(db, dois):
 
-        scraper = ReleaseScraper(conceptdoi)
+    if dois is None:
+        # get the conceptdois from /api/software
+        response = requests.get(os.environ.get('BACKEND_URL') + '/software')
+        dois = [software["conceptDOI"] for software in response.json() if software["isPublished"]]
+
+    n_dois = len(dois)
+    db.release.create_index([("conceptDOI", 1)])
+    dois.sort()
+    for i_doi, doi in enumerate(dois):
+        release = ReleaseScraper(doi)
+        if release.doi is not None and release.is_zenodo_doi() and release.is_concept_doi():
+            pass
+        else:
+            logger.error('{0}/{1}: {2} {3}'.format(i_doi + 1, n_dois, doi, release.message))
+            continue
+
         document = {
-            "_id": conceptdoi,
-            "isCitable": scraper.is_citable,
-            "conceptDOI": conceptdoi,
-            "latestCodemeta": scraper.latest_codemeta,
-            "releases": scraper.releases,
+            "_id": doi,
+            "isCitable": release.is_citable,
+            "conceptDOI": doi,
+            "latestCodemeta": release.latest_codemeta,
+            "releases": release.releases,
             "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
         }
-        logger.info("{0}/{1} \"{2}\": {3} {4}".format(item_index+1, count,
-                                                      software_item["brandName"], conceptdoi, scraper.message))
+        logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_doi+1, n_dois, doi, release.title, release.message))
         db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
