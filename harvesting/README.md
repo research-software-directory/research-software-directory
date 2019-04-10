@@ -92,6 +92,8 @@ The releases of each software can be fetched using
 
 ```bash
 python app.py harvest citations
+python app.py harvest citations --help
+python app.py harvest citations --dois STRING
 ```
 
 The metadata of each software can be fetched using
