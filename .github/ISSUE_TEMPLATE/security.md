@@ -1,5 +1,5 @@
 ---
-name: Custom issue template
+name: Security issue template
 about: I found a security issue!
 title: ''
 labels: ''
