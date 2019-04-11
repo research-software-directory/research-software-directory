@@ -1,8 +1,8 @@
 ---
 name: Bug report
-about: "Something doesn't work like I expected."
+about: Something doesn't work like I expected.
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---
