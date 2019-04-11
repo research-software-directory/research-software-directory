@@ -12,7 +12,7 @@ However, when participating, we ask that you adhere to some **ground rules**.
 
 Your contribution to the Research Software Directory is valued, and it should be an enjoyable experience.
 To ensure this, there is the Research Software Directory 
-[Code of Conduct](/CODE_OF_CONDUCT.md), which you are required to follow.
+[Code of Conduct](/.github/CODE_OF_CONDUCT.md), which you are required to follow.
 
 If you have never contributed to an open source project, you may find this tutorial helpful:
 [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
