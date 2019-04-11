@@ -1,11 +1,10 @@
 ---
-name: Security issue template
-about: I found a security issue!
+name: I found a security issue!
+about: ''
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-your issue is a security vulnerability, please send an email to
-rsd&nbsp;at&nbsp;esciencecenter dot nl instead.
+Please do not proceed to file this issue publicly; instead send an email to rsd&nbsp;at&nbsp;esciencecenter dot nl.
