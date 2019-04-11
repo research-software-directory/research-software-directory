@@ -7,4 +7,4 @@ assignees: ''
 
 ---
 
-Please do not proceed to file this issue publicly; instead send an email to rsd at esciencecenter dot nl.
+Please do not proceed to file this issue publicly; instead send an email to ``rsd at esciencecenter dot nl``.
