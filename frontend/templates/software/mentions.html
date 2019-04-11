@@ -8,8 +8,8 @@
             </div>
 
             <div class="col-3-4">
-                {% set blog = template_data.related.mentions | map(attribute="foreignKey") | selectattr("isCorporateBlog") | first %}
-                {% if blog %}
+                {% set blogs = template_data.related.mentions | map(attribute="foreignKey") | selectattr("isCorporateBlog") %}
+                {% for blog in (blogs | sort(true, attribute="date")) %}
                 <a href="{{blog.url}}" target="_blank" class="mention_blog-post row">
                     <div class="image-container">
                         <img src="{{ blog.image }}">
@@ -20,10 +20,10 @@
                         <p class="author">By {{ blog.author }}</p>
                         <p class="date">{{ blog.date | human_date_filter }}</p>
 
-                        <div class="visit-blog text-underline">Visit our blog</div>
+                        <div class="visit-blog text-underline">Read the blog</div>
                     </div>
                 </a>
-                {% endif %}
+                {% endfor %}
 
                 <div class="divider"></div>
                 {% for type, items in template_data.related.mentions | map(attribute="foreignKey") | selectattr("isCorporateBlog", "ne", True) | groupby('type') %}
