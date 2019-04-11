@@ -8,7 +8,7 @@ services:
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
     container_name: rsd-admin
     volumes:
-      - rsd_static_admin:/build
+      - static_admin:/build
 
   auth:
     build:
@@ -40,7 +40,7 @@ services:
       # user needs to assign values to the following environment variables:
       - DOMAIN
       - JWT_SECRET
-      
+
   backup:
     build:
       context: ./backup
@@ -74,7 +74,7 @@ services:
       # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
     volumes:
-      - rsd_static_frontend:/shared_static
+      - static_frontend:/shared_static
       - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
 
   graphs:
@@ -83,7 +83,7 @@ services:
     container_name: rsd-graphs
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     volumes:
-      - rsd_static_graphs:/build
+      - static_graphs:/build
 
   harvesting:
     build:
@@ -104,7 +104,7 @@ services:
       - ZOTERO_API_KEY
       - ZOTERO_LIBRARY
     volumes:
-      - ./docker-volumes/oaipmh-cache:/oaipmh-cache
+      - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
 
   nginx_ssl:
     container_name: rsd-nginx-ssl
@@ -137,11 +137,11 @@ services:
       - graphs
     restart: unless-stopped
     volumes:
-      - rsd_static_admin:/static_admin:ro
-      - rsd_static_frontend:/static_frontend:ro
-      - rsd_static_graphs:/static_graphs:ro
+      - static_admin:/static_admin:ro
+      - static_frontend:/static_frontend:ro
+      - static_graphs:/static_graphs:ro
 
 volumes:
-  rsd_static_admin:
-  rsd_static_frontend:
-  rsd_static_graphs:
+  static_admin:
+  static_frontend:
+  static_graphs:

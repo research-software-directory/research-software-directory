@@ -23,5 +23,14 @@
     list-style: decimal inside;
   }
 
-  
+  a{
+      text-decoration: underline;
+      &:visited{
+          color: inherit;
+      }
+      &:hover{
+          color: $primaryColor;
+      }
+  }
+
 }

@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "properties": {
+        "conceptDOI": {
+            "type": "string"
+        },
+        "createdAt": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "isCitable": {
+            "type": "boolean"
+        },
+        "latestCodemeta": {
+            "type": "string"
+        },
+        "primaryKey": {
+            "$ref": "definitions.json/key/release"
+        },
+        "releases": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "citability": {
+                        "enum": [
+                            "doi-only",
+                            "full"
+                        ],
+                        "type": "string"
+                    },
+                    "datePublished": {},
+                    "doi": {},
+                    "files": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "bibtex": {
+                                "type": "string"
+                            },
+                            "cff": {
+                                "type": "string"
+                            },
+                            "codemeta": {
+                                "type": "string"
+                            },
+                            "endnote": {
+                                "type": "string"
+                            },
+                            "ris": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "bibtex",
+                            "cff",
+                            "codemeta",
+                            "endnote",
+                            "ris"
+                        ],
+                        "type": "object"
+                    },
+                    "tag": {
+                        "format": "url",
+                        "type": "string"
+                    },
+                    "url": {
+                        "format": "url",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "citability",
+                    "datePublished",
+                    "doi",
+                    "files",
+                    "tag",
+                    "url"
+                ],
+                "type": "object"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "primaryKey"
+    ],
+    "title": "Release schema"
+}

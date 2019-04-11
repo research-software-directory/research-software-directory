@@ -75,6 +75,7 @@
             "orcid": "0000-0002-2947-9444"
         }
     ],
+    "description": "The Research Software Directory is a content management system for research software. It aims to improve the findability, citability, and reproducibility of the software packages advertised in it, while enabling a qualitative assessment of their impact.",
     "keywords": [
         "Current Research Information Systems",
         "FAIR for software",

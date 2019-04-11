@@ -1,13 +1,13 @@
+import os
 import click
 import logging
 import sys
-
 from util import db_connect
-from cache_software import cache_software
-from github import sync_all as get_commits
 from releases import get_citations
+from github import sync_all as get_commits
 from zotero import get_mentions
 from oaipmh import list_records
+from cache_software import cache_software
 
 
 class MaxLevel(object):
@@ -32,40 +32,70 @@ logger.setLevel(logging.INFO)
 logger.addHandler(stdout_handler)
 logger.addHandler(stderr_handler)
 
-@click.group()
+
+@click.group('cli')
 def cli():
+    """Command line interface to harvest data from various resources and combine the 
+    relevant information into one document."""
     pass
 
-harvest_choices = click.Choice(['commits', 'mentions', 'projects', 'citations', 'metadata', 'all'])
-@cli.command('harvest', help='Specify the type of data to be harvested.')
-@click.argument('type_of_data', type=harvest_choices, required=True)
-def harvest(type_of_data):
-    db = db_connect()
-    if type_of_data == 'commits':
-        get_commits()
-    elif type_of_data == 'mentions':
-        get_mentions()
-    elif type_of_data == 'citations':
-        get_citations(db)
-    elif type_of_data == 'metadata':
-        list_records()
-    elif type_of_data == 'all':
-        get_commits()
-        get_citations(db)
-        get_mentions()
-        list_records()
+
+@cli.group('harvest')
+def harvest_group():
+    """Harvest data from a variety of sources"""
+    pass
+
+
+@harvest_group.command('commits')
+def harvest_commits():
+    """Harvest commit data using GitHub's API"""
+    get_commits()
+
+
+@harvest_group.command('mentions', help='Harvest mentions from Zotero library ' + os.environ.get('ZOTERO_LIBRARY', '<not specified>'))
+@click.option('--since-version', 'since_version', type=int, help='Retrieve Zotero items starting from this version regardless of what the local latest version is. For example, \'--since-version 4835\'.')
+@click.option('--keys', 'keys', type=str, help='Retrieve Zotero items matching the supplied comma-separated string. For example, \'--keys DQYQKKZ4,GZJ5CEKK\'')
+def harvest_mentions(since_version=None, keys=None):
+    get_mentions(since_version=since_version, keys=keys)
+
+
+@harvest_group.command('citations', help='Harvest citation metadata using Zenodo, GitHub, and CITATION.cff files')
+@click.option('--dois', 'dois', type=str, help='Harvest only citation metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
+def harvest_citations(dois=None):
+    if dois is None:
+        pass
     else:
-        raise Exception("I don't know how to harvest '" + harvest + "'.")
+        dois = dois.split(',')
+    get_citations(db, dois)
 
 
-@cli.command('resolve', help='Resolve foreign keys')
+@harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo')
+@click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
+def harvest_metadata(dois=None):
+    if dois is None:
+        pass
+    else:
+        dois = dois.split(',')
+    list_records(dois)
+
+
+@harvest_group.command('all')
+def harvest_all():
+    """Harvest commits, citations, mentions, projects"""
+    get_commits()
+    get_citations(db)
+    get_mentions(since_version=None)
+    get_projects()
+    list_records()
+
+
+@cli.command('resolve')
 def resolve():
-    db = db_connect()
+    """Combine information from different collections
+    into one document by resolving foreign keys"""
     cache_software()
 
-cli = click.CommandCollection(sources=[cli])
 
 if __name__ == '__main__':
+    db = db_connect()
     cli()
-
-

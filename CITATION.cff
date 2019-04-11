@@ -1,5 +1,6 @@
 # YAML 1.2
 --- 
+abstract: "The Research Software Directory is a content management system for research software. It aims to improve the findability, citability, and reproducibility of the software packages advertised in it, while enabling a qualitative assessment of their impact."
 authors: 
   - 
     affiliation: "Netherlands eScience Center"
@@ -80,7 +81,7 @@ authors:
     name-particle: van
     orcid: "https://orcid.org/0000-0002-2947-9444"
 cff-version: "1.0.3"
-date-released: 2018-07-05
+date-released: 2019-03-26
 doi: 10.5281/zenodo.1154130
 keywords: 
   - "Current Research Information Systems"

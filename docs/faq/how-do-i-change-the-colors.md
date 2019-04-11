@@ -44,6 +44,6 @@ Afterwards, your new color should be included in ``static/style/rsd.scss.css``.
 
 Update the line color and marker color to the color you want.
 
-Refer to the [general workflow when making changes](../README.md#general-workflow-when-making-changes) to update the Docker
+Refer to the [general workflow when making changes](/README.md#general-workflow-when-making-changes) to update the Docker
 container with the new content.
 

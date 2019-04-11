@@ -41,14 +41,13 @@ export default class TypeArray extends React.Component<
   };
 
   onDelete = (index: any) => {
-    const valCopy = this.props.value.filter(
-      (_element: any, i: number) => i !== index
-    );
+    const valCopy = [...this.props.value];
+    valCopy.splice(index, 1);
     this.props.onChange(valCopy);
   };
 
   render() {
-    let value = this.props.value;
+    let value: any[] = this.props.value;
     if (!Array.isArray(value)) {
       return null;
     }
@@ -83,7 +82,7 @@ export default class TypeArray extends React.Component<
         <Contents>
           {!this.state.collapsed &&
             value.map((val: any, index: number) => (
-              <ArrayItem key={JSON.stringify(val) || index}>
+              <ArrayItem key={value.length + "_" + index}>
                 <ItemLeft>
                   <DeleteButton
                     secondary={true}
