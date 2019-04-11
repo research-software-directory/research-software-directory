@@ -1,6 +1,6 @@
 ---
 name: I found a security issue!
-about: "There is an issue with the software's security"
+about: There is an issue with the software's security
 title: ''
 labels: ''
 assignees: ''
