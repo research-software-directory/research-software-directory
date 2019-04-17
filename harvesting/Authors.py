@@ -93,15 +93,19 @@ class Authors:
 def get_authors(by_fullname=False, by_orcid=False, db=None, upsert=True):
     authors = Authors()
     if not by_fullname and not by_orcid:
+        by_fullname = True
+    elif by_fullname and by_orcid:
+        raise 'Returning a set of authors by both fullname and orcid is not an option; choose one or the other.'
+
+    if by_fullname:
         authors.get_unique_authors_by_fullname()
-    if by_fullname and not by_orcid:
-        authors.get_unique_authors_by_fullname()
-    if by_orcid and not by_fullname:
+        logger.info('Skipped upserting authors into database (because by_fullname is True)')
+    elif by_orcid:
         authors.get_unique_authors_by_orcid()
         if upsert:
             authors.upsert(db)
-    if by_fullname and by_orcid:
-        raise 'Returning a set of authors by both fullname and orcid is not an option; choose one or the other.'
+        else:
+            logger.info('Skipped upserting authors into database (because upsert is False)')
 
 
 if __name__ == '__main__':
