@@ -105,6 +105,17 @@ python app.py harvest metadata --dois STRING
 
 ```
 
+The list of unique authors can be fetch from the releases collection using:
+
+```bash
+python app.py harvest authors
+python app.py harvest authors --help
+python app.py harvest authors --by-fullname
+python app.py harvest authors --by-orcid
+```
+
+
+
 If you want to fetch data from all sources, use:
 
 ```bash
