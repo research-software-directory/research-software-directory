@@ -87,10 +87,10 @@ def harvest_metadata(dois=None):
     list_records(dois)
 
 
-@harvest_group.command('persons', help='Populate the \'persons\' collection using data from the \'releases\' collection')
+@harvest_group.command('authors', help='Populate the \'authors\' collection using data from the \'releases\' collection')
 @click.option('--by-fullname', 'by_fullname', is_flag=True, help='Return the unique set of full names.')
 @click.option('--by-orcid', 'by_orcid', is_flag=True, help='Return the unique set of orcids.')
-def harvest_persons(by_fullname=False, by_orcid=False):
+def harvest_authors(by_fullname=False, by_orcid=False):
     db = db_connect()
     get_authors(by_fullname=by_fullname, by_orcid=by_orcid, db=db)
 
