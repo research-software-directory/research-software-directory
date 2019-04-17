@@ -12,6 +12,25 @@
         "type": "object"
     },
     "key": {
+        "author": {
+            "additionalProperties": false,
+            "properties": {
+                "collection": {
+                    "enum": [
+                        "author"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "collection",
+                "id"
+            ],
+            "type": "object"
+        },
         "mention": {
             "additionalProperties": false,
             "properties": {

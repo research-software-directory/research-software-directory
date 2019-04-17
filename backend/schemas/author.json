@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "additionalProperties": false,
+    "properties": {
+        "avatar": {
+            "$ref": "definitions.json/blob"
+        },
+        "createdAt": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "createdBy": {
+            "type": "string"
+        },
+        "emailAddress": {
+            "format": "email",
+            "type": "string"
+        },
+        "familyNames": {
+            "minLength": 1,
+            "type": "string"
+        },
+        "fullname": {
+            "minLength": 1,
+            "type": "string"
+        },
+        "givenNames": {
+            "minLength": 1,
+            "type": "string"
+        },
+        "nameParticle": {
+            "minLength": 1,
+            "type": "string"
+        },
+        "nameSuffix": {
+            "minLength": 1,
+            "type": "string"
+        },
+        "orcid": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]{1}$",
+        },
+        "primaryKey": {
+            "$ref": "definitions.json/key/author"
+        },
+        "updatedAt": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "updatedBy": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "createdAt",
+        "orcid",
+        "familyNames",
+        "fullname",
+        "primaryKey",
+        "updatedAt"
+    ],
+    "title": "Author schema"
+}
