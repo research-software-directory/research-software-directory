@@ -73,6 +73,7 @@ def harvest_citations(dois=None):
         pass
     else:
         dois = dois.split(',')
+    db = db_connect()
     get_citations(db, dois)
 
 
@@ -89,11 +90,13 @@ def harvest_metadata(dois=None):
 @harvest_group.command('all')
 def harvest_all():
     """Harvest commits, citations, mentions, projects"""
+    db = db_connect()
+    dois = None
     get_commits()
-    get_citations(db)
+    get_citations(db, dois)
     get_mentions(since_version=None)
     get_projects()
-    list_records()
+    list_records(dois)
 
 
 @cli.command('resolve')
@@ -104,5 +107,4 @@ def resolve():
 
 
 if __name__ == '__main__':
-    db = db_connect()
     cli()
