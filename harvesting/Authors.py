@@ -16,6 +16,8 @@ class Authors:
         self.init()
         self._clean_orcid()
         self._add_fullname()
+        self._whitelist()
+        self._map_keynames()
 
     def __str__(self):
         fullnames = [author['fullname'] for author in self.authors]
@@ -59,6 +61,29 @@ class Authors:
                     author['orcid'] = author['orcid'][18:]
         return self
 
+    def _whitelist(self):
+        logger.info('Applying whitelist of author properties...')
+        include_keys = ['given-names',
+                        'name-particle',
+                        'family-names',
+                        'name-suffix',
+                        'orcid',
+                        'fullname']
+        for author in self.authors:
+            author = {include_key: author[include_key] for include_key in include_keys if include_key in author.keys()}
+        return self
+
+    def _map_keynames(self):
+        keymaps = [{'from': 'given-names',   'to': 'givenNames'},
+                   {'from': 'name-particle', 'to': 'nameParticle'},
+                   {'from': 'family-names',  'to': 'familyNames'},
+                   {'from': 'name-suffix',   'to': 'nameSuffix'}]
+        for author in self.authors:
+            for keymap in keymaps:
+                if keymap['from'] in author.keys():
+                    author[keymap['to']] = author.pop(keymap['from'])
+        return self
+
     def get_unique_authors_by_fullname(self):
         logger.info('Calculating the list of unique authors by fullname...')
         d = dict()
@@ -84,7 +109,11 @@ class Authors:
             document = author
             document.update({
                 "_id": author['orcid'],
-                "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+                "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+                "primaryKey": {
+                    "id": author["orcid"],
+                    "collection": "author"
+                }
             })
             logger.info('{0}/{1} orcid={2} fullname={3}'.format(i_author+1, n_authors, author['orcid'], author['fullname']))
             db.author.find_one_and_update({"_id": document["orcid"]}, {"$set": document}, upsert=True)
