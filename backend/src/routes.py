@@ -252,13 +252,14 @@ def get_routes(db, schemas):
     @jsonify
     def _root():
         """
-        Get all resources as a dict (only if there are less than 1000)
+        Get all resources as a dict, excluding commits and software cache
         :return: All resources
         """
         results = {}
+        BLACKLIST = {'commit', 'software_cache'}
         for resource_type in schemas.keys():
-            resource_cursor = db[resource_type].find()
-            if resource_cursor.count() < 1000:
+            if resource_type not in BLACKLIST:
+                resource_cursor = db[resource_type].find()
                 resources = list(resource_cursor)
                 for resource in resources:
                     if '_id' in resource:
