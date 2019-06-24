@@ -8,7 +8,7 @@ from releases import ReleaseScraper
 logger = logging.getLogger(__name__)
 
 
-def list_records(dois):
+def list_records(dois=None):
 
     def build_oaipmh_elem():
 

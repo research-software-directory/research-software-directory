@@ -201,7 +201,7 @@ class ReleaseScraper:
         return self
 
 
-def get_citations(db, dois):
+def get_citations(db, dois=None):
 
     if dois is None:
         # get the conceptdois from /api/software
