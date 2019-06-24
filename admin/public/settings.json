@@ -16,26 +16,32 @@
           "sortIndex": 3
         },
         "familyNames": {
+          "help": "Harvested from CITATION.cff files",
           "readonly": true,
           "sortIndex": 40
         },
         "fullname": {
+          "help": "Constructed from data harvested from CITATION.cff files",
           "readonly": true,
           "sortIndex": 10
         },
         "givenNames": {
+          "help": "Harvested from CITATION.cff files",
           "readonly": true,
           "sortIndex": 20
         },
         "nameParticle": {
+          "help": "Harvested from CITATION.cff files",
           "readonly": true,
           "sortIndex": 30
         },
         "nameSuffix": {
+          "help": "Harvested from CITATION.cff files",
           "readonly": true,
           "sortIndex": 50
         },
         "orcid": {
+          "help": "Harvested from CITATION.cff files",
           "readonly": true,
           "sortIndex": 60
         },
