@@ -2,6 +2,57 @@
   "backendUrl": "/api",
   "authUrl": "/auth",
   "resources": {
+    "author": {
+      "name": "Author",
+      "icon": "user",
+      "itemLabelTemplate": "{{ fullname }} {{ orcid }}",
+      "properties": {
+        "createdAt": {
+          "readonly": true,
+          "sortIndex": 2
+        },
+        "createdBy": {
+          "readonly": true,
+          "sortIndex": 3
+        },
+        "familyNames": {
+          "readonly": true,
+          "sortIndex": 40
+        },
+        "fullname": {
+          "readonly": true,
+          "sortIndex": 10
+        },
+        "givenNames": {
+          "readonly": true,
+          "sortIndex": 20
+        },
+        "nameParticle": {
+          "readonly": true,
+          "sortIndex": 30
+        },
+        "nameSuffix": {
+          "readonly": true,
+          "sortIndex": 50
+        },
+        "orcid": {
+          "readonly": true,
+          "sortIndex": 60
+        },
+        "primaryKey": {
+          "readonly": true,
+          "sortIndex": 1
+        },
+        "updatedAt": {
+          "readonly": true,
+          "sortIndex": 4
+        },
+        "updatedBy": {
+          "readonly": true,
+          "sortIndex": 5
+        }
+      }
+    },
     "software": {
       "name": "Software",
       "label": "Software",
@@ -16,8 +67,7 @@
           "label": "Bullet list",
           "sortIndex": 100,
           "multiline": true,
-          "help":
-            "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
+          "help": "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
         },
         "citationcff": {
           "label": "citationcff",
@@ -47,8 +97,7 @@
         "conceptDOI": {
           "label": "Concept DOI",
           "sortIndex": 500,
-          "help":
-            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not a URL"
+          "help": "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not a URL"
         },
         "createdAt": {
           "label": "Created at",
@@ -134,8 +183,7 @@
           "label": "Short statement",
           "multiline": true,
           "sortIndex": 50,
-          "help":
-            "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
+          "help": "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
         },
         "slug": {
           "sortIndex": 520,
@@ -174,8 +222,7 @@
     "person": {
       "name": "Person",
       "icon": "user",
-      "itemLabelTemplate":
-        "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
+      "itemLabelTemplate": "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
       "properties": {
         "primaryKey": {
           "readonly": true
