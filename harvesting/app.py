@@ -103,7 +103,7 @@ def harvest_all():
     dois = None
     get_commits()
     get_citations(db, dois)
-    get_authors(by_fullname=True, db=db)
+    get_authors(by_orcid=True, db=db)
     get_mentions(since_version=None)
     get_projects()
     list_records(dois)
