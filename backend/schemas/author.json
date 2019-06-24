@@ -38,8 +38,8 @@
             "type": "string"
         },
         "orcid": {
-            "type": "string",
             "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]{1}$",
+            "type": "string"
         },
         "primaryKey": {
             "$ref": "definitions.json/key/author"
