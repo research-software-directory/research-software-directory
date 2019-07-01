@@ -6,14 +6,12 @@ services:
     build:
       context: ./admin
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
-    container_name: rsd-admin
     volumes:
       - static_admin:/build
 
   auth:
     build:
       context: ./auth-basic
-    container_name: rsd-authentication
     environment:
       # user should not have to change the values of the following environment variables:
       - AUTH_CALLBACK_URL=/admin
@@ -26,7 +24,6 @@ services:
   backend:
     build:
       context: ./backend
-    container_name: rsd-backend
     depends_on:
       - database
     environment:
@@ -43,7 +40,6 @@ services:
   backup:
     build:
       context: ./backup
-    container_name: rsd-backup
     depends_on:
       - database
     environment:
@@ -58,7 +54,6 @@ services:
     build:
       context: ./database
     command: --bind_ip 0.0.0.0
-    container_name: rsd-database
     entrypoint: /mongo.sh
     volumes:
       - ./docker-volumes/db:/data/db
@@ -66,7 +61,6 @@ services:
   frontend:
     build:
       context: ./frontend
-    container_name: rsd-frontend
     depends_on:
       - backend
     environment:
@@ -79,7 +73,6 @@ services:
   graphs:
     build:
       context: ./graphs
-    container_name: rsd-graphs
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     volumes:
       - static_graphs:/build
@@ -87,7 +80,6 @@ services:
   harvesting:
     build:
       context: ./harvesting
-    container_name: rsd-harvesting
     depends_on:
       - backend
       - database
@@ -127,7 +119,6 @@ services:
   reverse-proxy:
     build:
       context: ./reverse-proxy
-    container_name: rsd-reverse-proxy
     depends_on:
       - frontend
       - backend
