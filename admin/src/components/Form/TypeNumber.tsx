@@ -34,7 +34,9 @@ export class TypeNumber extends React.Component<IProps<INumberSchema>> {
             disabled={!!this.props.readonly || !!this.props.settings.readonly}
             size="large"
             defaultValue={this.props.value}
-            onChange={(_: any, elm: any) => this.onChange(elm.value)}
+            onChange={(_: any, elm: any) =>
+              this.onChange(Number.parseFloat(elm.value))
+            }
             error={
               this.props.validationErrors &&
               this.props.validationErrors.length > 0
