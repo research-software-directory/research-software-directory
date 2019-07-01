@@ -127,7 +127,7 @@ services:
       - graphs
     restart: unless-stopped
     ports:
-      - 80:8081
+      - 8081:80
     volumes:
       - static_admin:/static_admin:ro
       - static_frontend:/static_frontend:ro

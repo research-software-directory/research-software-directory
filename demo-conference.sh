@@ -1,6 +1,9 @@
 #!/bin/bash
 # this is not a script, execute manually
-sudo -i
+
+sudo ufw allow OpenSSH 
+sudo ufw enable
+
 
 # install docker
 sudo apt-get update
@@ -24,6 +27,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # install nginx
 sudo apt-get install -y nginx-light
+sudo ufw allow 'Nginx Full'
 
 # install docker composees
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
