@@ -34,9 +34,16 @@ sudo add-apt-repository -y ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install -y certbot python-certbot-nginx
 
-sudo certbot ./certbot-auto certonly --manual \
+sudo certbot run --nginx \
  --preferred-challenges=dns \
  --email rsd@esciencecenter.nl \
  --server https://acme-v02.api.letsencrypt.org/directory \
  --agree-tos \
  -d *.research-software.nl
+
+cd ~
+git clone https://github.com/research-software-directory/research-software-directory.git
+cd research-software-directory
+git checkout conference-demo
+
+
