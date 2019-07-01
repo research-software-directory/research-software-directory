@@ -27,6 +27,7 @@ sudo apt-get install -y nginx-light
 
 # install docker composees
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 # install certbot
 sudo add-apt-repository -y universe
@@ -34,16 +35,21 @@ sudo add-apt-repository -y ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install -y certbot python-certbot-nginx
 
-sudo certbot run --nginx \
+sudo certbot certonly --manual \
  --preferred-challenges=dns \
  --email rsd@esciencecenter.nl \
  --server https://acme-v02.api.letsencrypt.org/directory \
  --agree-tos \
- -d *.research-software.nl
+ -d *.demo.research-software.nl
 
 cd ~
 git clone https://github.com/research-software-directory/research-software-directory.git
 cd research-software-directory
 git checkout conference-demo
 
+apt-get upgrade -y
+
+# Create instance
+
+cp -rP research-software-directory instances/unix
 

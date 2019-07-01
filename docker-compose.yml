@@ -16,10 +16,11 @@ services:
     container_name: rsd-authentication
     environment:
       # user should not have to change the values of the following environment variables:
+      - AUTH_CALLBACK_URL=/admin
       - AUTH_ROOT=/auth
       # user needs to assign values to the following environment variables:
       - AUTH_USERNAME=admin
-      - AUTH_PASSWORD=password
+      - AUTH_PASSWORD
       - JWT_SECRET
 
   backend:
