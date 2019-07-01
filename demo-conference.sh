@@ -58,6 +58,7 @@ cd instances/unix
 git checkout -b unix.demo.research-software.nl
 
 #2. Customize
+#2.0. Set external port in docker-compose.yml
 #2.1. Change admin password  (AUTH_PASSWORD env in rsd-secrets.env)
 #2.2. Logo, colors, etc.
 
