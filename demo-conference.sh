@@ -63,6 +63,8 @@ git checkout -b unix.demo.research-software.nl
 
 #2. Customize
 #2.0. Set external port in docker-compose.yml
+nano docker-compose.yml
+
 #2.1. Change admin password  (AUTH_PASSWORD env in rsd-secrets.env)
 #2.2. Logo, colors, etc.
 
@@ -73,8 +75,6 @@ docker-compose -p unix up -d --build
 
 #4. configure proxy with external instance http port
 
-# get port on which unix rsd is running
-docker ps |grep unix |grep reverse
 cp /etc/nginx/sites-enabled/other /etc/nginx/sites-enabled/unix
 nano /etc/nginx/sites-enabled/unix
 service nginx reload
