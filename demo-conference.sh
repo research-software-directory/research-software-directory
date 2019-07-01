@@ -74,8 +74,8 @@ cp /etc/nginx/sites-enabled/other /etc/nginx/sites-enabled/unix
 nano /etc/nginx/sites-enabled/unix
 service nginx reload
 
-# 6. test admin
-# 7. test frontend
+# 6. test admin https://unix.demo.research-software.nl/admin/
+# 7. test frontend  https://unix.demo.research-software.nl/
 # 8. mail back
 
 
@@ -84,5 +84,6 @@ service nginx reload
 source rsd-secrets.env
 docker-compose --project-name unix exec harvesting python app.py harvest all
 docker-compose --project-name unix exec harvesting python app.py resolve
+#If software does not show clear cache with
+docker-compose --project-name unix exec reverse-proxy rm -rf /tmp/cache/
 
-If software does not show use cache busting
