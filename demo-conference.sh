@@ -64,7 +64,7 @@ git checkout -b unix.demo.research-software.nl
 #3. up
 
 source rsd-secrets.env
-docker-compose -p unix up --build
+docker-compose -p unix up -d --build
 
 #4. configure proxy with external instance http port
 
