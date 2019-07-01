@@ -106,24 +106,24 @@ services:
     volumes:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
 
-  nginx_ssl:
-    container_name: rsd-nginx-ssl
-    environment:
-      # user should not have to change the values of the following environment variables:
-      - SSL_FORWARD=http://reverse-proxy:80
-      # user needs to assign values to the following environment variables:
-      - SSL_ADMIN_EMAIL
-      - SSL_DOMAINS
-    image: rsdnlesc/docker-term-letsencrypt
-    ports:
-      - 443:443
-      - 80:80
-    restart: unless-stopped
-    volumes:
-      - ./docker-volumes/cert:/cert
-      - ./docker-volumes/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - reverse-proxy
+  # nginx_ssl:
+  #   container_name: rsd-nginx-ssl
+  #   environment:
+  #     # user should not have to change the values of the following environment variables:
+  #     - SSL_FORWARD=http://reverse-proxy:80
+  #     # user needs to assign values to the following environment variables:
+  #     - SSL_ADMIN_EMAIL
+  #     - SSL_DOMAINS
+  #   image: rsdnlesc/docker-term-letsencrypt
+  #   ports:
+  #     - 443:443
+  #     - 80:80
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./docker-volumes/cert:/cert
+  #     - ./docker-volumes/letsencrypt:/etc/letsencrypt
+  #   depends_on:
+  #     - reverse-proxy
 
   reverse-proxy:
     build:
@@ -136,6 +136,8 @@ services:
       - auth
       - graphs
     restart: unless-stopped
+    ports:
+      - 80
     volumes:
       - static_admin:/static_admin:ro
       - static_frontend:/static_frontend:ro

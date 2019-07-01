@@ -198,7 +198,7 @@
       "name": "mention",
       "icon": "book",
       "itemLabelTemplate": "{{ title }} ({{ date }})",
-      "readonly": true,
+      "readonly": false,
       "properties": {
         "title": {
           "label": "Title",
@@ -263,7 +263,7 @@
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true,
+      "readonly": false,
       "properties": {
         "title": {
           "label": "Title",

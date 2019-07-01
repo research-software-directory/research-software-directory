@@ -94,8 +94,8 @@ def harvest_all():
     dois = None
     get_commits()
     get_citations(db, dois)
-    get_mentions(since_version=None)
-    get_projects()
+    # get_mentions(since_version=None)
+    # get_projects()
     list_records(dois)
 
 
