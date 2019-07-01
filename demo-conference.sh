@@ -51,5 +51,38 @@ apt-get upgrade -y
 
 # Create instance
 
-cp -rP research-software-directory instances/unix
+# 1. Copy demo repo
 
+cp -rP research-software-directory instances/unix
+cd instances/unix
+git checkout -b unix.demo.research-software.nl
+
+#2. Customize
+#2.1. Change admin password  (AUTH_PASSWORD env in rsd-secrets.env)
+#2.2. Logo, colors, etc.
+
+#3. up
+
+source rsd-secrets.env
+docker-compose -p unix up --build
+
+#4. configure proxy with external instance http port
+
+# get port on which unix rsd is running
+docker ps |grep unix |grep reverse
+cp /etc/nginx/sites-enabled/other /etc/nginx/sites-enabled/unix
+nano /etc/nginx/sites-enabled/unix
+service nginx reload
+
+# 6. test admin
+# 7. test frontend
+# 8. mail back
+
+
+# After admin additions
+
+source rsd-secrets.env
+docker-compose --project-name unix exec harvesting python app.py harvest all
+docker-compose --project-name unix exec harvesting python app.py resolve
+
+If software does not show use cache busting
