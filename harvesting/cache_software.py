@@ -79,7 +79,8 @@ def cache_software():
             sw['releases'] = release_document['releases']
             sw['isCitable'] = release_document['isCitable']
             sw['latestCodemeta'] = release_document['latestCodemeta']
-
+        else:
+            sw['releases'] = []
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
 
     software_ids = list(map(lambda x: x['primaryKey']['id'], db.software.find()))
