@@ -12,16 +12,14 @@ services:
 
   auth:
     build:
-      context: ./auth-github
+      context: ./auth-basic
     container_name: rsd-authentication
     environment:
       # user should not have to change the values of the following environment variables:
-      - AUTH_CALLBACK_URL=/admin
       - AUTH_ROOT=/auth
       # user needs to assign values to the following environment variables:
-      - AUTH_GITHUB_CLIENT_ID
-      - AUTH_GITHUB_CLIENT_SECRET
-      - AUTH_GITHUB_ORGANIZATION
+      - AUTH_USERNAME=admin
+      - AUTH_PASSWORD=password
       - JWT_SECRET
 
   backend:
