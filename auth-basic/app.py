@@ -13,9 +13,6 @@ handler = logging.StreamHandler()
 logger.addHandler(handler)
 handler.setFormatter(logging.Formatter('%(asctime)s %(name)s [%(levelname)s] %(message)s'))
 
-with open('error.html.template', 'r') as error_template_file:
-    error_template = error_template_file.read()
-
 for var in ['JWT_SECRET', 'AUTH_CALLBACK_URL', 'AUTH_USERNAME', 'AUTH_PASSWORD']:
     if not os.environ.get(var):
         raise Exception('%s not in environment' % var)
