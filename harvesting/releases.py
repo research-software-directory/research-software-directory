@@ -154,7 +154,9 @@ class ReleaseScraper:
         r = requests.get(url)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
-        self.title = self.zenodo_data["versioned_dois"]["hits"]["hits"][-1]["metadata"]["title"]
+        hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]
+        hits_sorted = sorted(hits, key=lambda hit: hit["metadata"]["publication_date"])
+        self.title = hits_sorted[-1]["metadata"]["title"]
         return self
 
     def generate_files(self):
