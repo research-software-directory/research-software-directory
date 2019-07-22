@@ -199,7 +199,7 @@ class ReleaseScraper:
         return self.doi.startswith("10.5281/zenodo.")
 
     def reverse_sort_zenodo_data_versioned_dois(self):
-        self.releases.sort(key=lambda x: x["tag"], reverse=True)
+        self.releases.sort(key=lambda release: release["tag"], reverse=True)
         return self
 
 
