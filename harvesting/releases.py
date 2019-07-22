@@ -215,19 +215,18 @@ def get_citations(db, dois):
     dois.sort()
     for i_doi, doi in enumerate(dois):
         release = ReleaseScraper(doi)
-        if release.doi is not None and release.is_zenodo_doi() and release.is_concept_doi():
-            pass
+        if release.is_citable:
+            document = {
+                "_id": doi,
+                "isCitable": release.is_citable,
+                "conceptDOI": doi,
+                "latestCodemeta": "" if release.latest_codemeta is None else release.latest_codemeta,
+                "releases": release.releases,
+                "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+            }
+            db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
+
+        if release.message == "OK":
+            logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_doi + 1, n_dois, doi, release.title, release.message))
         else:
             logger.error('{0}/{1}: {2} {3}'.format(i_doi + 1, n_dois, doi, release.message))
-            continue
-
-        document = {
-            "_id": doi,
-            "isCitable": release.is_citable,
-            "conceptDOI": doi,
-            "latestCodemeta": release.latest_codemeta,
-            "releases": release.releases,
-            "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
-        }
-        logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_doi+1, n_dois, doi, release.title, release.message))
-        db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
