@@ -59,7 +59,7 @@ def get_url_for_zotero_item(item):
 
 
 def get_blog_fields(zotero_item):
-    logger.info(zotero_item['data']['url'] + ' = eScience Blog')
+    # logger.info(zotero_item['data']['url'] + ' = eScience Blog')
     try:
         data = requests.get(zotero_item['data']['url']).text
         soup = BeautifulSoup(data, 'html.parser')
@@ -99,16 +99,35 @@ def get_mentions(since_version=None, keys=None):
     items_to_save = []
 
     project_keys = get_project_keys(client)
+    supported_types = ['attachment', 'blogPost', 'book', 'bookSection', 'computerProgram', 'conferencePaper',
+                       'document', 'interview', 'journalArticle', 'magazineArticle', 'manuscript', 'newspaperArticle',
+                       'note', 'presentation', 'radioBroadcast', 'report', 'thesis', 'videoRecording', 'webpage']
 
-    for item in items:
+    n_items = len(items)
+    for item_index, item in enumerate(items):
+
         if 'title' not in item['data'] or not item['data']['title']:
-            logger.warning("%s does not have a title" % item['key'])
+            logger.warning("{0}/{1}: {2} does not have a title.".format(item_index+1, n_items, item['key']))
             continue
         item_collection_keys = item['data'].get('collections', [])
         if len(set.intersection(set(item_collection_keys), set(project_keys))) == 0:
-            logger.warning("'%s' is not part of a project (key = %s)" % (item['data']['title'], item['key']))
+            logger.warning("{0}/{1}: {2} is not part of a project ({3}).".format(item_index + 1, n_items, item['key'],
+                                                                                 item["data"]["title"]))
             continue
-        # item is part of a project
+
+        try:
+            item_date = parse(item['data']['date']).isoformat()[:19] + 'Z'
+        except:
+            logger.warning("{0}/{1}: {2} has a date problem ({3}).".format(item_index + 1, n_items, item['key'],
+                                                                           item["data"]["title"]))
+            continue
+
+        if item["data"]["itemType"] not in supported_types:
+            logger.warning("{0}/{1}: {2} not a supported type ({3}).".format(item_index + 1, n_items, item['key'],
+                                                                             item["data"]["title"]))
+            continue
+
+        # item is good as far as we know
         to_save = {
             'primaryKey': {
                 'collection': 'mention',
@@ -119,7 +138,7 @@ def get_mentions(since_version=None, keys=None):
             'type': item['data']['itemType'],
             'zoteroKey': item['key'],
             'isCorporateBlog': False,
-            'date': get_date_for_zotero_item(item)
+            'date': item_date
         }
         url = get_url_for_zotero_item(item)
         if url:
@@ -127,10 +146,25 @@ def get_mentions(since_version=None, keys=None):
 
         if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
             (author, image) = get_blog_fields(item)
+            if author is None:
+                logger.info("{0}/{1}: {2} cannot scrape the author from blog.esciencecenter.nl ({3}).".format(item_index + 1,
+                                                                                                              n_items,
+                                                                                                              item['key'],
+                                                                                                              item['data']['url']))
+                continue
+            if image is None:
+                logger.info("{0}/{1}: {2} cannot scrape the image from blog.esciencecenter.nl ({3}).".format(item_index + 1,
+                                                                                                             n_items,
+                                                                                                             item['key'],
+                                                                                                             item['data']['url']))
+                continue
+
             to_save['isCorporateBlog'] = True
             to_save['author'] = author
             to_save['image'] = image
 
+        logger.info("{0}/{1}: {2} is going to be added to the mentions collection.".format(item_index + 1, n_items,
+                                                                                           item['key']))
         items_to_save.append(to_save)
 
     if len(items_to_save) > 0:
@@ -141,6 +175,6 @@ def get_mentions(since_version=None, keys=None):
             json=items_to_save,
             headers={'Authorization': 'Bearer %s' % token}
         )
-        if resp.status_code != 200:
+        if resp.status_code != requests.codes.ok:
 
             raise Exception('error saving zotero items', str(resp.json()))

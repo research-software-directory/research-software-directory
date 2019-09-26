@@ -154,7 +154,9 @@ class ReleaseScraper:
         r = requests.get(url)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
-        self.title = self.zenodo_data["versioned_dois"]["hits"]["hits"][-1]["metadata"]["title"]
+        hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]
+        hits_sorted = sorted(hits, key=lambda hit: hit["metadata"]["publication_date"])
+        self.title = hits_sorted[-1]["metadata"]["title"]
         return self
 
     def generate_files(self):
@@ -197,7 +199,7 @@ class ReleaseScraper:
         return self.doi.startswith("10.5281/zenodo.")
 
     def reverse_sort_zenodo_data_versioned_dois(self):
-        self.releases.sort(key=lambda x: x["tag"], reverse=True)
+        self.releases.sort(key=lambda release: release["tag"], reverse=True)
         return self
 
 
@@ -213,19 +215,18 @@ def get_citations(db, dois):
     dois.sort()
     for i_doi, doi in enumerate(dois):
         release = ReleaseScraper(doi)
-        if release.doi is not None and release.is_zenodo_doi() and release.is_concept_doi():
-            pass
+        if release.is_citable:
+            document = {
+                "_id": doi,
+                "isCitable": release.is_citable,
+                "conceptDOI": doi,
+                "latestCodemeta": "" if release.latest_codemeta is None else release.latest_codemeta,
+                "releases": release.releases,
+                "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+            }
+            db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
+
+        if release.message == "OK":
+            logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_doi + 1, n_dois, doi, release.title, release.message))
         else:
             logger.error('{0}/{1}: {2} {3}'.format(i_doi + 1, n_dois, doi, release.message))
-            continue
-
-        document = {
-            "_id": doi,
-            "isCitable": release.is_citable,
-            "conceptDOI": doi,
-            "latestCodemeta": release.latest_codemeta,
-            "releases": release.releases,
-            "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
-        }
-        logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_doi+1, n_dois, doi, release.title, release.message))
-        db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
