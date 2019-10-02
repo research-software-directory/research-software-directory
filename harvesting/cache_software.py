@@ -78,7 +78,7 @@ def cache_software():
         if release_document:
             sw['releases'] = release_document['releases']
             sw['isCitable'] = release_document['isCitable']
-            sw['latestCodemeta'] = release_document['latestCodemeta']
+            sw['latestSchema_dot_org'] = release_document['latestSchema_dot_org']
         else:
             sw['releases'] = []
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
