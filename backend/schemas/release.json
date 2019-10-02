@@ -13,7 +13,7 @@
         "isCitable": {
             "type": "boolean"
         },
-        "latestCodemeta": {
+        "latestSchema_dot_org": {
             "type": "string"
         },
         "primaryKey": {
@@ -41,7 +41,7 @@
                             "cff": {
                                 "type": "string"
                             },
-                            "codemeta": {
+                            "schema_dot_org": {
                                 "type": "string"
                             },
                             "endnote": {
@@ -54,9 +54,9 @@
                         "required": [
                             "bibtex",
                             "cff",
-                            "codemeta",
                             "endnote",
-                            "ris"
+                            "ris",
+                            "schema_dot_org"
                         ],
                         "type": "object"
                     },
