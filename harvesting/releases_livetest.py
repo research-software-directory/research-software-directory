@@ -35,5 +35,6 @@ class ReleaseScraperTest(unittest.TestCase):
         expected_message = "no valid CITATION.cff found in any release."
         self.assertEqual(expected_message, actual_message)
 
+
 if __name__ == '__main__':
     unittest.main()
