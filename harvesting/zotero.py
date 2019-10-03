@@ -51,12 +51,12 @@ def get_url_for_zotero_item(item):
 
 
 def get_blog_fields(zotero_item):
-    # logger.info(zotero_item['data']['url'] + ' = eScience Blog')
     try:
         data = requests.get(zotero_item['data']['url']).text
         soup = BeautifulSoup(data, 'html.parser')
-        author = soup.find_all('meta', attrs={'name': 'author'})[0].attrs["content"]
-        image = soup.find("meta", property ="og:image").attrs["content"]
+        authors = soup.find_all('meta', attrs={'name': 'author'})
+        author = authors[0].attrs["content"] if len(authors) > 0 else None
+        image = soup.find("meta", property="og:image").attrs["content"]
         return author, image
     except:
         return None, None
