@@ -1,8 +1,10 @@
 {% extends "layout_template.html" %}
 {%- block head -%}
-  <title>Research Software Directory</title>
-  {{super()}}
-  <meta name="description" content="The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools!">
+    <title>Research Software Directory</title>
+    {{super()}}
+    <meta name="description" content="The Research Software Directory aims to promote the impact, the exchange and re-use of research software. Please use our tools!">
+    <!-- "fork me on github" style sheet: -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
 {%- endblock -%}
 
 <!-- omit the find software link, since we're already at the page where you can do that-->
@@ -10,6 +12,11 @@
 
 {% block content %}
   <div id="overview" class="container">
+    <a class="github-fork-ribbon right-top"
+       href="https://github.com/research-software-directory/research-software-directory/"
+       data-ribbon="Fork me on GitHub"
+       title="Fork me on GitHub">Fork me on GitHub</a>
+
     <h1 class="title">Research Software Directory</h1>
     <p class="subsubtitle">Encouraging the re-use of research software</p>
     <p id="intro_text">
