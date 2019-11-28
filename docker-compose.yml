@@ -109,6 +109,7 @@ services:
       # user needs to assign values to the following environment variables:
       - GITHUB_ACCESS_TOKEN
       - JWT_SECRET
+      - ZENODO_ACCESS_TOKEN
       - ZOTERO_API_KEY
       - ZOTERO_LIBRARY
     volumes:
