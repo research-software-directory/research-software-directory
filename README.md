@@ -157,6 +157,16 @@ To query GitHub's API programmatically, we need an access token. Here's how you 
 1. Verify that all scopes are unchecked
 1. Use token as value for ``GITHUB_ACCESS_TOKEN``
 
+#### ``ZENODO_ACCESS_TOKEN``
+
+To query Zenodo's API programmatically, we need an access token. Here's how you can get one:
+
+1. Go to https://zenodo.org/account/settings/applications/tokens/new/
+1. For name, fill in something like _Key to retrieve data from Zenodo_
+1. Make sure all scopes are unselected
+1. Click Create
+1. Fill in the long string you get as value for ``ZENODO_ACCESS_TOKEN``
+
 #### ``ZOTERO_LIBRARY``
 
 When getting the references data from Zotero, this environment variable
