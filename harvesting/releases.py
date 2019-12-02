@@ -2,6 +2,7 @@ import logging
 from datetime import datetime
 import re
 import os
+import time
 
 import requests
 from cffconvert import Citation
@@ -149,6 +150,9 @@ class ReleaseScraper:
             'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
         }
         r = requests.get(url, headers=headers)
+        if int(r.headers.get('x-ratelimit-remaining')) < 10:
+            # throttle requests
+            time.sleep(10)
         r.raise_for_status()
         self.zenodo_data["conceptdoi"] = r.json()
         return self
@@ -159,6 +163,9 @@ class ReleaseScraper:
             'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
         }
         r = requests.get(url, headers=headers)
+        if int(r.headers.get('x-ratelimit-remaining')) < 10:
+            # throttle requests
+            time.sleep(10)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
         hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]

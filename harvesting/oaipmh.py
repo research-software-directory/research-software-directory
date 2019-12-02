@@ -3,7 +3,9 @@ import os
 import logging
 from datetime import datetime
 import requests
+from requests.exceptions import HTTPError
 from releases import ReleaseScraper
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +30,41 @@ def list_records(dois):
         root_elem.append(listrecords_elem)
 
         return root_elem
+
+    def get_redirect():
+        response = requests.head('https://doi.org/{conceptdoi}'.format(conceptdoi=conceptdoi), headers=headers)
+        if response.status_code == 302:
+            return response.next.url
+        elif response.status_code == 429:
+            response.raise_for_status()
+        else:
+            raise HTTPError("Expected a redirect from doi.org to zenodo.org, got {0} instead."
+                            .format(response.status_code))
+
+    def get_zenodo_identifier():
+        response = requests.head(redirect_url, headers=headers)
+        if response.status_code == 302:
+            return response.next.url.split('/')[-1:][0]
+        elif response.status_code == 429:
+            response.raise_for_status()
+        else:
+            raise HTTPError("Expected a redirect from a conceptdoi to a versioned doi, got {0} instead."
+                            .format(response.status_code))
+
+    def get_datacite():
+        response = requests.get(url, headers=headers)
+        if int(response.headers.get('x-ratelimit-remaining')) < 10:
+            # throttle requests
+            time.sleep(10)
+        if response.status_code != requests.codes.ok:
+            response.raise_for_status()
+        fname = os.path.join(oaipmh_cache_dir, 'record-' + identifier + '.xml')
+        with open(fname, 'w') as fid:
+            fid.write(response.text)
+        # future work: correct/expand the datacite4 representation with other data from the RSDjson
+        return Tree.fromstring(response.text) \
+            .find("{http://www.openarchives.org/OAI/2.0/}GetRecord") \
+            .find("{http://www.openarchives.org/OAI/2.0/}record")
 
     logger.info("Still need to enrich and correct the metadata. Currectly serving Zenodo's metadata as-is.")
 
@@ -65,35 +102,20 @@ def list_records(dois):
 
         try:
             logger.info(" %d/%d: retrieving datacite4 metadata for %s" % (i_conceptdoi + 1, n_conceptdois, conceptdoi))
-
-            response = requests.get('https://doi.org/{conceptdoi}'.format(conceptdoi=conceptdoi))
-            if response.status_code != requests.codes.ok:
-                response.raise_for_status()
-            identifier = response.url.split('/')[-1:][0]
-
-            url = 'https://zenodo.org/oai2d?verb=GetRecord&identifier=oai:zenodo.org:' + identifier +\
-                  '&metadataPrefix=datacite4'
             headers = {
                 'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
             }
-            response = requests.get(url, headers=headers)
-            if response.status_code != requests.codes.ok:
-                response.raise_for_status()
-
-            fname = os.path.join(oaipmh_cache_dir, 'record-' + identifier + '.xml')
-            with open(fname, 'w') as fid:
-                fid.write(response.text)
-
-            # future work: correct/expand the datacite4 representation with other data from the RSDjson
-            record_elem = Tree.fromstring(response.text)\
-                .find("{http://www.openarchives.org/OAI/2.0/}GetRecord")\
-                .find("{http://www.openarchives.org/OAI/2.0/}record")
-
+            redirect_url = get_redirect()
+            identifier = get_zenodo_identifier()
+            url = 'https://zenodo.org/oai2d?verb=GetRecord&identifier=oai:zenodo.org:' + identifier +\
+                  '&metadataPrefix=datacite4'
+            record_elem = get_datacite()
             oaipmh_elem.find('{http://www.openarchives.org/OAI/2.0/}ListRecords')\
                 .append(record_elem)
 
-        except requests.exceptions.RequestException:
-            logger.warning("There was an error with " + conceptdoi)
+        except requests.exceptions.RequestException as e:
+            logger.warning("There was an error with " + conceptdoi + ". " + str(e))
+            continue
 
     document = Tree.ElementTree(oaipmh_elem)
 
