@@ -20,7 +20,7 @@ class AbstractScraper:
         self.make_soup()
 
     def get_document(self):
-        r = requests.get(self.baseurl)
+        r = requests.get(self.baseurl, verify=False)
         if r.status_code != 200:
             raise Exception("Something went wrong while retrieving the page.")
         else:
@@ -53,7 +53,7 @@ class ProjectScraper(AbstractScraper):
 
             if self.include_deep_info:
                 logger.info(project["url"])
-                r = requests.get(project["url"])
+                r = requests.get(project["url"], verify=False)
                 if r.status_code != 200:
                     logger.error("Something went wrong while retrieving the page. url:" + project["url"])
                     continue
