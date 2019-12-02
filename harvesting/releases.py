@@ -69,11 +69,12 @@ class ReleaseScraper:
             return
 
         url = "https://doi.org/{0}".format(doi)
-        if requests.get(url).status_code == requests.codes.ok:
+        response = requests.get(url)
+        if response.status_code == requests.codes.ok:
             self.is_citable = True
             self.doi = doi
         else:
-            self.message = "error resolving doi."
+            self.message = "error {0} resolving doi.".format(response.status_code)
             return
 
         if not self.is_zenodo_doi():
@@ -144,14 +145,20 @@ class ReleaseScraper:
     def fetch_zenodo_data_conceptdoi(self):
         zenodo_id = self.doi.replace("10.5281/zenodo.", "")
         url = "https://zenodo.org/api/records/" + zenodo_id
-        r = requests.get(url)
+        headers = {
+            'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
+        }
+        r = requests.get(url, headers=headers)
         r.raise_for_status()
         self.zenodo_data["conceptdoi"] = r.json()
         return self
 
     def fetch_zenodo_data_versioned_dois(self):
         url = "https://zenodo.org/api/records?q=conceptdoi:\"{0}\"&all_versions=true&size=100".format(self.doi)
-        r = requests.get(url)
+        headers = {
+            'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
+        }
+        r = requests.get(url, headers=headers)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
         hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]

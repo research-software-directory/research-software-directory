@@ -74,7 +74,7 @@ def list_records(dois):
             url = 'https://zenodo.org/oai2d?verb=GetRecord&identifier=oai:zenodo.org:' + identifier +\
                   '&metadataPrefix=datacite4'
             headers = {
-                'Authorization': 'access_token ' + os.environ.get('ZENODO_ACCESS_TOKEN')
+                'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
             }
             response = requests.get(url, headers=headers)
             if response.status_code != requests.codes.ok:
