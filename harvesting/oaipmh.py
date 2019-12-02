@@ -55,7 +55,7 @@ def list_records(dois):
         response = requests.get(url, headers=headers)
         if int(response.headers.get('x-ratelimit-remaining')) < 10:
             # throttle requests
-            time.sleep(10)
+            time.sleep(60)
         if response.status_code != requests.codes.ok:
             response.raise_for_status()
         fname = os.path.join(oaipmh_cache_dir, 'record-' + identifier + '.xml')
