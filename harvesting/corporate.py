@@ -36,7 +36,7 @@ def get_projects():
             'principalInvestigator': pi
         }
 
-    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
+    scraper = ProjectScraper(baseurl="https://esciencecenter.nl/projects",
                              include_deep_info=True)
 
     to_save = list(map(transform_project, scraper.projects))

@@ -87,7 +87,7 @@ class ProjectScraper(AbstractScraper):
 
 if __name__ == "__main__":
 
-    project_scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
+    project_scraper = ProjectScraper(baseurl="https://esciencecenter.nl/projects",
                                      include_deep_info=True)
     print(project_scraper)
 
