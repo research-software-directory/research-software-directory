@@ -152,7 +152,7 @@ class ReleaseScraper:
         r = requests.get(url, headers=headers)
         if int(r.headers.get('x-ratelimit-remaining')) < 10:
             # throttle requests
-            time.sleep(10)
+            time.sleep(60)
         r.raise_for_status()
         self.zenodo_data["conceptdoi"] = r.json()
         return self
@@ -165,7 +165,7 @@ class ReleaseScraper:
         r = requests.get(url, headers=headers)
         if int(r.headers.get('x-ratelimit-remaining')) < 10:
             # throttle requests
-            time.sleep(10)
+            time.sleep(60)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
         hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]
