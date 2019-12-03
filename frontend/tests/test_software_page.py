@@ -3,6 +3,8 @@ import requests_mock
 import requests
 import pytest
 import glob
+import datetime
+import time
 
 from tests.helpers import get_mock, isValidHTML
 
@@ -41,7 +43,8 @@ if pytest.config.getoption("live"):
 @pytest.mark.skipif(not pytest.config.getoption("live"), reason="--live not specified")
 @pytest.mark.parametrize("slug", live_software_items)
 def test_live_software_data_renders(get, slug):
+    print(datetime.datetime.now())
     data, status_code = get('/software/%s' % slug)
+    time.sleep(1)
     assert status_code == 200
     assert isValidHTML(data)
-
