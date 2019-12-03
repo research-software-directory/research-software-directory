@@ -53,9 +53,13 @@ def harvest_commits():
     get_commits()
 
 
-@harvest_group.command('mentions', help='Harvest mentions from Zotero library ' + os.environ.get('ZOTERO_LIBRARY', '<not specified>'))
-@click.option('--since-version', 'since_version', type=int, help='Retrieve Zotero items starting from this version regardless of what the local latest version is. For example, \'--since-version 4835\'.')
-@click.option('--keys', 'keys', type=str, help='Retrieve Zotero items matching the supplied comma-separated string. For example, \'--keys DQYQKKZ4,GZJ5CEKK\'')
+@harvest_group.command('mentions', help='Harvest mentions from Zotero library ' +
+                                        os.environ.get('ZOTERO_LIBRARY', '<not specified>'))
+@click.option('--since-version', 'since_version', type=int, help='Retrieve Zotero items starting from this version ' +
+                                                                 'regardless of what the local latest version is. ' +
+                                                                 'For example, \'--since-version 4835\'.')
+@click.option('--keys', 'keys', type=str, help='Retrieve Zotero items matching the supplied comma-separated string.' +
+                                               'For example, \'--keys DQYQKKZ4,GZJ5CEKK\'')
 def harvest_mentions(since_version=None, keys=None):
     get_mentions(since_version=since_version, keys=keys)
 
@@ -67,7 +71,9 @@ def harvest_projects():
 
 
 @harvest_group.command('citations', help='Harvest citation metadata using Zenodo, GitHub, and CITATION.cff files')
-@click.option('--dois', 'dois', type=str, help='Harvest only citation metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
+@click.option('--dois', 'dois', type=str, help='Harvest only citation metadata associated with the supplied ' +
+                                               'comma-separated string of DOIs. For example, \'--dois 10.5281/' +
+                                               'zenodo.2609141,10.5281/zenodo.1162057\'')
 def harvest_citations(dois=None):
     if dois is None:
         pass
@@ -78,7 +84,9 @@ def harvest_citations(dois=None):
 
 
 @harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo')
-@click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281/zenodo.1162057\'')
+@click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated ' +
+                                               'string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281' +
+                                               '/zenodo.1162057\'')
 def harvest_metadata(dois=None):
     if dois is None:
         pass

@@ -51,12 +51,12 @@ def get_url_for_zotero_item(item):
 
 
 def get_blog_fields(zotero_item):
-    # logger.info(zotero_item['data']['url'] + ' = eScience Blog')
     try:
         data = requests.get(zotero_item['data']['url']).text
         soup = BeautifulSoup(data, 'html.parser')
-        author = soup.select('a.ds-link')[0].contents[0]
-        image = soup.find("meta", property ="og:image").attrs["content"]
+        authors = soup.find_all('meta', attrs={'name': 'author'})
+        author = authors[0].attrs["content"] if len(authors) > 0 else None
+        image = soup.find("meta", property="og:image").attrs["content"]
         return author, image
     except:
         return None, None
@@ -67,7 +67,7 @@ def get_mentions(since_version=None, keys=None):
     by_key = keys is not None
 
     if by_version and by_key:
-        raise "Use either 'since_version' or 'keys', not both"
+        raise Exception("Use either 'since_version' or 'keys', not both")
 
     client = zotero.Zotero(os.environ.get('ZOTERO_LIBRARY'), 'group', os.environ.get('ZOTERO_API_KEY'))
 
@@ -99,24 +99,25 @@ def get_mentions(since_version=None, keys=None):
     for item_index, item in enumerate(items):
 
         if 'title' not in item['data'] or not item['data']['title']:
-            logger.warning("{0}/{1}: {2} does not have a title.".format(item_index+1, n_items, item['key']))
+            logger.warning("{0}/{1}: {2} does not have a title."
+                           .format(item_index+1, n_items, item['key']))
             continue
         item_collection_keys = item['data'].get('collections', [])
         if len(set.intersection(set(item_collection_keys), set(project_keys))) == 0:
-            logger.warning("{0}/{1}: {2} is not part of a project ({3}).".format(item_index + 1, n_items, item['key'],
-                                                                                 item["data"]["title"]))
+            logger.warning("{0}/{1}: {2} is not part of a project ({3})."
+                           .format(item_index + 1, n_items, item['key'], item["data"]["title"]))
             continue
 
         try:
             item_date = parse(item['data']['date']).isoformat()[:19] + 'Z'
         except:
-            logger.warning("{0}/{1}: {2} has a date problem ({3}).".format(item_index + 1, n_items, item['key'],
-                                                                           item["data"]["title"]))
+            logger.warning("{0}/{1}: {2} has a date problem ({3})."
+                           .format(item_index + 1, n_items, item['key'], item["data"]["title"]))
             continue
 
         if item["data"]["itemType"] not in supported_types:
-            logger.warning("{0}/{1}: {2} not a supported type ({3}).".format(item_index + 1, n_items, item['key'],
-                                                                             item["data"]["title"]))
+            logger.warning("{0}/{1}: {2} not a supported type ({3})."
+                           .format(item_index + 1, n_items, item['key'], item["data"]["title"]))
             continue
 
         # item is good as far as we know
@@ -139,24 +140,20 @@ def get_mentions(since_version=None, keys=None):
         if item['data']['url'] and '://blog.esciencecenter.nl/' in item['data']['url']:
             (author, image) = get_blog_fields(item)
             if author is None:
-                logger.info("{0}/{1}: {2} cannot scrape the author from blog.esciencecenter.nl ({3}).".format(item_index + 1,
-                                                                                                              n_items,
-                                                                                                              item['key'],
-                                                                                                              item['data']['url']))
+                logger.info("{0}/{1}: {2} cannot scrape the author from blog.esciencecenter.nl ({3})."
+                            .format(item_index + 1, n_items, item['key'], item['data']['url']))
                 continue
             if image is None:
-                logger.info("{0}/{1}: {2} cannot scrape the image from blog.esciencecenter.nl ({3}).".format(item_index + 1,
-                                                                                                             n_items,
-                                                                                                             item['key'],
-                                                                                                             item['data']['url']))
+                logger.info("{0}/{1}: {2} cannot scrape the image from blog.esciencecenter.nl ({3})."
+                            .format(item_index + 1, n_items, item['key'], item['data']['url']))
                 continue
 
             to_save['isCorporateBlog'] = True
             to_save['author'] = author
             to_save['image'] = image
 
-        logger.info("{0}/{1}: {2} is going to be added to the mentions collection.".format(item_index + 1, n_items,
-                                                                                           item['key']))
+        logger.info("{0}/{1}: {2} is going to be added to the mentions collection."
+                    .format(item_index + 1, n_items, item['key']))
         items_to_save.append(to_save)
 
     if len(items_to_save) > 0:

@@ -6,14 +6,16 @@ services:
     build:
       context: ./admin
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
-    container_name: rsd-admin
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-admin
+    image: ${COMPOSE_PROJECT_NAME-rsd}/admin
     volumes:
       - static_admin:/build
 
   auth:
     build:
       context: ./auth-github
-    container_name: rsd-authentication
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-authentication
+    image: ${COMPOSE_PROJECT_NAME-rsd}/authentication
     environment:
       # user should not have to change the values of the following environment variables:
       - AUTH_CALLBACK_URL=/admin
@@ -27,7 +29,8 @@ services:
   backend:
     build:
       context: ./backend
-    container_name: rsd-backend
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-backend
+    image: ${COMPOSE_PROJECT_NAME-rsd}/backend
     depends_on:
       - database
     environment:
@@ -44,7 +47,8 @@ services:
   backup:
     build:
       context: ./backup
-    container_name: rsd-backup
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-backup
+    image: ${COMPOSE_PROJECT_NAME-rsd}/backup
     depends_on:
       - database
     environment:
@@ -59,7 +63,8 @@ services:
     build:
       context: ./database
     command: --bind_ip 0.0.0.0
-    container_name: rsd-database
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-database
+    image: ${COMPOSE_PROJECT_NAME-rsd}/database
     entrypoint: /mongo.sh
     volumes:
       - ./docker-volumes/db:/data/db
@@ -67,7 +72,8 @@ services:
   frontend:
     build:
       context: ./frontend
-    container_name: rsd-frontend
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-frontend
+    image: ${COMPOSE_PROJECT_NAME-rsd}/frontend
     depends_on:
       - backend
     environment:
@@ -80,7 +86,8 @@ services:
   graphs:
     build:
       context: ./graphs
-    container_name: rsd-graphs
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-graphs
+    image: ${COMPOSE_PROJECT_NAME-rsd}/graphs
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     volumes:
       - static_graphs:/build
@@ -88,7 +95,8 @@ services:
   harvesting:
     build:
       context: ./harvesting
-    container_name: rsd-harvesting
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-harvesting
+    image: ${COMPOSE_PROJECT_NAME-rsd}/harvesting
     depends_on:
       - backend
       - database
@@ -107,7 +115,8 @@ services:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
 
   nginx_ssl:
-    container_name: rsd-nginx-ssl
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-nginx-ssl
+    image: ${COMPOSE_PROJECT_NAME-rsd}/nginx_ssl
     environment:
       # user should not have to change the values of the following environment variables:
       - SSL_FORWARD=http://reverse-proxy:80
@@ -128,7 +137,8 @@ services:
   reverse-proxy:
     build:
       context: ./reverse-proxy
-    container_name: rsd-reverse-proxy
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-reverse-proxy
+    image: ${COMPOSE_PROJECT_NAME-rsd}/reverse_proxy
     depends_on:
       - frontend
       - backend
