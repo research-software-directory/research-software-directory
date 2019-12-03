@@ -30,50 +30,6 @@ class AbstractScraper:
         self.soup = BeautifulSoup(self.html, 'html.parser')
 
 
-class PersonScraper(AbstractScraper):
-    def __init__(self, baseurl):
-        super().__init__(baseurl)
-        self.people = []
-        self.get_people()
-
-    def get_people(self):
-        people_soup = self.soup.find_all('div', class_="teamMember")
-        for idx, people_soup in enumerate(people_soup):
-            person = dict()
-
-            person['name'] = people_soup.find('div', class_='name').string.strip()
-            person['function'] = people_soup.find('div', class_='function').string.strip()
-            person['url'] = people_soup.find('a', class_='name').attrs["href"]
-            img_style = people_soup.find('span', class_='circularImage').attrs["style"]
-            person['image'] = re.findall('background:url\(\'(.*?)\'\)', img_style)[0]
-
-            self.people.append(person)
-
-
-class BlogPostScraper(AbstractScraper):
-    def __init__(self, baseurl):
-        super().__init__(baseurl)
-        self.posts = []
-        self.get_posts()
-
-    def __str__(self):
-        return json.dumps(self.posts, sort_keys=True, indent=4, separators=(", ", ": "))
-
-    def get_posts(self):
-        posts_soup = self.soup.find_all("div", class_="js-trackedPost")
-        for idx, post_soup in enumerate(posts_soup):
-            post = dict()
-            post["id"] = post_soup.attrs["data-post-id"]
-            post["url"] = post_soup.find("div", class_="postItem").a["href"].split("?")[0]
-            style_string = post_soup.find("div", class_="postItem").a.attrs["style"]
-            post["image"] = re.findall(r'"([^"]*)"', style_string)[0]
-            post["title"] = post_soup.find("h3").string
-            post["author"] = post_soup.select('a.ds-link')[0].string
-            post["datetime-published"] = post_soup.select('time')[0].attrs['datetime']
-
-            self.posts.append(post)
-
-
 class ProjectScraper(AbstractScraper):
     def __init__(self, baseurl, include_deep_info=False):
         super().__init__(baseurl)
@@ -130,8 +86,6 @@ class ProjectScraper(AbstractScraper):
 
 
 if __name__ == "__main__":
-    blogpost_scraper = BlogPostScraper(baseurl="https://blog.esciencecenter.nl/")
-    print(blogpost_scraper)
 
     project_scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
                                      include_deep_info=True)

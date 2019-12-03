@@ -1,8 +1,6 @@
 stages:
   - "Tests"
   - "docker-compose integration tests"
-#  - name: "Docker build & push"
-#    if: branch = master
 
 jobs:
   include:
@@ -14,7 +12,6 @@ jobs:
       cache:
         directories:
           - node_modules
-#          - /home/travis/.cache/Cypress
       before_install:
         - cd admin
       install:
@@ -58,6 +55,6 @@ jobs:
       before_install:
         - cp rsd-secrets.env.example rsd-secrets.env
         - source rsd-secrets.env
-        - docker-compose --project-name rsd build
+        - docker-compose build
       script:
-        - docker-compose --project-name rsd --file docker-compose.yml --file docker-compose.test.yml run test
+        - docker-compose --file docker-compose.yml --file docker-compose.test.yml run test

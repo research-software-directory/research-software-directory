@@ -1,9 +1,0 @@
-published brands:          82
-published brands with doi: 59
-contributors:              79
-commits:                   27284
-organizations:             22
-projects:                  52
-repositories:              84
-scipubs:                   79
-mmpubs:                    21
