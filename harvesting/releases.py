@@ -21,7 +21,7 @@ class ReleaseScraper:
         5. on github, check if there is a cff
         foreach cff
         6. validate the cff
-        7. generate bibtex, ris, endnote, and codemeta strings
+        7. generate bibtex, ris, endnote, and schema.org strings
 
     After initialization, the ReleaseScraper instance has a field .releases which is
     an array of objects with one of the following layouts:
@@ -32,7 +32,7 @@ class ReleaseScraper:
         "files": {
             "bibtex": "file contents",
             "cff": "file contents",
-            "codemeta": "file contents",
+            "schema_dot_org": "file contents",
             "endnote": "file contents",
             "ris": "file contents"
         },
@@ -49,7 +49,7 @@ class ReleaseScraper:
     """
 
     def __init__(self, doi):
-        self.latest_codemeta = None
+        self.latest_schema_dot_org = None
         self.releases = list()
         self.is_citable = False
         self.zenodo_data = dict(conceptdoi=None, versioned_dois=None)
@@ -98,13 +98,13 @@ class ReleaseScraper:
         if True not in [release["citability"] == "full" for release in self.releases]:
             self.message = "no valid CITATION.cff found in any release."
             return
-        self.determine_latest_codemeta()
+        self.determine_latest_schema_dot_org()
         self.message = "OK"
 
-    def determine_latest_codemeta(self):
+    def determine_latest_schema_dot_org(self):
         for release in self.releases:
-            if "codemeta" in release["files"].keys():
-                self.latest_codemeta = release["files"]["codemeta"]
+            if "schema_dot_org" in release["files"].keys():
+                self.latest_schema_dot_org = release["files"]["schema_dot_org"]
                 return self
 
     def filter_zenodo_data_versioned_dois(self):
@@ -187,7 +187,7 @@ class ReleaseScraper:
                     release["files"] = dict({
                         "bibtex": citation.as_bibtex(),
                         "cff": citation.cffstr,
-                        "codemeta": citation.as_codemeta(),
+                        "schema_dot_org": citation.as_schema_dot_org(),
                         "endnote": citation.as_enw(),
                         "ris": citation.as_ris()
                     })
@@ -234,7 +234,7 @@ def get_citations(db, dois):
                 "_id": doi,
                 "isCitable": release.is_citable,
                 "conceptDOI": doi,
-                "latestCodemeta": "" if release.latest_codemeta is None else release.latest_codemeta,
+                "latestSchema_dot_org": "" if release.latest_schema_dot_org is None else release.latest_schema_dot_org,
                 "releases": release.releases,
                 "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
             }
