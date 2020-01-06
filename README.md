@@ -430,7 +430,20 @@ writable, and executable by user only).
 1. Make a note of your instance's public IPv4, e.g. ``3.92.182.176``
 1. On your own machine use a terminal to log in to your instance
 1. ``ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>``
-1. Once logged in to the remote machine, install ``docker`` and
+1. Once logged in to the remote machine, update the package manager's list of
+   software packages and their versions:
+
+    ```
+    sudo apt update
+    ```
+
+1. Upgrade any software packages to a higher version if available:
+
+    ```
+    sudo apt upgrade
+    ```
+
+1. Install ``docker`` and
 ``docker-compose``, then add user ``ubuntu`` to the group ``docker``, same as
 before (see section _Documentation for developers_
 [above](/README.md#documentation-for-developers)).
