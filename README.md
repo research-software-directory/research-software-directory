@@ -13,7 +13,10 @@ This README file has the following sections:
     - [Make your instance available to others by hosting it online (deployment)](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
     - [Notes on security](#notes-on-security)
 - [Documentation for maintainers](#documentation-for-maintainers)
-
+    - [Visualizing ``docker-compose.yml``](#visualizing-docker-composeyml)
+    - [Making a release](#making-a-release)
+    - [Pulling in changes from upstream using a three-way merge](#pulling-in-changes-from-upstream-using-a-three-way-merge)
+    - [Updating a production instance](#updating-a-production-instance)
 
 # What is the Research Software Directory?
 
@@ -721,13 +724,14 @@ Every now and then, the production instance needs to be updated, so the server
 can get the latest security patches, and the Research Software Directory
 software itself can be updated to include the latest features.
 
-The steps differentiate between the old and the new instance of the Research
-Software Directory. For the steps below, the old instance has IP
-``35.156.38.208``, the new one has IP ``XX.XXX.XX.XXX``. Your IP addresses will likely be different.
+The steps below differentiate between the old and the new instance of the Research
+Software Directory; the old instance has IP ``35.156.38.208``, the new one has
+IP ``3.122.233.225``. Your IP addresses will likely be different.
 
-1. (new) Make a new Amazon instance by following the notes above. Reuse the
-   existing security group. Verify that your current IP is within the authorized
-   IP range.
+1. (new) Make a new Amazon instance by following the notes above. Some things to think about:
+    - Reuse the existing security group.
+    - Reuse the existing key pair.
+    - Verify that your current IP is within the authorized IP range.
 1. (old) Download the ``rsd-secrets.env`` file.
 
     ```
@@ -743,7 +747,7 @@ Software Directory. For the steps below, the old instance has IP
 
     ```
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem rsd-secrets.env \
-    ubuntu@<new ip address>:/home/ubuntu/research-software-directory/
+    ubuntu@3.122.233.225:/home/ubuntu/research-software-directory/
     ```
 
 1. (old) Stop new additions to the database in the old research software
@@ -766,22 +770,25 @@ Software Directory. For the steps below, the old instance has IP
     $ source rsd-secrets.env
 
     # Start the backup itself:
-    $ docker-compose exec rsd-backup /bin/sh /app/backup.sh
+    $ docker-compose exec backup /bin/sh /app/backup.sh
 
     # (manually download the data from S3?)
+
+    # extract the data, something like:
+    tar -xvzf rsd-backup-2020-01-06T13_00_12UTC.tar.gz
     ```
 
 1. (new) Upload the data to the new Research Software Directory instance.
 
     ```
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem *.bson *.json \
-      ubuntu@<new ip>:/home/ubuntu/research-software-directory/database/db-init/
+      ubuntu@3.122.233.225:/home/ubuntu/research-software-directory/database/db-init/
     ```
 
 1. Start the new instance.
 
     ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@<new ip>
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
     $ cd research-software-directory
 
     # Add the environment variables to the shell:
@@ -794,14 +801,19 @@ Software Directory. For the steps below, the old instance has IP
 1. In a new terminal, harvest all the data from external sources using:
 
     ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@<new ip>
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
     $ cd research-software-directory
 
     # Add the environment variables to the shell:
     $ source rsd-secrets.env
 
-    $ docker-compose exec rsd-harvesting python app.py harvest all
-    $ docker-compose exec rsd-harvesting python app.py resolve
+    $ docker-compose exec harvesting python app.py harvest all
+    $ docker-compose exec harvesting python app.py resolve
+    ```
+1. If there were problems with harvesting mentions, you may need to retrieve all mentions, as follows:
+
+    ```
+    $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
     ```
 
 1. (new) Check if the instance works correctly using a browser to navigate to
@@ -809,7 +821,7 @@ Software Directory. For the steps below, the old instance has IP
 1. (old) Stop the Research Software Directory in the old instance
 
     ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@<old ip>
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
     $ cd research-software-directory
 
     # Add the environment variables to the shell:
