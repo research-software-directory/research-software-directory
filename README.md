@@ -74,7 +74,7 @@ on Linux based systems. You can find the installation instructions for each tool
 here:
 - ``docker``: https://docs.docker.com/install/
 - ``docker-compose``: https://docs.docker.com/compose/install/
-- ``git``: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- ``git``: ``sudo apt install git`` (see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 You'll need a minimum of about 3 GB free disk space to 
 store the images, containers and volumes that we will be making. 
