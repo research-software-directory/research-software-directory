@@ -13,7 +13,10 @@ This README file has the following sections:
     - [Make your instance available to others by hosting it online (deployment)](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
     - [Notes on security](#notes-on-security)
 - [Documentation for maintainers](#documentation-for-maintainers)
-
+    - [Visualizing ``docker-compose.yml``](#visualizing-docker-composeyml)
+    - [Making a release](#making-a-release)
+    - [Pulling in changes from upstream using a three-way merge](#pulling-in-changes-from-upstream-using-a-three-way-merge)
+    - [Updating a production instance](#updating-a-production-instance)
 
 # What is the Research Software Directory?
 
@@ -71,7 +74,7 @@ on Linux based systems. You can find the installation instructions for each tool
 here:
 - ``docker``: https://docs.docker.com/install/
 - ``docker-compose``: https://docs.docker.com/compose/install/
-- ``git``: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- ``git``: ``sudo apt install git`` (see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 You'll need a minimum of about 3 GB free disk space to 
 store the images, containers and volumes that we will be making. 
@@ -427,7 +430,20 @@ writable, and executable by user only).
 1. Make a note of your instance's public IPv4, e.g. ``3.92.182.176``
 1. On your own machine use a terminal to log in to your instance
 1. ``ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>``
-1. Once logged in to the remote machine, install ``docker`` and
+1. Once logged in to the remote machine, update the package manager's list of
+   software packages and their versions:
+
+    ```
+    sudo apt update
+    ```
+
+1. Upgrade any software packages to a higher version if available:
+
+    ```
+    sudo apt upgrade
+    ```
+
+1. Install ``docker`` and
 ``docker-compose``, then add user ``ubuntu`` to the group ``docker``, same as
 before (see section _Documentation for developers_
 [above](/README.md#documentation-for-developers)).
@@ -714,3 +730,122 @@ git add <the files>
 git commit
 git push origin develop
 ```
+
+## Updating a production instance
+
+Every now and then, the production instance needs to be updated, so the server
+can get the latest security patches, and the Research Software Directory
+software itself can be updated to include the latest features.
+
+The steps below differentiate between the old and the new instance of the Research
+Software Directory; the old instance has IP ``35.156.38.208``, the new one has
+IP ``3.122.233.225``. Your IP addresses will likely be different.
+
+1. (new) Make a new Amazon instance by following the notes above. Some things to think about:
+    - Reuse the existing security group.
+    - Reuse the existing key pair.
+    - Verify that your current IP is within the authorized IP range.
+1. (old) Download the ``rsd-secrets.env`` file.
+
+    ```
+    # something like:
+    $ cd $(mktemp -d)
+
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ubuntu@35.156.38.208:/home/ubuntu/research-software-directory/rsd-secrets.env .
+    ```
+
+1. (new) Upload ``rsd-secrets.env`` to the new Research Software Directory
+   instance.
+
+    ```
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem rsd-secrets.env \
+    ubuntu@3.122.233.225:/home/ubuntu/research-software-directory/
+    ```
+
+1. (old) Stop new additions to the database in the old research software
+   directory instance by stopping the ``rsd-admin`` service.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    $ cd research-software-directory
+    $ docker-compose stop rsd-admin
+    ```
+
+1. (old) Download the data from the old Research Software Directory instance by
+   manually triggering a backup.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    $ cd research-software-directory
+
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+
+    # Start the backup itself:
+    $ docker-compose exec backup /bin/sh /app/backup.sh
+
+    # (manually download the data from S3?)
+
+    # extract the data, something like:
+    tar -xvzf rsd-backup-2020-01-06T13_00_12UTC.tar.gz
+    ```
+
+1. (new) Upload the data to the new Research Software Directory instance.
+
+    ```
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem *.bson *.json \
+      ubuntu@3.122.233.225:/home/ubuntu/research-software-directory/database/db-init/
+    ```
+
+1. Start the new instance.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    $ cd research-software-directory
+
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+
+    $ docker-compose build
+    $ docker-compose up &
+    ```
+
+1. In a new terminal, harvest all the data from external sources using:
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    $ cd research-software-directory
+
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+
+    $ docker-compose exec harvesting python app.py harvest all
+    $ docker-compose exec harvesting python app.py resolve
+    ```
+1. If there were problems with harvesting mentions, you may need to retrieve all mentions, as follows:
+
+    ```
+    $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
+    ```
+
+1. (new) Check if the instance works correctly using a browser to navigate to
+   the new instance's IP address.
+1. (old) Stop the Research Software Directory in the old instance
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    $ cd research-software-directory
+
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+
+    $ docker-compose stop
+    ```
+
+1. (old) Disassociate the ElasticIP address from the old instance.
+1. (new) Associate the ElasticIP address with the new instance.
+
+As a final step, use the Amazon EC2 management console to ``Stop`` (not
+``Terminate``) the old instance. This way, the old instance can still be
+reactivated in case you need to get back to the old version.
