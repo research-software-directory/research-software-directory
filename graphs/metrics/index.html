@@ -1,0 +1,368 @@
+<html>
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<style>
+
+    body {
+        font-family: "Roboto", sans-serif;
+        padding: 15px;
+    }
+    .grid-container {
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-rows: auto;
+        grid-auto-flow: dense;
+    }
+    .tile {
+        background-color: #348ceb;
+        margin: 0px;
+        color: #fff;
+        box-shadow: 10px 10px 10px #aaa;
+        position: relative;
+        border-radius: 5px;
+    }
+    .tile .number {
+        padding-top: 0.4em;
+        padding-bottom: 0.2em;
+        text-align: center;
+        font-size: 4em;
+        border-bottom: 2px solid #fff;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tile .description {
+        text-align: center;
+        font-size: 1em;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-bottom: 30px;
+        background-color: none;
+    }
+    .dig-deeper {
+        width: 80%;
+        height: 14px;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        margin: 10px;
+        padding: 2px;
+        opacity: 0.7;
+        background-color: none;
+        background-image: url("dig-deeper.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right center;
+
+    }
+    .dig-deeper:hover {
+        opacity: 1.0;
+        height: 16px;
+    }
+
+    #packages {
+        background-color: #f56042;
+    }
+
+    #packages-doi {
+        background-color: #f5782a;
+    }
+
+    #permissive-licenses {
+        background-color: #dbac12;
+    }
+
+    #projects {
+        background-color: #3dd1b8;
+    }
+
+    #repositories {
+        background-color: #18c6d6;
+    }
+
+    #contributors {
+        background-color: #a2cc0a;
+    }
+
+    #commits {
+        background-color: #76c24f;
+    }
+
+    #organizations {
+        background-color: #0dbd48;
+    }
+
+    #publications-scientific {
+        background-color: #1c5dc7;
+    }
+
+    #publications-mainstream {
+        background-color: #7d2bf0;
+    }
+
+    #publications-any {
+        background-color: #ba4cad;
+    }
+
+</style>
+
+<script type="application/javascript">
+
+    const shorten = (n) => {
+        if (n >= 1e6) {
+            return Math.floor(n / 1e6).toString(10) + "M";
+        } else if (n >= 1e3) {
+            return Math.floor(n / 1e3).toString(10) + "k";
+        } else {
+            return n.toString(10);
+        }
+    }
+
+    const url = 'https://www.research-software.nl/api/software_cache';
+    fetch(url)
+    .then((resp) => resp.json())
+    .then((items) => {
+        // number of unique contributors
+        const contributors = new Set();
+        let add_contributors = (doc) => {
+            doc.contributors.forEach((contributor) => {
+                contributors.add(contributor.foreignKey.primaryKey.id)
+            });
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_contributors);
+        console.log(contributors);
+
+
+
+        // number of citable brands
+        let brands = items.filter((item) => {return item.isPublished});
+        // number of citable brands
+        let citable_brands = items.filter((item) => {return item.isPublished && item.isCitable});
+
+
+
+        // number of unique commits
+        let number_of_commits = 0;
+        let add_commits = (doc) => {
+            let keys = Object.keys(doc.commits);
+            for (let key of keys) {
+                number_of_commits += doc.commits[key];
+            }
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_commits);
+
+
+        let orgs = new Set();
+        items.forEach((item) => {
+            item.related.organizations.forEach((org) => {
+                orgs.add(org.foreignKey.primaryKey.id)
+            })
+        })
+
+
+
+        // number of unique organizations
+        const organizations = new Set();
+        let add_organizations = (doc) => {
+            doc.related.organizations.forEach((organization) => {
+                organizations.add(organization.foreignKey.primaryKey.id)
+            });
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_organizations);
+
+
+
+        // number of unique projects
+        const projects = new Set();
+        let add_projects = (doc) => {
+            doc.related.projects.forEach((project) => {
+                projects.add(project.foreignKey.primaryKey.id)
+            });
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_projects);
+
+
+
+        // number of unique repositories
+        const repositories = new Set();
+        let add_repositories = (doc) => {
+            for (let repotype in doc.repositoryURLs) {
+                doc.repositoryURLs[repotype].forEach((repo_url) => {repositories.add(repo_url)})
+            }
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_repositories);
+
+
+
+        // number of unique scientific publications
+        const scipubs = new Set();
+        const scipub_types = new Set(["conferencePaper", "journalArticle"])
+        let add_scipubs = (doc) => {
+            doc.related.mentions.forEach((mention) => {
+                if (scipub_types.has(mention.foreignKey.type)) {
+                    scipubs.add(mention.foreignKey.primaryKey.id);
+                };
+            });
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_scipubs);
+
+
+
+        // number of unique mainstream media publications
+        const mmpubs = new Set();
+        const mmpub_types = new Set(["blogPost",
+                                     "interview",
+                                     "magazineArticle",
+                                     "newspaperArticle",
+                                     "radioBroadcast",
+                                     "videoRecording"])
+        let add_mmpubs = (doc) => {
+            doc.related.mentions.forEach((mention) => {
+                if (mmpub_types.has(mention.foreignKey.type)) {
+                    mmpubs.add(mention.foreignKey.primaryKey.id);
+                };
+            });
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_mmpubs);
+
+
+
+        // number of unique publications of any type
+        const allpubs = new Set();
+        let add_pubs = (doc) => {
+            doc.related.mentions.forEach((mention) => {
+                allpubs.add(mention.foreignKey.primaryKey.id);
+            });
+        };
+        items.filter((item) => {return item.isPublished}).forEach(add_pubs);
+
+
+
+        // number of unique permissively licensed brands
+        const permissive_license_types = new Set(["Apache-2.0",
+                                                  "GPL-2.0",
+                                                  "GPL-3.0",
+                                                  "LGPL-2.0",
+                                                  "MIT"])
+        const permissively_licensed = items.filter((item) => {return item.isPublished})
+        .filter((item) => {return permissive_license_types.has(item.license[0])});
+
+
+
+        const print_overview = () => {
+            document.getElementById("packages")
+                .getElementsByClassName("number")[0].innerText = shorten(brands.length);
+
+            document.getElementById("packages-doi")
+                .getElementsByClassName("number")[0].innerText = shorten(citable_brands.length);
+
+            document.getElementById("contributors")
+                .getElementsByClassName("number")[0].innerText = shorten(contributors.size);
+
+            document.getElementById("commits")
+                .getElementsByClassName("number")[0].innerText = shorten(number_of_commits);
+
+            document.getElementById("organizations")
+                .getElementsByClassName("number")[0].innerText = shorten(organizations.size);
+
+            document.getElementById("projects")
+                .getElementsByClassName("number")[0].innerText = shorten(projects.size);
+
+            document.getElementById("repositories")
+                .getElementsByClassName("number")[0].innerText = shorten(repositories.size);
+
+            document.getElementById("publications-scientific")
+                .getElementsByClassName("number")[0].innerText = shorten(scipubs.size);
+
+            document.getElementById("publications-mainstream")
+                .getElementsByClassName("number")[0].innerText = shorten(mmpubs.size);
+
+            document.getElementById("publications-any")
+                .getElementsByClassName("number")[0].innerText = shorten(allpubs.size);
+
+            document.getElementById("permissive-licenses")
+                .getElementsByClassName("number")[0].innerText = shorten(permissively_licensed.length);
+        }
+
+        print_overview();
+    })
+    .catch(function(error) {
+        console.log(JSON.stringify(error));
+    });
+</script>
+
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div id="packages" class="tile">
+            <div class="number">...</div>
+            <div class="description">Software packages</div>
+        </div>
+
+        <div id="packages-doi" class="tile">
+            <div class="number">...</div>
+            <div class="description">Software packages with DOI</div>
+        </div>
+
+        <div id="permissive-licenses" class="tile">
+            <div class="number">...</div>
+            <div class="description">Software packages with a permissive license</div>
+        </div>
+
+        <div id="projects" class="tile">
+            <div class="number">...</div>
+            <div class="description">Projects</div>
+        </div>
+
+        <div id="repositories" class="tile">
+            <div class="number">...</div>
+            <div class="description">Repositories</div>
+        </div>
+
+        <div id="contributors" class="tile">
+            <div class="number">...</div>
+            <div class="description">Contributors</div>
+            <div class="dig-deeper"></div>
+        </div>
+
+        <div id="commits" class="tile">
+            <div class="number">...</div>
+            <div class="description">Commits</div>
+            <div class="dig-deeper"></div>
+        </div>
+
+        <div id="organizations" class="tile">
+            <div class="number">...</div>
+            <div class="description">Partner organizations</div>
+            <div class="dig-deeper"></div>
+        </div>
+
+        <div id="publications-scientific" class="tile">
+            <div class="number">...</div>
+            <div class="description">Scientific publications</div>
+            <div class="dig-deeper"></div>
+        </div>
+
+        <div id="publications-mainstream" class="tile">
+            <div class="number">...</div>
+            <div class="description">Mainstream media publications</div>
+            <div class="dig-deeper"></div>
+        </div>
+
+        <div id="publications-any" class="tile">
+            <div class="number">...</div>
+            <div class="description">Publications of any type</div>
+            <div class="dig-deeper"></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
