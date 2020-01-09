@@ -2,6 +2,7 @@
 
 <head>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
 <style>
 
     body {
@@ -12,7 +13,7 @@
         display: grid;
         grid-gap: 40px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-template-rows: auto;
+        grid-template-rows: 200px;
         grid-auto-flow: dense;
     }
     .tile {
@@ -88,7 +89,7 @@
         background-color: #a2cc0a;
     }
 
-    #commits {
+    #commits, #commitsd3 {
         background-color: #76c24f;
     }
 
@@ -108,9 +109,31 @@
         background-color: #ba4cad;
     }
 
+    svg .xlabel {
+        font-family: "Roboto", sans-serif;
+        font-size: 1em;
+        fill: #fff;
+    }
+
+    svg .ylabel {
+        font-family: "Roboto", sans-serif;
+        font-size: 1em;
+        fill: #fff;
+    }
+
+    svg .title {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.2em;
+        fill: #fff;
+    }
+
 </style>
 
 <script type="application/javascript">
+
+    const dig_deeper = (elem) => {
+        console.log("User clicked on dig deeper for " + elem.parentElement.id);
+    }
 
     const shorten = (n) => {
         if (n >= 1e6) {
@@ -120,6 +143,78 @@
         } else {
             return n.toString(10);
         }
+    }
+
+    const px = (n) => {
+        return n.toString(10) + "px"
+    }
+
+    const prep_axes = (elem_id, domains) => {
+
+        if (d3.select(elem_id).node().childElementCount > 0) {
+            d3.select(elem_id).select("svg").remove()
+        }
+        const margins = {"left": 70, "right": 60, "bottom": 40, "top": 60};
+        const bbox = d3.select(elem_id).node().getBoundingClientRect();
+        const height = bbox.height;
+        const width = bbox.width;
+        const svg = d3.select(elem_id)
+                      .append("svg")
+                          .attr("width", px(width))
+                          .attr("height", px(height))
+        const xscale = d3.scaleLinear().domain(domains.x).range([margins.left, width - margins.right]);
+        const yscale = d3.scaleLinear().domain(domains.y).range([height - margins.bottom, margins.top]);
+
+        const xlabel = svg.append("g")
+                          .attr("class", "xlabel")
+                              .append("text")
+                              .attr("x", margins.left + (width - margins.left - margins.right) / 2)
+                              .attr("y", height - margins.bottom / 2)
+                              .style("text-anchor", "middle")
+
+        const ylabel = svg.append("g")
+                          .attr("class", "ylabel")
+                              .append("text")
+                              .attr("x", margins.left / 2)
+                              .attr("y", margins.top + (height - margins.top - margins.bottom) / 2)
+                              .style("text-anchor", "middle")
+
+        const title = svg.append("g")
+                         .attr("class", "title")
+                             .append("text")
+                             .attr("x", margins.left + (width - margins.left - margins.right) / 2)
+                             .attr("y", margins.top / 2)
+                             .style("text-anchor", "middle")
+
+        return {svg, width, height, margins, xscale, yscale, xlabel, ylabel, title};
+    }
+
+
+    const draw_commit_histogram = () => {
+
+        data = [99,88,77,66,55,44,33,22,11];
+        const domains = {"x": [0, data.length], "y": [0, Math.max(...data)]};
+        const {svg, width, height, margins, xscale, yscale, xlabel, ylabel, title} = prep_axes("#commitsd3", domains);
+
+        svg.selectAll("rect").data(data).enter()
+           .append("rect")
+               .attr("x", function(d, i) {
+                   return xscale(i);
+               })
+               .attr("y", function(d) {
+                   return yscale(d);
+               })
+               .attr("width", (width - margins.left - margins.right) / data.length - 3)
+               .attr("height", function(d) {
+                   return Math.abs(yscale(d) - yscale(0));
+               })
+               .attr("fill", function(d) {
+                   return "#fff";
+               })
+
+        xlabel.text("software packages");
+        ylabel.text("count");
+        title.text("Commits per software package");
     }
 
     const url = 'https://www.research-software.nl/api/software_cache';
@@ -260,6 +355,15 @@
             document.getElementById("packages-doi")
                 .getElementsByClassName("number")[0].innerText = shorten(citable_brands.length);
 
+            document.getElementById("permissive-licenses")
+                .getElementsByClassName("number")[0].innerText = shorten(permissively_licensed.length);
+
+            document.getElementById("projects")
+                .getElementsByClassName("number")[0].innerText = shorten(projects.size);
+
+            document.getElementById("repositories")
+                .getElementsByClassName("number")[0].innerText = shorten(repositories.size);
+
             document.getElementById("contributors")
                 .getElementsByClassName("number")[0].innerText = shorten(contributors.size);
 
@@ -268,12 +372,6 @@
 
             document.getElementById("organizations")
                 .getElementsByClassName("number")[0].innerText = shorten(organizations.size);
-
-            document.getElementById("projects")
-                .getElementsByClassName("number")[0].innerText = shorten(projects.size);
-
-            document.getElementById("repositories")
-                .getElementsByClassName("number")[0].innerText = shorten(repositories.size);
 
             document.getElementById("publications-scientific")
                 .getElementsByClassName("number")[0].innerText = shorten(scipubs.size);
@@ -284,11 +382,16 @@
             document.getElementById("publications-any")
                 .getElementsByClassName("number")[0].innerText = shorten(allpubs.size);
 
-            document.getElementById("permissive-licenses")
-                .getElementsByClassName("number")[0].innerText = shorten(permissively_licensed.length);
         }
 
-        print_overview();
+        const redraw = () => {
+            console.log("redraw");
+            print_overview();
+            draw_commit_histogram();
+        }
+        window.addEventListener("resize", redraw);
+        redraw();
+
     })
     .catch(function(error) {
         console.log(JSON.stringify(error));
@@ -300,6 +403,7 @@
 <body>
 
     <div class="grid-container">
+
         <div id="packages" class="tile">
             <div class="number">...</div>
             <div class="description">Software packages</div>
@@ -328,37 +432,40 @@
         <div id="contributors" class="tile">
             <div class="number">...</div>
             <div class="description">Contributors</div>
-            <div class="dig-deeper"></div>
+            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
         </div>
 
         <div id="commits" class="tile">
             <div class="number">...</div>
             <div class="description">Commits</div>
-            <div class="dig-deeper"></div>
+            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
+        </div>
+
+        <div id="commitsd3" class="tile">
         </div>
 
         <div id="organizations" class="tile">
             <div class="number">...</div>
             <div class="description">Partner organizations</div>
-            <div class="dig-deeper"></div>
+            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
         </div>
 
         <div id="publications-scientific" class="tile">
             <div class="number">...</div>
             <div class="description">Scientific publications</div>
-            <div class="dig-deeper"></div>
+            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
         </div>
 
         <div id="publications-mainstream" class="tile">
             <div class="number">...</div>
             <div class="description">Mainstream media publications</div>
-            <div class="dig-deeper"></div>
+            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
         </div>
 
         <div id="publications-any" class="tile">
             <div class="number">...</div>
             <div class="description">Publications of any type</div>
-            <div class="dig-deeper"></div>
+            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
         </div>
 
     </div>
