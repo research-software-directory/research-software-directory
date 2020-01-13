@@ -44,25 +44,57 @@
         margin-bottom: 30px;
         background-color: none;
     }
-    .dig-deeper {
-        width: 80%;
-        height: 14px;
+    .tile div.stats {
+        height: 200px;
+    }
+    .tile div.graph {
+        height: 200px;
+    }
+    .tile div.button-bar {
+        height: 40px;
+        width: 80px;
         position: absolute;
-        bottom: 0px;
+        top: 160px;
         right: 0px;
-        margin: 10px;
-        padding: 2px;
+    }
+    .tile div.button {
+        width: 20px;
+        height: 20px;
+        float: right;
+    }
+    .tile div.button:hover {
+        width: 22px;
+        height: 22px;
+        margin-top: 8px;
+        margin-left: 0px;
+        margin-right: 9px;
+        opacity: 1.0;
+    }
+    .tile div.button.selected {
+        border-bottom: 3px dotted #fff;
+    }
+    .tile div.button-graph {
         opacity: 0.7;
-        background-color: none;
+        margin-top: 10px;
+        margin-left: 1px;
+        margin-right: 10px;
         background-image: url("dig-deeper.svg");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right center;
-
     }
-    .dig-deeper:hover {
-        opacity: 1.0;
-        height: 16px;
+    .tile div.button-stats{
+        opacity: 0.7;
+        margin-top: 10px;
+        margin-left: 1px;
+        margin-right: 10px;
+        background-image: url("show-stats.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right center;
+    }
+    .hidden {
+        display: none;
     }
 
     #packages {
@@ -89,7 +121,7 @@
         background-color: #a2cc0a;
     }
 
-    #commits, #commitsd3 {
+    #commits {
         background-color: #76c24f;
     }
 
@@ -131,8 +163,17 @@
 
 <script type="application/javascript">
 
-    const dig_deeper = (elem) => {
-        console.log("User clicked on dig deeper for " + elem.parentElement.id);
+    const update_shown = (elem, shown, hiddens) => {
+        let siblings = [...elem.parentElement.children];
+        siblings.forEach((sibling) => {
+            sibling.classList.remove("selected");
+        })
+        elem.classList.add("selected");
+        const id = elem.parentElement.parentElement.id;
+        document.getElementById(id).getElementsByClassName(shown)[0].classList.remove("hidden")
+        hiddens.forEach((hidden) => {
+            document.getElementById(id).getElementsByClassName(hidden)[0].classList.add("hidden")
+        })
     }
 
     const shorten = (n) => {
@@ -151,14 +192,16 @@
 
     const prep_axes = (elem_id, domains) => {
 
-        if (d3.select(elem_id).node().childElementCount > 0) {
+        if (d3.select(elem_id + " .graph").empty()) {
+            // pass
+        } else {
             d3.select(elem_id).select("svg").remove()
         }
         const margins = {"left": 70, "right": 60, "bottom": 40, "top": 60};
         const bbox = d3.select(elem_id).node().getBoundingClientRect();
         const height = bbox.height;
         const width = bbox.width;
-        const svg = d3.select(elem_id)
+        const svg = d3.select(elem_id + " .graph")
                       .append("svg")
                           .attr("width", px(width))
                           .attr("height", px(height))
@@ -194,7 +237,7 @@
 
         data = [99,88,77,66,55,44,33,22,11];
         const domains = {"x": [0, data.length], "y": [0, Math.max(...data)]};
-        const {svg, width, height, margins, xscale, yscale, xlabel, ylabel, title} = prep_axes("#commitsd3", domains);
+        const {svg, width, height, margins, xscale, yscale, xlabel, ylabel, title} = prep_axes("#commits", domains);
 
         svg.selectAll("rect").data(data).enter()
            .append("rect")
@@ -404,68 +447,116 @@
 
     <div class="grid-container">
 
+        <div id="commits" class="tile">
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Commits</div>
+            </div>
+            <div class="graph hidden"></div>
+            <div class="button-bar">
+                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+            </div>
+        </div>
+
         <div id="packages" class="tile">
-            <div class="number">...</div>
-            <div class="description">Software packages</div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Software packages</div>
+            </div>
         </div>
 
         <div id="packages-doi" class="tile">
-            <div class="number">...</div>
-            <div class="description">Software packages with DOI</div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Software packages with DOI</div>
+            </div>
         </div>
 
         <div id="permissive-licenses" class="tile">
-            <div class="number">...</div>
-            <div class="description">Software packages with a permissive license</div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Software packages with a permissive license</div>
+            </div>
         </div>
 
         <div id="projects" class="tile">
-            <div class="number">...</div>
-            <div class="description">Projects</div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Projects</div>
+            </div>
         </div>
 
         <div id="repositories" class="tile">
-            <div class="number">...</div>
-            <div class="description">Repositories</div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Repositories</div>
+            </div>
         </div>
 
         <div id="contributors" class="tile">
-            <div class="number">...</div>
-            <div class="description">Contributors</div>
-            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
-        </div>
-
-        <div id="commits" class="tile">
-            <div class="number">...</div>
-            <div class="description">Commits</div>
-            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
-        </div>
-
-        <div id="commitsd3" class="tile">
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Contributors</div>
+            </div>
+            <div class="graph hidden">
+            </div>
+            <div class="button-bar">
+                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+            </div>
         </div>
 
         <div id="organizations" class="tile">
-            <div class="number">...</div>
-            <div class="description">Partner organizations</div>
-            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Partner organizations</div>
+            </div>
+            <div class="graph hidden">
+            </div>
+            <div class="button-bar">
+                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+            </div>
         </div>
 
         <div id="publications-scientific" class="tile">
-            <div class="number">...</div>
-            <div class="description">Scientific publications</div>
-            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Scientific publications</div>
+            </div>
+            <div class="graph hidden">
+            </div>
+            <div class="button-bar">
+                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+            </div>
         </div>
 
         <div id="publications-mainstream" class="tile">
-            <div class="number">...</div>
-            <div class="description">Mainstream media publications</div>
-            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Mainstream media publications</div>
+            </div>
+            <div class="graph hidden">
+            </div>
+            <div class="button-bar">
+                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+            </div>
         </div>
 
         <div id="publications-any" class="tile">
-            <div class="number">...</div>
-            <div class="description">Publications of any type</div>
-            <div class="dig-deeper" onclick="dig_deeper(this)"></div>
+            <div class="stats">
+                <div class="number">...</div>
+                <div class="description">Publications of any type</div>
+            </div>
+            <div class="graph hidden">
+            </div>
+            <div class="button-bar">
+                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+            </div>
         </div>
 
     </div>
