@@ -50,9 +50,19 @@
     .tile div.graph {
         height: 200px;
     }
+    .tile div.explanation {
+        height: 200px;
+    }
+    .tile div.explanation .text {
+        font-size: 0.8em;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
     .tile div.button-bar {
         height: 40px;
-        width: 80px;
+        width: 100px;
         position: absolute;
         top: 160px;
         right: 0px;
@@ -61,37 +71,32 @@
         width: 20px;
         height: 20px;
         float: right;
+        opacity: 0.6;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right center;
+        margin-top: 10px;
     }
     .tile div.button:hover {
-        width: 22px;
-        height: 22px;
-        margin-top: 8px;
-        margin-left: 0px;
-        margin-right: 9px;
         opacity: 1.0;
     }
     .tile div.button.selected {
         border-bottom: 3px dotted #fff;
     }
     .tile div.button-graph {
-        opacity: 0.7;
-        margin-top: 10px;
         margin-left: 1px;
-        margin-right: 10px;
+        margin-right: 5px;
         background-image: url("dig-deeper.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right center;
     }
     .tile div.button-stats{
-        opacity: 0.7;
-        margin-top: 10px;
         margin-left: 1px;
-        margin-right: 10px;
+        margin-right: 5px;
         background-image: url("show-stats.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right center;
+    }
+    .tile div.button-explanation {
+        margin-left: 1px;
+        margin-right: 5px;
+        background-image: url("explanation.svg");
     }
     .hidden {
         display: none;
@@ -163,15 +168,15 @@
 
 <script type="application/javascript">
 
-    const update_shown = (elem, shown, hiddens) => {
+    const update_shown = (elem, state) => {
         let siblings = [...elem.parentElement.children];
         siblings.forEach((sibling) => {
             sibling.classList.remove("selected");
         })
         elem.classList.add("selected");
         const id = elem.parentElement.parentElement.id;
-        document.getElementById(id).getElementsByClassName(shown)[0].classList.remove("hidden")
-        hiddens.forEach((hidden) => {
+        document.getElementById(id).getElementsByClassName(state.show)[0].classList.remove("hidden")
+        state.hide.forEach((hidden) => {
             document.getElementById(id).getElementsByClassName(hidden)[0].classList.add("hidden")
         })
     }
@@ -197,7 +202,7 @@
         } else {
             d3.select(elem_id).select("svg").remove()
         }
-        const margins = {"left": 70, "right": 60, "bottom": 40, "top": 60};
+        const margins = {"left": 70, "right": 60, "bottom": 60, "top": 60};
         const bbox = d3.select(elem_id).node().getBoundingClientRect();
         const height = bbox.height;
         const width = bbox.width;
@@ -453,9 +458,11 @@
                 <div class="description">Commits</div>
             </div>
             <div class="graph hidden"></div>
+            <div class="explanation hidden"><div class="text">the explanation</div></div>
             <div class="button-bar">
-                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
             </div>
         </div>
 
@@ -499,11 +506,12 @@
                 <div class="number">...</div>
                 <div class="description">Contributors</div>
             </div>
-            <div class="graph hidden">
-            </div>
+            <div class="graph hidden"></div>
+            <div class="explanation hidden"><div class="text">the explanation</div></div>
             <div class="button-bar">
-                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
             </div>
         </div>
 
@@ -512,11 +520,12 @@
                 <div class="number">...</div>
                 <div class="description">Partner organizations</div>
             </div>
-            <div class="graph hidden">
-            </div>
+            <div class="graph hidden"></div>
+            <div class="explanation hidden"><div class="text">the explanation</div></div>
             <div class="button-bar">
-                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
             </div>
         </div>
 
@@ -525,11 +534,12 @@
                 <div class="number">...</div>
                 <div class="description">Scientific publications</div>
             </div>
-            <div class="graph hidden">
-            </div>
+            <div class="graph hidden"></div>
+            <div class="explanation hidden"><div class="text">the explanation</div></div>
             <div class="button-bar">
-                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
             </div>
         </div>
 
@@ -538,11 +548,12 @@
                 <div class="number">...</div>
                 <div class="description">Mainstream media publications</div>
             </div>
-            <div class="graph hidden">
-            </div>
+            <div class="graph hidden"></div>
+            <div class="explanation hidden"><div class="text">the explanation</div></div>
             <div class="button-bar">
-                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
             </div>
         </div>
 
@@ -551,11 +562,12 @@
                 <div class="number">...</div>
                 <div class="description">Publications of any type</div>
             </div>
-            <div class="graph hidden">
-            </div>
+            <div class="graph hidden"></div>
+            <div class="explanation hidden"><div class="text">the explanation</div></div>
             <div class="button-bar">
-                <div class="button button-graph" onclick="update_shown(this, 'graph', ['stats'])"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, 'stats', ['graph'])"></div>
+                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
             </div>
         </div>
 
