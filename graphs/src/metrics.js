@@ -37,7 +37,7 @@ const prep_axes = (elem_id, bars) => {
    }
 
    const domains = {"x": [0, bars.length], "y": [0, Math.max(...bars)]};
-   const margins = {"left": 45, "right": 45, "bottom": 60, "top": 60};
+   const margins = {"left": 45, "right": 45, "bottom": 60, "top": 100};
    const bbox = d3.select("#" + elem_id).node().getBoundingClientRect();
    const height = bbox.height;
    const width = bbox.width;
@@ -198,7 +198,7 @@ const draw_projects = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software package");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Projects per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
@@ -219,7 +219,7 @@ const draw_contributors = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software package");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Contributors per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
@@ -242,7 +242,7 @@ const draw_commits = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software packages");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Commits per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
@@ -264,7 +264,7 @@ const draw_organizations = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software package");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Organizations per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
@@ -288,7 +288,7 @@ const draw_publications_scientific = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software package");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Scientific publications per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
@@ -314,7 +314,7 @@ const draw_publications_mainstream = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software package");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Mainstream media publications per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
@@ -335,7 +335,7 @@ const draw_publications_any = (items, id) => {
    }
    const {bars, stat} = wrangle(items);
    const {xlabel, ylabel, title} = prep_axes(id, bars);
-   xlabel.text("software package");
+   xlabel.text("software packages, sorted");
    ylabel.text("count");
    title.text("Publications of any type per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
