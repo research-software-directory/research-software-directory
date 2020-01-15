@@ -11,6 +11,7 @@ const update_shown = (elem, state) => {
    })
 }
 
+
 const shorten = (n) => {
    if (n >= 1e6) {
       return Math.floor(n / 1e6).toString(10) + "M";
