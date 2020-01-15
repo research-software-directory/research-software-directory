@@ -1,577 +1,185 @@
 <html>
 
 <head>
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
-<style>
-
-    body {
-        font-family: "Roboto", sans-serif;
-        padding: 15px;
-    }
-    .grid-container {
-        display: grid;
-        grid-gap: 40px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-template-rows: 200px;
-        grid-auto-flow: dense;
-    }
-    .tile {
-        background-color: #348ceb;
-        margin: 0px;
-        color: #fff;
-        box-shadow: 10px 10px 10px #aaa;
-        position: relative;
-        border-radius: 5px;
-    }
-    .tile .number {
-        padding-top: 0.4em;
-        padding-bottom: 0.2em;
-        text-align: center;
-        font-size: 4em;
-        border-bottom: 2px solid #fff;
-        width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .tile .description {
-        text-align: center;
-        font-size: 1em;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-left: 15%;
-        margin-right: 15%;
-        margin-bottom: 30px;
-        background-color: none;
-    }
-    .tile div.stats {
-        height: 200px;
-    }
-    .tile div.graph {
-        height: 200px;
-    }
-    .tile div.explanation {
-        height: 200px;
-    }
-    .tile div.explanation .text {
-        font-size: 0.8em;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    .tile div.button-bar {
-        height: 40px;
-        width: 100px;
-        position: absolute;
-        top: 160px;
-        right: 0px;
-    }
-    .tile div.button {
-        width: 20px;
-        height: 20px;
-        float: right;
-        opacity: 0.6;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right center;
-        margin-top: 10px;
-    }
-    .tile div.button:hover {
-        opacity: 1.0;
-    }
-    .tile div.button.selected {
-        border-bottom: 3px dotted #fff;
-    }
-    .tile div.button-graph {
-        margin-left: 1px;
-        margin-right: 5px;
-        background-image: url("dig-deeper.svg");
-    }
-    .tile div.button-stats{
-        margin-left: 1px;
-        margin-right: 5px;
-        background-image: url("show-stats.svg");
-    }
-    .tile div.button-explanation {
-        margin-left: 1px;
-        margin-right: 5px;
-        background-image: url("explanation.svg");
-    }
-    .hidden {
-        display: none;
-    }
-
-    #packages {
-        background-color: #f56042;
-    }
-
-    #packages-doi {
-        background-color: #f5782a;
-    }
-
-    #permissive-licenses {
-        background-color: #dbac12;
-    }
-
-    #projects {
-        background-color: #3dd1b8;
-    }
-
-    #repositories {
-        background-color: #18c6d6;
-    }
-
-    #contributors {
-        background-color: #a2cc0a;
-    }
-
-    #commits {
-        background-color: #76c24f;
-    }
-
-    #organizations {
-        background-color: #0dbd48;
-    }
-
-    #publications-scientific {
-        background-color: #1c5dc7;
-    }
-
-    #publications-mainstream {
-        background-color: #7d2bf0;
-    }
-
-    #publications-any {
-        background-color: #ba4cad;
-    }
-
-    svg .xlabel {
-        font-family: "Roboto", sans-serif;
-        font-size: 1em;
-        fill: #fff;
-    }
-
-    svg .ylabel {
-        font-family: "Roboto", sans-serif;
-        font-size: 1em;
-        fill: #fff;
-    }
-
-    svg .title {
-        font-family: "Roboto", sans-serif;
-        font-size: 1.2em;
-        fill: #fff;
-    }
-
-</style>
-
-<script type="application/javascript">
-
-    const update_shown = (elem, state) => {
-        let siblings = [...elem.parentElement.children];
-        siblings.forEach((sibling) => {
-            sibling.classList.remove("selected");
-        })
-        elem.classList.add("selected");
-        const id = elem.parentElement.parentElement.id;
-        document.getElementById(id).getElementsByClassName(state.show)[0].classList.remove("hidden")
-        state.hide.forEach((hidden) => {
-            document.getElementById(id).getElementsByClassName(hidden)[0].classList.add("hidden")
-        })
-    }
-
-    const shorten = (n) => {
-        if (n >= 1e6) {
-            return Math.floor(n / 1e6).toString(10) + "M";
-        } else if (n >= 1e3) {
-            return Math.floor(n / 1e3).toString(10) + "k";
-        } else {
-            return n.toString(10);
-        }
-    }
-
-    const px = (n) => {
-        return n.toString(10) + "px"
-    }
-
-    const prep_axes = (elem_id, domains) => {
-
-        if (d3.select(elem_id + " .graph").empty()) {
-            // pass
-        } else {
-            d3.select(elem_id).select("svg").remove()
-        }
-        const margins = {"left": 70, "right": 60, "bottom": 60, "top": 60};
-        const bbox = d3.select(elem_id).node().getBoundingClientRect();
-        const height = bbox.height;
-        const width = bbox.width;
-        const svg = d3.select(elem_id + " .graph")
-                      .append("svg")
-                          .attr("width", px(width))
-                          .attr("height", px(height))
-        const xscale = d3.scaleLinear().domain(domains.x).range([margins.left, width - margins.right]);
-        const yscale = d3.scaleLinear().domain(domains.y).range([height - margins.bottom, margins.top]);
-
-        const xlabel = svg.append("g")
-                          .attr("class", "xlabel")
-                              .append("text")
-                              .attr("x", margins.left + (width - margins.left - margins.right) / 2)
-                              .attr("y", height - margins.bottom / 2)
-                              .style("text-anchor", "middle")
-
-        const ylabel = svg.append("g")
-                          .attr("class", "ylabel")
-                              .append("text")
-                              .attr("x", margins.left / 2)
-                              .attr("y", margins.top + (height - margins.top - margins.bottom) / 2)
-                              .style("text-anchor", "middle")
-
-        const title = svg.append("g")
-                         .attr("class", "title")
-                             .append("text")
-                             .attr("x", margins.left + (width - margins.left - margins.right) / 2)
-                             .attr("y", margins.top / 2)
-                             .style("text-anchor", "middle")
-
-        return {svg, width, height, margins, xscale, yscale, xlabel, ylabel, title};
-    }
-
-
-    const draw_commit_histogram = () => {
-
-        data = [99,88,77,66,55,44,33,22,11];
-        const domains = {"x": [0, data.length], "y": [0, Math.max(...data)]};
-        const {svg, width, height, margins, xscale, yscale, xlabel, ylabel, title} = prep_axes("#commits", domains);
-
-        svg.selectAll("rect").data(data).enter()
-           .append("rect")
-               .attr("x", function(d, i) {
-                   return xscale(i);
-               })
-               .attr("y", function(d) {
-                   return yscale(d);
-               })
-               .attr("width", (width - margins.left - margins.right) / data.length - 3)
-               .attr("height", function(d) {
-                   return Math.abs(yscale(d) - yscale(0));
-               })
-               .attr("fill", function(d) {
-                   return "#fff";
-               })
-
-        xlabel.text("software packages");
-        ylabel.text("count");
-        title.text("Commits per software package");
-    }
-
-    const url = 'https://www.research-software.nl/api/software_cache';
-    fetch(url)
-    .then((resp) => resp.json())
-    .then((items) => {
-        // number of unique contributors
-        const contributors = new Set();
-        let add_contributors = (doc) => {
-            doc.contributors.forEach((contributor) => {
-                contributors.add(contributor.foreignKey.primaryKey.id)
-            });
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_contributors);
-        console.log(contributors);
-
-
-
-        // number of citable brands
-        let brands = items.filter((item) => {return item.isPublished});
-        // number of citable brands
-        let citable_brands = items.filter((item) => {return item.isPublished && item.isCitable});
-
-
-
-        // number of unique commits
-        let number_of_commits = 0;
-        let add_commits = (doc) => {
-            let keys = Object.keys(doc.commits);
-            for (let key of keys) {
-                number_of_commits += doc.commits[key];
-            }
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_commits);
-
-
-        let orgs = new Set();
-        items.forEach((item) => {
-            item.related.organizations.forEach((org) => {
-                orgs.add(org.foreignKey.primaryKey.id)
-            })
-        })
-
-
-
-        // number of unique organizations
-        const organizations = new Set();
-        let add_organizations = (doc) => {
-            doc.related.organizations.forEach((organization) => {
-                organizations.add(organization.foreignKey.primaryKey.id)
-            });
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_organizations);
-
-
-
-        // number of unique projects
-        const projects = new Set();
-        let add_projects = (doc) => {
-            doc.related.projects.forEach((project) => {
-                projects.add(project.foreignKey.primaryKey.id)
-            });
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_projects);
-
-
-
-        // number of unique repositories
-        const repositories = new Set();
-        let add_repositories = (doc) => {
-            for (let repotype in doc.repositoryURLs) {
-                doc.repositoryURLs[repotype].forEach((repo_url) => {repositories.add(repo_url)})
-            }
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_repositories);
-
-
-
-        // number of unique scientific publications
-        const scipubs = new Set();
-        const scipub_types = new Set(["conferencePaper", "journalArticle"])
-        let add_scipubs = (doc) => {
-            doc.related.mentions.forEach((mention) => {
-                if (scipub_types.has(mention.foreignKey.type)) {
-                    scipubs.add(mention.foreignKey.primaryKey.id);
-                };
-            });
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_scipubs);
-
-
-
-        // number of unique mainstream media publications
-        const mmpubs = new Set();
-        const mmpub_types = new Set(["blogPost",
-                                     "interview",
-                                     "magazineArticle",
-                                     "newspaperArticle",
-                                     "radioBroadcast",
-                                     "videoRecording"])
-        let add_mmpubs = (doc) => {
-            doc.related.mentions.forEach((mention) => {
-                if (mmpub_types.has(mention.foreignKey.type)) {
-                    mmpubs.add(mention.foreignKey.primaryKey.id);
-                };
-            });
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_mmpubs);
-
-
-
-        // number of unique publications of any type
-        const allpubs = new Set();
-        let add_pubs = (doc) => {
-            doc.related.mentions.forEach((mention) => {
-                allpubs.add(mention.foreignKey.primaryKey.id);
-            });
-        };
-        items.filter((item) => {return item.isPublished}).forEach(add_pubs);
-
-
-
-        // number of unique permissively licensed brands
-        const permissive_license_types = new Set(["Apache-2.0",
-                                                  "GPL-2.0",
-                                                  "GPL-3.0",
-                                                  "LGPL-2.0",
-                                                  "MIT"])
-        const permissively_licensed = items.filter((item) => {return item.isPublished})
-        .filter((item) => {return permissive_license_types.has(item.license[0])});
-
-
-
-        const print_overview = () => {
-            document.getElementById("packages")
-                .getElementsByClassName("number")[0].innerText = shorten(brands.length);
-
-            document.getElementById("packages-doi")
-                .getElementsByClassName("number")[0].innerText = shorten(citable_brands.length);
-
-            document.getElementById("permissive-licenses")
-                .getElementsByClassName("number")[0].innerText = shorten(permissively_licensed.length);
-
-            document.getElementById("projects")
-                .getElementsByClassName("number")[0].innerText = shorten(projects.size);
-
-            document.getElementById("repositories")
-                .getElementsByClassName("number")[0].innerText = shorten(repositories.size);
-
-            document.getElementById("contributors")
-                .getElementsByClassName("number")[0].innerText = shorten(contributors.size);
-
-            document.getElementById("commits")
-                .getElementsByClassName("number")[0].innerText = shorten(number_of_commits);
-
-            document.getElementById("organizations")
-                .getElementsByClassName("number")[0].innerText = shorten(organizations.size);
-
-            document.getElementById("publications-scientific")
-                .getElementsByClassName("number")[0].innerText = shorten(scipubs.size);
-
-            document.getElementById("publications-mainstream")
-                .getElementsByClassName("number")[0].innerText = shorten(mmpubs.size);
-
-            document.getElementById("publications-any")
-                .getElementsByClassName("number")[0].innerText = shorten(allpubs.size);
-
-        }
-
-        const redraw = () => {
-            console.log("redraw");
-            print_overview();
-            draw_commit_histogram();
-        }
-        window.addEventListener("resize", redraw);
-        redraw();
-
-    })
-    .catch(function(error) {
-        console.log(JSON.stringify(error));
-    });
-</script>
-
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
+   <link rel="stylesheet" type="text/css" href="metrics.css">
+   <script type="application/javascript" src="metrics.js"></script>
 </head>
 
 <body>
 
-    <div class="grid-container">
+   <div class="grid-container">
 
-        <div id="commits" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Commits</div>
-            </div>
-            <div class="graph hidden"></div>
-            <div class="explanation hidden"><div class="text">the explanation</div></div>
-            <div class="button-bar">
-                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
-                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
-            </div>
-        </div>
+      <div id="packages" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Software packages</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The total number of software packages in this instance of the Research Software Directory.</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
 
-        <div id="packages" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Software packages</div>
-            </div>
-        </div>
+      <div id="packages-doi" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Software packages with DOI</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The percentage of packages in this instance of the Research Software Directory that include a DOI in their citation metadata. With persistent identifiers such as DOIs, the exact version of code can be cited accurately.</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
 
-        <div id="packages-doi" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Software packages with DOI</div>
-            </div>
-        </div>
+      <div id="permissive-licenses" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Software packages with a permissive license</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The percentage of packages in this instance of the Research Software Directory that are made available under a permissive license (specifically, any of the following: Apache-2.0, GPL-2.0, GPL-3.0, LGPL-2.0, LGPL-3.0, or MIT).</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
 
-        <div id="permissive-licenses" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Software packages with a permissive license</div>
-            </div>
-        </div>
+      <div id="repositories" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Repositories</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The total number of source code repositories that store code associated with software packages published in this instance of the Research Software Directory.</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
 
-        <div id="projects" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Projects</div>
-            </div>
-        </div>
+      <div id="projects" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Projects</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of projects that make use of the software packages published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-        <div id="repositories" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Repositories</div>
-            </div>
-        </div>
+      <div id="contributors" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Contributors</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of people that contributed to the software packages published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-        <div id="contributors" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Contributors</div>
-            </div>
-            <div class="graph hidden"></div>
-            <div class="explanation hidden"><div class="text">the explanation</div></div>
-            <div class="button-bar">
-                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
-                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
-            </div>
-        </div>
+      <div id="commits" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Commits</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of commits that were made to the software packages published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-        <div id="organizations" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Partner organizations</div>
-            </div>
-            <div class="graph hidden"></div>
-            <div class="explanation hidden"><div class="text">the explanation</div></div>
-            <div class="button-bar">
-                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
-                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
-            </div>
-        </div>
+      <div id="organizations" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Partner organizations</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of organizations with whom the software packages published in this instance of the Research Software Directory were developed.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-        <div id="publications-scientific" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Scientific publications</div>
-            </div>
-            <div class="graph hidden"></div>
-            <div class="explanation hidden"><div class="text">the explanation</div></div>
-            <div class="button-bar">
-                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
-                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
-            </div>
-        </div>
+      <div id="publications-scientific" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Scientific publications</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of scientific publications that mention a software package published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-        <div id="publications-mainstream" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Mainstream media publications</div>
-            </div>
-            <div class="graph hidden"></div>
-            <div class="explanation hidden"><div class="text">the explanation</div></div>
-            <div class="button-bar">
-                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
-                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
-            </div>
-        </div>
+      <div id="publications-mainstream" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Mainstream media publications</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of mainstream media publications that mention a software package published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-        <div id="publications-any" class="tile">
-            <div class="stats">
-                <div class="number">...</div>
-                <div class="description">Publications of any type</div>
-            </div>
-            <div class="graph hidden"></div>
-            <div class="explanation hidden"><div class="text">the explanation</div></div>
-            <div class="button-bar">
-                <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
-                <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
-                <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
-            </div>
-        </div>
+      <div id="publications-any" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Publications of any type</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of publications of any type that mention a software package published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
 
-    </div>
+   </div>
 
 </body>
 
