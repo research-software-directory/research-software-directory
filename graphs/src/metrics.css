@@ -62,7 +62,7 @@ svg .bar-label {
 }
 svg .title {
    font-family: "Roboto", sans-serif;
-   font-size: 1.1em;
+   font-size: 1.2em;
    fill: #fff;
    text-anchor: middle;
    vertical-align: bottom;
@@ -104,7 +104,7 @@ svg .title {
 }
 .tile .description {
    text-align: center;
-   font-size: 1em;
+   font-size: 1.2em;
    padding-top: 10px;
    padding-bottom: 10px;
    margin-left: auto;
