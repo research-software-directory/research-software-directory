@@ -8,16 +8,16 @@
    background-color: #dbac12;
 }
 #projects {
-   background-color: #3dd1b8;
+   background-color: #22ab94;
 }
 #repositories {
    background-color: #18c6d6;
 }
 #contributors {
-   background-color: #a2cc0a;
+   background-color: #86a80a;
 }
 #commits {
-   background-color: #76c24f;
+   background-color: #477a2d;
 }
 #organizations {
    background-color: #0dbd48;
@@ -40,14 +40,12 @@ svg .xlabel {
    font-size: 1em;
    fill: #fff;
    text-anchor: middle;
-   vertical-align: middle;
 }
 svg .ylabel {
    font-family: "Roboto", sans-serif;
    font-size: 1em;
    fill: #fff;
    text-anchor: middle;
-   vertical-align: middle;
 }
 svg .bar {
    fill: #fff;
@@ -57,8 +55,13 @@ svg .bar-label {
    font-family: "Roboto", sans-serif;
    font-size: 1em;
    fill: #fff;
-   text-anchor: middle;
    vertical-align: middle;
+}
+svg .bar-label-first {
+   text-anchor: middle;
+}
+svg .bar-label-last {
+   text-anchor: middle;
 }
 svg .title {
    font-family: "Roboto", sans-serif;
@@ -140,7 +143,7 @@ svg .title {
    opacity: 1.0;
 }
 .tile div.button.selected {
-   border-bottom: 3px dotted #fff;
+   border-bottom: 3px solid #fff;
 }
 .tile div.button-graph {
    margin-left: 1px;
