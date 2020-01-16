@@ -12,6 +12,16 @@ const update_shown = (elem, state) => {
 }
 
 
+const roundoff = (n) => {
+   if (n >= 1e6) {
+      return Math.floor(n / 1e6) * 1e6;
+   } else if (n >= 1e3) {
+      return Math.floor(n / 1e3) * 1e3;
+   } else {
+      return Math.floor(n);
+   }
+}
+
 const shorten = (n) => {
    if (n >= 1e6) {
       return Math.floor(n / 1e6).toString(10) + "M";
@@ -22,13 +32,67 @@ const shorten = (n) => {
    }
 }
 
-
 const px = (n) => {
    return n.toString(10) + "px"
 }
 
 
+const calc_cutoff = (bars, minimal_occupancy) => {
+
+   const calc_cutoffs = (bars) => {
+      const bars_pruned = [...(new Set(bars))].sort(descending);
+      const n = bars_pruned.length;
+      const arbitrary_fraction = 0.5;
+      let cutoffs = [];
+      cutoffs.push(bars[0]);
+      for (let i = 1; i < n; i += 1) {
+         cutoffs.push(bars_pruned[i] - (bars_pruned[i] - bars_pruned[i-1]) * arbitrary_fraction)
+      }
+      return [...(new Set(cutoffs.map(roundoff)))].sort(descending)
+   }
+
+   const zeroes = (bar) => {
+      return bar > 0
+   }
+
+   const calc_occupancy = (bars, cutoff) => {
+      const fraction = (bar) => {
+         return Math.min(bar, cutoff) / cutoff
+      }
+      return bars.map(fraction).reduce(accumulate) / n_bars_nonzero
+   }
+
+   const n_bars_nonzero = bars.filter(zeroes).length;
+
+   if (n_bars_nonzero === 0) {
+
+      return 1
+
+   } else {
+
+      const cutoffs = calc_cutoffs(bars);
+
+      occupancies = cutoffs.map((cutoff) => {
+         return calc_occupancy(bars, cutoff)
+      })
+
+      if (minimal_occupancy === undefined) {
+         minimal_occupancy = 0.20;
+      }
+      const i = occupancies.findIndex((occupancy) => {
+         return occupancy > minimal_occupancy
+      });
+
+      return cutoffs[i]
+   }
+
+}
+
 const prep_axes = (elem_id, bars) => {
+
+   const clip = (bar) => {
+      return Math.min(cutoff, bar)
+   }
 
    if (d3.select("#" + elem_id + " .graph").empty()) {
       // pass
@@ -36,8 +100,13 @@ const prep_axes = (elem_id, bars) => {
       d3.select("#" + elem_id).select("svg").remove()
    }
 
-   const domains = {"x": [0, bars.length], "y": [0, Math.max(...bars)]};
-   const margins = {"left": 45, "right": 45, "bottom": 60, "top": 100};
+   const minimal_occupancy = 0.05;
+   const cutoff = calc_cutoff(bars, minimal_occupancy);
+   const bars_clipped = bars.map(clip);
+   const n_bars = bars.length;
+
+   const domains = {"x": [0, n_bars], "y": [0, cutoff]};
+   const margins = {"left": 60, "right": 45, "bottom": 60, "top": 100};
    const bbox = d3.select("#" + elem_id).node().getBoundingClientRect();
    const height = bbox.height;
    const width = bbox.width;
@@ -51,11 +120,11 @@ const prep_axes = (elem_id, bars) => {
    const xlabel = svg.append("g")
                      .attr("class", "xlabel")
                         .append("text")
-                        .attr("x", margins.left + (width - margins.left - margins.right) / 2)
+                        .attr("x", margins.left + (width - margins.left - margins.right) * 0.5)
                         .attr("y", height - margins.bottom * 0.5)
 
    const ylabel_transform = "translate(" +
-                            (margins.left / 2).toString() +
+                            (margins.left * 0.6).toString() +
                             ", "  +
                             (margins.top + (height - margins.top - margins.bottom) / 2).toString() +
                             ") " +
@@ -74,11 +143,12 @@ const prep_axes = (elem_id, bars) => {
                        .attr("x", margins.left + (width - margins.left - margins.right) / 2)
                        .attr("y", margins.top / 2)
 
-   const bar_width = (width - margins.left - margins.right) / bars.length;
+   const bar_width = (width - margins.left - margins.right) / n_bars;
 
    const minimal_bar_height = 2; // for bars with value 0, show this many pixels tom indicate there is a bar.
+   const bar_gap = 2;
 
-   svg.selectAll("rect").data(bars).enter()
+   svg.selectAll("rect").data(bars_clipped).enter()
       .append("rect")
       .attr("class", "bar")
       .attr("x", function(d, i) {
@@ -87,22 +157,30 @@ const prep_axes = (elem_id, bars) => {
       .attr("y", function(d) {
          return yscale(d) + minimal_bar_height;
       })
-      .attr("width", Math.max(1, bar_width - 2))
+      .attr("width", Math.max(1, bar_width - bar_gap))
       .attr("height", function(d) {
          return Math.abs(yscale(d) - yscale(0)) + minimal_bar_height;
       })
 
+   const bar_text = (i) => {
+      let s = shorten(bars_clipped[i]);
+      if (bars[i] > cutoff) {
+         s += "+";
+      }
+      return s
+   }
+
    const first_bar = svg.append("text")
-                        .attr("class", "bar-label")
+                        .attr("class", "bar-label bar-label-first")
                         .attr("x", xscale(0) + bar_width / 2)
-                        .attr("y", yscale(bars[0]) - 5)
-                        .text(shorten(bars[0]))
+                        .attr("y", yscale(bars_clipped[0]) - 5)
+                        .text(bar_text(0))
 
    const last_bar = svg.append("text")
-                       .attr("class", "bar-label")
-                       .attr("x", xscale(bars.length) - bar_width / 2)
-                       .attr("y", yscale(bars[bars.length - 1]) - 5)
-                       .text(shorten(bars[bars.length - 1]))
+                       .attr("class", "bar-label bar-label-last")
+                       .attr("x", xscale(n_bars) - bar_width / 2)
+                       .attr("y", yscale(bars_clipped[n_bars - 1]) - 5)
+                       .text(bar_text(n_bars - 1))
 
    return {xlabel, ylabel, title};
 }
