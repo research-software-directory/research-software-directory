@@ -87,10 +87,14 @@ services:
     build:
       context: ./graphs
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-graphs
+    depends_on:
+      - backend
     image: ${COMPOSE_PROJECT_NAME-rsd}/graphs
-    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
+    ports:
+      - 8080:80
     volumes:
-      - static_graphs:/build
+      - static_graphs:/usr/share/nginx/html/
+
 
   harvesting:
     build:

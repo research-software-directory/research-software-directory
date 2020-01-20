@@ -419,7 +419,7 @@ const draw_publications_any = (items, id) => {
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
 }
 
-const url = 'https://www.research-software.nl/api/software_cache';
+const url = "/api/software_cache";
 fetch(url)
 .then((resp) => resp.json())
 .then((items) => {
