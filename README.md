@@ -618,7 +618,7 @@ location, username, and password; see explanation below):
 1. Test the setup by stopping the Research Software Directory on Amazon, by
 
     ```
-    #ssh into the remote machine
+    # ssh into the remote machine
     cd rsd
     docker-compose stop
     # update BACKUP_CMD by editing the rsd-secrets.env file
@@ -627,7 +627,7 @@ location, username, and password; see explanation below):
     ```
     Wait until the Research Software Directory is up and running again, then open a second terminal and
     ```
-    #ssh into the remote machine
+    # ssh into the remote machine
     cd rsd
     docker-compose exec backup /bin/sh
     /app # /bin/sh backup.sh
@@ -751,68 +751,67 @@ The steps below differentiate between the old and the new instance of the Resear
 Software Directory; the old instance has IP ``35.156.38.208``, the new one has
 IP ``3.122.233.225``. Your IP addresses will likely be different.
 
-1. (new) Make a new Amazon instance by following the notes above. Some things to think about:
+1. Make a new Amazon instance by following the notes above. Some things to think about:
     - Reuse the existing security group.
     - Reuse the existing key pair.
     - Verify that your current IP is within the authorized IP range.
-1. (old) Download the ``rsd-secrets.env`` file.
+1. Download the ``rsd-secrets.env`` file from the old instance.
 
     ```
     # something like:
     $ cd $(mktemp -d)
 
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ubuntu@35.156.38.208:/home/ubuntu/research-software-directory/rsd-secrets.env .
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
     ```
 
-1. (new) Upload ``rsd-secrets.env`` to the new Research Software Directory
+1. Upload ``rsd-secrets.env`` to the new Research Software Directory
    instance.
 
     ```
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem rsd-secrets.env \
-    ubuntu@3.122.233.225:/home/ubuntu/research-software-directory/
+    ubuntu@3.122.233.225:/home/ubuntu/rsd/
     ```
 
-1. (old) Stop new additions to the database in the old research software
+1. Stop new additions to the database in the old research software
    directory instance by stopping the ``rsd-admin`` service.
 
     ```
     $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
-    $ cd research-software-directory
+    $ cd rsd
     $ docker-compose stop rsd-admin
     ```
 
-1. (old) Download the data from the old Research Software Directory instance by
+1. Download the data from the old Research Software Directory instance by
    manually triggering a backup.
 
     ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
-    $ cd research-software-directory
-
     # Add the environment variables to the shell:
     $ source rsd-secrets.env
 
     # Start the backup itself:
     $ docker-compose exec backup /bin/sh /app/backup.sh
+    ```
 
-    # (manually download the data from S3?)
+1. Manually download the data from S3 to your local system, and extract
+   the data, as follows:
 
-    # extract the data, something like:
+    ```
     tar -xvzf rsd-backup-2020-01-06T13_00_12UTC.tar.gz
     ```
 
-1. (new) Upload the data to the new Research Software Directory instance.
+1. Upload the data to the new Research Software Directory instance.
 
     ```
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem *.bson *.json \
-      ubuntu@3.122.233.225:/home/ubuntu/research-software-directory/database/db-init/
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
     ```
 
 1. Start the new instance.
 
     ```
     $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
-    $ cd research-software-directory
+    $ cd rsd
 
     # Add the environment variables to the shell:
     $ source rsd-secrets.env
@@ -821,40 +820,30 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     $ docker-compose up -d
     ```
 
-1. In a new terminal, harvest all the data from external sources using:
+1. Next, harvest all the data from external sources using:
 
     ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
-    $ cd research-software-directory
-
-    # Add the environment variables to the shell:
-    $ source rsd-secrets.env
-
     $ docker-compose exec harvesting python app.py harvest all
     $ docker-compose exec harvesting python app.py resolve
     ```
-1. If there were problems with harvesting mentions, you may need to retrieve all mentions, as follows:
+
+1. In case the old instance had problems with harvesting of the mentions, you
+   may need to retrieve all mentions, as follows:
 
     ```
     $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
     ```
 
-1. (new) Check if the instance works correctly using a browser to navigate to
+1. Check if the instance works correctly using a browser to navigate to
    the new instance's IP address.
-1. (old) Stop the Research Software Directory in the old instance
+1. If everything looks good, stop the Research Software Directory in the old instance
 
     ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
-    $ cd research-software-directory
-
-    # Add the environment variables to the shell:
-    $ source rsd-secrets.env
-
     $ docker-compose stop
     ```
 
-1. (old) Disassociate the ElasticIP address from the old instance.
-1. (new) Associate the ElasticIP address with the new instance.
+1. Disassociate the ElasticIP address from the old instance.
+1. Associate the ElasticIP address with the new instance.
 
 As a final step, use the Amazon EC2 management console to ``Stop`` (not
 ``Terminate``) the old instance. This way, the old instance can still be
