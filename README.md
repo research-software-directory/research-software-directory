@@ -373,7 +373,7 @@ After making your changes, here's how you get to see them:
 
     ```
     docker-compose build frontend
-    docker-compose up frontend
+    docker-compose up -d frontend
     ```
 
 ## Make your instance available to others by hosting it online (deployment)
