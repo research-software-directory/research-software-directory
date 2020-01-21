@@ -59,11 +59,6 @@ then wait a bit, see section [_How/when do I get to see my
 changes?_](#howwhen-do-i-get-to-see-my-changes) below). For detailed guidance on
 how to add various types of records to Zotero, go [here](zotero.md).
 
-Finally, the work that you do happens within a project, for which there should
-be a project description on
-[esciencecenter.nl/projects](https://esciencecenter.nl/projects). These are
-harvested automatically, no action needed on your part.
-
 Hopefully this clarifies where the various data are coming from. The next step
 is to establish links between the parts, e.g. linking a paper to a software.
 This is done by hand via the Admin interface (see sections below).
@@ -106,12 +101,14 @@ You can't. The list of Mentions is harvested via Zotero's API once per 24 hours.
 
 ## How do I add a new ``Project``?
 
-You can't. The list of projects is harvested once per 24 hours from
-https://www.esciencecenter.nl/projects.
-
-At the time of writing that site is maintained by Sacha. If you want to add a
-project, ask Sacha to add it via the content management system. You'll probably
-need to supply a description of what it is that is being done in your project.
+1. Go to the Research Software Directory's admin interface
+(https://www.research-software.nl/admin/).
+1. In the left pane, select ``Project``
+1. Check that the project you want to add doesn't exist yet by searching via the
+search box. If the search comes up empty, add the new project by clicking the
+blue ``+`` symbol.
+1. Fill the various parts of the form
+1. **Don't forget** to click ``Save`` when you're done.
 
 ## How do I add a new ``Organization``?
 
@@ -146,7 +143,6 @@ minute](https://crontab.guru/#*/5_*_*_*_*) so you may have to wait a bit.
 If your change involves an external data source, e.g. you have
 1. new commits on GitHub,
 1. a new release on Zenodo,
-1. a new project on esciencecenter.nl/projects,
 1. a new mention in Zotero,
 
 you will only see the resulting data show up in the Research Software
