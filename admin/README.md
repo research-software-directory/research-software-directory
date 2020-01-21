@@ -1,5 +1,4 @@
 [![TravisCIBadge](https://travis-ci.org/research-software-directory/admin.svg?branch=master)](https://travis-ci.org/research-software-directory/admin)
-[![Greenkeeper badge](https://badges.greenkeeper.io/research-software-directory/admin.svg)](https://greenkeeper.io/)
 
 The is the admin user interface for the Research Software Directory.
 It can be used to add and update software items to the directory.
@@ -8,13 +7,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Dependencies
 
-- Auth service e.g. [github-auth](/auth-github).
-- Data api service like [backend](/backend).
+- [github-auth](/auth-github) authentication service.
+- [backend](/backend) data API service.
 
 # Installation
 
 1.  Clone repository
-2.  Use node version `^8.0`, eg using [nvm](#install-node-using-nvm)
+2.  Use node version `^8.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
 3.  Install yarn, `npm install -g yarn`
 4.  Install dependencies: `yarn`
 5.  To run tests: `yarn test`
@@ -48,8 +47,12 @@ The deployable app will build to the `build/` directory.
 Build with
 
 ```bash
-docker build --tag rsd_admin .
+docker build --tag rsd/admin .
 ```
 
-The Docker image should not be used directly and alone as the code expects the [backend server](/backend) to be running at `/api` and the [auth server](/auth-github) to be running at `/auth` which are not part of the image.
-The image should be used as part of a Docker compose see https://github.com/research-software-directory/research-software-directory
+The Docker image should not be used directly and alone as the code expects the
+[backend server](/backend) to be running at `/api` and the [auth
+server](/auth-github) to be running at `/auth` which are not part of the image.
+
+The image should be used as part of a `docker-compose`, see
+https://github.com/research-software-directory/research-software-directory.
