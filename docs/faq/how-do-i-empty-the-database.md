@@ -9,14 +9,14 @@ terminal:
 
 ```
 source rsd-secrets.env
-docker-compose --project-name rsd up
+docker-compose up
 ```
 
 In a new terminal, 
 
 ```
 source rsd-secrets.env
-docker-compose --project-name rsd exec database /bin/sh
+docker-compose exec database /bin/sh
 ```
 
 Run the ``mongo`` command inside the ``database`` container to start the Mongo
