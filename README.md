@@ -280,6 +280,58 @@ Open a web browser to verify that everything works as it should.
 - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
 - [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format. 
+
+
+### Removing local state
+
+The Research Software Directory stores its state in a couple of places. While
+doing development, sometimes you need to clear the local state, therefore this
+section lists some ways to clear such state. Be aware that running these
+commands results in the LOSS OF DATA.
+
+- Remove a docker container:
+
+    ```
+    # remove a container associated with a specific service from docker-compose.yml
+    docker-compose rm <service name>
+
+    # remove any container corresponding to any of the services defined in docker-compose.yml
+    docker-compose rm
+    ```
+
+- Remove a docker image:
+
+    ```
+    # remove a specific image
+    docker rmi <image name>
+    ```
+
+- Docker bind mounts store data in ``<project directory>/docker-volumes``, remove with:
+
+    ```
+    sudo rm -rf cert/ db/ letsencrypt/ oaipmh-cache/
+    ```
+
+- Docker static volumes store data. Rrefer to [/docker-compose.yml](/docker-compose.yml) to see which services use which volumes. Remove a volume with:
+
+    ```
+    # remove volumes that are not in use by any containers
+    docker volume prune
+
+    # or remove a specific volume
+    docker volume rm <volume>
+    ```
+
+- Docker networks. By default, the services in [/docker-compose.yml](/docker-compose.yml) share a network named ``rsd_default``. Remove a network with
+
+    ```
+    # remove networks that are not in use by any containers
+    docker network prune
+
+    # or remove a specific network
+    docker network rm <network>
+    ```
+
 ---
 
 ## Customize your instance of the Research Software Directory
