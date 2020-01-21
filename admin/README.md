@@ -1,5 +1,4 @@
 [![TravisCIBadge](https://travis-ci.org/research-software-directory/admin.svg?branch=master)](https://travis-ci.org/research-software-directory/admin)
-[![Docker badge](https://dockerbuildbadges.quelltext.eu/status.svg?organization=rsdnlesc&repository=admin)](https://hub.docker.com/r/rsdnlesc/admin/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/research-software-directory/admin.svg)](https://greenkeeper.io/)
 
 The is the admin user interface for the Research Software Directory.
@@ -9,8 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Dependencies
 
-* Auth service e.g. [github-auth](/auth-github).
-* Data api service like [backend](/backend).
+- Auth service e.g. [github-auth](/auth-github).
+- Data api service like [backend](/backend).
 
 # Installation
 
