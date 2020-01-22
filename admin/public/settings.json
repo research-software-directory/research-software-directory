@@ -265,6 +265,10 @@
           "label": "Name",
           "sortIndex": 1
         },
+        "corporateUrl": {
+          "help": "URL to the project page on https://esciencecenter.nl/projects",
+          "sortIndex": 3
+        },
         "callUrl": {
           "help": "URL to the call text",
           "sortIndex": 4
