@@ -1,3 +1,73 @@
+# 2.0.0
+
+Notes on migration of 1.1.0 data:
+
+```
+$ docker-compose exec database /bin/sh
+# mongo
+# use rsd
+```
+
+Delete field ``subtitle`` from all ``project`` documents:
+```
+db.project.update({}, {$unset: {"subtitle": ""}}, {"multi": true})
+```
+
+Delete field ``url`` from all project documents:
+```
+db.project.update({}, {$unset: {"url": ""}}, {"multi": true})
+```
+
+Delete field ``principalInvestigator`` from all project documents:
+```
+db.project.update({}, {$unset: {"principalInvestigator": ""}}, {"multi": true})
+```
+
+Rename field ``title`` to ``name`` for all ``project`` documents:
+```
+db.project.update({}, {$rename: {"title": "name"}}, {"multi": true})
+```
+
+Rename field ``image`` to ``imageUrl`` for all ``project`` documents:
+```
+db.project.update({}, {$rename: {"image": "imageUrl"}}, {"multi": true})
+```
+
+Add field ``callUrl`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"callUrl": ""}}, {"multi": true})
+```
+
+Add field ``codeUrl`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"codeUrl": ""}}, {"multi": true})
+```
+
+Add field ``projectHomeUrl`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"projectHomeUrl": ""}}, {"multi": true})
+```
+
+Add field ``description`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"description": ""}}, {"multi": true})
+```
+
+Add field ``output`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"output": []}}, {"multi": true})
+```
+
+Add field ``impact`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"impact": []}}, {"multi": true})
+```
+
+Remove all ``release`` documents entirely:
+```
+db.release.deleteMany({})
+```
+
 # 1.1.0
 
 - added a simple OAI-PMH interface to allow harvesting of metadata about the 
