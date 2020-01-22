@@ -4,7 +4,6 @@
 
 This README file has the following sections:
 
-
 - [What is the Research Software Directory?](#what-is-the-research-software-directory)
 - [How do I enter data into an instance of the Research Software Directory?](#how-do-i-enter-data-into-an-instance-of-the-research-software-directory)
 - [Documentation for developers](#documentation-for-developers)
