@@ -258,38 +258,51 @@
     "project": {
       "name": "Project",
       "icon": "lab",
-      "itemLabelTemplate": "{{ title }}",
+      "itemLabelTemplate": "{{ name }}",
       "readonly": false,
       "properties": {
-        "title": {
-          "label": "Title",
+        "name": {
+          "label": "Name",
           "sortIndex": 1
         },
-        "subtitle": {
-          "label": "Subtitle",
-          "sortIndex": 2
-        },
-        "principalInvestigator": {
-          "label": "Principal investigator (PI)",
-          "sortIndex": 3,
-          "properties": {
-            "affiliation": {
-              "label": "Affilliation",
-              "sortIndex": 2
-            },
-            "name": {
-              "label": "Name",
-              "sortIndex": 1
-            }
-          }
-        },
-        "url": {
-          "label": "URL",
+        "callUrl": {
+          "help": "URL to the call text",
           "sortIndex": 4
         },
-        "image": {
-          "label": "Image URL",
+        "codeUrl": {
+          "help": "URL to the code associated with this project",
           "sortIndex": 5
+        },
+        "projectHomeUrl": {
+          "help": "URL to the project home (if applicable)",
+          "sortIndex": 6
+        },
+        "imageUrl": {
+          "help": "URL to an image",
+          "sortIndex": 17
+        },
+        "description": {
+          "help": "Project description",
+          "multiline": true,
+          "sortIndex": 18
+        },
+        "output": {
+          "help": "Output produced using NLeSC funding",
+          "properties": {
+            "foreignKey": {
+              "label": "mention"
+            }
+          },
+          "sortIndex": 90
+        },
+        "impact": {
+          "help": "Output produced by others / without NLeSC funding, based on work produced in this project.",
+          "properties": {
+            "foreignKey": {
+              "label": "mention"
+            }
+          },
+          "sortIndex": 91
         },
         "createdAt": {
           "label": "Created at",
