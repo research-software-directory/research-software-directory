@@ -118,7 +118,7 @@ exports[`Storyshots Form elements Object 1`] = `
             "flexDirection": "column",
             "justifyContent": "center",
             "marginBottom": "0.5em",
-            "marginTop": "0.5em"
+            "marginTop": "0.5em",
           }
         }
       >
@@ -167,7 +167,7 @@ exports[`Storyshots Form elements Object 1`] = `
             "flexDirection": "column",
             "justifyContent": "center",
             "marginBottom": "0.5em",
-            "marginTop": "0.5em"
+            "marginTop": "0.5em",
           }
         }
       >
@@ -417,7 +417,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
               "flexDirection": "column",
               "justifyContent": "center",
               "marginBottom": "0.5em",
-              "marginTop": "0.5em"
+              "marginTop": "0.5em",
             }
           }
         >
@@ -482,7 +482,7 @@ exports[`Storyshots Form elements/Array default 1`] = `
               "flexDirection": "column",
               "justifyContent": "center",
               "marginBottom": "0.5em",
-              "marginTop": "0.5em"
+              "marginTop": "0.5em",
             }
           }
         >
@@ -650,7 +650,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
               "flexDirection": "column",
               "justifyContent": "center",
               "marginBottom": "0.5em",
-              "marginTop": "0.5em"
+              "marginTop": "0.5em",
             }
           }
         >
@@ -715,7 +715,7 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
               "flexDirection": "column",
               "justifyContent": "center",
               "marginBottom": "0.5em",
-              "marginTop": "0.5em"
+              "marginTop": "0.5em",
             }
           }
         >
@@ -27440,7 +27440,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
             "flexDirection": "column",
             "justifyContent": "center",
             "marginBottom": "0.5em",
-            "marginTop": "0.5em"
+            "marginTop": "0.5em",
           }
         }
       >
@@ -27452,7 +27452,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27501,7 +27501,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27556,7 +27556,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27619,7 +27619,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27681,7 +27681,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27743,7 +27743,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27805,7 +27805,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27854,7 +27854,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27911,7 +27911,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -27968,7 +27968,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28037,7 +28037,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28106,7 +28106,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28133,7 +28133,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                         "flexDirection": "column",
                         "justifyContent": "center",
                         "marginBottom": "0.5em",
-                        "marginTop": "0.5em"
+                        "marginTop": "0.5em",
                       }
                     }
                   >
@@ -28215,7 +28215,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28284,7 +28284,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28311,7 +28311,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                         "flexDirection": "column",
                         "justifyContent": "center",
                         "marginBottom": "0.5em",
-                        "marginTop": "0.5em"
+                        "marginTop": "0.5em",
                       }
                     }
                   >
@@ -28380,7 +28380,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                         "flexDirection": "column",
                         "justifyContent": "center",
                         "marginBottom": "0.5em",
-                        "marginTop": "0.5em"
+                        "marginTop": "0.5em",
                       }
                     }
                   >
@@ -28449,7 +28449,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                         "flexDirection": "column",
                         "justifyContent": "center",
                         "marginBottom": "0.5em",
-                        "marginTop": "0.5em"
+                        "marginTop": "0.5em",
                       }
                     }
                   >
@@ -28518,7 +28518,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                         "flexDirection": "column",
                         "justifyContent": "center",
                         "marginBottom": "0.5em",
-                        "marginTop": "0.5em"
+                        "marginTop": "0.5em",
                       }
                     }
                   >
@@ -28600,7 +28600,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28669,7 +28669,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28738,7 +28738,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28787,7 +28787,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28836,7 +28836,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28885,7 +28885,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
@@ -28934,7 +28934,7 @@ exports[`Storyshots Resource/Software empty 1`] = `
                 "flexDirection": "column",
                 "justifyContent": "center",
                 "marginBottom": "0.5em",
-                "marginTop": "0.5em"
+                "marginTop": "0.5em",
               }
             }
           >
