@@ -44,7 +44,7 @@ if pytest.config.getoption("live"):
 def test_live_software_data_renders(get, slug):
     status_code = 504
     while status_code == 504:
-        time.sleep(1)
+        time.sleep(5)
         data, status_code = get('/software/%s' % slug)
     assert status_code == 200
     assert isValidHTML(data)
