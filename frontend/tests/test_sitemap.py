@@ -16,7 +16,7 @@ def get():
 
 def test_sitemap(get):
     with requests_mock.mock() as m:
-        m.get('https://www.research-software.nl/api/software?isPublished=true', text=get_mock('software.json'))
+        m.get('https://www.research-software.nl/api/software?isPublished=true', text=get_mock('software_cache.json'))
         result = get('/sitemap.xml')
 
     assert len(result.split('lastmod')) > 10
