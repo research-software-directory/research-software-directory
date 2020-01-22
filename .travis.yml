@@ -48,7 +48,7 @@ jobs:
         - pip install -r requirements.txt
         - pip install pytest py-w3c
       script:
-        - BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
+        - BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest
 
 
     - stage: "docker-compose integration tests"
