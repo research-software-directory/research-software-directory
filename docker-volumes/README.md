@@ -11,3 +11,7 @@ docker-volumes/
 ├── oaipmh-cache
 └── README.md
 ```
+
+Note that in addition to these bind mounts, other data are stored in static
+volumes. Refer to [docker-compose.yml](/docker-compose.yml) to see which volumes
+exist.
