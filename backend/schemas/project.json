@@ -2,6 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
+        "callUrl": {
+            "format": "uri",
+            "type": "string"
+        },
+        "codeUrl": {
+            "format": "uri",
+            "type": "string"
+        },
         "createdAt": {
             "format": "date-time",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
@@ -10,30 +18,50 @@
         "createdBy": {
             "type": "string"
         },
-        "image": {
+        "description": {
+            "minLength": 500,
+            "type": "string"
+        },
+        "imageUrl": {
             "format": "uri",
             "type": "string"
+        },
+        "impact": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/mention"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
         },
         "primaryKey": {
             "$ref": "definitions.json/key/project"
         },
-        "principalInvestigator": {
-            "additionalProperties": false,
-            "properties": {
-                "affiliation": {
-                    "type": "string"
+        "projectHomeUrl": {
+            "format": "uri",
+            "type": "string"
+        },
+        "name": {
+            "minLength": 1,
+            "type": "string"
+        },
+        "output": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/mention"
+                    }
                 },
-                "name": {
-                    "type": "string"
-                }
+                "type": "object"
             },
-            "type": "object"
-        },
-        "subtitle": {
-            "type": "string"
-        },
-        "title": {
-            "type": "string"
+            "type": "array",
+            "uniqueItems": true
         },
         "updatedAt": {
             "format": "date-time",
@@ -42,21 +70,17 @@
         },
         "updatedBy": {
             "type": "string"
-        },
-        "url": {
-            "format": "uri",
-            "type": "string"
         }
     },
     "required": [
+        "callUrl",
+        "codeUrl",
         "createdAt",
-        "image",
+        "description",
+        "imageUrl",
+        "name",
         "primaryKey",
-        "principalInvestigator",
-        "subtitle",
-        "title",
-        "updatedAt",
-        "url"
+        "updatedAt"
     ],
     "title": "Project schema"
 }
