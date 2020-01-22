@@ -18,7 +18,7 @@ def test_index(get):
     if not pytest.config.getoption("live"):
         with requests_mock.mock() as m:
             m.get(api_url + '/software_cache?isPublished=true', text=get_mock('software.json'))
-            m.get(api_url + '/organization', text=get_mock('organizations.json'))
+            m.get(api_url + '/organization', text=get_mock('organization.json'))
             result = get('/')
     else:
         result = get('/')
