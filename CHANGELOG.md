@@ -13,14 +13,14 @@ Delete field ``subtitle`` from all ``project`` documents:
 db.project.update({}, {$unset: {"subtitle": ""}}, {"multi": true})
 ```
 
-Delete field ``url`` from all project documents:
-```
-db.project.update({}, {$unset: {"url": ""}}, {"multi": true})
-```
-
-Delete field ``principalInvestigator`` from all project documents:
+Delete field ``principalInvestigator`` from all ``project`` documents:
 ```
 db.project.update({}, {$unset: {"principalInvestigator": ""}}, {"multi": true})
+```
+
+Rename field ``url`` to ``corporateUrl`` for all ``project`` documents:
+```
+db.project.update({}, {$rename: {"url": "corporateUrl"}}, {"multi": true})
 ```
 
 Rename field ``title`` to ``name`` for all ``project`` documents:
