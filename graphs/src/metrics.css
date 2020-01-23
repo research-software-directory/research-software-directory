@@ -1,0 +1,165 @@
+#packages {
+   background-color: #f56042;
+}
+#packages-doi {
+   background-color: #f5782a;
+}
+#permissive-licenses {
+   background-color: #dbac12;
+}
+#projects {
+   background-color: #22ab94;
+}
+#repositories {
+   background-color: #18c6d6;
+}
+#contributors {
+   background-color: #86a80a;
+}
+#commits {
+   background-color: #477a2d;
+}
+#organizations {
+   background-color: #0dbd48;
+}
+#publications-scientific {
+   background-color: #1c5dc7;
+}
+#publications-mainstream {
+   background-color: #7d2bf0;
+}
+#publications-any {
+   background-color: #ba4cad;
+}
+body {
+   font-family: "Roboto", sans-serif;
+   padding: 15px;
+}
+svg .xlabel {
+   font-family: "Roboto", sans-serif;
+   font-size: 1em;
+   fill: #fff;
+   text-anchor: middle;
+}
+svg .ylabel {
+   font-family: "Roboto", sans-serif;
+   font-size: 1em;
+   fill: #fff;
+   text-anchor: middle;
+}
+svg .bar {
+   fill: #fff;
+   stroke: none;
+}
+svg .bar-label {
+   font-family: "Roboto", sans-serif;
+   font-size: 1em;
+   fill: #fff;
+   vertical-align: middle;
+}
+svg .bar-label-first {
+   text-anchor: middle;
+}
+svg .bar-label-last {
+   text-anchor: middle;
+}
+svg .title {
+   font-family: "Roboto", sans-serif;
+   font-size: 1.2em;
+   fill: #fff;
+   text-anchor: middle;
+   vertical-align: bottom;
+}
+.grid-container {
+   display: grid;
+   grid-gap: 40px;
+   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+   grid-template-rows: 300px;
+   grid-auto-flow: dense;
+}
+.tile {
+   background-color: #348ceb;
+   margin: 0px;
+   color: #fff;
+   box-shadow: 10px 10px 10px #aaa;
+   position: relative;
+   border-radius: 5px;
+}
+.tile div.stats {
+   height: 300px;
+}
+.tile div.graph {
+   height: 300px;
+}
+.tile div.explanation {
+   height: 300px;
+}
+.tile .number {
+   text-align: center;
+   font-size: 6em;
+   border-bottom: 2px solid #fff;
+   width: 70%;
+   height: 160px;
+   line-height: 160px;
+   margin-left: auto;
+   margin-right: auto;
+   padding-top: 40px;
+}
+.tile .description {
+   text-align: center;
+   font-size: 1.2em;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+}
+.tile div.explanation .text {
+   font-size: 1.0em;
+   line-height: 1.5em;
+   padding-left: 40px;
+   padding-right: 20px;
+   padding-top: 40px;
+   padding-bottom: 40px;
+}
+.tile div.button-bar {
+   height: 40px;
+   width: 100px;
+   position: absolute;
+   top: 260px;
+   right: 0px;
+}
+.tile div.button {
+   width: 20px;
+   height: 20px;
+   float: right;
+   opacity: 0.6;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: right center;
+   margin-top: 10px;
+}
+.tile div.button:hover {
+   opacity: 1.0;
+}
+.tile div.button.selected {
+   border-bottom: 3px solid #fff;
+}
+.tile div.button-graph {
+   margin-left: 1px;
+   margin-right: 5px;
+   background-image: url("dig-deeper.svg");
+}
+.tile div.button-stats{
+   margin-left: 1px;
+   margin-right: 5px;
+   background-image: url("show-stats.svg");
+}
+.tile div.button-explanation {
+   margin-left: 1px;
+   margin-right: 5px;
+   background-image: url("explanation.svg");
+}
+.hidden {
+   display: none;
+}
