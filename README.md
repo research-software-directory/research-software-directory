@@ -4,7 +4,6 @@
 
 This README file has the following sections:
 
-
 - [What is the Research Software Directory?](#what-is-the-research-software-directory)
 - [How do I enter data into an instance of the Research Software Directory?](#how-do-i-enter-data-into-an-instance-of-the-research-software-directory)
 - [Documentation for developers](#documentation-for-developers)
@@ -233,8 +232,17 @@ time being. We will revisit them in the section about deployment
 # add the environment variables from rsd-secrets.env to the current terminal:
 source rsd-secrets.env
 
+# build all containers:
+docker-compose build
+
 # start the full stack using docker-compose:
-docker-compose up --build
+docker-compose up -d
+
+# see logging from all services with
+docker-compose logs --follow
+
+# or from a specific service only, e.g. backend
+docker-compose logs --follow backend
 ```
 
 After the Research Software Directory instance is up and running, we want to
@@ -364,7 +372,7 @@ After making your changes, here's how you get to see them:
 
     ```
     docker-compose build frontend
-    docker-compose up frontend
+    docker-compose up -d frontend
     ```
 
 ## Make your instance available to others by hosting it online (deployment)
@@ -482,7 +490,8 @@ instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
     ```bash
     cd ~/rsd
     source rsd-secrets.env
-    docker-compose up --build &
+    docker-compose build
+    docker-compose up -d
     ```
 1. On your local machine, open a new terminal. Connect to the Amazon instance,
 run the harvesters, and resolve the foreign keys:
@@ -534,7 +543,7 @@ or ``docker-compose stop``.
 
     ```
     cd ~/rsd
-    docker-compose up
+    docker-compose up -d
     ```
 1. Pointing your browser to your (sub)domain name should now show your instance
 of the Research Software Directory (although be aware that sometimes it takes a
@@ -608,17 +617,15 @@ location, username, and password; see explanation below):
 1. Test the setup by stopping the Research Software Directory on Amazon, by
 
     ```
-    #ssh into the remote machine
+    # ssh into the remote machine
     cd rsd
     docker-compose stop
     # update BACKUP_CMD by editing the rsd-secrets.env file
     source rsd-secrets.env
-    docker-compose up
+    docker-compose up -d
     ```
-    Wait until the Research Software Directory is up and running again, then open a second terminal and
+    Wait until the Research Software Directory is up and running again, then
     ```
-    #ssh into the remote machine
-    cd rsd
     docker-compose exec backup /bin/sh
     /app # /bin/sh backup.sh
     ```
@@ -730,4 +737,3 @@ git add <the files>
 git commit
 git push origin develop
 ```
-
