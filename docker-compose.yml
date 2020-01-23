@@ -97,6 +97,7 @@ services:
   harvesting:
     build:
       context: ./harvesting
+    command: sh -c "cp -r /var/www/index.html /static_schedule/ && crond -d7 -f"
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-harvesting
     image: ${COMPOSE_PROJECT_NAME-rsd}/harvesting
     depends_on:
@@ -116,6 +117,7 @@ services:
       - ZOTERO_LIBRARY
     volumes:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
+      - static_schedule:/static_schedule
 
   nginx_ssl:
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-nginx-ssl
@@ -153,8 +155,10 @@ services:
       - static_admin:/static_admin:ro
       - static_frontend:/static_frontend:ro
       - static_graphs:/static_graphs:ro
+      - static_schedule:/static_schedule:ro
 
 volumes:
   static_admin:
   static_frontend:
   static_graphs:
+  static_schedule:
