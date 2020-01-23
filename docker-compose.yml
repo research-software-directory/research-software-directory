@@ -86,11 +86,13 @@ services:
   graphs:
     build:
       context: ./graphs
+    command: sh -c "rm -rf /static_graphs/* && cp -r /usr/share/nginx/html/* /static_graphs/"
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-graphs
+    depends_on:
+      - backend
     image: ${COMPOSE_PROJECT_NAME-rsd}/graphs
-    command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/graphs/* /build"
     volumes:
-      - static_graphs:/build
+      - static_graphs:/static_graphs
 
   harvesting:
     build:
