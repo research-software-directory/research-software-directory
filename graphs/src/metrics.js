@@ -245,17 +245,17 @@ const draw_permissive_licenses = (items, id) => {
 
 const draw_repositories = (items, id) => {
    const wrangle = (items) => {
-   let add_repositories = (doc) => {
-      let repositories = [];
-      for (let repotype in doc.repositoryURLs) {
-         doc.repositoryURLs[repotype].forEach((repo) => {
-            repositories.push(repo)
-         })
-      }
-      return repositories
-   };
-   const repositories = items.filter(unpublished).map(add_repositories);
-   return shorten(unique(repositories).size)
+      let add_repositories = (doc) => {
+         let repositories = [];
+         for (let repotype in doc.repositoryURLs) {
+            doc.repositoryURLs[repotype].forEach((repo) => {
+               repositories.push(repo)
+            })
+         }
+         return repositories
+      };
+      const repositories = items.filter(unpublished).map(add_repositories);
+      return shorten(unique(repositories).size)
    }
    const stat = wrangle(items);
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
