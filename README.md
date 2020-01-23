@@ -744,7 +744,7 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Make a new Amazon instance by following the notes above. Some things to think about:
     - Reuse the existing security group.
     - Reuse the existing key pair.
-    - Verify that your allowed to ssh into the new instance.
+    - Verify that you're allowed to ssh into the new instance.
 1. Download the ``rsd-secrets.env`` file from the old instance.
 
     ```
