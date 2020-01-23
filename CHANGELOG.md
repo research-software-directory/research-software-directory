@@ -68,6 +68,20 @@ Remove all ``release`` documents entirely:
 db.release.deleteMany({})
 ```
 
+# 1.2.0
+
+- added github issue templates
+- replaced latest codemeta fields in releases with latest schema.org; the schema.org data is also used in the frontend to help discovery by Google et al.
+- replaced the prominent header in the frontend with a more subtle one that helps make explicit that there are multiple instances of the Research Software Directory
+- added new /graphs page showing metrics as well as their distribution over the software packages
+- removed deprecated code from harvesting scrapers
+- fixed error with blog scraping after Medium site changed its layout
+- added more detailed control of the harvesting of dois and of zotero items
+- added more informative logging messages for harvesters
+- added throttling of queries to Zenodo
+- cleaned up docker-compose file, simplified building (removed required ``-p`` option)
+- added documentation for maintainers, e.g. how to make a release, how to update a production instance; added notes on security aspects
+
 # 1.1.0
 
 - added a simple OAI-PMH interface to allow harvesting of metadata about the 
