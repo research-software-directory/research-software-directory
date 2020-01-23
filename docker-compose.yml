@@ -114,6 +114,7 @@ services:
       - ZOTERO_LIBRARY
     volumes:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
+      - static_schedule:/var/www
 
   nginx_ssl:
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-nginx-ssl
@@ -151,8 +152,10 @@ services:
       - static_admin:/static_admin:ro
       - static_frontend:/static_frontend:ro
       - static_graphs:/static_graphs:ro
+      - static_schedule:/static_schedule:ro
 
 volumes:
   static_admin:
   static_frontend:
   static_graphs:
+  static_schedule:
