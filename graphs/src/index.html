@@ -1,0 +1,195 @@
+<html>
+
+<head>
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
+   <link rel="stylesheet" type="text/css" href="/graphs/metrics.css">
+   <script type="application/javascript" src="/graphs/metrics.js"></script>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <link rel="icon" href="/graphs/favicon.ico">
+   <title>Graphs | Research Software Directory</title>
+</head>
+
+<body>
+
+   <noscript>
+      <strong>Please enable JavaScript to see the graphs.</strong>
+   </noscript>
+
+   <div class="grid-container">
+
+      <div id="packages" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Software packages</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The total number of software packages in this instance of the Research Software Directory.</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
+
+      <div id="packages-doi" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Software packages with DOI</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The percentage of packages in this instance of the Research Software Directory that include a DOI in their citation metadata. With persistent identifiers such as DOIs, the exact version of code can be cited accurately.</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
+
+      <div id="permissive-licenses" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Software packages with a permissive license</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The percentage of packages in this instance of the Research Software Directory that are made available under a permissive license (specifically, any of the following: Apache-2.0, GPL-2.0, GPL-3.0, LGPL-2.0, LGPL-3.0, or MIT).</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
+
+      <div id="repositories" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Repositories</div>
+         </div>
+         <div class="explanation hidden">
+            <div class="text">The total number of source code repositories that store code associated with software packages published in this instance of the Research Software Directory.</div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation']})"></div>
+         </div>
+      </div>
+
+      <div id="projects" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Projects</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of projects that make use of the software packages published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+      <div id="contributors" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Contributors</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of people that contributed to the software packages published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+      <div id="commits" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Commits</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of commits that were made to the software packages published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+      <div id="organizations" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Partner organizations</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of organizations with whom the software packages published in this instance of the Research Software Directory were developed.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+      <div id="publications-scientific" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Scientific publications</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of scientific publications that mention a software package published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+      <div id="publications-mainstream" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Mainstream media publications</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of mainstream media publications that mention a software package published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+      <div id="publications-any" class="tile">
+         <div class="stats">
+            <div class="number">...</div>
+            <div class="description">Publications of any type</div>
+         </div>
+         <div class="graph hidden"></div>
+         <div class="explanation hidden">
+            <div class="text"><p>The total number of publications of any type that mention a software package published in this instance of the Research Software Directory.</p></div>
+         </div>
+         <div class="button-bar">
+            <div class="button button-explanation" onclick="update_shown(this, {show: 'explanation', hide: ['stats', 'graph']})"></div>
+            <div class="button button-graph" onclick="update_shown(this, {show: 'graph', hide: ['explanation', 'stats']})"></div>
+            <div class="button button-stats selected" onclick="update_shown(this, {show: 'stats', hide: ['explanation', 'graph']})"></div>
+         </div>
+      </div>
+
+   </div>
+
+</body>
+
+</html>
