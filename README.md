@@ -623,10 +623,8 @@ location, username, and password; see explanation below):
     source rsd-secrets.env
     docker-compose up -d
     ```
-    Wait until the Research Software Directory is up and running again, then open a second terminal and
+    Wait until the Research Software Directory is up and running again, then
     ```
-    # ssh into the remote machine
-    cd rsd
     docker-compose exec backup /bin/sh
     /app # /bin/sh backup.sh
     ```
