@@ -754,6 +754,12 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
       ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
     ```
+1. Download files related to SSL certificates from the old instance.
+
+    ```
+    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/docker-volumes/cert .
+    ```
 
 1. Upload ``rsd-secrets.env`` to the new Research Software Directory
    instance.
@@ -761,6 +767,17 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     ```
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem rsd-secrets.env \
     ubuntu@3.122.233.225:/home/ubuntu/rsd/
+    ```
+
+1. Upload the files related to SSL certificates to the new Research Software Directory
+   instance.
+
+    ```
+    # remove the cert directory from /home/ubuntu/rsd/docker-volumes/ if it
+    # exists on the new machine
+
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem cert \
+    ubuntu@3.122.233.225:/home/ubuntu/rsd/docker-volumes/
     ```
 
 1. Stop new additions to the database in the old research software
