@@ -814,6 +814,9 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
       ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
     ```
 
+1. Check [/CHANGELOG.md](/CHANGELOG.md) to see if you need to run any command to
+   migrate data, e.g. when a collection has changed its schema.
+
 1. Start the new instance.
 
     ```
