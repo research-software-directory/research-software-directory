@@ -1,3 +1,7 @@
-# min	hour	day	month	weekday	command
-0	*	*	*	*	cd /app && python app.py harvest all
-*/5	*	*	*	*	cd /app && python app.py resolve
+# minute         hour day month	weekday command
+0                5    *   *     *       cd /app && python app.py harvest citations && python app.py harvest commits && python app.py harvest metadata
+0,10,20,30,40,50 *    *   *     *       cd /app && python app.py harvest mentions
+5,15,25,35,45,55 *    *   *     *       cd /app && python app.py resolve
+#
+#
+# See https://github.com/research-software-directory/research-software-directory/tree/master/harvesting#usage for an explanation of each harvester.
