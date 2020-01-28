@@ -43,6 +43,10 @@
             "type": "array",
             "uniqueItems": true
         },
+        "isPublished": {
+            "default": false,
+            "type": "boolean"
+        },
         "primaryKey": {
             "$ref": "definitions.json/key/project"
         },
@@ -64,6 +68,40 @@
                 },
                 "type": "object"
             },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "team": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "affiliations": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "foreignKey": {
+                                    "$ref": "definitions.json/key/organization"
+                                }
+                            }
+                        },
+                        "type": "array",
+                        "uniqueItems": true
+                    },
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/person"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "affiliations",
+                    "foreignKey",
+                    "role"
+                ],
+                "type": "object"
+            },
+            "minItems": 1,
             "type": "array",
             "uniqueItems": true
         },
