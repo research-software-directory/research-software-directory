@@ -63,6 +63,16 @@ Add field ``impact`` to all ``project`` documents:
 db.project.update({}, {$set: {"impact": []}}, {"multi": true})
 ```
 
+Add field ``team`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"team": []}}, {"multi": true})
+```
+
+Add field ``isPublished`` to all ``project`` documents:
+```
+db.project.update({}, {$set: {"isPublished": false}}, {"multi": true})
+```
+
 Remove all ``release`` documents entirely:
 ```
 db.release.deleteMany({})

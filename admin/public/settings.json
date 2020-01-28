@@ -261,9 +261,13 @@
       "itemLabelTemplate": "{{ name }}",
       "readonly": false,
       "properties": {
+        "isPublished": {
+          "help": "Whether the project should be rendered on the corporate site",
+          "sortIndex": 1
+        },
         "name": {
           "label": "Name",
-          "sortIndex": 1
+          "sortIndex": 2
         },
         "corporateUrl": {
           "help": "URL to the project page on https://esciencecenter.nl/projects",
@@ -280,6 +284,14 @@
         "projectHomeUrl": {
           "help": "URL to the project home (if applicable)",
           "sortIndex": 6
+        },
+        "team": {
+          "properties": {
+            "foreignKey": {
+              "label": "person"
+            }
+          },
+          "sortIndex": 16
         },
         "imageUrl": {
           "help": "URL to an image",
