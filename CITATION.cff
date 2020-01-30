@@ -9,11 +9,6 @@ authors:
     orcid: "https://orcid.org/0000-0002-7064-4069"
   - 
     affiliation: "Netherlands eScience Center"
-    family-names: Maassen
-    given-names: Jason
-    orcid: "https://orcid.org/0000-0002-8172-4865"
-  - 
-    affiliation: "Netherlands eScience Center"
     family-names: Klaver
     given-names: Tom
   - 
@@ -21,6 +16,11 @@ authors:
     family-names: Verhoeven
     given-names: Stefan
     orcid: "https://orcid.org/0000-0002-5821-2060"
+  - 
+    affiliation: "Netherlands eScience Center"
+    family-names: Maassen
+    given-names: Jason
+    orcid: "https://orcid.org/0000-0002-8172-4865"
   -
     affiliation: "Netherlands eScience Center"
     family-names: Pawar
@@ -81,7 +81,7 @@ authors:
     name-particle: van
     orcid: "https://orcid.org/0000-0002-2947-9444"
 cff-version: "1.0.3"
-date-released: 2019-03-26
+date-released: 2020-01-30
 doi: 10.5281/zenodo.1154130
 keywords: 
   - "Current Research Information Systems"
@@ -95,4 +95,4 @@ license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
 repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
-version: "1.1.0"
+version: "1.2.0"
