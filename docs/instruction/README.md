@@ -42,7 +42,7 @@ context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
 selecting them via the dropdown list in the Admin interface of the RSD. 
 
-The items on the  dropdown list are harvested once every 24 hours from the
+The items on the  dropdown list are harvested periodically from the
 [Netherlands eScience Center group on
 Zotero](https://www.zotero.org/groups/1689348). For reference, Zotero is the
 place where we keep track of NLeSC's _output_ and _impact_:
