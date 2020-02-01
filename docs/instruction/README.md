@@ -84,6 +84,7 @@ and fix it.
 1. Set the ``isPublished`` slider near the top of the page to the right to have it
 included in [research-software.nl](https://research-software.nl).
 1. **Don't forget** to click ``Save`` when you're done.
+1. You may need to refresh the page to see newly added items appear in the left pane
 1. Refer to section [_Delays_](#delays) and section [_The query
 trick_](#the-query-trick) to know when you get to see your changes.
 
@@ -99,6 +100,7 @@ blue ``+`` symbol.
 1. Optionally, fill in the person's email address
 1. Optionally, provide an image of the person
 1. **Don't forget** to click ``Save`` when you're done.
+1. You may need to refresh the page to see newly added items appear in the left pane
 
 ## How do I add a new ``Mention``?
 
@@ -124,6 +126,7 @@ clicking the blue ``+`` symbol.
 1. Fill the name of the organization and provide a URL
 1. Optionally, provide the organization's logo as an image
 1. **Don't forget** to click ``Save`` when you're done.
+1. You may need to refresh the page to see newly added items appear in the left pane
 
 ## How/when do I get to see my changes?
 
