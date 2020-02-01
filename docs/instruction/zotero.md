@@ -64,7 +64,7 @@ metadata required. By default Zotero shows a much larger list of metadata,
 please fill out the others entries as good as possible.
 
 If you have an item that doesn't fit, please [open an issue
-here](https://github.com/research-software-directory/issues) and we'll figure it
+here](https://github.com/research-software-directory/research-software-directory/issues) and we'll figure it
 out & update this document.
 
 ## Papers
