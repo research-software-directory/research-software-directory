@@ -5,7 +5,7 @@ Netherlands eScience Center. It describes what they need to do in order to help
 make our Research Software Directory an attractive website.
 
 First read [this
-blog](https://github.com/jspaaks/cff-hackday-blog/blob/master/blog.md) for the
+blog](https://blog.esciencecenter.nl/the-research-software-directory-and-how-it-promotes-software-citation-4bd2137a6b8) for the
 overall picture of what a Research Software Directory is and what we are trying
 to accomplish with it.
 
