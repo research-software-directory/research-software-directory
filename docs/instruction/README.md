@@ -135,20 +135,20 @@ trick_](#the-query-trick).
 Your changes/additions to the Admin interface, Zotero, GitHub or other places do
 not show up immediately. The length of delay depends on the frequency at which
 data is harvested from the external source. The schedule for the harvesting is
-published at [https://<hostname>/schedule](https://<hostname>/schedule).
+published at [``http[s]://<hostname>/schedule``](https://<hostname>/schedule).
 
 If your change only involves the Research Software Directory's Admin interface,
 for example when you add a pre-existing ``Mention`` to a ``Software`` and press
 ``Save``, the corresponding database collection is updated immediately but the
 data needed for populating the product page template is collected at intervals.
 Again, refer to the schedule at
-[https://<hostname>/schedule](https://<hostname>/schedule) and look for the
+[``http[s]://<hostname>/schedule``](https://<hostname>/schedule) and look for the
 ``python app.py resolve`` task.
 
 If your change involves an external data source, e.g. you have new commits on
 GitHub, or a new release on Zenodo, you will only see the resulting data show up
 in the Research Software Directory after the corresponding data is harvested.
-Check [https://<hostname>/schedule](https://<hostname>/schedule) and look for
+Check [``http[s]://<hostname>/schedule``](https://<hostname>/schedule) and look for
 the ``python app.py harvest commits`` and ``python app.py harvest citations``
 tasks, respectively.
 
