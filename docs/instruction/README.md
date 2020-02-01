@@ -102,7 +102,7 @@ blue ``+`` symbol.
 
 ## How do I add a new ``Mention``?
 
-You can't. The list of Mentions is harvested via Zotero's API. Check the [https://<hostname>/schedule](https://<hostname>/schedule) route and look for ``python app.py harvest mentions`` to determine when the harvester is scheduled to run.
+You can't. The list of Mentions is harvested via Zotero's API. Check [``http[s]://<hostname>/schedule``](https://<hostname>/schedule) and look for ``python app.py harvest mentions`` to determine when the harvester is scheduled to run.
 
 ## How do I add a new ``Project``?
 
