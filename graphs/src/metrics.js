@@ -419,12 +419,8 @@ const draw_publications_any = (items, id) => {
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
 }
 
-const url = "/api/software_cache";
-fetch(url)
-.then((resp) => resp.json())
-.then((items) => {
-
-   const redraw = () => {
+const redraw = () => {
+   if (items.length > 0) {
       draw_packages(items, "packages")
       draw_packages_doi(items, "packages-doi")
       draw_permissive_licenses(items, "permissive-licenses")
@@ -437,10 +433,35 @@ fetch(url)
       draw_publications_mainstream(items, "publications-mainstream")
       draw_publications_any(items, "publications-any")
    }
-   window.addEventListener("resize", redraw);
-   redraw();
+}
 
+const get_json = (resp) => {
+   return resp.json()
+}
+
+const slugs = (item) => {
+   return item.slug
+}
+
+const api = "/api";
+let items = [];
+
+const get_software_cache_and_redraw = (slug) => {
+   fetch(api + "/software_cache/" + slug)
+   .then(get_json)
+   .then((item) => {
+      items.push(item)
+      redraw(items)
+   })
+}
+
+fetch(api + "/software?isPublished=true")
+.then(get_json)
+.then((items) => {
+   items.map(slugs).forEach(get_software_cache_and_redraw)
 })
-.catch(function(error) {
-   console.log(JSON.stringify(error));
+.catch((error) => {
+   console.log(error)
 });
+
+window.addEventListener("resize", redraw);
