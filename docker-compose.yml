@@ -8,6 +8,11 @@ services:
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-admin
     image: ${COMPOSE_PROJECT_NAME-rsd}/admin
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "1m"
     volumes:
       - static_admin:/build
 
