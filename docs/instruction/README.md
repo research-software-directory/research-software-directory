@@ -68,6 +68,26 @@ Hopefully this clarifies where the various data are coming from. The next step
 is to establish links between the parts, e.g. linking a paper to a software.
 This is done by hand via the Admin interface (see sections below).
 
+## What software should be added?
+
+As a rule of thumb, software should be added to the Research Software Directory if 
+
+1. significant NLeSC resources were spent on it
+
+OR
+
+2. the software could be useful to somebody else,
+
+but only if 
+
+3. we can realistically claim (co-)ownership of the software.
+
+Under this definition, the following is not recorded in the Research Software Directory:
+
+- A simple script that was just meant to wrangle some data unique to a problem we were having (violates 1, 2).
+- A contribution to an existing package (violates 3).
+- A package that is very useful but that NLeSC wasn't involved with (violates 3).
+
 ## How do I add a new ``Software``?
 
 1. Go to the Research Software Directory's admin interface
