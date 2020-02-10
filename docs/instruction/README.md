@@ -72,21 +72,14 @@ This is done by hand via the Admin interface (see sections below).
 
 As a rule of thumb, software should be added to the Research Software Directory if 
 
-1. significant NLeSC resources were spent on it
-
-OR
-
-2. the software could be useful to somebody else,
-
-but only if 
-
-3. we can realistically claim (co-)ownership of the software.
+1. we can realistically claim (co-)ownership of the software AND
+2. the software could be useful to somebody else
 
 Under this definition, the following is not recorded in the Research Software Directory:
 
-- A simple script that was just meant to wrangle some data unique to a problem we were having (violates 1, 2).
-- A contribution to an existing package (violates 3).
-- A package that is very useful but that NLeSC wasn't involved with (violates 3).
+- A script that was just meant to wrangle some data unique to a problem we were having (violates 2).
+- A contribution to an existing package (violates 1).
+- A package that is very useful but that NLeSC wasn't involved with (violates 1).
 
 ## How do I add a new ``Software``?
 
