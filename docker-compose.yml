@@ -169,7 +169,6 @@ services:
       # user needs to assign values to the following environment variables:
       - SSL_ADMIN_EMAIL
       - SSL_DOMAINS
-    image: ${COMPOSE_PROJECT_NAME-rsd}/nginx_ssl
     image: rsdnlesc/docker-term-letsencrypt
     logging:
       driver: "json-file"
