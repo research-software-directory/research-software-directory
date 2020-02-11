@@ -214,6 +214,7 @@ const unique = (array_of_arrays) => {
 const draw_packages = (items, id) => {
    const stat = shorten(items.filter(unpublished).length);
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -224,6 +225,7 @@ const draw_packages_doi = (items, id) => {
    });
    const stat = Math.floor(100 * citable.length / published.length).toString(10) + "%";
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -240,6 +242,7 @@ const draw_permissive_licenses = (items, id) => {
    })
    const stat = Math.floor(100 * permissively_licensed.length / published.length).toString(10) + "%" ;
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -259,6 +262,7 @@ const draw_repositories = (items, id) => {
    }
    const stat = wrangle(items);
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -280,6 +284,7 @@ const draw_projects = (items, id) => {
    ylabel.text("count");
    title.text("Projects per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -301,6 +306,7 @@ const draw_contributors = (items, id) => {
    ylabel.text("count");
    title.text("Contributors per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -324,6 +330,7 @@ const draw_commits = (items, id) => {
    ylabel.text("count");
    title.text("Commits per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -346,6 +353,7 @@ const draw_organizations = (items, id) => {
    ylabel.text("count");
    title.text("Organizations per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -370,6 +378,7 @@ const draw_publications_scientific = (items, id) => {
    ylabel.text("count");
    title.text("Scientific publications per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -396,6 +405,7 @@ const draw_publications_mainstream = (items, id) => {
    ylabel.text("count");
    title.text("Mainstream media publications per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 
@@ -417,6 +427,7 @@ const draw_publications_any = (items, id) => {
    ylabel.text("count");
    title.text("Publications of any type per software package");
    document.getElementById(id).getElementsByClassName("number")[0].innerText = stat;
+   document.getElementById(id).getElementsByClassName("number")[0].classList.remove("loading");
 }
 
 const url = "/api/software_cache";
