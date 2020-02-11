@@ -14,23 +14,20 @@
             "type": "string"
         },
         "emailAddress": {
-            "format": "email",
             "type": "string"
         },
         "familyNames": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "minLength": 1
         },
         "givenNames": {
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "minLength": 1
         },
         "nameParticle": {
-            "minLength": 1,
             "type": "string"
         },
         "nameSuffix": {
-            "minLength": 1,
             "type": "string"
         },
         "primaryKey": {
@@ -48,6 +45,7 @@
     "required": [
         "createdAt",
         "familyNames",
+        "givenNames",
         "primaryKey",
         "updatedAt"
     ],

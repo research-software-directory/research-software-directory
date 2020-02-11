@@ -177,20 +177,54 @@
       "itemLabelTemplate":
         "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
       "properties": {
-        "primaryKey": {
-          "readonly": true
+        "avatar": {
+          "readonly": false,
+          "sortIndex": 1
+        },
+        "givenNames": {
+          "readonly": false,
+          "sortIndex": 10,
+          "help": "First name(s) / given name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "nameParticle": {
+          "readonly": false,
+          "sortIndex": 20,
+          "help": "For example 'van der', 'van', 'von', 'de', 'le'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "familyNames": {
+          "readonly": false,
+          "sortIndex": 30,
+          "help": "Last name(s) / family name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "nameSuffix": {
+          "readonly": false,
+          "sortIndex": 40,
+          "help": "For example 'Jr.' or 'IV'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "emailAddress": {
+          "readonly": false,
+          "sortIndex": 50,
+          "help": "email address"
         },
         "createdAt": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 100
         },
         "createdBy": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 110
+        },
+        "primaryKey": {
+          "readonly": false,
+          "sortIndex": 120
         },
         "updatedAt": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 130
         },
         "updatedBy": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 140
         }
       }
     },
