@@ -8,6 +8,11 @@ services:
     command: sh -c "rm -rf /build/* && cp -r /usr/share/nginx/html/* /build"
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-admin
     image: ${COMPOSE_PROJECT_NAME-rsd}/admin
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "1m"
     volumes:
       - static_admin:/build
 
@@ -15,7 +20,6 @@ services:
     build:
       context: ./auth-github
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-authentication
-    image: ${COMPOSE_PROJECT_NAME-rsd}/authentication
     environment:
       # user should not have to change the values of the following environment variables:
       - AUTH_CALLBACK_URL=/admin
@@ -25,12 +29,17 @@ services:
       - AUTH_GITHUB_CLIENT_SECRET
       - AUTH_GITHUB_ORGANIZATION
       - JWT_SECRET
+    image: ${COMPOSE_PROJECT_NAME-rsd}/authentication
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "1m"
 
   backend:
     build:
       context: ./backend
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-backend
-    image: ${COMPOSE_PROJECT_NAME-rsd}/backend
     depends_on:
       - database
     environment:
@@ -43,12 +52,17 @@ services:
       # user needs to assign values to the following environment variables:
       - DOMAIN
       - JWT_SECRET
+    image: ${COMPOSE_PROJECT_NAME-rsd}/backend
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "10m"
 
   backup:
     build:
       context: ./backup
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-backup
-    image: ${COMPOSE_PROJECT_NAME-rsd}/backup
     depends_on:
       - database
     environment:
@@ -58,14 +72,25 @@ services:
       - DATABASE_PORT=27017
       # user needs to assign values to the following environment variables:
       - BACKUP_CMD
+    image: ${COMPOSE_PROJECT_NAME-rsd}/backup
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "1m"
 
   database:
     build:
       context: ./database
     command: --bind_ip 0.0.0.0
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-database
-    image: ${COMPOSE_PROJECT_NAME-rsd}/database
     entrypoint: /mongo.sh
+    image: ${COMPOSE_PROJECT_NAME-rsd}/database
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "30m"
     volumes:
       - ./docker-volumes/db:/data/db
 
@@ -73,12 +98,17 @@ services:
     build:
       context: ./frontend
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-frontend
-    image: ${COMPOSE_PROJECT_NAME-rsd}/frontend
     depends_on:
       - backend
     environment:
       # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
+    image: ${COMPOSE_PROJECT_NAME-rsd}/frontend
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "5m"
     volumes:
       - static_frontend:/shared_static
       - ./docker-volumes/oaipmh-cache:/static/oaipmh-cache
@@ -91,6 +121,11 @@ services:
     depends_on:
       - backend
     image: ${COMPOSE_PROJECT_NAME-rsd}/graphs
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "1m"
     volumes:
       - static_graphs:/static_graphs
 
@@ -99,7 +134,6 @@ services:
       context: ./harvesting
     command: sh -c "cp -r /var/www/index.html /static_schedule/ && crond -d7 -f"
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-harvesting
-    image: ${COMPOSE_PROJECT_NAME-rsd}/harvesting
     depends_on:
       - backend
       - database
@@ -115,13 +149,20 @@ services:
       - ZENODO_ACCESS_TOKEN
       - ZOTERO_API_KEY
       - ZOTERO_LIBRARY
+    image: ${COMPOSE_PROJECT_NAME-rsd}/harvesting
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "80m"
     volumes:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
       - static_schedule:/static_schedule
 
   nginx_ssl:
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-nginx-ssl
-    image: ${COMPOSE_PROJECT_NAME-rsd}/nginx_ssl
+    depends_on:
+      - reverse-proxy
     environment:
       # user should not have to change the values of the following environment variables:
       - SSL_FORWARD=http://reverse-proxy:80
@@ -129,6 +170,11 @@ services:
       - SSL_ADMIN_EMAIL
       - SSL_DOMAINS
     image: rsdnlesc/docker-term-letsencrypt
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "40m"
     ports:
       - 443:443
       - 80:80
@@ -136,20 +182,23 @@ services:
     volumes:
       - ./docker-volumes/cert:/cert
       - ./docker-volumes/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - reverse-proxy
 
   reverse-proxy:
     build:
       context: ./reverse-proxy
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-reverse-proxy
-    image: ${COMPOSE_PROJECT_NAME-rsd}/reverse_proxy
     depends_on:
       - frontend
       - backend
       - admin
       - auth
       - graphs
+    image: ${COMPOSE_PROJECT_NAME-rsd}/reverse_proxy
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: "20m"
     restart: unless-stopped
     volumes:
       - static_admin:/static_admin:ro
