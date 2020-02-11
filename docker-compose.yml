@@ -11,7 +11,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "1m"
     volumes:
       - static_admin:/build
@@ -33,7 +33,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "1m"
 
   backend:
@@ -56,7 +56,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "10m"
 
   backup:
@@ -76,7 +76,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "1m"
 
   database:
@@ -89,7 +89,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "30m"
     volumes:
       - ./docker-volumes/db:/data/db
@@ -107,7 +107,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "5m"
     volumes:
       - static_frontend:/shared_static
@@ -124,7 +124,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "1m"
     volumes:
       - static_graphs:/static_graphs
@@ -153,7 +153,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "80m"
     volumes:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
@@ -174,7 +174,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "40m"
     ports:
       - 443:443
@@ -198,7 +198,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: "1"
+        max-file: "2"
         max-size: "20m"
     restart: unless-stopped
     volumes:
