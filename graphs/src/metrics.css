@@ -163,3 +163,19 @@ svg .title {
 .hidden {
    display: none;
 }
+
+.loading {
+   animation-name: fade-out-in;
+   animation-duration: 1s;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+}
+
+@keyframes fade-out-in {
+   0% {
+      color: rgba(255,255,255,1);
+   }
+   100% {
+      color: rgba(255,255,255,0);
+   }
+}
