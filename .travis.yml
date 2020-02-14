@@ -42,7 +42,7 @@ jobs:
         - cd frontend
       install:
         - pip install -r requirements.txt
-        - pip install pytest py-w3c
+        - pip install pytest==4 py-w3c
       script:
         - BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
 
