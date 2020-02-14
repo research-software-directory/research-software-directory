@@ -28,7 +28,7 @@ jobs:
       before_install:
         - cd backend
       install:
-        - pip install pytest==4.3.0 pytest-cov coveralls
+        - pip install pytest==4.* pytest-cov coveralls
         - pip install -r requirements.txt
       script:
         - PYTHONPATH=`pwd` pytest --cov=src
@@ -42,7 +42,7 @@ jobs:
         - cd frontend
       install:
         - pip install -r requirements.txt
-        - pip install pytest==4 py-w3c
+        - pip install pytest==4.* py-w3c
       script:
         - BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
 
