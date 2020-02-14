@@ -1,14 +1,12 @@
-stages:
-  - "Tests"
-  - "docker-compose integration tests"
-
+dist: bionic
+language: minimal
+os: linux
 jobs:
   include:
     - stage: "Tests"
       name: "Admin tests"
       language: node_js
-      node_js:
-        - "12"
+      node_js: "12"
       cache:
         directories:
           - node_modules
@@ -21,8 +19,7 @@ jobs:
 
     - name: "Backend tests"
       language: python
-      python:
-        - 3.6
+      python: "3.6"
       cache:
         pip: true
       services:
@@ -38,8 +35,7 @@ jobs:
 
     - name: "Frontend tests"
       language: python
-      python:
-        - 3.6
+      python: "3.6"
       cache:
         pip: true
       before_install:
@@ -58,3 +54,7 @@ jobs:
         - docker-compose build
       script:
         - docker-compose --file docker-compose.yml --file docker-compose.test.yml run test
+
+stages:
+  - "Tests"
+  - "docker-compose integration tests"
