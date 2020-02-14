@@ -17,12 +17,12 @@
             "type": "string"
         },
         "familyNames": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
         },
         "givenNames": {
-            "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "type": "string"
         },
         "nameParticle": {
             "type": "string"
