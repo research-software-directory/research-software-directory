@@ -15,6 +15,7 @@ This README file has the following sections:
     - [Visualizing ``docker-compose.yml``](#visualizing-docker-composeyml)
     - [Making a release](#making-a-release)
     - [Pulling in changes from upstream using a three-way merge](#pulling-in-changes-from-upstream-using-a-three-way-merge)
+    - [Updating a production instance](#updating-a-production-instance)
 
 # What is the Research Software Directory?
 
@@ -415,6 +416,7 @@ https://console.aws.amazon.com/ec2.
 1. Click the blue ``Launch instance`` button
 1. Scroll down to where it says ``Ubuntu Server 18.04 LTS``, click ``Select``
 1. Choose instance type ``t2.small``
+1. Proceed in the wizard until you get to 'Add storage'. Set the storage to 10GB.
 1. Proceed in the wizard by clicking ``Next`` until you get to ``Configure
 Security Group``. It should already have one rule listed. However, its security
 settings should be a bit more secure, because currently it allows SSH
@@ -738,3 +740,134 @@ git add <the files>
 git commit
 git push origin develop
 ```
+
+## Updating a production instance
+
+Every now and then, the production instance needs to be updated, so the server
+can get the latest security patches, and the Research Software Directory
+software itself can be updated to include the latest features.
+
+The steps below differentiate between the old and the new instance of the Research
+Software Directory; the old instance has IP ``35.156.38.208``, the new one has
+IP ``3.122.233.225``. Your IP addresses will likely be different.
+
+1. Make a new Amazon instance by following the notes above. Some things to think about:
+    - Reuse the existing security group.
+    - Reuse the existing key pair.
+    - Verify that you're allowed to ssh into the new instance.
+1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
+
+    ```
+    $ cd $(mktemp -d)
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ./rsd-secrets.env \
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
+    ```
+1. Transfer files related to SSL certificates from the old instance to the new instance.
+
+    ```
+    # (on the new machine, remove the cert directory from
+    # /home/ubuntu/rsd/docker-volumes/ if it exists)
+
+    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/docker-volumes/cert .
+    
+    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ./cert \
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/docker-volumes/cert
+
+    # on the new machine, change the owner of cert/ to 'root'
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    $ cd /home/ubuntu/rsd/docker-volumes
+      sudo chown -R root:root cert
+    ```
+
+1. Stop new additions to the database in the old research software
+   directory instance by stopping the ``rsd-admin`` service.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    $ cd /home/ubuntu/rsd
+    $ docker-compose stop rsd-admin
+    ```
+
+1. Create the backup files in the old Research Software Directory instance:
+
+    ```
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+    
+    # start an interactive shell in the backup container
+    $ docker-compose exec backup /bin/sh
+
+    # create the backup files in the container's /dump directory
+    /app # mongodump \
+      --host ${DATABASE_HOST} \
+      --port ${DATABASE_PORT} \
+      --db ${DATABASE_NAME} \
+      --out /dump
+
+    # leave the backup container
+    exit
+
+    # Copy the dump directory out of the docker container
+    docker cp $(docker-compose ps -q backup):/dump/rsd /home/ubuntu/rsd/dump
+    ```
+
+1. Transfer the dumped json and bson files from the old to the new instance
+
+    ```
+    scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+    ubuntu@35.156.38.208:/home/ubuntu/rsd/dump .
+
+    scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+    ./dump/* ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
+
+    ```
+
+1. Start the new Research Software Directory instance.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    $ cd /home/ubuntu/rsd
+
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+
+    $ docker-compose build
+    $ docker-compose up -d
+    ```
+
+1. Check [/CHANGELOG.md](/CHANGELOG.md) to see if you need to run any command to
+   migrate data, e.g. when a collection has changed its schema.
+
+1. Next, harvest all the data from external sources using:
+
+    ```
+    $ docker-compose exec harvesting python app.py harvest all
+    $ docker-compose exec harvesting python app.py resolve
+    ```
+
+1. In case the old instance had problems with harvesting of the mentions, you
+   may need to retrieve all mentions, as follows:
+
+    ```
+    $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
+    ```
+
+1. Check if the instance works correctly using a browser to navigate to
+   the new instance's IP address.
+1. If everything looks good, stop the Research Software Directory in the old instance
+
+    ```
+    $ docker-compose stop
+    ```
+
+1. Disassociate the ElasticIP address from the old instance.
+1. Associate the ElasticIP address with the new instance.
+
+As a final step, use the Amazon EC2 management console to ``Stop`` (not
+``Terminate``) the old instance. This way, the old instance can still be
+reactivated in case you need to get back to the old version.
