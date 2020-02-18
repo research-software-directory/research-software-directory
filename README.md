@@ -279,17 +279,41 @@ rsd-harvesting     | 2018-07-11 10:30:03,149 cache_software [INFO] processing sv
 
 ```
 
-Open a web browser to verify that everything works as it should.
+Open a web browser to verify that everything works as it should. Below are some things to check:
 
-- [``http://localhost``](http://localhost) should show a local instance of the Research Software Directory
+#### Admin interface
+
 - [``http://localhost/admin``](http://localhost/admin) should show the Admin interface to the local instance of the Research Software Directory
-- [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
-- [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
+
+#### API
+
+- [``http://localhost/api/mention``](http://localhost/api/mention) should show a JSON representation of all mentions in the local instance of the Research Software Directory
+- [``http://localhost/api/organization``](http://localhost/api/organization) should show a JSON representation of all organizations in the local instance of the Research Software Directory
+- [``http://localhost/api/project``](http://localhost/api/project) should show a JSON representation of all projects in the local instance of the Research Software Directory
+- [``http://localhost/api/release``](http://localhost/api/release) should show a JSON representation of all releases in the local instance of the Research Software Directory
 - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory
+- [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
+
+#### Citation
+
 - [``http://localhost/cite/xenon?version=3.0.4&format=bibtex``](http://localhost/cite/xenon?version=3.0.4&format=bibtex) should return a reference manager file for software package Xenon version 3.0.4 in BibTeX format.
+
+#### Graphs / metrics / insights
+
 - [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
+
+#### OAI-PMH
+
 - [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format. 
+
+#### Harvesting schedule
+
 - [``http://localhost/schedule``](http://localhost/schedule) should return the cron job describing when each harvester is scheduled to run.
+
+#### Frontend
+
+- [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
+- [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
 ---
 
 ## Customize your instance of the Research Software Directory
