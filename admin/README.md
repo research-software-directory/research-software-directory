@@ -1,6 +1,4 @@
 [![TravisCIBadge](https://travis-ci.org/research-software-directory/admin.svg?branch=master)](https://travis-ci.org/research-software-directory/admin)
-[![Docker badge](https://dockerbuildbadges.quelltext.eu/status.svg?organization=rsdnlesc&repository=admin)](https://hub.docker.com/r/rsdnlesc/admin/)
-[![Greenkeeper badge](https://badges.greenkeeper.io/research-software-directory/admin.svg)](https://greenkeeper.io/)
 
 The is the admin user interface for the Research Software Directory.
 It can be used to add and update software items to the directory.
