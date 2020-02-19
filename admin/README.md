@@ -8,10 +8,10 @@ TODO:
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-# Dependencies
+# Prerequisites
 
-* Auth service e.g. [github-auth](/auth-github).
-* Data api service like [backend](/backend).
+* Running authentication service e.g. [github-auth](/auth-github).
+* Running data api service like [backend](/backend).
 
 # Installation
 
