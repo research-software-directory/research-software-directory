@@ -1,5 +1,3 @@
-[![TravisCIBadge](https://travis-ci.org/research-software-directory/admin.svg?branch=master)](https://travis-ci.org/research-software-directory/admin)
-
 The is the admin user interface for the Research Software Directory.
 It can be used to add and update software items to the directory.
 
