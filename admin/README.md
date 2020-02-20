@@ -18,7 +18,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Installation
 
 1.  Clone repository
-2.  Use node version `^8.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
+2.  Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
 3.  Install yarn, `npm install -g yarn`
 4.  Install dependencies: `yarn`
 5.  To run tests: `yarn test`
