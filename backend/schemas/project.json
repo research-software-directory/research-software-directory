@@ -15,7 +15,7 @@
             "type": "string"
         },
         "image": {
-            "format": "url",
+            "format": "uri",
             "type": "string"
         },
         "impact": {
