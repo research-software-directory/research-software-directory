@@ -19,11 +19,10 @@ db.project.update({}, {$set: {"impact": []}}, {"multi": true})
 db.project.update({}, {$rename: {"url": "corporateUrl"}}, {"multi": true})
 ```
 
-**Delete** fields ``subtitle`` and  ``principalInvestigator`` from all ``project`` documents:
+**Empty** the value of ``principalInvestigator`` for all ``project`` documents:
 
 ```
-db.project.update({}, {$unset: {"subtitle": ""}}, {"multi": true})
-db.project.update({}, {$unset: {"principalInvestigator": ""}}, {"multi": true})
+db.project.update({}, {$set: {"principalInvestigator": ""}}, {"multi": true})
 ```
 
 **Remove** all ``release`` documents entirely:
