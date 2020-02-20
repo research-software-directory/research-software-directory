@@ -42,9 +42,10 @@ if pytest.config.getoption("live"):
 @pytest.mark.skipif(not pytest.config.getoption("live"), reason="--live not specified")
 @pytest.mark.parametrize("slug", live_software_items)
 def test_live_software_data_renders(get, slug):
-    status_code = 504
-    while status_code == 504:
-        time.sleep(5)
+    status_code = -1
+    while status_code != 200:
         data, status_code = get('/software/%s' % slug)
+        if status_code != 200
+            time.sleep(15)
     assert status_code == 200
     assert isValidHTML(data)
