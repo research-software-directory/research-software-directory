@@ -297,7 +297,7 @@
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true,
+      "readonly": false,
       "properties": {
         "title": {
           "label": "Name of the project",
@@ -310,7 +310,7 @@
           "sortIndex": 20
         },
         "principalInvestigator": {
-          "label": "Principal investigator of the project",
+          "label": "Principal investigator",
           "readonly": true,
           "sortIndex": 30
         },
