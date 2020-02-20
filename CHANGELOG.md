@@ -1,6 +1,6 @@
 # 2.0.0
 
-Notes on migration of 1.1.0 data:
+Version 2.0.0 of the Research Software Directory requires changes to the database. Below are the steps to migrate data from 1.2.0 to 2.0.0.
 
 ```
 $ docker-compose exec database mongo rsd
