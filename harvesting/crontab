@@ -1,5 +1,5 @@
 # minute         hour day month	weekday command
-0                5    *   *     *       cd /app && python app.py harvest citations && python app.py harvest commits && python app.py harvest metadata
+0                5    *   *     *       cd /app && python app.py harvest citations && python app.py harvest commits && python app.py harvest metadata && python app.py harvest projects
 0,10,20,30,40,50 *    *   *     *       cd /app && python app.py harvest mentions
 5,15,25,35,45,55 *    *   *     *       cd /app && python app.py resolve
 #
