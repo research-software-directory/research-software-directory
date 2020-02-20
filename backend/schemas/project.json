@@ -2,14 +2,6 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
-        "callUrl": {
-            "format": "uri",
-            "type": "string"
-        },
-        "codeUrl": {
-            "format": "uri",
-            "type": "string"
-        },
         "corporateUrl": {
             "format": "uri",
             "type": "string"
@@ -22,12 +14,8 @@
         "createdBy": {
             "type": "string"
         },
-        "description": {
-            "minLength": 500,
-            "type": "string"
-        },
-        "imageUrl": {
-            "format": "uri",
+        "image": {
+            "format": "url",
             "type": "string"
         },
         "impact": {
@@ -43,21 +31,6 @@
             "type": "array",
             "uniqueItems": true
         },
-        "isPublished": {
-            "default": false,
-            "type": "boolean"
-        },
-        "primaryKey": {
-            "$ref": "definitions.json/key/project"
-        },
-        "projectHomeUrl": {
-            "format": "uri",
-            "type": "string"
-        },
-        "name": {
-            "minLength": 1,
-            "type": "string"
-        },
         "output": {
             "items": {
                 "additionalProperties": false,
@@ -71,39 +44,17 @@
             "type": "array",
             "uniqueItems": true
         },
-        "team": {
-            "items": {
-                "additionalProperties": false,
-                "properties": {
-                    "affiliations": {
-                        "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                                "foreignKey": {
-                                    "$ref": "definitions.json/key/organization"
-                                }
-                            }
-                        },
-                        "type": "array",
-                        "uniqueItems": true
-                    },
-                    "foreignKey": {
-                        "$ref": "definitions.json/key/person"
-                    },
-                    "role": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "affiliations",
-                    "foreignKey",
-                    "role"
-                ],
-                "type": "object"
-            },
-            "minItems": 1,
-            "type": "array",
-            "uniqueItems": true
+        "primaryKey": {
+            "$ref": "definitions.json/key/project"
+        },
+        "principalInvestigator": {
+            "type": "string"
+        },
+        "subtitle": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
         },
         "updatedAt": {
             "format": "date-time",
@@ -115,15 +66,18 @@
         }
     },
     "required": [
-        "callUrl",
-        "codeUrl",
         "corporateUrl",
         "createdAt",
-        "description",
-        "imageUrl",
-        "name",
+        "createdBy",
+        "image",
+        "impact",
+        "output",
         "primaryKey",
-        "updatedAt"
+        "principalInvestigator",
+        "subtitle",
+        "title",
+        "updatedAt",
+        "updatedBy"
     ],
     "title": "Project schema"
 }
