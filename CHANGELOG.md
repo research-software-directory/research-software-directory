@@ -1,6 +1,6 @@
 # 2.0.0
 
-Version 2.0.0 of the Research Software Directory requires changes to the database. Below are the steps to migrate data from 1.2.0 to 2.0.0.
+In version 2.0.0, the ``project`` collection is partly filled by harvesting from external data source, and partly filled by means of users making edits in the admin interface. This means that version 2.0.0 of the Research Software Directory requires changes to the database. Below are the steps to migrate data from 1.2.0 to 2.0.0.
 
 ```
 $ docker-compose exec database mongo rsd
