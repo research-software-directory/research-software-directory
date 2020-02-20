@@ -15,7 +15,7 @@ def get_projects():
         principal_investigators = [person for person in from_scraper['team'] if person['role'] == 'Principal Investigator']
 
         if len(principal_investigators) > 0:
-            pi = principal_investigators[0]['name']
+            pi = principal_investigators[0]['name'].strip()
         else:
             pi = ''
 
