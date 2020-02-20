@@ -18,10 +18,20 @@
                                     <h2 class="text-blue">
                                         {{project.title}}
                                     </h2>
+                                    <p>
+                                        {{project.subtitle}}
+                                    </p>
+                                    <div class="author">
+                                        <div class="author_name">
+                                            {{ project.principalInvestigator }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </a>
                     </article>
+
+
                     {% endwith %}
                     {% endfor %}
 
