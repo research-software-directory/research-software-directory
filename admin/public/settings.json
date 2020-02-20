@@ -297,7 +297,7 @@
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": false,
+      "readonly": true,
       "properties": {
         "title": {
           "label": "Name of the project",
