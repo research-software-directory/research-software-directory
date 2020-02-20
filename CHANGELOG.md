@@ -6,72 +6,28 @@ Notes on migration of 1.1.0 data:
 $ docker-compose exec database mongo rsd
 ```
 
-Delete field ``subtitle`` from all ``project`` documents:
+**Add** fields ``output`` and ``impact`` to all ``project`` documents:
+
 ```
-db.project.update({}, {$unset: {"subtitle": ""}}, {"multi": true})
+db.project.update({}, {$set: {"output": []}}, {"multi": true})
+db.project.update({}, {$set: {"impact": []}}, {"multi": true})
 ```
 
-Delete field ``principalInvestigator`` from all ``project`` documents:
-```
-db.project.update({}, {$unset: {"principalInvestigator": ""}}, {"multi": true})
-```
+**Rename** field ``url`` to ``corporateUrl`` for all ``project`` documents:
 
-Rename field ``url`` to ``corporateUrl`` for all ``project`` documents:
 ```
 db.project.update({}, {$rename: {"url": "corporateUrl"}}, {"multi": true})
 ```
 
-Rename field ``title`` to ``name`` for all ``project`` documents:
+**Delete** fields ``subtitle`` and  ``principalInvestigator`` from all ``project`` documents:
+
 ```
-db.project.update({}, {$rename: {"title": "name"}}, {"multi": true})
+db.project.update({}, {$unset: {"subtitle": ""}}, {"multi": true})
+db.project.update({}, {$unset: {"principalInvestigator": ""}}, {"multi": true})
 ```
 
-Rename field ``image`` to ``imageUrl`` for all ``project`` documents:
-```
-db.project.update({}, {$rename: {"image": "imageUrl"}}, {"multi": true})
-```
+**Remove** all ``release`` documents entirely:
 
-Add field ``callUrl`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"callUrl": ""}}, {"multi": true})
-```
-
-Add field ``codeUrl`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"codeUrl": ""}}, {"multi": true})
-```
-
-Add field ``projectHomeUrl`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"projectHomeUrl": ""}}, {"multi": true})
-```
-
-Add field ``description`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"description": ""}}, {"multi": true})
-```
-
-Add field ``output`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"output": []}}, {"multi": true})
-```
-
-Add field ``impact`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"impact": []}}, {"multi": true})
-```
-
-Add field ``team`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"team": []}}, {"multi": true})
-```
-
-Add field ``isPublished`` to all ``project`` documents:
-```
-db.project.update({}, {$set: {"isPublished": false}}, {"multi": true})
-```
-
-Remove all ``release`` documents entirely:
 ```
 db.release.deleteMany({})
 ```
