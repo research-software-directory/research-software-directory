@@ -19,10 +19,6 @@
           "help":
             "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
         },
-        "citationcff": {
-          "label": "citationcff",
-          "sortIndex": 300
-        },
         "contributingOrganizations": {
           "label": "Contributing organizations",
           "sortIndex": 400
@@ -57,16 +53,12 @@
         },
         "createdBy": {
           "label": "Created by",
-          "sortIndex": 1000,
+          "sortIndex": 1010,
           "readonly": true
         },
         "getStartedURL": {
           "label": "Getting started URL",
-          "sortIndex": 500
-        },
-        "repositoryURLs": {
-          "sortIndex": 580,
-          "label": "Code repository URLs"
+          "sortIndex": 510
         },
         "isFeatured": {
           "sortIndex": 20,
@@ -83,7 +75,7 @@
         },
         "primaryKey": {
           "label": "Primary key",
-          "sortIndex": 1000,
+          "sortIndex": 900,
           "readonly": true
         },
         "programmingLanguage": {
@@ -130,6 +122,10 @@
             }
           }
         },
+        "repositoryURLs": {
+          "sortIndex": 580,
+          "label": "Code repository URLs"
+        },
         "shortStatement": {
           "label": "Short statement",
           "multiline": true,
@@ -161,12 +157,12 @@
         },
         "updatedAt": {
           "label": "Updated at",
-          "sortIndex": 1000,
+          "sortIndex": 1020,
           "readonly": true
         },
         "updatedBy": {
           "label": "Updated by",
-          "sortIndex": 1000,
+          "sortIndex": 1030,
           "readonly": true
         }
       }

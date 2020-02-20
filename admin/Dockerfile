@@ -1,4 +1,4 @@
-FROM node:8.11.1
+FROM node:12.15.0
 
 RUN mkdir /app
 
