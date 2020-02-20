@@ -45,6 +45,13 @@ environment variable.
 The harvester directly injects into the database so the ``DATABASE_PORT`` and
 ``DATABASE_NAME`` environment variables should be set.
 
+### Harvesting project descriptions from the corporate site
+
+The projects are scraped from https://www.esciencecenter.nl/projects
+
+It requires the same ``BACKEND_URL`` and ``JWT_SECRET`` environment variable as
+harvesting the mentions from zotero.
+
 ### Harvesting citations data from Zenodo
 
 The harvester retrieves all the data to be able to cite a software item.
@@ -73,6 +80,12 @@ The Github commits can be fetched using
 
 ```bash
 python app.py harvest commits
+```
+
+The projects can be fetched from the corporate site using
+
+```bash
+python app.py harvest projects
 ```
 
 The releases of each software can be fetched using
