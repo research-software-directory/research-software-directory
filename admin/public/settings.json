@@ -296,51 +296,34 @@
     "project": {
       "name": "Project",
       "icon": "lab",
-      "itemLabelTemplate": "{{ name }}",
+      "itemLabelTemplate": "{{ title }}",
       "readonly": false,
       "properties": {
-        "isPublished": {
-          "help":
-            "Whether the project should be rendered on the corporate site",
-          "sortIndex": 1
+        "title": {
+          "label": "Name of the project",
+          "readonly": true,
+          "sortIndex": 10
         },
-        "name": {
-          "label": "Name",
-          "sortIndex": 2
+        "subtitle": {
+          "label": "Subtitle of the project",
+          "readonly": true,
+          "sortIndex": 20
+        },
+        "principalInvestigator": {
+          "label": "Principal investigator of the project",
+          "readonly": true,
+          "sortIndex": 30
         },
         "corporateUrl": {
           "help":
             "URL to the project page on https://esciencecenter.nl/projects",
-          "sortIndex": 3
+          "readonly": true,
+          "sortIndex": 40
         },
-        "callUrl": {
-          "help": "URL to the call text",
-          "sortIndex": 4
-        },
-        "codeUrl": {
-          "help": "URL to the code associated with this project",
-          "sortIndex": 5
-        },
-        "projectHomeUrl": {
-          "help": "URL to the project home (if applicable)",
-          "sortIndex": 6
-        },
-        "team": {
-          "properties": {
-            "foreignKey": {
-              "label": "person"
-            }
-          },
-          "sortIndex": 16
-        },
-        "imageUrl": {
-          "help": "URL to an image",
-          "sortIndex": 17
-        },
-        "description": {
-          "help": "Project description",
-          "multiline": true,
-          "sortIndex": 18
+        "image": {
+          "help": "URL to the image",
+          "readonly": true,
+          "sortIndex": 50
         },
         "output": {
           "help": "Output produced using NLeSC funding",
@@ -349,6 +332,7 @@
               "label": "mention"
             }
           },
+          "readonly": false,
           "sortIndex": 90
         },
         "impact": {
@@ -359,26 +343,32 @@
               "label": "mention"
             }
           },
+          "readonly": false,
           "sortIndex": 91
         },
         "createdAt": {
           "label": "Created at",
+          "readonly": true,
           "sortIndex": 1001
         },
         "createdBy": {
           "label": "Created by",
+          "readonly": true,
           "sortIndex": 1002
         },
         "updatedAt": {
           "label": "Updated at",
+          "readonly": true,
           "sortIndex": 1003
         },
         "updatedBy": {
           "label": "Created by",
+          "readonly": true,
           "sortIndex": 1004
         },
         "primaryKey": {
           "label": "Primary key",
+          "readonly": true,
           "sortIndex": 1005
         }
       }
