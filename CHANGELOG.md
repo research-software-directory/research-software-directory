@@ -3,9 +3,7 @@
 Notes on migration of 1.1.0 data:
 
 ```
-$ docker-compose exec database /bin/sh
-# mongo
-# use rsd
+$ docker-compose exec database mongo rsd
 ```
 
 Delete field ``subtitle`` from all ``project`` documents:
