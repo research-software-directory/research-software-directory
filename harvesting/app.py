@@ -83,7 +83,7 @@ def harvest_citations(dois=None):
     get_citations(db, dois)
 
 
-@harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo')
+@harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo for dissemination via OAI-PMH')
 @click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated ' +
                                                'string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281' +
                                                '/zenodo.1162057\'')
@@ -97,7 +97,7 @@ def harvest_metadata(dois=None):
 
 @harvest_group.command('all')
 def harvest_all():
-    """Harvest commits, citations, mentions, projects, oaipmh records"""
+    """Harvest commits, citations, mentions, projects, metadata"""
     db = db_connect()
     dois = None
     get_commits()
