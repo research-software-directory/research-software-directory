@@ -2,7 +2,7 @@ version: '3'
 
 services:
   admin:
-    image: node:9.11.1-alpine
+    image: node:12.15.0-alpine
 
   test:
     build:

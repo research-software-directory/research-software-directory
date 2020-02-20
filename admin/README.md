@@ -3,9 +3,14 @@
 The is the admin user interface for the Research Software Directory.
 It can be used to add and update software items to the directory.
 
+TODO:
+
+- add notes on how to do local development ([#349](https://github.com/research-software-directory/research-software-directory/issues/349))
+- add notes on how to keep the dependencies updated, e.g. using `yarn audit` and `yarn outdated` ([#367](https://github.com/research-software-directory/research-software-directory/issues/367))
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-# Dependencies
+# Prerequisites
 
 - [github-auth](/auth-github) authentication service.
 - [backend](/backend) data API service.

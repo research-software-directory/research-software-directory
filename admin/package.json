@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "ajv": "^6.4.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "history": "^4.7.2",
     "immutability-helper": "^2.6.6",
     "jwt-decode": "^2.2.0",
@@ -18,7 +18,7 @@
     "react-animate-height": "^2.0.1",
     "react-cropper": "^1.0.1",
     "react-day-picker": "^7.1.4",
-    "react-dom": "^16.3.1",
+    "react-dom": "^16.4.2",
     "react-dropzone": "^4.2.9",
     "react-json-pretty": "^1.7.6",
     "react-overlays": "^0.8.3",
