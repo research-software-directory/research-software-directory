@@ -14,22 +14,17 @@ def get_projects():
 
         principal_investigators = [person for person in from_scraper['team'] if person['role'] == 'Principal Investigator']
 
-        pi = {
-            'name': '',
-            'affiliation': ''
-        }
         if len(principal_investigators) > 0:
-            pi = {
-                'name': principal_investigators[0]['name'],
-                'affiliation': principal_investigators[0]['affiliation']
-            }
+            pi = principal_investigators[0]['name']
+        else:
+            pi = ''
 
         return {
             'primaryKey': {
                 'collection': 'project',
                 'id': from_scraper['url'].replace('https://www.esciencecenter.nl/project/', '')
             },
-            'url': from_scraper['url'],
+            'corporateUrl': from_scraper['url'],
             'image': from_scraper['image'],
             'title': from_scraper['title'],
             'subtitle': from_scraper['subtitle'] or '',
