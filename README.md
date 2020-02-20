@@ -8,13 +8,23 @@ This README file has the following sections:
 - [How do I enter data into an instance of the Research Software Directory?](#how-do-i-enter-data-into-an-instance-of-the-research-software-directory)
 - [Documentation for developers](#documentation-for-developers)
     - [Try it out locally](#try-it-out-locally)
+        - [Fork and clone](#try-it-out-step-13-fork-and-clone)
+        - [Configure](#try-it-out-step-23-configure)
+        - [Start the complete stack](#try-it-out-step-33-start-the-complete-stack-using-docker-compose)
+        - [Verifying the local installation](#verifying-the-local-installation)
+        - [Removing local state](#removing-local-state)
     - [Customize your instance of the Research Software Directory](#customize-your-instance-of-the-research-software-directory)
+        - [General workflow when making changes](#general-workflow-when-making-changes)
     - [Make your instance available to others by hosting it online (deployment)](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
+        - [Configuring EC2](#configuring-ec2)
+        - [Configuring IAM](#configuring-iam)
+        - [Configuring S3](#configuring-s3)
     - [Notes on security](#notes-on-security)
 - [Documentation for maintainers](#documentation-for-maintainers)
     - [Visualizing ``docker-compose.yml``](#visualizing-docker-composeyml)
     - [Making a release](#making-a-release)
     - [Pulling in changes from upstream using a three-way merge](#pulling-in-changes-from-upstream-using-a-three-way-merge)
+    - [Updating a production instance](#updating-a-production-instance)
 
 # What is the Research Software Directory?
 
@@ -278,15 +288,42 @@ rsd-harvesting     | 2018-07-11 10:30:03,149 cache_software [INFO] processing sv
 
 ```
 
-Open a web browser to verify that everything works as it should.
+### Verifying the local installation
 
-- [``http://localhost``](http://localhost) should show a local instance of the Research Software Directory
-- [``http://localhost/admin``](http://localhost/admin) should show the Admin interface to the local instance of the Research Software Directory
-- [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
+Open a web browser to verify that everything works as it should. Below are some things to check:
+
+#### Frontend
+
 - [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
+- [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
+
+#### Admin interface
+
+- [``http://localhost/admin``](http://localhost/admin) should show the Admin interface to the local instance of the Research Software Directory
+
+#### API
+
+- [``http://localhost/api/mention``](http://localhost/api/mention) should show a JSON representation of all mentions in the local instance of the Research Software Directory
+- [``http://localhost/api/organization``](http://localhost/api/organization) should show a JSON representation of all organizations in the local instance of the Research Software Directory
+- [``http://localhost/api/project``](http://localhost/api/project) should show a JSON representation of all projects in the local instance of the Research Software Directory
+- [``http://localhost/api/release``](http://localhost/api/release) should show a JSON representation of all releases in the local instance of the Research Software Directory
 - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory
+- [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
+
+#### Citation
+
+- [``http://localhost/cite/xenon?version=3.0.4&format=bibtex``](http://localhost/cite/xenon?version=3.0.4&format=bibtex) should return a reference manager file for software package Xenon version 3.0.4 in BibTeX format.
+
+#### Graphs / metrics / insights
+
 - [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
+
+#### OAI-PMH
+
 - [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format. 
+
+#### Harvesting schedule
+
 - [``http://localhost/schedule``](http://localhost/schedule) should return the cron job describing when each harvester is scheduled to run.
 
 ### Removing local state
@@ -294,7 +331,7 @@ Open a web browser to verify that everything works as it should.
 The Research Software Directory stores its state in a couple of places. While
 doing development, sometimes you need to clear the local state, therefore this
 section lists some ways to clear such state. Be aware that running these
-commands results in the LOSS OF DATA.
+commands results in the **LOSS OF DATA**.
 
 - Remove a docker container:
 
@@ -319,7 +356,7 @@ commands results in the LOSS OF DATA.
     sudo rm -rf cert/ db/ letsencrypt/ oaipmh-cache/
     ```
 
-- Docker static volumes store data. Rrefer to [/docker-compose.yml](/docker-compose.yml) to see which services use which volumes. Remove a volume with:
+- Docker static volumes store data. Refer to [/docker-compose.yml](/docker-compose.yml) to see which services use which volumes. Remove a volume with:
 
     ```
     # remove volumes that are not in use by any containers
@@ -338,8 +375,6 @@ commands results in the LOSS OF DATA.
     # or remove a specific network
     docker network rm <network>
     ```
-
----
 
 ## Customize your instance of the Research Software Directory
 
@@ -465,6 +500,7 @@ https://console.aws.amazon.com/ec2.
 1. Click the blue ``Launch instance`` button
 1. Scroll down to where it says ``Ubuntu Server 18.04 LTS``, click ``Select``
 1. Choose instance type ``t2.small``
+1. Proceed in the wizard until you get to 'Add storage'. Set the storage to 10GB.
 1. Proceed in the wizard by clicking ``Next`` until you get to ``Configure
 Security Group``. It should already have one rule listed. However, its security
 settings should be a bit more secure, because currently it allows SSH
@@ -788,3 +824,134 @@ git add <the files>
 git commit
 git push origin develop
 ```
+
+## Updating a production instance
+
+Every now and then, the production instance needs to be updated, so the server
+can get the latest security patches, and the Research Software Directory
+software itself can be updated to include the latest features.
+
+The steps below differentiate between the old and the new instance of the Research
+Software Directory; the old instance has IP ``35.156.38.208``, the new one has
+IP ``3.122.233.225``. Your IP addresses will likely be different.
+
+1. Make a new Amazon instance by following the notes above. Some things to think about:
+    - Reuse the existing security group.
+    - Reuse the existing key pair.
+    - Verify that you're allowed to ssh into the new instance.
+1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
+
+    ```
+    $ cd $(mktemp -d)
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
+    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ./rsd-secrets.env \
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
+    ```
+1. Transfer files related to SSL certificates from the old instance to the new instance.
+
+    ```
+    # (on the new machine, remove the cert directory from
+    # /home/ubuntu/rsd/docker-volumes/ if it exists)
+
+    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/docker-volumes/cert .
+    
+    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+      ./cert \
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/docker-volumes/cert
+
+    # on the new machine, change the owner of cert/ to 'root'
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    $ cd /home/ubuntu/rsd/docker-volumes
+      sudo chown -R root:root cert
+    ```
+
+1. Stop new additions to the database in the old research software
+   directory instance by stopping the ``rsd-admin`` service.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    $ cd /home/ubuntu/rsd
+    $ docker-compose stop rsd-admin
+    ```
+
+1. Create the backup files in the old Research Software Directory instance:
+
+    ```
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+    
+    # start an interactive shell in the backup container
+    $ docker-compose exec backup /bin/sh
+
+    # create the backup files in the container's /dump directory
+    /app # mongodump \
+      --host ${DATABASE_HOST} \
+      --port ${DATABASE_PORT} \
+      --db ${DATABASE_NAME} \
+      --out /dump
+
+    # leave the backup container
+    exit
+
+    # Copy the dump directory out of the docker container
+    docker cp $(docker-compose ps -q backup):/dump/rsd /home/ubuntu/rsd/dump
+    ```
+
+1. Transfer the dumped json and bson files from the old to the new instance
+
+    ```
+    scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+    ubuntu@35.156.38.208:/home/ubuntu/rsd/dump .
+
+    scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+    ./dump/* ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
+
+    ```
+
+1. Start the new Research Software Directory instance.
+
+    ```
+    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    $ cd /home/ubuntu/rsd
+
+    # Add the environment variables to the shell:
+    $ source rsd-secrets.env
+
+    $ docker-compose build
+    $ docker-compose up -d
+    ```
+
+1. Check [/CHANGELOG.md](/CHANGELOG.md) to see if you need to run any command to
+   migrate data, e.g. when a collection has changed its schema.
+
+1. Next, harvest all the data from external sources using:
+
+    ```
+    $ docker-compose exec harvesting python app.py harvest all
+    $ docker-compose exec harvesting python app.py resolve
+    ```
+
+1. In case the old instance had problems with harvesting of the mentions, you
+   may need to retrieve all mentions, as follows:
+
+    ```
+    $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
+    ```
+
+1. Check if the instance works correctly using a browser to navigate to
+   the new instance's IP address.
+1. If everything looks good, stop the Research Software Directory in the old instance
+
+    ```
+    $ docker-compose stop
+    ```
+
+1. Disassociate the ElasticIP address from the old instance.
+1. Associate the ElasticIP address with the new instance.
+
+As a final step, use the Amazon EC2 management console to ``Stop`` (not
+``Terminate``) the old instance. This way, the old instance can still be
+reactivated in case you need to get back to the old version.

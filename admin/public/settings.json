@@ -16,11 +16,8 @@
           "label": "Bullet list",
           "sortIndex": 100,
           "multiline": true,
-          "help": "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
-        },
-        "citationcff": {
-          "label": "citationcff",
-          "sortIndex": 300
+          "help":
+            "<p><b>Answer the following questions</b> (in Markdown with bullet points (*)):</p><ul><li>What does your software provide for what user?</li><li>What does your software do?</li><li>What makes your software unique?</li><li>List some highlights/awards:</li></ul><p>Example for Xenon:</p><p>* Provides an easy-to-use interface for distributed computing developers <br />* Enables the use of different file transfer protocols and scheduling systems on remote machines <br />* No need to learn and implement many different APIs<br/>* Successfully used in many eScience tools and projects</p>"
         },
         "contributingOrganizations": {
           "label": "Contributing organizations",
@@ -46,7 +43,8 @@
         "conceptDOI": {
           "label": "Concept DOI",
           "sortIndex": 500,
-          "help": "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not a URL"
+          "help":
+            "The <a href=\"https://help.zenodo.org/#versioning\">Zenodo concept DOI</a>. Not a URL"
         },
         "createdAt": {
           "label": "Created at",
@@ -55,16 +53,12 @@
         },
         "createdBy": {
           "label": "Created by",
-          "sortIndex": 1000,
+          "sortIndex": 1010,
           "readonly": true
         },
         "getStartedURL": {
           "label": "Getting started URL",
-          "sortIndex": 500
-        },
-        "repositoryURLs": {
-          "sortIndex": 580,
-          "label": "Code repository URLs"
+          "sortIndex": 510
         },
         "isFeatured": {
           "sortIndex": 20,
@@ -81,7 +75,7 @@
         },
         "primaryKey": {
           "label": "Primary key",
-          "sortIndex": 1000,
+          "sortIndex": 900,
           "readonly": true
         },
         "programmingLanguage": {
@@ -128,11 +122,16 @@
             }
           }
         },
+        "repositoryURLs": {
+          "sortIndex": 580,
+          "label": "Code repository URLs"
+        },
         "shortStatement": {
           "label": "Short statement",
           "multiline": true,
           "sortIndex": 50,
-          "help": "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
+          "help":
+            "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
         },
         "slug": {
           "sortIndex": 520,
@@ -158,12 +157,12 @@
         },
         "updatedAt": {
           "label": "Updated at",
-          "sortIndex": 1000,
+          "sortIndex": 1020,
           "readonly": true
         },
         "updatedBy": {
           "label": "Updated by",
-          "sortIndex": 1000,
+          "sortIndex": 1030,
           "readonly": true
         }
       }
@@ -171,22 +170,61 @@
     "person": {
       "name": "Person",
       "icon": "user",
-      "itemLabelTemplate": "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
+      "itemLabelTemplate":
+        "{{ givenNames }} {{ nameParticle }} {{ familyNames }}",
       "properties": {
-        "primaryKey": {
-          "readonly": true
+        "avatar": {
+          "readonly": false,
+          "sortIndex": 1
+        },
+        "givenNames": {
+          "readonly": false,
+          "sortIndex": 10,
+          "help":
+            "First name(s) / given name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "nameParticle": {
+          "readonly": false,
+          "sortIndex": 20,
+          "help":
+            "For example 'van der', 'van', 'von', 'de', 'le'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "familyNames": {
+          "readonly": false,
+          "sortIndex": 30,
+          "help":
+            "Last name(s) / family name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "nameSuffix": {
+          "readonly": false,
+          "sortIndex": 40,
+          "help":
+            "For example 'Jr.' or 'IV'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
+        },
+        "emailAddress": {
+          "readonly": false,
+          "sortIndex": 50,
+          "help": "email address"
         },
         "createdAt": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 100
         },
         "createdBy": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 110
+        },
+        "primaryKey": {
+          "readonly": false,
+          "sortIndex": 120
         },
         "updatedAt": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 130
         },
         "updatedBy": {
-          "readonly": true
+          "readonly": false,
+          "sortIndex": 140
         }
       }
     },
@@ -262,7 +300,8 @@
       "readonly": false,
       "properties": {
         "isPublished": {
-          "help": "Whether the project should be rendered on the corporate site",
+          "help":
+            "Whether the project should be rendered on the corporate site",
           "sortIndex": 1
         },
         "name": {
@@ -270,7 +309,8 @@
           "sortIndex": 2
         },
         "corporateUrl": {
-          "help": "URL to the project page on https://esciencecenter.nl/projects",
+          "help":
+            "URL to the project page on https://esciencecenter.nl/projects",
           "sortIndex": 3
         },
         "callUrl": {
@@ -312,7 +352,8 @@
           "sortIndex": 90
         },
         "impact": {
-          "help": "Output produced by others / without NLeSC funding, based on work produced in this project.",
+          "help":
+            "Output produced by others / without NLeSC funding, based on work produced in this project.",
           "properties": {
             "foreignKey": {
               "label": "mention"

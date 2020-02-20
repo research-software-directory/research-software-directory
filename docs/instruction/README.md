@@ -5,7 +5,7 @@ Netherlands eScience Center. It describes what they need to do in order to help
 make our Research Software Directory an attractive website.
 
 First read [this
-blog](https://github.com/jspaaks/cff-hackday-blog/blob/master/blog.md) for the
+blog](https://blog.esciencecenter.nl/the-research-software-directory-and-how-it-promotes-software-citation-4bd2137a6b8) for the
 overall picture of what a Research Software Directory is and what we are trying
 to accomplish with it.
 
@@ -42,7 +42,7 @@ context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
 selecting them via the dropdown list in the Admin interface of the RSD. 
 
-The items on the  dropdown list are harvested once every 24 hours from the
+The items on the  dropdown list are harvested periodically from the
 [Netherlands eScience Center group on
 Zotero](https://www.zotero.org/groups/1689348). For reference, Zotero is the
 place where we keep track of NLeSC's _output_ and _impact_:
@@ -63,6 +63,19 @@ Hopefully this clarifies where the various data are coming from. The next step
 is to establish links between the parts, e.g. linking a paper to a software.
 This is done by hand via the Admin interface (see sections below).
 
+## What software should be added?
+
+As a rule of thumb, software should be added to the Research Software Directory if 
+
+1. we can realistically claim (co-)ownership of the software AND
+2. the software could be useful to somebody else
+
+Under this definition, the following is not recorded in the Research Software Directory:
+
+- A script that was just meant to wrangle some data unique to a problem we were having (violates 2).
+- A contribution to an existing package (violates 1).
+- A package that is very useful but that NLeSC wasn't involved with (violates 1).
+
 ## How do I add a new ``Software``?
 
 1. Go to the Research Software Directory's admin interface
@@ -79,6 +92,7 @@ and fix it.
 1. Set the ``isPublished`` slider near the top of the page to the right to have it
 included in [research-software.nl](https://research-software.nl).
 1. **Don't forget** to click ``Save`` when you're done.
+1. You may need to refresh the page to see newly added items appear in the left pane
 1. Refer to section [_Delays_](#delays) and section [_The query
 trick_](#the-query-trick) to know when you get to see your changes.
 
@@ -94,10 +108,11 @@ blue ``+`` symbol.
 1. Optionally, fill in the person's email address
 1. Optionally, provide an image of the person
 1. **Don't forget** to click ``Save`` when you're done.
+1. You may need to refresh the page to see newly added items appear in the left pane
 
 ## How do I add a new ``Mention``?
 
-You can't. The list of Mentions is harvested via Zotero's API. Check the [https://<hostname>/schedule](https://<hostname>/schedule) route and look for ``python app.py harvest mentions`` to determine when the harvester is scheduled to run.
+You can't. The list of Mentions is harvested via Zotero's API. Check [https://research-software.nl/schedule](https://research-software.nl/schedule) and look for ``python app.py harvest mentions`` to determine when the harvester is scheduled to run.
 
 ## How do I add a new ``Project``?
 
@@ -121,6 +136,7 @@ clicking the blue ``+`` symbol.
 1. Fill the name of the organization and provide a URL
 1. Optionally, provide the organization's logo as an image
 1. **Don't forget** to click ``Save`` when you're done.
+1. You may need to refresh the page to see newly added items appear in the left pane
 
 ## How/when do I get to see my changes?
 
@@ -132,20 +148,20 @@ trick_](#the-query-trick).
 Your changes/additions to the Admin interface, Zotero, GitHub or other places do
 not show up immediately. The length of delay depends on the frequency at which
 data is harvested from the external source. The schedule for the harvesting is
-published at [https://<hostname>/schedule](https://<hostname>/schedule).
+published at [https://research-software.nl/schedule](https://research-software.nl/schedule).
 
 If your change only involves the Research Software Directory's Admin interface,
 for example when you add a pre-existing ``Mention`` to a ``Software`` and press
 ``Save``, the corresponding database collection is updated immediately but the
 data needed for populating the product page template is collected at intervals.
 Again, refer to the schedule at
-[https://<hostname>/schedule](https://<hostname>/schedule) and look for the
+[https://research-software.nl/schedule](https://research-software.nl/schedule) and look for the
 ``python app.py resolve`` task.
 
 If your change involves an external data source, e.g. you have new commits on
 GitHub, or a new release on Zenodo, you will only see the resulting data show up
 in the Research Software Directory after the corresponding data is harvested.
-Check [https://<hostname>/schedule](https://<hostname>/schedule) and look for
+Check [https://research-software.nl/schedule](https://research-software.nl/schedule) and look for
 the ``python app.py harvest commits`` and ``python app.py harvest citations``
 tasks, respectively.
 
