@@ -116,14 +116,15 @@ You can't. The list of Mentions is harvested via Zotero's API. Check [https://re
 
 ## How do I add a new ``Project``?
 
-1. Go to the Research Software Directory's admin interface
-(https://www.research-software.nl/admin/).
-1. In the left pane, select ``Project``
-1. Check that the project you want to add doesn't exist yet by searching via the
-search box. If the search comes up empty, add the new project by clicking the
-blue ``+`` symbol.
-1. Fill the various parts of the form
-1. **Don't forget** to click ``Save`` when you're done.
+You can't. The list of projects is harvested periodically from the corporate
+website [esciencecenter.nl/projects](https://esciencecenter.nl/projects). Check
+[https://research-software.nl/schedule](https://research-software.nl/schedule)
+and look for ``python app.py harvest projects`` to determine when the harvester
+is scheduled to run.
+
+You can, however, add mentions to a project, either as "output" (the mention was
+produced with NLeSC funding), or as "impact" (the mention was produced without
+NLeSC funding, for example when a paper cites code that NLeSC created).
 
 ## How do I add a new ``Organization``?
 
