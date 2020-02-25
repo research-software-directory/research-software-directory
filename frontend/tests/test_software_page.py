@@ -42,10 +42,9 @@ if is_live:
 @pytest.mark.skipif(not is_live, reason="--live not specified")
 @pytest.mark.parametrize("slug", live_software_items)
 def test_live_software_data_renders(get, slug):
-    status_code = -1
-    while status_code != 200:
+    try:
         data, status_code = get('/software/%s' % slug)
-        if status_code != 200:
-            time.sleep(15)
+    except:
+        print(data)
     assert status_code == 200
     assert isValidHTML(data)
