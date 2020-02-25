@@ -2,7 +2,7 @@ from app.application import application
 import requests_mock
 import pytest
 
-from tests.helpers import get_mock
+from tests.helpers import get_mock, is_live
 
 
 @pytest.fixture(autouse=True)
@@ -22,7 +22,7 @@ def test_sitemap(get):
     assert len(result.split('lastmod')) > 10
 
 
-@pytest.mark.skipif(not pytest.config.getoption("live"), reason="--live not specified")
+@pytest.mark.skipif(not is_live, reason="--live not specified")
 def test_sitemap_live(get):
     result = get('/sitemap.xml')
     assert len(result.split('lastmod')) > 10
