@@ -36,6 +36,7 @@ def replace_foreign_keys(resource):
             replace_foreign_keys(item)
         if list_has_foreign_keys: # filter out unresolvable items
             resource[:] = [item for item in resource if 'foreignKey' in item]
+    return resource
 
 
 def get_binned_commits(repository_urls):
@@ -57,13 +58,21 @@ def last_commit_date(repository_url):
         return None
 
 
+def cache_projects():
+    projects = db.project.find()
+    for project in projects:
+        logger.log(logging.INFO, 'processing project %s' % project['corporateUrl'])
+        project = replace_foreign_keys(project)
+        db.project_cache.replace_one({'_id': project['_id']}, project, upsert=True)
+
+
 def cache_software():
     db_software = db.software.find()
     for sw in db_software:
         if not sw['isPublished']:
             db.software_cache.delete_one({'_id': sw['_id']})
             continue
-        logger.log(logging.INFO, 'processing %s' % sw['brandName'])
+        logger.log(logging.INFO, 'processing software %s' % sw['brandName'])
         replace_foreign_keys(sw)
         sw['related']['software'] = [s for s in sw['related']['software'] if s['foreignKey'] and s['foreignKey']['isPublished']]
         repository_urls = sw['repositoryURLs']['github']
