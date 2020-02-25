@@ -310,7 +310,7 @@ Open a web browser to verify that everything works as it should. Below are some 
 - [``http://localhost/api/release``](http://localhost/api/release) should show a JSON representation of all releases in the local instance of the Research Software Directory
 - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
-- [``http://localhost/api/software_cache``](http://localhost/api/software_cachce) should show a JSON representation of all software in the local instance of the Research Software Directory, with all references resolved
+- [``http://localhost/api/software_cache``](http://localhost/api/software_cache) should show a JSON representation of all software in the local instance of the Research Software Directory, with all references resolved
 
 #### Citation
 
