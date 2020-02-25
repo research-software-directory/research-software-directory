@@ -294,8 +294,8 @@ Open a web browser to verify that everything works as it should. Below are some 
 
 #### Frontend
 
-- [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
+- [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
 
 #### Admin interface
 
