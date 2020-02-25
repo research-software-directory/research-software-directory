@@ -4,6 +4,7 @@ import requests
 import pytest
 import glob
 from tests.helpers import get_mock, isValidHTML, is_live
+from urllib.error import HTTPError
 
 
 @pytest.fixture(autouse=True)
@@ -44,7 +45,8 @@ if is_live:
 def test_live_software_data_renders(get, slug):
     try:
         data, status_code = get('/software/%s' % slug)
-    except:
-        print(data)
+    except Exception as e:
+        pytest.skip(str(e))
+        return
     assert status_code == 200
     assert isValidHTML(data)
