@@ -249,3 +249,11 @@ def get_citations(db, dois):
         else:
             logger.error('{0}/{1}: {2} {3}'.format(i_software + 1, n_softwares, software["conceptDOI"],
                                                    release.message))
+
+        d = dict(id=software["primaryKey"]["id"],
+                 collection="software",
+                 releases=release.message)
+
+        db.logging.find_one_and_update({"id": d["id"], "collection": d["collection"]},
+                                       {"$set": d},
+                                       upsert=True)
