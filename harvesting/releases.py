@@ -219,21 +219,24 @@ class ReleaseScraper:
 
 def get_citations(db, dois):
 
-    if dois is None:
-        # get the conceptdois from /api/software
-        response = requests.get(os.environ.get('BACKEND_URL') + '/software')
-        dois = [software["conceptDOI"] for software in response.json() if software["isPublished"]]
+    # get the conceptdois from /api/software
+    response = requests.get(os.environ.get('BACKEND_URL') + '/software?isPublished=true&sort=conceptDOI')
 
-    n_dois = len(dois)
+    if dois is None:
+        softwares = response.json()
+    else:
+        softwares = [software for software in response.json() if software["conceptDOI"] in dois]
+
+    n_softwares = len(softwares)
     db.release.create_index([("conceptDOI", 1)])
-    dois.sort()
-    for i_doi, doi in enumerate(dois):
-        release = ReleaseScraper(doi)
+
+    for i_software, software in enumerate(softwares):
+        release = ReleaseScraper(software["conceptDOI"])
         if release.is_citable:
             document = {
-                "_id": doi,
+                "_id": software["conceptDOI"],
                 "isCitable": release.is_citable,
-                "conceptDOI": doi,
+                "conceptDOI": software["conceptDOI"],
                 "latestSchema_dot_org": "" if release.latest_schema_dot_org is None else release.latest_schema_dot_org,
                 "releases": release.releases,
                 "createdAt": datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
@@ -241,6 +244,8 @@ def get_citations(db, dois):
             db.release.find_one_and_update({"_id": document["conceptDOI"]}, {"$set": document}, upsert=True)
 
         if release.message == "OK":
-            logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_doi + 1, n_dois, doi, release.title, release.message))
+            logger.info("{0}/{1} \"{2}\" ({3}): {4}".format(i_software + 1, n_softwares, software["conceptDOI"],
+                                                            release.title, release.message))
         else:
-            logger.error('{0}/{1}: {2} {3}'.format(i_doi + 1, n_dois, doi, release.message))
+            logger.error('{0}/{1}: {2} {3}'.format(i_software + 1, n_softwares, software["conceptDOI"],
+                                                   release.message))
