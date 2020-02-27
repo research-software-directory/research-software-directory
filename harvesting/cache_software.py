@@ -84,7 +84,7 @@ def cache_software():
 
         sw["logging"] = db.logging.find_one(filter={"id": sw["primaryKey"]["id"],
                                                     "collection": sw["primaryKey"]["collection"]},
-                                            projection={"_id": False, "releases": True})
+                                            projection={"_id": False, "releases": True, "metadata": True})
 
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
 
