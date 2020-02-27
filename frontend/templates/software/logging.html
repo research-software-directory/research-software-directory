@@ -1,0 +1,18 @@
+{% if template_data.logging %}
+<section class="" id="logging">
+    <div class="container hidden">
+        <div class="row">
+            <div class="col-1-4">
+            </div>
+            <div class="col-3-4">
+                {% with logging = template_data.logging %}
+                <ul>
+                    <li>releases: {{ logging["releases"] }}</li>
+                    <li>metadata: {{ logging["metadata"] }}</li>
+                </ul>
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
