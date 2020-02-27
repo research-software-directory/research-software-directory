@@ -1,3 +1,12 @@
+# 2.1.0
+
+This release adds a logging collection to the database.
+
+```
+docker-compose exec database mongo rsd
+db.createCollection("logging")
+```
+
 # 1.2.0
 
 - added github issue templates
