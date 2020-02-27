@@ -4,8 +4,14 @@ import logging
 from datetime import datetime
 import requests
 from requests.exceptions import HTTPError
-from releases import ReleaseScraper
 import time
+import pymongo
+
+db = pymongo.MongoClient(host=os.environ.get('DATABASE_HOST'),
+                         port=int(os.environ.get('DATABASE_PORT')),
+                         connectTimeoutMS=100,
+                         serverSelectionTimeoutMS=100
+                         )[os.environ.get('DATABASE_NAME')]
 
 logger = logging.getLogger(__name__)
 
@@ -107,11 +113,28 @@ def list_records(dois):
             record_elem = get_datacite()
             oaipmh_elem.find('{http://www.openarchives.org/OAI/2.0/}ListRecords')\
                 .append(record_elem)
+
             logger.info(" %d/%d: retrieved datacite4 metadata for %s" % (i_software + 1, n_softwares, software["conceptDOI"]))
+
+            d = dict(id=software["primaryKey"]["id"],
+                     collection="software",
+                     metadata="OK")
+
+            db.logging.find_one_and_update({"id": d["id"], "collection": d["collection"]},
+                                           {"$set": d},
+                                           upsert=True)
 
         except requests.exceptions.RequestException as e:
             logger.warning(" %d/%d: There was an error while retrieving OAI-PMH metadata for https://doi.org/%s. %s" %
                           (i_software + 1, n_softwares, software["conceptDOI"], str(e)))
+
+            d = dict(id=software["primaryKey"]["id"],
+                     collection="software",
+                     metadata=str(e))
+
+            db.logging.find_one_and_update({"id": d["id"], "collection": d["collection"]},
+                                           {"$set": d},
+                                           upsert=True)
             continue
 
     document = Tree.ElementTree(oaipmh_elem)
