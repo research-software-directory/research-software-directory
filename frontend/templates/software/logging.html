@@ -1,18 +1,21 @@
 {% if template_data.logging %}
 <section class="" id="logging">
-    <div class="container hidden">
-        <div class="row">
-            <div class="col-1-4">
-            </div>
-            <div class="col-3-4">
-                {% with logging = template_data.logging %}
+    <div class="container">
+        {% with logging = template_data.logging %}
+        <div class="logging">
+            <div class="logging-content" style="height:0px">
+                <h2 class="subtitle text-blue">Logging data for page maintainers</h2>
                 <ul>
-                    <li>releases: {{ logging["releases"] }}</li>
-                    <li>metadata: {{ logging["metadata"] }}</li>
+                    <li>citation metadata: {{ logging["releases"] }}</li>
+                    <li>OAI-PMH metadata: {{ logging["metadata"] }}</li>
                 </ul>
-                {% endwith %}
+            </div>
+            <div class="logging-button button button--outlined">
+                <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
+                <span class="button-text">Show logging</span>
             </div>
         </div>
+        {% endwith %}
     </div>
 </section>
 {% endif %}
