@@ -853,7 +853,22 @@ section{
         padding-top: 70px;
         padding-bottom: 70px;
     }
-    .hidden {
-        display: none;
+    .logging {
+        margin: 30px auto 15px;
+    }
+    .logging-button {
+        .icon{
+            transition: transform 0.38s ease-in 0.15s;
+        }
+        &.active{
+            margin: 30px auto 15px;
+            .icon{
+                transform: rotate(135deg);
+            }
+        }
+    }
+    .logging-content {
+        overflow: hidden;
+        transition: height 0.48s ease-in-out;
     }
 }
