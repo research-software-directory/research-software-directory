@@ -2,18 +2,31 @@
 <section class="" id="logging">
     <div class="container">
         {% with logging = template_data.logging %}
-        <div class="logging">
-            <div class="logging-content" style="height:0px">
-                <h2 class="subtitle text-blue">Logging data for page maintainers</h2>
-                <ul>
-                    <li>citation metadata: {{ logging["releases"] }}</li>
-                    <li>OAI-PMH metadata: {{ logging["metadata"] }}</li>
-                </ul>
+        <h2 class="logging-header text-blue">Information for page maintainers</h2>
+        <div class="logging-content" style="height:0px">
+
+            <div class="row">
+                <div class="left-column">
+                    OAI-PMH metadata:
+                </div>
+                <div class="right-column">
+                    {{ logging["metadata"] }}
+                </div>
             </div>
-            <div class="logging-button button button--outlined">
-                <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
-                <span class="button-text">Show logging</span>
+            <div class="row">
+                <div class="left-column">
+                    citation metadata:
+                </div>
+                <div class="right-column">
+                    {{ logging["releases"] }}
+                </div>
             </div>
+
+        </div>
+
+        <div class="logging-button button button--outlined">
+            <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-plus"></use></svg></span>
+            <span class="button-text">Show</span>
         </div>
         {% endwith %}
     </div>
