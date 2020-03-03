@@ -852,23 +852,40 @@ section{
     .container{
         padding-top: 70px;
         padding-bottom: 70px;
-    }
-    .logging {
-        margin: 30px auto 15px;
-    }
-    .logging-button {
-        .icon{
-            transition: transform 0.38s ease-in 0.15s;
+        .logging-header {
+            font-family: $primaryFontLight;
+            font-size: 1.2em;
+            line-height: 2em;
         }
-        &.active{
-            margin: 30px auto 15px;
+        .logging-content {
+            overflow: hidden;
+            transition: height 500ms ease-in-out;
+            .row {
+                display: table-row;
+                line-height: 2em;
+            }
+            .left-column {
+                display: table-cell;
+                padding: 0px 20px 0px 0px;
+                text-align: right;
+            }
+            .right-column {
+                display: table-cell;
+            }
+        }
+        .logging-button {
+            margin: 10px auto 15px;
+            transition: margin 500ms;
             .icon{
-                transform: rotate(135deg);
+                transition: transform 380ms ease-in 120ms;
+            }
+            &.active{
+                margin: 40px auto 15px;
+                .icon{
+                    transform: rotate(135deg);
+                }
             }
         }
     }
-    .logging-content {
-        overflow: hidden;
-        transition: height 0.48s ease-in-out;
-    }
+
 }
