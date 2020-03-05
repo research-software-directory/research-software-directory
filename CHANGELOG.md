@@ -7,6 +7,8 @@ docker-compose exec database mongo rsd
 db.createCollection("logging")
 ```
 
+- Added logs of harversters to frontend software item page
+
 # 1.2.0
 
 - added github issue templates
