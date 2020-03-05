@@ -185,6 +185,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         });
     }
+
+    if( document.querySelector('.logging-button') ){
+        document.querySelector('.logging-button').addEventListener('click', function() {
+            this.classList.toggle('active');
+            var content = document.querySelector('.logging-content');
+            var buttonText = this.querySelector('.button-text');
+            if (content.getAttribute('data-collapsed') === 'false') {
+                collapseSection(content);
+                buttonText.textContent = 'Show';
+            } else {
+                expandSection(content);
+                buttonText.textContent = 'Hide';
+            }
+        });
+    }
+
+
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
