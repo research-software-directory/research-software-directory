@@ -104,7 +104,8 @@ export default class FormPart extends React.Component<IProps<ISchema>, IState> {
     return (
       <div
         style={{
-          marginBottom: ".5em",
+          marginBottom: "0.5em",
+          marginTop: "0.5em",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center"

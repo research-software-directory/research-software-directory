@@ -4,19 +4,19 @@ It can be used to add and update software items to the directory.
 TODO:
 
 - add notes on how to do local development ([#349](https://github.com/research-software-directory/research-software-directory/issues/349))
-- add notes on how to keep the dependencies updated, e.g. using ``yarn audit`` and ``yarn outdated`` ([#367](https://github.com/research-software-directory/research-software-directory/issues/367))
+- add notes on how to keep the dependencies updated, e.g. using `yarn audit` and `yarn outdated` ([#367](https://github.com/research-software-directory/research-software-directory/issues/367))
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 # Prerequisites
 
-* Running authentication service e.g. [github-auth](/auth-github).
-* Running data api service like [backend](/backend).
+- [github-auth](/auth-github) authentication service.
+- [backend](/backend) data API service.
 
 # Installation
 
 1.  Clone repository
-2.  Use node version `^8.0`, eg using [nvm](#install-node-using-nvm)
+2.  Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
 3.  Install yarn, `npm install -g yarn`
 4.  Install dependencies: `yarn`
 5.  To run tests: `yarn test`
@@ -50,8 +50,12 @@ The deployable app will build to the `build/` directory.
 Build with
 
 ```bash
-docker build --tag rsd_admin .
+docker build --tag rsd/admin .
 ```
 
-The Docker image should not be used directly and alone as the code expects the [backend server](/backend) to be running at `/api` and the [auth server](/auth-github) to be running at `/auth` which are not part of the image.
-The image should be used as part of a Docker compose see https://github.com/research-software-directory/research-software-directory
+The Docker image should not be used directly and alone as the code expects the
+[backend server](/backend) to be running at `/api` and the [auth
+server](/auth-github) to be running at `/auth` which are not part of the image.
+
+The image should be used as part of a `docker-compose`, see
+https://github.com/research-software-directory/research-software-directory.

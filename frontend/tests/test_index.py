@@ -2,7 +2,7 @@ from app.application import api_url, application
 import requests_mock
 import pytest
 
-from tests.helpers import get_mock, isValidHTML
+from tests.helpers import get_mock, isValidHTML, is_live
 
 
 @pytest.fixture(autouse=True)
@@ -15,10 +15,10 @@ def get():
 
 
 def test_index(get):
-    if not pytest.config.getoption("live"):
+    if not is_live:
         with requests_mock.mock() as m:
-            m.get(api_url + '/software_cache?isPublished=true', text=get_mock('software.json'))
-            m.get(api_url + '/organization', text=get_mock('organizations.json'))
+            m.get(api_url + '/software_cache?isPublished=true', text=get_mock('software_cache.json'))
+            m.get(api_url + '/organization', text=get_mock('organization.json'))
             result = get('/')
     else:
         result = get('/')

@@ -59,11 +59,6 @@ then wait a bit, see section [_How/when do I get to see my
 changes?_](#howwhen-do-i-get-to-see-my-changes) below). For detailed guidance on
 how to add various types of records to Zotero, go [here](zotero.md).
 
-Finally, the work that you do happens within a project, for which there should
-be a project description on
-[esciencecenter.nl/projects](https://esciencecenter.nl/projects). These are
-harvested automatically, no action needed on your part.
-
 Hopefully this clarifies where the various data are coming from. The next step
 is to establish links between the parts, e.g. linking a paper to a software.
 This is done by hand via the Admin interface (see sections below).
@@ -121,12 +116,15 @@ You can't. The list of Mentions is harvested via Zotero's API. Check [https://re
 
 ## How do I add a new ``Project``?
 
-You can't. The list of projects is harvested once per 24 hours from
-https://www.esciencecenter.nl/projects.
+You can't. The list of projects is harvested periodically from the corporate
+website [esciencecenter.nl/projects](https://esciencecenter.nl/projects). Check
+[https://research-software.nl/schedule](https://research-software.nl/schedule)
+and look for ``python app.py harvest projects`` to determine when the harvester
+is scheduled to run.
 
-At the time of writing that site is maintained by Sacha. If you want to add a
-project, ask Sacha to add it via the content management system. You'll probably
-need to supply a description of what it is that is being done in your project.
+You can, however, add mentions to a project, either as "output" (the mention was
+produced with NLeSC funding), or as "impact" (the mention was produced without
+NLeSC funding, for example when a paper cites code that NLeSC created).
 
 ## How do I add a new ``Organization``?
 
