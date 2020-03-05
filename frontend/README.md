@@ -1,7 +1,5 @@
 # Frontend website of Research Software Directory
 
-[![TravisCIBadge](https://travis-ci.org/research-software-directory/frontend.svg?branch=master)](https://travis-ci.org/research-software-directory/frontend)
-
 Visitors of the Research Software Directory website will request pages from this web application.
 
 # Installation
@@ -13,7 +11,7 @@ pip install -r requirements.txt
 
 # Configuration
 
-The frontend requires the [api backend server](https://github.com/research-software-directory/backend) to be running.
+The frontend requires the [api backend server](/backend) to be running.
 The url of the backend server must be set as value for the BACKEND_URL environment variable.
 
 Setup `.env` file, see `.env.example` as an example.
