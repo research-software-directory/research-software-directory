@@ -843,6 +843,53 @@ section{
 #related-tools{
     .container{
         padding-top: 70px;
-        padding-bottom: 70px;
+        padding-bottom: 30px;
     }
+    .divider {
+        margin: 60px 0px 20px 0px;
+        border-top: 2px solid $divider;
+    }
+}
+
+
+#logging{
+    .container{
+        padding-top: 40px;
+        padding-bottom: 70px;
+        .logging-header {
+            font-family: $primaryFontLight;
+            font-size: 1.2em;
+            line-height: 2em;
+        }
+        .logging-content {
+            overflow: hidden;
+            transition: height 500ms ease-in-out;
+            .row {
+                display: table-row;
+                line-height: 2em;
+            }
+            .left-column {
+                display: table-cell;
+                padding: 0px 20px 0px 0px;
+                text-align: right;
+            }
+            .right-column {
+                display: table-cell;
+            }
+        }
+        .logging-button {
+            margin: 10px auto 15px;
+            transition: margin 500ms;
+            .icon{
+                transition: transform 380ms ease-in 120ms;
+            }
+            &.active{
+                margin: 40px auto 15px;
+                .icon{
+                    transform: rotate(135deg);
+                }
+            }
+        }
+    }
+
 }
