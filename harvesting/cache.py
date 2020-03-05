@@ -90,6 +90,11 @@ def cache_software():
             sw['latestSchema_dot_org'] = release_document['latestSchema_dot_org']
         else:
             sw['releases'] = []
+
+        sw["logging"] = db.logging.find_one(filter={"id": sw["primaryKey"]["id"],
+                                                    "collection": sw["primaryKey"]["collection"]},
+                                            projection={"_id": False, "releases": True, "metadata": True})
+
         db.software_cache.replace_one({'_id': sw['_id']}, sw, upsert=True)
 
     software_ids = list(map(lambda x: x['primaryKey']['id'], db.software.find()))

@@ -22,6 +22,7 @@
 /docker-volumes/oaipmh-cache
 
 /frontend/.cache
+/frontend/.idea
 /frontend/.pytest_cache/
 /frontend/app/__pycache__/
 /frontend/app/*.py[cod]

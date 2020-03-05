@@ -13,6 +13,6 @@ COPY public /app/public/
 
 RUN yarn build
 
-FROM nginx:alpine
+FROM nginx:1.17.8-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=0 /app/build /usr/share/nginx/html
