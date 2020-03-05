@@ -94,7 +94,7 @@ Start a shell in the ``database`` container, as follows (don't forget to
 
 ```
 source rsd-secrets.env
-docker-compose -p rsd exec database /bin/sh
+docker-compose exec database /bin/sh
 ```
 
 Once in the shell, run ``mongo rsd`` to gain access to the ``rsd`` database via
@@ -110,7 +110,7 @@ db.software.update({}, {$set: {"grants": []}}, {"multi": true})
 documents from the collection; the second ``{$set: {"grants": []}}`` specifies
 that the ``grants`` property should be set to an empty array; the third argument
 ``{"multi": true}`` specifies that if there are multiple documents in the
-collection, that they should all be updated.
+selection, that they should all be updated.
 
 For more details on how to use the MongoDB shell, please refer to the documentation: https://docs.mongodb.com/manual/reference/method/db.collection.update/.
 

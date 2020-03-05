@@ -116,13 +116,26 @@ combined into one document such that it can be fed to the ``frontend``'s templat
 Combining is done with the ``resolve`` task, as follows:
 
 ```bash
-python app.py resolve
+# resolve references in all documents of type project
+python app.py resolve projects
 ```
+
+```bash
+# resolve references in all documents of type software
+python app.py resolve software
+```
+
+```bash
+# resolve references in all documents of type project and in all
+# documents of type software
+python app.py resolve all
+```
+
 
 # Docker
 
 Build with
 ```bash
 cd harvesting/
-docker build --tag rsd_harvesting .
+docker build --tag rsd/harvesting .
 ```

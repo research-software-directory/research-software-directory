@@ -2,6 +2,10 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
+        "corporateUrl": {
+            "format": "uri",
+            "type": "string"
+        },
         "createdAt": {
             "format": "date-time",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
@@ -14,20 +18,37 @@
             "format": "uri",
             "type": "string"
         },
+        "impact": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/mention"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "output": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/mention"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
         "primaryKey": {
             "$ref": "definitions.json/key/project"
         },
         "principalInvestigator": {
-            "additionalProperties": false,
-            "properties": {
-                "affiliation": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
+            "type": "string"
         },
         "subtitle": {
             "type": "string"
@@ -42,21 +63,19 @@
         },
         "updatedBy": {
             "type": "string"
-        },
-        "url": {
-            "format": "uri",
-            "type": "string"
         }
     },
     "required": [
+        "corporateUrl",
         "createdAt",
+        "createdBy",
         "image",
         "primaryKey",
         "principalInvestigator",
         "subtitle",
         "title",
         "updatedAt",
-        "url"
+        "updatedBy"
     ],
     "title": "Project schema"
 }

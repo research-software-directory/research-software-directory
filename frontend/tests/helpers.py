@@ -1,12 +1,17 @@
 import pprint
 import re
-
+import pytest
 from py_w3c.validators.html.validator import HTMLValidator
 
 
 def get_mock(name):
     with open("mocks/%s" % name) as f:
         return f.read()
+
+
+@pytest.fixture
+def is_live(request):
+    return request.config.getoption("--live")
 
 
 def is_really_error(error):

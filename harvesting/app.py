@@ -8,7 +8,7 @@ from github import sync_all as get_commits
 from zotero import get_mentions
 from oaipmh import list_records
 from corporate import get_projects
-from cache_software import cache_software
+from cache import cache_software, cache_projects
 
 
 class MaxLevel(object):
@@ -83,7 +83,7 @@ def harvest_citations(dois=None):
     get_citations(db, dois)
 
 
-@harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo')
+@harvest_group.command('metadata', help='Harvest datacite4 metadata from Zenodo for dissemination via OAI-PMH')
 @click.option('--dois', 'dois', type=str, help='Harvest only metadata associated with the supplied comma-separated ' +
                                                'string of DOIs. For example, \'--dois 10.5281/zenodo.2609141,10.5281' +
                                                '/zenodo.1162057\'')
@@ -97,7 +97,7 @@ def harvest_metadata(dois=None):
 
 @harvest_group.command('all')
 def harvest_all():
-    """Harvest commits, citations, mentions, projects"""
+    """Harvest commits, citations, mentions, projects, metadata"""
     db = db_connect()
     dois = None
     get_commits()
@@ -107,10 +107,32 @@ def harvest_all():
     list_records(dois)
 
 
-@cli.command('resolve')
-def resolve():
-    """Combine information from different collections
-    into one document by resolving foreign keys"""
+@cli.group('resolve')
+def resolve_group():
+    """Resolve data from a variety of sources"""
+    pass
+
+
+@resolve_group.command('all')
+def resolve_all():
+    """Combine information from different collections into one document
+    by resolving all foreign keys in any project document and any software
+    document"""
+    cache_projects()
+    cache_software()
+
+
+@resolve_group.command('projects')
+def resolve_projects():
+    """Combine information from different collections into one document
+    by resolving all foreign keys in any project document"""
+    cache_projects()
+
+
+@resolve_group.command('software')
+def resolve_software():
+    """Combine information from different collections into one document
+    by resolving all foreign keys in any software document"""
     cache_software()
 
 

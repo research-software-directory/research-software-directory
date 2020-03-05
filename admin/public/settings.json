@@ -180,22 +180,26 @@
         "givenNames": {
           "readonly": false,
           "sortIndex": 10,
-          "help": "First name(s) / given name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
+          "help":
+            "First name(s) / given name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
         },
         "nameParticle": {
           "readonly": false,
           "sortIndex": 20,
-          "help": "For example 'van der', 'van', 'von', 'de', 'le'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
+          "help":
+            "For example 'van der', 'van', 'von', 'de', 'le'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
         },
         "familyNames": {
           "readonly": false,
           "sortIndex": 30,
-          "help": "Last name(s) / family name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
+          "help":
+            "Last name(s) / family name(s). Full name is givenNames + nameParticle + familyNames + nameSuffix."
         },
         "nameSuffix": {
           "readonly": false,
           "sortIndex": 40,
-          "help": "For example 'Jr.' or 'IV'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
+          "help":
+            "For example 'Jr.' or 'IV'. Full name is givenNames + nameParticle + familyNames + nameSuffix."
         },
         "emailAddress": {
           "readonly": false,
@@ -293,56 +297,78 @@
       "name": "Project",
       "icon": "lab",
       "itemLabelTemplate": "{{ title }}",
-      "readonly": true,
+      "readonly": false,
       "properties": {
         "title": {
-          "label": "Title",
-          "sortIndex": 1
+          "label": "Name of the project",
+          "readonly": true,
+          "sortIndex": 10
         },
         "subtitle": {
-          "label": "Subtitle",
-          "sortIndex": 2
+          "label": "Subtitle of the project",
+          "readonly": true,
+          "sortIndex": 20
         },
         "principalInvestigator": {
-          "label": "Principal investigator (PI)",
-          "sortIndex": 3,
-          "properties": {
-            "affiliation": {
-              "label": "Affilliation",
-              "sortIndex": 2
-            },
-            "name": {
-              "label": "Name",
-              "sortIndex": 1
-            }
-          }
+          "label": "Principal investigator",
+          "readonly": true,
+          "sortIndex": 30
         },
-        "url": {
-          "label": "URL",
-          "sortIndex": 4
+        "corporateUrl": {
+          "help":
+            "URL to the project page on https://esciencecenter.nl/projects",
+          "readonly": true,
+          "sortIndex": 40
         },
         "image": {
-          "label": "Image URL",
-          "sortIndex": 5
+          "help": "URL to the image",
+          "readonly": true,
+          "sortIndex": 50
+        },
+        "output": {
+          "help": "Output produced using NLeSC funding",
+          "properties": {
+            "foreignKey": {
+              "label": "mention"
+            }
+          },
+          "readonly": false,
+          "sortIndex": 90
+        },
+        "impact": {
+          "help":
+            "Output produced by others / without NLeSC funding, based on work produced in this project.",
+          "properties": {
+            "foreignKey": {
+              "label": "mention"
+            }
+          },
+          "readonly": false,
+          "sortIndex": 91
         },
         "createdAt": {
           "label": "Created at",
+          "readonly": true,
           "sortIndex": 1001
         },
         "createdBy": {
           "label": "Created by",
+          "readonly": true,
           "sortIndex": 1002
         },
         "updatedAt": {
           "label": "Updated at",
+          "readonly": true,
           "sortIndex": 1003
         },
         "updatedBy": {
           "label": "Created by",
+          "readonly": true,
           "sortIndex": 1004
         },
         "primaryKey": {
           "label": "Primary key",
+          "readonly": true,
           "sortIndex": 1005
         }
       }
