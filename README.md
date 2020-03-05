@@ -378,6 +378,12 @@ commands results in the **LOSS OF DATA**.
     docker network rm <network>
     ```
 
+- To remove Docker container, images, static volumes and networks in single step (bind mounts still need to be removed separately) with
+
+    ```shell
+    docker-compose down --rmi all -v
+    ```
+
 ## Customize your instance of the Research Software Directory
 
 
