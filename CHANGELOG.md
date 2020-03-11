@@ -1,17 +1,10 @@
-# 2.1.0
-
-This release adds a logging collection to the database.
-
-```
-docker-compose exec database mongo rsd
-db.createCollection("logging")
-```
-
-- Added logs of harversters to frontend software item page
-
 # 2.0.0
 
-In version 2.0.0, the ``project`` collection is partly filled by harvesting from external data source, and partly filled by means of users making edits in the admin interface. This means that version 2.0.0 of the Research Software Directory requires changes to the database. Below are the steps to migrate data from 1.2.0 to 2.0.0.
+- Bugfix | Change | Feature | Documentation | Security
+
+## Data migration notes
+
+In version 2.0.0, the ``project`` collection is partly filled by harvesting from external data source, and partly filled by means of users making edits in the admin interface. This means that version 2.0.0 of the Research Software Directory requires changes to the database. Below are the steps to migrate data from 1.2.0 to 2.0.0. Furthermore, the frontend now shows information for page maintainers, for which a new MongoDB collection is needed.
 
 ```
 $ docker-compose exec database mongo rsd
@@ -22,6 +15,12 @@ $ docker-compose exec database mongo rsd
 ```
 db.project.update({}, {$set: {"output": []}}, {"multi": true})
 db.project.update({}, {$set: {"impact": []}}, {"multi": true})
+```
+
+**Create** collection "logging":
+
+```
+db.createCollection("logging")
 ```
 
 **Rename** field ``url`` to ``corporateUrl`` for all ``project`` documents:
