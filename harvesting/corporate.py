@@ -10,36 +10,13 @@ logger = logging.getLogger(__name__)
 
 
 def get_projects():
-    def transform_project(from_scraper): #  to Project according to Schema
-
-        principal_investigators = [person for person in from_scraper['team'] if person['role'] == 'Principal Investigator']
-
-        if len(principal_investigators) > 0:
-            pi = principal_investigators[0]['name'].strip()
-        else:
-            pi = ''
-
-        return {
-            'primaryKey': {
-                'collection': 'project',
-                'id': from_scraper['url'].replace('https://www.esciencecenter.nl/project/', '')
-            },
-            'corporateUrl': from_scraper['url'],
-            'image': from_scraper['image'],
-            'title': from_scraper['title'],
-            'subtitle': from_scraper['subtitle'] or '',
-            'principalInvestigator': pi
-        }
-
     scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
                              include_deep_info=True)
-
-    to_save = list(map(transform_project, scraper.projects))
 
     token = generate_jwt_token()
     resp = requests.put(
         os.environ.get('BACKEND_URL') + '/project',
-        json=to_save,
+        json=scraper.projects,
         headers={'Authorization': 'Bearer %s' % token}
     )
     if resp.status_code != 200:
