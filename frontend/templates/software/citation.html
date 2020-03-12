@@ -46,24 +46,24 @@
                 </div>
 
                 <div class="citation-block_download" v-if="releases.length > 0 && releases[selectedIndex].citability === 'full'">
-                    <h5>Choose a citation style:</h5>
+                    <h5>Choose a reference manager file format:</h5>
                     <div class="row">
                         <div :class="['dropdown', fileFormatDropdownOpen && 'is-active']" @click="fileFormatDropdownOpen = !fileFormatDropdownOpen">
                             <div class="dropdown_button dropdown_button--light">
-                                <span class="text">[[ fileFormats[selectedFileFormatIndex].name ]]</span>
+                                <span class="text">[[ fileFormats[selectedFileFormatIndex].displayName ]]</span>
                                 <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
                             </div>
                             <div class="dropdown_panel dropdown_panel--light">
                                 <ul>
                                     <li v-for="(format, index) in fileFormats" @click="selectedFileFormatIndex = index">
                                         <span class="inside">
-                                            <span class="text">[[ format.name ]]</span>
+                                            <span class="text">[[ format.displayName ]]</span>
                                         </span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <a class="button button--filled-blue download" :href="'/cite/{{template_data.slug}}?version='+encodeURI(releases[selectedIndex].tag)+'&format='+fileFormats[selectedFileFormatIndex].extension" download>
+                        <a class="button button--filled-blue download" :href="'/cite/{{template_data.slug}}?version='+encodeURI(releases[selectedIndex].tag)+'&format='+fileFormats[selectedFileFormatIndex].key" download>
                             <span><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-download"></use></svg></span>
                             <span>Download file</span>
                         </a>
@@ -85,9 +85,11 @@
                 versionDropdownOpen: false,
                 fileFormatDropdownOpen: false,
                 fileFormats: [
-                    { extension: 'bibtex', name: 'BibTeX' },
-                    { extension: 'endnote', name: 'EndNote' },
-                    { extension: 'ris', name: 'RIS' }
+                    { key: 'bibtex'  , displayName: 'BibTeX' },
+                    { key: 'endnote' , displayName: 'EndNote' },
+                    { key: 'ris'     , displayName: 'RIS' },
+                    { key: 'codemeta', displayName: 'CodeMeta' },
+                    { key: 'cff'     , displayName: 'Citation File Format' }
                 ],
                 selectedFileFormatIndex: 0
             }

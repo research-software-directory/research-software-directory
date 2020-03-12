@@ -157,10 +157,16 @@
                                 "cff": {
                                     "type": "string"
                                 },
+                                "codemeta": {
+                                    "type": "string"
+                                },
                                 "endnote": {
                                     "type": "string"
                                 },
                                 "ris": {
+                                    "type": "string"
+                                },
+                                "schema_dot_org": {
                                     "type": "string"
                                 }
                             },

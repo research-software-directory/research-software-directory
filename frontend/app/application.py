@@ -150,9 +150,16 @@ def cite(software_id):
         if release['tag'] == flask.request.args.get('version'):
             for file_format in release['files'].keys():
                 if file_format == flask.request.args.get('format'):
+                    filenames = {
+                        "bibtex": "{0}.bib".format(software_id),
+                        "cff": "CITATION.cff",
+                        "codemeta": "codemeta.json",
+                        "endnote": "{0}.enw".format(software_id),
+                        "ris": "{0}.ris".format(software_id)
+                    }
                     return flask.Response(
                         release['files'][file_format],
-                        headers={"Content-disposition": "attachment; filename=%s.%s" % (software_id, file_format)}
+                        headers={"Content-disposition": "attachment; filename={0}".format(filenames[file_format])}
                     )
 
     return flask.abort(404)
