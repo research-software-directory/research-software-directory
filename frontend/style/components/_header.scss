@@ -18,8 +18,8 @@
     }
 }
 
-#header_logo {
-    // flex-shrink: 0;
+#header_left {
+
     margin-right: 15px;
    
     padding-bottom: 1em;
@@ -46,16 +46,8 @@
     }
 }
 
-#header_text {
-    flex-shrink: 0;
-    font-family: $primaryFontLight;
-    font-size: 2rem;
-    line-height: 2;
-    margin-top: -0.05em;
-}
-
-#header_links {
-    padding-bottom: 0.75em;
+#header_right {
+    padding-bottom: 1em;
     a {
         display: inline-block;
         &:not(:first-child) {
