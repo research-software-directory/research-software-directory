@@ -10,8 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_projects():
-    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects",
-                             include_deep_info=True)
+    scraper = ProjectScraper(baseurl="https://www.esciencecenter.nl/projects")
 
     token = generate_jwt_token()
     resp = requests.put(
