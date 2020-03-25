@@ -577,32 +577,41 @@ let fourofour = (elem) => {
     return elem.shortlink !== 404
 };
 
-let mapper = (elem) => {
-    return {
-        "slug": elem.url.replace("https://www.esciencecenter.nl/project/", ""),
-        "id": elem.shortlink.replace("https://www.esciencecenter.nl/?p=", "")
-    }
-};
+let update_id = (elem) => {
 
-let lookup = {};
-let addkey = (elem) => {
-    lookup[elem.slug] = elem.id
-};
-
-data.filter(fourofour).map(mapper).forEach(addkey)
-
-
-
-
-db.software.find({}).forEach((document) => {
-    let replacer = (project) => {
-        return {
-            foreignKey: lookup[project.foreignKey.id]
+    var query = {
+        "related.projects": {
+            "$elemMatch": {
+                "$eq": {
+                    "foreignKey": {
+                        "id": elem.id,
+                        "collection": "project"
+                    }
+                }
+            }
         }
     }
 
-    let projects = document.related.projects.map(replacer)
-})
+    var update = {
+        "$set": {
+            "related.projects.$[]": {
+                "foreignKey": {
+                    "id": elem.shortlink.replace("https://www.esciencecenter.nl/?p=", ""),
+                    "collection": "project"
+                }
+            }
+        }
+    }
+
+    var options = {
+        "upsert": true,
+        "multi": false
+    }
+
+    db.software.updateMany(query, update, options)
+}
+
+data.filter(fourofour).forEach(update_id)
 
 
 
