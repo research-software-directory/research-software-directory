@@ -579,14 +579,14 @@ let fourofour = (elem) => {
 
 let update_id = (elem) => {
 
+    print("Trying to update " + elem.id + ".")
+
     var query = {
         "related.projects": {
-            "$elemMatch": {
-                "$eq": {
-                    "foreignKey": {
-                        "id": elem.id,
-                        "collection": "project"
-                    }
+            "$eq": {
+                "foreignKey": {
+                    "id": elem.id,
+                    "collection": "project"
                 }
             }
         }
@@ -594,18 +594,23 @@ let update_id = (elem) => {
 
     var update = {
         "$set": {
-            "related.projects.$[]": {
-                "foreignKey": {
-                    "id": elem.shortlink.replace("https://www.esciencecenter.nl/?p=", ""),
-                    "collection": "project"
-                }
+            "related.projects.$[element].foreignKey": {
+                "id": elem.shortlink.replace("https://www.esciencecenter.nl/?p=", ""),
+                "collection": "project"
             }
         }
     }
 
     var options = {
-        "upsert": true,
-        "multi": false
+        "arrayFilters": [{
+            "element.foreignKey": {
+                "$eq": {
+                    "id": elem.id,
+                    "collection": "project"
+                }
+            }
+        }],
+        "upsert": true
     }
 
     db.software.updateMany(query, update, options)
