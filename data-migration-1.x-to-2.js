@@ -285,7 +285,7 @@ let data = [{
 }, {
     "id": "prediction-of-candidate-genes-for-traits-using-interoperable-genome-annotat",
     "url": "https://www.esciencecenter.nl/project/prediction-of-candidate-genes-for-traits-using-interoperable-genome-annotat",
-    "shortlink": 404
+    "shortlink": "https://www.esciencecenter.nl/?p=1094"
 }, {
     "id": "computational-chemistry-made-easy",
     "url": "https://www.esciencecenter.nl/project/computational-chemistry-made-easy",
@@ -610,7 +610,7 @@ let update_id = (elem) => {
                 }
             }
         }],
-        "upsert": true
+        "upsert": false
     }
 
     db.software.updateMany(query, update, options)
