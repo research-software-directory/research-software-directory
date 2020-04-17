@@ -1,39 +1,24 @@
-# 2.1.0
-
-This release adds a logging collection to the database.
-
-```
-docker-compose exec database mongo rsd
-db.createCollection("logging")
-```
-
-- Added logs of harversters to frontend software item page
-
 # 2.0.0
 
-In version 2.0.0, the ``project`` collection is partly filled by harvesting from external data source, and partly filled by means of users making edits in the admin interface. This means that version 2.0.0 of the Research Software Directory requires changes to the database. Below are the steps to migrate data from 1.2.0 to 2.0.0.
+<!-- - Bugfix | Change | Feature | Documentation | Security -->
+
+## Data migration notes
+
+In version 2.0.0, the ``project`` collection is partly filled by harvesting from
+external data source, and partly filled by means of users making edits in the
+admin interface. This means that version 2.0.0 of the Research Software
+Directory requires changes to the database. Below are the steps to migrate data
+from 1.2.0 to 2.0.0. Furthermore, the frontend now shows information for page
+maintainers, for which a new MongoDB collection ``logging`` is needed.
 
 ```
 $ docker-compose exec database mongo rsd
 ```
 
-**Add** fields ``output`` and ``impact`` to all ``project`` documents:
+**Create** collection "logging":
 
 ```
-db.project.update({}, {$set: {"output": []}}, {"multi": true})
-db.project.update({}, {$set: {"impact": []}}, {"multi": true})
-```
-
-**Rename** field ``url`` to ``corporateUrl`` for all ``project`` documents:
-
-```
-db.project.update({}, {$rename: {"url": "corporateUrl"}}, {"multi": true})
-```
-
-**Empty** the value of ``principalInvestigator`` for all ``project`` documents:
-
-```
-db.project.update({}, {$set: {"principalInvestigator": ""}}, {"multi": true})
+db.createCollection("logging")
 ```
 
 **Remove** all ``release`` documents entirely:
@@ -42,6 +27,38 @@ db.project.update({}, {$set: {"principalInvestigator": ""}}, {"multi": true})
 db.release.deleteMany({})
 ```
 
+**Remove** all ``project`` and ``project_cache`` documents  entirely:
+
+```
+db.project.deleteMany({})
+db.project_cache.deleteMany({})
+```
+
+In another terminal, run the project harvester:
+
+```
+$ source rsd-secrets.env
+$ docker-compose exec harvesting python app.py harvest projects
+```
+
+Back in the Mongo terminal, **Add** fields ``output`` and ``impact`` to all
+``project`` documents:
+
+```
+db.project.update({}, {$set: {"output": []}}, {"multi": true})
+db.project.update({}, {$set: {"impact": []}}, {"multi": true})
+```
+
+Then, update the project identifiers as used in the ``software`` collection by
+copy-pasting the contents of
+[data-migration-1.x-to-2.js](/data-migration-1.x-to-2.js) into the Mongo shell.
+
+See if it all worked by running (in the ``harvesting`` terminal):
+
+```
+$ docker-compose exec harvesting python app.py resolve software
+```
+(Its output should contain only INFO messages, not ERROR messages).
 
 # 1.2.0
 
