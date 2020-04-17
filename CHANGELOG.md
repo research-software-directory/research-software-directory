@@ -5,11 +5,14 @@
 ## Data migration notes
 
 In version 2.0.0, the ``project`` collection is partly filled by harvesting from
-external data source, and partly filled by means of users making edits in the
+an external data source, and partly filled by means of users making edits in the
 admin interface. This means that version 2.0.0 of the Research Software
 Directory requires changes to the database. Below are the steps to migrate data
 from 1.2.0 to 2.0.0. Furthermore, the frontend now shows information for page
 maintainers, for which a new MongoDB collection ``logging`` is needed.
+
+When migrating data there is always the possibility of LOSS OF DATA. Review the
+notes on how to make a backup of the Mongo data [here](README.md#updating-a-production-instance).
 
 ```
 $ docker-compose exec database mongo rsd
@@ -28,28 +31,23 @@ db.release.deleteMany({})
 db.project.deleteMany({})
 db.project_cache.deleteMany({})
 ```
-
-In another terminal, run the project harvester:
-
-```
-$ source rsd-secrets.env
-$ docker-compose exec harvesting python app.py harvest projects
-```
-
 Then, update the project identifiers as used in the ``software`` collection by
-running the data migration script
-[data-migration-1.x-to-2.js](/data-migration-1.x-to-2.js):
+copy-pasting the contents of the data migration script 
+[data-migration-1.x-to-2.js](/data-migration-1.x-to-2.js) into the Mongo shell.
 
-```
-$ docker-compose exec -T database mongo rsd < data-migration-1.x-to-2.js
-```
-
-See if it all worked by running (in the ``harvesting`` terminal):
+Exit the Mongo shell with Ctrl-d or ``exit``, then run the harvester:
 
 ```
 $ docker-compose exec harvesting python app.py harvest all
+```
+
+See if it all worked by running:
+
+```
 $ docker-compose exec harvesting python app.py resolve all
 ```
+
+The ``resolve`` command should list only INFO messages, not ERROR messages.
 
 # 1.2.0
 
