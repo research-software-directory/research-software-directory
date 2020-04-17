@@ -312,6 +312,16 @@ Open a web browser to verify that everything works as it should. Below are some 
 - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
 
+The api endpoints also support the following query parameters:
+
+- ``sort`` (e.g. ``sort=updatedAt``)
+- ``direction`` (e.g. ``direction=desc``)
+- ``limit`` (e.g. ``limit=3``)
+
+Which can be combined in the usual way, e.g.
+
+- [``http://localhost/api/mention?limit=3&direction=desc&sort=updatedAt``](http://localhost/api/mention?limit=3&direction=desc&sort=updatedAt) should return the 3 mentions that were updated most recently.
+
 #### Citation
 
 - [``http://localhost/cite/xenon?version=3.0.4&format=bibtex``](http://localhost/cite/xenon?version=3.0.4&format=bibtex) should return a reference manager file for software package Xenon version 3.0.4 in BibTeX format.
