@@ -21,15 +21,10 @@ $ docker-compose exec database mongo rsd
 db.createCollection("logging")
 ```
 
-**Remove** all ``release`` documents entirely:
+**Remove** all ``release`` documents, ``project`` documents, and ``project_cache`` documents entirely:
 
 ```
 db.release.deleteMany({})
-```
-
-**Remove** all ``project`` and ``project_cache`` documents  entirely:
-
-```
 db.project.deleteMany({})
 db.project_cache.deleteMany({})
 ```
@@ -41,24 +36,20 @@ $ source rsd-secrets.env
 $ docker-compose exec harvesting python app.py harvest projects
 ```
 
-Back in the Mongo terminal, **Add** fields ``output`` and ``impact`` to all
-``project`` documents:
-
-```
-db.project.update({}, {$set: {"output": []}}, {"multi": true})
-db.project.update({}, {$set: {"impact": []}}, {"multi": true})
-```
-
 Then, update the project identifiers as used in the ``software`` collection by
-copy-pasting the contents of
-[data-migration-1.x-to-2.js](/data-migration-1.x-to-2.js) into the Mongo shell.
+running the data migration script
+[data-migration-1.x-to-2.js](/data-migration-1.x-to-2.js):
+
+```
+$ docker-compose exec -T database mongo rsd < data-migration-1.x-to-2.js
+```
 
 See if it all worked by running (in the ``harvesting`` terminal):
 
 ```
-$ docker-compose exec harvesting python app.py resolve software
+$ docker-compose exec harvesting python app.py harvest all
+$ docker-compose exec harvesting python app.py resolve all
 ```
-(Its output should contain only INFO messages, not ERROR messages).
 
 # 1.2.0
 
