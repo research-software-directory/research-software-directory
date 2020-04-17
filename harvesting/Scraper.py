@@ -1,6 +1,7 @@
 import requests
 import logging
 import json
+import os
 from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
@@ -42,6 +43,12 @@ class ProjectScraper(AbstractScraper):
 
     def get_projects(self):
 
+        def get_existing_project_ids():
+            response = requests.get(
+                os.environ.get('BACKEND_URL') + '/project'
+            ).json()
+            return [elem["primaryKey"]["id"] for elem in response]
+
         def get_project_soup():
             r = requests.get(url)
             assert r.status_code == 200, "Something went wrong while retrieving the page."
@@ -50,6 +57,7 @@ class ProjectScraper(AbstractScraper):
             id = shortlink.replace("https://www.esciencecenter.nl/?p=", "")
             return id, soup
 
+        existing_ids = get_existing_project_ids()
         articles = self.soup.find("section", class_="events").find_all("article")
         n_articles = len(articles)
         for i_article, article in enumerate(articles):
@@ -68,6 +76,9 @@ class ProjectScraper(AbstractScraper):
                 "collection": "project",
                 "id": id
             }
+            if id not in existing_ids:
+                project["output"] = []
+                project["impact"] = []
             project["image"] = soup.find("section", class_="content").find("figure").find("img")["src"]
             team = soup.find("section", id="team")
             if team is not None:
