@@ -15,6 +15,7 @@ When migrating data there is always the possibility of LOSS OF DATA. Review the
 notes on how to make a backup of the Mongo data [here](README.md#updating-a-production-instance).
 
 ```
+$ source rsd-secrets.env
 $ docker-compose exec database mongo rsd
 ```
 
