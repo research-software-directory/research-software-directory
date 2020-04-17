@@ -22,6 +22,10 @@
     {% include 'software/metadata.html' %}
 {%- endblock -%}
 {%- block content -%}
+
+    <!-- omit the corporate home link -->
+    {% block corporate_home %}{% endblock %}
+
     {% include 'software/introduction.html' %}
     {% include 'software/get_started.html' %}
     {% include 'software/citation.html' %}
