@@ -41,13 +41,16 @@
                             "cff": {
                                 "type": "string"
                             },
-                            "schema_dot_org": {
+                            "codemeta": {
                                 "type": "string"
                             },
                             "endnote": {
                                 "type": "string"
                             },
                             "ris": {
+                                "type": "string"
+                            },
+                            "schema_dot_org": {
                                 "type": "string"
                             }
                         },

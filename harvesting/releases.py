@@ -186,6 +186,7 @@ class ReleaseScraper:
                 try:
                     release["files"] = dict({
                         "bibtex": citation.as_bibtex(),
+                        "codemeta": citation.as_codemeta(),
                         "cff": citation.cffstr,
                         "schema_dot_org": citation.as_schema_dot_org(),
                         "endnote": citation.as_enw(),
