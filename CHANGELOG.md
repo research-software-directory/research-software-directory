@@ -14,7 +14,7 @@
 - added codemeta and CITATION.cff files as downloadable files
 - added the content type of downloadable citation manager files
 - downloadable citation manager files now have filenames consistent with their respective standard
-- full commit diff [1.2.0...2.0.0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...bee8cd4642d7158591dc04fd0b2b603da51db036)
+- full commit diff [1.2.0...2.0.0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...6b843b206acd078151503c15a317f78f6aab2106)
 
 
 ## Data migration notes
