@@ -1,6 +1,21 @@
 # 2.0.0
 
 <!-- - Bugfix | Change | Feature | Documentation | Security -->
+## Summary of changes
+
+- no need for starting ``docker-compose`` with ``--project-name`` anymore
+- updated documentation
+- updated ``admin`` style for better legibility
+- projects can now be harvested from the corporate site, and users can add mentions as 'impact' or 'output' via the admin interface
+- security updates
+- fixed bug where server logging would fill the entire disk space
+- now providing feedback to page maintainers via frontend
+- ``/graphs`` is now available via a button on the frontend
+- added codemeta and CITATION.cff files as downloadable files
+- added the content type of downloadable citation manager files
+- downloadable citation manager files now have filenames consistent with their respective standard
+- full commit diff [1.2.0...2.0.0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...bee8cd4642d7158591dc04fd0b2b603da51db036)
+
 
 ## Data migration notes
 
