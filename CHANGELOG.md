@@ -1,3 +1,7 @@
+# 2.0.1
+
+- fixed a bug with retrieving images from the corporate site when they have http addresses instead of https
+
 # 2.0.0
 
 <!-- - Bugfix | Change | Feature | Documentation | Security -->
