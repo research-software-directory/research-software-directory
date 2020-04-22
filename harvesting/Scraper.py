@@ -57,6 +57,12 @@ class ProjectScraper(AbstractScraper):
             id = shortlink.replace("https://www.esciencecenter.nl/?p=", "")
             return id, soup
 
+        def get_project_image():
+            src = soup.find("section", class_="content").find("figure").find("img")["src"]
+            if src.startswith("http://"):
+                src = "https://" + src[7:]
+            return src
+
         existing_ids = get_existing_project_ids()
         articles = self.soup.find("section", class_="events").find_all("article")
         n_articles = len(articles)
@@ -79,7 +85,7 @@ class ProjectScraper(AbstractScraper):
             if id not in existing_ids:
                 project["output"] = []
                 project["impact"] = []
-            project["image"] = soup.find("section", class_="content").find("figure").find("img")["src"]
+            project["image"] = get_project_image()
             team = soup.find("section", id="team")
             if team is not None:
                 persons = team.find_all("div", class_="person")
