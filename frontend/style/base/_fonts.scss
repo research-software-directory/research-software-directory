@@ -1,22 +1,22 @@
 // Bold
 @font-face {
-    font-family: "RobotoBold";
-    src: url('fonts/roboto/Roboto-Bold.tff') format('truetype');
+    font-family: "RobotoCondensedBold";
+    src: url('fonts/roboto-condensed/RobotoCondensed-Regular.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 // Regular
 @font-face {
-    font-family: "RobotoMedium";
-    src: url('fonts/roboto/Roboto-Medium.tff') format('truetype');
+    font-family: "RobotoCondensedRegular";
+    src: url('fonts/roboto-condensed/RobotoCondensed-Light.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 // Light
 @font-face {
-    font-family: "RobotoLight";
-    src: url('fonts/roboto/Roboto-Light.tff') format('truetype');
+    font-family: "RobotoCondensedLight";
+    src: url('fonts/roboto-condensed/RobotoCondensed-Light.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
