@@ -1,22 +1,25 @@
 // Bold
 @font-face {
-    font-family: "RobotoCondensedBold";
-    src: url('fonts/roboto-condensed/RobotoCondensed-Regular.tff') format('truetype');
+    font-family: "Roboto Bold";
+    src: url('fonts/roboto/Roboto-Regular.woff') format('woff'), 
+         url('fonts/roboto/Roboto-Regular.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 // Regular
 @font-face {
-    font-family: "RobotoCondensedRegular";
-    src: url('fonts/roboto-condensed/RobotoCondensed-Light.tff') format('truetype');
+    font-family: "Roboto Regular";
+    src: url('fonts/roboto/Roboto-Light.woff') format('woff'), 
+         url('fonts/roboto/Roboto-Light.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 // Light
 @font-face {
-    font-family: "RobotoCondensedLight";
-    src: url('fonts/roboto-condensed/RobotoCondensed-Light.tff') format('truetype');
+    font-family: "Roboto Light";
+    src: url('fonts/roboto/Roboto-Light.woff') format('woff'), 
+         url('fonts/roboto/Roboto-Light.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
