@@ -973,3 +973,4 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 As a final step, use the Amazon EC2 management console to ``Stop`` (not
 ``Terminate``) the old instance. This way, the old instance can still be
 reactivated in case you need to get back to the old version.
+

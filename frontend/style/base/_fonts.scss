@@ -1,46 +1,25 @@
-// ========================================
-// Lineto - Akkurat
-// ========================================
-
-
-// Akkurat Bold
-// ----------------------------------------
+// Bold
 @font-face {
-    font-family: "Akkurat-bold";
-    
-    src: url('fonts/akkurat/lineto-akkurat-bold.eot');
-    src: url('fonts/akkurat/lineto-akkurat-bold.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-bold.woff') format('woff'),
-         url('fonts/akkurat/lineto-akkurat-bold.ttf') format('truetype');
-
+    font-family: "Roboto Bold";
+    src: url('fonts/roboto/Roboto-Regular.woff') format('woff'), 
+         url('fonts/roboto/Roboto-Regular.tff') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-// Akkurat Regular
-// ----------------------------------------
+// Regular
 @font-face {
-    font-family: "Akkurat";
-    
-    src: url('fonts/akkurat/lineto-akkurat-regular.eot');
-    src: url('fonts/akkurat/lineto-akkurat-regular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-regular.woff') format('woff'),
-         url('fonts/akkurat/lineto-akkurat-regular.ttf') format('truetype');
-
+    font-family: "Roboto Regular";
+    src: url('fonts/roboto/Roboto-Light.woff') format('woff'), 
+         url('fonts/roboto/Roboto-Light.tff') format('truetype');
     font-weight: normal;
-    font-style: normal;     
+    font-style: normal;
 }
-
-// Akkurat Light
-// ----------------------------------------
+// Light
 @font-face {
-    font-family: "Akkurat-light";
-    
-    src: url('fonts/akkurat/lineto-akkurat-light.eot');
-    src: url('fonts/akkurat/lineto-akkurat-light.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akkurat/lineto-akkurat-light.woff') format('woff'),
-         url('fonts/akkurat/lineto-akkurat-light.ttf') format('truetype');
-
+    font-family: "Roboto Light";
+    src: url('fonts/roboto/Roboto-Light.woff') format('woff'), 
+         url('fonts/roboto/Roboto-Light.tff') format('truetype');
     font-weight: normal;
-    font-style: normal;  
+    font-style: normal;
 }
