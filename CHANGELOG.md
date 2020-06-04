@@ -1,3 +1,7 @@
+# 2.0.2
+
+- Had to rewrite history due to a copyright violation on the included Akkurat font files.
+
 # 2.0.1
 
 - fixed a bug with retrieving images from the corporate site when they have http addresses instead of https
