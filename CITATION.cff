@@ -81,7 +81,7 @@ authors:
     name-particle: van
     orcid: "https://orcid.org/0000-0002-2947-9444"
 cff-version: "1.0.3"
-date-released: 2020-04-22
+date-released: 2020-06-04
 doi: 10.5281/zenodo.1154130
 keywords: 
   - "Current Research Information Systems"
@@ -95,4 +95,4 @@ license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
 repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
-version: "2.0.1"
+version: "2.0.2"
