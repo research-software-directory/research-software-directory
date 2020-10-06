@@ -44,6 +44,7 @@
         },
         "homeUrl": {
             "format": "uri",
+            "pattern": "^https://.*$",
             "type": "string"
         },
         "imageCaption": {
@@ -52,6 +53,7 @@
         },
         "imageUrl": {
             "format": "uri",
+            "pattern": "^https://.*$",
             "type": "string"
         },
         "impact": {
