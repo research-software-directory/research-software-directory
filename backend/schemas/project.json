@@ -92,19 +92,6 @@
         "related": {
             "additionalProperties": false,
             "properties": {
-                "mentions": {
-                    "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "foreignKey": {
-                                "$ref": "definitions.json/key/mention"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "type": "array",
-                    "uniqueItems": true
-                },
                 "organizations": {
                     "items": {
                         "additionalProperties": false,
@@ -147,7 +134,6 @@
             },
             "required": [
                 "organizations",
-                "mentions",
                 "projects",
                 "software"
             ],

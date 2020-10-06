@@ -12,7 +12,6 @@ var update = {
         "homeUrl": "https://fixme.org",
         "imageCaption": "this is the image caption",
         "isPublished": false,
-        "related.mentions": [],
         "related.organizations": [],
         "related.projects": [],
         "related.software": [],
