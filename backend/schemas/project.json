@@ -2,12 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
-        "corporateUrl": {
-            "format": "uri",
-            "type": "string"
-        },
         "callUrl": {
             "format": "uri",
+            "pattern": "^https://doi.org/.*$",
+            "type": "string"
+        },
+        "codeUrl": {
+            "format": "uri",
+            "pattern": "^https://github.com/[^/]*$",
             "type": "string"
         },
         "createdAt": {
@@ -16,6 +18,11 @@
             "type": "string"
         },
         "createdBy": {
+            "type": "string"
+        },
+        "dataManagementPlanUrl": {
+            "format": "uri",
+            "pattern": "^https://doi.org/.*$",
             "type": "string"
         },
         "dateEnd": {
@@ -32,7 +39,10 @@
             "minLength": 100,
             "type": "string"
         },
-        "grantUrl": {
+        "grantId": {
+            "type": "string"
+        },
+        "homeUrl": {
             "format": "uri",
             "type": "string"
         },
@@ -57,6 +67,10 @@
             "type": "array",
             "uniqueItems": true
         },
+        "isPublished": {
+            "default": false,
+            "type": "boolean"
+        },
         "output": {
             "items": {
                 "additionalProperties": false,
@@ -72,9 +86,6 @@
         },
         "primaryKey": {
             "$ref": "definitions.json/key/project"
-        },
-        "principalInvestigator": {
-            "type": "string"
         },
         "related": {
             "additionalProperties": false,
@@ -139,6 +150,11 @@
                 "software"
             ],
             "type": "object"
+        },
+        "softwareSustainabilityPlanUrl": {
+            "format": "uri",
+            "pattern": "^https://doi.org/.*$",
+            "type": "string"
         },
         "subtitle": {
             "type": "string"
@@ -217,13 +233,22 @@
         }
     },
     "required": [
-        "corporateUrl",
+        "callUrl",
+        "codeUrl",
         "createdAt",
         "createdBy",
-        "image",
+        "dateEnd",
+        "dateStart",
+        "description",
+        "grantId",
+        "imageUrl",
+        "impact",
+        "isPublished",
+        "output",
         "primaryKey",
-        "principalInvestigator",
         "subtitle",
+        "tags",
+        "team",
         "title",
         "updatedAt",
         "updatedBy"
