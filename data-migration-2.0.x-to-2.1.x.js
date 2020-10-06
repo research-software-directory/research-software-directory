@@ -5,18 +5,18 @@ var update = {
         "callUrl": "https://doi.org/FIXME",
         "codeUrl": "https://github.com/FIXME",
         "dataManagementPlanUrl": "",
-        "dateEnd": "1901-01-01T00:00:00",
-        "dateStart": "1900-01-01T00:00:00",
+        "dateEnd": "1901-01-01T00:00:00Z",
+        "dateStart": "1900-01-01T00:00:00Z",
         "description": "FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME",
-        "grantId": "",
+        "grantId": "FIXME",
         "homeUrl": "https://fixme.org",
-        "imageCaption": "",
+        "imageCaption": "this is the image caption",
         "isPublished": false,
         "related.mentions": [],
         "related.organizations": [],
         "related.projects": [],
         "related.software": [],
-        "softwareSustainabilityPlan": "https://doi.org/fixme",
+        "softwareSustainabilityPlanUrl": "",
         "tags": [],
         "team": []
     },
@@ -24,6 +24,7 @@ var update = {
         "image": "imageUrl"
     },
     "$unset": {
+        "corporateUrl": "",
         "principalInvestigator": ""
     }
 }
