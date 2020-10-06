@@ -411,7 +411,7 @@
             }
           }
         },
-        "softwareSustainabilityPlan": {
+        "softwareSustainabilityPlanUrl": {
           "help": "URL to software sustainability plan (via doi.org)",
           "sortIndex": 770
         },
