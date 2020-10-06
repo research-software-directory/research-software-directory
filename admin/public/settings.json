@@ -357,7 +357,7 @@
               "label": "mention"
             }
           },
-          "sortIndex": 91
+          "sortIndex": 830
         },
         "isPublished": {
           "help": "Whether the project page should be published",
@@ -370,7 +370,7 @@
               "label": "mention"
             }
           },
-          "sortIndex": 90
+          "sortIndex": 820
         },
         "primaryKey": {
           "label": "Primary key",
