@@ -6,6 +6,10 @@
             "format": "uri",
             "type": "string"
         },
+        "callUrl": {
+            "format": "uri",
+            "type": "string"
+        },
         "createdAt": {
             "format": "date-time",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
@@ -14,7 +18,29 @@
         "createdBy": {
             "type": "string"
         },
-        "image": {
+        "dateEnd": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "dateStart": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "description": {
+            "minLength": 100,
+            "type": "string"
+        },
+        "grantUrl": {
+            "format": "uri",
+            "type": "string"
+        },
+        "imageCaption": {
+            "minLength": 10,
+            "type": "string"
+        },
+        "imageUrl": {
             "format": "uri",
             "type": "string"
         },
@@ -50,8 +76,133 @@
         "principalInvestigator": {
             "type": "string"
         },
+        "related": {
+            "additionalProperties": false,
+            "properties": {
+                "mentions": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/mention"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "organizations": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/organization"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "projects": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/project"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "software": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/software"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                }
+            },
+            "required": [
+                "organizations",
+                "mentions",
+                "projects",
+                "software"
+            ],
+            "type": "object"
+        },
         "subtitle": {
             "type": "string"
+        },
+        "tags": {
+            "items": {
+                "enum": [
+                    "Big data",
+                    "GPU",
+                    "High performance computing",
+                    "Image processing",
+                    "Inter-operability & linked data",
+                    "Machine learning",
+                    "Multi-scale & multi model simulations",
+                    "Optimized data handling",
+                    "Real time data analysis",
+                    "Text analysis & natural language processing",
+                    "Visualization",
+                    "Workflow technologies"
+                ],
+                "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "team": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "affiliations": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "foreignKey": {
+                                    "$ref": "definitions.json/key/organization"
+                                }
+                            }
+                        },
+                        "type": "array",
+                        "uniqueItems": true
+                    },
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/person"
+                    },
+                    "role": {
+                        "enum": [
+                            "Contact person",
+                            "Principal investigator",
+                            "eScience Research Engineer",
+                            "Senior eScience Research Engineer"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "affiliations",
+                    "foreignKey",
+                    "role"
+                ],
+                "type": "object"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
         },
         "title": {
             "type": "string"
