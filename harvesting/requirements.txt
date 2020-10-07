@@ -1,6 +1,6 @@
 beautifulsoup4==4.6.0
 click==6.7
-requests==2.20.0
+requests>=2.21.0
 python-dateutil==2.6.1
 Pyzotero==1.4.18
 dateutils==0.6.6
