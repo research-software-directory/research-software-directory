@@ -207,23 +207,23 @@
           "help": "email address"
         },
         "createdAt": {
-          "readonly": false,
+          "readonly": true,
           "sortIndex": 100
         },
         "createdBy": {
-          "readonly": false,
+          "readonly": true,
           "sortIndex": 110
         },
         "primaryKey": {
-          "readonly": false,
+          "readonly": true,
           "sortIndex": 120
         },
         "updatedAt": {
-          "readonly": false,
+          "readonly": true,
           "sortIndex": 130
         },
         "updatedBy": {
-          "readonly": false,
+          "readonly": true,
           "sortIndex": 140
         }
       }
@@ -446,7 +446,50 @@
     "organization": {
       "name": "Organization",
       "icon": "university",
-      "itemLabelTemplate": "{{ name }}"
+      "itemLabelTemplate": "{{ name }}",
+      "properties": {
+        "createdAt": {
+          "label": "Created at",
+          "readonly": true,
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "readonly": true,
+          "sortIndex": 1002
+        },
+        "logo": {
+          "label": "Organization logo",
+          "readonly": false,
+          "sortIndex": 100
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "readonly": true,
+          "sortIndex": 0
+        },
+        "name": {
+          "label": "Organization name",
+          "readonly": false,
+          "sortIndex": 200
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "readonly": true,
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Updated by",
+          "readonly": true,
+          "sortIndex": 1004
+        },
+        "url": {
+          "label": "Organization URL",
+          "readonly": false,
+          "sortIndex": 300
+        }
+      }
+
     }
   }
 }
