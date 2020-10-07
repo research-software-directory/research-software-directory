@@ -75,7 +75,7 @@
         },
         "primaryKey": {
           "label": "Primary key",
-          "sortIndex": 900,
+          "sortIndex": 0,
           "readonly": true
         },
         "programmingLanguage": {
@@ -207,24 +207,24 @@
           "help": "email address"
         },
         "createdAt": {
-          "readonly": false,
-          "sortIndex": 100
+          "readonly": true,
+          "sortIndex": 1000
         },
         "createdBy": {
-          "readonly": false,
-          "sortIndex": 110
+          "readonly": true,
+          "sortIndex": 1001
         },
         "primaryKey": {
-          "readonly": false,
-          "sortIndex": 120
+          "readonly": true,
+          "sortIndex": 0
         },
         "updatedAt": {
-          "readonly": false,
-          "sortIndex": 130
+          "readonly": true,
+          "sortIndex": 1002
         },
         "updatedBy": {
-          "readonly": false,
-          "sortIndex": 140
+          "readonly": true,
+          "sortIndex": 1003
         }
       }
     },
@@ -289,7 +289,7 @@
         },
         "primaryKey": {
           "label": "Primary key",
-          "sortIndex": 1005
+          "sortIndex": 0
         }
       }
     },
@@ -375,7 +375,7 @@
         "primaryKey": {
           "label": "Primary key",
           "readonly": true,
-          "sortIndex": 1005
+          "sortIndex": 0
         },
         "related": {
           "sortIndex": 850,
@@ -446,7 +446,50 @@
     "organization": {
       "name": "Organization",
       "icon": "university",
-      "itemLabelTemplate": "{{ name }}"
+      "itemLabelTemplate": "{{ name }}",
+      "properties": {
+        "createdAt": {
+          "label": "Created at",
+          "readonly": true,
+          "sortIndex": 1001
+        },
+        "createdBy": {
+          "label": "Created by",
+          "readonly": true,
+          "sortIndex": 1002
+        },
+        "logo": {
+          "label": "Organization logo",
+          "readonly": false,
+          "sortIndex": 100
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "readonly": true,
+          "sortIndex": 0
+        },
+        "name": {
+          "label": "Organization name",
+          "readonly": false,
+          "sortIndex": 200
+        },
+        "updatedAt": {
+          "label": "Updated at",
+          "readonly": true,
+          "sortIndex": 1003
+        },
+        "updatedBy": {
+          "label": "Updated by",
+          "readonly": true,
+          "sortIndex": 1004
+        },
+        "url": {
+          "label": "Organization URL",
+          "readonly": false,
+          "sortIndex": 300
+        }
+      }
+
     }
   }
 }
