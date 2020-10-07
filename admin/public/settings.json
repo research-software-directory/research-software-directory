@@ -75,7 +75,7 @@
         },
         "primaryKey": {
           "label": "Primary key",
-          "sortIndex": 900,
+          "sortIndex": 0,
           "readonly": true
         },
         "programmingLanguage": {
@@ -208,23 +208,23 @@
         },
         "createdAt": {
           "readonly": true,
-          "sortIndex": 100
+          "sortIndex": 1000
         },
         "createdBy": {
           "readonly": true,
-          "sortIndex": 110
+          "sortIndex": 1001
         },
         "primaryKey": {
           "readonly": true,
-          "sortIndex": 120
+          "sortIndex": 0
         },
         "updatedAt": {
           "readonly": true,
-          "sortIndex": 130
+          "sortIndex": 1002
         },
         "updatedBy": {
           "readonly": true,
-          "sortIndex": 140
+          "sortIndex": 1003
         }
       }
     },
@@ -289,7 +289,7 @@
         },
         "primaryKey": {
           "label": "Primary key",
-          "sortIndex": 1005
+          "sortIndex": 0
         }
       }
     },
@@ -375,7 +375,7 @@
         "primaryKey": {
           "label": "Primary key",
           "readonly": true,
-          "sortIndex": 1005
+          "sortIndex": 0
         },
         "related": {
           "sortIndex": 850,
