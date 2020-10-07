@@ -284,7 +284,7 @@
           "sortIndex": 1003
         },
         "updatedBy": {
-          "label": "Created by",
+          "label": "Updated by",
           "sortIndex": 1004
         },
         "primaryKey": {
@@ -299,52 +299,13 @@
       "itemLabelTemplate": "{{ title }}",
       "readonly": false,
       "properties": {
-        "title": {
-          "label": "Name of the project",
-          "readonly": true,
-          "sortIndex": 10
+        "callUrl": {
+          "help": "URL to the call text on Zenodo (via doi.org)",
+          "sortIndex": 600
         },
-        "subtitle": {
-          "label": "Subtitle of the project",
-          "readonly": true,
-          "sortIndex": 20
-        },
-        "principalInvestigator": {
-          "label": "Principal investigator",
-          "readonly": true,
-          "sortIndex": 30
-        },
-        "corporateUrl": {
-          "help":
-            "URL to the project page on https://esciencecenter.nl/projects",
-          "readonly": true,
-          "sortIndex": 40
-        },
-        "image": {
-          "help": "URL to the image",
-          "readonly": true,
-          "sortIndex": 50
-        },
-        "output": {
-          "help": "Output produced using NLeSC funding",
-          "properties": {
-            "foreignKey": {
-              "label": "mention"
-            }
-          },
-          "readonly": false,
-          "sortIndex": 90
-        },
-        "impact": {
-          "help":
-            "Output produced by others / without NLeSC funding, based on work produced in this project.",
-          "properties": {
-            "foreignKey": {
-              "label": "mention"
-            }
-          },
-          "readonly": false,
-          "sortIndex": 91
+        "codeUrl": {
+          "help": "URL to the project's organization on GitHub",
+          "sortIndex": 750
         },
         "createdAt": {
           "label": "Created at",
@@ -356,20 +317,129 @@
           "readonly": true,
           "sortIndex": 1002
         },
+        "dataManagementPlanUrl": {
+          "help": "URL to the data management plan (via doi.org)",
+          "sortIndex": 760
+        },
+        "dateEnd": {
+          "help": "Formal end date of the project",
+          "sortIndex": 400
+        },
+        "dateStart": {
+          "help": "Formal start date of the project",
+          "sortIndex": 300
+        },
+        "description": {
+          "help": "Project description",
+          "sortIndex": 200
+        },
+        "grantId": {
+          "help": "Identifier for the grant",
+          "sortIndex": 700
+        },
+        "homeUrl": {
+          "help": "URL to the project's home page (if it has one)",
+          "sortIndex": 740
+        },
+        "imageCaption": {
+          "help": "Caption for the project image",
+          "sortIndex": 110
+        },
+        "imageUrl": {
+          "help": "URL to the image",
+          "sortIndex": 100
+        },
+        "impact": {
+          "help":
+            "Output produced by others / without NLeSC funding, based on work produced in this project.",
+          "properties": {
+            "foreignKey": {
+              "label": "mention"
+            }
+          },
+          "sortIndex": 830
+        },
+        "isPublished": {
+          "help": "Whether the project page should be published",
+          "sortIndex": 0
+        },
+        "output": {
+          "help": "Output produced using NLeSC funding",
+          "properties": {
+            "foreignKey": {
+              "label": "mention"
+            }
+          },
+          "sortIndex": 820
+        },
+        "primaryKey": {
+          "label": "Primary key",
+          "readonly": true,
+          "sortIndex": 1005
+        },
+        "related": {
+          "sortIndex": 850,
+          "label": "Related",
+          "properties": {
+            "mentions": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "organizations": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "projects": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            },
+            "software": {
+              "properties": {
+                "foreignKey": {
+                  "label": " "
+                }
+              }
+            }
+          }
+        },
+        "softwareSustainabilityPlanUrl": {
+          "help": "URL to software sustainability plan (via doi.org)",
+          "sortIndex": 770
+        },
+        "subtitle": {
+          "label": "Subtitle of the project",
+          "sortIndex": 20
+        },
+        "tags": {
+          "help": "Tags",
+          "sortIndex": 800
+        },
+        "team": {
+          "sortIndex": 900,
+          "label": "Team"
+        },
+        "title": {
+          "label": "Name of the project",
+          "sortIndex": 10
+        },
         "updatedAt": {
           "label": "Updated at",
           "readonly": true,
           "sortIndex": 1003
         },
         "updatedBy": {
-          "label": "Created by",
+          "label": "Updated by",
           "readonly": true,
           "sortIndex": 1004
-        },
-        "primaryKey": {
-          "label": "Primary key",
-          "readonly": true,
-          "sortIndex": 1005
         }
       }
     },

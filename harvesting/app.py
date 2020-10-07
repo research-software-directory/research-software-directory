@@ -7,7 +7,6 @@ from releases import get_citations
 from github import sync_all as get_commits
 from zotero import get_mentions
 from oaipmh import list_records
-from corporate import get_projects
 from cache import cache_software, cache_projects
 
 
@@ -64,12 +63,6 @@ def harvest_mentions(since_version=None, keys=None):
     get_mentions(since_version=since_version, keys=keys)
 
 
-@harvest_group.command('projects')
-def harvest_projects():
-    """Harvest project descriptions from https://esciencecenter.nl/projects"""
-    get_projects()
-
-
 @harvest_group.command('citations', help='Harvest citation metadata using Zenodo, GitHub, and CITATION.cff files')
 @click.option('--dois', 'dois', type=str, help='Harvest only citation metadata associated with the supplied ' +
                                                'comma-separated string of DOIs. For example, \'--dois 10.5281/' +
@@ -97,13 +90,12 @@ def harvest_metadata(dois=None):
 
 @harvest_group.command('all')
 def harvest_all():
-    """Harvest commits, citations, mentions, projects, metadata"""
+    """Harvest commits, citations, mentions, metadata"""
     db = db_connect()
     dois = None
     get_commits()
     get_citations(db, dois)
     get_mentions(since_version=None)
-    get_projects()
     list_records(dois)
 
 

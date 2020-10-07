@@ -2,8 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema",
     "additionalProperties": false,
     "properties": {
-        "corporateUrl": {
+        "callUrl": {
             "format": "uri",
+            "pattern": "^https://doi.org/.*$",
+            "type": "string"
+        },
+        "codeUrl": {
+            "format": "uri",
+            "pattern": "^https://github.com/[^/]*$",
             "type": "string"
         },
         "createdAt": {
@@ -14,8 +20,40 @@
         "createdBy": {
             "type": "string"
         },
-        "image": {
+        "dataManagementPlanUrl": {
             "format": "uri",
+            "pattern": "^https://doi.org/.*$",
+            "type": "string"
+        },
+        "dateEnd": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "dateStart": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+        },
+        "description": {
+            "minLength": 100,
+            "type": "string"
+        },
+        "grantId": {
+            "type": "string"
+        },
+        "homeUrl": {
+            "format": "uri",
+            "pattern": "^https://.*$",
+            "type": "string"
+        },
+        "imageCaption": {
+            "minLength": 10,
+            "type": "string"
+        },
+        "imageUrl": {
+            "format": "uri",
+            "pattern": "^https://.*$",
             "type": "string"
         },
         "impact": {
@@ -30,6 +68,10 @@
             },
             "type": "array",
             "uniqueItems": true
+        },
+        "isPublished": {
+            "default": false,
+            "type": "boolean"
         },
         "output": {
             "items": {
@@ -47,11 +89,124 @@
         "primaryKey": {
             "$ref": "definitions.json/key/project"
         },
-        "principalInvestigator": {
+        "related": {
+            "additionalProperties": false,
+            "properties": {
+                "organizations": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/organization"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "projects": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/project"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "software": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "foreignKey": {
+                                "$ref": "definitions.json/key/software"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array",
+                    "uniqueItems": true
+                }
+            },
+            "required": [
+                "organizations",
+                "projects",
+                "software"
+            ],
+            "type": "object"
+        },
+        "softwareSustainabilityPlanUrl": {
+            "format": "uri",
+            "pattern": "^https://doi.org/.*$",
             "type": "string"
         },
         "subtitle": {
             "type": "string"
+        },
+        "tags": {
+            "items": {
+                "enum": [
+                    "Big data",
+                    "GPU",
+                    "High performance computing",
+                    "Image processing",
+                    "Inter-operability & linked data",
+                    "Machine learning",
+                    "Multi-scale & multi model simulations",
+                    "Optimized data handling",
+                    "Real time data analysis",
+                    "Text analysis & natural language processing",
+                    "Visualization",
+                    "Workflow technologies"
+                ],
+                "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "team": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "affiliations": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "foreignKey": {
+                                    "$ref": "definitions.json/key/organization"
+                                }
+                            }
+                        },
+                        "type": "array",
+                        "uniqueItems": true
+                    },
+                    "foreignKey": {
+                        "$ref": "definitions.json/key/person"
+                    },
+                    "role": {
+                        "enum": [
+                            "Contact person",
+                            "Principal investigator",
+                            "eScience Research Engineer",
+                            "Senior eScience Research Engineer"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "affiliations",
+                    "foreignKey",
+                    "role"
+                ],
+                "type": "object"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
         },
         "title": {
             "type": "string"
@@ -66,13 +221,22 @@
         }
     },
     "required": [
-        "corporateUrl",
+        "callUrl",
+        "codeUrl",
         "createdAt",
         "createdBy",
-        "image",
+        "dateEnd",
+        "dateStart",
+        "description",
+        "grantId",
+        "imageUrl",
+        "impact",
+        "isPublished",
+        "output",
         "primaryKey",
-        "principalInvestigator",
         "subtitle",
+        "tags",
+        "team",
         "title",
         "updatedAt",
         "updatedBy"
