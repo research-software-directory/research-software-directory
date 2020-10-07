@@ -8,7 +8,7 @@ class ReleaseScraperTest(unittest.TestCase):
         conceptdoi = "10.0000/FIXME"
         self.scraper = ReleaseScraper(conceptdoi)
         actual_message = self.scraper.message
-        expected_message = "error resolving doi."
+        expected_message = "error 404 resolving doi."
         self.assertEqual(expected_message, actual_message)
 
     def test_conceptdoi_is_not_a_zenodo_doi(self):
@@ -29,7 +29,7 @@ class ReleaseScraperTest(unittest.TestCase):
 
     def test_conceptdoi_no_releases_with_valid_cff(self):
         # use a doi that has no associated releases with valid CFF data
-        conceptdoi = "10.5281/zenodo.1193639"
+        conceptdoi = "10.5281/zenodo.996323"
         self.scraper = ReleaseScraper(conceptdoi)
         actual_message = self.scraper.message
         expected_message = "no valid CITATION.cff found in any release."
