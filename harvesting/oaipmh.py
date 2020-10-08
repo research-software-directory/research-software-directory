@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 def list_records(dois):
 
     oaipmh_cache_dir = os.path.join(os.getcwd(), 'oaipmh-cache', 'datacite4')
+    _safe_create_dir(oaipmh_cache_dir)
 
     oaipmh_elem = _build_oaipmh_elem()
 
@@ -134,11 +135,6 @@ def _get_datacite(url, headers, oaipmh_cache_dir, identifier):
     if response.status_code != requests.codes.ok:
         response.raise_for_status()
 
-    if os.path.isdir(oaipmh_cache_dir):
-        pass
-    else:
-        os.makedirs(oaipmh_cache_dir)
-
     fname = os.path.join(oaipmh_cache_dir, 'record-' + identifier + '.xml')
     with open(fname, 'w') as fid:
         fid.write(response.text)
@@ -146,3 +142,10 @@ def _get_datacite(url, headers, oaipmh_cache_dir, identifier):
     return Tree.fromstring(response.text) \
         .find("{http://www.openarchives.org/OAI/2.0/}GetRecord") \
         .find("{http://www.openarchives.org/OAI/2.0/}record")
+
+
+def _safe_create_dir(oaipmh_cache_dir):
+    if os.path.isdir(oaipmh_cache_dir):
+        pass
+    else:
+        os.makedirs(oaipmh_cache_dir)
