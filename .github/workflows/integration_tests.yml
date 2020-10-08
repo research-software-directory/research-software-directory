@@ -23,4 +23,5 @@ jobs:
           docker-compose build
       - name: Run tests
         run: |
+          source rsd-secrets.env
           docker-compose --file docker-compose.yml --file docker-compose.test.yml run test
