@@ -33,15 +33,13 @@ jobs:
     - name: Install packages
       run: |
         cd admin
-        npm install
+        yarn install
+    - name: Test
+      run: |
+        cd admin
+        yarn test
     - name: Build
       run: |
         cd admin
-        npm run build --if-present
-    - name: Build
-      run: |
-        cd admin
-        npm test
-      env:
-        CI: true
+        yarn build
 
