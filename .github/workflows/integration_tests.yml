@@ -1,0 +1,25 @@
+name: Integration Tests
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  tests:
+
+    runs-on: ${{ matrix.os }}    
+
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-latest]
+
+    steps:      - uses: actions/checkout@v2
+      - name: Build images
+        run: |
+        - cp rsd-secrets.env.example rsd-secrets.env
+        - source rsd-secrets.env
+        - docker-compose build
+      - name: Run tests
+        run: |
+          docker-compose --file docker-compose.yml --file docker-compose.test.yml run test  
