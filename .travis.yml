@@ -50,7 +50,7 @@ jobs:
     - stage: "docker-compose integration tests"
       before_install:
         - cp rsd-secrets.env.example rsd-secrets.env
-        - source rsd-secrets.env
+        - ln -s rsd-secrets.env .env
         - docker-compose build
       script:
         - docker-compose --file docker-compose.yml --file docker-compose.test.yml run test
