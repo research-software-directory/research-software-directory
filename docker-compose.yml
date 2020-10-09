@@ -20,15 +20,16 @@ services:
     build:
       context: ./auth-github
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-authentication
+    env_file: rsd-secrets.env
     environment:
       # user should not have to change the values of the following environment variables:
       - AUTH_CALLBACK_URL=/admin
       - AUTH_ROOT=/auth
       # user needs to assign values to the following environment variables:
-      - AUTH_GITHUB_CLIENT_ID
-      - AUTH_GITHUB_CLIENT_SECRET
-      - AUTH_GITHUB_ORGANIZATION
-      - JWT_SECRET
+      - AUTH_GITHUB_CLIENT_ID=${AUTH_GITHUB_CLIENT_ID:?Required variable AUTH_GITHUB_CLIENT_ID not set or empty}
+      - AUTH_GITHUB_CLIENT_SECRET=${AUTH_GITHUB_CLIENT_SECRET:?Required variable AUTH_GITHUB_CLIENT_SECRET not set or empty}
+      - AUTH_GITHUB_ORGANIZATION=${AUTH_GITHUB_ORGANIZATION:?Required variable AUTH_GITHUB_ORGANIZATION not set or empty}
+      - JWT_SECRET=${JWT_SECRET:?Required variable JWT_SECRET not set or empty}
     image: ${COMPOSE_PROJECT_NAME-rsd}/authentication
     logging:
       driver: "json-file"
@@ -42,6 +43,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-backend
     depends_on:
       - database
+    env_file: rsd-secrets.env
     environment:
       # user should not have to change the values of the following environment variables:
       - BACKEND_ROOT=/api
@@ -50,8 +52,8 @@ services:
       - DATABASE_PORT=27017
       - SCHEMAS_PATH=schemas
       # user needs to assign values to the following environment variables:
-      - DOMAIN
-      - JWT_SECRET
+      - DOMAIN=${DOMAIN:?Required variable DOMAIN not set or empty}
+      - JWT_SECRET=${JWT_SECRET:?Required variable JWT_SECRET not set or empty}
     image: ${COMPOSE_PROJECT_NAME-rsd}/backend
     logging:
       driver: "json-file"
@@ -65,13 +67,14 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-backup
     depends_on:
       - database
+    env_file: rsd-secrets.env
     environment:
       # user should not have to change the values of the following environment variables:
       - DATABASE_HOST=database
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
       # user needs to assign values to the following environment variables:
-      - BACKUP_CMD
+      - BACKUP_CMD=${BACKUP_CMD:?Required variable BACKUP_CMD not set or empty}
     image: ${COMPOSE_PROJECT_NAME-rsd}/backup
     logging:
       driver: "json-file"
@@ -137,6 +140,7 @@ services:
     depends_on:
       - backend
       - database
+    env_file: rsd-secrets.env
     environment:
       # user should not have to change the values of the following environment variables:
       - BACKEND_URL=http://backend:5001/api
@@ -144,11 +148,11 @@ services:
       - DATABASE_NAME=rsd
       - DATABASE_PORT=27017
       # user needs to assign values to the following environment variables:
-      - GITHUB_ACCESS_TOKEN
-      - JWT_SECRET
-      - ZENODO_ACCESS_TOKEN
-      - ZOTERO_API_KEY
-      - ZOTERO_LIBRARY
+      - GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN:?Required variable GITHUB_ACCESS_TOKEN not set or empty}
+      - JWT_SECRET=${JWT_SECRET:?Required variable JWT_SECRET not set or empty}
+      - ZENODO_ACCESS_TOKEN=${ZENODO_ACCESS_TOKEN:?Required variable ZENODO_ACCESS_TOKEN not set or empty}
+      - ZOTERO_API_KEY=${ZOTERO_API_KEY:?Required variable ZOTERO_API_KEY not set or empty}
+      - ZOTERO_LIBRARY=${ZOTERO_LIBRARY:?Required variable ZOTERO_LIBRARY not set or empty}
     image: ${COMPOSE_PROJECT_NAME-rsd}/harvesting
     logging:
       driver: "json-file"
@@ -163,12 +167,13 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME-rsd}-nginx-ssl
     depends_on:
       - reverse-proxy
+    env_file: rsd-secrets.env
     environment:
       # user should not have to change the values of the following environment variables:
       - SSL_FORWARD=http://reverse-proxy:80
       # user needs to assign values to the following environment variables:
-      - SSL_ADMIN_EMAIL
-      - SSL_DOMAINS
+      - SSL_ADMIN_EMAIL=${SSL_ADMIN_EMAIL:?Required variable SSL_ADMIN_EMAIL not set or empty}
+      - SSL_DOMAINS=${SSL_DOMAINS:?Required variable SSL_DOMAINS not set or empty}
     image: rsdnlesc/docker-term-letsencrypt
     logging:
       driver: "json-file"
