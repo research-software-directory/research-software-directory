@@ -3,19 +3,17 @@
 Obviously, this part of the documentation can lead to the **LOSS OF DATA**. Make
 sure you have copies of all data that you care about. 
 
-Assuming that ``docker images`` shows the ``rsd_`` images, and ``docker ps -a``
+Assuming that ``docker images`` shows the ``rsd/`` images, and ``docker ps -a``
 shows the ``rsd-`` docker containers, add the environment variables to the
 terminal:
 
 ```
-source rsd-secrets.env
-docker-compose up
+docker-compose up -d && docker-compose logs --follow
 ```
 
 In a new terminal, 
 
 ```
-source rsd-secrets.env
 docker-compose exec database /bin/sh
 ```
 
@@ -71,15 +69,14 @@ container with:
 exit 
 ```
 
-You should now be back in the original terminal, i.e. where you ran ``source
-rsd-secrets.env``. From there, copy the database dump files from inside the
+You should now be back in the original terminal. From there, copy the database dump files from inside the
 container to outside the container:
 
 ```
 docker cp rsd-database:/dump/rsd/ database/db-init/
 ```
 
-Move the data to the appropriate place (``/database/db-init``) and delete the ``rsd`` directory:
+Move the data to the appropriate place (``./database/db-init``) and delete the ``rsd`` directory:
 
 ```
 cd database/db-init
