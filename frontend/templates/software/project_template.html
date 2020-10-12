@@ -1,0 +1,33 @@
+{% extends "layout_template.html" %}
+{%- block head -%}
+    {{super()}}
+    <title>{{template_data.title}} | Research Software Directory</title>
+    <meta property="description" content="{{template_data.description}}" />
+    <meta property="og:title" content="{{template_data.title}}" />
+    <meta property="og:description" content="{{template_data.description}}" />
+    <meta property="og:url" content="https://www.research-software.nl/projects/{{template_data.id}}" />
+    <meta property="og:site_name" content="Research Software Directory" />
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/software_scripts.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
+{%- endblock -%}
+{%- block content -%}
+
+    <!-- omit the corporate home link -->
+    {% block corporate_home %}{% endblock %}
+    
+    <div>{{ template_data.title }}</div>
+    <div>{{ template_data.subtitle }}</div>
+    <img src="{{ template_data.imageUrl }}" width=50% >
+    <div>{{ template_data.imageCaption }}</div>
+    <div>{{ template_data.description }}</div>
+    <div>{{ template_data.callUrl }}</div>
+    <div>{{ template_data.grantId }}</div>
+    <div>{{ template_data.dateStart }}</div>
+    <div>{{ template_data.dateEnd }}</div>
+    <div>{{ template_data.codeUrl }}</div>
+    <div>{{ template_data.homeUrl }}</div>
+    <div>{{ template_data.dataManagementUrl }}</div>
+    <div>{{ template_data.softwareSustainabilityPlanUrl }}</div>
+
+{%- endblock -%}

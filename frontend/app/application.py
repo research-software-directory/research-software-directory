@@ -183,6 +183,40 @@ def cite(software_id):
     return flask.abort(404)
 
 
+@application.route('/projects/<project_id>')
+def project_page_template(project_id):
+    url = api_url + "/project_cache/%s" % project_id
+    project_dictionary = requests.get(url).json()
+    if "error" in project_dictionary:
+        return flask.redirect("/", code=302)
+
+    set_markdown(project_dictionary, ['description'])
+
+    mention_types = {
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'book': {"singular": "Book", "plural": "Books"},
+        'bookSection': {"singular": "Book section", "plural": "Book sections"},
+        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
+        'dataset': {"singular": "Data set", "plural": "Data sets"},
+        'document': {"singular": "Document", "plural": "Documents"},
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
+        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
+        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'report': {"singular": "Report", "plural": "Reports"},
+        'thesis': {"singular": "Thesis", "plural": "Theses"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'webpage': {"singular": "Web page", "plural": "Web pages"},
+    }
+
+    return flask.render_template('software/project_template.html',
+                                 project_id=project_id,
+                                 template_data=project_dictionary,
+                                 mention_types=mention_types)
+
+
 @application.route('/about')
 def about_template():
     return htmlmin.minify(flask.render_template('about_template.html'))
