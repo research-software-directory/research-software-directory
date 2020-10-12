@@ -29,9 +29,9 @@ jobs:
     - name: Install dependencies
       run: |
         cd backend
-        python -m pip install --upgrade pip
-        pip install pytest==4.* pytest-cov coveralls
-        pip install -r requirements.txt
+        python -m pip install --use-feature=2020-resolver --upgrade pip
+        pip install --use-feature=2020-resolver pytest==4.* pytest-cov coveralls
+        pip install --use-feature=2020-resolver -r requirements.txt
     - name: Test with pytest
       run: |
         cd backend

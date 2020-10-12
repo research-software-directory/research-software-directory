@@ -8,7 +8,7 @@ COPY ./requirements.txt /app
 WORKDIR /app
 
 RUN apk add --update build-base && \
-    pip install -r /app/requirements.txt && \
+    pip install --use-feature=2020-resolver -r /app/requirements.txt && \
     apk del build-base
 
 COPY . /app

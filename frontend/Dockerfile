@@ -6,7 +6,7 @@ WORKDIR /src
 
 COPY requirements.txt /src/
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install --use-feature=2020-resolver -r requirements.txt
 
 COPY . /src
 
