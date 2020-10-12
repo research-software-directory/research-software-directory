@@ -6,7 +6,7 @@ jobs:
     - stage: "Tests"
       name: "Admin tests"
       language: node_js
-      node_js: "12"
+      node_js: "14"
       cache:
         directories:
           - node_modules

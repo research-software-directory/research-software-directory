@@ -13,6 +13,7 @@
         - [Start the complete stack](#try-it-out-step-33-start-the-complete-stack-using-docker-compose)
         - [Verifying the local installation](#verifying-the-local-installation)
         - [Removing local state](#removing-local-state)
+    - [Services of the Research Software Directory](#services-of-the-research-software-directory)
     - [Customize your instance of the Research Software Directory](#customize-your-instance-of-the-research-software-directory)
         - [General workflow when making changes](#general-workflow-when-making-changes)
     - [Make your instance available to others by hosting it online (deployment)](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
@@ -84,8 +85,8 @@ here:
 - ``docker-compose``: https://docs.docker.com/compose/install/
 - ``git``: ``sudo apt install git`` (see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-You'll need a minimum of about 3 GB free disk space to 
-store the images, containers and volumes that we will be making. 
+You'll need a minimum of about 3 GB free disk space to
+store the images, containers and volumes that we will be making.
 
 Optionally, add yourself to the ``docker`` group following the instructions
 [here](https://docs.docker.com/install/linux/linux-postinstall/) (our
@@ -134,7 +135,7 @@ These environment variables are used for authenticating a user, such that they
 can be granted access to the admin interface to create, read, update, and delete
 items in the Research Software Directory.
 
-These are the steps to assign values: 
+These are the steps to assign values:
 
 1. Go to https://github.com/settings/developers
 1. Click the ``New OAuth App`` button
@@ -153,7 +154,7 @@ deployment
 1. Assign the ``Client ID`` as value for ``AUTH_GITHUB_CLIENT_ID`` and assign
 the ``Client Secret`` as value for ``AUTH_GITHUB_CLIENT_SECRET``
 
-#### ``AUTH_GITHUB_ORGANIZATION`` 
+#### ``AUTH_GITHUB_ORGANIZATION``
 
 Data is entered into the Research Software Directory via the admin interface.
 Set ``AUTH_GITHUB_ORGANIZATION`` to the name of the GitHub organization whose
@@ -164,7 +165,7 @@ Note: members should make their membership of the GitHub organization public. Go
 to
 [https://github.com/orgs/&lt;your-github-organization&gt;/people](https://github.com/orgs/your-github-organization/people)
 to see which users are a member of &lt;your-github-organization&gt;, and whether
-their membership is public or not. 
+their membership is public or not.
 
 #### ``GITHUB_ACCESS_TOKEN``
 
@@ -205,11 +206,11 @@ you can get one:
 1. https://www.zotero.org/settings/keys
 1. Click ``Create new private key``
 1. Type a description of the key, e.g. _API key to access library X on Zotero_
-1. Under ``Personal library``, make sure only ``Allow library access`` is checked. 
+1. Under ``Personal library``, make sure only ``Allow library access`` is checked.
 1. Under ``Default group permissions``, choose ``None``
 1. Under ``Specific groups``, check ``Per group permissions``
 1. Set ``Read only`` for the group that you want to harvest your references data from; verify that any other groups are set to ``None``
-1. Click the ``Save Key`` button at the bottom of the page. 
+1. Click the ``Save Key`` button at the bottom of the page.
 1. On the ``Key Created`` page, you will see a string of random character,
 something like ``bhCJSBCcjzptBvd3fvliYOoE``. This is the key; assign it to
 ``ZOTERO_API_KEY``
@@ -267,7 +268,7 @@ To do so, open a new terminal and run
 docker-compose exec harvesting python app.py harvest all
 ```
 
-You should see some feedback in the newly opened terminal. 
+You should see some feedback in the newly opened terminal.
 
 After the ``harvest all`` task finishes, several database collections should
 have been updated, but we still need to use the data from those separate
@@ -335,7 +336,7 @@ Which can be combined in the usual way, e.g.
 
 #### OAI-PMH
 
-- [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format. 
+- [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format.
 
 #### Harvesting schedule
 
@@ -397,6 +398,23 @@ commands results in the **LOSS OF DATA**.
     docker-compose down --rmi all -v
     ```
 
+## Services of the Research Software Directory
+
+The Research Software Directory is made of the following services
+
+- [frontend](frontend/): Python web application which renders HTML pages for normal visitors
+- [backend](backend/): Python web service for programmatic access to the directory data (software, projects, persons, organizations). Used by other services to fetch and set data.
+- [reverse-proxy](reverse-proxy/): Web server responsible for combining all web based services behind a single domain and port. Also hosts the static files of other services for best performance and caching.
+- [admin](admin/): React application for editing the data in the directory. Hosted by `reverse-proxy` service.
+- [auth-github](auth-github/): Protects the `admin` service by forcing authentication with a GitHub account and authorization using GitHub organization membership.
+- [nginx-ssl](https://hub.docker.com/r/rsdnlesc/docker-term-letsencrypt/): Responsible for encrypting (HTTPS) traffic from `reverse-proxy` service. Service is implemented in an [external repository](https://github.com/Tommos0/docker-term-letsencrypt).
+- [backup](backup/): For backup, copies database to an S3 bucket every day. Only runs when configured.
+- [database](database/): A Mongo database. Used by `backend` service to store data. Initializes with sample data when database is empty.
+- [graphs](graphs/): Web page which shows metrics of directory. Hosted by `reverse-proxy` service.
+- [harvesting](harvesting/): Scheduled jobs which periodicaly fetch external data. For example commits from GitHub and mentions from Zotero.
+
+All these services are started in the [Docker compose file](docker-compose.yml). All services, except `nginx-ssl` have their own directory in the repository.
+
 ## Customize your instance of the Research Software Directory
 
 
@@ -424,7 +442,7 @@ Then, learn how to add properties to the schema:
 1. [How do I add properties to the data schema?](docs/faq/how-do-i-add-properties-to-the-schema.md)
 
 Finally, learn how to empty the database, such that you can replace the sample
-data with your own: 
+data with your own:
 
 1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
 
@@ -445,16 +463,16 @@ After making your changes, here's how you get to see them:
 
     ```
     docker-compose ps
-           Name                     Command                State     Ports 
+           Name                     Command                State     Ports
     ----------------------------------------------------------------------
-    rsd-admin            sh -c rm -rf /build/* && c ...   Exit 0           
-    rsd-authentication   /bin/sh -c gunicorn --prel ...   Exit 0           
-    rsd-backend          /bin/sh -c gunicorn --prel ...   Exit 0           
-    rsd-database         /mongo.sh --bind_ip 0.0.0.0      Exit 137         
-    rsd-frontend         /bin/sh -c sh -c "mkdir -p ...   Exit 0           
-    rsd-nginx-ssl        /bin/sh -c /start.sh             Exit 137         
-    rsd-reverse-proxy    /bin/sh -c nginx -g 'daemo ...   Exit 137         
-    rsd-harvesting       /bin/sh -c crond -d7 -f          Exit 137  
+    rsd-admin            sh -c rm -rf /build/* && c ...   Exit 0
+    rsd-authentication   /bin/sh -c gunicorn --prel ...   Exit 0
+    rsd-backend          /bin/sh -c gunicorn --prel ...   Exit 0
+    rsd-database         /mongo.sh --bind_ip 0.0.0.0      Exit 137
+    rsd-frontend         /bin/sh -c sh -c "mkdir -p ...   Exit 0
+    rsd-nginx-ssl        /bin/sh -c /start.sh             Exit 137
+    rsd-reverse-proxy    /bin/sh -c nginx -g 'daemo ...   Exit 137
+    rsd-harvesting       /bin/sh -c crond -d7 -f          Exit 137
     ```
 
     Use ``docker-compose rm`` to delete container by their **service name**, e.g. the ``rsd-frontend`` container:
@@ -467,7 +485,7 @@ After making your changes, here's how you get to see them:
     ```
     docker images
     ```
-    
+
     Note that image names consist of the environment variable ``COMPOSE_PROJECT_NAME``, followed by ``/``,
     followed by the service name. Remove as follows:
 
@@ -581,7 +599,7 @@ follows:
 
 1. Open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
 the Amazon machine as follows:
-    
+
     ```bash
     cd <where rsd-secrets.env is>
     scp -i path-to-the-keyfile ./rsd-secrets.env \
@@ -733,7 +751,7 @@ location, username, and password; see explanation below):
 
 ## Notes on security
 
-The Research Software Directory is set up as a collection of services such as ``backend``, ``frontend``, ``harvesting``, etc. To avoid one service interfering with another, each service is dockerized. In a sense, docker is a bit like object oriented programming: you have your data and methods together, and other methods don't have access to data unless you specifically said that is OK. 
+The Research Software Directory is set up as a collection of services such as ``backend``, ``frontend``, ``harvesting``, etc. To avoid one service interfering with another, each service is dockerized. In a sense, docker is a bit like object oriented programming: you have your data and methods together, and other methods don't have access to data unless you specifically said that is OK.
 
 Let's say that an attacker succeeds in somehow escaping the containment of the docker environment. If you set up your instance on Amazon EC2/S3 as described in above, that may mean that they then have access to:
 
@@ -878,7 +896,7 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 
     $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
       ubuntu@35.156.38.208:/home/ubuntu/rsd/docker-volumes/cert .
-    
+
     $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
       ./cert \
       ubuntu@3.122.233.225:/home/ubuntu/rsd/docker-volumes/cert
@@ -970,4 +988,3 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 As a final step, use the Amazon EC2 management console to ``Stop`` (not
 ``Terminate``) the old instance. This way, the old instance can still be
 reactivated in case you need to get back to the old version.
-
