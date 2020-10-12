@@ -31,7 +31,7 @@ jobs:
         cd backend
         python -m pip install --upgrade pip
         pip install pytest==4.* pytest-cov coveralls
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install -r requirements.txt
     - name: Test with pytest
       run: |
         cd backend
