@@ -28,27 +28,27 @@ Software Directory if the software is deemed useful to others.
 ## What Research Software Directory can do for you
 - Improves findability of software packages
 - Includes metadata to help search engines understand what a given software package is about
-- Harvests data from Zotero, Zenodo, GitHub, as well as other sources, and presents software packages within their social and scientific context
+- Harvests data from [Zotero](http://zotero.org/), [Zenodo](https://zenodo.org/), GitHub, as well as other sources, and presents software packages within their social and scientific context
 - Promotes dissemination of software
 - Modular system that is meant to be customizable, e.g. with respect to branding, database schemas, an so on
 - Makes scientific impact visible in a qualitative way
 - Helps decision-making based on metrics and graphs
-- Provides metadata via OAI-PMH, the standard protocol for metadata harvesting
+- Provides metadata via [OAI-PMH](https://www.openarchives.org/pmh/), the standard protocol for metadata harvesting
 
 ## TL;DR
 ## Pointer to configuring
 ## Customization
 
 ## Use cases
-- Running an instance with your own data sources
-- Entering your own data
-- Changing the look and feel
-- Contributing (code)
-- Making a release
-- Finding your way: Research Software Directory services
-- Hosting your instance online
-  - instructions using docker-compose
-  - deploying to AWS
-  - backups
-  - updating the prod. instance
-- Security concerns
+- [Running an instance with your own data sources]()
+- [Entering your own data]()
+- [Changing the look and feel]()
+- [Contributing]()
+- [Making a release]()
+- [Finding your way: Research Software Directory services]()
+- [Hosting your instance online]()
+  - [instructions using docker-compose]()
+  - [deploying to AWS]()
+  - [backups]()
+  - [updating the prod. instance]()
+- [Security concerns]()
