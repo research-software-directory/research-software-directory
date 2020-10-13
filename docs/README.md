@@ -1,38 +1,3 @@
-[![Research Software Directory](https://img.shields.io/badge/rsd-Research%20Software%20Directory-00a3e3.svg)](https://www.research-software.nl/software/research-software-directory)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1154130.svg)](https://doi.org/10.5281/zenodo.1154130)
-
-| Build status |
-|---|
-| ![Admin tests](https://github.com/research-software-directory/research-software-directory/workflows/Admin%20tests/badge.svg) |
-| ![Frontend tests](https://github.com/research-software-directory/research-software-directory/workflows/Frontend%20tests/badge.svg) |
-| ![Backend tests](https://github.com/research-software-directory/research-software-directory/workflows/Backend%20tests/badge.svg) |
-| ![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg) |
-
-# Contents
-
-- [What is the Research Software Directory?](#what-is-the-research-software-directory)
-- [How do I enter data into an instance of the Research Software Directory?](#how-do-i-enter-data-into-an-instance-of-the-research-software-directory)
-- [Documentation for developers](#documentation-for-developers)
-    - [Try it out locally](#try-it-out-locally)
-        - [Fork and clone](#try-it-out-step-13-fork-and-clone)
-        - [Configure](#try-it-out-step-23-configure)
-        - [Start the complete stack](#try-it-out-step-33-start-the-complete-stack-using-docker-compose)
-        - [Verifying the local installation](#verifying-the-local-installation)
-        - [Removing local state](#removing-local-state)
-    - [Services of the Research Software Directory](#services-of-the-research-software-directory)
-    - [Customize your instance of the Research Software Directory](#customize-your-instance-of-the-research-software-directory)
-        - [General workflow when making changes](#general-workflow-when-making-changes)
-    - [Make your instance available to others by hosting it online (deployment)](#make-your-instance-available-to-others-by-hosting-it-online-deployment)
-        - [Configuring EC2](#configuring-ec2)
-        - [Configuring IAM](#configuring-iam)
-        - [Configuring S3](#configuring-s3)
-    - [Notes on security](#notes-on-security)
-- [Documentation for maintainers](#documentation-for-maintainers)
-    - [Visualizing ``docker-compose.yml``](#visualizing-docker-composeyml)
-    - [Making a release](#making-a-release)
-    - [Pulling in changes from upstream using a three-way merge](#pulling-in-changes-from-upstream-using-a-three-way-merge)
-    - [Updating a production instance](#updating-a-production-instance)
-
 # What is the Research Software Directory?
 
 Here is an example of what a product page may look like:
