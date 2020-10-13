@@ -60,7 +60,7 @@ Basically, the steps to get a copy of https://research-software.nl running local
 - [Entering your own data](/docs/instruction/README.md)
 - [Changing the look and feel](/docs/customize.md)
 - [Contributing](/.github/CONTRIBUTING.md)
-- [Making a release](/docs/maintaining.md)
+- [Maintaining](/docs/maintaining.md)
 - [Finding your way: Research Software Directory services](/docs/services.md)
 - [Hosting your instance online](/docs/hosting.md)
 - [Security concerns](/docs/security.md)
