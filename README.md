@@ -34,7 +34,31 @@ Software Directory if the software is deemed useful to others.
 - Helps decision-making based on metrics and graphs
 - Provides metadata via [OAI-PMH](https://www.openarchives.org/pmh/), the standard protocol for metadata harvesting
 
-## TL;DR
+## TL;DR - Try it out locally
+
+Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
+
+1. Fork this repo to your own GitHub organization or GitHub profile and clone it
+1. Configure
+1. Start the complete stack using ``docker-compose``
+
+For details, see below.
+
+Make sure you have a Linux computer with ``docker``, ``docker-compose``, and
+``git`` installed. Other operating systems might work but we develop exclusively
+on Linux based systems. You can find the installation instructions for each tool
+here:
+- ``docker``: https://docs.docker.com/install/
+- ``docker-compose``: https://docs.docker.com/compose/install/
+- ``git``: ``sudo apt install git`` (see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+You'll need a minimum of about 3 GB free disk space to
+store the images, containers and volumes that we will be making.
+
+Optionally, add yourself to the ``docker`` group following the instructions
+[here](https://docs.docker.com/install/linux/linux-postinstall/) (our
+documentation assumes that you did).
+
 
 ## Pointer to configuring
 ## Customization

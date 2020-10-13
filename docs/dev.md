@@ -1,32 +1,9 @@
 
 # Documentation for developers
 
-## Try it out locally
 
-Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
 
-1. Fork this repo to your own GitHub organization or GitHub profile and clone it
-1. Configure
-1. Start the complete stack using ``docker-compose``
-
-For details, see below.
-
-Make sure you have a Linux computer with ``docker``, ``docker-compose``, and
-``git`` installed. Other operating systems might work but we develop exclusively
-on Linux based systems. You can find the installation instructions for each tool
-here:
-- ``docker``: https://docs.docker.com/install/
-- ``docker-compose``: https://docs.docker.com/compose/install/
-- ``git``: ``sudo apt install git`` (see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-
-You'll need a minimum of about 3 GB free disk space to
-store the images, containers and volumes that we will be making.
-
-Optionally, add yourself to the ``docker`` group following the instructions
-[here](https://docs.docker.com/install/linux/linux-postinstall/) (our
-documentation assumes that you did).
-
-### Try it out, step 1/3: Fork and clone
+## Try it out, step 1/3: Fork and clone
 
 Click the ``Fork`` button on
 https://github.com/research-software-directory/research-software-directory/ to
@@ -36,7 +13,7 @@ fork to your own GitHub organization or GitHub profile, then:
 git clone https://github.com/<your-github-organization>/research-software-directory.git
 ```
 
-### Try it out, step 2/3: Configure
+## Try it out, step 2/3: Configure
 
 The research software directory is configured using a file with environment
 variables called `rsd-secrets.env`. An example config file
@@ -58,12 +35,12 @@ The config file has some placeholder values (`changeme`); they must be set by
 editing the `rsd-secrets.env` file. Below are instructions on how to get the
 different tokens and keys.
 
-#### ``COMPOSE_PROJECT_NAME``
+### ``COMPOSE_PROJECT_NAME``
 
 This is a prefix that docker-compose uses in naming its images, containers, and
 volumes in order to avoid name clashes. Its default value is ``rsd``.
 
-#### ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``
+### ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``
 
 These environment variables are used for authenticating a user, such that they
 can be granted access to the admin interface to create, read, update, and delete
@@ -88,7 +65,7 @@ deployment
 1. Assign the ``Client ID`` as value for ``AUTH_GITHUB_CLIENT_ID`` and assign
 the ``Client Secret`` as value for ``AUTH_GITHUB_CLIENT_SECRET``
 
-#### ``AUTH_GITHUB_ORGANIZATION``
+### ``AUTH_GITHUB_ORGANIZATION``
 
 Data is entered into the Research Software Directory via the admin interface.
 Set ``AUTH_GITHUB_ORGANIZATION`` to the name of the GitHub organization whose
@@ -101,7 +78,7 @@ to
 to see which users are a member of &lt;your-github-organization&gt;, and whether
 their membership is public or not.
 
-#### ``GITHUB_ACCESS_TOKEN``
+### ``GITHUB_ACCESS_TOKEN``
 
 To query GitHub's API programmatically, we need an access token. Here's how you can get one:
 
@@ -111,7 +88,7 @@ To query GitHub's API programmatically, we need an access token. Here's how you 
 1. Verify that all scopes are unchecked
 1. Use token as value for ``GITHUB_ACCESS_TOKEN``
 
-#### ``ZENODO_ACCESS_TOKEN``
+### ``ZENODO_ACCESS_TOKEN``
 
 To query Zenodo's API programmatically, we need an access token. Here's how you can get one:
 
@@ -121,7 +98,7 @@ To query Zenodo's API programmatically, we need an access token. Here's how you 
 1. Click Create
 1. Fill in the long string you get as value for ``ZENODO_ACCESS_TOKEN``
 
-#### ``ZOTERO_LIBRARY``
+### ``ZOTERO_LIBRARY``
 
 When getting the references data from Zotero, this environment variable
 determines which library on Zotero is going to be harvested. Go to
@@ -132,7 +109,7 @@ https://www.zotero.org/groups/1689348/netherlands_escience_center/items, where
 ``1689348`` is the value you need to assign to ``ZOTERO_LIBRARY``.
 
 
-#### ``ZOTERO_API_KEY``
+### ``ZOTERO_API_KEY``
 
 To query Zotero's API programmatically, we need an API key. Here's how
 you can get one:
@@ -149,7 +126,7 @@ you can get one:
 something like ``bhCJSBCcjzptBvd3fvliYOoE``. This is the key; assign it to
 ``ZOTERO_API_KEY``
 
-#### ``BACKUP_CMD``
+### ``BACKUP_CMD``
 
 This environment variable is used for making a daily backup of the database with
 software, people, projects, etc. As it is typically only used during deployment,
@@ -158,7 +135,7 @@ deployment
 [below](#make-your-instance-available-to-others-by-hosting-it-online-deployment).
 
 
-#### ``JWT_SECRET``
+### ``JWT_SECRET``
 
 <!-- This environment variable is used for ... TODO -->
 
@@ -171,14 +148,14 @@ openssl rand -base64 32
 
 Assign the result to ``JWT_SECRET``.
 
-#### ``DOMAIN``, ``SSL_ADMIN_EMAIL``, and ``SSL_DOMAINS``
+### ``DOMAIN``, ``SSL_ADMIN_EMAIL``, and ``SSL_DOMAINS``
 
 These environment variables are not relevant when you're running your instance
 locally. Leave their values like they are in ``rsd-secrets.env.example`` for the
 time being. We will revisit them in the section about deployment
 [below](#make-your-instance-available-to-others-by-hosting-it-online-deployment).
 
-### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
+## Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
 ```bash
 # build all containers:
@@ -226,20 +203,20 @@ rsd-harvesting     | 2018-07-11 10:30:03,149 cache [INFO] processing software sv
 
 ```
 
-### Verifying the local installation
+## Verifying the local installation
 
 Open a web browser to verify that everything works as it should. Below are some things to check:
 
-#### Frontend
+### Frontend
 
 - [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
 - [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
 
-#### Admin interface
+### Admin interface
 
 - [``http://localhost/admin``](http://localhost/admin) should show the Admin interface to the local instance of the Research Software Directory
 
-#### API
+### API
 
 - [``http://localhost/api/mention``](http://localhost/api/mention) should show a JSON representation of all mentions in the local instance of the Research Software Directory
 - [``http://localhost/api/organization``](http://localhost/api/organization) should show a JSON representation of all organizations in the local instance of the Research Software Directory
@@ -260,23 +237,23 @@ Which can be combined in the usual way, e.g.
 
 - [``http://localhost/api/mention?limit=3&direction=desc&sort=updatedAt``](http://localhost/api/mention?limit=3&direction=desc&sort=updatedAt) should return the 3 mentions that were updated most recently.
 
-#### Citation
+### Citation
 
 - [``http://localhost/cite/xenon?version=3.0.4&format=bibtex``](http://localhost/cite/xenon?version=3.0.4&format=bibtex) should return a reference manager file for software package Xenon version 3.0.4 in BibTeX format.
 
-#### Graphs / metrics / insights
+### Graphs / metrics / insights
 
 - [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
 
-#### OAI-PMH
+### OAI-PMH
 
 - [``http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4``](http://localhost/oai-pmh?verb=ListRecords&metadataPrefix=datacite4) should return an XML document with metadata about all the packages that are in the local instance of the Research Software Directory, in DataCite 4 format.
 
-#### Harvesting schedule
+### Harvesting schedule
 
 - [``http://localhost/schedule``](http://localhost/schedule) should return the cron job describing when each harvester is scheduled to run.
 
-### Removing local state
+## Removing local state
 
 The Research Software Directory stores its state in a couple of places. While
 doing development, sometimes you need to clear the local state, therefore this
