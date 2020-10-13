@@ -119,10 +119,12 @@ def _get_redirect(software):
 
 def _get_zenodo_identifier(redirect_url, headers):
     response = requests.head(redirect_url, headers=headers)
-    if int(response.headers.get('x-ratelimit-remaining', -1)) < 10:
+    while rate_limit_reached(response):
         # throttle requests
         logger.info("Sleeping for 60 seconds to avoid HttpError 429")
         time.sleep(60)
+        response = requests.head(redirect_url, headers=headers)
+
     if response.status_code == 302:
         return response.next.url.split('/')[-1:][0]
     elif response.status_code == 429:
