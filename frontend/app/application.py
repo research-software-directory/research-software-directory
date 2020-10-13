@@ -46,7 +46,7 @@ def serialize_software_list(swlist):
 
 
 def get_mentions(software_list):
-    # 1. collect all related mentions from the individual software pages into 1 
+    # 1. collect all related mentions from the individual software pages into 1
     #    dict, using the database's primary key as key to ensure each item is unique
     # 2. omit items from the list that are in the future (because of the date somebody entered)
     # 3. sort the list by date
@@ -183,6 +183,26 @@ def cite(software_id):
     return flask.abort(404)
 
 
+def project_status(start_str, end_str):
+    start = str_to_datetime(start_str).replace(tzinfo=None)
+    end = str_to_datetime(end_str).replace(tzinfo=None)
+    today = datetime.now().replace(tzinfo=None)
+    if end < today:
+        return {
+            'status': 'Completed',
+            'progress': 1
+        }
+    elif start > today:
+        return {
+            'status': 'Queued',
+            'progress': 0
+        }
+    else:
+        return {
+            'status': 'Running',
+            'progress': (today - start ) / (end - start)
+        }
+
 @application.route('/projects/<project_id>')
 def project_page_template(project_id):
     url = api_url + "/project_cache/%s" % project_id
@@ -211,9 +231,12 @@ def project_page_template(project_id):
         'webpage': {"singular": "Web page", "plural": "Web pages"},
     }
 
-    return flask.render_template('software/project_template.html',
+    status = project_status(project_dictionary['dateStart'], project_dictionary['dateEnd'])
+
+    return flask.render_template('project/project_template.html',
                                  project_id=project_id,
                                  template_data=project_dictionary,
+                                 status=status,
                                  mention_types=mention_types)
 
 
@@ -332,4 +355,3 @@ def oai_pmh():
         d = os.path.join(oaipmh_cache_dir,'datacite4')
         f = 'record-' + identifier.split(':')[-1] + '.xml'
         return flask.send_from_directory(d, f, as_attachment=False)
-

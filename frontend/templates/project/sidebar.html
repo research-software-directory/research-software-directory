@@ -1,0 +1,103 @@
+<h4>Project information</h4>
+<div class="fund">
+    <h5>Funded under</h5>
+    <a href="{{ template_data.callUrl }}">TODO call label</a>
+    <div class="grant">Grant ID: {{ template_data.grantId }}</div>
+</div>
+<div class="status">
+    <h5>Status</h5>
+    <span>{{status.status}}</span>
+    <div>
+        Start date: {{template_data.dateStart | human_date_filter }}
+    </div>
+    <div>
+        End date: {{template_data.dateEnd | human_date_filter }}
+    </div>
+    <span>Progress: {{status.progress}}</span>
+</div>
+<div class="partners">
+    <h5>Partners</h5>
+    {% for organization in (template_data.related.organizations | sort(attribute='foreignKey.name')) %}
+        {% set org = organization.foreignKey %}
+        <div class="organisation">
+            {% if org.website %}
+                <a href="{{org.website}}" target="_blank">
+            {% endif %}
+            {% if org.logo and org.logo.data %}
+                <img
+                    src="data:{{org.logo.mimeType}};base64,{{org.logo.data}}" alt=""
+                />
+            {% else %}
+                {{org.name}}
+            {% endif %}
+            {% if org.website %}
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<div class="links">
+    <h5>Project links</h5>
+    <ul>
+    {% if template_data.homeUrl %}
+    <li><a href="{{template_data.homeUrl}}">Project website</a></li>
+    {% endif %}
+    {% if template_data.codeUrl %}
+    <li><a href="{{template_data.codeUrl}}">GitHub organisation</a></li>
+    {% endif %}
+    {% if template_data.dataManagementUrl %}
+    <li><a href="{{template_data.dataManagementUrl}}">Data management plan</a></li>
+    {% endif %}
+    {% if template_data.softwareSustainabilityPlanUrl %}
+    <li><a href="{{template_data.softwareSustainabilityPlanUrl}}">Software sustainability plan</a></li>
+    {% endif %}
+    </ul>
+</div>
+<div>
+    <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+    {% if template_data.tags %}
+    <ul class="tags">
+        {% for tag in template_data.tags %}
+            <li class="bg-light">{{tag}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <i>No tags available</i>
+    {% endif%}
+</div>
+{% set contactPerson = template_data.contributors | selectattr("isContactPerson", "equalto", True) | first %}
+{% if contactPerson %}
+    <div class="col col-1-3 contact_card">
+        <div class="contact_card_header">
+            Contact person
+        </div>
+        <div class="contact_card_content">
+            <div class="contributor_picture">
+                <img
+                    {%- if contactPerson.foreignKey.avatar and contactPerson.foreignKey.avatar.data %}
+                    {% set image = contactPerson.foreignKey.avatar %}
+                        src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
+                    {% else %}
+                        src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
+                    {% endif %}
+                >
+            </div>
+            <div class="contributor-info">
+                <div class="contributor_name">
+                    {{contactPerson.foreignKey | human_name_filter }}
+                </div>
+                <div class="contributor_organisation">
+                    {% if contactPerson.affiliations %}
+                    {{contactPerson.affiliations[0].foreignKey.name}}
+                    {% endif %}
+                </div>
+                <div class="contributor_email">
+                    <a href="mailto:{{contactPerson.foreignKey.emailAddress}}">
+                        <svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                        Mail {{contactPerson.foreignKey.givenNames}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
