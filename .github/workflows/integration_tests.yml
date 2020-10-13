@@ -4,6 +4,8 @@ on:
   push:
   pull_request:
     types: [opened, reopened]
+  schedule:
+    - cron:  '0 4 * * *'
 
 jobs:
   tests:
