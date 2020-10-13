@@ -67,3 +67,13 @@ def db_connect():
                                connectTimeoutMS=100,
                                serverSelectionTimeoutMS=100
                                )[os.environ.get('DATABASE_NAME')]
+
+def rate_limit_reached(requests_response):
+    try:
+        rate_limit_check = requests_response.headers.get('x-ratelimit-remaining')
+        if int(rate_limit_check) < 10: return True
+        else: return False
+    except TypeError: 
+        return True
+    except Exception as e: 
+        return True

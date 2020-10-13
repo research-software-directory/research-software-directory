@@ -18,7 +18,8 @@ The idea is that institutes for whom research software is an important output, c
 
 For each software package, a _product page_ can be created on the Research Software Directory if the software is deemed useful to others.
 
-## What Research Software Directory can do for you
+## What the Research Software Directory can do for you
+
 - Improves findability of software packages
 - Includes metadata to help search engines understand what a given software package is about
 - Harvests data from [Zotero](http://zotero.org/), [Zenodo](https://zenodo.org/), GitHub, as well as other sources, and presents software packages within their social and scientific context
@@ -34,7 +35,7 @@ For each software package, a _product page_ can be created on the Research Softw
 
 - You'll need a minimum of about **3 GB free disk space** to
 store the images, containers and volumes that we will be making.
-- Make sure you have a **Linux** system with
+- Make sure you have a Linux system with
   - [docker](https://docs.docker.com/install/)
   - [docker-compose](https://docs.docker.com/compose/install/)
   - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -45,17 +46,15 @@ Basically, the steps to get a copy of https://research-software.nl running local
 
 1. Fork this repo to your own GitHub organization or GitHub profile and clone it
 1. Start the complete stack using
+
     ```shell
     cp rsd-secrets.env.example .env
-    ```
-    ```shell
     docker-compose build
-    ```
-    ```shell
     docker-compose up
     ```
 
 ## Use cases
+
 - [Running an instance with your own data sources](/docs/configure.md)
 - [Entering your own data](/docs/instruction/README.md)
 - [Changing the look and feel](/docs/customize.md)

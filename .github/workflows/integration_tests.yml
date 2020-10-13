@@ -4,6 +4,8 @@ on:
   push:
   pull_request:
     types: [opened, reopened]
+  schedule:
+    - cron:  '0 4 * * *'
 
 jobs:
   tests:
@@ -16,12 +18,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Create the .env file using the example .env file
+        run: cp rsd-secrets.env.example .env
       - name: Build images
-        run: |
-          cp rsd-secrets.env.example rsd-secrets.env
-          source rsd-secrets.env
-          docker-compose build
+        run: docker-compose build
       - name: Run tests
-        run: |
-          source rsd-secrets.env
-          docker-compose --file docker-compose.yml --file docker-compose.test.yml run test
+        run: docker-compose --file docker-compose.yml --file docker-compose.test.yml run test

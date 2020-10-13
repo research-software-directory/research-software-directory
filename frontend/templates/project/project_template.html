@@ -15,19 +15,11 @@
 
     <!-- omit the corporate home link -->
     {% block corporate_home %}{% endblock %}
-    
-    <div>{{ template_data.title }}</div>
-    <div>{{ template_data.subtitle }}</div>
-    <img src="{{ template_data.imageUrl }}" width=50% >
-    <div>{{ template_data.imageCaption }}</div>
-    <div>{{ template_data.description }}</div>
-    <div>{{ template_data.callUrl }}</div>
-    <div>{{ template_data.grantId }}</div>
-    <div>{{ template_data.dateStart }}</div>
-    <div>{{ template_data.dateEnd }}</div>
-    <div>{{ template_data.codeUrl }}</div>
-    <div>{{ template_data.homeUrl }}</div>
-    <div>{{ template_data.dataManagementUrl }}</div>
-    <div>{{ template_data.softwareSustainabilityPlanUrl }}</div>
+
+    {% include 'project/introduction.html' %}
+    {% include 'project/outputimpact.html' %}
+    {% include 'project/team.html' %}
+    {% include 'project/related_projects.html' %}
+    {% include 'software/related_tools.html' %}
 
 {%- endblock -%}
