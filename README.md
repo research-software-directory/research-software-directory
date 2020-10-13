@@ -45,7 +45,7 @@ Software Directory if the software is deemed useful to others.
 - [Changing the look and feel]()
 - [Contributing]()
 - [Making a release]()
-- [Finding your way: Research Software Directory services]()
+- [Finding your way: Research Software Directory services](/docs/services.md)
 - [Hosting your instance online]()
   - [instructions using docker-compose]()
   - [deploying to AWS]()
