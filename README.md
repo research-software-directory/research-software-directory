@@ -73,6 +73,18 @@ The process is described [here](/docs/instruction/README.md).
 
 # Documentation for developers
 
+## Try it out in locally in read only mode
+
+To quickly get a running Research Software Directory up and running on your local machine do the following
+
+```shell
+git clone https://github.com/research-software-directory/research-software-directory.git .
+cp rsd-secrets.env.example .env
+docker-compose up --build
+```
+
+Goto [https://localhost](https://localhost) (disregard certificate warning) to see the Research Software Directory website. Bringing the website up like this you can read all non-authenticated pages, but not edit software or have automatic updates. To bring up the website with all bells & whistles read on in the next chapters.
+
 ## Try it out locally
 
 Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
