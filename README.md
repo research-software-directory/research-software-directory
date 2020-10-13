@@ -8,9 +8,9 @@
 | ![Backend tests](https://github.com/research-software-directory/research-software-directory/workflows/Backend%20tests/badge.svg) |
 | ![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg) |
 
-# Contents
+# Research Software Directory
 
-## What is the Research Software Directory?
+## What is it?
 
 The Research Software Directory is a content management system that is tailored to software.
 
