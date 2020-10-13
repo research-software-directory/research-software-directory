@@ -60,12 +60,12 @@ Basically, the steps to get a copy of https://research-software.nl running local
     ```
 
 ## Customization
-See [custimize.md](/docs/customize.md)
+See [customize.md](/docs/customize.md)
 
 ## Use cases
 - [Running an instance with your own data sources]()
 - [Entering your own data](/docs/instruction/README.md)
-- [Changing the look and feel]()
+- [Changing the look and feel](/docs/customize.md)
 - [Contributing]()
 - [Making a release]()
 - [Finding your way: Research Software Directory services](/docs/services.md)
