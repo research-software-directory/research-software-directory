@@ -1,4 +1,4 @@
-## Customize your instance of the Research Software Directory
+# Customize your instance of the Research Software Directory
 
 
 Let's say you followed the steps above, and have a running instance of the
@@ -30,7 +30,7 @@ data with your own:
 1. [How do I empty the database?](docs/faq/how-do-i-empty-the-database.md)
 
 
-### General workflow when making changes
+## General workflow when making changes
 
 After making your changes, here's how you get to see them:
 
