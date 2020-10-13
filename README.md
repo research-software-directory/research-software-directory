@@ -110,24 +110,17 @@ git clone https://github.com/<your-github-organization>/research-software-direct
 
 ### Try it out, step 2/3: Configure
 
-The research software directory is configured using a file with environment
-variables called `rsd-secrets.env`. An example config file
+The Research Software Directory is configured using a file containing environment
+variables. Due to how `docker-compose` works, this file must be named `.env`. An example config file
 (`rsd-secrets.env.example`) is available, use it as a starting point.
 
 ```bash
 cd research-software-directory
-cp rsd-secrets.env.example rsd-secrets.env
-```
-
-The `docker-compose` command looks for a configuration file called `.env`. Create
-a symbolic link  named `.env` and let point to `rsd-secrets.env`:
-
-```bash
-ln -s rsd-secrets.env .env
+cp rsd-secrets.env.example .env
 ```
 
 The config file has some placeholder values (`changeme`); they must be set by
-editing the `rsd-secrets.env` file. Below are instructions on how to get the
+editing the `.env` file. Below are instructions on how to get the
 different tokens and keys.
 
 #### ``COMPOSE_PROJECT_NAME``
@@ -603,18 +596,13 @@ follows:
     ```
     (Note the dot at the end)
 
-1. Open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
+1. Open a new terminal and secure-copy your local ``.env`` file to
 the Amazon machine as follows:
 
     ```bash
-    cd <where rsd-secrets.env is>
-    scp -i path-to-the-keyfile ./rsd-secrets.env \
-    ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
-    ```
-1. On the remote machine, create the symlink named `.env` and have it point to the secrets file:
-
-    ```bash
-    ln -s rsd-secrets.env .env
+    cd <where .env is>
+    scp -i path-to-the-keyfile ./.env \
+    ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/.env
     ```
 
 1. Follow the instructions
@@ -622,7 +610,7 @@ the Amazon machine as follows:
 a second key pair ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``.
 However, let this one's ``Authorization callback url`` be ``https://`` plus your
 instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
-``rsd-secrets.env`` according to the new client ID and secret.
+``.env`` according to the new client ID and secret.
 1. Start the Research Software Directory instance with:
 
     ```bash
@@ -656,7 +644,7 @@ services available that you can use for this, e.g. https://noip.com. Here's how:
 1. Fill in the IP address of your Amazon machine. In my case,
 ``https://myrsd.ddns.net`` will serve as an alias for ``https://3.92.182.176``
 1. Once you have the (sub)domain name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
-``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
+``.env`` on your Amazon instance (leave out the ``https://`` part, as
 well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
 have).
 1. Fill in your e-mail for ``SSL_ADMIN_EMAIL``.
@@ -746,7 +734,7 @@ location, username, and password; see explanation below):
     # ssh into the remote machine
     cd rsd
     docker-compose stop
-    # update BACKUP_CMD by editing the rsd-secrets.env file
+    # update BACKUP_CMD by editing the .env file
     docker-compose up -d
     ```
     Wait until the Research Software Directory is up and running again, then
@@ -763,7 +751,7 @@ Let's say that an attacker succeeds in somehow escaping the containment of the d
 
 1. the Research Software Directory software
 1. the collections in the Mongo database
-1. the plaintext keys that are stored in ``rsd-secrets.env``
+1. the plaintext keys that are stored in ``.env``
 
 Note that it does not mean they will have access to any of the rest of your institute's web site, since that content is hosted on physically different machines, in a physically different location, with different networks, different credentials, and probably a login procedure that is more challenging than just username/password.
 
@@ -877,23 +865,16 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     - Reuse the existing security group.
     - Reuse the existing key pair.
     - Verify that you're allowed to ssh into the new instance.
-1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
+1. Transfer the ``.env`` file from the old instance to the new instance.
 
     ```shell
     $ cd $(mktemp -d)
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/.env .
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ./rsd-secrets.env \
-      ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
+      ./.env \
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/.env
     ```
-1. On the remote, create the symlink `.env` and let it point to `rsd-secrets.env`:
-
-    ```shell
-    cd ~/rsd
-    ln -s rsd-secrets.env .env
-    ```
-
 1. Transfer files related to SSL certificates from the old instance to the new instance.
 
     ```shell
