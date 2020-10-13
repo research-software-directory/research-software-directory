@@ -44,8 +44,10 @@ store the images, containers and volumes that we will be making.
 Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
 
 1. Fork this repo to your own GitHub organization or GitHub profile and clone it
-1. [Configure](/docs/configure.md)
 1. Start the complete stack using
+    ```shell
+    cp rsd-secrets.env.example .env
+    ```
     ```shell
     docker-compose build
     ```
@@ -57,15 +59,11 @@ Basically, the steps to get a copy of https://research-software.nl running local
 See [customize.md](/docs/customize.md)
 
 ## Use cases
-- [Running an instance with your own data sources]()
+- [Running an instance with your own data sources](/docs/configure.md)
 - [Entering your own data](/docs/instruction/README.md)
 - [Changing the look and feel](/docs/customize.md)
 - [Contributing]()
 - [Making a release]()
 - [Finding your way: Research Software Directory services](/docs/services.md)
 - [Hosting your instance online](/docs/hosting.md)
-  - [instructions using docker-compose]()
-  - [deploying to AWS]()
-  - [backups]()
-  - [updating the prod. instance]()
 - [Security concerns](/docs/security.md)
