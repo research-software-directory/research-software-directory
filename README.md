@@ -46,7 +46,7 @@ Software Directory if the software is deemed useful to others.
 - [Contributing]()
 - [Making a release]()
 - [Finding your way: Research Software Directory services](/docs/services.md)
-- [Hosting your instance online]()
+- [Hosting your instance online](/docs/hosting.md)
   - [instructions using docker-compose]()
   - [deploying to AWS]()
   - [backups]()
