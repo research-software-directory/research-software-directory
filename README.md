@@ -42,7 +42,7 @@ store the images, containers and volumes that we will be making.
 
 ### Instructions
 
-Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
+To quickly get a running Research Software Directory up and running on your local machine do the following
 
 1. Fork this repo to your own GitHub organization or GitHub profile and clone it
 1. Start the complete stack using
@@ -52,6 +52,9 @@ Basically, the steps to get a copy of https://research-software.nl running local
     docker-compose build
     docker-compose up
     ```
+Go to [http://localhost](http://localhost) (disregard certificate warning) to see the Research Software Directory
+website. You should be able to see all non-authenticated pages, but editing data or harvesting data from external
+sources won't work. To bring up the website with all bells and whistles, read on in the next chapters.
 
 ## Use cases
 
