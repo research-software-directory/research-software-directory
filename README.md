@@ -55,15 +55,12 @@ Basically, the steps to get a copy of https://research-software.nl running local
     docker-compose up
     ```
 
-## Customization
-See [customize.md](/docs/customize.md)
-
 ## Use cases
 - [Running an instance with your own data sources](/docs/configure.md)
 - [Entering your own data](/docs/instruction/README.md)
 - [Changing the look and feel](/docs/customize.md)
-- [Contributing]()
-- [Making a release]()
+- [Contributing](/.github/CONTRIBUTING.md)
+- [Making a release](/docs/maintaining.md)
 - [Finding your way: Research Software Directory services](/docs/services.md)
 - [Hosting your instance online](/docs/hosting.md)
 - [Security concerns](/docs/security.md)
