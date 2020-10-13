@@ -10,7 +10,6 @@
 
 # Contents
 
-
 ## What is the Research Software Directory?
 
 The Research Software Directory is a content management system that is tailored
@@ -36,6 +35,7 @@ Software Directory if the software is deemed useful to others.
 - Provides metadata via [OAI-PMH](https://www.openarchives.org/pmh/), the standard protocol for metadata harvesting
 
 ## TL;DR
+
 ## Pointer to configuring
 ## Customization
 
