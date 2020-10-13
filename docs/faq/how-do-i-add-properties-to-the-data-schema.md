@@ -89,11 +89,9 @@ docker ps -a
 
 Start a new terminal and go to the project's root directory.
 
-Start a shell in the ``database`` container, as follows (don't forget to
-``source`` the environment variables):
+Start a shell in the ``database`` container, as follows:
 
 ```
-source rsd-secrets.env
 docker-compose exec database /bin/sh
 ```
 

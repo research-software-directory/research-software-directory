@@ -1,6 +1,12 @@
 [![Research Software Directory](https://img.shields.io/badge/rsd-Research%20Software%20Directory-00a3e3.svg)](https://www.research-software.nl/software/research-software-directory)
-[![Build Status](https://travis-ci.org/research-software-directory/research-software-directory.svg?branch=master)](https://travis-ci.org/research-software-directory/research-software-directory)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1154130.svg)](https://doi.org/10.5281/zenodo.1154130)
+
+| Build status |
+|---|
+| ![Admin tests](https://github.com/research-software-directory/research-software-directory/workflows/Admin%20tests/badge.svg) |
+| ![Frontend tests](https://github.com/research-software-directory/research-software-directory/workflows/Frontend%20tests/badge.svg) |
+| ![Backend tests](https://github.com/research-software-directory/research-software-directory/workflows/Backend%20tests/badge.svg) |
+| ![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg) |
 
 # Contents
 
@@ -104,17 +110,17 @@ git clone https://github.com/<your-github-organization>/research-software-direct
 
 ### Try it out, step 2/3: Configure
 
-The research software directory is configured using a file with environment
-variables called `rsd-secrets.env`. An example config file
+The Research Software Directory is configured using a file containing environment
+variables. Due to how `docker-compose` works, this file must be named `.env`. An example config file
 (`rsd-secrets.env.example`) is available, use it as a starting point.
 
 ```bash
 cd research-software-directory
-cp rsd-secrets.env.example rsd-secrets.env
+cp rsd-secrets.env.example .env
 ```
 
 The config file has some placeholder values (`changeme`); they must be set by
-editing the `rsd-secrets.env` file. Below are instructions on how to get the
+editing the `.env` file. Below are instructions on how to get the
 different tokens and keys.
 
 #### ``COMPOSE_PROJECT_NAME``
@@ -240,9 +246,6 @@ time being. We will revisit them in the section about deployment
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
 ```bash
-# add the environment variables from rsd-secrets.env to the current terminal:
-source rsd-secrets.env
-
 # build all containers:
 docker-compose build
 
@@ -261,7 +264,6 @@ start harvesting data from external sources such as GitHub, Zotero, Zenodo, etc.
 To do so, open a new terminal and run
 
 ```bash
-source rsd-secrets.env
 docker-compose exec harvesting python app.py harvest all
 ```
 
@@ -594,25 +596,25 @@ follows:
     ```
     (Note the dot at the end)
 
-1. Open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
+1. Open a new terminal and secure-copy your local ``.env`` file to
 the Amazon machine as follows:
 
     ```bash
-    cd <where rsd-secrets.env is>
-    scp -i path-to-the-keyfile ./rsd-secrets.env \
-    ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
+    cd <where .env is>
+    scp -i path-to-the-keyfile ./.env \
+    ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/.env
     ```
+
 1. Follow the instructions
 [above](/README.md#auth_github_client_id-and-auth_github_client_secret) to make
 a second key pair ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``.
 However, let this one's ``Authorization callback url`` be ``https://`` plus your
 instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
-``rsd-secrets.env`` according to the new client ID and secret.
+``.env`` according to the new client ID and secret.
 1. Start the Research Software Directory instance with:
 
     ```bash
     cd ~/rsd
-    source rsd-secrets.env
     docker-compose build
     docker-compose up -d
     ```
@@ -621,13 +623,8 @@ run the harvesters, and resolve the foreign keys:
 
     ```bash
     ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>
-
     cd ~/rsd
-
-    source rsd-secrets.env
-
     docker-compose exec harvesting python app.py harvest all
-
     docker-compose exec harvesting python app.py resolve all
     ```
 
@@ -647,7 +644,7 @@ services available that you can use for this, e.g. https://noip.com. Here's how:
 1. Fill in the IP address of your Amazon machine. In my case,
 ``https://myrsd.ddns.net`` will serve as an alias for ``https://3.92.182.176``
 1. Once you have the (sub)domain name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
-``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
+``.env`` on your Amazon instance (leave out the ``https://`` part, as
 well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
 have).
 1. Fill in your e-mail for ``SSL_ADMIN_EMAIL``.
@@ -656,12 +653,6 @@ replace the Amazon IP address in the ``Authorization callback url`` with
 your freshly minted domain name.
 1. Now, stop the Research Software Directory if it is still running with Ctrl-c
 or ``docker-compose stop``.
-1. Update the environment variables by ``source``ing your secrets again:
-
-    ```
-    cd ~/rsd
-    source rsd-secrets.env
-    ```
 1. Start the Research Software Directory back up
 
     ```
@@ -743,8 +734,7 @@ location, username, and password; see explanation below):
     # ssh into the remote machine
     cd rsd
     docker-compose stop
-    # update BACKUP_CMD by editing the rsd-secrets.env file
-    source rsd-secrets.env
+    # update BACKUP_CMD by editing the .env file
     docker-compose up -d
     ```
     Wait until the Research Software Directory is up and running again, then
@@ -761,7 +751,7 @@ Let's say that an attacker succeeds in somehow escaping the containment of the d
 
 1. the Research Software Directory software
 1. the collections in the Mongo database
-1. the plaintext keys that are stored in ``rsd-secrets.env``
+1. the plaintext keys that are stored in ``.env``
 
 Note that it does not mean they will have access to any of the rest of your institute's web site, since that content is hosted on physically different machines, in a physically different location, with different networks, different credentials, and probably a login procedure that is more challenging than just username/password.
 
@@ -875,19 +865,19 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     - Reuse the existing security group.
     - Reuse the existing key pair.
     - Verify that you're allowed to ssh into the new instance.
-1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
+1. Transfer the ``.env`` file from the old instance to the new instance.
 
-    ```
+    ```shell
     $ cd $(mktemp -d)
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
+      ubuntu@35.156.38.208:/home/ubuntu/rsd/.env .
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ./rsd-secrets.env \
-      ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
+      ./.env \
+      ubuntu@3.122.233.225:/home/ubuntu/rsd/.env
     ```
 1. Transfer files related to SSL certificates from the old instance to the new instance.
 
-    ```
+    ```shell
     # (on the new machine, remove the cert directory from
     # /home/ubuntu/rsd/docker-volumes/ if it exists)
 
@@ -916,9 +906,6 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Create the backup files in the old Research Software Directory instance:
 
     ```
-    # Add the environment variables to the shell:
-    $ source rsd-secrets.env
-
     # start an interactive shell in the backup container
     $ docker-compose exec backup /bin/sh
 
@@ -952,9 +939,6 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     ```
     $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
     $ cd /home/ubuntu/rsd
-
-    # Add the environment variables to the shell:
-    $ source rsd-secrets.env
 
     $ docker-compose build
     $ docker-compose up -d
