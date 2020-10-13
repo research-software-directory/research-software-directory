@@ -119,6 +119,13 @@ cd research-software-directory
 cp rsd-secrets.env.example rsd-secrets.env
 ```
 
+The `docker-compose` command looks for a configuration file called `.env`. Create
+a symbolic link  named `.env` and let point to `rsd-secrets.env`:
+
+```bash
+ln -s rsd-secrets.env .env
+```
+
 The config file has some placeholder values (`changeme`); they must be set by
 editing the `rsd-secrets.env` file. Below are instructions on how to get the
 different tokens and keys.
@@ -246,9 +253,6 @@ time being. We will revisit them in the section about deployment
 ### Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
 ```bash
-# add the environment variables from rsd-secrets.env to the current terminal:
-source rsd-secrets.env
-
 # build all containers:
 docker-compose build
 
@@ -267,7 +271,6 @@ start harvesting data from external sources such as GitHub, Zotero, Zenodo, etc.
 To do so, open a new terminal and run
 
 ```bash
-source rsd-secrets.env
 docker-compose exec harvesting python app.py harvest all
 ```
 
@@ -608,6 +611,12 @@ the Amazon machine as follows:
     scp -i path-to-the-keyfile ./rsd-secrets.env \
     ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
     ```
+1. On the remote machine, create the symlink named `.env` and have it point to the secrets file:
+
+    ```bash
+    ln -s rsd-secrets.env .env
+    ```
+
 1. Follow the instructions
 [above](/README.md#auth_github_client_id-and-auth_github_client_secret) to make
 a second key pair ``AUTH_GITHUB_CLIENT_ID`` and ``AUTH_GITHUB_CLIENT_SECRET``.
@@ -618,7 +627,6 @@ instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
 
     ```bash
     cd ~/rsd
-    source rsd-secrets.env
     docker-compose build
     docker-compose up -d
     ```
@@ -627,13 +635,8 @@ run the harvesters, and resolve the foreign keys:
 
     ```bash
     ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>
-
     cd ~/rsd
-
-    source rsd-secrets.env
-
     docker-compose exec harvesting python app.py harvest all
-
     docker-compose exec harvesting python app.py resolve all
     ```
 
@@ -662,12 +665,6 @@ replace the Amazon IP address in the ``Authorization callback url`` with
 your freshly minted domain name.
 1. Now, stop the Research Software Directory if it is still running with Ctrl-c
 or ``docker-compose stop``.
-1. Update the environment variables by ``source``ing your secrets again:
-
-    ```
-    cd ~/rsd
-    source rsd-secrets.env
-    ```
 1. Start the Research Software Directory back up
 
     ```
@@ -750,7 +747,6 @@ location, username, and password; see explanation below):
     cd rsd
     docker-compose stop
     # update BACKUP_CMD by editing the rsd-secrets.env file
-    source rsd-secrets.env
     docker-compose up -d
     ```
     Wait until the Research Software Directory is up and running again, then
@@ -883,7 +879,7 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     - Verify that you're allowed to ssh into the new instance.
 1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
 
-    ```
+    ```shell
     $ cd $(mktemp -d)
     $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
       ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
@@ -891,9 +887,16 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
       ./rsd-secrets.env \
       ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
     ```
+1. On the remote, create the symlink `.env` and let it point to `rsd-secrets.env`:
+
+    ```shell
+    cd ~/rsd
+    ln -s rsd-secrets.env .env
+    ```
+
 1. Transfer files related to SSL certificates from the old instance to the new instance.
 
-    ```
+    ```shell
     # (on the new machine, remove the cert directory from
     # /home/ubuntu/rsd/docker-volumes/ if it exists)
 
@@ -922,9 +925,6 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Create the backup files in the old Research Software Directory instance:
 
     ```
-    # Add the environment variables to the shell:
-    $ source rsd-secrets.env
-
     # start an interactive shell in the backup container
     $ docker-compose exec backup /bin/sh
 
@@ -958,9 +958,6 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     ```
     $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
     $ cd /home/ubuntu/rsd
-
-    # Add the environment variables to the shell:
-    $ source rsd-secrets.env
 
     $ docker-compose build
     $ docker-compose up -d
