@@ -23,8 +23,7 @@ schemas, and so on. By default, the Research Software Directory is set up to
 collect data from GitHub, Zenodo, Zotero, as well as Medium blogs.
 
 For each software package, a _product page_ can be created on the Research
-Software Directory if the software is deemed useful to others. Here is an
-example of what a product page may look like:
+Software Directory if the software is deemed useful to others.
 
 ## What Research Software Directory can do for you
 - Improves findability of software packages
