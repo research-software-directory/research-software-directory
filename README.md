@@ -39,3 +39,16 @@ Software Directory if the software is deemed useful to others.
 ## Pointer to configuring
 ## Customization
 
+## Use cases
+- Running an instance with your own data sources
+- Entering your own data
+- Changing the look and feel
+- Contributing (code)
+- Making a release
+- Finding your way: Research Software Directory services
+- Hosting your instance online
+  - instructions using docker-compose
+  - deploying to AWS
+  - backups
+  - updating the prod. instance
+- Security concerns
