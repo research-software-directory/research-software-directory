@@ -6,6 +6,7 @@ import time
 
 import requests
 from cffconvert import Citation
+from util import rate_limit_reached
 
 logger = logging.getLogger(__name__)
 
@@ -150,9 +151,11 @@ class ReleaseScraper:
             'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
         }
         r = requests.get(url, headers=headers)
-        if int(r.headers.get('x-ratelimit-remaining', -1)) < 10:
+        while rate_limit_reached(r):
             # throttle requests
+            logger.info("Rate limit reached: sleeping for 60 seconds")
             time.sleep(60)
+            r = requests.get(url, headers=headers)
         r.raise_for_status()
         self.zenodo_data["conceptdoi"] = r.json()
         return self
@@ -163,9 +166,11 @@ class ReleaseScraper:
             'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
         }
         r = requests.get(url, headers=headers)
-        if int(r.headers.get('x-ratelimit-remaining', -1)) < 10:
+        while rate_limit_reached(r):
             # throttle requests
+            logger.info("Rate limit reached: sleeping for 60 seconds")
             time.sleep(60)
+            r = requests.get(url, headers=headers)
         r.raise_for_status()
         self.zenodo_data["versioned_dois"] = r.json()
         hits = self.zenodo_data["versioned_dois"]["hits"]["hits"]
