@@ -110,8 +110,8 @@ git clone https://github.com/<your-github-organization>/research-software-direct
 
 ### Try it out, step 2/3: Configure
 
-The Research Software Directory is configured using a file with environment
-variables called `.env`. An example config file
+The Research Software Directory is configured using a file containing environment
+variables. Due to how `docker-compose` works, this file must be named `.env`. An example config file
 (`rsd-secrets.env.example`) is available, use it as a starting point.
 
 ```bash
