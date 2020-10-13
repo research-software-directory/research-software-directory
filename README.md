@@ -55,11 +55,12 @@ sources won't work. To bring up the website with all bells and whistles, read on
 
 ## Use cases
 
-- [Running an instance with your own data sources](/docs/configure.md)
-- [Entering your own data](/docs/instruction/README.md)
-- [Changing the look and feel](/docs/customize.md)
-- [Contributing](/.github/CONTRIBUTING.md)
-- [Maintaining](/docs/maintaining.md)
-- [Finding your way: Research Software Directory services](/docs/services.md)
-- [Hosting your instance online](/docs/hosting.md)
-- [Security concerns](/docs/security.md)
+1. [Contributing](/.github/CONTRIBUTING.md)
+1. [Running an instance with your own data sources](/docs/configure.md)
+1. [Entering your own data](/docs/instruction/README.md)
+1. [Changing the look and feel](/docs/customize.md)
+1. [Finding your way: Research Software Directory services](/docs/services.md)
+1. [Documentation for developers](/docs/dev.md)
+1. [Documentation for maintainers](/docs/maintaining.md)
+1. [Hosting your instance online](/docs/hosting.md)
+1. [Security concerns](/docs/security.md)
