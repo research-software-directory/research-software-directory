@@ -50,8 +50,14 @@ store the images, containers and volumes that we will be making.
 Basically, the steps to get a copy of https://research-software.nl running locally (including data) are as follows:
 
 1. Fork this repo to your own GitHub organization or GitHub profile and clone it
-1. Configure
-1. Start the complete stack using ``docker-compose``
+1. [Configure](/docs/configure.md)
+1. Start the complete stack using
+    ```shell
+    docker-compose build
+    ```
+    ```shell
+    docker-compose up
+    ```
 
 ## Pointer to configuring
 ## Customization
