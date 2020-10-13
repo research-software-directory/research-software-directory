@@ -51,4 +51,4 @@ Software Directory if the software is deemed useful to others.
   - [deploying to AWS]()
   - [backups]()
   - [updating the prod. instance]()
-- [Security concerns]()
+- [Security concerns](/docs/security.md)
