@@ -4,14 +4,7 @@ variables called `rsd-secrets.env`. An example config file
 
 ```bash
 cd research-software-directory
-cp rsd-secrets.env.example rsd-secrets.env
-```
-
-The `docker-compose` command looks for a configuration file called `.env`. Create
-a symbolic link  named `.env` and let point to `rsd-secrets.env`:
-
-```bash
-ln -s rsd-secrets.env .env
+cp rsd-secrets.env.example .env
 ```
 
 The config file has some placeholder values (`changeme`); they must be set by
