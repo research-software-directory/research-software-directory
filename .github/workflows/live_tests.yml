@@ -1,20 +1,12 @@
-name: Frontend tests
+name: Live tests
 
 on:
-  push:
-  pull_request:
-    types: [opened, reopened]
+  schedule:
+    - cron: '1 1 * * 7' # Every Sunday at 01:01
 
 jobs:
-  tests:
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-18.04, ubuntu-latest]
-        python-version: [3.6]
-
+  frontend:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -30,4 +22,4 @@ jobs:
     - name: Test with pytest
       run: |
         cd frontend
-        PYTHONPATH=. pytest
+        BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
