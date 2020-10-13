@@ -30,12 +30,12 @@ For each software package, a _product page_ can be created on the Research Softw
 
 ### Requirements
 
-- You'll need a minimum of about 3 GB free disk space to
+1. You'll need a minimum of about 3 GB free disk space to
 store the images, containers and volumes that we will be making.
-- Make sure you have a Linux system with
-  - [docker](https://docs.docker.com/install/) (v19.03 or later)
-  - [docker-compose](https://docs.docker.com/compose/install/) (v1.26 or later)
-  - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (v2.21 or later)
+1. Linux OS (we use Ubuntu 18.04)
+1. [docker](https://docs.docker.com/install/) (v19.03 or later)
+1. [docker-compose](https://docs.docker.com/compose/install/) (v1.26 or later)
+1. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (v2.21 or later)
 
 ### Instructions
 
