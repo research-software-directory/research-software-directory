@@ -83,7 +83,7 @@ cp rsd-secrets.env.example .env
 docker-compose up --build
 ```
 
-Goto [https://localhost](https://localhost) to see the Research Software Directory website. Bringing the website up like this you can read all non-authenticated pages, but not edit software or have automatic updates. To bring up the website with all bells & whistles read on in the next chapters.
+Goto [https://localhost](https://localhost) (disregard certificate warning) to see the Research Software Directory website. Bringing the website up like this you can read all non-authenticated pages, but not edit software or have automatic updates. To bring up the website with all bells & whistles read on in the next chapters.
 
 ## Try it out locally
 
