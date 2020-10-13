@@ -14,7 +14,7 @@ git clone https://github.com/<your-github-organization>/research-software-direct
 ```
 
 ## Try it out, step 2/3: Configure
-See [custimize.md](customize.md)
+See [customize.md](customize.md)
 
 ## Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 
