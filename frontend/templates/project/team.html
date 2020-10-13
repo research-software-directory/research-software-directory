@@ -1,0 +1,56 @@
+<section class="bg-light" id="contributors">
+    <div class="container">
+        <div class="row">
+            <div class="col col-1-4">
+                <h2 class="subtitle text-blue">Team</h2>
+            </div>
+            <div class="col-3-4">
+                <div class="row">
+                    {% if template_data.team %}
+                        {% set longlist = template_data.team|length > 6 %}
+                        <div class="col col-2-3 contributors_list {{'long-list' if longlist}}">
+                            <ul class="row">
+                                {% if longlist %}
+                                    <li style="width:100%" class="gradient gradient--gray"></li>
+                                {% endif %}
+                                {% for contributor in template_data.team %}
+                                    <li class="col col-1-2">
+                                        <div class="contributor_picture">
+                                            <img
+                                                {%- if contributor.foreignKey.avatar and contributor.foreignKey.avatar.data %}
+                                                {% set image = contributor.foreignKey.avatar %}
+                                                    src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
+                                                {% else %}
+                                                    src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
+                                                {% endif %}
+                                            >
+                                        </div>
+                                        <div class="contributor_role">
+                                            {{contributor.role }}
+                                        </div>
+                                        <div>
+                                            <b>
+                                                {{contributor.foreignKey | human_name_filter}}
+                                            </b>
+                                        </div>
+                                        {% if contributor.affiliations %}
+                                            <div class="contributor_organisation">
+                                                {{contributor.affiliations[0].foreignKey.name}}
+                                            </div>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {% if longlist %}
+                                <div class="button button--filled-dark show-all-contributors">
+                                    <span><svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-plus"></use></svg></span>
+                                    <span class="button_text">Show all team members</span>
+                                </div>
+                            {% endif %}
+                            </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
