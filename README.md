@@ -41,7 +41,7 @@ Software Directory if the software is deemed useful to others.
 
 ## Use cases
 - [Running an instance with your own data sources]()
-- [Entering your own data]()
+- [Entering your own data](/docs/instruction/README.md)
 - [Changing the look and feel]()
 - [Contributing]()
 - [Making a release]()
