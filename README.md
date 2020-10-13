@@ -26,7 +26,7 @@ For each software package, a _product page_ can be created on the Research Softw
 - Helps decision-making based on metrics and graphs
 - Provides metadata via [OAI-PMH](https://www.openarchives.org/pmh/), the standard protocol for metadata harvesting
 
-## TL;DR - Try it out locally
+## Try it out
 
 ### Requirements
 
