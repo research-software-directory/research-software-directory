@@ -59,8 +59,8 @@ Basically, the steps to get a copy of https://research-software.nl running local
     docker-compose up
     ```
 
-## Pointer to configuring
 ## Customization
+See [custimize.md](/docs/customize.md)
 
 ## Use cases
 - [Running an instance with your own data sources]()
