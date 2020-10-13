@@ -6,6 +6,7 @@ import requests
 from requests.exceptions import HTTPError
 import time
 import pymongo
+from util import rate_limit_reached
 
 db = pymongo.MongoClient(host=os.environ.get('DATABASE_HOST'),
                          port=int(os.environ.get('DATABASE_PORT')),
@@ -128,10 +129,11 @@ def _get_zenodo_identifier(redirect_url, headers):
 
 def _get_datacite(url, headers, oaipmh_cache_dir, identifier):
     response = requests.get(url, headers=headers)
-    if int(response.headers.get('x-ratelimit-remaining')) < 10:
+    while rate_limit_reached(response):
         # throttle requests
         logger.info("Sleeping for 60 seconds to avoid HttpError 429")
         time.sleep(60)
+        response = requests.get(url, headers=headers)
     if response.status_code != requests.codes.ok:
         response.raise_for_status()
 
