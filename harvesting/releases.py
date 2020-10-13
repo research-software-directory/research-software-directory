@@ -150,7 +150,7 @@ class ReleaseScraper:
             'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
         }
         r = requests.get(url, headers=headers)
-        if int(r.headers.get('x-ratelimit-remaining')) < 10:
+        if int(r.headers.get('x-ratelimit-remaining', -1)) < 10:
             # throttle requests
             time.sleep(60)
         r.raise_for_status()
@@ -163,7 +163,7 @@ class ReleaseScraper:
             'Authorization': 'Bearer ' + os.environ.get('ZENODO_ACCESS_TOKEN')
         }
         r = requests.get(url, headers=headers)
-        if int(r.headers.get('x-ratelimit-remaining')) < 10:
+        if int(r.headers.get('x-ratelimit-remaining', -1)) < 10:
             # throttle requests
             time.sleep(60)
         r.raise_for_status()
