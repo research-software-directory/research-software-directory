@@ -46,7 +46,7 @@ def list_records(dois):
             continue
 
         try:
-            redirect_url = _get_redirect(software, headers)
+            redirect_url = _get_redirect(software)
             identifier = _get_zenodo_identifier(redirect_url, headers)
             url = 'https://zenodo.org/oai2d?verb=GetRecord&identifier=oai:zenodo.org:' + identifier +\
                   '&metadataPrefix=datacite4'
@@ -104,8 +104,8 @@ def _build_oaipmh_elem():
     return root_elem
 
 
-def _get_redirect(software, headers):
-    response = requests.head('https://doi.org/{conceptdoi}'.format(conceptdoi=software["conceptDOI"]), headers=headers)
+def _get_redirect(software):
+    response = requests.head('https://doi.org/{conceptdoi}'.format(conceptdoi=software["conceptDOI"]))
     if response.status_code == 302:
         return response.next.url
     elif response.status_code == 429:
