@@ -72,6 +72,7 @@ Open a web browser to verify that everything works as it should. Below are some 
 
 - [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
 - [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
+- [``http://localhost/projects/764``](http://localhost/projects/764) should show a project page (here: ABC-MUSE) in the local instance of the Research Software Directory
 
 ### Admin interface
 
