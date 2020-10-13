@@ -1,5 +1,5 @@
 The research software directory is configured using a file with environment
-variables called `rsd-secrets.env`. An example config file
+variables called `.env`. An example config file
 (`rsd-secrets.env.example`) is available, use it as a starting point.
 
 ```bash
