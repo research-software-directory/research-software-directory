@@ -73,6 +73,7 @@ Open a web browser to verify that everything works as it should. Below are some 
 - [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
 - [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost/projects/764``](http://localhost/projects/764) should show a project page (here: ABC-MUSE) in the local instance of the Research Software Directory
+- [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
 
 ### Admin interface
 
@@ -102,10 +103,6 @@ Which can be combined in the usual way, e.g.
 ### Citation
 
 - [``http://localhost/cite/xenon?version=3.0.4&format=bibtex``](http://localhost/cite/xenon?version=3.0.4&format=bibtex) should return a reference manager file for software package Xenon version 3.0.4 in BibTeX format.
-
-### Graphs / metrics / insights
-
-- [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
 
 ### OAI-PMH
 
