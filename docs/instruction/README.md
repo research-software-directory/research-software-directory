@@ -33,7 +33,7 @@ data, which are then combined using its Admin interface, as follows:
 So, now the question is: what does this all mean for how you do your day-to-day
 work? The answer is, as long as you use public source code repositories on
 GitHub and make a release every so often following the guidelines outlined
-[here](https://guide.esciencecenter.nl/citable_software/making_software_citable.html),
+[here](https://guide.esciencecenter.nl/#/citable_software/making_software_citable),
 you'll be OK. By simply adhering to these best practices, the source code
 related boxes (``GitHub``, ``Zenodo`` and ``CITATION.cff``) are already covered.
 

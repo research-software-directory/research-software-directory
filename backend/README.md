@@ -1,19 +1,20 @@
 # Data API for Research Software Directory
-[![TravisCIBadge](https://travis-ci.org/research-software-directory/backend.svg?branch=master)](https://travis-ci.org/research-software-directory/backend)
-[![Coverage Status](https://coveralls.io/repos/github/research-software-directory/backend/badge.svg)](https://coveralls.io/github/research-software-directory/backend)
 
 Data API for Research Software Directory
-### Requirements:
+
+## Requirements:
+
 - Python 3.6+ (or run through Docker)
 
-### Setup:
+## Setup:
+
 - This service depends on the following services:
     -   MongoDB (3.6) (`docker pull mongo:3.6 && docker run -p 27017:27017 mongo:3.6`)
 
 
-### Configuration:
+## Configuration:
 - Configuration consists of two parts:
-#### Environmental variables
+### Environmental variables
 ```
 JWT_SECRET=[hidden]                - JSON web token secret to generate/verify tokens]
 DATABASE_HOST=localhost            - MongoDB host
