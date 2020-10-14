@@ -1,0 +1,17 @@
+{
+    "_comment": "Markdown Link Checker configuration, see https://github.com/gaurav-nelson/github-action-markdown-link-check and https://github.com/tcort/markdown-link-check",
+    "ignorePatterns": [
+        {
+            "pattern": "^http://localhost"
+        },
+        {
+            "pattern": "^https://doi.org/10.0000/FIXME$"
+        }
+    ],
+    "replacementPatterns": [
+        {
+            "pattern": "^/",
+            "replacement": "https://github.com/research-software-directory/research-software-directory/blob/master/"
+        }
+    ]
+}
