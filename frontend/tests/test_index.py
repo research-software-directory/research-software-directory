@@ -14,13 +14,16 @@ def get():
     return _get
 
 
-def test_index(get, is_live):
-    if not is_live:
-        with requests_mock.mock() as m:
-            m.get(api_url + '/software_cache?isPublished=true', text=get_mock('software_cache.json'))
-            m.get(api_url + '/organization', text=get_mock('organization.json'))
-            result = get('/')
-    else:
+@pytest.mark.live
+def test_index_live(get):
+    result = get('/')
+
+    assert isValidHTML(result)
+
+def test_index(get):
+    with requests_mock.mock() as m:
+        m.get(api_url + '/software_cache?isPublished=true', text=get_mock('software_cache.json'))
+        m.get(api_url + '/organization', text=get_mock('organization.json'))
         result = get('/')
 
     assert isValidHTML(result)
