@@ -2,7 +2,7 @@ name: Live tests
 
 on:
   schedule:
-    - cron: '1 1 * * 7' # Every Sunday at 01:01
+    - cron: '1 1 * * 6' # Every Sunday at 01:01
 
 jobs:
   frontend:
