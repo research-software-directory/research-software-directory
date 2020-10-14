@@ -22,4 +22,4 @@ jobs:
     - name: Test with pytest
       run: |
         cd frontend
-        BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live
+        BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest -m live
