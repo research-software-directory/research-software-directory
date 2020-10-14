@@ -110,7 +110,7 @@ def _get_redirect(software):
     if response.status_code == 302:
         return response.next.url
     elif response.status_code == 429:
-        print("HttpError 429 while trying to redirect from doi.org.")
+        logger.warning("HttpError 429 while trying to redirect from doi.org.")
         response.raise_for_status()
     else:
         raise HTTPError("Expected a redirect from doi.org to zenodo.org, got {0} instead."
@@ -128,7 +128,7 @@ def _get_zenodo_identifier(redirect_url, headers):
     if response.status_code == 302:
         return response.next.url.split('/')[-1:][0]
     elif response.status_code == 429:
-        print("HttpError 429 while trying to retrieve a record from zenodo.org.")
+        logger.warning("HttpError 429 while trying to retrieve a record from zenodo.org.")
         response.raise_for_status()
     else:
         raise HTTPError("Expected a redirect from a conceptdoi to a versioned doi, got {0} instead."
@@ -143,7 +143,7 @@ def _get_datacite(url, headers, oaipmh_cache_dir, identifier):
         time.sleep(60)
         response = requests.get(url, headers=headers)
     if response.status_code != requests.codes.ok:
-        print("Error while trying to retrieve datacite metadata from zenodo.org.")
+        logger.warning("Error while trying to retrieve datacite metadata from zenodo.org.")
         response.raise_for_status()
 
     fname = os.path.join(oaipmh_cache_dir, 'record-' + identifier + '.xml')
