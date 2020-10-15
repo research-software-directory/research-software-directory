@@ -3,8 +3,7 @@
   "description": "",
   "main": "index.js",
   "private": true,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "markdown-link-check": "^3.8.3"
   },
