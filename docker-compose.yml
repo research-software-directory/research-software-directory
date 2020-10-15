@@ -159,17 +159,14 @@ services:
       - ./docker-volumes/oaipmh-cache:/app/oaipmh-cache
       - static_schedule:/static_schedule
 
-  nginx_ssl:
-    container_name: ${COMPOSE_PROJECT_NAME-rsd}-nginx-ssl
+  https:
+    container_name: ${COMPOSE_PROJECT_NAME-rsd}-https
     depends_on:
       - reverse-proxy
     environment:
-      # user should not have to change the values of the following environment variables:
-      SSL_FORWARD: http://reverse-proxy:80
-      # user needs to assign values to the following environment variables:
-      SSL_ADMIN_EMAIL: ${SSL_ADMIN_EMAIL:?Required variable SSL_ADMIN_EMAIL not set or empty. Perhaps you forgot to define it in '.env'?}
       SSL_DOMAINS: ${SSL_DOMAINS:?Required variable SSL_DOMAINS not set or empty. Perhaps you forgot to define it in '.env'?}
-    image: rsdnlesc/docker-term-letsencrypt
+    build:
+      context: ./https
     logging:
       driver: "json-file"
       options:
@@ -180,8 +177,8 @@ services:
       - 80:80
     restart: unless-stopped
     volumes:
-      - ./docker-volumes/cert:/cert
-      - ./docker-volumes/letsencrypt:/etc/letsencrypt
+      - caddy_data:/data
+      - caddy_config:/config
 
   reverse-proxy:
     build:
@@ -211,3 +208,5 @@ volumes:
   static_frontend:
   static_graphs:
   static_schedule:
+  caddy_data:
+  caddy_config:
