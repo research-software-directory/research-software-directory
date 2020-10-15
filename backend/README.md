@@ -1,6 +1,4 @@
 # Data API for Research Software Directory
-[![TravisCIBadge](https://travis-ci.org/research-software-directory/backend.svg?branch=master)](https://travis-ci.org/research-software-directory/backend)
-[![Coverage Status](https://coveralls.io/repos/github/research-software-directory/backend/badge.svg)](https://coveralls.io/github/research-software-directory/backend)
 
 Data API for Research Software Directory
 ### Requirements:
