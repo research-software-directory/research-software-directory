@@ -2,6 +2,7 @@
   "name": "research-software-directory",
   "description": "",
   "main": "index.js",
+  "private": true,
   "dependencies": {
   },
   "devDependencies": {
