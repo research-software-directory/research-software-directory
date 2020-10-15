@@ -139,7 +139,7 @@ commands results in the **LOSS OF DATA**.
 - Docker bind mounts store data in ``<project directory>/docker-volumes``, remove with:
 
     ```
-    sudo rm -rf cert/ db/ letsencrypt/ oaipmh-cache/
+    sudo rm -rf db/ oaipmh-cache/
     ```
 
 - Docker static volumes store data. Refer to [/docker-compose.yml](/docker-compose.yml) to see which services use which volumes. Remove a volume with:

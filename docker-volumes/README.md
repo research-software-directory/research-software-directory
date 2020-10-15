@@ -5,9 +5,7 @@ After running the complete stack, this directory should look like this:
 
 ```
 docker-volumes/
-├── cert
 ├── db
-├── letsencrypt
 ├── oaipmh-cache
 └── README.md
 ```
