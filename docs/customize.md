@@ -6,13 +6,13 @@ Research Software Directory. Now it is time to start customizing your Research
 Software Directory. We have prepared some FAQs for customizations that are
 common. For example, you can read up on the following topics:
 
-1. [How do I change the colors?](/docs/faq/how-do-i-change-the-colors.md)
-1. [How do I change the font?](/docs/faq/how-do-i-change-the-font.md)
-1. [How do I change the logo?](/docs/faq/how-do-i-change-the-logo.md)
-1. [How do I change when data collection scripts run?](/docs/faq/how-do-i-change-when-data-collection-scripts-run.md)
-1. [How do I empty the database?](/docs/faq/how-do-i-empty-the-database.md)
-1. [How do I make changes to the admin interface?](/docs/faq/how-do-i-make-changes-to-the-admin-interface.md)
-1. [How do I add properties to the data schema?](/docs/faq/how-do-i-add-properties-to-the-data-schema.md)
+1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
+1. [How do I change the font?](faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](faq/how-do-i-change-the-logo.md)
+1. [How do I change when data collection scripts run?](faq/how-do-i-change-when-data-collection-scripts-run.md)
+1. [How do I empty the database?](faq/how-do-i-empty-the-database.md)
+1. [How do I make changes to the admin interface?](faq/how-do-i-make-changes-to-the-admin-interface.md)
+1. [How do I add properties to the data schema?](faq/how-do-i-add-properties-to-the-data-schema.md)
 
 It is suggested that you first do one or more of:
 
