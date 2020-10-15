@@ -22,7 +22,7 @@ It is suggested that you first do one or more of:
 
 Then, learn how to add properties to the schema:
 
-1. [How do I add properties to the data schema?](/docs/faq/how-do-i-add-properties-to-the-data-schema.md)
+1. [How do I add properties to the data schema?](faq/how-do-i-add-properties-to-the-data-schema.md)
 
 Finally, learn how to empty the database, such that you can replace the sample
 data with your own:
