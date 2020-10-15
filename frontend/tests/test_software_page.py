@@ -3,7 +3,7 @@ import requests_mock
 import requests
 import pytest
 import glob
-from tests.helpers import get_mock, isValidHTML, is_live
+from tests.helpers import get_mock, isValidHTML
 from urllib.error import HTTPError
 
 
@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 def get():
     def _get(url):
         client = application.test_client()
-        response = client.get(url)
+        response = client.get(url, follow_redirects=True)
         return response.data.decode('utf-8'), response.status_code
     return _get
 
@@ -28,25 +28,15 @@ for path in glob.glob('mocks/software/*.json'):
 def test_fixtures_render(get, slug):
     with requests_mock.mock() as m:
         m.get(api_url + '/software_cache/%s' % slug, text=get_mock('software/%s.json' % slug))
-        data, status_code = get('/software/xenon')
+        data, status_code = get('/software/' + slug)
         assert status_code == 200
         assert isValidHTML(data)
 
-
-live_software_items = []
-if is_live:
+@pytest.mark.live
+def test_live_software_data_renders(get):
+    live_software_items = []
     result = requests.get(api_url + '/software?isPublished=True').json()
-    for item in result:
-        live_software_items.append(item['slug'])
-
-
-@pytest.mark.skipif(not is_live, reason="--live not specified")
-@pytest.mark.parametrize("slug", live_software_items)
-def test_live_software_data_renders(get, slug):
-    try:
-        data, status_code = get('/software/%s' % slug)
-    except Exception as e:
-        pytest.skip(str(e))
-        return
+    slug = result[0]
+    data, status_code = get('/software/%s' % slug)
     assert status_code == 200
     assert isValidHTML(data)

@@ -8,12 +8,6 @@ def get_mock(name):
     with open("mocks/%s" % name) as f:
         return f.read()
 
-
-@pytest.fixture
-def is_live(request):
-    return request.config.getoption("--live")
-
-
 def is_really_error(error):
     w3c_regex_whitelist = [
         r'An “img” element must have an “alt” attribute, except under certain conditions.*',
