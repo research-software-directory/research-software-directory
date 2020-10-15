@@ -16,9 +16,9 @@ common. For example, you can read up on the following topics:
 
 It is suggested that you first do one or more of:
 
-1. [How do I change the colors?](/docs/faq/how-do-i-change-the-colors.md)
-1. [How do I change the font?](/docs/faq/how-do-i-change-the-font.md)
-1. [How do I change the logo?](/docs/faq/how-do-i-change-the-logo.md)
+1. [How do I change the colors?](faq/how-do-i-change-the-colors.md)
+1. [How do I change the font?](faq/how-do-i-change-the-font.md)
+1. [How do I change the logo?](faq/how-do-i-change-the-logo.md)
 
 Then, learn how to add properties to the schema:
 
