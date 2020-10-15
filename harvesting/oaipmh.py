@@ -121,7 +121,7 @@ def _get_zenodo_identifier(redirect_url, headers):
     response = requests.head(redirect_url, headers=headers)
     while rate_limit_reached(response):
         # throttle requests
-        logger.info("Sleeping for 60 seconds to avoid HttpError 429 from {0}".format(redirect_url))
+        logger.info("Sleeping for 60 seconds to avoid HttpError 429 during retrieval of zenodo metadata from {0}".format(redirect_url))
         time.sleep(60)
         response = requests.head(redirect_url, headers=headers)
 
@@ -139,7 +139,7 @@ def _get_datacite(url, headers, oaipmh_cache_dir, identifier):
     response = requests.get(url, headers=headers)
     while rate_limit_reached(response):
         # throttle requests
-        logger.info("Sleeping for 60 seconds to avoid HttpError 429 from {0}".format(url))
+        logger.info("Sleeping for 60 seconds to avoid HttpError 429 during retrieval of datacite metadata from {0}".format(url))
         time.sleep(60)
         response = requests.get(url, headers=headers)
     if response.status_code != requests.codes.ok:
