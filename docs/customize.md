@@ -27,7 +27,7 @@ Then, learn how to add properties to the schema:
 Finally, learn how to empty the database, such that you can replace the sample
 data with your own:
 
-1. [How do I empty the database?](/docs/faq/how-do-i-empty-the-database.md)
+1. [How do I empty the database?](faq/how-do-i-empty-the-database.md)
 
 
 ## General workflow when making changes
