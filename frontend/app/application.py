@@ -97,7 +97,7 @@ def index():
 
 def set_markdown(software, fields):
     for field in fields:
-        if field in software and software[field] and software[field] is not '':
+        if field in software and software[field] and software[field] != '':
             software[field] = flask.Markup(markdown.markdown(software[field]))
         else:
             software[field] = None
