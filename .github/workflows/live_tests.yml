@@ -1,0 +1,25 @@
+name: Live tests against www.research-software.nl
+
+on:
+  schedule:
+    - cron: '1 1 * * 6' # Every Sunday at 01:01
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        cd frontend
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest==5.* py-w3c
+    - name: Test with pytest
+      run: |
+        cd frontend
+        BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest -m live

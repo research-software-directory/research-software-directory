@@ -46,7 +46,7 @@ def serialize_software_list(swlist):
 
 
 def get_mentions(software_list):
-    # 1. collect all related mentions from the individual software pages into 1 
+    # 1. collect all related mentions from the individual software pages into 1
     #    dict, using the database's primary key as key to ensure each item is unique
     # 2. omit items from the list that are in the future (because of the date somebody entered)
     # 3. sort the list by date
@@ -97,7 +97,7 @@ def index():
 
 def set_markdown(software, fields):
     for field in fields:
-        if field in software and software[field] and software[field] is not '':
+        if field in software and software[field] and software[field] != '':
             software[field] = flask.Markup(markdown.markdown(software[field]))
         else:
             software[field] = None
@@ -181,6 +181,63 @@ def cite(software_id):
                     )
 
     return flask.abort(404)
+
+
+def project_status(start_str, end_str):
+    start = str_to_datetime(start_str).replace(tzinfo=None)
+    end = str_to_datetime(end_str).replace(tzinfo=None)
+    today = datetime.now().replace(tzinfo=None)
+    if end < today:
+        return {
+            'status': 'Completed',
+            'progress': 1
+        }
+    elif start > today:
+        return {
+            'status': 'Queued',
+            'progress': 0
+        }
+    else:
+        return {
+            'status': 'Running',
+            'progress': (today - start ) / (end - start)
+        }
+
+@application.route('/projects/<project_id>')
+def project_page_template(project_id):
+    url = api_url + "/project_cache/%s" % project_id
+    project_dictionary = requests.get(url).json()
+    if "error" in project_dictionary:
+        return flask.redirect("/", code=302)
+
+    set_markdown(project_dictionary, ['description'])
+
+    mention_types = {
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'book': {"singular": "Book", "plural": "Books"},
+        'bookSection': {"singular": "Book section", "plural": "Book sections"},
+        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
+        'dataset': {"singular": "Data set", "plural": "Data sets"},
+        'document': {"singular": "Document", "plural": "Documents"},
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
+        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
+        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'report': {"singular": "Report", "plural": "Reports"},
+        'thesis': {"singular": "Thesis", "plural": "Theses"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'webpage': {"singular": "Web page", "plural": "Web pages"},
+    }
+
+    status = project_status(project_dictionary['dateStart'], project_dictionary['dateEnd'])
+
+    return flask.render_template('project/project_template.html',
+                                 project_id=project_id,
+                                 template_data=project_dictionary,
+                                 status=status,
+                                 mention_types=mention_types)
 
 
 @application.route('/about')
@@ -298,4 +355,3 @@ def oai_pmh():
         d = os.path.join(oaipmh_cache_dir,'datacite4')
         f = 'record-' + identifier.split(':')[-1] + '.xml'
         return flask.send_from_directory(d, f, as_attachment=False)
-

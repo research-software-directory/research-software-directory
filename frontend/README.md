@@ -22,11 +22,11 @@ Setup environmental variables: `export $(cat .env | xargs)`
 
 Run unit tests with fixtures:
 ```bash
-PYTHONPATH=. pytest
+PYTHONPATH=. pytest -m "not live"
 ```
-You can also test against live data, it will check if all pages render:
+You can also test against live backend server, it will check if all pages render:
 ```bash
-BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest --live -v
+BACKEND_URL=https://www.research-software.nl/api PYTHONPATH=. pytest -m live -v
 ```
 # Run
 

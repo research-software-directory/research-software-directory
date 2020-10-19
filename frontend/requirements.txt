@@ -4,7 +4,7 @@ Markdown
 ago==0.0.92
 htmlmin==0.1.12
 pprintpp==0.4
-gunicorn==19.7.1
+gunicorn==20.0.4
 dateutils==0.6.6
 requests-mock==1.4.0
 libsass==0.17.0

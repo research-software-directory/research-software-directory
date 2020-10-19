@@ -1,8 +1,9 @@
 from app.application import application
+from app.application import api_url
 import requests_mock
 import pytest
 
-from tests.helpers import get_mock, is_live
+from tests.helpers import get_mock
 
 
 @pytest.fixture(autouse=True)
@@ -16,13 +17,12 @@ def get():
 
 def test_sitemap(get):
     with requests_mock.mock() as m:
-        m.get('https://www.research-software.nl/api/software?isPublished=true', text=get_mock('software_cache.json'))
+        m.get(api_url + '/software?isPublished=true', text=get_mock('software_cache.json'))
         result = get('/sitemap.xml')
 
     assert len(result.split('lastmod')) > 10
 
-
-@pytest.mark.skipif(not is_live, reason="--live not specified")
+@pytest.mark.live
 def test_sitemap_live(get):
     result = get('/sitemap.xml')
     assert len(result.split('lastmod')) > 10

@@ -1,0 +1,36 @@
+name: Admin tests
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  tests:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-latest]
+        node-version: [14.13.0]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install packages
+      run: |
+        cd admin
+        yarn install
+    - name: Test
+      run: |
+        cd admin
+        yarn test
+    - name: Build
+      run: |
+        cd admin
+        yarn build
+

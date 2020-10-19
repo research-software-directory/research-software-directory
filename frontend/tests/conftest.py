@@ -1,3 +1,4 @@
-def pytest_addoption(parser):
-    parser.addoption("--live", action="store_true",
-        help="run render tests with live data")
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers", "live: Test against server of BACKEND_URL env var"
+    )
