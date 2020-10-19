@@ -1,0 +1,23 @@
+{
+  "name": "research-software-directory",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "markdown-link-check": "^3.8.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mlc": "find . -name '*.md' -not -path './node_modules/*' -not -path './ui/ui/node_modules/*' -exec markdown-link-check '{}' --config .mlc-config.json ';'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/research-software-directory/research-software-directory.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/research-software-directory/research-software-directory/issues"
+  }
+}
