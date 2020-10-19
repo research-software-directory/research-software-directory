@@ -111,7 +111,7 @@ function* fetchData() {
   const settings = yield select((state: any) => state.settings);
   const result = config.useFixtures
     ? { data: fixtures.data }
-    : yield authorizedFetch(settings.backendUrl);
+    : yield authorizedFetch(settings.backendUrl + "/");
   yield put({
     type: "DATA_FETCHED",
     data: result.data

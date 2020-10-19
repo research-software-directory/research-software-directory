@@ -23,7 +23,7 @@ docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz ren
 
 For example,
 
-![/docs/images/docker-compose.png](/docs/images/docker-compose.png)
+![images/docker-compose.png](images/docker-compose.png)
 
 ## Making a release
 
@@ -108,25 +108,6 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     ```shell
     cd ~/rsd
     ln -s rsd-secrets.env .env
-    ```
-
-1. Transfer files related to SSL certificates from the old instance to the new instance.
-
-    ```shell
-    # (on the new machine, remove the cert directory from
-    # /home/ubuntu/rsd/docker-volumes/ if it exists)
-
-    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ubuntu@35.156.38.208:/home/ubuntu/rsd/docker-volumes/cert .
-
-    $ scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ./cert \
-      ubuntu@3.122.233.225:/home/ubuntu/rsd/docker-volumes/cert
-
-    # on the new machine, change the owner of cert/ to 'root'
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
-    $ cd /home/ubuntu/rsd/docker-volumes
-      sudo chown -R root:root cert
     ```
 
 1. Stop new additions to the database in the old research software

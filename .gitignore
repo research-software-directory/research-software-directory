@@ -16,9 +16,7 @@
 /backend/src/__pycache__/
 /backend/src/*.py[cod]
 
-/docker-volumes/cert
 /docker-volumes/db
-/docker-volumes/letsencrypt
 /docker-volumes/oaipmh-cache
 
 /frontend/.cache

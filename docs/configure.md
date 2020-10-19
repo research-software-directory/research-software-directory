@@ -106,9 +106,8 @@ something like ``bhCJSBCcjzptBvd3fvliYOoE``. This is the key; assign it to
 
 This environment variable is used for making a daily backup of the database with
 software, people, projects, etc. As it is typically only used during deployment,
-leave its value like it is for now; we will revisit it in the section about
-deployment
-[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment).
+leave its value like it is for now; we will revisit it in the page about
+[deployment](hosting.md).
 
 
 ### ``JWT_SECRET``
@@ -124,9 +123,8 @@ openssl rand -base64 32
 
 Assign the result to ``JWT_SECRET``.
 
-### ``DOMAIN``, ``SSL_ADMIN_EMAIL``, and ``SSL_DOMAINS``
+### ``DOMAIN`` and ``SSL_DOMAINS``
 
 These environment variables are not relevant when you're running your instance
 locally. Leave their values like they are in ``rsd-secrets.env.example`` for the
-time being. We will revisit them in the section about deployment
-[below](#make-your-instance-available-to-others-by-hosting-it-online-deployment).
+time being. We will revisit them in the page about [deployment](hosting.md).
