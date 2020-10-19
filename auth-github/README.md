@@ -1,5 +1,4 @@
 # auth-github
-[![Docker badge](https://dockerbuildbadges.quelltext.eu/status.svg?organization=rsdnlesc&repository=auth-github)](https://hub.docker.com/r/rsdnlesc/auth-github/)
 
 Github authentication service for the Research Software Directory. It should be configured as the callback endpoint of a GitHub OAuth app.
 

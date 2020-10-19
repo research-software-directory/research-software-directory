@@ -4,6 +4,7 @@
 ![Frontend tests](https://github.com/research-software-directory/research-software-directory/workflows/Frontend%20tests/badge.svg)
 ![Backend tests](https://github.com/research-software-directory/research-software-directory/workflows/Backend%20tests/badge.svg)
 ![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg)
+[![Check Markdown links](https://github.com/research-software-directory/research-software-directory/workflows/Check%20Markdown%20links/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Check+Markdown+links%22)
 
 # Research Software Directory
 

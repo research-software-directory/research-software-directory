@@ -47,7 +47,7 @@ def list_records(dois):
             continue
 
         try:
-            redirect_url = _get_redirect(software, headers)
+            redirect_url = _get_redirect(software)
             identifier = _get_zenodo_identifier(redirect_url, headers)
             url = 'https://zenodo.org/oai2d?verb=GetRecord&identifier=oai:zenodo.org:' + identifier +\
                   '&metadataPrefix=datacite4'
@@ -105,11 +105,12 @@ def _build_oaipmh_elem():
     return root_elem
 
 
-def _get_redirect(software, headers):
-    response = requests.head('https://doi.org/{conceptdoi}'.format(conceptdoi=software["conceptDOI"]), headers=headers)
+def _get_redirect(software):
+    response = requests.head('https://doi.org/{conceptdoi}'.format(conceptdoi=software["conceptDOI"]))
     if response.status_code == 302:
         return response.next.url
     elif response.status_code == 429:
+        logger.warning("HttpError 429 while trying to redirect from doi.org.")
         response.raise_for_status()
     else:
         raise HTTPError("Expected a redirect from doi.org to zenodo.org, got {0} instead."
@@ -118,9 +119,16 @@ def _get_redirect(software, headers):
 
 def _get_zenodo_identifier(redirect_url, headers):
     response = requests.head(redirect_url, headers=headers)
+    while rate_limit_reached(response):
+        # throttle requests
+        logger.info("Sleeping for 60 seconds to avoid HttpError 429 during retrieval of zenodo metadata from {0}".format(redirect_url))
+        time.sleep(60)
+        response = requests.head(redirect_url, headers=headers)
+
     if response.status_code == 302:
         return response.next.url.split('/')[-1:][0]
     elif response.status_code == 429:
+        logger.warning("HttpError 429 while trying to retrieve a record from zenodo.org.")
         response.raise_for_status()
     else:
         raise HTTPError("Expected a redirect from a conceptdoi to a versioned doi, got {0} instead."
@@ -131,10 +139,11 @@ def _get_datacite(url, headers, oaipmh_cache_dir, identifier):
     response = requests.get(url, headers=headers)
     while rate_limit_reached(response):
         # throttle requests
-        logger.info("Sleeping for 60 seconds to avoid HttpError 429")
+        logger.info("Sleeping for 60 seconds to avoid HttpError 429 during retrieval of datacite metadata from {0}".format(url))
         time.sleep(60)
         response = requests.get(url, headers=headers)
     if response.status_code != requests.codes.ok:
+        logger.warning("Error while trying to retrieve datacite metadata from zenodo.org.")
         response.raise_for_status()
 
     fname = os.path.join(oaipmh_cache_dir, 'record-' + identifier + '.xml')
