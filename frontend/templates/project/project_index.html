@@ -1,0 +1,34 @@
+{% extends "layout_template.html" %}
+{%- block head -%}
+    {{super()}}
+    <title>Projects | Research Software Directory</title>
+{%- endblock -%}
+{%- block content -%}
+
+    <!-- omit the corporate home link -->
+    {% block corporate_home %}{% endblock %}
+
+<section class="" id="title">
+    <div class="container">
+        <div class="row">
+            <h1 class="title">Projects</h1>
+	</div>
+    </div>
+</section>
+
+<section class="" id="list">
+    <div class="container">
+        <div class="row">
+	    <p style="margin-bottom:12px; margin-top:12px">
+	    This list of projects at the Netherlands eScience Center contains {{titles|length}} items.
+	    <p>
+            <ol>
+            {% for title in (titles  | sort(attribute="title")) %}
+               <li> <a href="/projects/{{ title.id }}">{{ title.title }}</a> ({{ title.yearStart }}{% if title.yearStart != title.yearEnd %}-{{ title.yearEnd }}{% endif %})
+            {% endfor %}
+            </ol>
+	</div>
+    </div>
+</section>
+
+{%- endblock -%}
