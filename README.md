@@ -18,14 +18,16 @@ For each software package, a _product page_ can be created on the Research Softw
 
 ## What the Research Software Directory can do for you
 
-- Improves findability of software packages
-- Includes metadata to help search engines understand what a given software package is about
-- Harvests data from [Zotero](http://zotero.org/), [Zenodo](https://zenodo.org/), GitHub, as well as other sources, and presents software packages within their social and scientific context
-- Promotes dissemination of software
-- Modular system that is meant to be customizable, e.g. with respect to branding, database schemas, an so on
-- Makes scientific impact visible in a qualitative way
-- Helps decision-making based on metrics and graphs
-- Provides metadata via [OAI-PMH](https://www.openarchives.org/pmh/), the standard protocol for metadata harvesting
+The Research Software Directory:
+
+1. presents software packages alongside the context necessary for visitors to understand how the software can help them
+1. makes scientific impact of research software visible in a qualitative way
+1. provides automatically generated citation metadata in a variety of reference manager file formats, for easy citation
+1. improves findability of software packages by applying Search Engine Optimization techniques such as schema.org metadata. This helps search engines understand what a given software package is about, thus improving ranking of search results
+1. provides aggregated insights through a metrics dashboard, helping to make more accurate and more timely business decisions
+1. provides metadata about its software packages via [OAI-PMH](https://www.openarchives.org/pmh/), the standard protocol for metadata harvesting. Digital libraries and other services can use this feature to automatically update their records with data about the software packages published in the Research Software Directory.
+1. provides all of its data via a JSON API
+1. integrates with third-party services such as [Zotero](http://zotero.org/) (reference manager), [Zenodo](https://zenodo.org/) (archiving), GitHub (code development platform)
 
 ## Try it out
 
