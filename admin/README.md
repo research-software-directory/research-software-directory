@@ -57,7 +57,8 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
 1.  Install yarn, `npm install -g yarn` (Note: there exists a similarly named package, Apache Hadoop YARN --please ignore
     that, it's something else)
 1.  Install the `admin` service's dependencies: `yarn install`
-1.  In `package.json`, update IP addresses for `/api` using `backend`'s IP and for `auth` using `auth`'s IP
+1.  In `package.json`, replace (only) the `localhost` part of the URLs listed under `proxy` with the IP addresses for
+    `/api` using `backend`'s IP and for `auth` using `auth`'s IP; leave the port numbers as they were
 1.  Start the admin service in a development server: `yarn start`. It will tell you where to go to check the `admin`
     interface (probably http://localhost:8000).
 
