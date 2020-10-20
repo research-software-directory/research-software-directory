@@ -1,4 +1,4 @@
-FROM node:14.13.0-alpine
+FROM node:14-alpine
 RUN apk update && apk --no-cache add docker yarn
 RUN mkdir /tests
 WORKDIR /tests
