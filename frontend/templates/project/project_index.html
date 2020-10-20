@@ -5,28 +5,35 @@
 {%- endblock -%}
 {%- block content -%}
 
-    <!-- omit the corporate home link -->
-    {% block corporate_home %}{% endblock %}
-
 <section class="" id="title">
     <div class="container">
         <div class="row">
-            <h1 class="title">Projects</h1>
+	    <div class="text">
+		<h1 class="title">Projects</h1>
+		<p>This list of projects of the Netherlands eScience Center contains {{titles|length}} projects</p>
+            </div>
 	</div>
     </div>
 </section>
 
-<section class="" id="list">
+<section class="" id="projects">
     <div class="container">
         <div class="row">
-	    <p style="margin-bottom:12px; margin-top:12px">
-	    This list of projects at the Netherlands eScience Center contains {{titles|length}} items.
-	    <p>
-            <ol>
-            {% for title in (titles  | sort(attribute="title")) %}
-               <li> <a href="/projects/{{ title.id }}">{{ title.title }}</a> ({{ title.yearStart }}{% if title.yearStart != title.yearEnd %}-{{ title.yearEnd }}{% endif %})
-            {% endfor %}
-            </ol>
+	    <div class="col-1-1">
+                <div class="row project-items">
+                    {% for title in (titles  | sort(attribute="title")) %}
+		        <article class="project-item col-1-2"><a href="/projects/{{ title.id }}" target="_blank">
+			    <div class="content">
+				<div class="thumb"><img src="{{title.imageUrl}}" alt=""></div>
+				    <div class="text">
+				        <p class="text-blue">{{ title.title }} ({{ title.yearStart }}{% if title.yearStart != title.yearEnd %}-{{ title.yearEnd }}{% endif %})</p>
+				        <p>{{title.subtitle}}</p>
+				    </div>
+			    </div>
+		        </a></article>
+                    {% endfor %}
+		</div>
+	    </div>
 	</div>
     </div>
 </section>
