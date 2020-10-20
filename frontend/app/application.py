@@ -240,6 +240,24 @@ def project_page_template(project_id):
                                  mention_types=mention_types)
 
 
+def get_year_from_date_string(date_string):
+    return(date_string[0:4])
+
+@application.route('/projects/')
+def project_index_template():
+    url = api_url + "/project_cache"
+    project_data = requests.get(url).json()
+    titles = []
+    for project in project_data:
+        titles.append({"id": project["primaryKey"]["id"],
+                       "title": project["title"],
+                       "yearStart": get_year_from_date_string(project["dateStart"]),
+                       "yearEnd": get_year_from_date_string(project["dateEnd"])})
+
+    return flask.render_template('project/project_index.html',
+                                 titles=titles)
+
+
 @application.route('/about')
 def about_template():
     return htmlmin.minify(flask.render_template('about_template.html'))
