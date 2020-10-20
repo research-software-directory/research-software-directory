@@ -104,7 +104,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://172.22.0.6:5001/api/"
+      "target": "http://localhost:5001/api/"
     },
     "/auth": {
       "target": "http://172.22.0.2:5002"
