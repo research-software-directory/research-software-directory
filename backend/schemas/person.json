@@ -44,10 +44,12 @@
     },
     "required": [
         "createdAt",
+        "createdBy",
         "familyNames",
         "givenNames",
         "primaryKey",
-        "updatedAt"
+        "updatedAt",
+        "updatedBy"
     ],
     "title": "Person schema"
 }
