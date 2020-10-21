@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY package.json yarn.lock tsconfig.json tsconfig.prod.json tslint.json /app/
 
-RUN yarn
+RUN yarn install
 
 COPY src /app/src/
 COPY public /app/public/
