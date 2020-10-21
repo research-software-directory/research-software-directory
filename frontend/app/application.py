@@ -194,12 +194,12 @@ def project_status(start_str, end_str):
         }
     elif start > today:
         return {
-            'status': 'Queued',
+            'status': 'Granted',
             'progress': 0
         }
     else:
         return {
-            'status': 'Running',
+            'status': 'Active',
             'progress': (today - start ) / (end - start)
         }
 
