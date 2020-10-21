@@ -28,6 +28,8 @@
 /frontend/tests/*.py[cod]
 /frontend/venv*/
 
+/.idea
+
 /graphs/node_modules/
 
 /harvesting/__pycache__/

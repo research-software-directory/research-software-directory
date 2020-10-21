@@ -15,3 +15,23 @@
     position: relative;
     top: 3px;
 }
+
+.progress_bar {
+    border: 1px solid darken( $light, 30% );
+    background-color: darken( $light, 10% );
+}
+
+.progress_bar .progress {
+    height: 1em;
+    background-color: $primaryColor;
+}
+
+.time_span {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.time_span .end_date {
+    text-align: right;
+}

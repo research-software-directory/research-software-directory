@@ -7,13 +7,27 @@
 <div class="status">
     <h5>Status</h5>
     <span>{{status.status}}</span>
-    <div>
-        Start date: {{template_data.dateStart | human_date_filter }}
+    <div class="time_span">
+        <div>
+            <div>
+                Start date
+            </div>
+            <div>
+                {{template_data.dateStart | human_date_filter }}
+            </div>
+        </div>
+        <div class="end_date">
+            <div>
+                End date
+            </div>
+            <div>
+                {{template_data.dateEnd | human_date_filter }}
+            </div>
+        </div>
     </div>
-    <div>
-        End date: {{template_data.dateEnd | human_date_filter }}
+    <div class="progress_bar" style="">
+        <div class="progress" style="width:{{status.progress*100}}%;"></div>
     </div>
-    <span>Progress: {{status.progress}}</span>
 </div>
 <div class="partners">
     <h5>Partners</h5>
