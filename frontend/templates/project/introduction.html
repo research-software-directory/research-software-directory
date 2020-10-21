@@ -1,18 +1,23 @@
 <section class="" id="introduction">
     <div class="container">
         <div class="row">
-            <div class="col col-3-4">
+            <div class="col">
                 <h1 class="title name">{{template_data.title}}</h1>
                 <div class="shortStatement">{{template_data.subtitle}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3-4">
                 <figure>
-                    <img src="{{ template_data.imageUrl }}" onerror="this.src='/static/icons/white-square.png'; this.onerror='';" height=30% >
+                    <img src="{{ template_data.imageUrl }}"
+                         onerror="this.src='/static/icons/white-square.png'; this.onerror='';" height=30%>
                     {% if template_data.imageCaption %}
                     <figcaption>{{ template_data.imageCaption }}</figcaption>
                     {% endif %}
                 </figure>
-		{% if template_data.description %}
+                {% if template_data.description %}
                 <div class="read-more_content">{{template_data.description}}</div>
-		{% endif %}
+                {% endif %}
             </div>
 
             <div class="col col-1-4 specifications sidebar bg-light">
