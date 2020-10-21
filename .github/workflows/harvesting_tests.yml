@@ -26,7 +26,7 @@ jobs:
         cd harvesting
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pytest==5.* py-w3c
+        pip install -r requirements-dev.txt
     - name: Tests with pytest (unit tests only)
       run: |
         cd harvesting
