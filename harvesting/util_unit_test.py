@@ -3,7 +3,7 @@ import requests
 from releases import rate_limit_reached
 
 
-class rateLimitReachedTest(unittest.TestCase):
+class RateLimitReachedTest(unittest.TestCase):
 
     def test_rate_limit_reached_none_input(self):
         actual_return = rate_limit_reached(None)
