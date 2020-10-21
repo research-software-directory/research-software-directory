@@ -1,7 +1,7 @@
 <h4>Project information</h4>
 <div class="fund">
     <h5>Funded under</h5>
-    <a href="{{ template_data.callUrl }}">TODO call label</a>
+    <a href="{{ template_data.callUrl }}" target="_blank">TODO call label  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a>
     <div class="grant">Grant ID: {{ template_data.grantId }}</div>
 </div>
 <div class="status">
@@ -40,16 +40,16 @@
     <h5>Project links</h5>
     <ul>
     {% if template_data.homeUrl %}
-    <li><a href="{{template_data.homeUrl}}">Project website</a></li>
+    <li><a href="{{template_data.homeUrl}}" target="_blank">Project website <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a></li>
     {% endif %}
     {% if template_data.codeUrl %}
-    <li><a href="{{template_data.codeUrl}}">GitHub organization</a></li>
+    <li><a href="{{template_data.codeUrl}}" target="_blank">GitHub organization  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a></li>
     {% endif %}
     {% if template_data.dataManagementPlanUrl %}
-    <li><a href="{{template_data.dataManagementPlanUrl}}">Data management plan</a></li>
+    <li><a href="{{template_data.dataManagementPlanUrl}}" target="_blank">Data management plan  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a></li>
     {% endif %}
     {% if template_data.softwareSustainabilityPlanUrl %}
-    <li><a href="{{template_data.softwareSustainabilityPlanUrl}}">Software sustainability plan</a></li>
+    <li><a href="{{template_data.softwareSustainabilityPlanUrl}}" target="_blank">Software sustainability plan <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a></li>
     {% endif %}
     </ul>
 </div>

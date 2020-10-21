@@ -6,7 +6,7 @@
 #
 # localhost:8080 should then show the graphs website
 
-FROM nginx:alpine
+FROM nginx:1.17.8-alpine
 
 # default nginx configuration file is located at /etc/nginx/nginx.conf
 # default nginx file hosting directory is /usr/share/nginx/html/
