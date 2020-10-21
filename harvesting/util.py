@@ -69,9 +69,11 @@ def db_connect():
                                )[os.environ.get('DATABASE_NAME')]
 
 def rate_limit_reached(requests_response):
+    if requests_response is None:
+        return True
     rate_limit_remaining = requests_response.headers.get('x-ratelimit-remaining', None)
     if rate_limit_remaining is None:
-        return False
+        return True
     if int(rate_limit_remaining) < 10:
         return True
     return False
