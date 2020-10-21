@@ -70,10 +70,10 @@ def db_connect():
 
 def rate_limit_reached(requests_response):
     if requests_response is None:
-        return True
+        return False
     rate_limit_remaining = requests_response.headers.get('x-ratelimit-remaining', None)
     if rate_limit_remaining is None:
-        return True
+        return False
     if int(rate_limit_remaining) < 10:
         return True
     return False
