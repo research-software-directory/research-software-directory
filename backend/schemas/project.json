@@ -234,6 +234,7 @@
         "isPublished",
         "output",
         "primaryKey",
+        "related",
         "subtitle",
         "tags",
         "team",
