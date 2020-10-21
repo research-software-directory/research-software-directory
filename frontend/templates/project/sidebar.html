@@ -81,19 +81,20 @@
 </div>
 {% set contactPerson = template_data.team | selectattr("role", "equalto", "Contact person") | first %}
 {% if contactPerson %}
-    <div class="contact_card">
-        <h5>
+<div id="contributors">
+    <div class="contact_card project_contact_person">
+        <div class="contact_card_header">
             Contact person
-        </h5>
+        </div>
         <div class="contact_card_content">
             <div class="contributor_picture">
                 <img
-                    {%- if contactPerson.foreignKey.avatar and contactPerson.foreignKey.avatar.data %}
-                    {% set image = contactPerson.foreignKey.avatar %}
+                        {%- if contactPerson.foreignKey.avatar and contactPerson.foreignKey.avatar.data %}
+                        {% set image=contactPerson.foreignKey.avatar %}
                         src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
-                    {% else %}
+                        {% else %}
                         src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
-                    {% endif %}
+                        {% endif %}
                 >
             </div>
             <div class="contributor-info">
@@ -107,11 +108,14 @@
                 </div>
                 <div class="contributor_email">
                     <a href="mailto:{{contactPerson.foreignKey.emailAddress}}">
-                        <svg class="icon"><use xlink:href="/static/icons/icons.svg#icon-envelope"></use></svg>
+                        <svg class="icon">
+                            <use xlink:href="/static/icons/icons.svg#icon-envelope"></use>
+                        </svg>
                         Mail {{contactPerson.foreignKey.givenNames}}
                     </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endif %}
