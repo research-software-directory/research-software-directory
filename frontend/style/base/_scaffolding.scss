@@ -124,6 +124,13 @@ section{
     }
 }
 
+.col-1-1 {
+    width: 100%;
+    @include bp(max, $tablet){
+        width: 100%;
+    }
+}
+
 
 
 

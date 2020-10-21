@@ -251,6 +251,8 @@ def project_index_template():
     for project in project_data:
         titles.append({"id": project["primaryKey"]["id"],
                        "title": project["title"],
+                       "subtitle": project["subtitle"],
+                       "imageUrl": project["imageUrl"],
                        "yearStart": get_year_from_date_string(project["dateStart"]),
                        "yearEnd": get_year_from_date_string(project["dateEnd"])})
 
