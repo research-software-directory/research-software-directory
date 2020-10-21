@@ -13,7 +13,9 @@
     <div>
         End date: {{template_data.dateEnd | human_date_filter }}
     </div>
-    <span>Progress: {{status.progress}}</span>
+    <div class="progress_bar" style="">
+        <div class="progress" style="width:{{status.progress*100}}%;"></div>
+    </div>
 </div>
 <div class="partners">
     <h5>Partners</h5>
