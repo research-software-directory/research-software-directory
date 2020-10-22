@@ -133,7 +133,7 @@
             "<p>Short <b>software statement</b>: in max. 30 words explain when your software might be useful and what it solves.</p><p>Example for Xenon:</p><p><i>If you are using remote machines to do your computations, and don’t feel like learning and implementing many different APIs, Xenon is the tool for you</i></p>"
         },
         "slug": {
-          "help": "How this software can be identified in the URL: /software/<slug>",
+          "help": "How this software can be identified in the URL: /software/&lt;slug&gt;",
           "sortIndex": 1
         },
         "tags": {
@@ -409,7 +409,7 @@
           }
         },
         "slug": {
-          "help": "How this project can be identified in the URL: /projects/<slug>",
+          "help": "How this project can be identified in the URL: /projects/&lt;slug&gt;",
           "sortIndex": 1
         },
         "softwareSustainabilityPlanUrl": {
