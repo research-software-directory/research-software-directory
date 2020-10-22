@@ -243,6 +243,7 @@
         "output",
         "primaryKey",
         "related",
+        "slug",
         "subtitle",
         "tags",
         "team",
