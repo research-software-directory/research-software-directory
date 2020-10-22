@@ -212,7 +212,7 @@
                 ],
                 "type": "object"
             },
-            "minItems": 0,
+            "minItems": 1,
             "type": "array",
             "uniqueItems": true
         },
