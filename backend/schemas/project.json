@@ -191,9 +191,12 @@
                     "foreignKey": {
                         "$ref": "definitions.json/key/person"
                     },
+                    "isContactPerson": {
+                        "default": false,
+                        "type": "boolean"
+                    },
                     "role": {
                         "enum": [
-                            "Contact person",
                             "Principal investigator",
                             "eScience Research Engineer",
                             "Senior eScience Research Engineer"
@@ -204,6 +207,7 @@
                 "required": [
                     "affiliations",
                     "foreignKey",
+                    "isContactPerson",
                     "role"
                 ],
                 "type": "object"
