@@ -10,7 +10,7 @@
       "properties": {
         "brandName": {
           "label": "Brand name",
-          "sortIndex": 1
+          "sortIndex": 2
         },
         "bullets": {
           "label": "Bullet list",
@@ -359,7 +359,7 @@
         },
         "isPublished": {
           "help": "Whether the project page should be published",
-          "sortIndex": 1
+          "sortIndex": 2
         },
         "output": {
           "help": "Output produced using NLeSC funding",
