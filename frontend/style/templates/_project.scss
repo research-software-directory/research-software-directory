@@ -1,12 +1,58 @@
 .sidebar {
-    padding: 5px;
+    padding: 20px;
 }
 
-.links .icon, .fund .icon {
-    margin-left: 0.3em;
-    display: inline-block;
-    position: relative;
-    top: 2px;
+/*
+.links, .fund {
+    padding-bottom: 2em;
+    .icon {
+        margin-left: 0.3em;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+    }
+}*/
+
+.sidebar{
+    .fund, .links, .partners, .status, .tags_container {
+        padding-bottom: 2em;
+        .icon {
+            margin-left: 0.3em;
+            display: inline-block;
+            position: relative;
+            top: 2px;
+        }
+    }
+
+    .icon{
+        width: 17px;
+        height: 17px;
+        fill: currentColor;
+    }
+    h5{
+        display: flex;
+        align-items: center;
+        color: $primaryColor;
+        padding: 0 0 0.5em;
+
+        .icon{
+            margin-right: 0.5em;
+        }
+    }
+    .tags{
+        margin-left: -2px;
+        display: flex;
+        flex-wrap: wrap;
+
+        li{
+            margin: 2px;
+            padding: 0.5em 0.8em;
+
+            &.bg-light{
+                background-color: darken( $light, 4% );
+            }
+        }
+    }
 }
 
 .contributor_email .icon {
@@ -39,7 +85,6 @@
 
 .project_contact_person {
     width: 100% !important;
-    padding: 2em 0 0.5em;
 }
 
 #team {
