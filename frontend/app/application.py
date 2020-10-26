@@ -194,12 +194,12 @@ def project_status(start_str, end_str):
         }
     elif start > today:
         return {
-            'status': 'Queued',
+            'status': 'Granted',
             'progress': 0
         }
     else:
         return {
-            'status': 'Running',
+            'status': 'Active',
             'progress': (today - start ) / (end - start)
         }
 
@@ -251,6 +251,8 @@ def project_index_template():
     for project in project_data:
         titles.append({"id": project["primaryKey"]["id"],
                        "title": project["title"],
+                       "subtitle": project["subtitle"],
+                       "imageUrl": project["imageUrl"],
                        "yearStart": get_year_from_date_string(project["dateStart"]),
                        "yearEnd": get_year_from_date_string(project["dateEnd"])})
 

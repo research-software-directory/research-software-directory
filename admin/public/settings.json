@@ -74,7 +74,6 @@
           "label": "License(s)"
         },
         "primaryKey": {
-          "label": "Primary key",
           "sortIndex": 0,
           "readonly": true
         },
@@ -288,7 +287,7 @@
           "sortIndex": 1004
         },
         "primaryKey": {
-          "label": "Primary key",
+          "readonly": true,
           "sortIndex": 0
         }
       }
@@ -361,7 +360,7 @@
         },
         "isPublished": {
           "help": "Whether the project page should be published",
-          "sortIndex": 0
+          "sortIndex": 1
         },
         "output": {
           "help": "Output produced using NLeSC funding",
@@ -373,7 +372,6 @@
           "sortIndex": 820
         },
         "primaryKey": {
-          "label": "Primary key",
           "readonly": true,
           "sortIndex": 0
         },
@@ -464,7 +462,6 @@
           "sortIndex": 100
         },
         "primaryKey": {
-          "label": "Primary key",
           "readonly": true,
           "sortIndex": 0
         },
@@ -489,7 +486,6 @@
           "sortIndex": 300
         }
       }
-
     }
   }
 }

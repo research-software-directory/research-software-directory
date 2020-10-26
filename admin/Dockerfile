@@ -1,4 +1,4 @@
-FROM node:14.13.0-alpine
+FROM node:14-alpine
 
 RUN mkdir /app
 
@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY package.json yarn.lock tsconfig.json tsconfig.prod.json tslint.json /app/
 
-RUN yarn
+RUN yarn install
 
 COPY src /app/src/
 COPY public /app/public/
