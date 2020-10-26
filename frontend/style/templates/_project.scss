@@ -62,7 +62,7 @@
             margin: 0 -10px 15px;
             li {
                 padding: 0 10px;
-                margin-top: 2em;
+                margin-bottom: 2em;
                 width: 33.3%;
 
                 @include bp(max, $phablet ){
