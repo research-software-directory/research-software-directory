@@ -79,7 +79,7 @@
         <i>No tags available</i>
     {% endif%}
 </div>
-{% set contactPerson = template_data.team | selectattr("role", "equalto", "Contact person") | first %}
+{% set contactPerson = template_data.team | selectattr("isContactPerson") | first %}
 {% if contactPerson %}
 <div id="contributors">
     <div class="contact_card project_contact_person">
