@@ -93,7 +93,7 @@
                         {% set image=contactPerson.foreignKey.avatar %}
                         src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
                         {% else %}
-                        src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
+                        src="/static/icons/team_default.png" alt=""
                         {% endif %}
                 >
             </div>
