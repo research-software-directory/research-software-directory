@@ -223,10 +223,9 @@ def project_page_template(project_id):
     project_dictionary = requests.get(url).json()
     if "error" in project_dictionary:
         return flask.redirect("/", code=302)
-    for i in range(0,len(project_dictionary['related']['projects'])):
-        for j in range(0,len(project_dictionary['related']['projects'][i]['foreignKey']['team'])):
-            project_dictionary['related']['projects'][i]['foreignKey']['team'][j] = \
-                fetch_team_member_data(project_dictionary['related']['projects'][i]['foreignKey']['team'][j])
+    for project in project_dictionary['related']['projects']:
+        for team in project['foreignKey']['team']:
+            team.update(fetch_team_member_data(team))
 
     set_markdown(project_dictionary, ['description'])
 
