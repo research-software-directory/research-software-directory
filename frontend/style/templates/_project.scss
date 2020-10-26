@@ -75,33 +75,9 @@
             }
         }
 
-        &.long-list{
-            .row{
-                transition: height 0.3s ease-in;
-                height: 260px;
-                overflow: hidden;
 
-                .gradient{ transition: opacity 0.23s ease; }
-            }
-
-            .button .icon{
-                transition: 0.3s ease-in;
-            }
-
-            &.active{
-                .row .gradient{ opacity: 0; }
-
-                .button .icon{
-                    transform: rotate(135deg);
-                }
-
-            }
-        }
     }
 
-    .button {
-        margin-bottom: 2em;
-    }
     .contributor_name {
         font-family: $primaryFont;
         font-size: 2rem;
