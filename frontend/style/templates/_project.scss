@@ -40,3 +40,75 @@
     width: 100% !important;
     padding: 2em 0 0.5em;
 }
+
+#team {
+    .container{
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+    .contributors_list {
+
+        width: 75%;
+
+        @include bp(max, 1100px ){
+            width: 90%;
+            order: 2;
+            margin-top: 40px;
+        }
+        @include bp(max, $phablet ){
+            width: 100%;
+        }
+        ul{
+            margin: 0 -10px 15px;
+            li {
+                padding: 0 10px;
+                margin-top: 2em;
+                width: 33.3%;
+
+                @include bp(max, $phablet ){
+                    width: 100%;
+                    margin-bottom: 1.2em;
+                    .contributor_name{
+                        font-size: 1.8rem;
+                   }
+                 }
+            }
+        }
+
+        &.long-list{
+            .row{
+                transition: height 0.3s ease-in;
+                height: 260px;
+                overflow: hidden;
+
+                .gradient{ transition: opacity 0.23s ease; }
+            }
+
+            .button .icon{
+                transition: 0.3s ease-in;
+            }
+
+            &.active{
+                .row .gradient{ opacity: 0; }
+
+                .button .icon{
+                    transform: rotate(135deg);
+                }
+
+            }
+        }
+    }
+
+    .button {
+        margin-bottom: 2em;
+    }
+    .contributor_name {
+        font-family: $primaryFont;
+        font-size: 2rem;
+        color: $primaryColor;
+    }
+
+    @include bp(max, $phablet ){
+        text-align: center;
+    }
+}
