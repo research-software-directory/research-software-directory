@@ -205,7 +205,7 @@ def project_status(start_str, end_str):
 
 @application.route('/projects/<project_id>')
 def project_page_template(project_id):
-    url = api_url + "/project_cache/%s?isPublished=true" % project_id
+    url = api_url + "/project_cache/%s" % project_id
     project_dictionary = requests.get(url).json()
     if "error" in project_dictionary:
         return flask.redirect("/", code=302)
