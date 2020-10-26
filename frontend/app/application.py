@@ -205,7 +205,7 @@ def project_status(start_str, end_str):
 
 @application.route('/projects/<project_id>')
 def project_page_template(project_id):
-    url = api_url + "/project_cache/%s" % project_id
+    url = api_url + "/project_cache/%s?isPublished=true" % project_id
     project_dictionary = requests.get(url).json()
     if "error" in project_dictionary:
         return flask.redirect("/", code=302)
@@ -245,7 +245,7 @@ def get_year_from_date_string(date_string):
 
 @application.route('/projects/')
 def project_index_template():
-    url = api_url + "/project_cache"
+    url = api_url + "/project_cache?isPublished=true"
     project_data = requests.get(url).json()
     titles = []
     for project in project_data:
