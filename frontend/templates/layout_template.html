@@ -28,12 +28,13 @@
                             {% endwith %}
                         </a>
                         {% endblock %}
-                        {% block find_software %}
-                        <a href="/">Search the directory</a>
-                        {% endblock %}
                     </div>
 
                     <div id="header_right">
+
+                        {% block software %}
+                        <a href="/software">Software</a>
+                        {% endblock %}
 
                         {% block projects %}
                         <a href="/projects">Projects</a>
