@@ -103,12 +103,26 @@ def set_markdown(software, fields):
             software[field] = None
 
 
+def fetch_team_member_data(team_member):
+    person_id = team_member['foreignKey']['id']
+    url = api_url + "/person/%s" % person_id
+    person_dictionary = requests.get(url).json()
+    if "error" in person_dictionary:
+        return team_member
+    team_member.update(person_dictionary)
+    return team_member
+ 
+
 @application.route('/software/<software_id>')
 def software_product_page_template(software_id):
     url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
     if "error" in software_dictionary:
         return flask.redirect("/", code=302)
+    for i in range(0,len(software_dictionary['related']['projects'])):
+        for j in range(0,len(software_dictionary['related']['projects'][i]['foreignKey']['team'])):
+            software_dictionary['related']['projects'][i]['foreignKey']['team'][j] = \
+                fetch_team_member_data(software_dictionary['related']['projects'][i]['foreignKey']['team'][j])
     set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
     mention_types = {
@@ -209,6 +223,10 @@ def project_page_template(project_id):
     project_dictionary = requests.get(url).json()
     if "error" in project_dictionary:
         return flask.redirect("/", code=302)
+    for i in range(0,len(project_dictionary['related']['projects'])):
+        for j in range(0,len(project_dictionary['related']['projects'][i]['foreignKey']['team'])):
+            project_dictionary['related']['projects'][i]['foreignKey']['team'][j] = \
+                fetch_team_member_data(project_dictionary['related']['projects'][i]['foreignKey']['team'][j])
 
     set_markdown(project_dictionary, ['description'])
 
