@@ -61,6 +61,9 @@ def last_commit_date(repository_url):
 def cache_projects():
     projects = db.project.find()
     for project in projects:
+        if not project['isPublished']:
+            db.project_cache.delete_one({'_id': project['_id']})
+            continue        
         logger.log(logging.INFO, 'processing project %s' % project['title'])
         project = replace_foreign_keys(project)
         db.project_cache.replace_one({'_id': project['_id']}, project, upsert=True)
