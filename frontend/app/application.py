@@ -245,7 +245,7 @@ def get_year_from_date_string(date_string):
 
 @application.route('/projects/')
 def project_index_template():
-    url = api_url + "/project_cache?isPublished=true"
+    url = api_url + "/project_cache"
     project_data = requests.get(url).json()
     titles = []
     for project in project_data:
