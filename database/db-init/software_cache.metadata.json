@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"rsd.software_cache"},{"v":2,"key":{"primaryKey.id":1.0},"name":"primaryKey.id_1","ns":"rsd.software_cache"}],"uuid":"7e2600b02ede4dc093adec30fdf85ee4"}
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"rsd.software_cache"},{"v":2,"key":{"primaryKey.id":1.0},"name":"primaryKey.id_1","ns":"rsd.software_cache"}],"uuid":"5e083c83ee4f4710a4b3d85217b8a520"}
