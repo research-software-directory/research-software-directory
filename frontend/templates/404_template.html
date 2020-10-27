@@ -1,0 +1,21 @@
+{% extends "layout_template.html" %}
+
+{%- block head -%}
+    {{super()}}
+    <title>Page Not Found</title>
+{%- endblock -%}
+{%- block content -%}
+<section class="" id="title">
+    <div class="container">
+        <div class="row">
+            <div class="text">
+                <h1 class="title">Page Not Found</h1>
+		<p>The page "{{url}}" was not found on this server</p>
+		<p>Error message: {{e}}</p>
+		<p>Return to the <a href="/" class="text-blue">Home Page</a>
+	    </div>
+	</div>
+    </div>
+<i/section>
+{% endblock %}
+
