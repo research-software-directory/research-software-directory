@@ -1,4 +1,3 @@
-<h4>Project information</h4>
 <div class="fund">
     <h5>Funded under</h5>
     <a href="{{ template_data.callUrl }}" target="_blank">TODO call label  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a>
@@ -13,7 +12,7 @@
                 Start date
             </div>
             <div>
-                {{template_data.dateStart | human_date_filter }}
+                {{template_data.dateStart | human_date_month_filter }}
             </div>
         </div>
         <div class="end_date">
@@ -21,7 +20,7 @@
                 End date
             </div>
             <div>
-                {{template_data.dateEnd | human_date_filter }}
+                {{template_data.dateEnd | human_date_month_filter }}
             </div>
         </div>
     </div>
@@ -67,7 +66,7 @@
     {% endif %}
     </ul>
 </div>
-<div>
+<div class="tags_container">
     <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
     {% if template_data.tags %}
     <ul class="tags">
@@ -93,7 +92,7 @@
                         {% set image=contactPerson.foreignKey.avatar %}
                         src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
                         {% else %}
-                        src="https://www.esciencecenter.nl/css/assets/team_default.png" alt=""
+                        src="/static/icons/team_default.png" alt=""
                         {% endif %}
                 >
             </div>
