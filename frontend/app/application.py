@@ -7,6 +7,7 @@ import requests
 import htmlmin
 import ago
 import os
+from flask import request
 
 application = flask.Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -108,7 +109,7 @@ def software_product_page_template(software_id):
     url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
     if "error" in software_dictionary:
-        return flask.redirect("/", code=302)
+        return page_not_found("Unknown software id")
     set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
     mention_types = {
@@ -142,7 +143,7 @@ def cite(software_id):
     url = api_url + "/software_cache/%s" % software_id
     software_dictionary = requests.get(url).json()
     if "error" in software_dictionary:
-        return flask.redirect("/", code=302)
+        return page_not_found("Unknown software id")
 
     releases = software_dictionary['releases']
 
@@ -208,7 +209,7 @@ def project_page_template(project_id):
     url = api_url + "/project_cache/%s" % project_id
     project_dictionary = requests.get(url).json()
     if "error" in project_dictionary:
-        return flask.redirect("/", code=302)
+        return page_not_found("Unknown project id")
 
     set_markdown(project_dictionary, ['description'])
 
@@ -267,8 +268,7 @@ def about_template():
 
 @application.errorhandler(404)
 def page_not_found(e):
-    return flask.redirect("/", code=302)
-
+    return flask.render_template('404_template.html',e=e,url=request.path)
 
 def str_to_datetime(input_string):
     return parser.parse(input_string)
