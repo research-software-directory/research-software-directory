@@ -298,6 +298,12 @@ def human_date_filter(input_string):
 
 
 @application.template_filter()
+def human_date_month_filter(input_string):
+    output_format = "%B %Y"
+    return str_to_datetime(input_string).strftime(output_format)
+
+
+@application.template_filter()
 def human_name_filter(person):
     name = person.get('givenNames') or ''
     if 'nameParticle' in person and person['nameParticle']:
