@@ -270,6 +270,7 @@ def about_template():
 def page_not_found(e):
     return flask.render_template('404_template.html',e=e,url=request.path)
 
+
 def str_to_datetime(input_string):
     return parser.parse(input_string)
 
