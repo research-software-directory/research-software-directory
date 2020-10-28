@@ -53,6 +53,10 @@
             }
         }
     }
+    .status_word {
+        text-align: center;
+        font-size: smaller;
+    }
 }
 
 .contributor_email .icon {
@@ -63,20 +67,28 @@
 }
 
 .progress_bar {
-    border: 1px solid darken( $light, 30% );
     background-color: darken( $light, 10% );
+    border-radius: 0.25em;
+    border: none;
+    height: 0.5em;
+    margin-bottom: 1em;
     margin-top: 0.7em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 .progress_bar .progress {
-    height: 0.66em;
     background-color: $primaryColor;
+    border-radius: 0.25em;
+    height: 0.5em;
+    justify-content: space-between;
+    width: 75%;
 }
 
 .time_span {
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
     font-size:smaller;
 }
 
