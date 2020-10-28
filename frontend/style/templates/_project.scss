@@ -54,8 +54,8 @@
         }
     }
     .status_word {
-        margin-left: auto;
-        margin-right: auto;
+        text-align: center;
+        font-size: smaller;
     }
 }
 
@@ -75,7 +75,7 @@
     margin-top: 0.7em;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 70%;
 }
 
 .progress_bar .progress {
@@ -89,7 +89,6 @@
 .time_span {
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
     font-size:smaller;
 }
 

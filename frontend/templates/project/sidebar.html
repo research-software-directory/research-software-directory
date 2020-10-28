@@ -1,10 +1,16 @@
+{% set show_fund = "FIXME" not in template_data.callUrl and "FIXME" not in template_data.grantId %}
+{% if show_fund %}
 <div class="fund">
     <h5>Funded under</h5>
     <a href="{{ template_data.callUrl }}" target="_blank">TODO call label  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a>
     <div class="grant">Grant ID: {{ template_data.grantId }}</div>
 </div>
+{% endif %}
 <div class="status">
     <h5>Status</h5>
+    <div class="progress_bar" >
+        <div class="progress" style="width:{{status.progress*100}}%;"></div>
+    </div>
     <div class="time_span">
         <div>
             <div>
@@ -16,9 +22,6 @@
                 {{template_data.dateEnd | human_date_month_filter }}
             </div>
         </div>
-    </div>
-    <div class="progress_bar" style="">
-        <div class="progress" style="width:{{status.progress*100}}%;"></div>
     </div>
     <div class="status_word">{{status.status}}</div>
 </div>
