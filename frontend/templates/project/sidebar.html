@@ -5,20 +5,13 @@
 </div>
 <div class="status">
     <h5>Status</h5>
-    <span>{{status.status}}</span>
     <div class="time_span">
         <div>
-            <div>
-                Start date
-            </div>
             <div>
                 {{template_data.dateStart | human_date_month_filter }}
             </div>
         </div>
         <div class="end_date">
-            <div>
-                End date
-            </div>
             <div>
                 {{template_data.dateEnd | human_date_month_filter }}
             </div>
@@ -27,6 +20,7 @@
     <div class="progress_bar" style="">
         <div class="progress" style="width:{{status.progress*100}}%;"></div>
     </div>
+    <div class="status_word">{{status.status}}</div>
 </div>
 <div class="partners">
     <h5>Partners</h5>
@@ -67,7 +61,7 @@
     </ul>
 </div>
 <div class="tags_container">
-    <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+    <h5>Tags</h5>
     {% if template_data.tags %}
     <ul class="tags">
         {% for tag in template_data.tags %}
