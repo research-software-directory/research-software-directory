@@ -330,6 +330,7 @@
         },
         "description": {
           "help": "Project description",
+          "multiline": true,
           "sortIndex": 200
         },
         "grantId": {
