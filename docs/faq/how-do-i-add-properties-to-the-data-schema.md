@@ -82,7 +82,7 @@ schema to the new schema. We will use the MongoDB console for this.
 
 Make sure the Research Software Directory is still up and running with
 
-```bash
+```shell
 docker ps -a
 ```
 
@@ -90,7 +90,7 @@ Start a new terminal and go to the project's root directory.
 
 Start a shell in the `database` container, as follows:
 
-```
+```shell
 docker-compose exec database /bin/sh
 ```
 
@@ -99,7 +99,7 @@ the MongoDB shell.
 
 In the MongoDB shell, run (see explanation below):
 
-```
+```shell
 db.software.update({}, {$set: {"grants": []}}, {"multi": true})
 ```
 
