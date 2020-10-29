@@ -41,8 +41,9 @@ In `layout_template.html`, find the `div` with `id=header_logo`:
     </a>
 </div>
 ```
+
 and replace this part:
- 
+
 ```html+jinja
 {% with position="header" %}
 {% include 'logo.html' %}
@@ -61,7 +62,7 @@ You may need to either use a `style` tag (not preferred)
 <img src="https://www.esciencecenter.nl/img/cdn/logo_escience_center.png" style="some style here" />
 ```
 
-or include some styling in `_header.scss` in order to set some of the `img`'s style properties such as its height. 
+or include some styling in `_header.scss` in order to set some of the `img`'s style properties such as its height.
 
 Note that for the latter option, you'll need a program that can compile SCSS
 files into CSS. For example, on Ubuntu you can use `pysassc`:

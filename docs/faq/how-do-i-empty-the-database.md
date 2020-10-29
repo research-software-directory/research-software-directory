@@ -44,7 +44,7 @@ db.project.deleteMany({})
 ```
 
 For reference, here is the Link to the Mongo shell documentation:
-https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany
+[https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany](https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/#db.collection.deleteMany)
 
 Type Ctrl-D to exit the Mongo shell.
 
