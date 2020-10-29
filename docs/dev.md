@@ -3,8 +3,8 @@
 ## Try it out, step 1/3: Fork and clone
 
 Click the ``Fork`` button on
-https://github.com/research-software-directory/research-software-directory/ to
-fork to your own GitHub organization or GitHub profile, then:
+[https://github.com/research-software-directory/research-software-directory/](https://github.com/research-software-directory/research-software-directory/)
+to fork to your own GitHub organization or GitHub profile, then:
 
 ```shell
 git clone https://github.com/<your-github-organization>/research-software-directory.git
