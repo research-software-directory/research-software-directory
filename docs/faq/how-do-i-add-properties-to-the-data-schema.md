@@ -1,6 +1,6 @@
 # How do I add properties to the data schema?
 
-### Relevant files
+## Relevant files
 
 - ``backend/schemas/*.json``
 - ``admin/public/settings.json``

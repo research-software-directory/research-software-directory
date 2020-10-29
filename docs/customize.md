@@ -1,6 +1,5 @@
 # Customize your instance of the Research Software Directory
 
-
 Let's say you followed the steps above, and have a running instance of the
 Research Software Directory. Now it is time to start customizing your Research
 Software Directory. We have prepared some FAQs for customizations that are
