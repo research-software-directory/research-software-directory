@@ -40,7 +40,7 @@ related boxes (``GitHub``, ``Zenodo`` and ``CITATION.cff``) are already covered.
 However, product pages are not only about source code; they also aim to provide
 context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
-selecting them via the dropdown list in the Admin interface of the RSD. 
+selecting them via the dropdown list in the Admin interface of the RSD.
 
 The items on the  dropdown list are harvested periodically from the
 [Netherlands eScience Center group on
@@ -65,7 +65,7 @@ This is done by hand via the Admin interface (see sections below).
 
 ## What software should be added?
 
-As a rule of thumb, software should be added to the Research Software Directory if 
+As a rule of thumb, software should be added to the Research Software Directory if
 
 1. we can realistically claim (co-)ownership of the software AND
 2. the software could be useful to somebody else
@@ -182,5 +182,5 @@ appending a question mark followed by some random characters, for example
 [https://www.research-software.nl/software/xenon?somerandomstring](https://www.research-software.nl/software/xenon?somerandomstring)
 (``?somerandomstring`` is the query part of the URL). This way, both the browser
 and server consider it a previously unseen web page because the URL is
-different, and will therefore show you the latest data. You'll need to come up 
+different, and will therefore show you the latest data. You'll need to come up
 with a different value for ``somerandomstring`` every time you reload the data.
