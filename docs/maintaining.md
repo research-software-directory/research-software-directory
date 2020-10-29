@@ -18,7 +18,8 @@ It is sometimes helpful to visualize the structure in the ``docker-compose.yml``
 Use https://github.com/pmsipilot/docker-compose-viz to generate a png image.
 
 ```shell
-docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
+   render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
 ```
 
 For example,
@@ -97,12 +98,12 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
 
     ```shell
-    $ cd $(mktemp -d)
-    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
-    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ./rsd-secrets.env \
-      ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
+    cd $(mktemp -d)
+    scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+       ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
+    scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+       ./rsd-secrets.env \
+       ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
     ```
 1. On the remote, create the symlink `.env` and let it point to `rsd-secrets.env`:
 
@@ -115,16 +116,16 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
    directory instance by stopping the ``rsd-admin`` service.
 
     ```shell
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
-    $ cd /home/ubuntu/rsd
-    $ docker-compose stop rsd-admin
+    ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    cd /home/ubuntu/rsd
+    docker-compose stop rsd-admin
     ```
 
 1. Create the backup files in the old Research Software Directory instance:
 
     ```shell
     # start an interactive shell in the backup container
-    $ docker-compose exec backup /bin/sh
+    docker-compose exec backup /bin/sh
 
     # create the backup files in the container's /dump directory
     /app # mongodump \
@@ -144,21 +145,21 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 
     ```shell
     scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-    ubuntu@35.156.38.208:/home/ubuntu/rsd/dump .
+       ubuntu@35.156.38.208:/home/ubuntu/rsd/dump .
 
     scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-    ./dump/* ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
+       ./dump/* ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
 
     ```
 
 1. Start the new Research Software Directory instance.
 
     ```shell
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
-    $ cd /home/ubuntu/rsd
+    ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    cd /home/ubuntu/rsd
 
-    $ docker-compose build
-    $ docker-compose up -d
+    docker-compose build
+    docker-compose up -d
     ```
 
 1. Check [/CHANGELOG.md](/CHANGELOG.md) to see if you need to run any command to
@@ -167,15 +168,15 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Next, harvest all the data from external sources using:
 
     ```shell
-    $ docker-compose exec harvesting python app.py harvest all
-    $ docker-compose exec harvesting python app.py resolve all
+    docker-compose exec harvesting python app.py harvest all
+    docker-compose exec harvesting python app.py resolve all
     ```
 
 1. In case the old instance had problems with harvesting of the mentions, you
    may need to retrieve all mentions, as follows:
 
     ```shell
-    $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
+    docker-compose exec harvesting python app.py harvest mentions --since-version 0
     ```
 
 1. Check if the instance works correctly using a browser to navigate to
@@ -183,7 +184,7 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. If everything looks good, stop the Research Software Directory in the old instance
 
     ```shell
-    $ docker-compose stop
+    docker-compose stop
     ```
 
 1. Disassociate the ElasticIP address from the old instance.
