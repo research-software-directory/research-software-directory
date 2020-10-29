@@ -15,7 +15,7 @@ npm run mlc
 ## Visualizing ``docker-compose.yml``
 
 It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
-Use https://github.com/pmsipilot/docker-compose-viz to generate a png image.
+Use [https://github.com/pmsipilot/docker-compose-viz](https://github.com/pmsipilot/docker-compose-viz) to generate a png image.
 
 ```shell
 docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \

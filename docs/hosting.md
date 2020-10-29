@@ -139,7 +139,7 @@ that the connection is not secure.
 
 To fix this, we need to configure the security credentials, but this in turn
 requires us to claim a domain and configure a DNS record. There are free
-services available that you can use for this, e.g. https://noip.com. Here's how:
+services available that you can use for this, e.g. [https://noip.com](https://noip.com). Here's how:
 
 1. Go to [https://noip.com](https://noip.com), sign up and log in.
 1. Under My services, find ``DNS Records``

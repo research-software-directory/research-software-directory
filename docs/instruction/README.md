@@ -20,7 +20,7 @@ website](https://github.com/orgs/NLeSC/people) will tell you if you meet those
 criteria.
 
 On Zotero, you'll need to be a member of the Netherlands eScience Center group,
-which you can request here https://www.zotero.org/groups/1689348. A group
+which you can request here [https://www.zotero.org/groups/1689348](https://www.zotero.org/groups/1689348). A group
 administrator needs to grant you access, so be aware it may take a while.
 
 ## Basic workflow
