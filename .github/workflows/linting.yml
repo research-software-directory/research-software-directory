@@ -10,8 +10,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: GitHub Super Linter
+      - name: lint admin/
         uses: docker://github/super-linter:v3
         env:
           VALIDATE_ALL_CODEBASE: true
-          FILTER_REGEX_INCLUDE: /github/workspace/admin/.*|/github/workspace/auth-github/.*
+          FILTER_REGEX_INCLUDE: /github/workspace/admin/.*
+      - name: lint auth-github/
+        uses: docker://github/super-linter:v3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_INCLUDE: /github/workspace/auth-github/.*
+      - name: lint backend/
+        uses: docker://github/super-linter:v3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_INCLUDE: /github/workspace/backend/.*
