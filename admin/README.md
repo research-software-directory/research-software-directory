@@ -17,20 +17,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 
-1.  Clone repository
-1.  Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
-1.  Install yarn, `npm install -g yarn`
-1.  Install dependencies: `yarn install`
-1.  To run tests: `yarn test`
-1.  Start app in dev server: `yarn start`
+1. Clone repository
+1. Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
+1. Install yarn, `npm install -g yarn`
+1. Install dependencies: `yarn install`
+1. To run tests: `yarn test`
+1. Start app in dev server: `yarn start`
 
 ### Install node using NVM
 
 See [https://github.com/creationix/nvm#install-script](https://github.com/creationix/nvm#install-script)
 
-1.  `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash`
-1.  restart terminal
-1.  run `nvm install 8`
+1. `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash`
+1. restart terminal
+1. run `nvm install 8`
 
 ### Settings
 
