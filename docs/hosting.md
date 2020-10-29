@@ -6,7 +6,7 @@ Center uses AWS to run their instance of the Research Software Directory. This
 section describes how to deploy your own customized instance of the Research
 Software Directory to AWS.
 
-Go to https://aws.amazon.com/console/. Once there, you'll see something like:
+Go to [https://aws.amazon.com/console/](https://aws.amazon.com/console/). Once there, you'll see something like:
 
 [![AWS Management Console login](/docs/images/aws-management-console-login.png)](/docs/images/aws-management-console-login.png)
 
@@ -30,7 +30,7 @@ have to use root credentials when we don't have to; [jump to the IAM section](/R
 ### Configuring EC2
 
 In the ``All Services`` overview, click ``EC2`` or use this link
-https://console.aws.amazon.com/ec2.
+[https://console.aws.amazon.com/ec2](https://console.aws.amazon.com/ec2).
 
 <!-- TODO how to configure default zone -->
 
@@ -141,18 +141,18 @@ To fix this, we need to configure the security credentials, but this in turn
 requires us to claim a domain and configure a DNS record. There are free
 services available that you can use for this, e.g. https://noip.com. Here's how:
 
-1. Go to https://noip.com, sign up and log in.
+1. Go to [https://noip.com](https://noip.com), sign up and log in.
 1. Under My services, find ``DNS Records``
 1. Click the ``Add a hostname`` button
 1. Choose your free (sub)domain name, e.g. I chose ``myrsd.ddns.net``
 1. Fill in the IP address of your Amazon machine. In my case,
-``https://myrsd.ddns.net`` will serve as an alias for ``https://3.92.182.176``
+[https://myrsd.ddns.net](https://myrsd.ddns.net) will serve as an alias for [https://3.92.182.176](https://3.92.182.176)
 1. Once you have the (sub)domain name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
 ``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
 well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
 have).
 1. Fill in your e-mail for ``SSL_ADMIN_EMAIL``.
-1. Finally, revisit your OAuth app here https://github.com/settings/developers,
+1. Finally, revisit your OAuth app here [https://github.com/settings/developers](https://github.com/settings/developers),
 replace the Amazon IP address in the ``Authorization callback url`` with
 your freshly minted domain name.
 1. Now, stop the Research Software Directory if it is still running with Ctrl-c
@@ -170,7 +170,7 @@ while before the domain name resolves to the IP address.
 ### Configuring IAM
 
 1. In the ``All Services`` overview, click ``IAM`` or use this link
-https://console.aws.amazon.com/iam.
+[https://console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 1. In the menu on the left, click ``Groups``.
 1. Click the ``Create New Group`` button.
 1. Name the group ``s3-users``.
@@ -199,10 +199,10 @@ backup mechanism.
 ### Configuring S3
 
 In the ``All Services`` overview, click ``S3`` or use this link
-https://console.aws.amazon.com/s3.
+[https://console.aws.amazon.com/s3](https://console.aws.amazon.com/s3).
 
 1. create a bucket with a random name (bucket names must be globally unique;
-websites like https://www.random.org/strings/ are useful to get a random string)
+websites like [https://www.random.org/strings/](https://www.random.org/strings/) are useful to get a random string)
 1. in that bucket, make a directory, e.g. ``rsd-backups``
 1. The backup service contains a program
 ([xenon-cli](https://github.com/xenon-middleware/xenon-cli)) that can copy to a range of
