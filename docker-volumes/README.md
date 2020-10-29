@@ -5,7 +5,7 @@ running the software.
 
 After running the complete stack, this directory should look like this:
 
-```
+```shell
 docker-volumes/
 ├── db
 ├── oaipmh-cache
