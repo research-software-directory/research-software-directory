@@ -53,7 +53,7 @@ initialize).
 1. On your local machine, open a terminal and go to ``~/.ssh``. Change the
 permissions of the key file to octal 400 (readable only by user):
 
-    ```
+    ```shell
     chmod 400 <the keyfile>
     ```
 1. Verify that the ``.ssh`` directory itself has octal permission 700 (readable,
@@ -65,13 +65,13 @@ writable, and executable by user only).
 1. Once logged in to the remote machine, update the package manager's list of
    software packages and their versions:
 
-    ```
+    ```shell
     sudo apt update
     ```
 
 1. Upgrade any software packages to a higher version if available:
 
-    ```
+    ```shell
     sudo apt upgrade
     ```
 
@@ -81,7 +81,7 @@ before (see section _Documentation for developers_
 [above](/README.md#documentation-for-developers)).
 1. Make a new directory and change into it:
 
-    ```
+    ```shell
     cd ~
     mkdir rsd
     cd rsd
@@ -90,7 +90,7 @@ before (see section _Documentation for developers_
 customized Research Software Directory instance into the current directory as
 follows:
 
-    ```
+    ```shell
     git clone https://github.com/<your-github-organization>/research-software-directory.git .
     ```
     (Note the dot at the end)
@@ -98,14 +98,14 @@ follows:
 1. Open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
 the Amazon machine as follows:
 
-    ```bash
+    ```shell
     cd <where rsd-secrets.env is>
     scp -i path-to-the-keyfile ./rsd-secrets.env \
     ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
     ```
 1. On the remote machine, create the symlink named `.env` and have it point to the secrets file:
 
-    ```bash
+    ```shell
     ln -s rsd-secrets.env .env
     ```
 
@@ -117,7 +117,7 @@ instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
 ``rsd-secrets.env`` according to the new client ID and secret.
 1. Start the Research Software Directory instance with:
 
-    ```bash
+    ```shell
     cd ~/rsd
     docker-compose build
     docker-compose up -d
@@ -125,7 +125,7 @@ instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
 1. On your local machine, open a new terminal. Connect to the Amazon instance,
 run the harvesters, and resolve the foreign keys:
 
-    ```bash
+    ```shell
     ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>
     cd ~/rsd
     docker-compose exec harvesting python app.py harvest all
@@ -159,7 +159,7 @@ your freshly minted domain name.
 or ``docker-compose stop``.
 1. Start the Research Software Directory back up
 
-    ```
+    ```shell
     cd ~/rsd
     docker-compose up -d
     ```
@@ -211,7 +211,7 @@ and store the backups on Amazon's S3. For this, configure the environmental
 variable ``BACKUP_CMD`` as follows (naturally, you'll need to use a different
 location, username, and password; see explanation below):
 
-    ```
+    ```shell
     BACKUP_CMD='xenon filesystem s3 \
     --location http://s3-us-west-2.amazonaws.com/nyor-yiwy-fepm-dind/ \
     --username AKIAJ52LWSUUKATRQZ2A \
@@ -234,15 +234,17 @@ location, username, and password; see explanation below):
     archives; no need to change this for your application.
 1. Test the setup by stopping the Research Software Directory on Amazon, by
 
-    ```
+    ```shell
     # ssh into the remote machine
     cd rsd
     docker-compose stop
     # update BACKUP_CMD by editing the rsd-secrets.env file
     docker-compose up -d
     ```
+
     Wait until the Research Software Directory is up and running again, then
-    ```
+
+    ```shell
     docker-compose exec backup /bin/sh
     /app # /bin/sh backup.sh
     ```
