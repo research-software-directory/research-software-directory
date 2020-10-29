@@ -1,3 +1,5 @@
+# Admin interface service
+
 The is the admin user interface for the Research Software Directory.
 It can be used to add and update software items to the directory.
 
@@ -16,19 +18,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Installation
 
 1.  Clone repository
-2.  Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
-3.  Install yarn, `npm install -g yarn`
-4.  Install dependencies: `yarn install`
-5.  To run tests: `yarn test`
-6.  Start app in dev server: `yarn start`
+1.  Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
+1.  Install yarn, `npm install -g yarn`
+1.  Install dependencies: `yarn install`
+1.  To run tests: `yarn test`
+1.  Start app in dev server: `yarn start`
 
 ## Install node using NVM
 
-See https://github.com/creationix/nvm#install-script
+See [https://github.com/creationix/nvm#install-script](https://github.com/creationix/nvm#install-script)
 
-1.  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-2.  restart terminal
-3.  run `nvm install 8`
+1.  `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash`
+1.  restart terminal
+1.  run `nvm install 8`
 
 ## Settings
 
@@ -58,4 +60,4 @@ The Docker image should not be used directly and alone as the code expects the
 server](/auth-github) to be running at `/auth` which are not part of the image.
 
 The image should be used as part of a `docker-compose`, see
-https://github.com/research-software-directory/research-software-directory.
+[https://github.com/research-software-directory/research-software-directory](https://github.com/research-software-directory/research-software-directory).
