@@ -10,12 +10,12 @@ TODO:
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-# Prerequisites
+## Prerequisites
 
 - [github-auth](/auth-github) authentication service.
 - [backend](/backend) data API service.
 
-# Installation
+## Installation
 
 1.  Clone repository
 1.  Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
@@ -24,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1.  To run tests: `yarn test`
 1.  Start app in dev server: `yarn start`
 
-## Install node using NVM
+### Install node using NVM
 
 See [https://github.com/creationix/nvm#install-script](https://github.com/creationix/nvm#install-script)
 
@@ -32,12 +32,12 @@ See [https://github.com/creationix/nvm#install-script](https://github.com/creati
 1.  restart terminal
 1.  run `nvm install 8`
 
-## Settings
+### Settings
 
 Run-time settings should be reachable through `[BASE_URL]/settings.json`, see e.g. `public/settings.json`.
 This settings file should be overriden in production.
 
-# Build
+## Build
 
 To build the app for production run:
 
@@ -47,7 +47,7 @@ yarn build
 
 The deployable app will build to the `build/` directory.
 
-# Docker
+## Docker
 
 Build with
 
