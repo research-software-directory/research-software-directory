@@ -27,7 +27,7 @@ Software Directory and host it online; [jump to the EC2 section](/README.md#conf
 have to use root credentials when we don't have to; [jump to the IAM section](/README.md#configuring-iam)
 1. **S3**: this is where we will store our daily backups; [jump to the S3 section](/README.md#configuring-s3)
 
-### Configuring EC2
+## Configuring EC2
 
 In the ``All Services`` overview, click ``EC2`` or use this link
 [https://console.aws.amazon.com/ec2](https://console.aws.amazon.com/ec2).
@@ -167,7 +167,7 @@ or ``docker-compose stop``.
 of the Research Software Directory (although be aware that sometimes it takes a
 while before the domain name resolves to the IP address.
 
-### Configuring IAM
+## Configuring IAM
 
 1. In the ``All Services`` overview, click ``IAM`` or use this link
 [https://console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
@@ -196,7 +196,7 @@ be presented with the new user's credentials. Download the CSV file now; we'll
 use the ``Access key ID`` and the ``Secret access key`` later to set up the
 backup mechanism.
 
-### Configuring S3
+## Configuring S3
 
 In the ``All Services`` overview, click ``S3`` or use this link
 [https://console.aws.amazon.com/s3](https://console.aws.amazon.com/s3).
