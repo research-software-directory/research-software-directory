@@ -2,17 +2,17 @@
 
 Data API for Research Software Directory
 
-## Requirements:
+## Requirements
 
 - Python 3.8+ (or run through Docker)
 
-## Setup:
+## Setup
 
 This service depends on the following services:
 - MongoDB (3.6) (`docker pull mongo:3.6 && docker run -p 27017:27017 mongo:3.6`)
 
 
-## Configuration:
+## Configuration
 
 Configuration consists of two parts:
 
