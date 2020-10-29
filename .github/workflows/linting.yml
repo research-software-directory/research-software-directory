@@ -10,19 +10,39 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: lint admin/
+      - name: lint .github/
         uses: docker://github/super-linter:v3
         env:
           # VALIDATE_BASH: true
           # VALIDATE_BASH_EXEC: true
-          VALIDATE_CSS: true
+          # VALIDATE_CSS: true
           # VALIDATE_DOCKERFILE: true
           # VALIDATE_EDITORCONFIG: true
           # VALIDATE_HTML: true
           # VALIDATE_JAVASCRIPT_ES: true
           # VALIDATE_JSON: true
           # VALIDATE_JSX: true
-          # VALIDATE_MARKDOWN: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/.github/.*
+      - name: lint admin/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
           # VALIDATE_PYTHON: true
           # VALIDATE_PYTHON_ISORT: true
           # VALIDATE_PYTHON_PYLINT: true
@@ -35,14 +55,14 @@ jobs:
         env:
           # VALIDATE_BASH: true
           # VALIDATE_BASH_EXEC: true
-          VALIDATE_CSS: true
+          # VALIDATE_CSS: true
           # VALIDATE_DOCKERFILE: true
           # VALIDATE_EDITORCONFIG: true
           # VALIDATE_HTML: true
           # VALIDATE_JAVASCRIPT_ES: true
           # VALIDATE_JSON: true
           # VALIDATE_JSX: true
-          # VALIDATE_MARKDOWN: true
+          VALIDATE_MARKDOWN: true
           # VALIDATE_PYTHON: true
           # VALIDATE_PYTHON_ISORT: true
           # VALIDATE_PYTHON_PYLINT: true
@@ -55,14 +75,14 @@ jobs:
         env:
           # VALIDATE_BASH: true
           # VALIDATE_BASH_EXEC: true
-          VALIDATE_CSS: true
+          # VALIDATE_CSS: true
           # VALIDATE_DOCKERFILE: true
           # VALIDATE_EDITORCONFIG: true
           # VALIDATE_HTML: true
           # VALIDATE_JAVASCRIPT_ES: true
           # VALIDATE_JSON: true
           # VALIDATE_JSX: true
-          # VALIDATE_MARKDOWN: true
+          VALIDATE_MARKDOWN: true
           # VALIDATE_PYTHON: true
           # VALIDATE_PYTHON_ISORT: true
           # VALIDATE_PYTHON_PYLINT: true
@@ -70,3 +90,223 @@ jobs:
           # VALIDATE_TYPESCRIPT_ES: true
           # VALIDATE_YAML: true
           FILTER_REGEX_INCLUDE: /github/workspace/backend/.*
+      - name: lint backup/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/.backup/.*
+      - name: lint data-migration/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/data-migration/.*
+      - name: lint database/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/database/.*
+      - name: lint docker-volumes/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/docker-volumes/.*
+      - name: lint docs/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/docs/.*
+      - name: lint frontend/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/frontend/.*
+      - name: lint graphs/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/graphs/.*
+      - name: lint harvesting/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/harvesting/.*
+      - name: lint https/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/https/.*
+      - name: lint reverse-proxy/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/reverse-proxy/.*
+      - name: lint tests/
+        uses: docker://github/super-linter:v3
+        env:
+          # VALIDATE_BASH: true
+          # VALIDATE_BASH_EXEC: true
+          # VALIDATE_CSS: true
+          # VALIDATE_DOCKERFILE: true
+          # VALIDATE_EDITORCONFIG: true
+          # VALIDATE_HTML: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_JSON: true
+          # VALIDATE_JSX: true
+          VALIDATE_MARKDOWN: true
+          # VALIDATE_PYTHON: true
+          # VALIDATE_PYTHON_ISORT: true
+          # VALIDATE_PYTHON_PYLINT: true
+          # VALIDATE_TSX: true
+          # VALIDATE_TYPESCRIPT_ES: true
+          # VALIDATE_YAML: true
+          FILTER_REGEX_INCLUDE: /github/workspace/tests/.*
