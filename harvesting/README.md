@@ -1,10 +1,10 @@
-# harvesting
+# `harvesting` service for the Research Software Directory
 
 Periodic harvesting of external data
 
 ## Install
 
-```bash
+```shell
 pip install -r requirements.txt
 ```
 
@@ -56,13 +56,13 @@ The harvester directly injects into the database so the ``DATABASE_HOST``, the
 
 Refer to the help like this:
 
-```bash
+```shell
 python app.py --help
 ```
 
 The mentions can be fetched from Zotero using
 
-```bash
+```shell
 python app.py harvest mentions
 python app.py harvest mentions --help
 python app.py harvest mentions --since-version VERSION
@@ -71,13 +71,13 @@ python app.py harvest mentions --keys STRING
 
 The Github commits can be fetched using
 
-```bash
+```shell
 python app.py harvest commits
 ```
 
 The releases of each software can be fetched using
 
-```bash
+```shell
 python app.py harvest citations
 python app.py harvest citations --help
 python app.py harvest citations --dois STRING
@@ -85,16 +85,15 @@ python app.py harvest citations --dois STRING
 
 The metadata of each software can be fetched using
 
-```bash
+```shell
 python app.py harvest metadata
 python app.py harvest metadata --help
 python app.py harvest metadata --dois STRING
-
 ```
 
 If you want to fetch data from all sources, use:
 
-```bash
+```shell
 python app.py harvest all
 ```
 
@@ -102,17 +101,17 @@ Once the data have been fetched, data from different collections need to be
 combined into one document such that it can be fed to the ``frontend``'s template.
 Combining is done with the ``resolve`` task, as follows:
 
-```bash
+```shell
 # resolve references in all documents of type project
 python app.py resolve projects
 ```
 
-```bash
+```shell
 # resolve references in all documents of type software
 python app.py resolve software
 ```
 
-```bash
+```shell
 # resolve references in all documents of type project and in all
 # documents of type software
 python app.py resolve all
@@ -122,7 +121,8 @@ python app.py resolve all
 # Docker
 
 Build with
-```bash
+
+```shell
 cd harvesting/
 docker build --tag rsd/harvesting .
 ```
