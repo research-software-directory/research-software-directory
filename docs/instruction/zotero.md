@@ -84,10 +84,10 @@ categories, choose the one you think is most appropriate for your paper.
 ### Datasets
 
 Datasets will be a new feature in an upcoming Zotero release. For now, set
-`Item Type` to `Journal Article`. 
+`Item Type` to `Journal Article`.
 If you don't have a DOI for the dataset yet, make sure to [upload a copy of the item
 to Zenodo](https://zenodo.org/deposit/new), FigShare or an other place that provides a DOI. The item's URL should
-point to https://doi.org &lt;yourdoi&gt;.
+point to [https://doi.org/&lt;yourdoi&gt;](https://doi.org/<yourdoi>).
 
 ### Conference poster or presentation slides
 
@@ -95,7 +95,7 @@ Use `Item Type` `Presentation`, set the field `Type` to either `Conference
 Poster` or `Conference Presentation`. Note that you need to [upload the poster or
 slides to Zenodo](https://zenodo.org/deposit/new), FigShare, or some other place that provides a DOI. Since
 Zotero does not have a DOI field for `Presentation`s, use the URL field for this
-purpose (e.g. https://doi.org &lt;yourdoi&gt;).
+purpose (e.g. [https://doi.org/&lt;yourdoi&gt;](https://doi.org/<yourdoi>)).
 
 ### Workshop, lecture, or demonstration
 
@@ -107,7 +107,7 @@ or `Demonstration`.
 For items that have not been peer reviewed, such as internal reports, white
 papers, etc., use `Item Type` `Report`. Make sure to [upload a copy of the item
 to Zenodo](https://zenodo.org/deposit/new), FigShare or an other place that provides a DOI. The item's URL should
-point to https://doi.org &lt;yourdoi&gt;.
+point to [https://doi.org/&lt;yourdoi&gt;](https://doi.org/<yourdoi>).
 
 ### Thesis
 

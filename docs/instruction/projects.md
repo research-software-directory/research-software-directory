@@ -4,7 +4,7 @@ Since the projects in Zotero are not searchable, find your project below:
 
 | Code        | Title                                                        | Reponsible for end report content   |
 | ----------- | -------------------------------------------------------------| ----------------------------------- |
-| 650001005   | Self Organizing Archives                                     | 
+| 650001005   | Self Organizing Archives                                     |
 | 650001003   | Online Groups in organizations                               |
 | 650001002   | Expotree                                                     |
 | 33017002    | Genetics of sleep patterns                                   | Vincent
