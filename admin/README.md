@@ -31,35 +31,17 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
 
 ### Getting a local development build running
 
-1.  Bring up the Research Software Directory as normal, except for the admin interface:
+1.  To login in to admin interface you need to set the authentication callback to `http://localhost:8000/auth/get_jwt` on [https://github.com/settings/developers](https://github.com/settings/developers)
+1.  Start the services required by admin interface:
 
     ```shell
     cd research-software-directory
-
-    docker-compose build && \
-       docker-compose up -d && \
-       docker-compose stop admin && \
-       docker-compose logs --follow
+    docker-compose -f docker-compose.yml -f admin/docker-compose.admin-dev.yml up
     ```
 
 1.  New terminal
-1.  Get the IP addresses for the `auth` and `backend` services (Note `rsd_default` may be different for you if you
-    changed `COMPOSE_PROJECT_NAME` in `.env`):
-
-    ```shell
-    # where is auth running?
-    docker inspect $(docker-compose ps -q auth) | \
-       jq .[0].NetworkSettings.Networks.rsd_default.IPAddress
-
-    # where is backend running?
-    docker inspect $(docker-compose ps -q backend) | \
-       jq .[0].NetworkSettings.Networks.rsd_default.IPAddress
-    ```
-
 1.  `cd admin`
 1.  Install the `admin` service's dependencies: `yarn install`
-1.  In `package.json`, replace (only) the `localhost` part of the URLs listed under `proxy` with the IP addresses for
-    `/api` using `backend`'s IP and for `auth` using `auth`'s IP; leave the port numbers as they were
 1.  Start the admin service in a development server: `yarn start`. It will tell you where to go to check the `admin`
     interface (probably http://localhost:8000).
 

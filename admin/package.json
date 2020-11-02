@@ -104,7 +104,10 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:5001/api/"
+      "target": "http://localhost:5001/api",
+      "pathRewrite": {
+        "^/api": ""
+      }
     },
     "/auth": {
       "target": "http://localhost:5002"
