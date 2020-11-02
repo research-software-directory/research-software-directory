@@ -26,6 +26,9 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
     sudo apt install jq
     ```
 
+1.  Install yarn, `npm install -g yarn` (Note: there exists a similarly named package, Apache Hadoop YARN --please ignore
+    that, it's something else)
+
 ### Getting a local development build running
 
 1.  Bring up the Research Software Directory as normal, except for the admin interface:
@@ -54,8 +57,6 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
     ```
 
 1.  `cd admin`
-1.  Install yarn, `npm install -g yarn` (Note: there exists a similarly named package, Apache Hadoop YARN --please ignore
-    that, it's something else)
 1.  Install the `admin` service's dependencies: `yarn install`
 1.  In `package.json`, replace (only) the `localhost` part of the URLs listed under `proxy` with the IP addresses for
     `/api` using `backend`'s IP and for `auth` using `auth`'s IP; leave the port numbers as they were
