@@ -1,8 +1,8 @@
-{% if template_data.output %}
+{% if template_data.output or template_data.impact %}
 <section class="bg-dark" id="mentions">
     <div class="container">
-
-        <div class="row">
+        {% if template_data.output %}
+        <div class="row" id="output_row">
             <div class="col-1-4">
                 <h2 class="subtitle">Output</h2>
             </div>
@@ -67,16 +67,9 @@
                 {% endfor %}
             </div>
         </div>
-
-
-    </div>
-</section>
-{% endif %}
-{% if template_data.impact %}
-<section class="bg-dark" id="mentions">
-    <div class="container">
-
-        <div class="row">
+        {% endif %}
+        {% if template_data.impact %}
+        <div class="row" id="impact_row">
             <div class="col-1-4">
                 <h2 class="subtitle">Impact</h2>
             </div>
@@ -141,8 +134,7 @@
                 {% endfor %}
             </div>
         </div>
-
-
+        {% endif %}
     </div>
 </section>
 {% endif %}

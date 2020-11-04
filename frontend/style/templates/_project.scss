@@ -153,3 +153,13 @@ figure figcaption {
     font-size: smaller;
     padding-bottom: 10px;
 }
+
+// Mentions section:
+#mentions .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    #output_row, #impact_row {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
