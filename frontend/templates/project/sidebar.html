@@ -78,7 +78,7 @@
 {% set contactPerson = template_data.team | selectattr("role", "equalto", "Contact person") | first %}
 {% if contactPerson %}
 <div id="contributors">
-    <div class="contact_card project_contact_person">
+    <div class="contact_card contact_person">
         <div class="contact_card_header">
             Contact person
         </div>

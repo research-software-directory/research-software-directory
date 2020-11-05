@@ -1,9 +1,9 @@
-<section class="" id="project_introduction">
-    <div class="project_container">
+<section class="" id="introduction">
+    <div class="container">
         <div class="row">
             <div class="col col-3-4">
                 <h1 class="title name">{{template_data.title}}</h1>
-                <div class="project_shortStatement">{{template_data.subtitle}}</div>
+                <div class="shortStatement">{{template_data.subtitle}}</div>
             </div>
         </div>
         <div class="row">
@@ -16,11 +16,11 @@
                     {% endif %}
                 </figure>
                 {% if template_data.description %}
-                <div class="project_read-more_content">{{template_data.description}}</div>
+                <div class="read-more_content">{{template_data.description}}</div>
                 {% endif %}
             </div>
 
-            <div class="col col-1-4 project_sidebar bg-light">
+            <div class="col col-1-4 sidebar bg-light">
                 {% include 'project/sidebar.html' %}
             </div>
 

@@ -1,12 +1,12 @@
 {% if template_data.related.projects | no_none_filter %}
-<section class="" id="projects">
+<section class="" id="related-projects">
     <div class="container">
         <div class="row">
             <div class="col-1-4">
                 <h2 class="subtitle text-blue">Related projects</h2>
             </div>
             <div class="col-3-4">
-                <div class="row project-items">
+                <div class="row related-project-items">
 
                     {% for fpproject in template_data.related.projects | no_none_filter %}
                     {% with project = fpproject.foreignKey %}
