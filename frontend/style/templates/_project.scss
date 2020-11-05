@@ -1,3 +1,64 @@
+
+// Introduction
+// -----------------------------------
+#project_introduction{
+
+    .project_container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .row{
+        justify-content: space-between;
+    }
+
+    .col-3-4{
+        max-width: 860px;
+    }
+    
+}
+
+.project_shortStatement {
+    font-family: $primaryFontLight;
+    font-size: 3rem;
+    line-height: 1.3;
+    padding-top: 1.5em;
+    padding-bottom: 0.8em;
+
+    @include bp(max, $phablet){
+        font-size: 2.4rem;
+    }
+}
+
+.project_read-more{
+    margin: 30px auto 15px;
+}
+
+.project_read-more_button{
+
+    .icon{
+        transition: transform 0.38s ease-in 0.15s;
+    }
+
+    &.active{
+        .icon{
+            transform: rotate(135deg);
+        }
+    }
+}
+
+.project_read-more_content {
+    overflow: hidden;
+    transition: height 0.48s ease-in-out;
+
+    p{
+        margin-bottom: 1.2em;
+    }
+}
+
+
+// 
+// -----------------------------------
 .project_sidebar {
     padding: 20px;
 }
