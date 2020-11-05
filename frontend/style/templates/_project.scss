@@ -1,19 +1,8 @@
-.sidebar {
+.project_sidebar {
     padding: 20px;
 }
 
-/*
-.links, .fund {
-    padding-bottom: 2em;
-    .icon {
-        margin-left: 0.3em;
-        display: inline-block;
-        position: relative;
-        top: 2px;
-    }
-}*/
-
-.sidebar{
+.project_sidebar{
     .fund, .links, .partners, .status, .tags_container {
         padding-bottom: 2em;
         .icon {
@@ -59,14 +48,14 @@
     }
 }
 
-.contributor_email .icon {
+.project_contributor_email .icon {
     margin-right: 0.3em;
     display: inline-block;
     position: relative;
     top: 3px;
 }
 
-.progress_bar {
+.project_progress_bar {
     background-color: darken( $light, 10% );
     border-radius: 0.25em;
     border: none;
@@ -86,13 +75,13 @@
     width: 75%;
 }
 
-.time_span {
+.project_time_span {
     display: flex;
     justify-content: space-between;
     font-size:smaller;
 }
 
-.time_span .end_date {
+.project_time_span .end_date {
     text-align: right;
 }
 
@@ -100,7 +89,7 @@
     width: 100% !important;
 }
 
-#team {
+#project_team {
     .container{
         padding-top: 65px;
         padding-bottom: 65px;
@@ -148,7 +137,7 @@
     }
 }
 
-figure figcaption {
+project_figure figcaption {
     font-style: italic;
     font-size: smaller;
     padding-bottom: 10px;
