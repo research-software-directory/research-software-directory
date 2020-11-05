@@ -81,14 +81,23 @@
 // Team
 // -----------------------------------
 
+// Team
+// -----------------------------------
+
 #team {
     .container{
         padding-top: 65px;
         padding-bottom: 65px;
     }
+    .intro {
+        margin-bottom: 2em;
+        a {
+            text-decoration: underline;
+        }
+    }
     .contributors_list {
 
-        width: 75%;
+        width: ( 100% / 3 ) * 2;
 
         @include bp(max, 1100px ){
             width: 90%;
@@ -102,8 +111,8 @@
             margin: 0 -10px 15px;
             li {
                 padding: 0 10px;
-                margin-bottom: 2em;
-                width: 33.3%;
+                margin-top: 2em;
+                width: 50%;
 
                 @include bp(max, $phablet ){
                     width: 100%;
@@ -111,22 +120,113 @@
                     .contributor_name{
                         font-size: 1.8rem;
                    }
+                 }
+            }
+        }
+
+        &.long-list{
+            .row{
+                transition: height 0.3s ease-in;
+                height: 260px;
+                overflow: hidden;
+
+                .gradient{ transition: opacity 0.23s ease; }
+            }
+
+            .button .icon{
+                transition: 0.3s ease-in;
+            }
+
+            &.active{
+                .row .gradient{ opacity: 0; }
+
+                .button .icon{
+                    transform: rotate(135deg);
                 }
             }
         }
     }
 
+    .button {
+        margin-bottom: 2em;
+    }
     .contributor_name {
         font-family: $primaryFont;
         font-size: 2rem;
         color: $primaryColor;
+    }
+    .contributor_picture {
+        margin-bottom: 1em;
+        text-align: center;
+        img {
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 50%;
+        }
+    }
+    .contributor_email {
+        svg {
+            height: 1em;
+            width: 1em;
+            position: relative;
+            top: 3px;
+            margin-right: 0.3em;
+            display: inline-block;
+        }
+        &:hover{
+            color: $primaryColor;
+        }
+    }
+
+    .contact_card {
+        width: ( 100% / 3 );
+        z-index: 10;
+        .contact_card_header {
+            color: $white;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            letter-spacing: 0.01em;
+            font-family: $primaryFontBold;
+            background-color: $primaryColor;
+            padding: 0.8em 1.5em 0.8em 1.45em;
+        }
+        .contact_card_content {
+            line-height: 1.55;
+            padding: 1.5em 2.5em 1.5em 1.5em;
+            background-color: $white;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        @include bp( maxMin, 1100px, $phablet ){
+            width: auto;
+
+            .contact_card_content{
+                flex-direction: row;
+                align-items: center;
+
+                .contributor_picture{
+                    margin-right: 20px;
+                }
+                .contributor_info{
+                    margin-top: -0.3em;
+                }
+            }
+        }
+        @include bp(max, $phablet ){
+            text-align: center;
+            width: 100%;
+            .contact_card_content{
+                padding: 1.5em;
+            }
+        }
     }
 
     @include bp(max, $phablet ){
         text-align: center;
     }
 }
-
 figure figcaption {
     font-style: italic;
     font-size: smaller;
