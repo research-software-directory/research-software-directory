@@ -1,19 +1,8 @@
+// Sidebar
+// -----------------------------------
+
 .sidebar {
     padding: 20px;
-}
-
-/*
-.links, .fund {
-    padding-bottom: 2em;
-    .icon {
-        margin-left: 0.3em;
-        display: inline-block;
-        position: relative;
-        top: 2px;
-    }
-}*/
-
-.sidebar{
     .fund, .links, .partners, .status, .tags_container {
         padding-bottom: 2em;
         .icon {
@@ -24,12 +13,12 @@
         }
     }
 
-    .icon{
+    .icon {
         width: 17px;
         height: 17px;
         fill: currentColor;
     }
-    h5{
+    h5 {
         display: flex;
         align-items: center;
         color: $primaryColor;
@@ -39,7 +28,7 @@
             margin-right: 0.5em;
         }
     }
-    .tags{
+    .tags {
         margin-left: -2px;
         display: flex;
         flex-wrap: wrap;
@@ -57,13 +46,6 @@
         text-align: center;
         font-size: smaller;
     }
-}
-
-.contributor_email .icon {
-    margin-right: 0.3em;
-    display: inline-block;
-    position: relative;
-    top: 3px;
 }
 
 .progress_bar {
@@ -96,9 +78,8 @@
     text-align: right;
 }
 
-.project_contact_person {
-    width: 100% !important;
-}
+// Team
+// -----------------------------------
 
 #team {
     .container{
@@ -153,6 +134,9 @@ figure figcaption {
     font-size: smaller;
     padding-bottom: 10px;
 }
+
+// Mentions
+// -----------------------------------
 
 #project_mentions, #project_impact{
     .container{
