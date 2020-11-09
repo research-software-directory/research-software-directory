@@ -150,58 +150,10 @@
     width: 100% !important;
   }
 
-  #team {
-    .container {
-      padding-top: 65px;
-      padding-bottom: 65px;
-    }
-    .contributors_list {
-      width: 75%;
+  // Output
+  // -----------------------------------
 
-      @include bp(max, 1100px) {
-        width: 90%;
-        order: 2;
-        margin-top: 40px;
-      }
-      @include bp(max, $phablet) {
-        width: 100%;
-      }
-      ul {
-        margin: 0 -10px 15px;
-        li {
-          padding: 0 10px;
-          margin-bottom: 2em;
-          width: 33.3%;
-
-          @include bp(max, $phablet) {
-            width: 100%;
-            margin-bottom: 1.2em;
-            .contributor_name {
-              font-size: 1.8rem;
-            }
-          }
-        }
-      }
-    }
-
-    .contributor_name {
-      font-family: $primaryFont;
-      font-size: 2rem;
-      color: $primaryColor;
-    }
-
-    @include bp(max, $phablet) {
-      text-align: center;
-    }
-  }
-
-  figure figcaption {
-    font-style: italic;
-    font-size: smaller;
-    padding-bottom: 10px;
-  }
-
-  #mentions,
+  #output,
   #impact {
     .container {
       padding-top: 40px;
@@ -297,74 +249,234 @@
     }
   }
 
-// Related projects
-// -----------------------------------
 
-#related-projects{
-    .container{
-        padding-top: 65px;
-        padding-bottom: 65px;
+  .mention {
+    .mention_button {
+      transition: 0.1s ease;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .icon {
+        transition: 0.2s ease-in;
+        width: 18px;
+        height: 18px;
+        fill: $primaryColor;
+
+        transition: 0.3s ease-in;
+        polygon {
+          transition: 0.2s ease-in;
+        }
+      }
+      &.active {
+        .icon {
+          width: 18px;
+          height: 18px;
+          fill: $primaryColor;
+
+          transform: rotate(135deg);
+        }
+        .category {
+          transform: translate3d(8px, 0, 0);
+        }
+        .amount {
+          background-color: white;
+        }
+        .icon {
+          fill: white;
+        }
+      }
+      .category {
+        transition: 0.2s ease-in;
+      }
+      &:hover {
+        .category {
+          transform: translate3d(8px, 0, 0);
+        }
+        .amount {
+          background-color: white;
+        }
+        .icon {
+          fill: white;
+        }
+      }
     }
-}
 
-.related-project-items {
+    h3 {
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+
+      .amount {
+        transition: 0.2s ease-in;
+        font-family: $primaryFontBold;
+        font-size: 0.8em;
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primaryColor;
+        color: $dark;
+        margin-right: 0.8em;
+      }
+    }
+
+    .mention_list {
+      //display: none;
+      overflow: hidden;
+      transition: height 0.5s;
+      margin: 0;
+      ul {
+        padding: 20px 0 15px;
+      }
+      li {
+        &:not(:last-child) {
+          margin-bottom: 2px;
+        }
+
+        .mention_content {
+          display: block;
+          padding: 1em;
+          background-color: lighten($dark, 10%);
+        }
+        a.mention_content:hover {
+          background-color: darken($light, 2%);
+          color: $black;
+        }
+      }
+    }
+
+    .icon {
+      margin-left: 0.5em;
+      width: 0.8em;
+      height: 0.8em;
+      display: inline-block;
+      fill: currentColor;
+    }
+  }
+
+  // Team
+  // -----------------------------------
+  #team {
+    .container {
+      padding-top: 65px;
+      padding-bottom: 65px;
+    }
+    .contributors_list {
+      width: 75%;
+
+      @include bp(max, 1100px) {
+        width: 90%;
+        order: 2;
+        margin-top: 40px;
+      }
+      @include bp(max, $phablet) {
+        width: 100%;
+      }
+      ul {
+        margin: 0 -10px 15px;
+        li {
+          padding: 0 10px;
+          margin-bottom: 2em;
+          width: 33.3%;
+
+          @include bp(max, $phablet) {
+            width: 100%;
+            margin-bottom: 1.2em;
+            .contributor_name {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+    }
+
+    .contributor_name {
+      font-family: $primaryFont;
+      font-size: 2rem;
+      color: $primaryColor;
+    }
+
+    @include bp(max, $phablet) {
+      text-align: center;
+    }
+  }
+
+  figure figcaption {
+    font-style: italic;
+    font-size: smaller;
+    padding-bottom: 10px;
+  }
+
+  // Related projects
+  // -----------------------------------
+  #related-projects {
+    .container {
+      padding-top: 65px;
+      padding-bottom: 65px;
+    }
+  }
+
+  .related-project-items {
     display: flex;
     justify-content: space-between;
-    
-    .project-item{
-        &:not(:last-child){
-            margin-bottom: 2em;
-        }
 
-        width: 50%;
+    .project-item {
+      &:not(:last-child) {
+        margin-bottom: 2em;
+      }
 
-        @include bp(max, 767px ){
-            width: 100%;
-        }
+      width: 50%;
 
-        &:hover{
-            color: $primaryColor!important;
-            .thumb{
-                transform: scale(1.03);
-            }
+      @include bp(max, 767px) {
+        width: 100%;
+      }
+
+      &:hover {
+        color: $primaryColor !important;
+        .thumb {
+          transform: scale(1.03);
         }
+      }
     }
 
     .content {
-        display: flex;
-        padding-right: 2em;
-        
-        .thumb {
-            transition: 0.25s ease-in;
-            flex-shrink: 0;
-            padding: 0 1em 1em 0;
-            width: 100px;
-            height: 100px;
-        }
-        h2 {
-            font-size: 2rem;
-            line-height: 1.3em;   
-            margin-bottom: .2em;
-            font-family: $primaryFont;
-        }
-        .text {
-            font-family: $primaryFontLight;
-            font-size: 2rem;
-            line-height: 1.3em;
-            margin-bottom: .2em;
-        }
-        .author{
-            margin-top: 0.3em;
-            font-family: $primaryFont;
-            font-size: 1.6rem;
-            line-height: 1.4em;
-        }
+      display: flex;
+      padding-right: 2em;
+
+      .thumb {
+        transition: 0.25s ease-in;
+        flex-shrink: 0;
+        padding: 0 1em 1em 0;
+        width: 100px;
+        height: 100px;
+      }
+      h2 {
+        font-size: 2rem;
+        line-height: 1.3em;
+        margin-bottom: 0.2em;
+        font-family: $primaryFont;
+      }
+      .text {
+        font-family: $primaryFontLight;
+        font-size: 2rem;
+        line-height: 1.3em;
+        margin-bottom: 0.2em;
+      }
+      .author {
+        margin-top: 0.3em;
+        font-family: $primaryFont;
+        font-size: 1.6rem;
+        line-height: 1.4em;
+      }
     }
-}
+  }
 
-// Related tools
-// -----------------------------------
-
+  // Related tools
+  // -----------------------------------
   #related-tools {
     .container {
       padding-top: 70px;
