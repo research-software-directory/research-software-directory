@@ -10,6 +10,12 @@
         "pattern": "^https://www.zotero.org/settings/keys$"
     }, {
         "pattern": "^https://github.com/orgs/your-github-organization/people$"
+    }, {
+        "pattern": "^https://myrsd.ddns.net$"
+    }, {
+        "pattern": "^https://3.92.182.176$"
+    }, {
+        "pattern": "^https://doi.org/<yourdoi>$"
     }],
     "replacementPatterns": [{
         "pattern": "^/",

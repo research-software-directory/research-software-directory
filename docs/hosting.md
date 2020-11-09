@@ -6,7 +6,7 @@ Center uses AWS to run their instance of the Research Software Directory. This
 section describes how to deploy your own customized instance of the Research
 Software Directory to AWS.
 
-Go to https://aws.amazon.com/console/. Once there, you'll see something like:
+Go to [https://aws.amazon.com/console/](https://aws.amazon.com/console/). Once there, you'll see something like:
 
 [![AWS Management Console login](/docs/images/aws-management-console-login.png)](/docs/images/aws-management-console-login.png)
 
@@ -27,10 +27,10 @@ Software Directory and host it online; [jump to the EC2 section](/README.md#conf
 have to use root credentials when we don't have to; [jump to the IAM section](/README.md#configuring-iam)
 1. **S3**: this is where we will store our daily backups; [jump to the S3 section](/README.md#configuring-s3)
 
-### Configuring EC2
+## Configuring EC2
 
 In the ``All Services`` overview, click ``EC2`` or use this link
-https://console.aws.amazon.com/ec2.
+[https://console.aws.amazon.com/ec2](https://console.aws.amazon.com/ec2).
 
 <!-- TODO how to configure default zone -->
 
@@ -53,7 +53,7 @@ initialize).
 1. On your local machine, open a terminal and go to ``~/.ssh``. Change the
 permissions of the key file to octal 400 (readable only by user):
 
-    ```
+    ```shell
     chmod 400 <the keyfile>
     ```
 1. Verify that the ``.ssh`` directory itself has octal permission 700 (readable,
@@ -65,13 +65,13 @@ writable, and executable by user only).
 1. Once logged in to the remote machine, update the package manager's list of
    software packages and their versions:
 
-    ```
+    ```shell
     sudo apt update
     ```
 
 1. Upgrade any software packages to a higher version if available:
 
-    ```
+    ```shell
     sudo apt upgrade
     ```
 
@@ -81,7 +81,7 @@ before (see section _Documentation for developers_
 [above](/README.md#documentation-for-developers)).
 1. Make a new directory and change into it:
 
-    ```
+    ```shell
     cd ~
     mkdir rsd
     cd rsd
@@ -90,7 +90,7 @@ before (see section _Documentation for developers_
 customized Research Software Directory instance into the current directory as
 follows:
 
-    ```
+    ```shell
     git clone https://github.com/<your-github-organization>/research-software-directory.git .
     ```
     (Note the dot at the end)
@@ -98,14 +98,14 @@ follows:
 1. Open a new terminal and secure-copy your local ``rsd-secrets.env`` file to
 the Amazon machine as follows:
 
-    ```bash
+    ```shell
     cd <where rsd-secrets.env is>
     scp -i path-to-the-keyfile ./rsd-secrets.env \
     ubuntu@<your-instance-public-ip>:/home/ubuntu/rsd/rsd-secrets.env
     ```
 1. On the remote machine, create the symlink named `.env` and have it point to the secrets file:
 
-    ```bash
+    ```shell
     ln -s rsd-secrets.env .env
     ```
 
@@ -117,7 +117,7 @@ instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
 ``rsd-secrets.env`` according to the new client ID and secret.
 1. Start the Research Software Directory instance with:
 
-    ```bash
+    ```shell
     cd ~/rsd
     docker-compose build
     docker-compose up -d
@@ -125,7 +125,7 @@ instance's IPv4 plus ``/auth/get_jwt``. Update the Amazon copy of
 1. On your local machine, open a new terminal. Connect to the Amazon instance,
 run the harvesters, and resolve the foreign keys:
 
-    ```bash
+    ```shell
     ssh -i path-to-the-keyfile ubuntu@<your-instance-public-ip>
     cd ~/rsd
     docker-compose exec harvesting python app.py harvest all
@@ -139,27 +139,27 @@ that the connection is not secure.
 
 To fix this, we need to configure the security credentials, but this in turn
 requires us to claim a domain and configure a DNS record. There are free
-services available that you can use for this, e.g. https://noip.com. Here's how:
+services available that you can use for this, e.g. [https://noip.com](https://noip.com). Here's how:
 
-1. Go to https://noip.com, sign up and log in.
+1. Go to [https://noip.com](https://noip.com), sign up and log in.
 1. Under My services, find ``DNS Records``
 1. Click the ``Add a hostname`` button
 1. Choose your free (sub)domain name, e.g. I chose ``myrsd.ddns.net``
 1. Fill in the IP address of your Amazon machine. In my case,
-``https://myrsd.ddns.net`` will serve as an alias for ``https://3.92.182.176``
+[https://myrsd.ddns.net](https://myrsd.ddns.net) will serve as an alias for [https://3.92.182.176](https://3.92.182.176)
 1. Once you have the (sub)domain name, update ``DOMAIN`` and ``SSL_DOMAINS`` in the file
 ``rsd-secrets.env`` on your Amazon instance (leave out the ``https://`` part, as
 well as anything after the ``.com``, ``.nl``, ``.org`` or whatever you may
 have).
 1. Fill in your e-mail for ``SSL_ADMIN_EMAIL``.
-1. Finally, revisit your OAuth app here https://github.com/settings/developers,
+1. Finally, revisit your OAuth app here [https://github.com/settings/developers](https://github.com/settings/developers),
 replace the Amazon IP address in the ``Authorization callback url`` with
 your freshly minted domain name.
 1. Now, stop the Research Software Directory if it is still running with Ctrl-c
 or ``docker-compose stop``.
 1. Start the Research Software Directory back up
 
-    ```
+    ```shell
     cd ~/rsd
     docker-compose up -d
     ```
@@ -167,10 +167,10 @@ or ``docker-compose stop``.
 of the Research Software Directory (although be aware that sometimes it takes a
 while before the domain name resolves to the IP address.
 
-### Configuring IAM
+## Configuring IAM
 
 1. In the ``All Services`` overview, click ``IAM`` or use this link
-https://console.aws.amazon.com/iam.
+[https://console.aws.amazon.com/iam](https://console.aws.amazon.com/iam).
 1. In the menu on the left, click ``Groups``.
 1. Click the ``Create New Group`` button.
 1. Name the group ``s3-users``.
@@ -196,13 +196,13 @@ be presented with the new user's credentials. Download the CSV file now; we'll
 use the ``Access key ID`` and the ``Secret access key`` later to set up the
 backup mechanism.
 
-### Configuring S3
+## Configuring S3
 
 In the ``All Services`` overview, click ``S3`` or use this link
-https://console.aws.amazon.com/s3.
+[https://console.aws.amazon.com/s3](https://console.aws.amazon.com/s3).
 
 1. create a bucket with a random name (bucket names must be globally unique;
-websites like https://www.random.org/strings/ are useful to get a random string)
+websites like [https://www.random.org/strings/](https://www.random.org/strings/) are useful to get a random string)
 1. in that bucket, make a directory, e.g. ``rsd-backups``
 1. The backup service contains a program
 ([xenon-cli](https://github.com/xenon-middleware/xenon-cli)) that can copy to a range of
@@ -211,7 +211,7 @@ and store the backups on Amazon's S3. For this, configure the environmental
 variable ``BACKUP_CMD`` as follows (naturally, you'll need to use a different
 location, username, and password; see explanation below):
 
-    ```
+    ```shell
     BACKUP_CMD='xenon filesystem s3 \
     --location http://s3-us-west-2.amazonaws.com/nyor-yiwy-fepm-dind/ \
     --username AKIAJ52LWSUUKATRQZ2A \
@@ -234,15 +234,17 @@ location, username, and password; see explanation below):
     archives; no need to change this for your application.
 1. Test the setup by stopping the Research Software Directory on Amazon, by
 
-    ```
+    ```shell
     # ssh into the remote machine
     cd rsd
     docker-compose stop
     # update BACKUP_CMD by editing the rsd-secrets.env file
     docker-compose up -d
     ```
+
     Wait until the Research Software Directory is up and running again, then
-    ```
+
+    ```shell
     docker-compose exec backup /bin/sh
     /app # /bin/sh backup.sh
     ```
