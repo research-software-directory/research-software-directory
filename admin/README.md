@@ -5,7 +5,6 @@ the directory. The admin interface requires credentials for users to see the adm
 
 TODO:
 
-- add notes on how to do local development ([#349](https://github.com/research-software-directory/research-software-directory/issues/349))
 - add notes on how to keep the dependencies updated, e.g. using `yarn audit` and `yarn outdated` ([#367](https://github.com/research-software-directory/research-software-directory/issues/367))
 
 ## Development setup
