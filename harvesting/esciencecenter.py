@@ -2,7 +2,6 @@ import base64
 import datetime
 import json
 import logging
-import pandas as pd
 import re
 import requests
 import sys
