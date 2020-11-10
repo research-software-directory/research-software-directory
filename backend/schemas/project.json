@@ -4,12 +4,12 @@
     "properties": {
         "callUrl": {
             "format": "uri",
-            "pattern": "^https://doi.org/.*$",
+            "pattern": "^https?://doi.org/.*$",
             "type": "string"
         },
         "codeUrl": {
             "format": "uri",
-            "pattern": "^https://github.com/[^/]*$",
+            "pattern": "^https?://github.com/.*$",
             "type": "string"
         },
         "createdAt": {
@@ -22,7 +22,7 @@
         },
         "dataManagementPlanUrl": {
             "format": "uri",
-            "pattern": "^https://doi.org/.*$",
+            "pattern": "^https?://doi.org/.*$",
             "type": "string"
         },
         "dateEnd": {
@@ -53,7 +53,7 @@
         },
         "imageUrl": {
             "format": "uri",
-            "pattern": "^https://.*$",
+            "pattern": "^https?://.*$",
             "type": "string"
         },
         "impact": {
@@ -141,7 +141,7 @@
         },
         "softwareSustainabilityPlanUrl": {
             "format": "uri",
-            "pattern": "^https://doi.org/.*$",
+            "pattern": "^https?://doi.org/.*$",
             "type": "string"
         },
         "subtitle": {
@@ -156,10 +156,10 @@
                     "Image processing",
                     "Inter-operability & linked data",
                     "Machine learning",
-                    "Multi-scale & multi model simulations",
+                    "Multi-scale &amp; multi model simulations",
                     "Optimized data handling",
                     "Real time data analysis",
-                    "Text analysis & natural language processing",
+                    "Text analysis &amp; natural language processing",
                     "Visualization",
                     "Workflow technologies"
                 ],
@@ -192,7 +192,13 @@
                             "Contact person",
                             "Principal investigator",
                             "eScience Research Engineer",
-                            "Senior eScience Research Engineer"
+                            "Senior eScience Research Engineer",
+                            "eScience Coordinator",
+                            "Technical Lead",
+                            "PhD student",
+                            "Community Manager",
+                            "Director of Operations",
+                            "Director of Technology"
                         ],
                         "type": "string"
                     }
