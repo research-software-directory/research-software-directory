@@ -79,21 +79,21 @@ jobs:
         uses: docker://github/super-linter:v3
         env:
           # VALIDATE_BASH: true
-          # VALIDATE_BASH_EXEC: true
-          # VALIDATE_CSS: true
-          # VALIDATE_DOCKERFILE: true
-          # VALIDATE_EDITORCONFIG: true
-          # VALIDATE_HTML: true
-          # VALIDATE_JAVASCRIPT_ES: true
-          # VALIDATE_JSON: true
-          # VALIDATE_JSX: true
+          VALIDATE_BASH_EXEC: true
+          VALIDATE_CSS: true
+          VALIDATE_DOCKERFILE: true
+          VALIDATE_EDITORCONFIG: true
+          VALIDATE_HTML: true
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_JSON: true
+          VALIDATE_JSX: true
           VALIDATE_MARKDOWN: true
-          # VALIDATE_PYTHON: true
-          # VALIDATE_PYTHON_ISORT: true
-          # VALIDATE_PYTHON_PYLINT: true
-          # VALIDATE_TSX: true
-          # VALIDATE_TYPESCRIPT_ES: true
-          # VALIDATE_YAML: true
+          VALIDATE_PYTHON: true
+          VALIDATE_PYTHON_ISORT: true
+          VALIDATE_PYTHON_PYLINT: true
+          VALIDATE_TSX: true
+          VALIDATE_TYPESCRIPT_ES: true
+          VALIDATE_YAML: true
           FILTER_REGEX_INCLUDE: /github/workspace/.backup/.*
       - name: lint data-migration/ directory
         uses: docker://github/super-linter:v3
