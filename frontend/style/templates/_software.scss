@@ -316,10 +316,6 @@ section{
         li{
             margin: 2px;
             padding: 0.5em 0.8em;  
-
-            &.bg-light{
-                background-color: darken( $light, 4% );
-            }
         }
     }
     .githublogo{

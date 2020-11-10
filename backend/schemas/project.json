@@ -44,7 +44,7 @@
         },
         "homeUrl": {
             "format": "uri",
-            "pattern": "^https://.*$",
+            "pattern": "^https?://.*$",
             "type": "string"
         },
         "imageCaption": {

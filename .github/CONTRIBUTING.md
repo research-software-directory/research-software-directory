@@ -1,3 +1,5 @@
+# How to contribute
+
 Thank you for considering to contribute to the Research Software Directory!
 
 There are many ways to contribute, e.g.:
@@ -11,7 +13,7 @@ There are many ways to contribute, e.g.:
 However, when participating, we ask that you adhere to some **ground rules**.
 
 Your contribution to the Research Software Directory is valued, and it should be an enjoyable experience.
-To ensure this, there is the Research Software Directory 
+To ensure this, there is the Research Software Directory
 [Code of Conduct](/.github/CODE_OF_CONDUCT.md), which you are required to follow.
 
 If you have never contributed to an open source project, you may find this tutorial helpful:

@@ -19,7 +19,7 @@
         <div id="layout_container">
             <header id="header">
                 <div class="container">
-                    
+
                     <div id="header_left">
                         {% block corporate_home %}
                         <a href="https://www.esciencecenter.nl">
@@ -28,12 +28,17 @@
                             {% endwith %}
                         </a>
                         {% endblock %}
-                        {% block find_software %}
-                        <a href="/">Search the directory</a>
-                        {% endblock %}
                     </div>
 
                     <div id="header_right">
+
+                        {% block software %}
+                        <a href="/">Software</a>
+                        {% endblock %}
+
+                        {% block projects %}
+                        <a href="/projects">Projects</a>
+                        {% endblock %}
 
                         {% block metrics %}
                         <a href="/graphs">Metrics</a>
@@ -47,7 +52,7 @@
 
                 </div>
                 <div class="container">
-                    <div class="divider"></div>    
+                    <div class="divider"></div>
                 </div>
             </header>
             <div id="body" style="background-color:white;">
@@ -57,4 +62,3 @@
         </div>
     </body>
 </html>
-

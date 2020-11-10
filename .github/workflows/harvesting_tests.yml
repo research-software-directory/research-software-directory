@@ -1,0 +1,33 @@
+name: Harvesting tests
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  tests:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-latest]
+        python-version: [3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        cd harvesting
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    - name: Tests with pytest (unit tests only)
+      run: |
+        cd harvesting
+        PYTHONPATH=. pytest -k "unit_test"

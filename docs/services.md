@@ -1,4 +1,4 @@
-# Services of the Research Software Directory
+# Overview of services of the Research Software Directory
 
 The Research Software Directory is made of the following services
 

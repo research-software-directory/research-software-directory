@@ -20,7 +20,7 @@ website](https://github.com/orgs/NLeSC/people) will tell you if you meet those
 criteria.
 
 On Zotero, you'll need to be a member of the Netherlands eScience Center group,
-which you can request here https://www.zotero.org/groups/1689348. A group
+which you can request here [https://www.zotero.org/groups/1689348](https://www.zotero.org/groups/1689348). A group
 administrator needs to grant you access, so be aware it may take a while.
 
 ## Basic workflow
@@ -40,7 +40,7 @@ related boxes (``GitHub``, ``Zenodo`` and ``CITATION.cff``) are already covered.
 However, product pages are not only about source code; they also aim to provide
 context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
-selecting them via the dropdown list in the Admin interface of the RSD. 
+selecting them via the dropdown list in the Admin interface of the RSD.
 
 The items on the  dropdown list are harvested periodically from the
 [Netherlands eScience Center group on
@@ -65,7 +65,7 @@ This is done by hand via the Admin interface (see sections below).
 
 ## What software should be added?
 
-As a rule of thumb, software should be added to the Research Software Directory if 
+As a rule of thumb, software should be added to the Research Software Directory if
 
 1. we can realistically claim (co-)ownership of the software AND
 2. the software could be useful to somebody else
@@ -79,7 +79,7 @@ Under this definition, the following is not recorded in the Research Software Di
 ## How do I add a new ``Software``?
 
 1. Go to the Research Software Directory's admin interface
-(https://www.research-software.nl/admin/).
+([https://www.research-software.nl/admin/](https://www.research-software.nl/admin/)).
 1. In the left pane, select ``Software``
 1. Check that the software you want to add doesn't exist yet by searching via the
 search box. If the search comes up empty, add the new software by clicking the
@@ -99,7 +99,7 @@ trick_](#the-query-trick) to know when you get to see your changes.
 ## How do I add a new ``Person``?
 
 1. Go to the Research Software Directory's admin interface
-(https://www.research-software.nl/admin/).
+([https://www.research-software.nl/admin/](https://www.research-software.nl/admin/)).
 1. In the left pane, select ``Person``
 1. Check that the person you want to add doesn't exist yet by searching via the
 search box. If the search comes up empty, add the new person by clicking the
@@ -112,7 +112,9 @@ blue ``+`` symbol.
 
 ## How do I add a new ``Mention``?
 
-You can't. The list of Mentions is harvested via Zotero's API. Check [https://research-software.nl/schedule](https://research-software.nl/schedule) and look for ``python app.py harvest mentions`` to determine when the harvester is scheduled to run.
+You can't. The list of Mentions is harvested via Zotero's API. Check
+[https://research-software.nl/schedule](https://research-software.nl/schedule) and look for ``python app.py harvest
+mentions`` to determine when the harvester is scheduled to run.
 
 ## How do I add a new ``Project``?
 
@@ -129,7 +131,7 @@ NLeSC funding, for example when a paper cites code that NLeSC created).
 ## How do I add a new ``Organization``?
 
 1. Go to the Research Software Directory's admin interface
-(https://www.research-software.nl/admin/).
+([https://www.research-software.nl/admin/](https://www.research-software.nl/admin/)).
 1. In the left pane, select ``Organization``
 1. Check that the organization you want to add doesn't exist yet by searching via
 the search box. If the search comes up empty, add the new organization by
@@ -174,11 +176,11 @@ a product page, you will likely get to see an old version of that page, because
 the browser knows it recently downloaded the data for that page, so it assumes
 it doesn't need to download it again. You can easily circumvent this behavior
 using the so-called _query_ part of URLs. Let's say you want to see
-https://www.research-software.nl/software/xenon but you want to make sure that
+[https://www.research-software.nl/software/xenon](https://www.research-software.nl/software/xenon) but you want to make sure that
 it really is the latest version, not some cached version. You can do so by
 appending a question mark followed by some random characters, for example
-https://www.research-software.nl/software/xenon?somerandomstring
+[https://www.research-software.nl/software/xenon?somerandomstring](https://www.research-software.nl/software/xenon?somerandomstring)
 (``?somerandomstring`` is the query part of the URL). This way, both the browser
 and server consider it a previously unseen web page because the URL is
-different, and will therefore show you the latest data. You'll need to come up 
+different, and will therefore show you the latest data. You'll need to come up
 with a different value for ``somerandomstring`` every time you reload the data.
