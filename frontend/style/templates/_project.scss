@@ -48,6 +48,12 @@
     }
 }
 
+.organisation {
+    img {
+        width: 100%;
+    }
+}
+
 .progress_bar {
     background-color: darken( $light, 10% );
     border-radius: 0.25em;
