@@ -20,12 +20,6 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
     1.  `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash`
     1.  restart terminal
     1.  run `nvm install 14`
-1.  (Optional) Install `jq` for processing JSON config files:
-
-    ```shell
-    sudo apt install jq
-    ```
-
 1.  Install yarn, `npm install -g yarn` (Note: there exists a similarly named package, Apache Hadoop YARN --please ignore
     that, it's something else)
 
