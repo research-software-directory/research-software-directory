@@ -1,6 +1,7 @@
 # auth-github
 
-Github authentication service for the Research Software Directory. It should be configured as the callback endpoint of a GitHub OAuth app.
+Github authentication service for the Research Software Directory. It should be configured as the callback endpoint of a
+GitHub OAuth app.
 
 This verifies the user is part of Github organization `AUTH_GITHUB_ORGANIZATION`,
 then forwards the user to `[AUTH_CALLBACK_URL]?jwt=[GENERATED_JWT]` (or an
@@ -9,7 +10,8 @@ error message is shown).
 The JWT is generated using secret `JWT_SECRET`.
 
 Claims in the generated token:
-```
+
+```json
 {
   "sub": [github_username],
   "subType": "GITHUB",
@@ -24,26 +26,33 @@ Claims in the generated token:
 
 ## Install
 
-```
+```shell
 mkvirtualenv data-api -p `which python3` # create virtual python environment
+source data-api/bin/activate             # activate environment
 pip install -r requirements.txt          # install python dependencies
 ```
 
 ## Run
-Copy `.env.example` to `.env` and check the values.
-```
+
+Copy `rsd-secrets.env.example` to `.env` and check the values.
+
+```shell
 export $(cat .env | xargs)       # load settings as env vars
 python app.py                    # run debug server on default port (5002)
 ```
+
 or use docker (you can skip the `install` instructions):
-```
-docker build . -t auth-github && docker run --env-file ./.env -p 5002:8000 -it --name auth-github auth-github
+
+```shell
+docker build . -t rsd/auth
+docker run --env-file ./.env -p 5002:8000 -it --name auth-github auth-github
 ```
 
 ## Configuration
 
 Configuration is done through environmental variables
-```
+
+```shell
 # The secret used to generate jwt token that is used by the api backend to authenticate/authorize users from the admin site
 JWT_SECRET=
 # The id and secret of a GitHub OAuth app, for authorization callback URL in the GitHub application use `<url of server>/get_jwt`
@@ -55,9 +64,10 @@ AUTH_GITHUB_ORGANIZATION=nlesc
 AUTH_CALLBACK_URL=http://localhost:3000
 ```
 
-# Docker
+## Docker
 
-The Docker image can be build using
-```bash
+The Docker image can be built using
+
+```shell
 docker build -t rsd/auth .
 ``
