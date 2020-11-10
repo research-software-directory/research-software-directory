@@ -38,7 +38,7 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
 1.  Start the admin service in a development server: `yarn start`. It will tell you where to go to check the `admin`
     interface (http://localhost:8000).
 
-The Docker containers started with `docker-compose` is complete Research Software Directory instance on https://localhost including an admin interface. Any changes made to software/projects/etc. in the admin interface running on http://localhost:8000 will be saved in the instance and can be viewed there.
+The Docker containers started with `docker-compose` is a complete Research Software Directory instance on https://localhost including an admin interface. Any changes made to software/projects/etc. in the admin interface running on http://localhost:8000 will be saved in the instance and can be viewed there.
 
 ## Production setup: non-dockerized
 
