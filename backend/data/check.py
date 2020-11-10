@@ -1,6 +1,7 @@
-import requests
 import json
 import sys
+
+import requests
 
 if not len(sys.argv) == 2:
     print("use as 'python check.py [JSON_WEB_TOKEN]'")

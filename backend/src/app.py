@@ -4,8 +4,7 @@ import sys
 
 from flask import Flask
 from pymongo import MongoClient
-from src import commands
-from src import error_handlers
+from src import commands, error_handlers
 from src.routes import get_routes
 from src.schema import get_schemas
 
