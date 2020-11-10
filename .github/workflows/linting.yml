@@ -40,7 +40,7 @@ jobs:
         env:
           VALIDATE_BASH: true
           VALIDATE_BASH_EXEC: true
-          VALIDATE_CSS: true
+          # VALIDATE_CSS: true
           VALIDATE_DOCKERFILE: true
           VALIDATE_EDITORCONFIG: true
           VALIDATE_HTML: true
