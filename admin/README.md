@@ -30,14 +30,16 @@ scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app
 
     ```shell
     cd research-software-directory
-    docker-compose -f docker-compose.yml -f admin/docker-compose.admin-dev.yml up
+    docker-compose -f docker-compose.yml -f admin/docker-compose.dev.yml up
     ```
 
 1.  New terminal
 1.  `cd admin`
 1.  Install the `admin` service's dependencies: `yarn install`
 1.  Start the admin service in a development server: `yarn start`. It will tell you where to go to check the `admin`
-    interface (probably http://localhost:8000).
+    interface (http://localhost:8000).
+
+The Docker containers started with `docker-compose` is complete Research Software Directory instance on https://localhost including an admin interface. Any changes made to software/projects/etc. in the admin interface running on http://localhost:8000 will be saved in the instance and can be viewed there.
 
 ## Production setup: non-dockerized
 
