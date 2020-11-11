@@ -139,6 +139,10 @@
             ],
             "type": "object"
         },
+        "slug": {
+            "pattern": "^[0-9a-z-]{3,}$",
+            "type": "string"
+        },
         "softwareSustainabilityPlanUrl": {
             "format": "uri",
             "pattern": "^https://doi.org/.*$",
@@ -187,9 +191,12 @@
                     "foreignKey": {
                         "$ref": "definitions.json/key/person"
                     },
+                    "isContactPerson": {
+                        "default": false,
+                        "type": "boolean"
+                    },
                     "role": {
                         "enum": [
-                            "Contact person",
                             "Principal investigator",
                             "eScience Research Engineer",
                             "Senior eScience Research Engineer"
@@ -200,11 +207,12 @@
                 "required": [
                     "affiliations",
                     "foreignKey",
+                    "isContactPerson",
                     "role"
                 ],
                 "type": "object"
             },
-            "minItems": 0,
+            "minItems": 1,
             "type": "array",
             "uniqueItems": true
         },
@@ -235,6 +243,7 @@
         "output",
         "primaryKey",
         "related",
+        "slug",
         "subtitle",
         "tags",
         "team",
