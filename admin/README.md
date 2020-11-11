@@ -1,43 +1,46 @@
-# Admin interface service
+# Admin interface
 
-The is the admin user interface for the Research Software Directory.
-It can be used to add and update software items to the directory.
+This is the admin user interface for the Research Software Directory. It can be used to add and update software items to
+the directory. The admin interface requires credentials for users to see the admin interface.
 
 TODO:
 
-- add notes on how to do local development ([#349](https://github.com/research-software-directory/research-software-directory/issues/349))
 - add notes on how to keep the dependencies updated, e.g. using `yarn audit` and `yarn outdated` ([#367](https://github.com/research-software-directory/research-software-directory/issues/367))
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation [here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
+## Development setup
 
-## Prerequisites
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) using
+scripts package [@nlesc/react-scripts](https://github.com/NLeSC/create-react-app). Original documentation
+[here](https://github.com/NLeSC/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-- [github-auth](/auth-github) authentication service.
-- [backend](/backend) data API service.
+### Prerequisites
 
-## Installation
+1. Install node version `^14.0`, e.g. using `nvm` (Node Version Manager, see [https://github.com/nvm-sh/nvm#install-script](https://github.com/nvm-sh/nvm#install-script)):
+    1. `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash`
+    1. restart terminal
+    1. run `nvm install 14`
+1. Install yarn, `npm install -g yarn` (Note: there exists a similarly named package, Apache Hadoop YARN --please ignore
+    that, it's something else)
 
-1. Clone repository
-1. Use node version `^12.0`, e.g. using `nvm` (see [below](#install-node-using-nvm)).
-1. Install yarn, `npm install -g yarn`
-1. Install dependencies: `yarn install`
-1. To run tests: `yarn test`
-1. Start app in dev server: `yarn start`
+### Getting a local development build running
 
-### Install node using NVM
+1. To login in to admin interface you need to set the authentication callback to `http://localhost:8000/auth/get_jwt` on [https://github.com/settings/developers](https://github.com/settings/developers)
+1. Start the services required by admin interface:
 
-See [https://github.com/creationix/nvm#install-script](https://github.com/creationix/nvm#install-script)
+    ```shell
+    cd research-software-directory
+    docker-compose -f docker-compose.yml -f admin/docker-compose.dev.yml up
+    ```
 
-1. `curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash`
-1. restart terminal
-1. run `nvm install 8`
+1. New terminal
+1. `cd admin`
+1. Install the `admin` service's dependencies: `yarn install`
+1. Start the admin service in a development server: `yarn start`. It will tell you where to go to check the `admin`
+    interface ([http://localhost:8000](http://localhost:8000)).
 
-### Settings
+The Docker containers started with `docker-compose` is a complete Research Software Directory instance on [https://localhost](https://localhost) including an admin interface. Any changes made to software/projects/etc. in the admin interface running on [http://localhost:8000](http://localhost:8000) will be saved in the instance and can be viewed there.
 
-Run-time settings should be reachable through `[BASE_URL]/settings.json`, see e.g. `public/settings.json`.
-This settings file should be overriden in production.
-
-## Build
+## Production setup: non-dockerized
 
 To build the app for production run:
 
@@ -45,19 +48,17 @@ To build the app for production run:
 yarn build
 ```
 
-The deployable app will build to the `build/` directory.
+The deployable app will build to the `./build/` directory.
 
-## Docker
+## Production setup: dockerized
 
-Build with
+The Docker image should not be used on its own, as the code expects the [backend server](/backend) to be running at
+`/api` and the [auth server](/auth-github) to be running at `/auth`.
+
+The `rsd/admin` image should be used as part of a `docker-compose`, see
+[https://github.com/research-software-directory/research-software-directory](https://github.com/research-software-directory/research-software-directory):
 
 ```bash
-docker build --tag rsd/admin .
+cd research-software-directory
+docker-compose build admin
 ```
-
-The Docker image should not be used directly and alone as the code expects the
-[backend server](/backend) to be running at `/api` and the [auth
-server](/auth-github) to be running at `/auth` which are not part of the image.
-
-The image should be used as part of a `docker-compose`, see
-[https://github.com/research-software-directory/research-software-directory](https://github.com/research-software-directory/research-software-directory).

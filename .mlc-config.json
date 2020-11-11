@@ -3,6 +3,8 @@
     "ignorePatterns": [{
         "pattern": "^http://localhost"
     }, {
+        "pattern": "^https://localhost"
+    }, {
         "pattern": "^https://doi.org/10.0000/FIXME$"
     }, {
         "pattern": "^https://doi.org/10.0000/FIXME$"
