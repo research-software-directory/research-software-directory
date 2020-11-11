@@ -4,12 +4,12 @@
     "properties": {
         "callUrl": {
             "format": "uri",
-            "pattern": "^https?://doi.org/.*$",
+            "pattern": "^https://doi.org/.*$",
             "type": "string"
         },
         "codeUrl": {
             "format": "uri",
-            "pattern": "^https?://github.com/.*$",
+            "pattern": "^https://github.com/[^/]*$",
             "type": "string"
         },
         "createdAt": {
@@ -22,7 +22,7 @@
         },
         "dataManagementPlanUrl": {
             "format": "uri",
-            "pattern": "^https?://doi.org/.*$",
+            "pattern": "^https://doi.org/.*$",
             "type": "string"
         },
         "dateEnd": {
@@ -53,7 +53,7 @@
         },
         "imageUrl": {
             "format": "uri",
-            "pattern": "^https?://.*$",
+            "pattern": "^https://.*$",
             "type": "string"
         },
         "impact": {
@@ -139,9 +139,13 @@
             ],
             "type": "object"
         },
+        "slug": {
+            "pattern": "^[0-9a-z-]{3,}$",
+            "type": "string"
+        },
         "softwareSustainabilityPlanUrl": {
             "format": "uri",
-            "pattern": "^https?://doi.org/.*$",
+            "pattern": "^https://doi.org/.*$",
             "type": "string"
         },
         "subtitle": {
