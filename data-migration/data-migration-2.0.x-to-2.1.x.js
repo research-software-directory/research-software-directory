@@ -16,6 +16,7 @@ var update = {
         "related.organizations": [],
         "related.projects": [],
         "related.software": [],
+        "slug": "FIXME",
         "tags": [],
         "team": []
     },
