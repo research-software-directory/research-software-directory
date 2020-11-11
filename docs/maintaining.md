@@ -15,10 +15,11 @@ npm run mlc
 ## Visualizing ``docker-compose.yml``
 
 It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
-Use https://github.com/pmsipilot/docker-compose-viz to generate a png image.
+Use [https://github.com/pmsipilot/docker-compose-viz](https://github.com/pmsipilot/docker-compose-viz) to generate a png image.
 
-```
-docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
+```shell
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
+   render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
 ```
 
 For example,
@@ -31,17 +32,18 @@ For example,
 1. Update CITATION.cff
 1. Generate the metadata file for Zenodo using [cffconvert](https://pypi.org/project/cffconvert/).
 
-    ```bash
+    ```shell
     pip install --user cffconvert
     cffconvert --outputformat zenodo --ignore-suspect-keys --outfile .zenodo.json
     ```
-    ```bash
+
+    ```shell
     # git add, commit, and push everything
     ```
 
 1. Make sure that everything is pushed
 
-    ```bash
+    ```shell
     cd $(mktemp -d)
     git clone https://github.com/research-software-directory/research-software-directory.git
     cd research-software-directory
@@ -55,14 +57,14 @@ For example,
 Set ``UPSTREAM`` and ``DOWNSTREAM`` to the different sources you want to
 three-way merge between, e.g.
 
-```bash
+```shell
 UPSTREAM=https://github.com/research-software-directory/research-software-directory.git
 DOWNSTREAM=https://github.com/process-project/research-software-directory.git
 ```
 
 Then:
 
-```bash
+```shell
 cd $(mktemp -d)
 mkdir left middle right
 cd left && git clone $UPSTREAM . && cd -
@@ -73,7 +75,7 @@ meld left middle right &
 
 You should only make changes to the ``middle`` one. When you're done making your changes,
 
-```bash
+```shell
 git add <the files>
 git commit
 git push origin develop
@@ -96,12 +98,12 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Transfer the ``rsd-secrets.env`` file from the old instance to the new instance.
 
     ```shell
-    $ cd $(mktemp -d)
-    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
-    $ scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-      ./rsd-secrets.env \
-      ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
+    cd $(mktemp -d)
+    scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+       ubuntu@35.156.38.208:/home/ubuntu/rsd/rsd-secrets.env .
+    scp -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
+       ./rsd-secrets.env \
+       ubuntu@3.122.233.225:/home/ubuntu/rsd/rsd-secrets.env
     ```
 1. On the remote, create the symlink `.env` and let it point to `rsd-secrets.env`:
 
@@ -113,17 +115,17 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 1. Stop new additions to the database in the old research software
    directory instance by stopping the ``rsd-admin`` service.
 
-    ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
-    $ cd /home/ubuntu/rsd
-    $ docker-compose stop rsd-admin
+    ```shell
+    ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
+    cd /home/ubuntu/rsd
+    docker-compose stop rsd-admin
     ```
 
 1. Create the backup files in the old Research Software Directory instance:
 
-    ```
+    ```shell
     # start an interactive shell in the backup container
-    $ docker-compose exec backup /bin/sh
+    docker-compose exec backup /bin/sh
 
     # create the backup files in the container's /dump directory
     /app # mongodump \
@@ -141,23 +143,23 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 
 1. Transfer the dumped json and bson files from the old to the new instance
 
-    ```
+    ```shell
     scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-    ubuntu@35.156.38.208:/home/ubuntu/rsd/dump .
+       ubuntu@35.156.38.208:/home/ubuntu/rsd/dump .
 
     scp -r -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem \
-    ./dump/* ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
+       ./dump/* ubuntu@3.122.233.225:/home/ubuntu/rsd/database/db-init/
 
     ```
 
 1. Start the new Research Software Directory instance.
 
-    ```
-    $ ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
-    $ cd /home/ubuntu/rsd
+    ```shell
+    ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@3.122.233.225
+    cd /home/ubuntu/rsd
 
-    $ docker-compose build
-    $ docker-compose up -d
+    docker-compose build
+    docker-compose up -d
     ```
 
 1. Check [/CHANGELOG.md](/CHANGELOG.md) to see if you need to run any command to
@@ -165,24 +167,24 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
 
 1. Next, harvest all the data from external sources using:
 
-    ```
-    $ docker-compose exec harvesting python app.py harvest all
-    $ docker-compose exec harvesting python app.py resolve all
+    ```shell
+    docker-compose exec harvesting python app.py harvest all
+    docker-compose exec harvesting python app.py resolve all
     ```
 
 1. In case the old instance had problems with harvesting of the mentions, you
    may need to retrieve all mentions, as follows:
 
-    ```
-    $ docker-compose exec harvesting python app.py harvest mentions --since-version 0
+    ```shell
+    docker-compose exec harvesting python app.py harvest mentions --since-version 0
     ```
 
 1. Check if the instance works correctly using a browser to navigate to
    the new instance's IP address.
 1. If everything looks good, stop the Research Software Directory in the old instance
 
-    ```
-    $ docker-compose stop
+    ```shell
+    docker-compose stop
     ```
 
 1. Disassociate the ElasticIP address from the old instance.

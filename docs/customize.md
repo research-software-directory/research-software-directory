@@ -1,6 +1,5 @@
 # Customize your instance of the Research Software Directory
 
-
 Let's say you followed the steps above, and have a running instance of the
 Research Software Directory. Now it is time to start customizing your Research
 Software Directory. We have prepared some FAQs for customizations that are
@@ -34,17 +33,17 @@ data with your own:
 
 After making your changes, here's how you get to see them:
 
-1. Go to the terminal where you started ``docker-compose``
+1. Go to the terminal where you started `docker-compose`
 1. Use Ctrl+C to stop the running instance of Research Software Directory
 1. Check which docker containers you have with:
 
-    ```
+    ```shell
     docker-compose ps
     ```
 
     For example, mine says:
 
-    ```
+    ```shell
     docker-compose ps
            Name                     Command                State     Ports
     ----------------------------------------------------------------------
@@ -58,27 +57,28 @@ After making your changes, here's how you get to see them:
     rsd-harvesting       /bin/sh -c crond -d7 -f          Exit 137
     ```
 
-    Use ``docker-compose rm`` to delete container by their **service name**, e.g. the ``rsd-frontend`` container:
+    Use `docker-compose rm` to delete container by their **service name**, e.g. the `rsd-frontend` container:
 
-    ```
+    ```shell
     docker-compose rm frontend
     ```
 
     List all docker images on your system:
-    ```
+
+    ```shell
     docker images
     ```
 
-    Note that image names consist of the environment variable ``COMPOSE_PROJECT_NAME``, followed by ``/``,
+    Note that image names consist of the environment variable `COMPOSE_PROJECT_NAME`, followed by `/`,
     followed by the service name. Remove as follows:
 
-    ```
+    ```shell
     docker rmi rsd/frontend
     ```
 1. Make changes to the source code of the service whose container and image you just removed
 1. Rebuild containers as necessary, using:
 
-    ```
+    ```shell
     docker-compose build frontend
     docker-compose up -d frontend
     ```

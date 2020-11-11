@@ -72,7 +72,6 @@
     "babel-core": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.4",
     "prettier": "^1.13.0",
     "react-scripts-ts": "^2.14.0",
     "react-test-renderer": "^16.3.2",
@@ -92,15 +91,8 @@
     "testcoverage": "react-scripts-ts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill --coverage",
     "eject": "react-scripts-ts eject",
     "lint": "tslint --project \"tsconfig.json\" -t stylish",
-    "precommit": "lint-staged",
     "storybook": "STORYBOOK_ENABLED=1 start-storybook -p 6006",
     "build-storybook": "STORYBOOK_ENABLED=1 build-storybook"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "proxy": {
     "/api": {

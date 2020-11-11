@@ -1,32 +1,29 @@
+{% set show_fund = "FIXME" not in template_data.callUrl and "FIXME" not in template_data.grantId %}
+{% if show_fund %}
 <div class="fund">
     <h5>Funded under</h5>
     <a href="{{ template_data.callUrl }}" target="_blank">TODO call label  <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></a>
     <div class="grant">Grant ID: {{ template_data.grantId }}</div>
 </div>
+{% endif %}
 <div class="status">
     <h5>Status</h5>
-    <span>{{status.status}}</span>
+    <div class="progress_bar" >
+        <div class="progress" style="width:{{status.progress*100}}%;"></div>
+    </div>
     <div class="time_span">
         <div>
-            <div>
-                Start date
-            </div>
             <div>
                 {{template_data.dateStart | human_date_month_filter }}
             </div>
         </div>
         <div class="end_date">
             <div>
-                End date
-            </div>
-            <div>
                 {{template_data.dateEnd | human_date_month_filter }}
             </div>
         </div>
     </div>
-    <div class="progress_bar" style="">
-        <div class="progress" style="width:{{status.progress*100}}%;"></div>
-    </div>
+    <div class="status_word">{{status.status}}</div>
 </div>
 <div class="partners">
     <h5>Partners</h5>
@@ -67,54 +64,14 @@
     </ul>
 </div>
 <div class="tags_container">
-    <h5><svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-tag"></use></svg>Tags</h5>
+    <h5>Tags</h5>
     {% if template_data.tags %}
     <ul class="tags">
         {% for tag in template_data.tags %}
-            <li class="bg-dark">{{tag}}</li>
+            <li class="bg-light">{{tag}}</li>
         {% endfor %}
     </ul>
     {% else %}
         <i>No tags available</i>
     {% endif%}
 </div>
-{% set contactPerson = template_data.team | selectattr("role", "equalto", "Contact person") | first %}
-{% if contactPerson %}
-<div id="contributors">
-    <div class="contact_card project_contact_person">
-        <div class="contact_card_header">
-            Contact person
-        </div>
-        <div class="contact_card_content">
-            <div class="contributor_picture">
-                <img
-                        {%- if contactPerson.foreignKey.avatar and contactPerson.foreignKey.avatar.data %}
-                        {% set image=contactPerson.foreignKey.avatar %}
-                        src="data:{{image.mimeType}};base64,{{image.data}}" alt=""
-                        {% else %}
-                        src="/static/icons/team_default.png" alt=""
-                        {% endif %}
-                >
-            </div>
-            <div class="contributor-info">
-                <div class="contributor_name">
-                    {{contactPerson.foreignKey | human_name_filter }}
-                </div>
-                <div class="contributor_organisation">
-                    {% if contactPerson.affiliations %}
-                    {{contactPerson.affiliations[0].foreignKey.name}}
-                    {% endif %}
-                </div>
-                <div class="contributor_email">
-                    <a href="mailto:{{contactPerson.foreignKey.emailAddress}}">
-                        <svg class="icon">
-                            <use xlink:href="/static/icons/icons.svg#icon-envelope"></use>
-                        </svg>
-                        Mail {{contactPerson.foreignKey.givenNames}}
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
