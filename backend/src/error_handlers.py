@@ -1,11 +1,10 @@
+import logging
 import traceback
 
 from jsonschema import ValidationError
 from pymongo.errors import ServerSelectionTimeoutError
-
-from src.json_response import jsonify
 from src.exceptions import RouteException
-import logging
+from src.json_response import jsonify
 
 logger = logging.getLogger(__name__)
 

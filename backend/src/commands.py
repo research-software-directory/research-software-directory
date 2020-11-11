@@ -1,10 +1,11 @@
 import logging
-import jwt
-import click
-import time
 import os
+import time
 
+import click
+import jwt
 from src.permission import Permission
+
 logger = logging.getLogger(__name__)
 
 

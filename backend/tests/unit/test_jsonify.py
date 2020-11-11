@@ -1,5 +1,6 @@
-from src.json_response import jsonify
 import json
+
+from src.json_response import jsonify
 
 
 def test_jsonify():

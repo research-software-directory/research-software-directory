@@ -60,6 +60,7 @@ div.ui.menu.main_menu > div.item.resource_menu > div:first-child {
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.5s;
 }
+
 #main_menu > .item.active:hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
@@ -71,5 +72,5 @@ div.ui.menu.main_menu > div.item.resource_menu > div:first-child {
 }
 
 #main_menu > .item > .header:hover {
-  color: #aa8888;
+  color: #a88;
 }
