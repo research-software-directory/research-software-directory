@@ -420,6 +420,7 @@ def make_new_project_data(project_data_source):
     new_project_data["output"] = []
     new_project_data["primaryKey"] = {"id": str(uuid.uuid4()), "collection": "project"}
     new_project_data["related"] = {"organizations": [], "projects": [], "software": []}
+    new_project_data["slug"] = "fixme"
     new_project_data["subtitle"] = project_data_source["subtitle"]
     new_project_data["tags"] = []
     new_project_data["team"] = []
@@ -429,8 +430,24 @@ def make_new_project_data(project_data_source):
     return new_project_data
 
 
-def add_new_project_to_database(token, api_projects_data, project_data_source):
+def fix_empty_team(token,project_data_target,api_persons_data,project_data_source):
+    if len(project_data_target["team"]) > 0: 
+        return(project_data_target)
+    elif len(project_data_source["team"]) > 0:
+        project_data_target["team"] = get_source_team(token, project_data_source, api_persons_data, {})
+        return(project_data_target)
+    elif project_data_target["title"] == "Deep learning OCR post-correction":
+        project_data_source["team"] = [{ "name": "Janneke van der Zwaan", "role": "eScience Research Engineer" }]
+        project_data_target["team"] = get_source_team(token, project_data_source, api_persons_data, {})
+        return(project_data_target)
+    else:
+        logger.warning(f'project {project_data_target["title"]} has no team members!')
+        return(project_data_target)
+
+
+def add_new_project_to_database(token, api_projects_data, api_persons_data, project_data_source):
     new_project_data = make_new_project_data(project_data_source)
+    new_project_data = fix_empty_team(token,new_project_data,api_persons_data,project_data_source)
     project_api_url = "https://localhost/api/project"
     project_api_response = requests.post(
         project_api_url,
@@ -610,6 +627,7 @@ def update_project_in_database(
         project_data_source,
         project_data_target,
     )
+    project_data_target = fix_empty_team(token,project_data_target,api_persons_data,project_data_source)
     project_api_url = (
         "https://localhost/api/project/" + project_data_target["primaryKey"]["id"]
     )
@@ -629,11 +647,11 @@ def update_project_in_database(
         return False
 
 
-def find_project_in_database(token, api_projects_data, project_data_source):
+def find_project_in_database(token, api_projects_data, api_persons_data, project_data_source):
     for project_data_target in api_projects_data:
         if project_data_source["title"] == project_data_target["title"]:
             return project_data_target
-    return add_new_project_to_database(token, api_projects_data, project_data_source)
+    return add_new_project_to_database(token, api_projects_data, api_persons_data, project_data_source)
 
 
 def main(argv):
@@ -646,7 +664,7 @@ def main(argv):
     failed_project_updates = 0
     for project_data_source in project_data_website:
         project_data_target = find_project_in_database(
-            token, api_projects_data, project_data_source
+            token, api_projects_data, api_persons_data, project_data_source
         )
         success = update_project_in_database(
             token,
@@ -658,7 +676,6 @@ def main(argv):
         )
         if not success:
             failed_project_updates += 1
-            #print(json.dumps(project_data_target,indent=1))
     print(f"number of project updates that failed: {failed_project_updates}")
     sys.exit(0)
 
