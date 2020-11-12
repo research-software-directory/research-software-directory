@@ -498,7 +498,6 @@ def get_source_team(
 ):
     acceptable_roles = [
         "Principal investigator",
-        "Contact person",
         "eScience Research Engineer",
         "Senior eScience Research Engineer",
         "eScience Coordinator",
