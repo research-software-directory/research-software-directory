@@ -124,11 +124,11 @@ const prep_axes = (elem_id, bars) => {
                         .attr("y", height - margins.bottom * 0.5)
 
    const ylabel_transform = "translate(" +
-                            (margins.left * 0.6).toString() +
-                            ", "  +
-                            (margins.top + (height - margins.top - margins.bottom) / 2).toString() +
-                            ") " +
-                            "rotate(270)";
+                           (margins.left * 0.6).toString() +
+                           ", "  +
+                           (margins.top + (height - margins.top - margins.bottom) / 2).toString() +
+                           ") " +
+                           "rotate(270)";
 
    const ylabel = svg.append("g")
                      .attr("transform", ylabel_transform)
@@ -138,10 +138,10 @@ const prep_axes = (elem_id, bars) => {
                         .attr("y", 0)
 
    const title = svg.append("g")
-                    .attr("class", "title")
-                       .append("text")
-                       .attr("x", margins.left + (width - margins.left - margins.right) / 2)
-                       .attr("y", margins.top / 2)
+                     .attr("class", "title")
+                        .append("text")
+                        .attr("x", margins.left + (width - margins.left - margins.right) / 2)
+                        .attr("y", margins.top / 2)
 
    const bar_width = (width - margins.left - margins.right) / n_bars;
 
@@ -177,10 +177,10 @@ const prep_axes = (elem_id, bars) => {
                         .text(bar_text(0))
 
    const last_bar = svg.append("text")
-                       .attr("class", "bar-label bar-label-last")
-                       .attr("x", xscale(n_bars) - bar_width / 2)
-                       .attr("y", yscale(bars_clipped[n_bars - 1]) - 5)
-                       .text(bar_text(n_bars - 1))
+                        .attr("class", "bar-label bar-label-last")
+                        .attr("x", xscale(n_bars) - bar_width / 2)
+                        .attr("y", yscale(bars_clipped[n_bars - 1]) - 5)
+                        .text(bar_text(n_bars - 1))
 
    return {xlabel, ylabel, title};
 }
@@ -392,8 +392,8 @@ const draw_publications_mainstream = (items, id) => {
          })
       };
       const mmpub_types = new Set(["blogPost", "interview", "magazineArticle",
-                                   "newspaperArticle", "radioBroadcast",
-                                   "videoRecording"])
+                                    "newspaperArticle", "radioBroadcast",
+                                    "videoRecording"])
       const mentions = items.filter(unpublished).map(add_mmpubs)
       const bars = mentions.map((elem) => {return elem.length}).sort(descending);
       const stat = shorten(unique(mentions).size);

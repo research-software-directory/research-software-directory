@@ -1,7 +1,8 @@
-from src.error_handlers import init
+import json
 
 import flask
-import json
+from src.error_handlers import init
+
 
 def test_error_404():
     app = flask.Flask('__test')
