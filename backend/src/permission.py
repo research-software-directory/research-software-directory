@@ -1,7 +1,7 @@
-import jwt
 import os
-
 from enum import Enum
+
+import jwt
 from flask import request
 from src.exceptions import UnauthorizedException
 

@@ -1,16 +1,15 @@
-import os
-import datetime
 import copy
+import datetime
+import os
 
 import flask
 import pymongo
+from bson.objectid import ObjectId
 from flask_cors import CORS
 from jsonschema import validate
-from bson.objectid import ObjectId
-
 from src import exceptions
 from src.json_response import jsonify
-from src.permission import require_permission, get_sub
+from src.permission import get_sub, require_permission
 from src.util import find_data_links
 
 

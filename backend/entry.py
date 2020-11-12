@@ -1,4 +1,5 @@
 from src.app import create_app
+
 app = application = create_app()
 
 if __name__ == "__main__":

@@ -1,9 +1,10 @@
 import logging
 import os
-import requests
-import jwt
 import time
 import urllib.parse
+
+import jwt
+import requests
 from flask import Flask, redirect, request
 
 logger = logging.getLogger()

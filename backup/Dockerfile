@@ -1,6 +1,6 @@
 FROM openjdk:8-alpine
 
-RUN apk add --no-cache mongodb-tools
+RUN apk add --no-cache mongodb-tools==4.0.5-r0
 
 RUN mkdir /app
 COPY ./backup.sh /app/backup.sh
@@ -11,4 +11,4 @@ RUN wget https://github.com/NLeSC/xenon-cli/releases/download/v2.4.1/xenon-cli-s
 
 ENV PATH "$PATH:/app/xenon-cli-shadow-2.4.1/bin/"
 
-CMD crond -d7 -f
+CMD ["crond","-d7","-f"]

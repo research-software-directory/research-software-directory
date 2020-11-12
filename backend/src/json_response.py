@@ -1,7 +1,8 @@
 """Flask JSON response module"""
 
-import flask
 import json
+
+import flask
 
 
 def dumps(data):
