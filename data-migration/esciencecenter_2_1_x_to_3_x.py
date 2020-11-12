@@ -52,7 +52,6 @@ def get_project_urls(soup):
             project_urls.append(
                 {"url": project_url, "field": project_field, "status": project_status}
             )
-        break
     return project_urls
 
 
@@ -262,28 +261,28 @@ def get_data_by_name(api_data, name):
 
 def make_person_name(person_data):
     name = ""
-    if person_data["givenNames"] != "":
-        name = person_data["givenNames"]
+    if person_data["givenNames"].strip() != "":
+        name = person_data["givenNames"].strip()
     if (
         "nameParticle" in person_data
         and person_data["nameParticle"] is not None
-        and person_data["nameParticle"] != ""
+        and person_data["nameParticle"].strip() != ""
     ):
         if name != "":
             name += " "
-        name += person_data["nameParticle"]
-    if person_data["familyNames"] != "":
+        name += person_data["nameParticle"].strip()
+    if person_data["familyNames"].strip() != "":
         if name != "":
             name += " "
-        name += person_data["familyNames"]
+        name += person_data["familyNames"].strip()
     if (
         "nameSuffix" in person_data
         and person_data["nameSuffix"] is not None
-        and person_data["nameSuffix"] != ""
+        and person_data["nameSuffix"].strip() != ""
     ):
         if name != "":
             name += " "
-        name += person_data["nameSuffix"]
+        name += person_data["nameSuffix"].strip()
     return name
 
 
@@ -520,10 +519,13 @@ def get_source_team(
                 token, api_persons_data, team_member_data_source["name"]
             )
         team_member_data_update = {"foreignKey": team_member_data_target["primaryKey"]}
+        team_member_data_update["isContactPerson"] = False
         if "role" in team_member_data_source and team_member_data_source["role"] != "":
             team_member_data_update["role"] = fix_role(
                 team_member_data_source["role"].strip()
             )
+            if team_member_data_update["role"] == "Contact person":
+                team_member_data_update["isContactPerson"] = True
             if team_member_data_update["role"] not in acceptable_roles:
                 logger.warning(f'unknown role: {team_member_data_update["role"]}')
         else:
@@ -657,6 +659,7 @@ def main(argv):
         )
         if not success:
             failed_project_updates += 1
+            #print(json.dumps(project_data_target,indent=1))
     print(f"number of project updates that failed: {failed_project_updates}")
     sys.exit(0)
 

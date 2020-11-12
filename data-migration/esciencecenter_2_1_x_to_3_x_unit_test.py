@@ -1,6 +1,15 @@
+import os
 import requests
+import sys
 import unittest
 import esciencecenter_2_1_x_to_3_x as esciencecenter
+
+sys.path.append(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/harvesting"
+)
+from zotero import generate_jwt_token
+
+# to remove warning: export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
 
 class eScienceCenterTest(unittest.TestCase):
@@ -82,6 +91,51 @@ class eScienceCenterTest(unittest.TestCase):
         actual_value = esciencecenter.make_url_secure("http://fix.me")
         expected_value = "https://fix.me"
         self.assertEqual(expected_value, actual_value)
+
+    def make_full_name(self,given_names,name_particle,family_names,name_suffix):
+        full_name = given_names
+        if name_particle != "": full_name += " "+name_particle
+        if given_names != "": full_name += " "+family_names
+        if name_suffix != "": full_name += " "+name_suffix
+        return(full_name.strip())
+
+    def check_duplicate_names(self,api_persons_data):
+        seen_names = {}
+        counter = 0
+        for data in api_persons_data:
+            if "nameParticle" not in data or data["nameParticle"] is None: data["nameParticle"] = ""
+            if "nameSuffix" not in data or data["nameSuffix"] is None: data["nameSuffix"] = ""
+            initial = data["givenNames"].strip()[0]
+            surname = data["familyNames"].strip().split()[-1]
+            short_name = " ".join([initial,surname])
+            full_name = self.make_full_name(data["givenNames"],data["nameParticle"],data["familyNames"],data["nameSuffix"])
+            if short_name in seen_names:
+                print(f"warning: possible duplicate name: {seen_names[short_name]} and {full_name} ({counter})")
+            seen_names[short_name] = f"{full_name} ({counter})"
+            counter += 1
+        return()
+
+    def check_extra_whitespace(self,api_persons_data):
+        counter = 0
+        for data in api_persons_data:
+            full_name = self.make_full_name(data["givenNames"],data["nameParticle"],data["familyNames"],data["nameSuffix"])
+            if data["givenNames"].strip() != data["givenNames"]:
+                print(f'warning: extra white space in {full_name} ({counter}) ({data["givenNames"]})')
+            if data["nameParticle"].strip() != data["nameParticle"]:
+                print(f'warning: extra white space in {full_name} ({counter}) ({data["nameParticle"]})')
+            if data["familyNames"].strip() != data["familyNames"]:
+                print(f'warning: extra white space in {full_name} ({counter}) ({data["familyNames"]})')
+            if data["nameSuffix"].strip() != data["nameSuffix"]:
+                print(f'warning: extra white space in {full_name} ({counter}) ({data["nameSuffix"]})')
+            counter += 1
+        return()
+
+    def test_person_name_checks(self):
+        token = generate_jwt_token()
+        api_persons_data = esciencecenter.get_data_from_rsd(token, "/person")
+        self.check_duplicate_names(api_persons_data)
+        self.check_extra_whitespace(api_persons_data)
+        self.assertTrue(True)
 
 
 if __name__ == '__main__':

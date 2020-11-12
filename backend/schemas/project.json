@@ -191,6 +191,10 @@
                     "foreignKey": {
                         "$ref": "definitions.json/key/person"
                     },
+                    "isContactPerson": {
+                        "default": false,
+                        "type": "boolean"
+                    },
                     "role": {
                         "enum": [
                             "Contact person",
@@ -210,6 +214,7 @@
                 "required": [
                     "affiliations",
                     "foreignKey",
+                    "isContactPerson",
                     "role"
                 ],
                 "type": "object"
@@ -245,6 +250,7 @@
         "output",
         "primaryKey",
         "related",
+        "slug",
         "subtitle",
         "tags",
         "team",
