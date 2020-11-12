@@ -10,7 +10,7 @@ from jsonschema import validate
 from src import exceptions
 from src.json_response import jsonify
 from src.permission import get_sub, require_permission
-from src.util import find_data_links, field2unset
+from src.util import field2unset, find_data_links
 
 
 def time_now():
