@@ -27,4 +27,4 @@ def test_field2unset():
     }
     fields = util.field2unset(schema, resource)
 
-    assert fields == ['opt']
+    assert fields == {'opt': ''}
