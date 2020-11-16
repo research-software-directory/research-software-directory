@@ -2,7 +2,6 @@ import base64
 import datetime
 import json
 import logging
-import os
 import re
 import sys
 import time
@@ -10,20 +9,13 @@ import uuid
 
 import requests
 from bs4 import BeautifulSoup
-from urllib3.exceptions import InsecureRequestWarning
-
-sys.path.append(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/harvesting"
-)
 from zotero import generate_jwt_token
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 
 def request_was_successful(response):
-    return response.status_code == requests.codes.ok
+    return response.status_code == 200
 
 
 def is_project_url(url):
@@ -210,26 +202,27 @@ def get_project_data_from_website():
         soup = BeautifulSoup(response.text, "html.parser")
         project_urls = get_project_urls(soup)
         project_data = get_project_data(project_urls)
+        return project_data
     else:
         logger.warning(f"failed fetching project overview page {url}")
-    return project_data
+        return {}
 
 
 def replace_paragraph_tags(text):
-    text = re.sub("<p>",r"\n\n",text,flags=re.IGNORECASE)
-    text = re.sub("</p>",r"\n\n",text,flags=re.IGNORECASE)
-    return(text)
+    text = re.sub("<p>", r"\n\n", text, flags=re.IGNORECASE)
+    text = re.sub("</p>", r"\n\n", text, flags=re.IGNORECASE)
+    return text
 
 
 def remove_tags(text):
-    text = re.sub("<[^<>]*>", "", text,flags=re.IGNORECASE)
+    text = re.sub("<[^<>]*>", "", text, flags=re.IGNORECASE)
     return text
 
 
 def fix_html(text):
     text = replace_paragraph_tags(text)
     text = remove_tags(text)
-    return(text)
+    return text
 
 
 def get_data_from_rsd(token, directory):
@@ -430,24 +423,34 @@ def make_new_project_data(project_data_source):
     return new_project_data
 
 
-def fix_empty_team(token,project_data_target,api_persons_data,project_data_source):
-    if len(project_data_target["team"]) > 0: 
-        return(project_data_target)
+def fix_empty_team(token, project_data_target, api_persons_data, project_data_source):
+    if len(project_data_target["team"]) > 0:
+        return project_data_target
     elif len(project_data_source["team"]) > 0:
-        project_data_target["team"] = get_source_team(token, project_data_source, api_persons_data, {})
-        return(project_data_target)
+        project_data_target["team"] = get_source_team(
+            token, project_data_source, api_persons_data, {}
+        )
+        return project_data_target
     elif project_data_target["title"] == "Deep learning OCR post-correction":
-        project_data_source["team"] = [{ "name": "Janneke van der Zwaan", "role": "eScience Research Engineer" }]
-        project_data_target["team"] = get_source_team(token, project_data_source, api_persons_data, {})
-        return(project_data_target)
+        project_data_source["team"] = [
+            {"name": "Janneke van der Zwaan", "role": "eScience Research Engineer"}
+        ]
+        project_data_target["team"] = get_source_team(
+            token, project_data_source, api_persons_data, {}
+        )
+        return project_data_target
     else:
         logger.warning(f'project {project_data_target["title"]} has no team members!')
-        return(project_data_target)
+        return project_data_target
 
 
-def add_new_project_to_database(token, api_projects_data, api_persons_data, project_data_source):
+def add_new_project_to_database(
+    token, api_projects_data, api_persons_data, project_data_source
+):
     new_project_data = make_new_project_data(project_data_source)
-    new_project_data = fix_empty_team(token,new_project_data,api_persons_data,project_data_source)
+    new_project_data = fix_empty_team(
+        token, new_project_data, api_persons_data, project_data_source
+    )
     project_api_url = "https://localhost/api/project"
     project_api_response = requests.post(
         project_api_url,
@@ -627,7 +630,9 @@ def update_project_in_database(
         project_data_source,
         project_data_target,
     )
-    project_data_target = fix_empty_team(token,project_data_target,api_persons_data,project_data_source)
+    project_data_target = fix_empty_team(
+        token, project_data_target, api_persons_data, project_data_source
+    )
     project_api_url = (
         "https://localhost/api/project/" + project_data_target["primaryKey"]["id"]
     )
@@ -647,11 +652,15 @@ def update_project_in_database(
         return False
 
 
-def find_project_in_database(token, api_projects_data, api_persons_data, project_data_source):
+def find_project_in_database(
+    token, api_projects_data, api_persons_data, project_data_source
+):
     for project_data_target in api_projects_data:
         if project_data_source["title"] == project_data_target["title"]:
             return project_data_target
-    return add_new_project_to_database(token, api_projects_data, api_persons_data, project_data_source)
+    return add_new_project_to_database(
+        token, api_projects_data, api_persons_data, project_data_source
+    )
 
 
 def main(argv):
