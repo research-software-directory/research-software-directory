@@ -22,7 +22,7 @@
 	    <div class="col-1-1">
                 <div class="row project-items">
                     {% for title in (titles  | sort(attribute="title")) %}
-		        <article class="project-item col-1-2"><a href="/projects/{{ title.id }}" target="_blank">
+		        <article class="project-item col-1-2"><a href="/projects/{{ title.id }}">
 			    <div class="content">
 				<div class="thumb"><img src="{{title.imageUrl}}" alt=""></div>
 				    <div class="text">

@@ -11,7 +11,7 @@
                     {% for fpproject in template_data.related.projects | no_none_filter %}
                     {% with project = fpproject.foreignKey %}
                     <article class="project-item col-1-2">
-                        <a href="/projects/{{project.primaryKey.id}}" target="_blank">
+                        <a href="/projects/{{project.primaryKey.id}}">
                             <div class="content">
                                 <div class="thumb"><img src="{{project.imageUrl}}" alt=""></div>
                                 <div class="text">
