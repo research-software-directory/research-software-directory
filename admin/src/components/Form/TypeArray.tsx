@@ -46,6 +46,24 @@ export default class TypeArray extends React.Component<
     this.props.onChange(valCopy);
   };
 
+  onMoveUp = (index: number) => {
+    const valCopy = [...this.props.value];
+    const swapIndex = index - 1;
+    const item = valCopy[index];
+    valCopy[index] = valCopy[swapIndex];
+    valCopy[swapIndex] = item;
+    this.props.onChange(valCopy);
+  }
+
+  onMoveDown = (index: number) => {
+    const valCopy = [...this.props.value];
+    const swapIndex = index + 1;
+    const item = valCopy[index];
+    valCopy[index] = valCopy[swapIndex];
+    valCopy[swapIndex] = item;
+    this.props.onChange(valCopy);
+  }
+
   render() {
     let value: any[] = this.props.value;
     if (!Array.isArray(value)) {
@@ -82,14 +100,32 @@ export default class TypeArray extends React.Component<
         <Contents>
           {!this.state.collapsed &&
             value.map((val: any, index: number) => (
-              <ArrayItem key={value.length + "_" + index}>
+              <ArrayItem key={JSON.stringify(val)}>
                 <ItemLeft>
-                  <DeleteButton
-                    secondary={true}
-                    onClick={() => this.onDelete(index)}
-                  >
-                    x
-                  </DeleteButton>
+                <Button.Group secondary={true} size="mini">
+                    <DeleteButton
+                      title="Delete"
+                      onClick={() => this.onDelete(index)}
+                    >
+                      x
+                    </DeleteButton>
+                    {!(index === 0 && index + 1 === value.length) &&
+                    <>
+                      <Button
+                        disabled={index === 0}
+                        icon="long arrow alternate up"
+                        title="Move up"
+                        onClick={() => this.onMoveUp(index)}
+                      />
+                      <Button
+                        disabled={index + 1 === value.length}
+                        icon="long arrow alternate down"
+                        title="Move down"
+                        onClick={() => this.onMoveDown(index)}
+                      />
+                    </>
+                    }
+                  </Button.Group>
                 </ItemLeft>
                 <ItemRight>
                   <FormPart
@@ -165,7 +201,7 @@ const ItemLeft = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 120px;
 `;
 
 const ItemRight = styled.div`
