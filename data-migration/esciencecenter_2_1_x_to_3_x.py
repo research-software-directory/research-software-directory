@@ -2,7 +2,6 @@ import base64
 import datetime
 import json
 import logging
-import os
 import re
 import sys
 import time
@@ -11,10 +10,6 @@ import uuid
 import requests
 from bs4 import BeautifulSoup
 from urllib3.exceptions import InsecureRequestWarning
-
-sys.path.append(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/harvesting"
-)
 from zotero import generate_jwt_token
 
 logger = logging.getLogger(__name__)
@@ -52,6 +47,7 @@ def get_project_urls(soup):
             project_urls.append(
                 {"url": project_url, "field": project_field, "status": project_status}
             )
+        break
     return project_urls
 
 
