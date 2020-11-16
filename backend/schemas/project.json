@@ -26,13 +26,13 @@
             "type": "string"
         },
         "dateEnd": {
-            "format": "date-time",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
             "type": "string"
         },
         "dateStart": {
-            "format": "date-time",
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "format": "date",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
             "type": "string"
         },
         "description": {

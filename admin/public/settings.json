@@ -320,11 +320,11 @@
           "sortIndex": 760
         },
         "dateEnd": {
-          "help": "Formal end date of the project",
+          "help": "Formal end date of the project (format `yyyy-mm-dd`)",
           "sortIndex": 400
         },
         "dateStart": {
-          "help": "Formal start date of the project",
+          "help": "Formal start date of the project (format `yyyy-mm-dd`)",
           "sortIndex": 300
         },
         "description": {
