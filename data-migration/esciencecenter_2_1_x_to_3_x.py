@@ -2,6 +2,7 @@ import base64
 import datetime
 import json
 import logging
+import os
 import re
 import sys
 import time
@@ -51,7 +52,6 @@ def get_project_urls(soup):
             project_urls.append(
                 {"url": project_url, "field": project_field, "status": project_status}
             )
-        break
     return project_urls
 
 
