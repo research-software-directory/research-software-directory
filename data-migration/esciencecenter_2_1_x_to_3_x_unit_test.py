@@ -1,8 +1,8 @@
 import os
-import requests
 import sys
 import unittest
 import esciencecenter_2_1_x_to_3_x as esciencecenter
+import requests
 
 sys.path.append(
     os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/harvesting"

@@ -10,6 +10,10 @@ import uuid
 import requests
 from bs4 import BeautifulSoup
 from urllib3.exceptions import InsecureRequestWarning
+
+sys.path.append(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "/harvesting"
+)
 from zotero import generate_jwt_token
 
 logger = logging.getLogger(__name__)
