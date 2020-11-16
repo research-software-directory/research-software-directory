@@ -109,3 +109,12 @@ def find_data_links(db, schemas, resource_type, id):
                 get_links_to_id(id, resource, path, [schema_name, resource['primaryKey']['id']], data_links)
 
     return data_links
+
+def field2unset(schema, data):
+    """"Fields which are optional and missing in request data should be unset
+    """
+    all_fields = set(schema['properties'].keys())
+    required_fields = set(schema['required'])
+    optional_fields = all_fields - required_fields
+    fields2remove = list(optional_fields - set(data.keys()))
+    return {k: '' for k in fields2remove}

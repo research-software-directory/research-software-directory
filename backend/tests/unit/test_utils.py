@@ -14,3 +14,17 @@ def test_rate_limit():
 
     assert 2 < (time.time() - start_time) < 2.5
 
+def test_field2unset():
+    schema = {
+        'properties': {
+            '_id': None,
+            'opt': None
+        },
+        'required': ['_id']
+    }
+    resource = {
+        '_id': 'foo'
+    }
+    fields = util.field2unset(schema, resource)
+
+    assert fields == {'opt': ''}
