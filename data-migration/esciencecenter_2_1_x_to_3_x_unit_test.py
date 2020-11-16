@@ -149,7 +149,7 @@ class eScienceCenterTest(unittest.TestCase):
             )
             if short_name in seen_names:
                 print(
-                    f"warning: possible duplicate name: {seen_names[short_name]} and {full_name} ({counter})"
+                    f"warning: potential duplicate name: {seen_names[short_name]} and {full_name} ({counter})"
                 )
             seen_names[short_name] = f"{full_name} ({counter})"
             counter += 1

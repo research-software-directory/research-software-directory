@@ -85,15 +85,20 @@ def get_project_subtitle(soup):
 
 def get_project_text(soup):
     project_text = ""
+    image_caption = ""
     texts = soup.findAll("section", {"class": "content"})
     for text in texts:
         for p in text.findAll("p"):
-            if "social-sharer" not in p.parent["class"] and p.text != "":
-                if project_text == "":
-                    project_text = str(p)
+            if (
+                p.text != ""
+                and "social-share" not in p.parent["class"]
+                and p.parent.name != "blockquote"
+            ):
+                if re.search("image:", p.text, flags=re.IGNORECASE):
+                    image_caption += " " + str(p)
                 else:
                     project_text += " " + str(p)
-    return project_text
+    return project_text, image_caption
 
 
 def get_project_team(soup):
@@ -179,7 +184,7 @@ def get_project_data(project_urls):
             project["title"] = get_project_title(soup)
             project["subtitle"] = get_project_subtitle(soup)
             project["imageUrl"] = make_url_secure(get_project_image_url(soup))
-            project["text"] = get_project_text(soup)
+            project["text"], project["imageCaption"] = get_project_text(soup)
             project["team"] = get_project_team(soup)
             project["partners"] = get_project_partners(soup)
             project["related_project_data"] = get_project_related_projects(soup)
@@ -222,7 +227,7 @@ def remove_tags(text):
 def fix_html(text):
     text = replace_paragraph_tags(text)
     text = remove_tags(text)
-    return text
+    return text.strip()
 
 
 def get_data_from_rsd(token, directory):
@@ -402,8 +407,8 @@ def make_new_project_data(project_data_source):
     new_project_data["codeUrl"] = "https://github.com/FIXME"
     new_project_data["createdAt"] = get_current_time_string()
     new_project_data["createdBy"] = "esciencecenter.nl.crawler"
-    new_project_data["dateEnd"] = "1900-12-31T23:59:59Z"
-    new_project_data["dateStart"] = "1900-01-01T00:00:00Z"
+    new_project_data["dateEnd"] = "1900-12-31"
+    new_project_data["dateStart"] = "1900-01-01"
     new_project_data["description"] = fix_html(project_data_source["text"])
     new_project_data["grantId"] = "FIXME"
     new_project_data["imageCaption"] = "FIX ME FIX ME"
@@ -595,6 +600,9 @@ def update_project_data(
     project_data_target,
 ):
     project_data_target["description"] = fix_html(project_data_source["text"])
+    imageCaption = fix_html(project_data_source["imageCaption"])
+    if len(imageCaption) >= 10:
+        project_data_target["imageCaption"] = imageCaption
     project_data_target["slug"] = project_data_source["slug"]
     project_data_target["imageUrl"] = make_url_secure(project_data_source["imageUrl"])
     project_data_target["updatedBy"] = "esciencecenter.nl.crawler"
@@ -611,6 +619,19 @@ def update_project_data(
         api_persons_data,
         project_data_target["related"]["organizations"],
     )
+    return project_data_target
+
+
+def fix_shortened_dates(project_data_target):
+    project_data_target["dateStart"] = project_data_target["dateStart"][:10]
+    project_data_target["dateEnd"] = project_data_target["dateEnd"][:10]
+    return project_data_target
+
+
+def fix_empty_lines(project_data_target):
+    project_data_target["description"] = re.sub(
+        r"\s*\n\s*\n\s*", r"\n\n", project_data_target["description"]
+    ).strip()
     return project_data_target
 
 
@@ -633,6 +654,8 @@ def update_project_in_database(
     project_data_target = fix_empty_team(
         token, project_data_target, api_persons_data, project_data_source
     )
+    project_data_target = fix_shortened_dates(project_data_target)
+    project_data_target = fix_empty_lines(project_data_target)
     project_api_url = (
         "https://localhost/api/project/" + project_data_target["primaryKey"]["id"]
     )
