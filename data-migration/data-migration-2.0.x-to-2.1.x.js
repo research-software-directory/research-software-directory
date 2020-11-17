@@ -10,8 +10,8 @@ const update = {
   $set: {
     callUrl: 'https://doi.org/FIXME',
     codeUrl: 'https://github.com/FIXME',
-    dateEnd: '1901-01-01T00:00:00Z',
-    dateStart: '1900-01-01T00:00:00Z',
+    dateEnd: '1901-01-01',
+    dateStart: '1900-01-01',
     description: 'FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME',
     grantId: 'FIXME',
     isPublished: true,
