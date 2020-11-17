@@ -600,4 +600,19 @@
       }
     }
   }
+
+// Related tools
+// -----------------------------------
+
+#related-tools{
+    .container{
+        padding-top: 70px;
+        padding-bottom: 30px;
+    }
+    .divider {
+        margin: 60px 0px 20px 0px;
+        border-top: 2px solid $divider;
+    }
+}
+
 }
