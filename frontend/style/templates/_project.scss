@@ -1,4 +1,15 @@
 #project_page {
+
+  // Common
+  // -----------------------------------
+    section{
+        @include bp(max, $phablet){
+            .subtitle{
+                text-align: center;
+            }
+        }
+    }
+
   // Introduction
   // -----------------------------------
   #introduction {
