@@ -1,9 +1,11 @@
 # Updating data from 2.x to 3.x
 
-TODO
+mongodb run migrate.js
 
+## Optional: get project data
 
-optionally get project data from esciencecenter.nl corporate website:
+Optionally get project data from esciencecenter.nl corporate website:
+
 ```
 sudo rm -r docker-volumes/db/*
 docker-compose build
