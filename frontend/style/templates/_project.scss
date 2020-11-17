@@ -362,5 +362,113 @@
         }
       }
     }
+
+    .mention {
+      .mention_button {
+        transition: 0.1s ease;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .icon {
+          transition: 0.2s ease-in;
+          width: 18px;
+          height: 18px;
+          fill: $primaryColor;
+
+          transition: 0.3s ease-in;
+          polygon {
+            transition: 0.2s ease-in;
+          }
+        }
+        &.active {
+          .icon {
+            width: 18px;
+            height: 18px;
+            fill: $primaryColor;
+
+            transform: rotate(135deg);
+          }
+          .category {
+            transform: translate3d(8px, 0, 0);
+          }
+          .amount {
+            background-color: white;
+          }
+          .icon {
+            fill: white;
+          }
+        }
+        .category {
+          transition: 0.2s ease-in;
+        }
+        &:hover {
+          .category {
+            transform: translate3d(8px, 0, 0);
+          }
+          .amount {
+            background-color: white;
+          }
+          .icon {
+            fill: white;
+          }
+        }
+      }
+
+      h3 {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+
+        .amount {
+          transition: 0.2s ease-in;
+          font-family: $primaryFontBold;
+          font-size: 0.8em;
+          border-radius: 50%;
+          width: 1.5em;
+          height: 1.5em;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $primaryColor;
+          color: $dark;
+          margin-right: 0.8em;
+        }
+      }
+
+      .mention_list {
+        //display: none;
+        overflow: hidden;
+        transition: height 0.5s;
+        margin: 0;
+        ul {
+          padding: 20px 0 15px;
+        }
+        li {
+          &:not(:last-child) {
+            margin-bottom: 2px;
+          }
+
+          .mention_content {
+            display: block;
+            padding: 1em;
+            background-color: lighten($dark, 10%);
+          }
+          a.mention_content:hover {
+            background-color: darken($light, 2%);
+            color: $black;
+          }
+        }
+      }
+
+      .icon {
+        margin-left: 0.5em;
+        width: 0.8em;
+        height: 0.8em;
+        display: inline-block;
+        fill: currentColor;
+      }
+    }
   }
 }
