@@ -65,3 +65,17 @@ site should now work. You should verify if everything works by doing the checks 
 local
 installation](https://github.com/research-software-directory/research-software-directory/blob/3.0.0/docs/dev.md#verifying-the-local-installation).
 
+
+## Optional: add project start and end dates
+
+```shell
+# copy the script to inside the running database service
+docker cp data-migration/2.x-to-3.x/add-project-dates.js $(docker-compose ps -q database):/tmp
+
+# run the migrate script
+docker-compose exec database mongo rsd /tmp/add-project-dates.js
+
+# update the cache
+docker-compose exec harvesting python app.py resolve all
+```
+
