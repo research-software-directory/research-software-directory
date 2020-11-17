@@ -27,9 +27,6 @@ jobs:
     - run: git checkout HEAD^2
       if: ${{ github.event_name == 'pull_request' }}
 
-    # Workaround so ossar-action still works after `set-env` command has been disabled
-    - run: echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
     # Ensure a compatible version of dotnet is installed.
     # The [Microsoft Security Code Analysis CLI](https://aka.ms/mscadocs) is built with dotnet v3.1.201.
     # A version greater than or equal to v3.1.201 of dotnet must be installed on the agent in order to run this action.
