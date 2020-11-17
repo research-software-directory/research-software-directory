@@ -160,10 +160,10 @@
                     "Image processing",
                     "Inter-operability & linked data",
                     "Machine learning",
-                    "Multi-scale & multi model simulations",
+                    "Multi-scale &amp; multi model simulations",
                     "Optimized data handling",
                     "Real time data analysis",
-                    "Text analysis & natural language processing",
+                    "Text analysis &amp; natural language processing",
                     "Visualization",
                     "Workflow technologies"
                 ],
@@ -199,7 +199,13 @@
                         "enum": [
                             "Principal investigator",
                             "eScience Research Engineer",
-                            "Senior eScience Research Engineer"
+                            "Senior eScience Research Engineer",
+                            "eScience Coordinator",
+                            "Technical Lead",
+                            "PhD student",
+                            "Community Manager",
+                            "Director of Operations",
+                            "Director of Technology"
                         ],
                         "type": "string"
                     }
