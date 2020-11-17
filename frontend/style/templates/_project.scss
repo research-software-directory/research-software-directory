@@ -14,6 +14,70 @@
     .col-3-4 {
       max-width: 860px;
     }
+
+    .by,
+    .contributingOrganizationJoin {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .shortStatement {
+      font-family: $primaryFontLight;
+      font-size: 3rem;
+      line-height: 1.3;
+      padding-top: 1.5em;
+      padding-bottom: 0.8em;
+
+      @include bp(max, $phablet) {
+        font-size: 2.4rem;
+      }
+    }
+
+    .read-more {
+      margin: 30px auto 15px;
+    }
+
+    .read-more_button {
+      .icon {
+        transition: transform 0.38s ease-in 0.15s;
+      }
+
+      &.active {
+        .icon {
+          transform: rotate(135deg);
+        }
+      }
+    }
+    .read-more_content {
+      overflow: hidden;
+      transition: height 0.48s ease-in-out;
+
+      p {
+        margin-bottom: 1.2em;
+      }
+    }
+
+    .highlight-data {
+      width: 100%;
+      padding-top: 5px;
+      display: flex;
+      justify-content: flex-end;
+
+      @include bp(max, $tablet) {
+        justify-content: space-around;
+      }
+
+      .data {
+        padding: 10px 25px;
+        text-align: center;
+
+        .num {
+          font-family: $primaryFontLight;
+          font-size: 5.4rem;
+          color: $primaryColor;
+        }
+      }
+    }
   }
 
   // Sidebar
