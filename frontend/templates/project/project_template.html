@@ -15,11 +15,11 @@
 
     <!-- omit the corporate home link -->
     {% block corporate_home %}{% endblock %}
-
-    {% include 'project/introduction.html' %}
-    {% include 'project/outputimpact.html' %}
-    {% include 'project/team.html' %}
-    {% include 'project/related_projects.html' %}
-    {% include 'software/related_tools.html' %}
-
+    <div id="project_page">
+        {% include 'project/introduction.html' %}
+        {% include 'project/outputimpact.html' %}
+        {% include 'project/team.html' %}
+        {% include 'project/related_projects.html' %}
+        {% include 'software/related_tools.html' %}
+    </div>
 {%- endblock -%}
