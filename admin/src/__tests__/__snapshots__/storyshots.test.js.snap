@@ -395,17 +395,48 @@ exports[`Storyshots Form elements/Array default 1`] = `
       className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-fjdhpX bptgT"
+        className="sc-fjdhpX gRTitv"
       >
-        <button
-          className="ui secondary button sc-gZMcBi giNnHm"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
+        <div
+          className="ui mini secondary buttons"
         >
-          x
-        </button>
+          <button
+            className="ui button sc-gZMcBi giNnHm"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Delete"
+          >
+            x
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+            title="Move up"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate up icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Move down"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate down icon"
+            />
+          </button>
+        </div>
       </div>
       <div
         className="sc-jzJRlG jJoVZS"
@@ -460,17 +491,48 @@ exports[`Storyshots Form elements/Array default 1`] = `
       className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-fjdhpX bptgT"
+        className="sc-fjdhpX gRTitv"
       >
-        <button
-          className="ui secondary button sc-gZMcBi giNnHm"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
+        <div
+          className="ui mini secondary buttons"
         >
-          x
-        </button>
+          <button
+            className="ui button sc-gZMcBi giNnHm"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Delete"
+          >
+            x
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Move up"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate up icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+            title="Move down"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate down icon"
+            />
+          </button>
+        </div>
       </div>
       <div
         className="sc-jzJRlG jJoVZS"
@@ -628,17 +690,48 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-fjdhpX bptgT"
+        className="sc-fjdhpX gRTitv"
       >
-        <button
-          className="ui secondary button sc-gZMcBi giNnHm"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
+        <div
+          className="ui mini secondary buttons"
         >
-          x
-        </button>
+          <button
+            className="ui button sc-gZMcBi giNnHm"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Delete"
+          >
+            x
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+            title="Move up"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate up icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Move down"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate down icon"
+            />
+          </button>
+        </div>
       </div>
       <div
         className="sc-jzJRlG jJoVZS"
@@ -693,17 +786,48 @@ exports[`Storyshots Form elements/Array minItems=1 valid 1`] = `
       className="sc-gqjmRU iWhZl"
     >
       <div
-        className="sc-fjdhpX bptgT"
+        className="sc-fjdhpX gRTitv"
       >
-        <button
-          className="ui secondary button sc-gZMcBi giNnHm"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
+        <div
+          className="ui mini secondary buttons"
         >
-          x
-        </button>
+          <button
+            className="ui button sc-gZMcBi giNnHm"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Delete"
+          >
+            x
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+            title="Move up"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate up icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+            title="Move down"
+          >
+            <i
+              aria-hidden="true"
+              className="long arrow alternate down icon"
+            />
+          </button>
+        </div>
       </div>
       <div
         className="sc-jzJRlG jJoVZS"
