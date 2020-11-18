@@ -1,6 +1,6 @@
 # Pull request details
 
-## List of related issues
+## List of related issues or pull requests
 Refs: #ISSUE_NUMBER
 
 
