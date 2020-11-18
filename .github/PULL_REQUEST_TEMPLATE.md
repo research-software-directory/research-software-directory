@@ -7,13 +7,6 @@ Refs: #ISSUE_NUMBER
 ## Describe the changes made in this pull request
 
 
-## Checklist for the contributor
-
-- [ ] Changes tested (self-review)
-- [ ] CI checks (all green)
-- [ ] Documentation is up to date
-
-
 ## Instructions to review the pull request
 
 
