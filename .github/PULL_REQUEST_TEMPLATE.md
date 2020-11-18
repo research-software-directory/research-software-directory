@@ -10,5 +10,3 @@ Refs: #ISSUE_NUMBER
 
 ## Instructions to review the pull request
 
-
-## Screenshot(s) (if applicable)
