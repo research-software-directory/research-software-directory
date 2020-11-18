@@ -4,7 +4,7 @@
 <title>Projects | Research Software Directory</title>
 {%- endblock -%}
 {%- block content -%}
-<div id="project_page">
+<div id="projects_page">
 	<section class="" id="title">
 		<div class="container">
 			<div class="row">
@@ -16,28 +16,82 @@
 		</div>
 	</section>
 
-	<section class="" id="related-projects">
+    <noscript>
+		<div id="noscript_projects" class="row">
+		  {%- for title in (titles  | sort(attribute="title")) -%}
+			<li class="col-1-4">
+			  <a href="/projects/{{ title.id }}">{{ title.title }}</a>
+			</li>
+		  {%- endfor -%}
+		</div>
+	  </noscript>
+
+	<section class="" id="related-projects" v-cloak>
 		<div class="container">
 			<div class="row">
-				<div class="col-1-1">
-					<div class="row project-items">
-						{% for title in (titles  | sort(attribute="title")) %}
-						<article class="project-item col-1-2"><a href="/projects/{{ title.id }}">
+				<div class="col-1-4" id="filters">
+					<div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
+						{# TODO add filters #}
+					</div>
+
+					<div class="toggle-filters" @click="mobShowFilters = !mobShowFilters">
+						<span class="icon">[[ mobShowFilters ? '-' : '+' ]]</span>
+						<span class="text">[[ mobShowFilters ? 'Hide filters' : 'Show filters' ]]</span>
+					</div>
+				</div>
+				<div class="col-3-4" id="project_list">
+					<transition-group appear name="slide-fade" tag="div" class="row project-items">
+						<article v-for="project in pagedProjects" v-bind:key="project" class="project-item col-1-2">
+							<a :href="'/projects/' + (project.id)">
 								<div class="content">
-									<div class="thumb"><img src="{{title.imageUrl}}" alt=""></div>
+									<div class="thumb">
+										<img :src="project.imageUrl" alt="">
+									</div>
 									<div class="text">
-										<p class="text-blue">{{ title.title }}
-											({{ title.yearStart }}{% if title.yearStart != title.yearEnd %}-{{ title.yearEnd }}{% endif %})
-										</p>
-										<p>{{title.subtitle}}</p>
+										<p class="text-blue">[[project.title]]</p>
+										<p>[[project.subtitle]]</p>
 									</div>
 								</div>
-							</a></article>
-						{% endfor %}
+							</a>
+						</article>
+					</transition-group>
+
+					<div v-if="pagedProjects.length === 0">
+						No results for <i>[[ filter.search ]]</i>
 					</div>
+
+					<div class="pagination" v-else>
+						<span @click="page = page > 1 ? page - 1 : page">
+						  &lt;
+						</span>
+
+						<template v-for="i in lastPage">
+						  <span
+							v-if="showPage(i)"
+							@click="page = i"
+							:class="{ active: page === i }"
+						  >
+							[[ i ]]
+						  </span>
+						  <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
+							...
+						  </span>
+						</template>
+
+						<span @click="page = page < lastPage ? page + 1 : page">
+						  &gt;
+						</span>
+
+					  </div>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='scripts/projects_scripts.js') }}"></script>
+<script>
+	initOverview({{data_json}});
+</script>
 {%- endblock -%}
