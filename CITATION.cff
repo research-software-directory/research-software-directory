@@ -18,24 +18,33 @@ authors:
     orcid: "https://orcid.org/0000-0002-5821-2060"
   - 
     affiliation: "Netherlands eScience Center"
+    family-names: Diblen
+    given-names:  Faruk
+    orcid: "https://orcid.org/0000-0002-0989-929X"
+  - 
+    affiliation: "Netherlands eScience Center"
     family-names: Maassen
     given-names: Jason
     orcid: "https://orcid.org/0000-0002-8172-4865"
   -
     affiliation: "Netherlands eScience Center"
-    family-names: Pawar
-    given-names: Pushpanjali
-  - 
+    family-names: Tjong Kim Sang
+    given-names:  Erik
+    orcid: "https://orcid.org/0000-0002-8431-081X"
+  -
     affiliation: "Netherlands eScience Center"
-    family-names: Hage
-    given-names: Willem
-    name-particle: van
-    orcid: "https://orcid.org/0000-0002-6478-3003"
+    family-names: Pawar
+    given-names: Pushpanjali    
+  -
+    affiliation: "Netherlands eScience Center"
+    family-names: Meijer
+    given-names:  Christiaan
+    orcid: "https://orcid.org/0000-0002-5529-5761"    
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Ridder
     given-names: Lars
-    orcid: "https://orcid.org/0000-0002-7635-9533"
+    orcid: "https://orcid.org/0000-0002-7635-9533"    
   - 
     affiliation: "Netherlands eScience Center"
     family-names: Kulik
@@ -72,6 +81,12 @@ authors:
     orcid: "https://orcid.org/0000-0002-0948-1176"
   - 
     affiliation: "Netherlands eScience Center"
+    family-names: Hage
+    given-names: Willem
+    name-particle: van
+    orcid: "https://orcid.org/0000-0002-6478-3003"    
+  - 
+    affiliation: "Netherlands eScience Center"
     family-names: Ranguelova
     given-names: Elena
   - 
@@ -80,8 +95,16 @@ authors:
     given-names: Rob
     name-particle: van
     orcid: "https://orcid.org/0000-0002-2947-9444"
-cff-version: "1.0.3"
-date-released: 2020-06-04
+  -
+    affiliation: "Leipzig University"
+    family-names: Gey
+    given-names:  Ronny
+    orcid: "https://orcid.org/0000-0003-1028-1670"
+  -
+    family-names: Zach
+    given-names:  Hoskins
+cff-version: "1.1.0"
+date-released: 2020-11-18
 doi: 10.5281/zenodo.1154130
 keywords: 
   - "Current Research Information Systems"
@@ -95,4 +118,4 @@ license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
 repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
-version: "2.0.2"
+version: "3.0.0-rc0"
