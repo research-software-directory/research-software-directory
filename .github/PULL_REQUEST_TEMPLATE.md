@@ -11,6 +11,7 @@ Refs: #ISSUE_NUMBER
 
 - [ ] New feature
 - [ ] Bug fix
+- [ ] Security fix
 - [ ] Documentation update
 
 
@@ -18,7 +19,7 @@ Refs: #ISSUE_NUMBER
 
 - [ ] Changes tested (self-review)
 - [ ] CI checks (all green)
-- [ ] Documentation was updated
+- [ ] Documentation is up to date
 
 
 ## Instructions to review the pull request
