@@ -1,3 +1,54 @@
+# 3.0.0-rc0
+
+- Added project page
+- Added project index page
+- Added 404 error page
+- Clean up and improve scss files
+- Improve documentation
+- Updated sample data
+- `docker-compose` now uses `.env` for environment variables instead of `export` command
+- This version works on Windows and updated the developer documentation
+- Added error messages if environment variables are undefined
+- Migrated from Travis CI to GitHub Actions
+    - Added GitHub Superlinter
+    - Added OSSAR
+    - Added Markdown link checker
+    - Added Harvesting tests
+- Certificate microservice is now called `https` in docker-compose.yml instead of `nginx_ssl`
+- Use static docker volumes instead of 
+    - `docker-volumes/letsencrypt` 
+    - `docker-volumes/cert`
+- Use Python 3.8
+- Use Node 14.x
+- Use `Caddy` in favor of `letsencrypt`
+- API changes
+    - removed `corporateUrl` and `principalInvestigator` from `project` collection
+    - renamed `image` to `imageUrl` in `project` collection
+    - added required properties to `project` collection
+        - `callUrl`
+        - `codeUrl`
+        - `dateEnd`
+        - `dateStart`
+        - `description`
+        - `grantId`
+        - `imageUrl`
+        - `isPublished`
+        - `related.organizations`
+        - `related.projects`
+        - `related.software`
+        - `slug`
+        - `tags`
+        - `team`
+    - added optional properties to `project` collection
+        - `dataManagementPlanUrl`    
+        - `homeUrl`
+        - `imageCaption`
+
+- Data migration
+    - FIXME: add details once PR #645 is merged 
+
+- full commit comparison [2.0.2...3.0.0-rc0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...acb9f414ad565e9ac9012dea80e774f942b6bb22)
+
 # 2.0.2
 
 - Had to rewrite history due to a copyright violation on the included Akkurat font files.
