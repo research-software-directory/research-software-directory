@@ -7,6 +7,9 @@ Refs: #ISSUE_NUMBER
 ## Describe the changes made in this pull request
 
 
+## Extra notes
+
+
 ## Type of change
 
 - [ ] New feature
