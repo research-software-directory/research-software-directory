@@ -258,6 +258,7 @@ def project_index_template():
                        "yearEnd": get_year_from_date_string(project["dateEnd"])})
 
     return flask.render_template('project/project_index.html',
+                                 data_json=flask.Markup(json.dumps(titles)),
                                  titles=titles)
 
 
