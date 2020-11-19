@@ -56,8 +56,7 @@ db.project.deleteMany({})
 db.project_cache.deleteMany({})
 ```
 Then, update the project identifiers as used in the ``software`` collection by
-copy-pasting the contents of the data migration script 
-[data-migration-1.x-to-2.js](/data-migration/data-migration-1.x-to-2.js) into the Mongo shell.
+copy-pasting the contents of the [data migration script](/data-migration/1.x-to-2.x/migrate.js) into the Mongo shell.
 
 Exit the Mongo shell with Ctrl-d or ``exit``, then run the harvester:
 
