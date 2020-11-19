@@ -1,4 +1,4 @@
-# Updating data from 2.x to 3.x
+# Updating data from 2.0.2 to 3.0.0
 
 The following code snippet emulates the situation where the code is in version 3.0.0 while the data is in version 2.0.2.
 
@@ -13,7 +13,7 @@ git checkout 3.0.0
 If you don't have a database filled with 2.x version data, it can be filled with sample data from version 2.0.2 using
 
 ```shell
-# git checkout 2.0.2 -- database/db-init
+git checkout 2.0.2 -- database/db-init
 ```
 
 but for the 2.0.2 sample data to get used, you'll need to remove the current database files from `docker-volumes/db` as
@@ -28,9 +28,18 @@ docker-compose up -d
 docker-compose log --follow
 ```
 
-Once the Research Software Directory is up, you can check you still have the old data by visiting [https://localhost/api/project/764](https://localhost/api/project/764).
+If you opted to fill the database with 2.0.2 sample data by doing the `git checkout 2.0.2 -- database/db-init` above,
+you can roll back those changes once the Research Software Directory is up (and has had time to restore the database
+files from `db-init`) using:
 
-In a new terminal,
+```shell
+git reset HEAD database/db-init
+git checkout -- database/db-init
+```
+
+Verify that the API is serving v2.0.2 data by visiting [http://localhost/api/project/764](http://localhost/api/project/764).
+
+Then, in a new terminal,
 
 ```shell
 # copy the migrate script to inside the running database service
@@ -44,16 +53,9 @@ docker-compose exec harvesting python app.py resolve all
 ```
 
 The data you get from the API should now be according to the 3.0.0 schema, e.g.
-[https://localhost/api/project/764](https://localhost/api/project/764), and all aspects of the site should now work. You
+[http://localhost/api/project/764](http://localhost/api/project/764), and all aspects of the site should now work. You
 should verify if everything works by doing the checks mentioned in section [Verifying the local
 installation](https://github.com/research-software-directory/research-software-directory/blob/3.0.0/docs/dev.md#verifying-the-local-installation).
-
-At this point, you have 3 options:
-
-1. do some of the optional migrations/additions from the sections below
-1. roll back the changes to `database/db-init`
-1. commit the newly updated data to be the sample data in `database/db-init`
-
 
 ## Optional: get project data
 
@@ -74,8 +76,8 @@ docker-compose exec harvesting python app.py resolve all
 ```
 
 The data you get from the API should now include richer data for the projects, e.g.
-[https://localhost/api/project/764](https://localhost/api/project/764), which means that the corresponding project pages
-are also richer, e.g. [https://localhost/projects/764](https://localhost/projects/764). All aspects of the site should
+[http://localhost/api/project/764](http://localhost/api/project/764), which means that the corresponding project pages
+are also richer, e.g. [http://localhost/projects/764](http://localhost/projects/764). All aspects of the site should
 now work. You should verify if everything works by doing the checks mentioned in section [Verifying the local
 installation](https://github.com/research-software-directory/research-software-directory/blob/3.0.0/docs/dev.md#verifying-the-local-installation).
 
