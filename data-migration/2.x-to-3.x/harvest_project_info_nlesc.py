@@ -670,8 +670,8 @@ def update_project_in_database(
         return True
     else:
         logger.warning(
-            f'failed updating project in database: {project_api_response} {project_data_source["title"]} ' +
-            f' {project_api_response.json()["error"]}'
+            f'failed updating project in database: {project_api_response} {project_data_source["title"]} '
+            + f' {project_api_response.json()["error"]}'
         )
         return False
 
