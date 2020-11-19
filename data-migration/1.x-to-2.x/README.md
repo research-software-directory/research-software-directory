@@ -10,20 +10,20 @@ maintainers, for which a new MongoDB collection ``logging`` is needed.
 When migrating data there is always the possibility of **LOSS OF DATA**. Review the
 notes on how to make a backup of the Mongo data [here](/docs/maintaining.md#updating-a-production-instance).
 
-```
-$ source rsd-secrets.env
-$ docker-compose exec database mongo rsd
+```shell
+source rsd-secrets.env
+docker-compose exec database mongo rsd
 ```
 
 Create collection "logging":
 
-```
+```shell
 db.createCollection("logging")
 ```
 
 **Remove** all ``release`` documents, ``project`` documents, and ``project_cache`` documents entirely:
 
-```
+```shell
 db.release.deleteMany({})
 db.project.deleteMany({})
 db.project_cache.deleteMany({})
@@ -33,14 +33,14 @@ copy-pasting the contents of the [data migration script](/data-migration/1.x-to-
 
 Exit the Mongo shell with Ctrl-d or ``exit``, then run the harvester:
 
-```
-$ docker-compose exec harvesting python app.py harvest all
+```shell
+docker-compose exec harvesting python app.py harvest all
 ```
 
 See if it all worked by running:
 
-```
-$ docker-compose exec harvesting python app.py resolve all
+```shell
+docker-compose exec harvesting python app.py resolve all
 ```
 
 The ``resolve`` command should list only INFO messages, not ERROR messages.
