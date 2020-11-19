@@ -10,7 +10,7 @@ from jsonschema import validate
 from src import exceptions
 from src.json_response import jsonify
 from src.permission import get_sub, require_permission
-from src.util import field2unset, find_data_links
+from src.util import resource2update, find_data_links
 
 
 def time_now():
@@ -191,9 +191,9 @@ def get_routes(db, schemas):
             for resource in resources_to_create:
                 db[resource_type].insert(resource)
             for resource in resources_to_update:
-                fields2remove = field2unset(schemas[resource_type], resource)
+                update = resource2update(schemas[resource_type], resource)
                 db[resource_type].update_one({'_id': resource['_id']},
-                                             {'$set': resource, '$unset': fields2remove})
+                                             update)
 
         return {"ok": True}, 200
 
@@ -240,9 +240,9 @@ def get_routes(db, schemas):
         data['_id'] = resource_id
 
         if 'test' not in flask.request.args:
-            fields2remove = field2unset(schemas[resource_type], data)
+            update = resource2update(schemas[resource_type], data)
             db[resource_type].update_one({'_id': resource_id},
-                                         {'$set': data, '$unset': fields2remove})
+                                         update)
 
         if 'save_history' in flask.request.args:
             old_data.pop('_id')
