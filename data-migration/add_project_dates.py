@@ -153,10 +153,12 @@ def find_project_in_database(
 
 
 def project_dates_save(project_dates_data, out_file_name):
+    text_prefix = "/* global db */\n"
     text_tail_start = "data.forEach((d) => {\n  const query = {\n    slug: d.slug\n  }"
     text_tail_middle = "  const update = {\n    $set: {\n      dateEnd: d.dateEnd,"
     text_tail_end = "      dateStart: d.dateStart\n    }\n  }\n\n  db.project.update(query, update)\n})"
     out_file = open(out_file_name, "w")
+    print(text_prefix, file=out_file)
     print(
         "const data =",
         json.dumps(
