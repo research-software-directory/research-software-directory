@@ -164,3 +164,31 @@ commands results in the **LOSS OF DATA**.
     ```shell
     docker-compose down --rmi all -v
     ```
+
+## Checking if there's any documentation with invalid links
+
+The repository comes with documentation spread out over multiple MarkDown files.
+[This workflow file](./../.github/workflows/markdown-link-checker.yml) is set up to check whether there are broken links in
+any of them. If you want to check this locally, you can do so with:
+
+```shell
+# from the repository root directory
+npm install
+npm run mlc
+```
+
+## Visualizing ``docker-compose.yml``
+
+It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
+Use [https://github.com/pmsipilot/docker-compose-viz](https://github.com/pmsipilot/docker-compose-viz) to generate a png image.
+
+```shell
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
+   render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
+```
+
+For example,
+
+![images/docker-compose.png](images/docker-compose.png)
+
+
