@@ -177,6 +177,56 @@ npm install
 npm run mlc
 ```
 
+## Running the superlinter locally
+
+We use GitHub's [Super-Linter](https://github.com/github/super-linter) to lint all directories using a variety of
+linters. You can run the superlinter using `docker`, as follows:
+
+```shell
+# get the linter
+docker pull github/super-linter:latest
+
+# run the linter
+docker run -e RUN_LOCAL=true \
+   -v ${PWD}/harvesting/app.py:/tmp/lint/app.py \
+   github/super-linter
+```
+
+The superlinter can be a bit slow if you run all checks on all directories, but you can run just one check on one file
+if needed, like so:
+
+```shell
+# run the linter
+docker run \
+   -e RUN_LOCAL=true \
+   -e VALIDATE_PYTHON_PYLINT=true \
+   -v ${PWD}/harvesting/app.py:/tmp/lint/app.py \
+   github/super-linter
+```
+
+or evaluate a whole subdirectory, all checks:
+
+```shell
+cd harvesting
+docker run \
+   -e RUN_LOCAL=true \
+   -v ${PWD}:/tmp/lint \
+   github/super-linter
+```
+
+or evaluate the same whole subdirectory, but do just one check:
+
+```shell
+cd harvesting
+docker run -e RUN_LOCAL=true \
+   -e VALIDATE_PYTHON_PYLINT=true \
+   -v ${PWD}:/tmp/lint \
+   github/super-linter
+```
+
+For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see
+https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446.
+
 ## Visualizing ``docker-compose.yml``
 
 It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
