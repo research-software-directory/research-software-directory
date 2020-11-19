@@ -24,7 +24,7 @@ docker volume ls
 docker volume inspect rsd_static_admin
 
 # check where it is mounted
-sudo -i 
+sudo -i
 cd <to the where the admin static files are>
 
 # rename index.html
