@@ -1,3 +1,7 @@
+# 3.0.0 (Unreleased)
+
+See [data migration notes](/data-migration/2.x-to-3.x/README.md).
+
 # 2.0.2
 
 - Had to rewrite history due to a copyright violation on the included Akkurat font files.
