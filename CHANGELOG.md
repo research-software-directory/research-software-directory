@@ -35,7 +35,7 @@ from 1.2.0 to 2.0.0. Furthermore, the frontend now shows information for page
 maintainers, for which a new MongoDB collection ``logging`` is needed.
 
 When migrating data there is always the possibility of **LOSS OF DATA**. Review the
-notes on how to make a backup of the Mongo data [here](/docs/maintaining/README.md#updating-a-production-instance).
+notes on how to make a backup of the Mongo data [here](/docs/maintaining.md#updating-a-production-instance).
 
 ```
 $ source rsd-secrets.env
