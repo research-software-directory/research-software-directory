@@ -224,8 +224,7 @@ docker run -e RUN_LOCAL=true \
    github/super-linter
 ```
 
-For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see
-https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446.
+For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see [this comment](https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446).
 
 ## Visualizing ``docker-compose.yml``
 
