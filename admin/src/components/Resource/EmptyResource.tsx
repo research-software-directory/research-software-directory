@@ -27,6 +27,7 @@ interface IConnectedProps {
   push(location: any): any;
   messageToastr(message: string): any;
   errorToastr(message: string): any;
+  resourceUpdated(): any;
 }
 
 interface IState {
@@ -91,6 +92,7 @@ export class EmptyResource extends React.PureComponent<IProps, IState> {
       })
       .then(response => {
         this.setState({ saving: false });
+        this.props.resourceUpdated();
         if (response.status === 200) {
           this.props.messageToastr("Saved");
           const id = response.data.primaryKey.id;

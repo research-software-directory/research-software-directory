@@ -3,7 +3,7 @@
  * @todo Scenario where JWT is invalid
  */
 
-import { put, call, select, all } from "redux-saga/effects";
+import { put, call, select, all, takeLatest } from "redux-saga/effects";
 import fetch, { AxiosRequestConfig } from "axios";
 import { actions as toastrActions } from "react-redux-toastr";
 import { push } from "react-router-redux";
@@ -136,6 +136,7 @@ function* initSaga() {
     yield call(getJWT(settings.authUrl));
     yield all([call(fetchData), call(fetchSchema)]);
     yield put({ type: "INIT_DONE" });
+    yield takeLatest("DATA_FETCH_REQUESTED", fetchData);
   } catch (e) {
     if (e.message === "Network Error") {
       yield put(errorAction("Network error connecting to " + e.config.url));
