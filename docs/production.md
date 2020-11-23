@@ -33,6 +33,15 @@ echo "<html>" \
 You can check if it works by using your browser to navigate to the admin interface. Instead of the normal interface, you
 should now see your message.
 
+To enable admin interface again do the previous instructions in reverse
+
+```shell
+# inside admin container
+mv /build/index.html /build/index.html.disabled
+
+# Enable logins again
+docker-compose start auth
+
 
 ## Updating a production instance
 
