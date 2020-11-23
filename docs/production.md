@@ -18,14 +18,8 @@ this is as follows:
 
 ```shell
 # check volume names
-docker volume ls
-
-# pick the admin interface volume (probably rsd_static_admin)
-docker volume inspect rsd_static_admin
-
-# check where it is mounted
-sudo -i
-cd <to the where the admin static files are>
+# Login to admin service
+docker-compose run -w /build admin sh
 
 # rename index.html
 mv index.html index.html.disabled
@@ -35,7 +29,6 @@ echo "<html>" \
 "<head></head>" \
 "<body>Sorry, we're doing maintenance right now. " \
 "Hopefully be back soon.</body></html>" > index.html
-```
 
 You can check if it works by using your browser to navigate to the admin interface. Instead of the normal interface, you
 should now see your message.
