@@ -1,6 +1,5 @@
 /* global db */
 
-<<<<<<< HEAD
 const data = [
  {
   "dateEnd": "30-04-2018",
@@ -673,13 +672,6 @@ const data = [
   "slug": "what-works-when-for-whom"
  }
 ]
-=======
-const data = [{
-  dateEnd: '2021-08-19',
-  dateStart: '2018-08-19',
-  slug: 'abc-muse'
-}]
->>>>>>> master
 
 data.forEach((d) => {
   const query = {
