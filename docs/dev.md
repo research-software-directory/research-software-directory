@@ -242,4 +242,3 @@ docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
 For example,
 
 ![images/docker-compose.png](images/docker-compose.png)
-
