@@ -29,18 +29,20 @@ echo "<html>" \
 "<head></head>" \
 "<body>Sorry, we're doing maintenance right now. " \
 "Hopefully be back soon.</body></html>" > index.html
+```
 
 You can check if it works by using your browser to navigate to the admin interface. Instead of the normal interface, you
 should now see your message.
 
-To enable admin interface again do the previous instructions in reverse
+To enable admin interface again, do the previous instructions in reverse:
 
 ```shell
 # inside admin container
-mv /build/index.html /build/index.html.disabled
+mv /build/index.html.disabled /build/index.html
 
 # Enable logins again
 docker-compose start auth
+```
 
 
 ## Updating a production instance
