@@ -226,6 +226,17 @@ docker run \
    github/super-linter
 ```
 
+By default, the GitHub Super-Linter generates a log file inside the container, which is subsequently mapped to your file
+system where it appears as a file named `super-linter.log` with root permissions. You can disable this behavior by
+setting the bind mount as read-only (`:ro`), as follows:
+
+```shell
+docker run \
+   -e RUN_LOCAL=true \
+   -v ${PWD}:/tmp/lint:ro \
+   github/super-linter
+```
+
 For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see [this
 comment](https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446).
 
