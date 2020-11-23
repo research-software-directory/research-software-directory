@@ -17,9 +17,8 @@ It it recommended that you post a message that users see when they try to use th
 this is as follows:
 
 ```shell
-# check volume names
-# Login to admin service
-docker-compose run -w /build admin sh
+# log in to admin service
+docker-compose run --workdir="/build" admin /bin/sh
 
 # rename index.html
 mv index.html index.html.disabled
