@@ -237,7 +237,14 @@ docker run \
    github/super-linter
 ```
 
-For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see [this
+### The output on GitHub looks different
+
+The workflow file that we use for our continuous integration on GitHub Actions has a per-directory configuration with a
+custom list of linters for each directory (see [.github/workflows/linting.yml](.github/workflows/linting.yml)). If you
+want your local setup to reflect exactly what runs on GitHub, it may therefore be convenient to use
+[`act`](https://github.com/nektos/act).
+
+See also [this
 comment](https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446).
 
 ## Visualizing ``docker-compose.yml``
