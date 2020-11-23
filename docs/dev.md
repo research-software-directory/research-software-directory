@@ -187,16 +187,17 @@ linters. You can run the superlinter using `docker`, as follows:
 docker pull github/super-linter:latest
 
 # run the linter
-docker run -e RUN_LOCAL=true \
-   -v ${PWD}/harvesting/app.py:/tmp/lint/app.py \
+docker run \
+   -e RUN_LOCAL=true \
+   -v ${PWD}:/tmp/lint \
    github/super-linter
 ```
 
-The superlinter can be a bit slow if you run all checks on all directories, but you can run just one check on one file with a [specific linter](https://github.com/github/super-linter#environment-variables)
-if needed, like so:
+The superlinter can be a bit slow if you run all checks on all directories, but you can run just one check on one file
+with a [specific linter](https://github.com/github/super-linter#environment-variables) if needed, like so:
 
 ```shell
-# run the linter
+# run the linter with only pylint check enabled
 docker run \
    -e RUN_LOCAL=true \
    -e VALIDATE_PYTHON_PYLINT=true \
@@ -218,13 +219,15 @@ or evaluate the same whole subdirectory, but do just one check:
 
 ```shell
 cd harvesting
-docker run -e RUN_LOCAL=true \
+docker run \
+   -e RUN_LOCAL=true \
    -e VALIDATE_PYTHON_PYLINT=true \
    -v ${PWD}:/tmp/lint \
    github/super-linter
 ```
 
-For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see [this comment](https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446).
+For consistency with what GitHub is running in its GitHub Action, `act`  may be more suitable, see [this
+comment](https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446).
 
 ## Visualizing ``docker-compose.yml``
 
