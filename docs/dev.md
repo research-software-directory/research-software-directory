@@ -240,7 +240,7 @@ docker run \
 ### The output on GitHub looks different
 
 The workflow file that we use for our continuous integration on GitHub Actions has a per-directory configuration with a
-custom list of linters for each directory (see [.github/workflows/linting.yml](.github/workflows/linting.yml)). If you
+custom list of linters for each directory (see [/.github/workflows/linting.yml](/.github/workflows/linting.yml)). If you
 want your local setup to reflect exactly what runs on GitHub, it may therefore be convenient to use
 [`act`](https://github.com/nektos/act).
 

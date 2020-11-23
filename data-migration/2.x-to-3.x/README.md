@@ -17,7 +17,7 @@ git checkout 2.0.2 -- database/db-init
 ```
 
 but for the 2.0.2 sample data to get used, you'll need to remove the current database files from `docker-volumes/db` as
-well, see instructions [here](/docs/dev.md/removing-local-state.md). Note this has the potential for **THE LOSS OF
+well, see instructions [here](/docs/dev.md#removing-local-state). Note this has the potential for **THE LOSS OF
 DATA**.
 
 It should now be possible to upgrade the sample data as follows:
