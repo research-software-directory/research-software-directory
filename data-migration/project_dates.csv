@@ -1,174 +1,174 @@
-Code,Description,Account,Start date,End date,Project manager
-27011301,eAstronomy,10001 - Stichting Astron,25-05-2012,31-08-2017,Rob van Nieuwpoort
-27011302,eChemistry/Metabolite ID,027012103 - Wageningen Universiteit & Researchcentrum,20-01-2012,19-05-2015,Susan Branchett
-27011303,eSALSA/eClimate,10003 - Universiteit Utrecht,20-01-2012,01-02-2016,Jason Maassen
-27011304,Biomarker Boosting/ Cognition,10004 - Radboud Universiteit Nijmegen (Chem Informatica),20-01-2012,30-11-2015,Elena Ranguelova
-27011305,eEcology,10005 - UvA,20-01-2012,03-03-2016,Elena Ranguelova
-27011306,Food Ontologies,10006 - Radboud Universiteit Nijmegen (letteren),20-01-2012,01-10-2015,Jason Maassen
-27011307,VLBPII/Green Genetics,10007 - TTI Groene Genetica,20-01-2012,02-04-2015,Susan Branchett
-27011308,BiographyNed/eHumanities,1008 - Vrije Universiteit Amsterdam,31-05-2012,01-10-2016,Jisk Attema
-27011309,Life Sciences/TraIT,10009 - St. Cent. f. Translational Molecular Medicine,20-01-2012,31-12-2015,Rob Hooft
-27011310,eScience Technology,10010 - Vrije Universiteit Amsterdam (Informatica),10-09-2012,31-12-2017,Rob van Nieuwpoort
-27011311,Water management/eWaterCycle,10011 - Technische Universiteit Delft (Waterhuishouding),20-01-2012,31-12-2015,Jason Maassen
-27012101,Massive Point Clouds for eSciences,10012 - Technische Universiteit Delft,20-12-2012,07-12-2015,Elena Ranguelova
-27012102,eVisualization of Big Data,10013 - Rijksuniversiteit Groningen,21-01-2013,04-10-2015,Rob Hooft
-27012103,Summer in the City,10014 - Wageningen Universiteit & Researchcentrum,21-01-2013,01-09-2016,Elena Ranguelova
-27012104,SimCity,10016 - Universiteit van Amsterdam (Informatica),01-03-2013,31-12-2017,Willem van Hage
-27012105,SPuDisc,10016 - Universiteit van Amsterdam (Informatica),21-01-2013,30-06-2017,Jisk Attema
-27012901,eSiBayes,10005 - UvA,15-02-2012,06-03-2014,Elena Ranguelova
-27012902,TwiNL,10018 - Radboud Universiteit Nijmegen,13-08-2012,06-03-2014,Jisk Attema
-27012903,Distributed High-performance AMUSE,10019 - Universiteit Leiden (sterrenwacht),10-09-2012,24-04-2015,Susan Branchett
-27012904,ODEX4All,10023 - Leids Universitair Medisch Centrum,19-11-2012,17-03-2014,Susan Branchett
-27012905,Extreme climate changes due to Collapse of the Warm Gulf Str,10003 - Universiteit Utrecht,01-11-2012,01-12-2013,Susan Branchett
-27013701,ABC-Muse,10019 - Universiteit Leiden (sterrenwacht),18-12-2013,31-03-2017,Jason Maassen
-27013702,Jungle-Computing,1008 - Vrije Universiteit Amsterdam,18-12-2013,30-06-2017,Jason Maassen
-27013703,Big Data Analytics in the Geo Spatial Domain,000031 - CWI - Centrum Wiskunde & Informatica,18-12-2013,23-06-2015,Susan Branchett
-27013801,Dr. Watson,1008 - Vrije Universiteit Amsterdam,16-12-2013,30-09-2015,Jisk Attema
-27013802,From sentiment to emotions,1008 - Vrije Universiteit Amsterdam,16-12-2013,30-09-2015,Jisk Attema
-27013803,Beyond the book,175714 - Huygens ING,16-12-2013,10-09-2015,Jisk Attema
-27013804,HADRIANVS,175715 - Koninklijk Nederlands Instituut Rome,16-12-2013,31-05-2016,Jisk Attema
-27013805,PIDIMEHS,10005 - UvA,16-12-2013,14-07-2018,Jisk Attema
-27013901,Mapping the Via Appia in 3D,10022 - Vrije Universiteit Amsterdam (Ruimtelijke economie,16-09-2013,24-08-2015,Elena Ranguelova
-27013902,Texcavator,10003 - Universiteit Utrecht,04-12-2013,20-03-2015,Jisk Attema
-27014201,3D-e-Chem,175756 - VU fac Exacte wet. Amsterdam,18-12-2014,30-04-2018,Lars Ridder
-27014202,Computational chemistry made easy,27014202 - 27014202,18-12-2014,01-12-2017,Lars Ridder
-27014203,ERA-URBAN,27014203 - Wageningen University DOW,18-12-2014,31-12-2019,Jisk Attema
-27014204,Prediction of Candidate genes for Traits,27014204 - Wageningen University DPW,18-12-2014,03-09-2019,Lars Ridder
-27014401,DIVE+,27014401 - VU Fac. Exacte Wetenschappen,18-12-2014,24-06-2017,Jisk Attema
-27014402,Visualising uncertainty and perspectives,60006520016 - Faculteit der Letteren VU,18-12-2014,01-06-2017,Jisk Attema
-27014501,A Lightpath for Optical Coherence Tomography imaging,175753 - AMC,14-05-2014,05-07-2015,Elena Ranguelova
-27014502,Achieving Multidisciplinary High-Throughput,175754 - FOM Institute AMOLF,01-04-2014,31-12-2015,Elena Ranguelova
-27014503,Recording history in large news streams,1008 - Vrije Universiteit Amsterdam,17-04-2014,29-02-2016,Elena Ranguelova
-27014901,Platform for Chemical Data Analytics,175757 - Radboud Universiteit Nijmegen (Moleculaire),18-04-2014,07-09-2015,Scott Lusher
-27014902,DAS-5,175756 - VU fac Exacte wet. Amsterdam,18-12-2014,31-03-2019,Frank Seinstra
-27014903,DiLiPaD,10016 - Universiteit van Amsterdam (Informatica),18-12-2014,01-04-2016,Jisk Attema
-27014904,Large Scale Data Assimilation-eWatercycle,27014904 - 27014904,18-12-2014,30-11-2017,Jason Maassen
-27014905,RT-SAR,27014905 - Netherlands Organisation for applied SR (TNO),18-12-2014,18-01-2016,Jason Maassen
-27014906,Massive Biological Data Clustering,027014906 - CBS-KNAW,01-05-2015,31-12-2015,Lars Ridder
-27014907,Compressing the sky,027014907 - 027014907,01-05-2015,31-12-2015,Lars Ridder
-27014908,Giving pandas a ROOT to chew on,027014908 - 027014908,01-05-2015,31-03-2016,Jason Maassen
-27014909,Mining Shifting Concepts through time (ShiCo),027014909 - 027014909,01-05-2015,01-08-2017,Jisk Attema
-27015001,Detecting anomalous behaviour in the Amsterdam Arena,10016 - Universiteit van Amsterdam (Informatica),24-08-2015,01-04-2020,Rena Bakhshi
-27015601,Enabling Dynamic Services,000141 - SURFnet,15-04-2015,15-04-2019,Jason Maassen
-27015602,Diagnosis of active epilepsy in resource-poor setting,60006520023 - Universiteit Utrecht,16-12-2015,01-04-2017,Lars Ridder
-27015910,Improving Open-Source Photogrammetric Workflows,60006520047 - University of Twente - ITC Faculty,13-07-2015,01-11-2016,Willem van Hage
-27015911,Real-time detection of neutrinos from the distant Universe,60006520048 - Leiden University - Leiden Institute of PQMO,13-07-2015,31-03-2017,Jason Maassen
-27015G01,e-MUSC - Enhancing Multiscale Computing,10016 - Universiteit van Amsterdam (Informatica),07-12-2015,31-12-2020,Rena Bakhshi
-27015G02,Algorithmic Geo-visualization: from Theory to Practice,000042 - Technische Universiteit Eindhoven,07-12-2015,31-05-2021,Rena Bakhshi
-27015G03,Towards Large-Scale Cloud-Resolving Climate Simulations,60006520077 - CWI - Centrum voor Wiskunde en Informatica,07-12-2015,01-10-2019,Rena Bakhshi
-27015G04,What Works When for Whom?,60006520087 - University of Twente - PHT Faculty,07-12-2015,31-12-2020,Jisk Attema
-27015G05,DynaSlum:Data Driven Modeling and Decision Support for Slums,10005 - UvA,07-12-2015,31-12-2019,Adriënne Mendrik
-27015G06,Enhancing protein-drug binding prediction,1008 - Vrije Universiteit Amsterdam,07-12-2015,21-03-2019,Lars Ridder
-27015G07,Automated Parallel Calculation of Collaborative Stat Models,000107 - NIKHEF,07-12-2015,31-12-2020,Jisk Attema
-27015G08,iDark: The intelligent Dark Matter Survey,10018 - Radboud Universiteit Nijmegen,07-12-2015,31-08-2020,Rena Bakhshi
-27015G09,AA-ALERT,10001 - Stichting Astron,07-12-2015,31-08-2021,Jisk Attema
-27015S01,Error Detection and Localization for Radio Telescope SHM,10001 - Stichting Astron,16-11-2015,01-10-2018,Elena Ranguelova
-27016G01,eEcoLiDAR,60006520156 - University of Amsterdam IBED,12-12-2016,01-07-2021,Yifat Dzigan
-27016G02,Emotion Recognition in Dementia,60006520157 - Universiteit Twente  BMS & PGT,12-12-2016,15-05-2021,Lars Ridder
-27016G03,Googling the cancer genome,60006520158 - Universiteit Utrecht UMC Biomedische Genetica,12-12-2016,31-12-2020,Lars Ridder
-27016G04,DeepRank: Scoring 3D protein,60006520159 - Universiteit Utrecht Faculteit Betawetenschappen,12-12-2016,01-05-2021,Lars Ridder
-27016G05,DIRAC: Distributed Radio Astronomical Computing,10001 - Stichting Astron,12-12-2016,01-04-2020,Rena Bakhshi
-27016G06,A methodology and ecosystem for many-core programming,10010 - Vrije Universiteit Amsterdam (Informatica),12-12-2016,01-02-2021,Adriënne Mendrik
-27016G07,Accelerating Astronomical Applications 2 (Triple-A 2),10001 - Stichting Astron,12-12-2016,01-03-2021,Adriënne Mendrik
-27016G08,Visual Storytelling of Big Imaging Data,60006520160 - Johan Bernoulli Instituut Wiskunde en Informatica,12-12-2016,11-06-2021,Adriënne Mendrik
-27016P01,Fast open source simulator of low-energy scattering,000161 - TU Delft (Technische Universiteit Delft),10-02-2016,01-04-2017,Rena Bakhshi
-27016P02,Towards a species-by-species approach to global biodiversity,60006520085 - Radbout Universiteit Nijmegen (Environmental),16-12-2015,31-03-2017,Jason Maassen
-27016P03,Data quality in a distributed learning environment,60006520119 - MAASTRO Clinic/Maastricht University Knowledge Eng,01-11-2016,31-07-2018,Adriënne Mendrik
-27016P04,Parallelisation of multi point-cloud registration,000161 - TU Delft (Technische Universiteit Delft),05-10-2016,30-06-2018,Adriënne Mendrik
-27016P05,Case Law Analytics,000153 - Tilburg University,01-10-2016,30-09-2017,Jisk Attema
-27016P06,Automated analysis of online behaviour on social media,60006520166 - University of Groningen- Media and Journalism,20-12-2016,20-06-2018,Jisk Attema
-27016P07,Data-mining tools for abrupt climate change,60006520167 - Wageningen University-Environmental Sciences,20-12-2016,20-06-2018,Rena Bakhshi
-27016P09,3D printing of human body parts,60006520155 - VU University Medical Center,01-11-2016,31-03-2018,Elena Ranguelova
-27016S03,IMPACT:Software Analytics of global impact escience software,60006520077 - CWI - Centrum voor Wiskunde en Informatica,19-12-2016,19-06-2018,Adriënne Mendrik
-27016S04,High Spatial Resolution phenological modelling,60006520163 - University of Twente- Accounts Payable Department,19-12-2016,31-07-2018,Adriënne Mendrik
-27016S05,City Cloud: From the things to the cloud and back,"60006520164 - University of Twente-Mathematics,Comp. Scienc & EE",19-12-2016,20-06-2018,Rena Bakhshi
-27016S06,Autograph: Automated multi-scale Graph maipulation,60006520165 - Delft University of Technology- Civil engineering,19-12-2016,01-03-2019,Rena Bakhshi
-27017F01,eWatercycle II,10011 - Technische Universiteit Delft (Waterhuishouding),18-12-2017,01-06-2022,Yifat Dzigan
-27017G01,Integrated omics analysis,60006520251 - Wageningen University & Research - Bioinformatics,18-12-2017,01-07-2022,Lars Ridder
-27017G02,Stochastic multiscale Climate models,60006520240 - Earth and Environmental Sciences (EES5),18-12-2017,31-12-2021,Rena Bakhshi
-27017G03,Bridging the gap: Dig. Humanities the Arabic-Islamic corpus,"60006520210 -  Utrecht University, Islamic and Arabic studies",01-09-2017,31-12-2019,Adriënne Mendrik
-27017G04,TICCLAT:Text-Induced Corpus Correction and Lexical Assessmen,60006520211 - Tilburg University TiCC,01-09-2017,31-12-2020,Adriënne Mendrik
-27017G05,EviDENce: Ego Documents Events ModelliNg,60006520212 - Open Uni. NL Faculty of Law and Cultural Sciences,01-09-2017,31-12-2019,Jisk Attema
-27017G06,NEWSGAC:Advancing Media History by genre classification,60006520166 - University of Groningen- Media and Journalism,01-09-2017,31-12-2020,Jisk Attema
-27017G07,Generalisatie ADAH,000104 - Netherlands eScience Center,01-09-2017,31-12-2020,Jisk Attema
-27017G08,Scalable high-fidelity simulations,60006520250 - TU Delft - AWEP Aerodynamics,18-12-2017,31-12-2021,Nicolas Renaud
-27017G09,Computation of the Optical Properties of nano structures,60006520248 - University of Twente MESA +,18-12-2017,30-06-2022,Nicolas Renaud
-27017G10,Parallel-in-time meth. for the propagation in windfarm solut,60006520160 - Johan Bernoulli Instituut Wiskunde en Informatica,18-12-2017,01-04-2022,Nicolas Renaud
-27017G11,eScience Technology to Boost Quantum Dot Energy Conversion,60006520249 - VU Amsterdam Chemistry and Pharmaceutical sciences,18-12-2017,01-01-2022,Nicolas Renaud
-27017G12,A light in the dark: quantum Monte Carlo meets solar energy,60006520248 - University of Twente MESA +,18-12-2017,01-03-2022,Nicolas Renaud
-27017G13,Passing XSAMS,60006520247 - TU Eindhoven Applied Physics,18-12-2017,31-01-2022,Nicolas Renaud
-27017G14,A phase field model to guide the development of batteries,60006520246 - Delft TU (TNW) - (RST),18-12-2017,31-12-2021,Nicolas Renaud
-27017G15,Multiscale simulations of excitations dynamics,60006520245 - Eindhoven TU  (TPS),19-12-2017,28-02-2022,Nicolas Renaud
-27017G16,FEDMix,60006520244 - Centrum voor Wiskunde & Informatica Life Sciences,18-12-2017,31-05-2022,Adriënne Mendrik
-27017G17,Inside the Bubble filter,60006520243 - Universiteit van Amsterdam,18-12-2017,01-01-2022,Jisk Attema
-27017G18,SECCONNETSmart,"60006520242 - UvA infomatica, system and network engineering",18-12-2017,31-12-2021,Rena Bakhshi
-27017G19,FAIR is as FAIR does,60006520241 - Maastricht University,18-12-2017,31-03-2021,Lars Ridder
-27017P01,Financial Network,60006520254 - AISSR/ Universiteit van Amsterdam,27-11-2017,10-03-2019,Rena Bakhshi
-27018601C,EYRA Benchmark Platform Surf_NLeSC Alliance 2018,000104 - Netherlands eScience Center,11-06-2018,31-10-2019,Adriënne Mendrik
-27018G01,MOSAIC MOdelling Sea level And Inundation for Cyclones,60006520360 - Vrije Universiteit Amsterdam,17-12-2018,01-07-2022,Rena Bakhshi
-27018G02,ePODIUM: early Prediction of Dyslexia,60006520359 - University Medical Center Utrecht,17-12-2018,01-05-2021,Lars Ridder
-27018G03,Understanding visually grounded spoken language,60006520357 - Tilburg University,17-12-2018,01-07-2021,Noura Saïdi
-27018G04,Monitoring tropical forest recovery using RADAR,60006520358 - Wageningen University,17-12-2018,01-07-2021,Yifat Dzigan
-27018P01,Web-based TADPOLE Challenge Framework,60006520333 - Erasmus MC University,20-11-2018,01-10-2020,Adriënne Mendrik
-27019601C,EYRA Benchmark Platform Surf_NLeSC Alliance 2019,000104 - Netherlands eScience Center,01-01-2019,31-12-2020,Adriënne Mendrik
-27019602,ChEOPS: verified Construction of corrEct and Optimised Paral,10025 - NWO,16-05-2019,16-05-2023,Adriënne Mendrik
-27019G01,A new perspective on global vegetation water dynamics,60006520440 - Delft University of Technology,06-06-2019,31-12-2022,Yifat Dzigan
-27019G02,Remote Sensing of damage feedbacks n ice shelf in Antartica,60006520440 - Delft University of Technology,06-06-2019,30-11-2023,Yifat Dzigan
-27019G03,Eratosthenes -Chasing shadows to investigate glacier change,60006520441 - Utrecht University Marine and Atmospheric research,06-06-2019,28-02-2023,Yifat Dzigan
-27019G04,DarkGenerators,60006520469 - Universiteit van Amsterdam (Physics),18-12-2019,01-07-2022,Yifat Dzigan
-27019G05,Scaling up pangenomics for breeding applications,60006520470 - Wageningen University - Bioinfomatics Group,18-12-2019,31-12-2022,Lars Ridder
-27019G06,The PetaFLOP AARTFAAC Data- Reduction Engine (PADRE),60006520472 - Stichting Astron - Section Computing,01-07-2020,01-07-2023,Lars Ridder
-27019G07,MyDigiTwin,60006520471 - University Medical Center Groningen,08-12-2019,01-04-2025,Lars Ridder
-27019G08,Perfect Fit,60006520473 - Leiden University Medical Center,18-12-2019,01-03-2025,Lars Ridder
-27019G09,CARRIER,60006520474 - Maastricht University - Data Science,18-12-2019,01-03-2025,Lars Ridder
-27019G10,STRAP,60006520475 - Eindhoven University of Technology,18-12-2019,01-03-2023,Lars Ridder
-27019P01,Making Historical Biodiversity Data Available to Researchers,60006520476 - Leiden University - Advanced Computer Sciences,18-12-2019,01-02-2021,Lars Ridder
-27020S01,Retina COVID19,60006520023 - Universiteit Utrecht,15-04-2020,15-04-2021,Mariëtte van der Zande
-27020S02,FAIR Data for CAPACITY,60006520394 - MAASTRO Clinic,15-04-2020,31-12-2020,Lars Ridder
-27020S03,COVID19 Grand Challenge,60006520015 - Medical Centre Radboud University,15-04-2020,31-12-2020,Mariëtte van der Zande
-27020S04,PuReGoMe,60006520023 - Universiteit Utrecht,15-04-2020,31-10-2020,Mariëtte van der Zande
-33013001,Flysafe 2,10005 - UvA,01-09-2013,28-02-2014,Susan Branchett
-33013002,LifeWatch,175711 - Universiteit van Amsterdam (Biodiversiteit),29-11-2013,31-12-2015,Elena Ranguelova
-33014001,ODEX4ALL - Open Discovery and Exchange for all,10023 - Leids Universitair Medisch Centrum,01-06-2015,31-12-2017,Lars Ridder
-33015001,From sentiment to emotions - Embodied emotions,1008 - Vrije Universiteit Amsterdam,01-03-2015,30-06-2015,Jisk Attema
-33015002,Primavera,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-11-2015,31-12-2019,Rena Bakhshi
-33015003,IndoDutch - Understanding Large Scale Human Mobility,10025 - NWO,01-10-2015,01-09-2016,Willem van Hage
-33015004,ANDI-Advanced Neuropsychological Diagnostics Infrastructure,10005 - UvA,01-06-2015,31-12-2016,Lars Ridder
-33015006,Magnadata,000147 - Technologiestichting STW,01-01-2017,31-12-2021,Mariëtte van der Zande
-33016001,Commit / valorisation call 2015-2016,60006520022 - COMMIT/buro,01-01-2016,31-01-2017,Willem van Hage
-33016002,The Riddle of Litery Quality,175714 - Huygens ING,15-03-2016,30-06-2016,Jisk Attema
-33016003,UCL: Classifying activity types,60006520102 - University College London,04-04-2016,01-12-2016,Vincent van Hees
-33016004,Bird Avoidance System (BirdRadar),10005 - UvA,01-06-2016,01-06-2017,Elena Ranguelova
-33016005,TWEX Translating weather Extremes into the future,60006520114 - CICERO,01-07-2016,31-12-2019,Rena Bakhshi
-33016006,Blue-Action,60006520115 - EU,01-12-2016,28-02-2021,Jisk Attema
-33016007,VLPB-AVE2,60006520118 - VLPB,01-05-2016,25-01-2018,Lars Ridder
-33016008,Visualizing Uncertainty and Perspective Plus,175756 - VU fac Exacte wet. Amsterdam,11-07-2016,01-07-2017,Jisk Attema
-33016009,MAGIC,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-10-2016,31-03-2019,Ben van Werkhoven
-33017001,Part 2- Classifying activity types,60006520102 - University College London,01-02-2017,01-10-2017,Vincent van Hees
-33017002,Genetics of sleep patterns,60006520197 - University of Exeter,01-04-2017,01-04-2019,Lars Ridder
-33017003,Mediasuite,60006520217 - Nederlands Instituut voor Beeld en Geluid,01-09-2017,30-11-2018,Jisk Attema
-33017004,GLAM-Visual Analytics for the world's Library Data,000042 - Technische Universiteit Eindhoven,01-08-2017,01-08-2019,Rena Bakhshi
-33017005,EUCP H2020 - EUropean Climate Prediction system,60006520231 - MET Office,01-12-2017,31-05-2022,Yifat Dzigan
-33017006,PROCESS H2020 - PROviding Comp solutions ExaScale challengeS,60006520232 - Ludwig-Maximilians Universitaet Muenchen,01-12-2017,01-11-2020,Jason Maassen
-33017007,NWA Seed Money 17-02 Big Data,60006520228 - Nationale Wetenschapsagenda,13-11-2017,01-12-2017,Noura Saïdi
-33017008,Extra consultancy: High spatial resolution phenological proj,60006520163 - University of Twente- Accounts Payable Department,20-11-2017,31-12-2017,Noura Saïdi
-33017009,Training Deep Learning applicaties,60006520253 - RWS Centrale Informatievoorziening,01-12-2017,31-01-2018,Adriënne Mendrik
-33017010,VWData,60006520256 - Technische Universiteit Delft,01-01-2018,31-12-2020,Frank Seinstra
-33017012,TTW Efficient deep learning EDL P16-25 project 4,10025 - NWO,13-12-2017,31-12-2021,Rob van Nieuwpoort
-33017013,DTL Semantic Analysis of radiology Reports utilizing Lexicon,60006520278 - Stichting Maastricht Radiation Oncology,01-04-2018,01-04-2019,Jisk Attema
-33018002,EOSC pilot projects,10001 - Stichting Astron,01-01-2018,08-11-2018,Adriënne Mendrik
-33018003,MARIN Consultancy project,60006520285 - Maritime Research Institute Netherlands,01-04-2018,31-12-2018,Adriënne Mendrik
-33018004,EliLilly,60006520343 - EliLilly and Company,01-10-2018,01-01-2021,Noura Saïdi
-33018005,H2020 ESiWACE2,60006520115 - EU,01-01-2019,31-12-2022,Ben van Werkhoven
-33018006,H2020 ReaxPro,60006520115 - EU,01-01-2019,31-12-2022,Lars Ridder
-33018007,H2020 IS-ENES3,60006520115 - EU,01-01-2019,28-02-2023,Yifat Dzigan
-33018008,Marin consultancy 2019,60006520285 - Maritime Research Institute Netherlands,01-01-2019,31-12-2020,Noura Saïdi
-33018009,Copernicus Attribution,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-12-2019,31-12-2020,Rena Bakhshi
-33019001,RECEIPT,60006520115 - EU,01-06-2019,31-05-2023,Adriënne Mendrik
-33019002,CORTEX,10025 - NWO,01-12-2019,01-12-2021,Ben van Werkhoven
-33020001,Primavera 2020,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-01-2020,31-12-2020,Rena Bakhshi
-33020002,In-Silico Meat,60006520494 - Biocellion,07-07-2020,31-08-2022,Noura Saïdi
-33020003,ODISSEI,60006520500 - ODISSEI - Erasmus Universiteit Rotterdam,01-07-2020,31-12-2024,Mariëtte van der Zande
-650001002,Expotree,10012 - Technische Universiteit Delft,19-09-2013,19-04-2015,Susan Branchett
-650001003,Online Groups in organizations,1008 - Vrije Universiteit Amsterdam,08-10-2013,08-05-2015,Susan Branchett
-650001005,Self Organizing Archives,10005 - UvA,22-11-2013,22-06-2015,Susan Branchett
+Code,Description,Account,Start date,End date,Project manager,Title RSD
+27011301,eAstronomy,10001 - Stichting Astron,25-05-2012,31-08-2017,Rob van Nieuwpoort,
+27011302,eChemistry/Metabolite ID,027012103 - Wageningen Universiteit & Researchcentrum,20-01-2012,19-05-2015,Susan Branchett,Chemical Informatics for Metabolite Identification and Biochemical Network Reconstruction
+27011303,eSALSA/eClimate,10003 - Universiteit Utrecht,20-01-2012,01-02-2016,Jason Maassen,eSALSA
+27011304,Biomarker Boosting/ Cognition,10004 - Radboud Universiteit Nijmegen (Chem Informatica),20-01-2012,30-11-2015,Elena Ranguelova,Biomarker Boosting
+27011305,eEcology,10005 - UvA,20-01-2012,03-03-2016,Elena Ranguelova,eEcology
+27011306,Food Ontologies,10006 - Radboud Universiteit Nijmegen (letteren),20-01-2012,01-10-2015,Jason Maassen,Creation of Food Specific Ontologies for Food Focused Text Mining
+27011307,VLBPII/Green Genetics,10007 - TTI Groene Genetica,20-01-2012,02-04-2015,Susan Branchett,
+27011308,BiographyNed/eHumanities,1008 - Vrije Universiteit Amsterdam,31-05-2012,01-10-2016,Jisk Attema,BiographyNet
+27011309,Life Sciences/TraIT,10009 - St. Cent. f. Translational Molecular Medicine,20-01-2012,31-12-2015,Rob Hooft,TraIT
+27011310,eScience Technology,10010 - Vrije Universiteit Amsterdam (Informatica),10-09-2012,31-12-2017,Rob van Nieuwpoort,
+27011311,Water management/eWaterCycle,10011 - Technische Universiteit Delft (Waterhuishouding),20-01-2012,31-12-2015,Jason Maassen,eWaterCycle
+27012101,Massive Point Clouds for eSciences,10012 - Technische Universiteit Delft,20-12-2012,07-12-2015,Elena Ranguelova,Massive Point Clouds for eSciences
+27012102,eVisualization of Big Data,10013 - Rijksuniversiteit Groningen,21-01-2013,04-10-2015,Rob Hooft,e-Visualization of Big Data
+27012103,Summer in the City,10014 - Wageningen Universiteit & Researchcentrum,21-01-2013,01-09-2016,Elena Ranguelova,Summer in the City
+27012104,SimCity,10016 - Universiteit van Amsterdam (Informatica),01-03-2013,31-12-2017,Willem van Hage,SIM-CITY
+27012105,SPuDisc,10016 - Universiteit van Amsterdam (Informatica),21-01-2013,30-06-2017,Jisk Attema,SPuDisc
+27012901,eSiBayes,10005 - UvA,15-02-2012,06-03-2014,Elena Ranguelova,eSiBayes
+27012902,TwiNL,10018 - Radboud Universiteit Nijmegen,13-08-2012,06-03-2014,Jisk Attema,TwiNL
+27012903,Distributed High-performance AMUSE,10019 - Universiteit Leiden (sterrenwacht),10-09-2012,24-04-2015,Susan Branchett,AMUSE
+27012904,ODEX4All,10023 - Leids Universitair Medisch Centrum,19-11-2012,17-03-2014,Susan Branchett,ODEX4all
+27012905,Extreme climate changes due to Collapse of the Warm Gulf Str,10003 - Universiteit Utrecht,01-11-2012,01-12-2013,Susan Branchett,Extreme Climate Change
+27013701,ABC-Muse,10019 - Universiteit Leiden (sterrenwacht),18-12-2013,31-03-2017,Jason Maassen,ABC-MUSE
+27013702,Jungle-Computing,1008 - Vrije Universiteit Amsterdam,18-12-2013,30-06-2017,Jason Maassen,A Jungle Computing Approach to Large-Scale Online Forensic Analysis
+27013703,Big Data Analytics in the Geo Spatial Domain,000031 - CWI - Centrum Wiskunde & Informatica,18-12-2013,23-06-2015,Susan Branchett,Big Data Analytics in the Geo-Spatial Domain
+27013801,Dr. Watson,1008 - Vrije Universiteit Amsterdam,16-12-2013,30-09-2015,Jisk Attema,Dr. Watson
+27013802,From sentiment to emotions,1008 - Vrije Universiteit Amsterdam,16-12-2013,30-09-2015,Jisk Attema,
+27013803,Beyond the book,175714 - Huygens ING,16-12-2013,10-09-2015,Jisk Attema,Beyond the Book
+27013804,HADRIANVS,175715 - Koninklijk Nederlands Instituut Rome,16-12-2013,31-05-2016,Jisk Attema,HADRIANVS
+27013805,PIDIMEHS,10005 - UvA,16-12-2013,14-07-2018,Jisk Attema,PIDIMEHS
+27013901,Mapping the Via Appia in 3D,10022 - Vrije Universiteit Amsterdam (Ruimtelijke economie,16-09-2013,24-08-2015,Elena Ranguelova,Mapping the Via Appia in 3D
+27013902,Texcavator,10003 - Universiteit Utrecht,04-12-2013,20-03-2015,Jisk Attema,Texcavator
+27014201,3D-e-Chem,175756 - VU fac Exacte wet. Amsterdam,18-12-2014,30-04-2018,Lars Ridder,3D-e-Chem
+27014202,Computational chemistry made easy,27014202 - 27014202,18-12-2014,01-12-2017,Lars Ridder,Computational Chemistry Made Easy
+27014203,ERA-URBAN,27014203 - Wageningen University DOW,18-12-2014,31-12-2019,Jisk Attema,ERA-URBAN
+27014204,Prediction of Candidate genes for Traits,27014204 - Wageningen University DPW,18-12-2014,03-09-2019,Lars Ridder,candYgene
+27014401,DIVE+,27014401 - VU Fac. Exacte Wetenschappen,18-12-2014,24-06-2017,Jisk Attema,DIVE+
+27014402,Visualising uncertainty and perspectives,60006520016 - Faculteit der Letteren VU,18-12-2014,01-06-2017,Jisk Attema,
+27014501,A Lightpath for Optical Coherence Tomography imaging,175753 - AMC,14-05-2014,05-07-2015,Elena Ranguelova,
+27014502,Achieving Multidisciplinary High-Throughput,175754 - FOM Institute AMOLF,01-04-2014,31-12-2015,Elena Ranguelova,
+27014503,Recording history in large news streams,1008 - Vrije Universiteit Amsterdam,17-04-2014,29-02-2016,Elena Ranguelova,
+27014901,Platform for Chemical Data Analytics,175757 - Radboud Universiteit Nijmegen (Moleculaire),18-04-2014,07-09-2015,Scott Lusher,Chemical Analytics Platform
+27014902,DAS-5,175756 - VU fac Exacte wet. Amsterdam,18-12-2014,31-03-2019,Frank Seinstra,
+27014903,DiLiPaD,10016 - Universiteit van Amsterdam (Informatica),18-12-2014,01-04-2016,Jisk Attema,DiLiPaD
+27014904,Large Scale Data Assimilation-eWatercycle,27014904 - 27014904,18-12-2014,30-11-2017,Jason Maassen,Large Scale Data Assimilation
+27014905,RT-SAR,27014905 - Netherlands Organisation for applied SR (TNO),18-12-2014,18-01-2016,Jason Maassen,RT SAR
+27014906,Massive Biological Data Clustering,027014906 - CBS-KNAW,01-05-2015,31-12-2015,Lars Ridder,"Massive Biological Data Clustering, Reporting and Visualization Tools"
+27014907,Compressing the sky,027014907 - 027014907,01-05-2015,31-12-2015,Lars Ridder,Compressing the sky into a large collection of statistical models
+27014908,Giving pandas a ROOT to chew on,027014908 - 027014908,01-05-2015,31-03-2016,Jason Maassen,Giving Pandas a ROOT to Chew on
+27014909,Mining Shifting Concepts through time (ShiCo),027014909 - 027014909,01-05-2015,01-08-2017,Jisk Attema,Mining Shifting Concepts Through Time (ShiCo)
+27015001,Detecting anomalous behaviour in the Amsterdam Arena,10016 - Universiteit van Amsterdam (Informatica),24-08-2015,01-04-2020,Rena Bakhshi,Detecting Anomalous Behavior in Stadium Crowds
+27015601,Enabling Dynamic Services,000141 - SURFnet,15-04-2015,15-04-2019,Jason Maassen,Enabling Dynamic Services
+27015602,Diagnosis of active epilepsy in resource-poor setting,60006520023 - Universiteit Utrecht,16-12-2015,01-04-2017,Lars Ridder,Diagnosis of active epilepsy in resource-poor setting
+27015910,Improving Open-Source Photogrammetric Workflows,60006520047 - University of Twente - ITC Faculty,13-07-2015,01-11-2016,Willem van Hage,Improving Open-Source Photogrammetric Workflows for Processing Big Datasets
+27015911,Real-time detection of neutrinos from the distant Universe,60006520048 - Leiden University - Leiden Institute of PQMO,13-07-2015,31-03-2017,Jason Maassen,Real-time detection of neutrinos from the distant Universe
+27015G01,e-MUSC - Enhancing Multiscale Computing,10016 - Universiteit van Amsterdam (Informatica),07-12-2015,31-12-2020,Rena Bakhshi,e-MUSC
+27015G02,Algorithmic Geo-visualization: from Theory to Practice,000042 - Technische Universiteit Eindhoven,07-12-2015,31-05-2021,Rena Bakhshi,Algorithmic Geo-visualization
+27015G03,Towards Large-Scale Cloud-Resolving Climate Simulations,60006520077 - CWI - Centrum voor Wiskunde en Informatica,07-12-2015,01-10-2019,Rena Bakhshi,Towards Large-Scale Cloud-Resolving Climate Simulations
+27015G04,What Works When for Whom?,60006520087 - University of Twente - PHT Faculty,07-12-2015,31-12-2020,Jisk Attema,What Works When for Whom?
+27015G05,DynaSlum:Data Driven Modeling and Decision Support for Slums,10005 - UvA,07-12-2015,31-12-2019,Adriënne Mendrik,DynaSlum
+27015G06,Enhancing protein-drug binding prediction,1008 - Vrije Universiteit Amsterdam,07-12-2015,21-03-2019,Lars Ridder,Enhancing Protein-Drug Binding Prediction
+27015G07,Automated Parallel Calculation of Collaborative Stat Models,000107 - NIKHEF,07-12-2015,31-12-2020,Jisk Attema,Automated Parallel Calculation of Collaborative Statistical Models
+27015G08,iDark: The intelligent Dark Matter Survey,10018 - Radboud Universiteit Nijmegen,07-12-2015,31-08-2020,Rena Bakhshi,iDark
+27015G09,AA-ALERT,10001 - Stichting Astron,07-12-2015,31-08-2021,Jisk Attema,AA-ALERT
+27015S01,Error Detection and Localization for Radio Telescope SHM,10001 - Stichting Astron,16-11-2015,01-10-2018,Elena Ranguelova,Error Detection and Error Localization
+27016G01,eEcoLiDAR,60006520156 - University of Amsterdam IBED,12-12-2016,01-07-2021,Yifat Dzigan,eEcoLiDAR
+27016G02,Emotion Recognition in Dementia,60006520157 - Universiteit Twente  BMS & PGT,12-12-2016,15-05-2021,Lars Ridder,Emotion Recognition in Dementia
+27016G03,Googling the cancer genome,60006520158 - Universiteit Utrecht UMC Biomedische Genetica,12-12-2016,31-12-2020,Lars Ridder,Googling the cancer genome
+27016G04,DeepRank: Scoring 3D protein,60006520159 - Universiteit Utrecht Faculteit Betawetenschappen,12-12-2016,01-05-2021,Lars Ridder,DeepRank
+27016G05,DIRAC: Distributed Radio Astronomical Computing,10001 - Stichting Astron,12-12-2016,01-04-2020,Rena Bakhshi,DIRAC
+27016G06,A methodology and ecosystem for many-core programming,10010 - Vrije Universiteit Amsterdam (Informatica),12-12-2016,01-02-2021,Adriënne Mendrik,A methodology and ecosystem for many-core programming
+27016G07,Accelerating Astronomical Applications 2 (Triple-A 2),10001 - Stichting Astron,12-12-2016,01-03-2021,Adriënne Mendrik,Triple-A 2
+27016G08,Visual Storytelling of Big Imaging Data,60006520160 - Johan Bernoulli Instituut Wiskunde en Informatica,12-12-2016,11-06-2021,Adriënne Mendrik,Visual Storytelling of Big Imaging Data
+27016P01,Fast open source simulator of low-energy scattering,000161 - TU Delft (Technische Universiteit Delft),10-02-2016,01-04-2017,Rena Bakhshi,Fast open source simulator of low-energy scattering of charged particles in matter
+27016P02,Towards a species-by-species approach to global biodiversity,60006520085 - Radbout Universiteit Nijmegen (Environmental),16-12-2015,31-03-2017,Jason Maassen,Towards a species-by-species approach to global biodiversity modelling
+27016P03,Data quality in a distributed learning environment,60006520119 - MAASTRO Clinic/Maastricht University Knowledge Eng,01-11-2016,31-07-2018,Adriënne Mendrik,Data quality in a distributed learning environment
+27016P04,Parallelisation of multi point-cloud registration,000161 - TU Delft (Technische Universiteit Delft),05-10-2016,30-06-2018,Adriënne Mendrik,Parallelisation of multi point-cloud registration
+27016P05,Case Law Analytics,000153 - Tilburg University,01-10-2016,30-09-2017,Jisk Attema,Case Law Analytics
+27016P06,Automated analysis of online behaviour on social media,60006520166 - University of Groningen- Media and Journalism,20-12-2016,20-06-2018,Jisk Attema,Automated Analysis of Online Behaviour on Social Media
+27016P07,Data-mining tools for abrupt climate change,60006520167 - Wageningen University-Environmental Sciences,20-12-2016,20-06-2018,Rena Bakhshi,Data mining tools for abrupt climate change
+27016P09,3D printing of human body parts,60006520155 - VU University Medical Center,01-11-2016,31-03-2018,Elena Ranguelova,3D Printing of human body parts
+27016S03,IMPACT:Software Analytics of global impact escience software,60006520077 - CWI - Centrum voor Wiskunde en Informatica,19-12-2016,19-06-2018,Adriënne Mendrik,IMPACT
+27016S04,High Spatial Resolution phenological modelling,60006520163 - University of Twente- Accounts Payable Department,19-12-2016,31-07-2018,Adriënne Mendrik,High spatial resolution phenological modelling at continental scales
+27016S05,City Cloud: From the things to the cloud and back,"60006520164 - University of Twente-Mathematics,Comp. Scienc & EE",19-12-2016,20-06-2018,Rena Bakhshi,City Cloud
+27016S06,Autograph: Automated multi-scale Graph maipulation,60006520165 - Delft University of Technology- Civil engineering,19-12-2016,01-03-2019,Rena Bakhshi,AutoGraph
+27017F01,eWatercycle II,10011 - Technische Universiteit Delft (Waterhuishouding),18-12-2017,01-06-2022,Yifat Dzigan,eWaterCycle II
+27017G01,Integrated omics analysis,60006520251 - Wageningen University & Research - Bioinformatics,18-12-2017,01-07-2022,Lars Ridder,Integrated omics analysis for small molecule-mediated host-microbiome interactions
+27017G02,Stochastic multiscale Climate models,60006520240 - Earth and Environmental Sciences (EES5),18-12-2017,31-12-2021,Rena Bakhshi,Stochastic Multiscale Climate Models
+27017G03,Bridging the gap: Dig. Humanities the Arabic-Islamic corpus,"60006520210 -  Utrecht University, Islamic and Arabic studies",01-09-2017,31-12-2019,Adriënne Mendrik,Bridging the gap
+27017G04,TICCLAT:Text-Induced Corpus Correction and Lexical Assessmen,60006520211 - Tilburg University TiCC,01-09-2017,31-12-2020,Adriënne Mendrik,TICCLAT
+27017G05,EviDENce: Ego Documents Events ModelliNg,60006520212 - Open Uni. NL Faculty of Law and Cultural Sciences,01-09-2017,31-12-2019,Jisk Attema,EviDENce
+27017G06,NEWSGAC:Advancing Media History by genre classification,60006520166 - University of Groningen- Media and Journalism,01-09-2017,31-12-2020,Jisk Attema,NEWSGAC
+27017G07,Generalisatie ADAH,000104 - Netherlands eScience Center,01-09-2017,31-12-2020,Jisk Attema,
+27017G08,Scalable high-fidelity simulations,60006520250 - TU Delft - AWEP Aerodynamics,18-12-2017,31-12-2021,Nicolas Renaud,Scalable high-fidelity simulations of reacting multiphase flows at transcritical pressure
+27017G09,Computation of the Optical Properties of nano structures,60006520248 - University of Twente MESA +,18-12-2017,30-06-2022,Nicolas Renaud,Computation of the Optical Properties of nano structures
+27017G10,Parallel-in-time meth. for the propagation in windfarm solut,60006520160 - Johan Bernoulli Instituut Wiskunde en Informatica,18-12-2017,01-04-2022,Nicolas Renaud,Parallel-in-time methods for the propagation of uncertainties in wind-farm simulations
+27017G11,eScience Technology to Boost Quantum Dot Energy Conversion,60006520249 - VU Amsterdam Chemistry and Pharmaceutical sciences,18-12-2017,01-01-2022,Nicolas Renaud,eScience Technology to Boost Quantum Dot Energy Conversion
+27017G12,A light in the dark: quantum Monte Carlo meets solar energy,60006520248 - University of Twente MESA +,18-12-2017,01-03-2022,Nicolas Renaud,A light in the dark
+27017G13,Passing XSAMS,60006520247 - TU Eindhoven Applied Physics,18-12-2017,31-01-2022,Nicolas Renaud,Passing XSAMS
+27017G14,A phase field model to guide the development of batteries,60006520246 - Delft TU (TNW) - (RST),18-12-2017,31-12-2021,Nicolas Renaud,A phase field model to guide the development and design of next generation solid-state-batteries
+27017G15,Multiscale simulations of excitations dynamics,60006520245 - Eindhoven TU  (TPS),19-12-2017,28-02-2022,Nicolas Renaud,
+27017G16,FEDMix,60006520244 - Centrum voor Wiskunde & Informatica Life Sciences,18-12-2017,31-05-2022,Adriënne Mendrik,FEDMix
+27017G17,Inside the Bubble filter,60006520243 - Universiteit van Amsterdam,18-12-2017,01-01-2022,Jisk Attema,Inside the filter bubble
+27017G18,SECCONNETSmart,"60006520242 - UvA infomatica, system and network engineering",18-12-2017,31-12-2021,Rena Bakhshi,SecConNet
+27017G19,FAIR is as FAIR does,60006520241 - Maastricht University,18-12-2017,31-03-2021,Lars Ridder,FAIR is as FAIR does
+27017P01,Financial Network,60006520254 - AISSR/ Universiteit van Amsterdam,27-11-2017,10-03-2019,Rena Bakhshi,
+27018601C,EYRA Benchmark Platform Surf_NLeSC Alliance 2018,000104 - Netherlands eScience Center,11-06-2018,31-10-2019,Adriënne Mendrik,
+27018G01,MOSAIC MOdelling Sea level And Inundation for Cyclones,60006520360 - Vrije Universiteit Amsterdam,17-12-2018,01-07-2022,Rena Bakhshi,MOSAIC
+27018G02,ePODIUM: early Prediction of Dyslexia,60006520359 - University Medical Center Utrecht,17-12-2018,01-05-2021,Lars Ridder,ePODIUM
+27018G03,Understanding visually grounded spoken language,60006520357 - Tilburg University,17-12-2018,01-07-2021,Noura Saïdi,Understanding visually grounded spoken language via multi-tasking
+27018G04,Monitoring tropical forest recovery using RADAR,60006520358 - Wageningen University,17-12-2018,01-07-2021,Yifat Dzigan,Monitoring tropical forest recovery capacity using RADAR Sentinel satellite data
+27018P01,Web-based TADPOLE Challenge Framework,60006520333 - Erasmus MC University,20-11-2018,01-10-2020,Adriënne Mendrik,TADPOLE-SHARE
+27019601C,EYRA Benchmark Platform Surf_NLeSC Alliance 2019,000104 - Netherlands eScience Center,01-01-2019,31-12-2020,Adriënne Mendrik,Enhance Your Research Alliance (EYRA) Benchmark Platform
+27019602,ChEOPS: verified Construction of corrEct and Optimised Paral,10025 - NWO,16-05-2019,16-05-2023,Adriënne Mendrik,CHEOPS
+27019G01,A new perspective on global vegetation water dynamics,60006520440 - Delft University of Technology,06-06-2019,31-12-2022,Yifat Dzigan,A new perspective on global vegetation water dynamics from radar satellite data
+27019G02,Remote Sensing of damage feedbacks n ice shelf in Antartica,60006520440 - Delft University of Technology,06-06-2019,30-11-2023,Yifat Dzigan,Remote sensing of damage feedbacks and ice shelf instability in Antarctica
+27019G03,Eratosthenes -Chasing shadows to investigate glacier change,60006520441 - Utrecht University Marine and Atmospheric research,06-06-2019,28-02-2023,Yifat Dzigan,Eratosthenes
+27019G04,DarkGenerators,60006520469 - Universiteit van Amsterdam (Physics),18-12-2019,01-07-2022,Yifat Dzigan,DarkGenerators
+27019G05,Scaling up pangenomics for breeding applications,60006520470 - Wageningen University - Bioinfomatics Group,18-12-2019,31-12-2022,Lars Ridder,Scaling up pan-genomics for plant breeding
+27019G06,The PetaFLOP AARTFAAC Data- Reduction Engine (PADRE),60006520472 - Stichting Astron - Section Computing,01-07-2020,01-07-2023,Lars Ridder,The PetaFLOP AARTFAAC Data-Reduction Engine (PADRE)
+27019G07,MyDigiTwin,60006520471 - University Medical Center Groningen,08-12-2019,01-04-2025,Lars Ridder,MyDigiTwin
+27019G08,Perfect Fit,60006520473 - Leiden University Medical Center,18-12-2019,01-03-2025,Lars Ridder,Perfect Fit
+27019G09,CARRIER,60006520474 - Maastricht University - Data Science,18-12-2019,01-03-2025,Lars Ridder,CARRIER
+27019G10,STRAP,60006520475 - Eindhoven University of Technology,18-12-2019,01-03-2023,Lars Ridder,STRAP
+27019P01,Making Historical Biodiversity Data Available to Researchers,60006520476 - Leiden University - Advanced Computer Sciences,18-12-2019,01-02-2021,Lars Ridder,
+27020S01,Retina COVID19,60006520023 - Universiteit Utrecht,15-04-2020,15-04-2021,Mariëtte van der Zande,Retina COVID19
+27020S02,FAIR Data for CAPACITY,60006520394 - MAASTRO Clinic,15-04-2020,31-12-2020,Lars Ridder,FAIR Data for CAPACITY
+27020S03,COVID19 Grand Challenge,60006520015 - Medical Centre Radboud University,15-04-2020,31-12-2020,Mariëtte van der Zande,COVID-19 Grand Challenge
+27020S04,PuReGoMe,60006520023 - Universiteit Utrecht,15-04-2020,31-10-2020,Mariëtte van der Zande,PuReGoMe
+33013001,Flysafe 2,10005 - UvA,01-09-2013,28-02-2014,Susan Branchett,
+33013002,LifeWatch,175711 - Universiteit van Amsterdam (Biodiversiteit),29-11-2013,31-12-2015,Elena Ranguelova,
+33014001,ODEX4ALL - Open Discovery and Exchange for all,10023 - Leids Universitair Medisch Centrum,01-06-2015,31-12-2017,Lars Ridder,
+33015001,From sentiment to emotions - Embodied emotions,1008 - Vrije Universiteit Amsterdam,01-03-2015,30-06-2015,Jisk Attema,From Sentiment Mining to Mining Embodied Emotions
+33015002,Primavera,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-11-2015,31-12-2019,Rena Bakhshi,PRIMAVERA
+33015003,IndoDutch - Understanding Large Scale Human Mobility,10025 - NWO,01-10-2015,01-09-2016,Willem van Hage,
+33015004,ANDI-Advanced Neuropsychological Diagnostics Infrastructure,10005 - UvA,01-06-2015,31-12-2016,Lars Ridder,ANDI
+33015006,Magnadata,000147 - Technologiestichting STW,01-01-2017,31-12-2021,Mariëtte van der Zande,
+33016001,Commit / valorisation call 2015-2016,60006520022 - COMMIT/buro,01-01-2016,31-01-2017,Willem van Hage,
+33016002,The Riddle of Litery Quality,175714 - Huygens ING,15-03-2016,30-06-2016,Jisk Attema,
+33016003,UCL: Classifying activity types,60006520102 - University College London,04-04-2016,01-12-2016,Vincent van Hees,Classifying activity types
+33016004,Bird Avoidance System (BirdRadar),10005 - UvA,01-06-2016,01-06-2017,Elena Ranguelova,BirdRadar
+33016005,TWEX Translating weather Extremes into the future,60006520114 - CICERO,01-07-2016,31-12-2019,Rena Bakhshi,TWEX
+33016006,Blue-Action,60006520115 - EU,01-12-2016,28-02-2021,Jisk Attema,Blue-Action
+33016007,VLPB-AVE2,60006520118 - VLPB,01-05-2016,25-01-2018,Lars Ridder,
+33016008,Visualizing Uncertainty and Perspective Plus,175756 - VU fac Exacte wet. Amsterdam,11-07-2016,01-07-2017,Jisk Attema,Visualizing Uncertainty and Perspectives
+33016009,MAGIC,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-10-2016,31-03-2019,Ben van Werkhoven,MAGIC
+33017001,Part 2- Classifying activity types,60006520102 - University College London,01-02-2017,01-10-2017,Vincent van Hees,
+33017002,Genetics of sleep patterns,60006520197 - University of Exeter,01-04-2017,01-04-2019,Lars Ridder,Genetics of sleep patterns
+33017003,Mediasuite,60006520217 - Nederlands Instituut voor Beeld en Geluid,01-09-2017,30-11-2018,Jisk Attema,
+33017004,GLAM-Visual Analytics for the world's Library Data,000042 - Technische Universiteit Eindhoven,01-08-2017,01-08-2019,Rena Bakhshi,GlamMap
+33017005,EUCP H2020 - EUropean Climate Prediction system,60006520231 - MET Office,01-12-2017,31-05-2022,Yifat Dzigan,EUropean Climate Prediction system
+33017006,PROCESS H2020 - PROviding Comp solutions ExaScale challengeS,60006520232 - Ludwig-Maximilians Universitaet Muenchen,01-12-2017,01-11-2020,Jason Maassen,PROCESS
+33017007,NWA Seed Money 17-02 Big Data,60006520228 - Nationale Wetenschapsagenda,13-11-2017,01-12-2017,Noura Saïdi,
+33017008,Extra consultancy: High spatial resolution phenological proj,60006520163 - University of Twente- Accounts Payable Department,20-11-2017,31-12-2017,Noura Saïdi,
+33017009,Training Deep Learning applicaties,60006520253 - RWS Centrale Informatievoorziening,01-12-2017,31-01-2018,Adriënne Mendrik,
+33017010,VWData,60006520256 - Technische Universiteit Delft,01-01-2018,31-12-2020,Frank Seinstra,
+33017012,TTW Efficient deep learning EDL P16-25 project 4,10025 - NWO,13-12-2017,31-12-2021,Rob van Nieuwpoort,
+33017013,DTL Semantic Analysis of radiology Reports utilizing Lexicon,60006520278 - Stichting Maastricht Radiation Oncology,01-04-2018,01-04-2019,Jisk Attema,DTL Semantic Analysis of radiology Reports utilizing Lexicon
+33018002,EOSC pilot projects,10001 - Stichting Astron,01-01-2018,08-11-2018,Adriënne Mendrik,EOSCpilot LOFAR
+33018003,MARIN Consultancy project,60006520285 - Maritime Research Institute Netherlands,01-04-2018,31-12-2018,Adriënne Mendrik,
+33018004,EliLilly,60006520343 - EliLilly and Company,01-10-2018,01-01-2021,Noura Saïdi,
+33018005,H2020 ESiWACE2,60006520115 - EU,01-01-2019,31-12-2022,Ben van Werkhoven,ESiWACE2
+33018006,H2020 ReaxPro,60006520115 - EU,01-01-2019,31-12-2022,Lars Ridder,
+33018007,H2020 IS-ENES3,60006520115 - EU,01-01-2019,28-02-2023,Yifat Dzigan,IS-ENES3
+33018008,Marin consultancy 2019,60006520285 - Maritime Research Institute Netherlands,01-01-2019,31-12-2020,Noura Saïdi,
+33018009,Copernicus Attribution,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-12-2019,31-12-2020,Rena Bakhshi,Copernicus Attribution
+33019001,RECEIPT,60006520115 - EU,01-06-2019,31-05-2023,Adriënne Mendrik,RECEIPT
+33019002,CORTEX,10025 - NWO,01-12-2019,01-12-2021,Ben van Werkhoven,CORTEX
+33020001,Primavera 2020,60006520074 - KNMI/Ministery of Infrastructure and Environment,01-01-2020,31-12-2020,Rena Bakhshi,
+33020002,In-Silico Meat,60006520494 - Biocellion,07-07-2020,31-08-2022,Noura Saïdi,
+33020003,ODISSEI,60006520500 - ODISSEI - Erasmus Universiteit Rotterdam,01-07-2020,31-12-2024,Mariëtte van der Zande,
+650001002,Expotree,10012 - Technische Universiteit Delft,19-09-2013,19-04-2015,Susan Branchett,
+650001003,Online Groups in organizations,1008 - Vrije Universiteit Amsterdam,08-10-2013,08-05-2015,Susan Branchett,
+650001005,Self Organizing Archives,10005 - UvA,22-11-2013,22-06-2015,Susan Branchett,
