@@ -188,7 +188,7 @@ docker pull github/super-linter:latest
 
 # run the linter
 docker run -e RUN_LOCAL=true \
-   -v ${PWD}/harvesting/app.py:/tmp/lint/app.py \
+   -v ${PWD}:/tmp/lint \
    github/super-linter
 ```
 
@@ -239,4 +239,3 @@ docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
 For example,
 
 ![images/docker-compose.png](images/docker-compose.png)
-
