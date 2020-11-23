@@ -110,6 +110,16 @@ def find_data_links(db, schemas, resource_type, id):
 
     return data_links
 
+def resource2update(schema, resource):
+    """Generates update variable for MongoDB update_one(filter, update)
+
+    """
+    update = {'$set': resource}
+    fields2remove = field2unset(schema, resource)
+    if fields2remove:
+        update['$unset'] = fields2remove
+    return update
+
 def field2unset(schema, data):
     """"Fields which are optional and missing in request data should be unset
     """
