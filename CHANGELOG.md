@@ -47,7 +47,7 @@
 - Data migration
     - FIXME: add details once PR #645 is merged 
 
-- full commit comparison [2.0.2...3.0.0-rc0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...acb9f414ad565e9ac9012dea80e774f942b6bb22)
+- FIXME: full commit comparison [2.0.2...3.0.0-rc0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...acb9f414ad565e9ac9012dea80e774f942b6bb22)
 
 # 2.0.2
 
