@@ -192,7 +192,7 @@ docker run -e RUN_LOCAL=true \
    github/super-linter
 ```
 
-The superlinter can be a bit slow if you run all checks on all directories, but you can run just one check on one file
+The superlinter can be a bit slow if you run all checks on all directories, but you can run just one check on one file with a [specific linter](https://github.com/github/super-linter#environment-variables)
 if needed, like so:
 
 ```shell
@@ -239,5 +239,4 @@ docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
 For example,
 
 ![images/docker-compose.png](images/docker-compose.png)
-
 
