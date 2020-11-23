@@ -75,14 +75,9 @@ IP ``3.122.233.225``. Your IP addresses will likely be different.
     ln -s rsd-secrets.env .env
     ```
 
-1. Stop new additions to the database in the old research software
-   directory instance by stopping the ``rsd-admin`` service.
-
-    ```shell
-    ssh -i ~/.ssh/rsd-instance-for-nlesc-on-aws.pem ubuntu@35.156.38.208
-    cd /home/ubuntu/rsd
-    docker-compose stop rsd-admin
-    ```
+1. Stop new additions to the database in the old Research Software Directory instance by following the notes from
+   [_Temporarily disabling the admin interface_](#temporarily-disabling-the-admin-interface). This will effectively
+   disable the ``rsd-admin`` service.
 
 1. Create the backup files in the old Research Software Directory instance:
 
