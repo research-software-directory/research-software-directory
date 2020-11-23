@@ -1,3 +1,7 @@
+# 3.0.0 (Unreleased)
+
+See [data migration notes](/data-migration/2.x-to-3.x/README.md).
+
 # 2.0.2
 
 - Had to rewrite history due to a copyright violation on the included Akkurat font files.
@@ -24,54 +28,7 @@
 - downloadable citation manager files now have filenames consistent with their respective standard
 - full commit diff [1.2.0...2.0.0](https://github.com/research-software-directory/research-software-directory/compare/e1e10fc781089d19aedc32824ffe4641f746baa2...2be41cb88be237700f60feb03fd4702e7bee9cff)
 
-
-## Data migration notes
-
-In version 2.0.0, the ``project`` collection is partly filled by harvesting from
-an external data source, and partly filled by means of users making edits in the
-admin interface. This means that version 2.0.0 of the Research Software
-Directory requires changes to the database. Below are the steps to migrate data
-from 1.2.0 to 2.0.0. Furthermore, the frontend now shows information for page
-maintainers, for which a new MongoDB collection ``logging`` is needed.
-
-When migrating data there is always the possibility of **LOSS OF DATA**. Review the
-notes on how to make a backup of the Mongo data [here](README.md#updating-a-production-instance).
-
-```
-$ source rsd-secrets.env
-$ docker-compose exec database mongo rsd
-```
-
-Create collection "logging":
-
-```
-db.createCollection("logging")
-```
-
-**Remove** all ``release`` documents, ``project`` documents, and ``project_cache`` documents entirely:
-
-```
-db.release.deleteMany({})
-db.project.deleteMany({})
-db.project_cache.deleteMany({})
-```
-Then, update the project identifiers as used in the ``software`` collection by
-copy-pasting the contents of the data migration script 
-[data-migration-1.x-to-2.js](/data-migration/data-migration-1.x-to-2.js) into the Mongo shell.
-
-Exit the Mongo shell with Ctrl-d or ``exit``, then run the harvester:
-
-```
-$ docker-compose exec harvesting python app.py harvest all
-```
-
-See if it all worked by running:
-
-```
-$ docker-compose exec harvesting python app.py resolve all
-```
-
-The ``resolve`` command should list only INFO messages, not ERROR messages.
+For the data migration instructions, go [here](/data-migration/1.x-to-2.x/README.md).
 
 # 1.2.0
 
