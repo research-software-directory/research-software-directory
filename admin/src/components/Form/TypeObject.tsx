@@ -8,7 +8,7 @@ export default class TypeObject extends React.Component<IProps<IObjectSchema>> {
   handleChange = (key: string) => (value: any) => {
     if (isStringSchema(this.props.schema.properties[key]) && value === "") {
       const cpy = { ...this.props.value };
-      delete cpy[key];
+      cpy[key] = "";
       this.props.onChange(cpy);
       return;
     }
