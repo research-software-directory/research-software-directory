@@ -248,9 +248,9 @@ def get_year_from_date_string(date_string):
 def project_index_template():
     url = api_url + "/project_cache"
     project_data = requests.get(url).json()
-    titles = []
+    projects = []
     for project in project_data:
-        titles.append({"id": project["primaryKey"]["id"],
+        projects.append({"id": project["primaryKey"]["id"],
                        "title": project["title"],
                        "subtitle": project["subtitle"],
                        "imageUrl": project["imageUrl"],
@@ -258,7 +258,8 @@ def project_index_template():
                        "yearEnd": get_year_from_date_string(project["dateEnd"])})
 
     return flask.render_template('project/project_index.html',
-                                 titles=titles)
+                                 data_json=flask.Markup(json.dumps(projects)),
+                                 projects=projects)
 
 
 @application.route('/about')
