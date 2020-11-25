@@ -66,4 +66,5 @@ sources won't work. To bring up the website with all bells and whistles, read on
 1. [Documentation for developers](/docs/dev.md)
 1. [Documentation for maintainers](/docs/maintaining.md)
 1. [Hosting your instance online](/docs/hosting.md)
+1. [Running an instance of the Research Software Directory in production](/docs/production.md)
 1. [Security concerns](/docs/security.md)

@@ -164,3 +164,99 @@ commands results in the **LOSS OF DATA**.
     ```shell
     docker-compose down --rmi all -v
     ```
+
+## Checking if there's any documentation with invalid links
+
+The repository comes with documentation spread out over multiple MarkDown files.
+[This workflow file](./../.github/workflows/markdown-link-checker.yml) is set up to check whether there are broken links in
+any of them. If you want to check this locally, you can do so with:
+
+```shell
+# from the repository root directory
+npm install
+npm run mlc
+```
+
+## Running the superlinter locally
+
+We use GitHub's [Super-Linter](https://github.com/github/super-linter) to lint all directories using a variety of
+linters. You can run the superlinter using `docker`, as follows:
+
+```shell
+# get the linter
+docker pull github/super-linter:latest
+
+# run the linter
+docker run \
+   -e RUN_LOCAL=true \
+   -v ${PWD}:/tmp/lint \
+   github/super-linter
+```
+
+The superlinter can be a bit slow if you run all checks on all directories, but you can run just one check on one file
+with a [specific linter](https://github.com/github/super-linter#environment-variables) if needed, like so:
+
+```shell
+# run the linter with only pylint check enabled
+docker run \
+   -e RUN_LOCAL=true \
+   -e VALIDATE_PYTHON_PYLINT=true \
+   -v ${PWD}/harvesting/app.py:/tmp/lint/app.py \
+   github/super-linter
+```
+
+or evaluate a whole subdirectory, all checks:
+
+```shell
+cd harvesting
+docker run \
+   -e RUN_LOCAL=true \
+   -v ${PWD}:/tmp/lint \
+   github/super-linter
+```
+
+or evaluate the same whole subdirectory, but do just one check:
+
+```shell
+cd harvesting
+docker run \
+   -e RUN_LOCAL=true \
+   -e VALIDATE_PYTHON_PYLINT=true \
+   -v ${PWD}:/tmp/lint \
+   github/super-linter
+```
+
+By default, the GitHub Super-Linter generates a log file inside the container, which is subsequently mapped to your file
+system where it appears as a file named `super-linter.log` with root permissions. You can disable this behavior by
+setting the bind mount as read-only (`:ro`), as follows:
+
+```shell
+docker run \
+   -e RUN_LOCAL=true \
+   -v ${PWD}:/tmp/lint:ro \
+   github/super-linter
+```
+
+### The output on GitHub looks different
+
+The workflow file that we use for our continuous integration on GitHub Actions has a per-directory configuration with a
+custom list of linters for each directory (see [/.github/workflows/linting.yml](/.github/workflows/linting.yml)). If you
+want your local setup to reflect exactly what runs on GitHub, it may therefore be convenient to use
+[`act`](https://github.com/nektos/act).
+
+See also [this
+comment](https://github.com/research-software-directory/research-software-directory/pull/624#pullrequestreview-528215446).
+
+## Visualizing ``docker-compose.yml``
+
+It is sometimes helpful to visualize the structure in the ``docker-compose.yml`` file.
+Use [https://github.com/pmsipilot/docker-compose-viz](https://github.com/pmsipilot/docker-compose-viz) to generate a png image.
+
+```shell
+docker run --rm -it --name dcv -v $(pwd):/input pmsipilot/docker-compose-viz \
+   render -m image --output-file=docs/images/docker-compose.png docker-compose.yml
+```
+
+For example,
+
+![images/docker-compose.png](images/docker-compose.png)
