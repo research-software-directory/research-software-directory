@@ -1,0 +1,53 @@
+{
+  "title": "A methodology and ecosystem for many-core programming",
+  "subtitle": "Boosting the performance of current and future programs",
+  "primaryKey": {
+    "collection": "project",
+    "id": "1343"
+  },
+  "output": [],
+  "impact": [
+    {
+      "foreignKey": {
+        "primaryKey": {
+          "collection": "mention",
+          "id": "XRA6XBNB"
+        },
+        "version": 2781,
+        "title": "PyXenon 2.2.0: Python interface to Xenon 2.2",
+        "type": "computerProgram",
+        "zoteroKey": "XRA6XBNB",
+        "isCorporateBlog": false,
+        "date": "2017-11-13T00:00:00Z",
+        "url": "https://doi.org/10.5281/zenodo.1045888",
+        "createdAt": "2018-06-19T12:25:03Z",
+        "updatedAt": "2020-01-30T14:10:30Z",
+        "createdBy": "Scraper",
+        "updatedBy": "Scraper"
+      }
+    }
+  ],
+  "createdAt": "2020-04-21T17:04:07Z",
+  "updatedAt": "2020-04-21T17:04:07Z",
+  "createdBy": "Scraper",
+  "updatedBy": "Scraper",
+  "callUrl": "https://doi.org/FIXME",
+  "codeUrl": "https://github.com/FIXME",
+  "dataManagementPlanUrl": "",
+  "dateEnd": "1901-01-01T00:00:00Z",
+  "dateStart": "1900-01-01T00:00:00Z",
+  "description": "FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME",
+  "grantId": "FIXME",
+  "homeUrl": "https://fixme.org",
+  "imageCaption": "this is the image caption",
+  "imageUrl": "http://www.esciencecenter.nl/wp-content/uploads/2020/02/A-methodology-and-ecosystem-for-many-core-programming-1024x683.jpg",
+  "isPublished": false,
+  "related": {
+    "organizations": [],
+    "projects": [],
+    "software": []
+  },
+  "softwareSustainabilityPlanUrl": "",
+  "tags": [],
+  "team": []
+}
