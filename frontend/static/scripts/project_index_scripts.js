@@ -20,7 +20,7 @@ function initOverview(projectsData) {
     }
 
     var v = new Vue({
-        el: '#projects_page',
+        el: '#project_index_page',
         delimiters: ["[[", "]]"],
         methods: {
             log: console.log,
