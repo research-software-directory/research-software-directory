@@ -26,10 +26,6 @@
         },
         "updatedBy": {
             "type": "string"
-        },
-        "url": {
-            "format": "uri",
-            "type": "string"
         }
     },
     "required": [
@@ -37,8 +33,7 @@
         "logo",
         "name",
         "primaryKey",
-        "updatedAt",
-        "url"
+        "updatedAt"
     ],
     "title": "Organization schema"
 }

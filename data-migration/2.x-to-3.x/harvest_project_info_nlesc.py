@@ -366,7 +366,6 @@ def make_new_organization_data(name_data):
     new_organization_data["createdBy"] = "esciencecenter.nl.crawler"
     new_organization_data["updatedAt"] = new_organization_data["createdAt"]
     new_organization_data["updatedBy"] = new_organization_data["createdBy"]
-    new_organization_data["url"] = "https://FIXME"
     if "name" in name_data:
         new_organization_data["name"] = name_data["name"]
     img_data = ""
