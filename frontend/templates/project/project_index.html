@@ -10,7 +10,7 @@
       <div class="row">
         <div class="text">
           <h1 class="title">Projects</h1>
-          <p>This list of projects of the Netherlands eScience Center contains {{titles|length}} projects</p>
+          <p>This list of projects of the Netherlands eScience Center contains {{projects|length}} projects</p>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
 
   <noscript>
     <div id="noscript_projects" class="row">
-      {%- for title in (titles  | sort(attribute="title")) -%}
+      {%- for title in (projects  | sort(attribute="title")) -%}
       <li class="col-1-4">
         <a href="/projects/{{ title.id }}">{{ title.title }}</a>
       </li>
