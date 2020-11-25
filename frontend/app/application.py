@@ -81,6 +81,7 @@ def get_mentions(software_list):
 
 
 @application.route('/', methods=['GET'])
+@application.route('/software/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
     organizations = [
