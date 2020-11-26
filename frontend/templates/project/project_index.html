@@ -88,6 +88,52 @@
     </div>
   </section>
 </div>
+
+{% if mentions %}
+  <section id="latest_mentions">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-1-3 subtitle text-blue">
+          Latest mentions
+        </div>
+
+        <div class="col-2-3">
+          <ul>
+            {% for mention in mentions[:7] %}
+            <li>
+
+                {% if mention.url %}
+
+                <a href="{{mention.url}}" target="_blank" class="mention_content bg-light">
+                    <div class="mention_info">
+                        <div class="mention_title">{{mention.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
+                    </div>
+                    <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
+                </a>
+                {% else %}
+                <div class="mention_content bg-light">
+                    <div class="mention_info">
+                        <div class="mention_title">{{mention.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
+                        <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
+                    </div>
+                    <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
+                </div>
+                {% endif %}
+
+
+
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endif %}
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/project_index_scripts.js') }}"></script>
