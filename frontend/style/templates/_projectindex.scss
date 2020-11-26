@@ -1,0 +1,12 @@
+#project_index_page {
+  // Common
+  // -----------------------------------
+  section {
+    @include bp(max, $phablet) {
+      .subtitle {
+        text-align: center;
+      }
+    }
+  }
+
+}
