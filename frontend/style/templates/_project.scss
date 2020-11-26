@@ -613,12 +613,19 @@
       .gutter {
         display: flex;
         justify-content: space-between;
+        margin-top: auto;
+        font-size: 1.2rem;
       }
 
       .status {
         text-align: right;
       }
     }
+
+    .project-card {
+      border: 1px solid white;
+    }
+
   }
 
 // Related tools

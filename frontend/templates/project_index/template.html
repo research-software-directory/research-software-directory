@@ -79,7 +79,7 @@
         </div>
         <div class="col-3-4" id="project_list">
           <transition-group appear name="slide-fade" tag="div" class="row project-items">
-            <article v-for="project in pagedProjects" v-bind:key="project" class="project-item">
+            <article v-for="project in pagedProjects" v-bind:key="project" class="project-item project-card bg-light">
               <a :href="'/projects/' + (project.id)">
                 <div class="content">
                   <div class="thumb">
