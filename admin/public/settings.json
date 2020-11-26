@@ -344,8 +344,8 @@
           "help": "Caption for the project image",
           "sortIndex": 110
         },
-        "imageUrl": {
-          "help": "URL to the image",
+        "image": {
+          "help": "main image for the project page and the project thumbnail",
           "sortIndex": 100
         },
         "impact": {
