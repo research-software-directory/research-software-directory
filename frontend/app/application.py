@@ -240,13 +240,16 @@ def project_index_template():
     project_data = requests.get(url).json()
     projects = []
     for project in project_data:
+        status = project_status(project["dateStart"], project["dateEnd"])["status"]
         projects.append({"id": project["primaryKey"]["id"],
                          "title": project["title"],
                          "subtitle": project["subtitle"],
                          "imageUrl": project["imageUrl"],
-                         "updatedAt": project["updatedAt"],
                          "yearStart": get_year_from_date_string(project["dateStart"]),
-                         "yearEnd": get_year_from_date_string(project["dateEnd"])})
+                         "yearEnd": get_year_from_date_string(project["dateEnd"]),
+                         "status": status,
+                         "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
+                         })
     mentions = get_project_mentions(project_data)
 
     return flask.render_template('project_index/template.html',
@@ -340,7 +343,6 @@ def releases_filter(releases):
 @application.template_filter()
 def no_none_filter(l):
     return list(filter(lambda x: x is not None, l))
-
 
 @application.route('/favicon.ico')
 def serve_favicon():
