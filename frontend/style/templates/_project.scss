@@ -609,6 +609,15 @@
         font-size: 1.6rem;
         line-height: 1.4em;
       }
+
+      .gutter {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .status {
+        text-align: right;
+      }
     }
   }
 
