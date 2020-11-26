@@ -4,7 +4,7 @@
 <title>Projects | Research Software Directory</title>
 {%- endblock -%}
 {%- block content -%}
-<div id="project_page">
+<div id="project_index_page">
 	<section class="" id="title">
 		<div class="container">
 			<div class="row">
@@ -16,11 +16,30 @@
 		</div>
 	</section>
 
-	<section class="" id="related-projects">
+
+	<section id="search-project" class="row" v-cloak>
+		<div class="col-1-4">
+			<!-- <h2 class="subtitle text-blue">Find software</h2> -->
+		</div>
+
+		<div class="col-3-4 search-bar bg-light">
+			<input type='text' v-model="filter.search" id="input"
+				placeholder="Start typing here to search for software">
+			<div class="search-bar_button">
+				<svg class="icon">
+					<use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use>
+				</svg>
+			</div>
+			<!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
+		</div>
+	</section>
+
+
+	<section class="" id="project-list">
 		<div class="container">
 			<div class="row">
 				<div class="col-1-1">
-					<div class="row project-items">
+					<div class="row project-list-items">
 						{% for title in (titles  | sort(attribute="title")) %}
 						<article class="project-item col-1-2"><a href="/projects/{{ title.id }}">
 								<div class="content">
