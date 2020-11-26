@@ -70,6 +70,7 @@ def get_mentions(software_list, mention_accessor):
 
 
 @application.route('/', methods=['GET'])
+@application.route('/software/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
     organizations = [
@@ -77,7 +78,7 @@ def index():
     ]
     all_software = requests.get(url).json()
 
-    return flask.render_template('index_template.html',
+    return flask.render_template('software_index/template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
@@ -101,29 +102,10 @@ def software_product_page_template(software_id):
         return page_not_found("Unknown software id")
     set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
-    mention_types = {
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'book': {"singular": "Book", "plural": "Books"},
-        'bookSection': {"singular": "Book section", "plural": "Book sections"},
-        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
-        'dataset': {"singular": "Data set", "plural": "Data sets"},
-        'document': {"singular": "Document", "plural": "Documents"},
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
-        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
-        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'report': {"singular": "Report", "plural": "Reports"},
-        'thesis': {"singular": "Thesis", "plural": "Theses"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
-        'webpage': {"singular": "Web page", "plural": "Web pages"},
-    }
-
-    return flask.render_template('software/software_template.html',
+    return flask.render_template('software/template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
-                                 mention_types=mention_types,
+                                 mention_types=_get_mention_types(),
                                  )
 
 
@@ -202,32 +184,13 @@ def project_page_template(project_id):
 
     set_markdown(project_dictionary, ['description'])
 
-    mention_types = {
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'book': {"singular": "Book", "plural": "Books"},
-        'bookSection': {"singular": "Book section", "plural": "Book sections"},
-        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
-        'dataset': {"singular": "Data set", "plural": "Data sets"},
-        'document': {"singular": "Document", "plural": "Documents"},
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
-        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
-        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'report': {"singular": "Report", "plural": "Reports"},
-        'thesis': {"singular": "Thesis", "plural": "Theses"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
-        'webpage': {"singular": "Web page", "plural": "Web pages"},
-    }
-
     status = project_status(project_dictionary['dateStart'], project_dictionary['dateEnd'])
 
-    return flask.render_template('project/project_template.html',
+    return flask.render_template('project/template.html',
                                  project_id=project_id,
                                  template_data=project_dictionary,
                                  status=status,
-                                 mention_types=mention_types)
+                                 mention_types=_get_mention_types())
 
 
 def get_year_from_date_string(date_string):
@@ -247,7 +210,7 @@ def project_index_template():
                          "yearEnd": get_year_from_date_string(project["dateEnd"])})
     mentions = get_project_mentions(project_data)
 
-    return flask.render_template('project/project_index.html',
+    return flask.render_template('project_index/template.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
                                  mentions=mentions)
@@ -266,12 +229,12 @@ def remove_future_mentions(mentions):
 
 @application.route('/about')
 def about_template():
-    return htmlmin.minify(flask.render_template('about_template.html'))
+    return htmlmin.minify(flask.render_template('about/template.html'))
 
 
 @application.errorhandler(404)
 def page_not_found(e):
-    return flask.render_template('404_template.html',e=e,url=request.path)
+    return flask.render_template('404/template.html',e=e,url=request.path)
 
 
 def str_to_datetime(input_string):
@@ -385,3 +348,23 @@ def oai_pmh():
         d = os.path.join(oaipmh_cache_dir,'datacite4')
         f = 'record-' + identifier.split(':')[-1] + '.xml'
         return flask.send_from_directory(d, f, as_attachment=False)
+
+def _get_mention_types():
+    return {
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'book': {"singular": "Book", "plural": "Books"},
+        'bookSection': {"singular": "Book section", "plural": "Book sections"},
+        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
+        'dataset': {"singular": "Data set", "plural": "Data sets"},
+        'document': {"singular": "Document", "plural": "Documents"},
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
+        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
+        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'report': {"singular": "Report", "plural": "Reports"},
+        'thesis': {"singular": "Thesis", "plural": "Theses"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'webpage': {"singular": "Web page", "plural": "Web pages"},
+    }
