@@ -280,7 +280,10 @@ def human_name_filter(person):
     name = person.get('givenNames') or ''
     if 'nameParticle' in person and person['nameParticle']:
         name += ' ' + person.get('nameParticle', '')
-    return name + ' ' + person.get('familyNames', '')
+    name += ' ' + person.get('familyNames', '')
+    if 'nameSuffix' in person and person['nameSuffix']:
+        name += ' ' + person.get('nameSuffix', '')
+    return name
 
 
 @application.template_filter()
