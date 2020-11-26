@@ -21,9 +21,6 @@ const update = {
     tags: [],
     team: []
   },
-  $rename: {
-    image: 'imageUrl'
-  },
   $unset: {
     corporateUrl: '',
     principalInvestigator: ''
