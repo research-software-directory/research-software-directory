@@ -102,29 +102,10 @@ def software_product_page_template(software_id):
         return page_not_found("Unknown software id")
     set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
-    mention_types = {
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'book': {"singular": "Book", "plural": "Books"},
-        'bookSection': {"singular": "Book section", "plural": "Book sections"},
-        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
-        'dataset': {"singular": "Data set", "plural": "Data sets"},
-        'document': {"singular": "Document", "plural": "Documents"},
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
-        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
-        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'report': {"singular": "Report", "plural": "Reports"},
-        'thesis': {"singular": "Thesis", "plural": "Theses"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
-        'webpage': {"singular": "Web page", "plural": "Web pages"},
-    }
-
     return flask.render_template('software/template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
-                                 mention_types=mention_types,
+                                 mention_types=_get_mention_types(),
                                  )
 
 
@@ -180,17 +161,17 @@ def project_status(start_str, end_str):
     today = datetime.now().replace(tzinfo=None)
     if end < today:
         return {
-            'status': 'Completed',
+            'status': 'Finished',
             'progress': 1
         }
     elif start > today:
         return {
-            'status': 'Granted',
+            'status': 'Starting',
             'progress': 0
         }
     else:
         return {
-            'status': 'Active',
+            'status': 'Running',
             'progress': (today - start ) / (end - start)
         }
 
@@ -203,32 +184,13 @@ def project_page_template(project_id):
 
     set_markdown(project_dictionary, ['description'])
 
-    mention_types = {
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'book': {"singular": "Book", "plural": "Books"},
-        'bookSection': {"singular": "Book section", "plural": "Book sections"},
-        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
-        'dataset': {"singular": "Data set", "plural": "Data sets"},
-        'document': {"singular": "Document", "plural": "Documents"},
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
-        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
-        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'report': {"singular": "Report", "plural": "Reports"},
-        'thesis': {"singular": "Thesis", "plural": "Theses"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
-        'webpage': {"singular": "Web page", "plural": "Web pages"},
-    }
-
     status = project_status(project_dictionary['dateStart'], project_dictionary['dateEnd'])
 
     return flask.render_template('project/template.html',
                                  project_id=project_id,
                                  template_data=project_dictionary,
                                  status=status,
-                                 mention_types=mention_types)
+                                 mention_types=_get_mention_types())
 
 
 def get_year_from_date_string(date_string):
@@ -251,10 +213,12 @@ def project_index_template():
                          "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
                          })
     mentions = get_project_mentions(project_data)
+    status_choices = ['Starting','Running', 'Finished']
 
     return flask.render_template('project_index/template.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
+                                 status_choices_json=flask.Markup(json.dumps(status_choices)),
                                  mentions=mentions)
 
 
@@ -389,3 +353,23 @@ def oai_pmh():
         d = os.path.join(oaipmh_cache_dir,'datacite4')
         f = 'record-' + identifier.split(':')[-1] + '.xml'
         return flask.send_from_directory(d, f, as_attachment=False)
+
+def _get_mention_types():
+    return {
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'book': {"singular": "Book", "plural": "Books"},
+        'bookSection': {"singular": "Book section", "plural": "Book sections"},
+        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
+        'dataset': {"singular": "Data set", "plural": "Data sets"},
+        'document': {"singular": "Document", "plural": "Documents"},
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
+        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
+        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'report': {"singular": "Report", "plural": "Reports"},
+        'thesis': {"singular": "Thesis", "plural": "Theses"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'webpage': {"singular": "Web page", "plural": "Web pages"},
+    }

@@ -8,7 +8,7 @@ var firstBy=function(){function n(n){return n}function t(n){return"string"==type
 /*** https://github.com/component/debounce ***/
 function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(t,l-c):(e=null,u||(i=n.apply(o,a),o=a=null))}var e,a,o,r,i;null==l&&(l=100);var c=function(){o=this,a=arguments,r=Date.now();var c=u&&!e;return e||(e=setTimeout(t,l)),c&&(i=n.apply(o,a),o=a=null),i};return c.clear=function(){e&&(clearTimeout(e),e=null)},c.flush=function(){e&&(i=n.apply(o,a),o=a=null,clearTimeout(e),e=null)},c}
 
-function initOverview(projectsData) {
+function initOverview(projectsData, statusChoicesData) {
     var device = {
         phone: 'phone',
         tablet: 'tablet',
@@ -19,6 +19,12 @@ function initOverview(projectsData) {
         return window.innerWidth > 1000 ? device.desktop : (window.innerWidth > 700 ? device.tablet : device.phone);
     }
 
+    function filterStatuses(statuses) {
+        return function(project) {
+            return statuses.length === 0 || statuses.includes(project.status);
+        }
+    }
+
     var v = new Vue({
         el: '#project_index_page',
         delimiters: ["[[", "]]"],
@@ -26,18 +32,68 @@ function initOverview(projectsData) {
             log: console.log,
             showPage: function (n) {
                 return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
+            },
+            filtersBeforeEnter: function (el) {
+                el.style.opacity = 0;
+                el.style.padding = 0;
+                el.style.maxHeight = 0;
+            },
+            filtersEnter: function(el, done) {
+                var delay = el.dataset.index * 20;
+                setTimeout(function () {
+                    el.style.opacity = 1;
+                    el.style.maxHeight = '5em';
+                    el.style.removeProperty('padding');
+                }, delay );
+            },
+            filtersBeforeLeave: function (el) {
+                el.style.opacity = 1;
+                el.style.maxHeight = '5em';
+            },
+            filtersLeave: function(el, done) {
+                var delay = el.dataset.index * 20;
+                setTimeout(function () {
+                    el.style.opacity = 0;
+                    el.style.maxHeight = 0;
+                    el.style.padding = 0;
+                }, delay );
             }
         },
         data: {
             device: getDevice(),
             page: 1,
             projects: projectsData,
-            mobShowFilters: false
+            statusChoices: statusChoicesData,
+            mobShowFilters: false,
+            filter: {
+                statuses: []
+            },
+            statusesFilterOpen: getDevice() !== device.phone,
         },
         computed: {
+            statusesWithCount: function() {
+                var initialValue = {};
+                this.statusChoices.forEach(name => {
+                    initialValue[name] = 0;
+                });
+                var counts = this.filteredProjects.map(d => d.status).reduce(
+                    (allStatuses, status) => {
+                        allStatuses[status]++;
+                        return allStatuses;
+                    },
+                    initialValue
+                );
+                return this.statusChoices.map(name => {
+                    return {
+                        name,
+                        count: counts[name]
+                    }
+                });
+            },
             filteredProjects: function () {
-                // TODO apply filters
-                return this.projects;
+                return this.projects
+                    .filter(filterStatuses(this.filter.statuses))
+                ;
             },
             sortedProjects: function () {
                 // TODO implement sort
