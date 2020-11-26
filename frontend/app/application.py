@@ -266,12 +266,12 @@ def remove_future_mentions(mentions):
 
 @application.route('/about')
 def about_template():
-    return htmlmin.minify(flask.render_template('about_template.html'))
+    return htmlmin.minify(flask.render_template('about/template.html'))
 
 
 @application.errorhandler(404)
 def page_not_found(e):
-    return flask.render_template('404_template.html',e=e,url=request.path)
+    return flask.render_template('404/template.html',e=e,url=request.path)
 
 
 def str_to_datetime(input_string):
