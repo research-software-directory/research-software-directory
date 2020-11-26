@@ -179,17 +179,17 @@ def project_status(start_str, end_str):
     today = datetime.now().replace(tzinfo=None)
     if end < today:
         return {
-            'status': 'Completed',
+            'status': 'Finished',
             'progress': 1
         }
     elif start > today:
         return {
-            'status': 'Granted',
+            'status': 'Starting',
             'progress': 0
         }
     else:
         return {
-            'status': 'Active',
+            'status': 'Running',
             'progress': (today - start ) / (end - start)
         }
 
@@ -239,12 +239,15 @@ def project_index_template():
     project_data = requests.get(url).json()
     projects = []
     for project in project_data:
+        status = project_status(project["dateStart"], project["dateEnd"])["status"]
         projects.append({"id": project["primaryKey"]["id"],
                          "title": project["title"],
                          "subtitle": project["subtitle"],
                          "imageUrl": project["imageUrl"],
                          "yearStart": get_year_from_date_string(project["dateStart"]),
-                         "yearEnd": get_year_from_date_string(project["dateEnd"])})
+                         "yearEnd": get_year_from_date_string(project["dateEnd"]),
+                         "status": status,
+                         })
     mentions = get_project_mentions(project_data)
 
     return flask.render_template('project/project_index.html',
