@@ -67,10 +67,15 @@ Open a web browser to verify that everything works as it should. Below are some 
 
 ### Frontend
 
-- [``http://localhost``](http://localhost) should show the index page to the local instance of the Research Software Directory
-- [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
+- [``http://localhost``](http://localhost) should show the software index page to the local instance of the Research Software Directory
+- [``http://localhost/projects``](http://localhost/projects) should show the project index page to the local instance of the Research Software Directory
+- [``http://localhost/projects/``](http://localhost/projects/)  should show the project index page to the local instance of the Research Software Directory
 - [``http://localhost/projects/764``](http://localhost/projects/764) should show a project page (here: ABC-MUSE) in the local instance of the Research Software Directory
+- [``http://localhost/software``](http://localhost/software) should show the software index page to the local instance of the Research Software Directory
+- [``http://localhost/software/``](http://localhost/software/) should show the software index page to the local instance of the Research Software Directory
+- [``http://localhost/software/xenon``](http://localhost/software/xenon) should show a product page (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost/graphs``](http://localhost/graphs) should show you some integrated statistics of all the packages in the local instance of the Research Software Directory
+- [``http://localhost/about``](http://localhost/about) should show the about page in the local instance of the Research Software Directory
 
 ### Admin interface
 
@@ -83,6 +88,7 @@ Open a web browser to verify that everything works as it should. Below are some 
 - [``http://localhost/api/project_cache``](http://localhost/api/project_cache) should show a JSON representation of all projects in the local instance of the Research Software Directory, with all references resolved
 - [``http://localhost/api/project``](http://localhost/api/project) should show a JSON representation of all projects in the local instance of the Research Software Directory
 - [``http://localhost/api/release``](http://localhost/api/release) should show a JSON representation of all releases in the local instance of the Research Software Directory
+- [``http://localhost/api/schema``](http://localhost/api/schema) should show the schema for the local instance of the Research Software Directory
 - [``http://localhost/api/software_cache``](http://localhost/api/software_cache) should show a JSON representation of all software in the local instance of the Research Software Directory, with all references resolved
 - [``http://localhost/api/software/xenon``](http://localhost/api/software/xenon) should show a JSON representation of a product (here: Xenon) in the local instance of the Research Software Directory
 - [``http://localhost/api/software``](http://localhost/api/software) should show a JSON representation of all software in the local instance of the Research Software Directory
