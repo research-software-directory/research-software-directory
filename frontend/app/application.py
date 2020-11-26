@@ -249,10 +249,12 @@ def project_index_template():
                          "status": status,
                          })
     mentions = get_project_mentions(project_data)
+    status_choices = ['Starting','Running', 'Finished']
 
     return flask.render_template('project/project_index.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
+                                 status_choices_json=flask.Markup(json.dumps(status_choices)),
                                  mentions=mentions)
 
 
