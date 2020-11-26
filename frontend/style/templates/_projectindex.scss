@@ -72,3 +72,70 @@
   }
 
 }
+
+// Search
+// -----------------------------------
+#search-project {
+  line-height: 6rem;
+  margin: 2.5em 0 2em;
+
+  .search-bar {
+    height: 6rem;
+    font-size: 1.8rem;
+    display: flex;
+    position: relative;
+
+    &_button {
+      position: absolute;
+
+      right: 0;
+      cursor: pointer;
+      background-color: $dark;
+      height: 6rem;
+      width: 6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        transform: scale(0.9);
+        fill: white;
+        transition: transform 0.17s ease;
+      }
+    }
+
+    @include bp(max, $tablet) {
+      font-size: 1.2rem;
+    }
+
+    input[type="text"] {
+      font-size: inherit;
+      padding: 0 1em;
+      height: 100%;
+      z-index: +1;
+      flex: 1;
+      background-color: transparent;
+      border: none;
+      vertical-align: middle;
+      transition: background-color 0.3s ease;
+
+      &:focus {
+        outline: 0;
+        background-color: darken($light, 6%);
+        margin-right: 6rem;
+      }
+    }
+
+    &:hover {
+      .search-bar_button {
+        background-color: $primaryColor;
+
+        .icon {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
