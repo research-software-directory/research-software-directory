@@ -483,6 +483,11 @@
           "label": "Updated by",
           "readonly": true,
           "sortIndex": 1004
+        },
+        "url": {
+          "label": "Organization URL",
+          "readonly": false,
+          "sortIndex": 300
         }
       }
     }

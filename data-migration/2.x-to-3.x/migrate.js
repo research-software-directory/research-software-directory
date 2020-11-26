@@ -38,22 +38,6 @@ const migrateProjectCollection = () => {
   print('migrating project collection...done')
 }
 
-const migrateOrganizationCollection = () => {
-  print('migrating organization collection...')
-
-  const query = {}
-
-  const update = {
-    $unset: {
-      url: ''
-    }
-  }
-
-  db.organization.updateMany(query, update)
-
-  print('migrating organization collection...done')
-}
-
 const harmonizeProjectUrls = () => {
   // Make links to corporate site uniform
   // - only https links
@@ -84,4 +68,3 @@ const harmonizeProjectUrls = () => {
 
 migrateProjectCollection()
 harmonizeProjectUrls()
-migrateOrganizationCollection()

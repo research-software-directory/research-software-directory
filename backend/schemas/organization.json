@@ -26,6 +26,10 @@
         },
         "updatedBy": {
             "type": "string"
+        },
+        "url": {
+            "format": "uri",
+            "type": "string"
         }
     },
     "required": [
