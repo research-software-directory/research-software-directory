@@ -46,38 +46,27 @@ def serialize_software_list(swlist):
     return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
 
 
-def get_mentions(software_list):
-    # 1. collect all related mentions from the individual software pages into 1
-    #    dict, using the database's primary key as key to ensure each item is unique
-    # 2. omit items from the list that are in the future (because of the date somebody entered)
-    # 3. sort the list by date
-    # 4. use slicing in index_template.html to display the top N items
+def get_software_mentions(software_list):
+    mention_accessor = lambda s: s['related']['mentions']
+    return get_mentions(software_list, mention_accessor)
 
+
+def get_mentions(software_list, mention_accessor):
     if software_list is None:
         return []
-    else:
-        now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
-        mentions = dict()
-        for software in software_list:
-            for mention in software['related']['mentions']:
 
-                # check that all the necessary information is present
-                requireds = ['date', 'primaryKey', 'url', 'title']
-                if False in [required in mention['foreignKey'].keys() for required in requireds]: continue
+    mentions = dict()
+    for software in software_list:
+        for mention in mention_accessor(software):
+            mention_id = mention['foreignKey']['primaryKey']['id']
+            mentions[mention_id] = {
+                'date': (mention['foreignKey']['date']),
+                'title': (mention['foreignKey']['title']),
+                'url': (mention['foreignKey'].get('url'))  # url could be missing
+            }
 
-                date = mention['foreignKey']['date']
-                key = mention['foreignKey']['primaryKey']['id']
-                url = mention['foreignKey']['url']
-                title = mention['foreignKey']['title']
-
-                # check that the item's date is somwhere in the past
-                if date < now:
-                    mentions[key] = {
-                        'date': date,
-                        'title': title,
-                        'url': url
-                    }
-        return sorted(mentions.values(), key=lambda mention: mention['date'], reverse=True)
+    past_mentions = remove_future_mentions(mentions)
+    return sorted(past_mentions, key=lambda m: m['date'], reverse=True)
 
 
 @application.route('/', methods=['GET'])
@@ -92,7 +81,7 @@ def index():
                                  template_data=all_software,
                                  data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
-                                 mentions=get_mentions(all_software),
+                                 mentions=get_software_mentions(all_software),
                                  )
 
 
@@ -213,15 +202,28 @@ def project_index_template():
     projects = []
     for project in project_data:
         projects.append({"id": project["primaryKey"]["id"],
-                       "title": project["title"],
-                       "subtitle": project["subtitle"],
-                       "imageUrl": project["imageUrl"],
-                       "yearStart": get_year_from_date_string(project["dateStart"]),
-                       "yearEnd": get_year_from_date_string(project["dateEnd"])})
+                         "title": project["title"],
+                         "subtitle": project["subtitle"],
+                         "imageUrl": project["imageUrl"],
+                         "yearStart": get_year_from_date_string(project["dateStart"]),
+                         "yearEnd": get_year_from_date_string(project["dateEnd"])})
+    mentions = get_project_mentions(project_data)
 
     return flask.render_template('project/project_index.html',
                                  data_json=flask.Markup(json.dumps(projects)),
-                                 projects=projects)
+                                 projects=projects,
+                                 mentions=mentions)
+
+
+def get_project_mentions(projects):
+    mention_accessor = lambda o:  o['impact'] + o['output']
+    return get_mentions(projects, mention_accessor)
+
+
+def remove_future_mentions(mentions):
+    now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
+    past_mentions = [mention for mention in mentions.values() if mention['date'] < now]
+    return past_mentions
 
 
 @application.route('/about')

@@ -1,0 +1,33 @@
+{
+  "title": "Chemical Informatics for Metabolite Identification and Biochemical Network Reconstruction",
+  "subtitle": "Chemical informatics for metabolite identification and biochemical network reconstruction",
+  "primaryKey": {
+    "collection": "project",
+    "id": "816"
+  },
+  "output": [],
+  "impact": [],
+  "createdAt": "2020-04-21T17:04:07Z",
+  "updatedAt": "2020-04-21T17:04:07Z",
+  "createdBy": "Scraper",
+  "updatedBy": "Scraper",
+  "callUrl": "https://doi.org/FIXME",
+  "codeUrl": "https://github.com/FIXME",
+  "dataManagementPlanUrl": "",
+  "dateEnd": "1901-01-01T00:00:00Z",
+  "dateStart": "1900-01-01T00:00:00Z",
+  "description": "FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME",
+  "grantId": "FIXME",
+  "homeUrl": "https://fixme.org",
+  "imageCaption": "this is the image caption",
+  "imageUrl": "http://www.esciencecenter.nl/wp-content/uploads/2020/02/Chemical-Informatics-for-Metabolite-Identification-and-Biochemical-Network-Reconstruction-1024x683.jpg",
+  "isPublished": false,
+  "related": {
+    "organizations": [],
+    "projects": [],
+    "software": []
+  },
+  "softwareSustainabilityPlanUrl": "",
+  "tags": [],
+  "team": []
+}
