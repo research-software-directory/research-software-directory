@@ -205,7 +205,7 @@ def project_index_template():
         projects.append({"id": project["primaryKey"]["id"],
                          "title": project["title"],
                          "subtitle": project["subtitle"],
-                         "imageUrl": project["imageUrl"],
+                         "image": project["image"],
                          "yearStart": get_year_from_date_string(project["dateStart"]),
                          "yearEnd": get_year_from_date_string(project["dateEnd"])})
     mentions = get_project_mentions(project_data)
