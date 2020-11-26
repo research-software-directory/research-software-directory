@@ -41,7 +41,35 @@
       <div class="row">
         <div class="col-1-4" id="filters">
           <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
-            {# TODO add filters #}
+            <div class="filters_columns">
+              <div class="filter-group">
+                <div class="filter-group_title" @click="statusesFilterOpen = !statusesFilterOpen">
+                  Status
+                  <span class="toggle-button">
+                    [[ statusesFilterOpen ? '-' : '+' ]]
+                  </span>
+                </div>
+
+                <transition-group
+                  tag="ul"
+                  class="filter-list"
+                  v-bind:css="false"
+                  v-on:before-enter="filtersBeforeEnter"
+                  v-on:enter="filtersEnter"
+                  v-on:before-leave="filtersBeforeLeave"
+                  v-on:leave="filtersLeave"
+                >
+                  <li v-for="(status, index) in statusesWithCount" v-bind:data-index="index" :key="status" v-if="statusesFilterOpen" :class="status.count === 0 ? 'empty' : ''">
+                    <label :for="status.name" class="checkbox">
+                      <input type="checkbox" name="checkbox" :id="status.name" v-model="filter.statuses" :value="status.name">
+                      <div class="custom-checkbox"></div>
+                      <span class="text">[[status.name]] <strong>([[ status.count ]])</strong></span>
+                    </label>
+                  </li>
+                </transition-group>
+
+              </div>
+            </div>
           </div>
 
           <div class="toggle-filters" @click="mobShowFilters = !mobShowFilters">
@@ -148,6 +176,6 @@
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/project_index_scripts.js') }}"></script>
 <script>
-  initOverview({{data_json}});
+  initOverview({{data_json}}, {{status_choices_json}});
 </script>
 {%- endblock -%}
