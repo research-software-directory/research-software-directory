@@ -18,6 +18,8 @@
         "pattern": "^https://3.92.182.176$"
     }, {
         "pattern": "^https://doi.org/<yourdoi>$"
+    }, {
+        "pattern": "^https://github.com/research-software-directory/research-software-directory/blob/3.0.0/docs/dev.md#verifying-the-local-installation$"
     }],
     "replacementPatterns": [{
         "pattern": "^/",
