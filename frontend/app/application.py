@@ -70,6 +70,7 @@ def get_mentions(software_list, mention_accessor):
 
 
 @application.route('/', methods=['GET'])
+@application.route('/software/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
     organizations = [
@@ -77,7 +78,7 @@ def index():
     ]
     all_software = requests.get(url).json()
 
-    return flask.render_template('index_template.html',
+    return flask.render_template('software_index/template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
@@ -120,7 +121,7 @@ def software_product_page_template(software_id):
         'webpage': {"singular": "Web page", "plural": "Web pages"},
     }
 
-    return flask.render_template('software/software_template.html',
+    return flask.render_template('software/template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
                                  mention_types=mention_types,
@@ -223,7 +224,7 @@ def project_page_template(project_id):
 
     status = project_status(project_dictionary['dateStart'], project_dictionary['dateEnd'])
 
-    return flask.render_template('project/project_template.html',
+    return flask.render_template('project/template.html',
                                  project_id=project_id,
                                  template_data=project_dictionary,
                                  status=status,
@@ -251,7 +252,7 @@ def project_index_template():
     mentions = get_project_mentions(project_data)
     status_choices = ['Starting','Running', 'Finished']
 
-    return flask.render_template('project/project_index.html',
+    return flask.render_template('project_index/template.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
                                  status_choices_json=flask.Markup(json.dumps(status_choices)),
@@ -271,12 +272,12 @@ def remove_future_mentions(mentions):
 
 @application.route('/about')
 def about_template():
-    return htmlmin.minify(flask.render_template('about_template.html'))
+    return htmlmin.minify(flask.render_template('about/template.html'))
 
 
 @application.errorhandler(404)
 def page_not_found(e):
-    return flask.render_template('404_template.html',e=e,url=request.path)
+    return flask.render_template('404/template.html',e=e,url=request.path)
 
 
 def str_to_datetime(input_string):
