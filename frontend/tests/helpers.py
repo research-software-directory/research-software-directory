@@ -1,8 +1,11 @@
+import json
 import pprint
 import re
 import pytest
 from py_w3c.validators.html.validator import HTMLValidator
 
+def get_json_mock(name):
+    return json.loads(get_mock(name))
 
 def get_mock(name):
     with open("mocks/%s" % name) as f:
