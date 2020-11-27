@@ -25,11 +25,19 @@ function initOverview(projectsData, statusChoicesData) {
         }
     }
 
+    function filterSearch(searchTerm) {
+        return function (project) {
+            if (!searchTerm) return true;
+            var fields = project.title + " " + project.subtitle;
+            return fields.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        }
+    }
+
     var v = new Vue({
         el: '#project_index_page',
         delimiters: ["[[", "]]"],
         methods: {
-            log: console.log,
+            log: console.log,           
             showPage: function (n) {
                 return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
             },
@@ -66,6 +74,7 @@ function initOverview(projectsData, statusChoicesData) {
             statusChoices: statusChoicesData,
             mobShowFilters: false,
             filter: {
+                search: '',
                 statuses: []
             },
             statusesFilterOpen: getDevice() !== device.phone,
@@ -93,7 +102,7 @@ function initOverview(projectsData, statusChoicesData) {
             filteredProjects: function () {
                 return this.projects
                     .filter(filterStatuses(this.filter.statuses))
-                ;
+                    .filter(filterSearch(this.filter.search));
             },
             sortedProjects: function () {
                 // TODO implement sort
@@ -122,6 +131,13 @@ function initOverview(projectsData, statusChoicesData) {
             },
             pageSize: {
                 handler: function () { this.page = 1; }
+            },
+            filter: {
+                handler: function () { this.page = 1; },
+                deep: true
+            },
+            'filter.search': {
+                handler: function() { gaSearch(this.filter.search); }
             }
         }
     });
