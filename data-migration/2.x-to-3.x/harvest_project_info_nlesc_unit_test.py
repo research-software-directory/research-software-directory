@@ -1,6 +1,6 @@
 import unittest
 
-import esciencecenter_2_1_x_to_3_x as esciencecenter
+import harvest_project_info_nlesc as esciencecenter
 import requests
 from zotero import generate_jwt_token
 
