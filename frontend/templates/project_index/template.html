@@ -20,26 +20,28 @@
         <div class="col-1-4">
         </div>
         <div class="col-3-4">
-          <p class="poweredby">This website is powered by the <a href="https://github.com/research-software-directory/research-software-directory">Research Software Directory</a> — the content management system for research software.</p>
+          <p class="poweredby">This website is powered by the <a
+              href="https://github.com/research-software-directory/research-software-directory">Research Software
+              Directory</a> — the content management system for research software.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section>
-  <div id="search-project" class="row" v-cloak>
-    <div class="col-1-4">
-      <!-- <h2 class="subtitle text-blue">Find software</h2> -->
-    </div>
-
-    <div class="col-3-4 search-bar bg-light">
-      <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for project">
-      <div class="search-bar_button">
-        <svg class="icon" ><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use></svg>
+    <div id="search-project" class="row" v-cloak>
+      <div class="col-1-4">
       </div>
-      <!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
+
+      <div class="col-3-4 search-bar bg-light">
+        <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for project">
+        <div class="search-bar_button">
+          <svg class="icon">
+            <use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use>
+          </svg>
+        </div>
+      </div>
     </div>
-  </div>
   </section>
 
   <noscript>
@@ -66,18 +68,13 @@
                   </span>
                 </div>
 
-                <transition-group
-                  tag="ul"
-                  class="filter-list"
-                  v-bind:css="false"
-                  v-on:before-enter="filtersBeforeEnter"
-                  v-on:enter="filtersEnter"
-                  v-on:before-leave="filtersBeforeLeave"
-                  v-on:leave="filtersLeave"
-                >
-                  <li v-for="(status, index) in statusesWithCount" v-bind:data-index="index" :key="status" v-if="statusesFilterOpen" :class="status.count === 0 ? 'empty' : ''">
+                <transition-group tag="ul" class="filter-list" v-bind:css="false" v-on:before-enter="filtersBeforeEnter"
+                  v-on:enter="filtersEnter" v-on:before-leave="filtersBeforeLeave" v-on:leave="filtersLeave">
+                  <li v-for="(status, index) in statusesWithCount" v-bind:data-index="index" :key="status"
+                    v-if="statusesFilterOpen" :class="status.count === 0 ? 'empty' : ''">
                     <label :for="status.name" class="checkbox">
-                      <input type="checkbox" name="checkbox" :id="status.name" v-model="filter.statuses" :value="status.name">
+                      <input type="checkbox" name="checkbox" :id="status.name" v-model="filter.statuses"
+                        :value="status.name">
                       <div class="custom-checkbox"></div>
                       <span class="text">[[status.name]] <strong>([[ status.count ]])</strong></span>
                     </label>
@@ -120,15 +117,11 @@
             </span>
 
             <template v-for="i in lastPage">
-              <span
-              v-if="showPage(i)"
-              @click="page = i"
-              :class="{ active: page === i }"
-              >
-              [[ i ]]
+              <span v-if="showPage(i)" @click="page = i" :class="{ active: page === i }">
+                [[ i ]]
               </span>
               <span class="gap" v-else-if="i !== lastPage && showPage(i-1)">
-              ...
+                ...
               </span>
             </template>
 
@@ -136,7 +129,7 @@
               &gt;
             </span>
 
-            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -144,54 +137,58 @@
 </div>
 
 {% if mentions %}
-  <section id="latest_mentions">
-    <div class="container">
-      <div class="row">
+<section id="latest_mentions">
+  <div class="container">
+    <div class="row">
 
-        <div class="col-1-3 subtitle text-blue">
-          Latest mentions
-        </div>
-
-        <div class="col-2-3">
-          <ul>
-            {% for mention in mentions[:7] %}
-            <li>
-
-                {% if mention.url %}
-
-                <a href="{{mention.url}}" target="_blank" class="mention_content bg-light">
-                    <div class="mention_info">
-                        <div class="mention_title">{{mention.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
-                        <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
-                    </div>
-                    <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
-                </a>
-                {% else %}
-                <div class="mention_content bg-light">
-                    <div class="mention_info">
-                        <div class="mention_title">{{mention.title}}<svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use></svg></div>
-                        <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
-                    </div>
-                    <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
-                </div>
-                {% endif %}
-
-
-
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-
+      <div class="col-1-3 subtitle text-blue">
+        Latest mentions
       </div>
+
+      <div class="col-2-3">
+        <ul>
+          {% for mention in mentions[:7] %}
+          <li>
+
+            {% if mention.url %}
+
+            <a href="{{mention.url}}" target="_blank" class="mention_content bg-light">
+              <div class="mention_info">
+                <div class="mention_title">{{mention.title}}<svg class="icon">
+                    <use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use>
+                  </svg></div>
+                <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
+              </div>
+              <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
+            </a>
+            {% else %}
+            <div class="mention_content bg-light">
+              <div class="mention_info">
+                <div class="mention_title">{{mention.title}}<svg class="icon">
+                    <use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-external"></use>
+                  </svg></div>
+                <div class="mention_post-date">{{ mention.date | human_date_filter }}</div>
+              </div>
+              <!--<div class="mention_location">{{ mention.meetingName or '' }}</div>-->
+            </div>
+            {% endif %}
+
+
+
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 {% endif %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/project_index_scripts.js') }}"></script>
 <script>
-  initOverview({{data_json}}, {{status_choices_json}});
+  initOverview({{ data_json }}, {{ status_choices_json }});
 </script>
 {%- endblock -%}
