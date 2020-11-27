@@ -626,14 +626,13 @@
     }
 }
 
-}
-
 
 #search-project {
 
   line-height: 6rem;
-  margin: 2.5em 0 2em; 
-
+  margin: 2.5em 0 auto; 
+  max-width: $contentWidth;
+  padding: 0 40px;
   
   .search-bar {
     height: 6rem;
@@ -695,4 +694,6 @@
     }
 
   }
+}
+
 }
