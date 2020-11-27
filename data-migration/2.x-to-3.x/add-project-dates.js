@@ -684,5 +684,6 @@ data.forEach((d) => {
     }
   }
 
+  print('Updating project start and end dates for ' + d.slug)
   db.project.update(query, update)
 })
