@@ -1,13 +1,13 @@
 import base64
 import datetime
+import io
 import json
 import logging
+import math
 import re
 import sys
 import time
 import uuid
-import io
-import math
 
 import requests
 from bs4 import BeautifulSoup
@@ -191,10 +191,7 @@ def get_project_image(soup, maxwidth=1024, maxheight=600):
     figures = soup.find_all("figure")
     if len(figures) == 0:
         print("Doenst have a <figure> tag, returning dummy data")
-        return {
-            "data": "",
-            "mimeType": "image/jpg"
-        }
+        return {"data": "", "mimeType": "image/jpg"}
 
     src = figures[0].find("img").attrs.get("data-full-url", None)
     if src is None:
@@ -202,10 +199,7 @@ def get_project_image(soup, maxwidth=1024, maxheight=600):
         src = figures[0].find("img").attrs.get("src", None)
         if src is None:
             print("<img> didnt have an src either, returning dummy data instead")
-            return {
-                "data": "",
-                "mimeType": "image/jpg"
-            }
+            return {"data": "", "mimeType": "image/jpg"}
 
     response = requests.get(src)
     if not response.ok:
