@@ -65,7 +65,7 @@ terminal from the previous section):
 ```shell
 python3 -m virtualenv -p python3 venv3
 source venv3/bin/activate
-pip install -r ./harvesting/requirements.txt
+pip install -r ./data-migration/2.x-to-3.x/requirements.txt
 source .env
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 export PYTHONPATH=$PYTHONPATH:`pwd`/harvesting
