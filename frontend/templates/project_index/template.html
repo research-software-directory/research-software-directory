@@ -26,6 +26,22 @@
     </div>
   </section>
 
+  <section>
+  <div id="search-project" class="row" v-cloak>
+    <div class="col-1-4">
+      <!-- <h2 class="subtitle text-blue">Find software</h2> -->
+    </div>
+
+    <div class="col-3-4 search-bar bg-light">
+      <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for project">
+      <div class="search-bar_button">
+        <svg class="icon" ><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use></svg>
+      </div>
+      <!--<input type="button" @click="filter.search = ''" class="search_form" id="reset" value="reset" >-->
+    </div>
+  </div>
+  </section>
+
   <noscript>
     <div id="noscript_projects" class="row">
       {%- for title in (projects  | sort(attribute="title")) -%}
