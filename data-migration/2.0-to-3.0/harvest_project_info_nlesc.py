@@ -208,7 +208,7 @@ def get_project_image(soup, maxwidth=1024, maxheight=600):
     img_bytes = io.BytesIO(response.content)
 
     img = Image.open(img_bytes)
-    fmt = img.format
+    fmt = img.format.lower()
     img = crop_to_aspect_ratio()
     img = resize()
 
