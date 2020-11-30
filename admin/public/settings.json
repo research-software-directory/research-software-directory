@@ -345,7 +345,7 @@
           "sortIndex": 110
         },
         "image": {
-          "help": "main image for the project page and the project thumbnail",
+          "help": "Main image for the project page and the project thumbnail. Images should be 1024 pixels wide by 600 pixels tall.",
           "sortIndex": 100
         },
         "impact": {
