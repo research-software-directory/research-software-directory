@@ -1,7 +1,6 @@
 /* global db */
 
 const migrate = () => {
-
   print('Migrating data 2.0 to 3.0')
 
   const query = {}
@@ -18,7 +17,7 @@ const migrate = () => {
       dateStart: '1900-01-01',
       description: 'FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME',
       grantId: 'FIXME',
-      image: {'data': '', 'mimeType': 'image/jpg'},
+      image: { data: '', mimeType: 'image/jpg' },
       isPublished: true,
       'related.organizations': [],
       'related.projects': [],
