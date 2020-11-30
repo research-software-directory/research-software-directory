@@ -172,6 +172,27 @@
             "type": "array",
             "uniqueItems": true
         },
+        "topics": {
+            "items": {
+                "enum": [
+                    "Astronomy",
+                    "Climate and weather",
+                    "Humanities",
+                    "Chemistry",
+                    "Material science",
+                    "Law",
+                    "Ecology",
+                    "Life science",
+                    "Psychology",
+                    "Physics",
+                    "Computer science",
+                    "Health"
+                ],
+                "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
         "team": {
             "items": {
                 "additionalProperties": false,
@@ -254,6 +275,7 @@
         "tags",
         "team",
         "title",
+        "topics",
         "updatedAt",
         "updatedBy"
     ],
