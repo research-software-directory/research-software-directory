@@ -89,7 +89,9 @@ class eScienceCenterTest(unittest.TestCase):
         self.assertEqual(expected_value, actual_value)
 
     def test_fix_role(self):
-        actual_value = harvest_project_info_nlesc.fix_role("COMMUNITY MANAGER & TECHNICAL LEAD")
+        actual_value = harvest_project_info_nlesc.fix_role(
+            "COMMUNITY MANAGER & TECHNICAL LEAD"
+        )
         expected_value = "Community Manager"
         self.assertEqual(expected_value, actual_value)
 
@@ -185,7 +187,9 @@ class eScienceCenterTest(unittest.TestCase):
 
     def test_person_name_checks(self):
         token = generate_jwt_token()
-        api_persons_data = harvest_project_info_nlesc.get_data_from_rsd(token, "/person")
+        api_persons_data = harvest_project_info_nlesc.get_data_from_rsd(
+            token, "/person"
+        )
         self.check_duplicate_names(api_persons_data)
         self.check_extra_whitespace(api_persons_data)
         self.assertTrue(True)
