@@ -63,6 +63,18 @@
     {% endif %}
     </ul>
 </div>
+<div class="topics_container">
+    <h5>Topics</h5>
+    {% if template_data.topics %}
+    <ul class="topics">
+        {% for topic in template_data.topics %}
+            <li class="bg-light">{{topic}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <i>No topics available</i>
+    {% endif%}
+</div>
 <div class="tags_container">
     <h5>Tags</h5>
     {% if template_data.tags %}
