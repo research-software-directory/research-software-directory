@@ -258,8 +258,7 @@ def get_project_data_from_website():
     response = requests.get(url)
     if request_was_successful(response):
         soup = BeautifulSoup(response.text, "html.parser")
-        print("FIXME running with subset of projects")
-        project_urls = get_project_urls(soup)[:]
+        project_urls = get_project_urls(soup)
         project_data = get_project_data(project_urls)
         return project_data
     else:
