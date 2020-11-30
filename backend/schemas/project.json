@@ -151,7 +151,7 @@
         "subtitle": {
             "type": "string"
         },
-        "tags": {
+        "technologies": {
             "items": {
                 "enum": [
                     "Big data",
@@ -225,6 +225,27 @@
         "title": {
             "type": "string"
         },
+        "topics": {
+            "items": {
+                "enum": [
+                    "Astronomy",
+                    "Climate and weather",
+                    "Humanities",
+                    "Chemistry",
+                    "Material science",
+                    "Law",
+                    "Ecology",
+                    "Life science",
+                    "Psychology",
+                    "Physics",
+                    "Computer science",
+                    "Health"
+                ],
+                "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
         "updatedAt": {
             "format": "date-time",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
@@ -251,9 +272,10 @@
         "related",
         "slug",
         "subtitle",
-        "tags",
+        "technologies",
         "team",
         "title",
+        "topics",
         "updatedAt",
         "updatedBy"
     ],
