@@ -59,7 +59,7 @@ installation](https://github.com/research-software-directory/research-software-d
 
 ## Optional: get project data
 
-Optionally update the project data from [esciencecenter.nl corporate website](https://esciencecenter.nl) by doing following (continue in the
+Optionally update the project data from [esciencecenter.nl corporate website](https://esciencecenter.nl) by doing the following (continue in the
 terminal from the previous section):
 
 ```shell
