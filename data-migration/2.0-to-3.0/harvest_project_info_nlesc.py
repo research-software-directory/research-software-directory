@@ -164,11 +164,11 @@ def get_project_related_projects(soup):
 
 def get_project_image(soup, maxwidth=1024, maxheight=600):
     def crop_to_aspect_ratio():
-        target_ar = maxwidth / maxheight
-        actual_ar = img.width / img.height
-        if actual_ar < target_ar:
+        target_aspect_ratio = maxwidth / maxheight
+        actual_aspect_ratio = img.width / img.height
+        if actual_aspect_ratio < target_aspect_ratio:
             # too narrow, adjust height
-            target_height = math.floor(img.width / target_ar)
+            target_height = math.floor(img.width / target_aspect_ratio)
             left = 0
             upper = math.floor((img.height - target_height) / 2)
             right = img.width
@@ -177,7 +177,7 @@ def get_project_image(soup, maxwidth=1024, maxheight=600):
             return img.crop(box)
         else:
             # too wide, adjust width
-            target_width = math.floor(img.height * target_ar)
+            target_width = math.floor(img.height * target_aspect_ratio)
             left = math.floor((img.width - target_width) / 2)
             upper = 0
             right = left + target_width
