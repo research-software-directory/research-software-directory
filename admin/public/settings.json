@@ -425,6 +425,10 @@
           "help": "Tags",
           "sortIndex": 800
         },
+        "topics": {
+          "help": "Topics",
+          "sortIndex": 801
+        },                
         "team": {
           "sortIndex": 900,
           "label": "Team"
