@@ -18,11 +18,12 @@ const update = {
     'related.organizations': [],
     'related.projects': [],
     'related.software': [],
-    tags: [],
-    team: []
+    team: [],
+    topics: []
   },
   $rename: {
-    image: 'imageUrl'
+    image: 'imageUrl',
+    tags: 'technologies'
   },
   $unset: {
     corporateUrl: '',
