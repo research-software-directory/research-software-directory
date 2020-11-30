@@ -164,7 +164,7 @@ def project_status(start_str, end_str):
             'status': 'Starting',
             'progress': 0
         }
-    if start < today < end:
+    if start <= today <= end:
         return {
             'status': 'Running',
             'progress': (today - start ) / (end - start)
