@@ -43,7 +43,7 @@ Then, in a new terminal,
 
 ```shell
 # copy the migrate script to inside the running database service
-docker cp data-migration/2.x-to-3.x/migrate.js $(docker-compose ps -q database):/tmp
+docker cp data-migration/2.0-to-3.0/migrate.js $(docker-compose ps -q database):/tmp
 
 # run the migrate script
 docker-compose exec database mongo rsd /tmp/migrate.js
@@ -65,11 +65,11 @@ terminal from the previous section):
 ```shell
 python3 -m virtualenv -p python3 venv3
 source venv3/bin/activate
-pip install -r ./harvesting/requirements.txt
+pip install -r ./data-migration/2.0-to-3.0/requirements.txt
 source .env
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 export PYTHONPATH=$PYTHONPATH:`pwd`/harvesting
-python3 data-migration/2.x-to-3.x/harvest_project_info_nlesc.py
+python3 data-migration/2.0-to-3.0/harvest_project_info_nlesc.py
 
 # again, update the cache
 docker-compose exec harvesting python app.py resolve all
@@ -85,7 +85,7 @@ installation](https://github.com/research-software-directory/research-software-d
 
 ```shell
 # copy the script to inside the running database service
-docker cp data-migration/2.x-to-3.x/add-project-dates.js $(docker-compose ps -q database):/tmp
+docker cp data-migration/2.0-to-3.0/add-project-dates.js $(docker-compose ps -q database):/tmp
 
 # run the migrate script
 docker-compose exec database mongo rsd /tmp/add-project-dates.js

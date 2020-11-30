@@ -51,10 +51,8 @@
             "minLength": 10,
             "type": "string"
         },
-        "imageUrl": {
-            "format": "uri",
-            "pattern": "^https://.*$",
-            "type": "string"
+        "image": {
+            "$ref": "definitions.json/blob"
         },
         "impact": {
             "items": {
@@ -160,10 +158,10 @@
                     "Image processing",
                     "Inter-operability & linked data",
                     "Machine learning",
-                    "Multi-scale &amp; multi model simulations",
+                    "Multi-scale & multi model simulations",
                     "Optimized data handling",
                     "Real time data analysis",
-                    "Text analysis &amp; natural language processing",
+                    "Text analysis & natural language processing",
                     "Visualization",
                     "Workflow technologies"
                 ],
@@ -243,7 +241,7 @@
         "dateStart",
         "description",
         "grantId",
-        "imageUrl",
+        "image",
         "impact",
         "isPublished",
         "output",

@@ -1,7 +1,9 @@
 import base64
 import datetime
+import io
 import json
 import logging
+import math
 import re
 import sys
 import time
@@ -9,6 +11,7 @@ import uuid
 
 import requests
 from bs4 import BeautifulSoup
+from PIL import Image
 from zotero import generate_jwt_token
 
 logger = logging.getLogger(__name__)
@@ -159,13 +162,64 @@ def get_project_related_projects(soup):
     return project_related_projects
 
 
-def get_project_image_url(soup):
-    for figure in soup.findAll("figure"):
-        for img in figure.findAll("img"):
-            imageUrl = img.get("src")
-            if imageUrl != "":
-                return make_url_secure(imageUrl)
-    return "https://FIXME"
+def get_project_image(soup, maxwidth=1024, maxheight=600):
+    def crop_to_aspect_ratio():
+        target_aspect_ratio = maxwidth / maxheight
+        actual_aspect_ratio = img.width / img.height
+        if actual_aspect_ratio < target_aspect_ratio:
+            # too narrow, adjust height
+            target_height = math.floor(img.width / target_aspect_ratio)
+            left = 0
+            upper = math.floor((img.height - target_height) / 2)
+            right = img.width
+            lower = upper + target_height
+            box = (left, upper, right, lower)
+            return img.crop(box)
+        else:
+            # too wide, adjust width
+            target_width = math.floor(img.height * target_aspect_ratio)
+            left = math.floor((img.width - target_width) / 2)
+            upper = 0
+            right = left + target_width
+            lower = img.height
+            box = (left, upper, right, lower)
+            return img.crop(box)
+
+    def resize():
+        return img.resize((maxwidth, maxheight))
+
+    figures = soup.find_all("figure")
+    if len(figures) == 0:
+        print("Doenst have a <figure> tag, returning dummy data")
+        return {"data": "", "mimeType": "image/jpg"}
+
+    src = figures[0].find("img").attrs.get("data-full-url", None)
+    if src is None:
+        print("<img> didnt have a data-full-url, using src instead")
+        src = figures[0].find("img").attrs.get("src", None)
+        if src is None:
+            print("<img> didnt have an src either, returning dummy data instead")
+            return {"data": "", "mimeType": "image/jpg"}
+
+    response = requests.get(src)
+    if not response.ok:
+        print("Something went wrong retrieving the image from src='{0}'".format(src))
+        return {"data": "", "mimeType": "image/jpg"}
+
+    img_bytes = io.BytesIO(response.content)
+
+    img = Image.open(img_bytes)
+    fmt = img.format.lower()
+    img = crop_to_aspect_ratio()
+    img = resize()
+
+    buffered = io.BytesIO()
+    img.save(buffered, format=fmt)
+
+    return {
+        "data": base64.b64encode(buffered.getvalue()).decode("utf-8"),
+        "mimeType": "image/" + fmt,
+    }
 
 
 def get_project_data(project_urls):
@@ -183,7 +237,7 @@ def get_project_data(project_urls):
             project["slug"] = get_project_slug(project_url["url"])
             project["title"] = get_project_title(soup)
             project["subtitle"] = get_project_subtitle(soup)
-            project["imageUrl"] = make_url_secure(get_project_image_url(soup))
+            project["image"] = get_project_image(soup)
             project["text"], project["imageCaption"] = get_project_text(soup)
             project["team"] = get_project_team(soup)
             project["partners"] = get_project_partners(soup)
@@ -412,7 +466,7 @@ def make_new_project_data(project_data_source):
     new_project_data["description"] = fix_html(project_data_source["text"])
     new_project_data["grantId"] = "FIXME"
     new_project_data["imageCaption"] = "FIX ME FIX ME"
-    new_project_data["imageUrl"] = make_url_secure(project_data_source["imageUrl"])
+    new_project_data["image"] = {"data": "", "mimeType": "image/jpg"}
     new_project_data["impact"] = []
     new_project_data["isPublished"] = True
     new_project_data["output"] = []
@@ -604,7 +658,7 @@ def update_project_data(
     if len(imageCaption) >= 10:
         project_data_target["imageCaption"] = imageCaption
     project_data_target["slug"] = project_data_source["slug"]
-    project_data_target["imageUrl"] = make_url_secure(project_data_source["imageUrl"])
+    project_data_target["image"] = project_data_source["image"]
     project_data_target["updatedBy"] = "esciencecenter.nl.crawler"
     project_data_target["updatedAt"] = get_current_time_string()
     project_data_target["related"]["organizations"] = get_source_related_organizations(
