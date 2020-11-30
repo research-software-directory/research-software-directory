@@ -210,6 +210,7 @@ def project_index_template():
                          "yearStart": get_year_from_date_string(project["dateStart"]),
                          "yearEnd": get_year_from_date_string(project["dateEnd"]),
                          "status": status,
+                         "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
                          })
     mentions = get_project_mentions(project_data)
     status_choices = ['Starting','Running', 'Finished']
@@ -306,7 +307,6 @@ def releases_filter(releases):
 @application.template_filter()
 def no_none_filter(l):
     return list(filter(lambda x: x is not None, l))
-
 
 @application.route('/favicon.ico')
 def serve_favicon():
