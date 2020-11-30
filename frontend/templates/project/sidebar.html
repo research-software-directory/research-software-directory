@@ -65,10 +65,11 @@
 </div>
 <div class="tags_container">
     <h5>Tags</h5>
-    {% if template_data.tags %}
+    {% set tags = template_data.technologies + template_data.topics %}
+    {% if tags %}
     <ul class="tags">
-        {% for tag in template_data.tags %}
-            <li class="bg-light">{{tag}}</li>
+        {% for tag in tags %}
+            <li class="bg-light">{{ tag }}</li>
         {% endfor %}
     </ul>
     {% else %}
