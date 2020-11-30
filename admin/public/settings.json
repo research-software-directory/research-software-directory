@@ -421,8 +421,8 @@
           "label": "Subtitle of the project",
           "sortIndex": 20
         },
-        "tags": {
-          "help": "Tags",
+        "technologies": {
+          "help": "Technology tags",
           "sortIndex": 800
         },
         "team": {
@@ -432,6 +432,10 @@
         "title": {
           "label": "Name of the project",
           "sortIndex": 10
+        },
+        "topics": {
+          "help": "Topics tags",
+          "sortIndex": 801
         },
         "updatedAt": {
           "label": "Updated at",
