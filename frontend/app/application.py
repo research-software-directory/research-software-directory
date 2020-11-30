@@ -195,6 +195,11 @@ def project_page_template(project_id):
 
 def get_year_from_date_string(date_string):
     return(date_string[0:4])
+def get_project_schema():
+    #curl -sk https://localhost/api/schema | jq '.project .properties .topics .items .enum'
+    url = api_url + "/schema"
+    schema = requests.get(url).json()
+    return schema
 
 @application.route('/projects/')
 def project_index_template():
@@ -211,16 +216,20 @@ def project_index_template():
                          "yearEnd": get_year_from_date_string(project["dateEnd"]),
                          "status": status,
                          "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
+                         "topics": project["topics"],
                          })
     mentions = get_project_mentions(project_data)
     status_choices = ['Starting','Running', 'Finished']
+
+    schema = get_project_schema()
+    topic_choices = schema["project"]["properties"]["topics"]["items"]["enum"]
 
     return flask.render_template('project_index/template.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
                                  status_choices_json=flask.Markup(json.dumps(status_choices)),
+                                 topic_choices_json=flask.Markup(json.dumps(topic_choices)),                                 
                                  mentions=mentions)
-
 
 def get_project_mentions(projects):
     mention_accessor = lambda o:  o['impact'] + o['output']
