@@ -37,7 +37,7 @@ function initOverview(projectsData, statusChoicesData) {
         el: '#project_index_page',
         delimiters: ["[[", "]]"],
         methods: {
-            log: console.log,           
+            log: console.log,
             showPage: function (n) {
                 return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
             },
