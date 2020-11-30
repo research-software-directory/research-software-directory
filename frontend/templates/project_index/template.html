@@ -25,20 +25,41 @@
               Directory</a> — the content management system for research software.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section>
-    <div id="search-project" class="row" v-cloak>
-      <div class="col-1-4">
+      <div id="search-project" class="row" v-cloak>
+        <div class="col-1-4">
+        </div>
+        <div class="col-3-4 search-bar bg-light">
+          <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for project">
+          <div class="search-bar_button">
+            <svg class="icon">
+              <use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use>
+            </svg>
+          </div>
+        </div>
       </div>
 
-      <div class="col-3-4 search-bar bg-light">
-        <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for project">
-        <div class="search-bar_button">
-          <svg class="icon">
-            <use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use>
-          </svg>
+      <div id="sort-project" class="row" v-cloak>
+        <div class="col-3-4">
+        </div>
+
+        <div id="sorter" class="col-1-4" v-cloak>
+          <div class="text">Sort by:</div>
+          <div :class="['dropdown', {'is-active': sortersOpen}]">
+            <div class="dropdown_button dropdown_button--dark" @click="sortersOpen = !sortersOpen">
+              <span>[[sort]]</span>
+              <svg class="icon"><use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-chev-down"></use></svg>
+            </div>
+            <div class="dropdown_panel dropdown_panel--dark is-active">
+              <ul>
+                <li v-for="sorter in sorters" :class="{'is-active': sort==sorter}">
+                  <a class="inside" href="#" @click.stop.prevent="setSorter(sorter)">
+                    <span>[[sorter]]</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
