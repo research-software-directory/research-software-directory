@@ -204,6 +204,7 @@ def get_project_image(soup, maxwidth=1024, maxheight=600):
     response = requests.get(src)
     if not response.ok:
         print("Something went wrong retrieving the image from src='{0}'".format(src))
+        return { 'data': '', 'mimeType': 'image/jpg' }
 
     img_bytes = io.BytesIO(response.content)
 
