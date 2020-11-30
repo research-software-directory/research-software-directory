@@ -96,7 +96,7 @@
               <a :href="'/projects/' + (project.id)">
                 <div class="content">
                   <div class="thumb">
-                    <img :src="project.imageUrl" alt="">
+                    <img :src="'data:' + (project.image.mimeType) + ';base64,' + (project.image.data)" alt="" >
                   </div>
                   <div>
                     <div>
