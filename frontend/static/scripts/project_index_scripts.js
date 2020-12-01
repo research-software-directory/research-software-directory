@@ -10,7 +10,6 @@ function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(
 
 function initOverview(projectsData, statusChoicesData) {
         return function(a, b) { return a[key] - b[key]; }
-    }
 
     var device = {
         phone: 'phone',
