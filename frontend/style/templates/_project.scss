@@ -562,9 +562,7 @@
     justify-content: space-between;
 
     .project-item {
-      &:not(:last-child) {
-        margin-bottom: 2em;
-      }
+      margin-bottom: 0;
 
       width: 50%;
 
@@ -602,6 +600,9 @@
         font-size: 2rem;
         line-height: 1.3em;
         margin-bottom: 0.2em;
+      }
+      .card-text {
+        min-height: 8em;
       }
       .author {
         margin-top: 0.3em;
