@@ -51,10 +51,8 @@
             "minLength": 10,
             "type": "string"
         },
-        "imageUrl": {
-            "format": "uri",
-            "pattern": "^https://.*$",
-            "type": "string"
+        "image": {
+            "$ref": "definitions.json/blob"
         },
         "impact": {
             "items": {
@@ -264,7 +262,7 @@
         "dateStart",
         "description",
         "grantId",
-        "imageUrl",
+        "image",
         "impact",
         "isPublished",
         "output",
