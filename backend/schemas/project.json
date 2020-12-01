@@ -216,15 +216,16 @@
                     },
                     "role": {
                         "enum": [
-                            "Principal investigator",
-                            "eScience Research Engineer",
-                            "Senior eScience Research Engineer",
-                            "eScience Coordinator",
-                            "Technical Lead",
-                            "PhD student",
                             "Community Manager",
                             "Director of Operations",
-                            "Director of Technology"
+                            "Director of Technology",
+                            "eScience Coordinator",
+                            "eScience Research Engineer",
+                            "PhD student",
+                            "Principal investigator",
+                            "Research Software Engineer",
+                            "Senior eScience Research Engineer",
+                            "Technical Lead"
                         ],
                         "type": "string"
                     }

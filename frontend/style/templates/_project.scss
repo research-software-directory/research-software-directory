@@ -146,7 +146,7 @@
 
   .organisation {
     img {
-      width: 80%;
+      width: 300px;
       margin-left: auto;
       margin-right: auto;
       padding-top: 10px;
@@ -640,6 +640,12 @@
         margin: 60px 0px 20px 0px;
         border-top: 2px solid $divider;
     }
+}
+
+
+#sort-project {
+  margin-top: 30px;
+  margin-bottom: 0;
 }
 
 
