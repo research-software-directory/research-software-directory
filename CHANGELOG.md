@@ -1,6 +1,6 @@
 # 3.0.0 (Unreleased)
 
-See [data migration notes](/data-migration/2.x-to-3.x/README.md).
+See [data migration notes](/data-migration/2.0-to-3.0/README.md).
 
 # 2.0.2
 
