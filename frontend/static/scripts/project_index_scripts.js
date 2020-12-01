@@ -8,7 +8,7 @@ var firstBy=function(){function n(n){return n}function t(n){return"string"==type
 /*** https://github.com/component/debounce ***/
 function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(t,l-c):(e=null,u||(i=n.apply(o,a),o=a=null))}var e,a,o,r,i;null==l&&(l=100);var c=function(){o=this,a=arguments,r=Date.now();var c=u&&!e;return e||(e=setTimeout(t,l)),c&&(i=n.apply(o,a),o=a=null),i};return c.clear=function(){e&&(clearTimeout(e),e=null)},c.flush=function(){e&&(i=n.apply(o,a),o=a=null,clearTimeout(e),e=null)},c}
 
-function initOverview(projectsData, statusChoicesData, topicsData, technologiesData) {
+function initOverview(projectsData, statusChoicesData, topicChoicesData, technologyChoicesData) {
     var device = {
         phone: 'phone',
         tablet: 'tablet',
@@ -102,8 +102,8 @@ function initOverview(projectsData, statusChoicesData, topicsData, technologiesD
             page: 1,
             projects: projectsData,
             statusChoices: statusChoicesData,
-            topicChoices: topicsData,
-            technologyChoices: technologiesData,            
+            topicChoices: topicChoicesData,
+            technologyChoices: technologyChoicesData,            
             mobShowFilters: false,
             filter: {
                 search: '',
