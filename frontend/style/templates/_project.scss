@@ -100,7 +100,7 @@
     .links,
     .partners,
     .status,
-    .tags_container, .topics_container {
+    .technology_container, .topics_container {
       padding-bottom: 2em;
       .icon {
         margin-left: 0.3em;
@@ -124,7 +124,7 @@
         margin-right: 0.5em;
       }
     }
-    .tags, .topics {
+    .technologies, .topics {
       margin-left: -2px;
       display: flex;
       flex-wrap: wrap;

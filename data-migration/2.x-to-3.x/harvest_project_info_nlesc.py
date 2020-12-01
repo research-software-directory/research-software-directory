@@ -420,7 +420,7 @@ def make_new_project_data(project_data_source):
     new_project_data["related"] = {"organizations": [], "projects": [], "software": []}
     new_project_data["slug"] = "fixme"
     new_project_data["subtitle"] = project_data_source["subtitle"]
-    new_project_data["tags"] = []
+    new_project_data["technologies"] = []
     new_project_data["team"] = []
     new_project_data["title"] = project_data_source["title"]
     new_project_data["updatedAt"] = new_project_data["createdAt"]

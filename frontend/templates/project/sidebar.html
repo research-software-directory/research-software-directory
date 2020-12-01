@@ -64,7 +64,7 @@
     </ul>
 </div>
 <div class="topics_container">
-    <h5>Topics</h5>
+    <h5>Scientific topics</h5>
     {% if template_data.topics %}
     <ul class="topics">
         {% for topic in template_data.topics %}
@@ -75,12 +75,12 @@
         <i>No topics available</i>
     {% endif%}
 </div>
-<div class="tags_container">
-    <h5>Tags</h5>
-    {% if template_data.tags %}
-    <ul class="tags">
-        {% for tag in template_data.tags %}
-            <li class="bg-light">{{tag}}</li>
+<div class="technology_container">
+    <h5>Technology tags</h5>
+    {% if template_data.technologies %}
+    <ul class="technologies">
+        {% for technology in template_data.technologies %}
+            <li class="bg-light">{{technology}}</li>
         {% endfor %}
     </ul>
     {% else %}

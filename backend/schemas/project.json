@@ -151,7 +151,7 @@
         "subtitle": {
             "type": "string"
         },
-        "tags": {
+        "technologies": {
             "items": {
                 "enum": [
                     "Big data",
@@ -272,8 +272,8 @@
         "related",
         "slug",
         "subtitle",
-        "tags",
         "team",
+        "technologies",
         "title",
         "topics",
         "updatedAt",
