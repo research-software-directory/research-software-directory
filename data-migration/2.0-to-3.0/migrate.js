@@ -27,7 +27,7 @@ const migrate = () => {
     },
     $rename: {
       tags: 'technologies'
-    },    
+    },
     $unset: {
       corporateUrl: '',
       principalInvestigator: ''
