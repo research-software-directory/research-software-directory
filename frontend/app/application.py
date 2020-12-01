@@ -195,8 +195,8 @@ def project_page_template(project_id):
 
 def get_year_from_date_string(date_string):
     return(date_string[0:4])
-def get_project_schema():
-    #curl -sk https://localhost/api/schema | jq '.project .properties .topics .items .enum'
+
+def get_schema():
     url = api_url + "/schema"
     schema = requests.get(url).json()
     return schema
@@ -221,7 +221,7 @@ def project_index_template():
     mentions = get_project_mentions(project_data)
     status_choices = ['Starting','Running', 'Finished']
 
-    schema = get_project_schema()
+    schema = get_schema()
     topic_choices = schema["project"]["properties"]["topics"]["items"]["enum"]
 
     return flask.render_template('project_index/template.html',
