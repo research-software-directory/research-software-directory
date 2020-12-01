@@ -421,10 +421,14 @@
           "label": "Subtitle of the project",
           "sortIndex": 20
         },
-        "tags": {
-          "help": "Tags",
+        "technologies": {
+          "help": "Technology tags",
           "sortIndex": 800
         },
+        "topics": {
+          "help": "Scientific topics",
+          "sortIndex": 801
+        },                
         "team": {
           "sortIndex": 900,
           "label": "Team"

@@ -8,7 +8,7 @@ var firstBy=function(){function n(n){return n}function t(n){return"string"==type
 /*** https://github.com/component/debounce ***/
 function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(t,l-c):(e=null,u||(i=n.apply(o,a),o=a=null))}var e,a,o,r,i;null==l&&(l=100);var c=function(){o=this,a=arguments,r=Date.now();var c=u&&!e;return e||(e=setTimeout(t,l)),c&&(i=n.apply(o,a),o=a=null),i};return c.clear=function(){e&&(clearTimeout(e),e=null)},c.flush=function(){e&&(i=n.apply(o,a),o=a=null,clearTimeout(e),e=null)},c}
 
-function initOverview(projectsData, statusChoicesData) {
+function initOverview(projectsData, statusChoicesData, topicChoicesData, technologyChoicesData) {
 
     var device = {
         phone: 'phone',
@@ -25,6 +25,36 @@ function initOverview(projectsData, statusChoicesData) {
             return statuses.length === 0 || statuses.includes(project.status);
         }
     }
+
+    function filterTopics(topics) {
+        return function (project) {
+            if (topics.length === 0) {
+                return true;
+            }
+            var matches = 0;
+            project.topics.forEach(function (topic) {
+                if (topics.includes(topic)) {
+                    matches += 1;
+                }
+            });
+            return matches === topics.length;
+        }
+    }
+
+    function filterTechnologies(technologies) {
+        return function (project) {
+            if (technologies.length === 0) {
+                return true;
+            }
+            var matches = 0;
+            project.technologies.forEach(function (technology) {
+                if (technologies.includes(technology)) {
+                    matches += 1;
+                }
+            });
+            return matches === technologies.length;
+        }
+    }    
 
     function filterSearch(searchTerm) {
         return function (project) {
@@ -77,15 +107,21 @@ function initOverview(projectsData, statusChoicesData) {
             page: 1,
             projects: projectsData,
             statusChoices: statusChoicesData,
+            topicChoices: topicChoicesData,
+            technologyChoices: technologyChoicesData,            
             mobShowFilters: false,
             filter: {
                 search: '',
-                statuses: []
+                statuses: [],
+                topics: [],
+                technologies: []
             },
             statusesFilterOpen: getDevice() !== device.phone,
+            topicsFilterOpen: getDevice() !== device.phone,           
+            technologiesFilterOpen: getDevice() !== device.phone,                        
             sorters: ['Last updated', 'Most mentions'],
             sortersOpen: false,
-            sort: 'Last updated',
+            sort: 'Last updated'
         },
         computed: {
             statusesWithCount: function() {
@@ -107,9 +143,51 @@ function initOverview(projectsData, statusChoicesData) {
                     }
                 });
             },
+            topicsWithCount: function () {
+                // initialize to 0
+                var counts = this.topicChoices.reduce(function (acc, cur) {
+                    acc[cur] = 0;
+                    return acc;
+                }, {});
+
+                 this.filteredProjects
+                     .forEach(function (project) {
+                        project.topics.forEach(function (topic) {
+                            counts[topic] += 1;
+                        });
+                    });
+                return this.topicChoices.map(name => {
+                    return {
+                        name,
+                        count: counts[name]
+                    }
+                });                
+            },
+            technologiesWithCount: function () {
+                // initialize to 0
+                var counts = this.technologyChoices.reduce(function (acc, cur) {
+                    acc[cur] = 0;
+                    return acc;
+                }, {});
+
+                 this.filteredProjects
+                     .forEach(function (project) {
+                        project.technologies.forEach(function (technology) {
+                            counts[technology] += 1;
+                        });
+                    });
+                return this.technologyChoices.map(name => {
+                    return {
+                        name,
+                        count: counts[name]
+                    }
+                });                
+            },
             filteredProjects: function () {
                 return this.projects
                     .filter(filterStatuses(this.filter.statuses))
+                    .filter(filterTopics(this.filter.topics))                    
+                    .filter(filterTechnologies(this.filter.technologies))                                        
                     .filter(filterSearch(this.filter.search));
             },
             sortedProjects: function () {
@@ -146,7 +224,7 @@ function initOverview(projectsData, statusChoicesData) {
                 return {
                     phone: 5,
                     tablet: 10,
-                    desktop: 10
+                    desktop: 20
                 }[this.device];
             }
         },

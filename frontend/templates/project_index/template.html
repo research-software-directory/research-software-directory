@@ -89,7 +89,53 @@
       <div class="row">
         <div class="col-1-4" id="filters">
           <div class="filters_container" :class="{ 'mob-hidden' : !mobShowFilters }">
+
             <div class="filters_columns">
+              <div class="filter-group">
+                <div class="filter-group_title" @click="topicsFilterOpen = !topicsFilterOpen">
+                  Topic
+                  <span class="toggle-button">
+                    [[ topicsFilterOpen ? '-' : '+' ]]
+                  </span>
+                </div>
+
+                <transition-group tag="ul" class="filter-list" v-bind:css="false" v-on:before-enter="filtersBeforeEnter"
+                  v-on:enter="filtersEnter" v-on:before-leave="filtersBeforeLeave" v-on:leave="filtersLeave">
+                  <li v-for="(topic, index) in topicsWithCount" v-bind:data-index="index" :key="topic"
+                    v-if="topicsFilterOpen" :class="topic.count === 0 ? 'empty' : ''">
+                    <label :for="topic.name" class="checkbox">
+                      <input type="checkbox" name="checkbox" :id="topic.name" v-model="filter.topics"
+                        :value="topic.name">
+                      <div class="custom-checkbox"></div>
+                      <span class="text">[[topic.name]] <strong>([[ topic.count ]])</strong></span>
+                    </label>
+                  </li>
+                </transition-group>
+
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-group_title" @click="technologiesFilterOpen = !technologiesFilterOpen">
+                  Technology
+                  <span class="toggle-button">
+                    [[ technologiesFilterOpen ? '-' : '+' ]]
+                  </span>
+                </div>
+
+                <transition-group tag="ul" class="filter-list" v-bind:css="false" v-on:before-enter="filtersBeforeEnter"
+                  v-on:enter="filtersEnter" v-on:before-leave="filtersBeforeLeave" v-on:leave="filtersLeave">
+                  <li v-for="(technology, index) in technologiesWithCount" v-bind:data-index="index" :key="technology"
+                    v-if="technologiesFilterOpen" :class="technology.count === 0 ? 'empty' : ''">
+                    <label :for="technology.name" class="checkbox">
+                      <input type="checkbox" name="checkbox" :id="technology.name" v-model="filter.technologies"
+                        :value="technology.name">
+                      <div class="custom-checkbox"></div>
+                      <span class="text">[[technology.name]] <strong>([[ technology.count ]])</strong></span>
+                    </label>
+                  </li>
+                </transition-group>
+              </div>
+
               <div class="filter-group">
                 <div class="filter-group_title" @click="statusesFilterOpen = !statusesFilterOpen">
                   Status
@@ -110,8 +156,8 @@
                     </label>
                   </li>
                 </transition-group>
-
               </div>
+
             </div>
           </div>
 
@@ -129,7 +175,7 @@
                     <img :src="'data:' + (project.image.mimeType) + ';base64,' + (project.image.data)" alt="" >
                   </div>
                   <div>
-                    <div>
+                    <div class="card-text">
                       <h2 class="title">[[project.title]]</h2>
                       <p class="description">[[project.subtitle]]</p>
                     </div>
@@ -225,6 +271,6 @@
 <script type="text/javascript" src="{{url_for('static', filename='scripts/polyfills.js') }}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='scripts/project_index_scripts.js') }}"></script>
 <script>
-  initOverview({{ data_json }}, {{ status_choices_json }});
+  initOverview({{ data_json }}, {{ status_choices_json }}, {{ topic_choices_json }}, {{technology_choices_json}});
 </script>
 {%- endblock -%}
