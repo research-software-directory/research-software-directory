@@ -27,7 +27,9 @@ function initOverview(projectsData, statusChoicesData, topicsData) {
 
     function filterTopics(topics) {
         return function (project) {
-            if (topics.length === 0) return true;
+            if (topics.length === 0) {
+                return true;
+            }
             var matches = 0;
             project.topics.forEach(function (topic) {
                 if (topics.includes(topic)) {
