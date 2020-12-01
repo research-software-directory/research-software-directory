@@ -26,7 +26,6 @@ const migrate = () => {
       topics: []
     },
     $rename: {
-      image: 'imageUrl',
       tags: 'technologies'
     },    
     $unset: {
