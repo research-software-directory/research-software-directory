@@ -12,7 +12,7 @@
         <div class="col-1-4">
         </div>
         <div class="col-3-4">
-          <h1 class="title">Projects</h1>
+          <h1 class="project-index-title">Projects</h1>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-3-4 search-bar bg-light">
-          <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for project">
+          <input type='text' v-model="filter.search" id="input" placeholder="Start typing here to search for projects">
           <div class="search-bar_button">
             <svg class="icon">
               <use xlink:href="{{url_for('static', filename='icons/icons.svg')}}#icon-search"></use>
@@ -167,14 +167,16 @@
           </div>
         </div>
         <div class="col-3-4" id="project_list">
-          <transition-group appear name="slide-fade" tag="div" class="row project-items">
+          <transition-group appear name="slide-fade" tag="div" class="row project-items-index-page">
             <article v-for="project in pagedProjects" v-bind:key="project" class="project-item project-card bg-light">
               <a :href="'/projects/' + (project.id)">
                 <div class="content">
+
                   <div class="thumb">
                     <img :src="'data:' + (project.image.mimeType) + ';base64,' + (project.image.data)" alt="" >
                   </div>
-                  <div>
+
+                  <div class="text-section">
                     <div class="card-text">
                       <h2 class="title">[[project.title]]</h2>
                       <p class="description">[[project.subtitle]]</p>
@@ -184,6 +186,7 @@
                       <div class="status">[[project.status]]</div>
                     </div>
                   </div>
+
                 </div>
               </a>
             </article>
