@@ -217,18 +217,21 @@ def project_index_template():
                          "status": status,
                          "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
                          "topics": project["topics"],
+                         "technologies": project["technologies"],                         
                          })
     mentions = get_project_mentions(project_data)
     status_choices = ['Starting','Running', 'Finished']
 
     schema = get_schema()
     topic_choices = schema["project"]["properties"]["topics"]["items"]["enum"]
+    technology_choices = schema["project"]["properties"]["technologies"]["items"]["enum"]
 
     return flask.render_template('project_index/template.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
                                  status_choices_json=flask.Markup(json.dumps(status_choices)),
-                                 topic_choices_json=flask.Markup(json.dumps(topic_choices)),                                 
+                                 topic_choices_json=flask.Markup(json.dumps(topic_choices)),
+                                 technology_choices_json=flask.Markup(json.dumps(technology_choices)),                                                                  
                                  mentions=mentions)
 
 def get_project_mentions(projects):
