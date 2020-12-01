@@ -1,5 +1,8 @@
 # 3.0.0
 
+commit comparison [2.0.2...3.0.0](https://github.com/research-software-directory/research-software-directory/compare/2.0.2...3.0.0)
+
+
 - Added project page accessible through new route `/projects/<id>` and `/projects/<slug>`
 - Added project index page accessible through new route `/projects`
 - Added 404 error page
