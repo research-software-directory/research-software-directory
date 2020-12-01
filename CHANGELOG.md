@@ -54,7 +54,6 @@
 - the sample data also include data harvested from esciencecenter.nl/projects such as logos,
   related people, related organizations, descriptive text, and a hero image; furthermore the
   project start dates and end dates were added based on data from Exact. 
-- FIXME: add commit comparison [2.0.2...3.0.0](https://github.com/research-software-directory/research-software-directory/compare/2.0.2...3.0.0)
 
 # 2.0.2
 
@@ -136,4 +135,3 @@ submodules SHAs:
 # 0.0.0
 
 First release, mostly testing the (Zenodo| GitHub) infrastructure at this point.
-
