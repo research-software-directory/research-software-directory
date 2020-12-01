@@ -19,6 +19,7 @@ interface IConnectedProps {
   push(location: any): any;
   messageToastr(message: string): any;
   errorToastr(message: string): any;
+  resourceUpdated(): any;
 }
 
 type IProps = IConnectedProps &
@@ -46,6 +47,7 @@ class DeleteModal extends React.PureComponent<
       .then(() => {
         this.setState({ modalOpen: false, links: [], error: null });
         this.props.messageToastr("Deleted");
+        this.props.resourceUpdated();
       })
       .catch(response => {
         const result = response.response;
@@ -146,6 +148,7 @@ export default class Resource extends React.PureComponent<IProps, IState> {
       .then(() => {
         this.setState({ saving: false });
         this.props.messageToastr("Saved");
+        this.props.resourceUpdated();
       })
       .catch(response => {
         this.setState({ saving: false });
@@ -178,6 +181,7 @@ export default class Resource extends React.PureComponent<IProps, IState> {
       }
     });
     await this.asyncSetState({ data: result.data, loading: false });
+
   }
 
   async componentDidMount() {

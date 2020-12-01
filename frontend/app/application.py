@@ -46,41 +46,31 @@ def serialize_software_list(swlist):
     return json.dumps(list(map(lambda sw: sw_dict(sw), swlist)))
 
 
-def get_mentions(software_list):
-    # 1. collect all related mentions from the individual software pages into 1
-    #    dict, using the database's primary key as key to ensure each item is unique
-    # 2. omit items from the list that are in the future (because of the date somebody entered)
-    # 3. sort the list by date
-    # 4. use slicing in index_template.html to display the top N items
+def get_software_mentions(software_list):
+    mention_accessor = lambda s: s['related']['mentions']
+    return get_mentions(software_list, mention_accessor)
 
+
+def get_mentions(software_list, mention_accessor):
     if software_list is None:
         return []
-    else:
-        now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
-        mentions = dict()
-        for software in software_list:
-            for mention in software['related']['mentions']:
 
-                # check that all the necessary information is present
-                requireds = ['date', 'primaryKey', 'url', 'title']
-                if False in [required in mention['foreignKey'].keys() for required in requireds]: continue
+    mentions = dict()
+    for software in software_list:
+        for mention in mention_accessor(software):
+            mention_id = mention['foreignKey']['primaryKey']['id']
+            mentions[mention_id] = {
+                'date': (mention['foreignKey']['date']),
+                'title': (mention['foreignKey']['title']),
+                'url': (mention['foreignKey'].get('url'))  # url could be missing
+            }
 
-                date = mention['foreignKey']['date']
-                key = mention['foreignKey']['primaryKey']['id']
-                url = mention['foreignKey']['url']
-                title = mention['foreignKey']['title']
-
-                # check that the item's date is somwhere in the past
-                if date < now:
-                    mentions[key] = {
-                        'date': date,
-                        'title': title,
-                        'url': url
-                    }
-        return sorted(mentions.values(), key=lambda mention: mention['date'], reverse=True)
+    past_mentions = remove_future_mentions(mentions)
+    return sorted(past_mentions, key=lambda m: m['date'], reverse=True)
 
 
 @application.route('/', methods=['GET'])
+@application.route('/software/', methods=['GET'])
 def index():
     url = api_url + '/software_cache?isPublished=true'
     organizations = [
@@ -88,11 +78,11 @@ def index():
     ]
     all_software = requests.get(url).json()
 
-    return flask.render_template('index_template.html',
+    return flask.render_template('software_index/template.html',
                                  template_data=all_software,
                                  data_json=flask.Markup(serialize_software_list(all_software)),
                                  organizations=flask.Markup(json.dumps(organizations)),
-                                 mentions=get_mentions(all_software),
+                                 mentions=get_software_mentions(all_software),
                                  )
 
 
@@ -112,29 +102,10 @@ def software_product_page_template(software_id):
         return page_not_found("Unknown software id")
     set_markdown(software_dictionary, ['statement', 'shortStatement', 'readMore'])
 
-    mention_types = {
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'book': {"singular": "Book", "plural": "Books"},
-        'bookSection': {"singular": "Book section", "plural": "Book sections"},
-        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
-        'dataset': {"singular": "Data set", "plural": "Data sets"},
-        'document': {"singular": "Document", "plural": "Documents"},
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
-        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
-        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'report': {"singular": "Report", "plural": "Reports"},
-        'thesis': {"singular": "Thesis", "plural": "Theses"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
-        'webpage': {"singular": "Web page", "plural": "Web pages"},
-    }
-
-    return flask.render_template('software/software_template.html',
+    return flask.render_template('software/template.html',
                                  software_id=software_id,
                                  template_data=software_dictionary,
-                                 mention_types=mention_types,
+                                 mention_types=_get_mention_types(),
                                  )
 
 
@@ -190,17 +161,17 @@ def project_status(start_str, end_str):
     today = datetime.now().replace(tzinfo=None)
     if end < today:
         return {
-            'status': 'Completed',
+            'status': 'Finished',
             'progress': 1
         }
     elif start > today:
         return {
-            'status': 'Granted',
+            'status': 'Starting',
             'progress': 0
         }
     else:
         return {
-            'status': 'Active',
+            'status': 'Running',
             'progress': (today - start ) / (end - start)
         }
 
@@ -213,32 +184,13 @@ def project_page_template(project_id):
 
     set_markdown(project_dictionary, ['description'])
 
-    mention_types = {
-        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
-        'book': {"singular": "Book", "plural": "Books"},
-        'bookSection': {"singular": "Book section", "plural": "Book sections"},
-        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
-        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
-        'dataset': {"singular": "Data set", "plural": "Data sets"},
-        'document': {"singular": "Document", "plural": "Documents"},
-        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
-        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
-        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
-        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
-        'presentation': {"singular": "Presentation", "plural": "Presentations"},
-        'report': {"singular": "Report", "plural": "Reports"},
-        'thesis': {"singular": "Thesis", "plural": "Theses"},
-        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
-        'webpage': {"singular": "Web page", "plural": "Web pages"},
-    }
-
     status = project_status(project_dictionary['dateStart'], project_dictionary['dateEnd'])
 
-    return flask.render_template('project/project_template.html',
+    return flask.render_template('project/template.html',
                                  project_id=project_id,
                                  template_data=project_dictionary,
                                  status=status,
-                                 mention_types=mention_types)
+                                 mention_types=_get_mention_types())
 
 
 def get_year_from_date_string(date_string):
@@ -248,27 +200,49 @@ def get_year_from_date_string(date_string):
 def project_index_template():
     url = api_url + "/project_cache"
     project_data = requests.get(url).json()
-    titles = []
+    projects = []
     for project in project_data:
-        titles.append({"id": project["primaryKey"]["id"],
-                       "title": project["title"],
-                       "subtitle": project["subtitle"],
-                       "imageUrl": project["imageUrl"],
-                       "yearStart": get_year_from_date_string(project["dateStart"]),
-                       "yearEnd": get_year_from_date_string(project["dateEnd"])})
+        status = project_status(project["dateStart"], project["dateEnd"])["status"]
+        projects.append({"id": project["primaryKey"]["id"],
+                         "title": project["title"],
+                         "subtitle": project["subtitle"],
+                         "image": project["image"],
+                         "yearStart": get_year_from_date_string(project["dateStart"]),
+                         "yearEnd": get_year_from_date_string(project["dateEnd"]),
+                         "status": status,
+                         "numMentions": len(project["output"]) + len(project["impact"]),
+                         "lastUpdate": project["updatedAt"],
+                         "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
+                         })
+    mentions = get_project_mentions(project_data)
+    status_choices = ['Starting','Running', 'Finished']
 
-    return flask.render_template('project/project_index.html',
-                                 titles=titles)
+    return flask.render_template('project_index/template.html',
+                                 data_json=flask.Markup(json.dumps(projects)),
+                                 projects=projects,
+                                 status_choices_json=flask.Markup(json.dumps(status_choices)),
+                                 mentions=mentions)
+
+
+def get_project_mentions(projects):
+    mention_accessor = lambda o:  o['impact'] + o['output']
+    return get_mentions(projects, mention_accessor)
+
+
+def remove_future_mentions(mentions):
+    now = datetime.strftime(datetime.utcnow(), '%Y-%m-%dT%H:%M:%SZ')
+    past_mentions = [mention for mention in mentions.values() if mention['date'] < now]
+    return past_mentions
 
 
 @application.route('/about')
 def about_template():
-    return htmlmin.minify(flask.render_template('about_template.html'))
+    return htmlmin.minify(flask.render_template('about/template.html'))
 
 
 @application.errorhandler(404)
 def page_not_found(e):
-    return flask.render_template('404_template.html',e=e,url=request.path)
+    return flask.render_template('404/template.html',e=e,url=request.path)
 
 
 def str_to_datetime(input_string):
@@ -309,7 +283,10 @@ def human_name_filter(person):
     name = person.get('givenNames') or ''
     if 'nameParticle' in person and person['nameParticle']:
         name += ' ' + person.get('nameParticle', '')
-    return name + ' ' + person.get('familyNames', '')
+    name += ' ' + person.get('familyNames', '')
+    if 'nameSuffix' in person and person['nameSuffix']:
+        name += ' ' + person.get('nameSuffix', '')
+    return name
 
 
 @application.template_filter()
@@ -335,7 +312,6 @@ def releases_filter(releases):
 @application.template_filter()
 def no_none_filter(l):
     return list(filter(lambda x: x is not None, l))
-
 
 @application.route('/favicon.ico')
 def serve_favicon():
@@ -382,3 +358,23 @@ def oai_pmh():
         d = os.path.join(oaipmh_cache_dir,'datacite4')
         f = 'record-' + identifier.split(':')[-1] + '.xml'
         return flask.send_from_directory(d, f, as_attachment=False)
+
+def _get_mention_types():
+    return {
+        'blogPost': {"singular": "Blog post", "plural": "Blog posts"},
+        'book': {"singular": "Book", "plural": "Books"},
+        'bookSection': {"singular": "Book section", "plural": "Book sections"},
+        'computerProgram': {"singular": "Computer program", "plural": "Computer programs"},
+        'conferencePaper': {"singular": "Conference paper", "plural": "Conference papers"},
+        'dataset': {"singular": "Data set", "plural": "Data sets"},
+        'document': {"singular": "Document", "plural": "Documents"},
+        'journalArticle': {"singular": "Journal article", "plural": "Journal articles"},
+        'magazineArticle': {"singular": "Magazine article", "plural": "Magazine articles"},
+        'manuscript': {"singular": "Manuscript", "plural": "Manuscripts"},
+        'newspaperArticle': {"singular": "Newspaper article", "plural": "Newspaper articles"},
+        'presentation': {"singular": "Presentation", "plural": "Presentations"},
+        'report': {"singular": "Report", "plural": "Reports"},
+        'thesis': {"singular": "Thesis", "plural": "Theses"},
+        'videoRecording': {"singular": "Video recording", "plural": "Video recordings"},
+        'webpage': {"singular": "Web page", "plural": "Web pages"},
+    }

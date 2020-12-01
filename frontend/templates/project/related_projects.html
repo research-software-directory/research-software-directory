@@ -13,7 +13,9 @@
                     <article class="project-item col-1-2">
                         <a href="/projects/{{project.primaryKey.id}}">
                             <div class="content">
-                                <div class="thumb"><img src="{{project.imageUrl}}" alt=""></div>
+                                <div class="thumb">
+                                  <img src="data:{{ project.image.mimeType }};base64,{{ project.image.data }}" alt="" >
+                                </div>
                                 <div class="text">
                                     <h2 class="text-blue">
                                         {{project.title}}

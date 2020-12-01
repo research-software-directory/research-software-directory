@@ -28,7 +28,10 @@ const dispatchToProps = {
       position: "top-center",
       title: "Message",
       type: "info"
-    })
+    }),
+  resourceUpdated: () => ({
+     type: "DATA_FETCH_REQUESTED"
+  })
 };
 
 export default connect(mapStateToProps, dispatchToProps)(Resource);
