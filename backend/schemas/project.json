@@ -149,7 +149,7 @@
         "subtitle": {
             "type": "string"
         },
-        "tags": {
+        "technologies": {
             "items": {
                 "enum": [
                     "Big data",
@@ -164,6 +164,27 @@
                     "Text analysis & natural language processing",
                     "Visualization",
                     "Workflow technologies"
+                ],
+                "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+        },
+        "topics": {
+            "items": {
+                "enum": [
+                    "Astronomy",
+                    "Climate and weather",
+                    "Humanities",
+                    "Chemistry",
+                    "Material science",
+                    "Law",
+                    "Ecology",
+                    "Life science",
+                    "Psychology",
+                    "Physics",
+                    "Computer science",
+                    "Health"
                 ],
                 "type": "string"
             },
@@ -250,9 +271,10 @@
         "related",
         "slug",
         "subtitle",
-        "tags",
         "team",
+        "technologies",
         "title",
+        "topics",
         "updatedAt",
         "updatedBy"
     ],

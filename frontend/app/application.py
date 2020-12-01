@@ -196,6 +196,11 @@ def project_page_template(project_id):
 def get_year_from_date_string(date_string):
     return(date_string[0:4])
 
+def get_schema():
+    url = api_url + "/schema"
+    schema = requests.get(url).json()
+    return schema
+
 @application.route('/projects/')
 def project_index_template():
     url = api_url + "/project_cache"
@@ -213,16 +218,23 @@ def project_index_template():
                          "numMentions": len(project["output"]) + len(project["impact"]),
                          "lastUpdate": project["updatedAt"],
                          "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
+                         "topics": project["topics"],
+                         "technologies": project["technologies"],                         
                          })
     mentions = get_project_mentions(project_data)
     status_choices = ['Starting','Running', 'Finished']
+
+    schema = get_schema()
+    topic_choices = schema["project"]["properties"]["topics"]["items"]["enum"]
+    technology_choices = schema["project"]["properties"]["technologies"]["items"]["enum"]
 
     return flask.render_template('project_index/template.html',
                                  data_json=flask.Markup(json.dumps(projects)),
                                  projects=projects,
                                  status_choices_json=flask.Markup(json.dumps(status_choices)),
+                                 topic_choices_json=flask.Markup(json.dumps(topic_choices)),
+                                 technology_choices_json=flask.Markup(json.dumps(technology_choices)),                                                                  
                                  mentions=mentions)
-
 
 def get_project_mentions(projects):
     mention_accessor = lambda o:  o['impact'] + o['output']
