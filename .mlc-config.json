@@ -20,6 +20,8 @@
         "pattern": "^https://doi.org/<yourdoi>$"
     }, {
         "pattern": "^https://github.com/research-software-directory/research-software-directory/blob/3.0.0/docs/dev.md#verifying-the-local-installation$"
+    }, {
+        "pattern": "^https://github.com/research-software-directory/research-software-directory/compare/2.0.2...3.0.0$"
     }],
     "replacementPatterns": [{
         "pattern": "^/",

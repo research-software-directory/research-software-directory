@@ -1,29 +1,33 @@
 # 3.0.0
 
-- Added project page
-- Added project index page
+- Added project page accessible through new route `/projects/<id>` and `/projects/<slug>`
+- Added project index page accessible through new route `/projects`
 - Added 404 error page
 - Clean up and improve scss files
+- Cleaned up the file structure for templates
 - Improve documentation
-- Updated sample data
 - `docker-compose` now uses `.env` for environment variables instead of `export` command
 - This version works on Windows and updated the developer documentation
 - Added error messages if environment variables are undefined
 - Migrated from Travis CI to GitHub Actions
     - Added GitHub Superlinter
-    - Added OSSAR
+    - Added OSSAR tests
     - Added Markdown link checker
-    - Added Harvesting tests
+    - Added `backend` tests
+    - Added `frontend` tests
+    - Added `harvesting` tests
+    - Added integration tests
 - Certificate microservice is now called `https` in docker-compose.yml instead of `nginx_ssl`
 - Use static docker volumes instead of 
     - `docker-volumes/letsencrypt` 
     - `docker-volumes/cert`
-- Use Python 3.8
-- Use Node 14.x
+- Python docker containers now based on Python 3.8
+- Node docker containers now use Node 14.x
+- Updated security and other dependencies
 - Use `Caddy` in favor of `letsencrypt`
 - API changes
     - removed `corporateUrl` and `principalInvestigator` from `project` collection
-    - renamed `image` to `imageUrl` in `project` collection
+    - `image` now uses blobs like `{data: string, mimeType: string}`
     - added required properties to `project` collection
         - `callUrl`
         - `codeUrl`
@@ -31,23 +35,26 @@
         - `dateStart`
         - `description`
         - `grantId`
-        - `imageUrl`
         - `isPublished`
         - `related.organizations`
         - `related.projects`
         - `related.software`
         - `slug`
-        - `tags`
+        - `topics`
         - `team`
     - added optional properties to `project` collection
         - `dataManagementPlanUrl`    
         - `homeUrl`
         - `imageCaption`
-
-- FIXME: add commit comparison 2.0.2...3.0.0
-
-See [data migration notes](/data-migration/2.0-to-3.0/README.md).
-
+    - renamed required properties to `project` collection
+        - `tags` to `technologies`
+- the sample data from `database/db-init` was updated to schema version 3.0.0. For notes on
+  how to migrate your own data, please refer to the
+  [data migration notes](/data-migration/2.0-to-3.0/README.md).
+- the sample data also include data harvested from esciencecenter.nl/projects such as logos,
+  related people, related organizations, descriptive text, and a hero image; furthermore the
+  project start dates and end dates were added based on data from Exact. 
+- FIXME: add commit comparison [2.0.2...3.0.0](https://github.com/research-software-directory/research-software-directory/compare/2.0.2...3.0.0)
 
 # 2.0.2
 
