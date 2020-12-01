@@ -585,6 +585,70 @@
 
     .project-item {
       margin-bottom: 0;
+      width: 50%;
+
+      @include bp(max, 767px) {
+        width: 100%;
+      }
+
+      &:hover {
+        .thumb {
+          transform: scale(1.03);
+        }
+      }
+    }
+    .content {
+      display: flex;
+      padding: 20px 20px 10px 20px;
+
+      .thumb {
+        transition: 0.25s ease-in;
+        flex-shrink: 0;
+        padding: 0 1em 1em 0;
+        width: 140px;
+      }
+      .text-section {
+        width: 100%;
+      }
+      h2 {
+        font-size: 2rem;
+        line-height: 1.3em;
+        margin-bottom: 0.2em;
+        font-family: $primaryFont;
+      }
+      .text {
+        font-family: $primaryFontLight;
+        font-size: 2rem;
+        line-height: 1.3em;
+        margin-bottom: 0.2em;
+      }
+      .card-text {
+        min-height: 8em;
+      }
+      .author {
+        margin-top: 0.3em;
+        font-family: $primaryFont;
+        font-size: 1.6rem;
+        line-height: 1.4em;
+      }
+      .gutter {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.0em;
+        font-size: 1.2rem;
+      }
+      .status {
+        text-align: right;
+      }
+    }
+  }
+
+  .project-items-index-page {
+    display: flex;
+    justify-content: space-between;
+
+    .project-item {
+      margin-bottom: 0;
       background-color: $light;
       border: 1px solid white;
       width: 50%;
@@ -594,7 +658,6 @@
       }
 
       &:hover {
-        // color: $light !important;
         color: $white !important;
         background-color: $dark;
 
@@ -647,16 +710,6 @@
         text-align: right;
       }
     }
-
-//  ​   .project-card {
-//       border: 1px solid white;
-//     }
-
-    // .project-card:hover  {
-    //   color: $white;
-    //   background-color: $dark;
-    // }
-
   }
 
 // Related tools

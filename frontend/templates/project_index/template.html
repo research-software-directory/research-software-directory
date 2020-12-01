@@ -167,7 +167,7 @@
           </div>
         </div>
         <div class="col-3-4" id="project_list">
-          <transition-group appear name="slide-fade" tag="div" class="row project-items">
+          <transition-group appear name="slide-fade" tag="div" class="row project-items-index-page">
             <article v-for="project in pagedProjects" v-bind:key="project" class="project-item project-card bg-light">
               <a :href="'/projects/' + (project.id)">
                 <div class="content">
