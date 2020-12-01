@@ -9,6 +9,10 @@ var firstBy=function(){function n(n){return n}function t(n){return"string"==type
 function debounce(n,l,u){function t(){var c=Date.now()-r;c<l&&c>=0?e=setTimeout(t,l-c):(e=null,u||(i=n.apply(o,a),o=a=null))}var e,a,o,r,i;null==l&&(l=100);var c=function(){o=this,a=arguments,r=Date.now();var c=u&&!e;return e||(e=setTimeout(t,l)),c&&(i=n.apply(o,a),o=a=null),i};return c.clear=function(){e&&(clearTimeout(e),e=null)},c.flush=function(){e&&(i=n.apply(o,a),o=a=null,clearTimeout(e),e=null)},c}
 
 function initOverview(projectsData, statusChoicesData) {
+    function sortByKey(key) {
+        return function(a, b) { return a[key] - b[key]; }
+    }
+
     var device = {
         phone: 'phone',
         tablet: 'tablet',
@@ -38,6 +42,10 @@ function initOverview(projectsData, statusChoicesData) {
         delimiters: ["[[", "]]"],
         methods: {
             log: console.log,
+            setSorter: function(sorter) {
+                this.sort = sorter;
+                this.sortersOpen = false;
+            },
             showPage: function (n) {
                 return n === 1 || n === this.lastPage || Math.abs(n - this.page) <= 2
             },
@@ -78,6 +86,9 @@ function initOverview(projectsData, statusChoicesData) {
                 statuses: []
             },
             statusesFilterOpen: getDevice() !== device.phone,
+            sorters: ['Last updated', 'Most mentions'],
+            sortersOpen: false,
+            sort: 'Last updated',
         },
         computed: {
             statusesWithCount: function() {
@@ -105,9 +116,26 @@ function initOverview(projectsData, statusChoicesData) {
                     .filter(filterSearch(this.filter.search));
             },
             sortedProjects: function () {
-                // TODO implement sort
-                return this.filteredProjects;
-            },
+                function updatedSorter (a, b) {
+                    return b.lastUpdate > a.lastUpdate ? 1 : (a.lastUpdate > b.lastUpdate ? -1 : 0)
+                }
+                function keyCountSorter (key) {
+                    return function (a, b) {
+                        return b[key] - a[key]
+                    }
+                }
+                function sortFunction (sortVal) {
+                    switch (sortVal) {
+                        case 'Last updated':
+                            return updatedSorter
+                        case 'Most mentions':
+                            return keyCountSorter('numMentions')
+                        default:
+                          return updatedSorter
+                    }
+		}
+		return this.filteredProjects.sort(sortFunction(this.sort))
+	    },
             pagedProjects: function () {
                 var offset = this.pageSize * (this.page - 1);
                 return this.sortedProjects.slice(offset, offset + this.pageSize);
@@ -128,6 +156,9 @@ function initOverview(projectsData, statusChoicesData) {
         watch: {
             page: {
                 handler: function () { window.scrollTo(0,0); }
+            },
+            sort: {
+                handler: function () { this.page = 1; }
             },
             pageSize: {
                 handler: function () { this.page = 1; }

@@ -210,6 +210,8 @@ def project_index_template():
                          "yearStart": get_year_from_date_string(project["dateStart"]),
                          "yearEnd": get_year_from_date_string(project["dateEnd"]),
                          "status": status,
+                         "numMentions": len(project["output"]) + len(project["impact"]),
+                         "lastUpdate": project["updatedAt"],
                          "lastUpdateAgo": ago.human(str_to_datetime(project["updatedAt"]), precision=1),
                          })
     mentions = get_project_mentions(project_data)
