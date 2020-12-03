@@ -94,7 +94,6 @@ and fix it.
 1. Set the ``isPublished`` slider near the top of the page to the right to have it
 included in [research-software.nl](https://research-software.nl).
 1. **Don't forget** to click ``Save`` when you're done.
-1. You may need to refresh the page to see newly added items appear in the left pane
 1. Refer to section [_Delays_](#delays) and section [_The query
 trick_](#the-query-trick) to know when you get to see your changes.
 
@@ -110,7 +109,6 @@ blue ``+`` symbol.
 1. Optionally, fill in the person's email address
 1. Optionally, provide an image of the person
 1. **Don't forget** to click ``Save`` when you're done.
-1. You may need to refresh the page to see newly added items appear in the left pane
 
 ## How do I add a new ``Mention``?
 
@@ -120,15 +118,18 @@ mentions`` to determine when the harvester is scheduled to run.
 
 ## How do I add a new ``Project``?
 
-You can't. The list of projects is harvested periodically from the corporate
-website [esciencecenter.nl/projects](https://esciencecenter.nl/projects). Check
-[https://research-software.nl/schedule](https://research-software.nl/schedule)
-and look for ``python app.py harvest projects`` to determine when the harvester
-is scheduled to run.
-
-You can, however, add mentions to a project, either as "output" (the mention was
-produced with NLeSC funding), or as "impact" (the mention was produced without
-NLeSC funding, for example when a paper cites code that NLeSC created).
+1. Go to the Research Software Directory's admin interface
+([https://www.research-software.nl/admin/](https://www.research-software.nl/admin/)).
+1. In the left pane, select ``Project``
+1. Check that the project you want to add doesn't exist yet by searching via the
+search box. If the search comes up empty, add the new project by clicking the
+blue ``+`` symbol.
+1. Fill the form
+   1. Please respect the required image size of 1024x600
+   1. Add mentions to a project, either as "output" (the mention was
+      produced with NLeSC funding), or as "impact" (the mention was produced without
+      NLeSC funding, for example when a paper cites code that NLeSC created).
+1. **Don't forget** to click ``Save`` when you're done.
 
 ## How do I add a new ``Organization``?
 
@@ -139,7 +140,10 @@ NLeSC funding, for example when a paper cites code that NLeSC created).
 the search box. If the search comes up empty, add the new organization by
 clicking the blue ``+`` symbol.
 1. Fill the name of the organization and provide a URL
-1. Optionally, provide the organization's logo as an image
+1. Optionally, provide the organization's logo as an image.
+   1. Make sure to use high quality logos, preferably with a transparent background.
+   1. Organizations often offer the source files for their logos via a link on 
+      their website, usually named something like "Press" or "House style".
 1. **Don't forget** to click ``Save`` when you're done.
 1. You may need to refresh the page to see newly added items appear in the left pane
 
