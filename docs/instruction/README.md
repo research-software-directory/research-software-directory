@@ -38,7 +38,7 @@ related boxes (``GitHub``, ``Zenodo`` and ``CITATION.cff``) are already covered.
 However, product pages are not only about source code; they also aim to provide
 context. An important part of this are the _mentions_ that you'll see on most
 product pages. You can control which mentions should appear on a product page by
-selecting them via the dropdown list in the Admin interface of the RSD.
+selecting them via the dropdown list in the Admin interface of the Research Software Directory.
 
 ### Output and impact
 
