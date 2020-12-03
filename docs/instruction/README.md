@@ -14,14 +14,12 @@ to accomplish with it.
 To populate the Research Software Directory with your content, you'll need
 accounts for GitHub and for Zotero.
 
-On GitHub, you need to be a member of the NLeSC organization, and that
-membership should be public. [This
-website](https://github.com/orgs/NLeSC/people) will tell you if you meet those
-criteria.
-
-On Zotero, you'll need to be a member of the Netherlands eScience Center group,
-which you can request here [https://www.zotero.org/groups/1689348](https://www.zotero.org/groups/1689348). A group
-administrator needs to grant you access, so be aware it may take a while.
+1. On GitHub, you need to be a member of the NLeSC organization, and that
+   membership should be public. [This website](https://github.com/orgs/NLeSC/people)
+   will tell you if you meet those criteria.
+1. On Zotero, you'll need to be a member of the Netherlands eScience Center group,
+   which you can request here [https://www.zotero.org/groups/1689348](https://www.zotero.org/groups/1689348).
+   A group administrator needs to grant you access, so be aware it may take a while.
 
 ## Basic workflow
 
