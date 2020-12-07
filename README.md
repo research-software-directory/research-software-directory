@@ -1,9 +1,9 @@
 [![Research Software Directory](https://img.shields.io/badge/rsd-Research%20Software%20Directory-00a3e3.svg)](https://www.research-software.nl/software/research-software-directory)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1154130.svg)](https://doi.org/10.5281/zenodo.1154130)
-![Admin tests](https://github.com/research-software-directory/research-software-directory/workflows/Admin%20tests/badge.svg)
-![Frontend tests](https://github.com/research-software-directory/research-software-directory/workflows/Frontend%20tests/badge.svg)
-![Backend tests](https://github.com/research-software-directory/research-software-directory/workflows/Backend%20tests/badge.svg)
-![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg)
+[![Admin tests](https://github.com/research-software-directory/research-software-directory/workflows/Admin%20tests/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Admin+tests%22)
+[![Frontend tests](https://github.com/research-software-directory/research-software-directory/workflows/Frontend%20tests/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Frontend+tests%22)
+[![Backend tests](https://github.com/research-software-directory/research-software-directory/workflows/Backend%20tests/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Backend+tests%22)
+[![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Integration+tests%22)
 [![Check Markdown links](https://github.com/research-software-directory/research-software-directory/workflows/Check%20Markdown%20links/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Check+Markdown+links%22)
 
 # Research Software Directory
