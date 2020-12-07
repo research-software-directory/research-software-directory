@@ -29,6 +29,12 @@ The Research Software Directory:
 1. provides all of its data via a JSON API
 1. integrates with third-party services such as [Zotero](http://zotero.org/) (reference manager), [Zenodo](https://zenodo.org/) (archiving), GitHub (code development platform)
 
+## Examples
+
+1. [https://software.esciencecenter.nl](https://software.esciencecenter.nl)
+1. [https://software.process-project.eu](https://software.process-project.eu)
+
+
 ## Try it out
 
 ### Requirements
