@@ -31,7 +31,7 @@ The Research Software Directory:
 
 ## Examples
 
-1. [https://software.esciencecenter.nl](https://software.esciencecenter.nl)
+1. [https://research-software.nl](https://research-software.nl)
 1. [https://software.process-project.eu](https://software.process-project.eu)
 
 
