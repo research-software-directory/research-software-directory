@@ -140,7 +140,7 @@ clicking the blue ``+`` symbol.
 1. Fill the name of the organization and provide a URL
 1. Optionally, provide the organization's logo as an image.
    1. Make sure to use high quality logos, preferably with a transparent background.
-   1. Organizations often offer the source files for their logos via a link on 
+   1. Organizations often offer the source files for their logos via a link on
       their website, usually named something like "Press" or "House style".
 1. **Don't forget** to click ``Save`` when you're done.
 1. You may need to refresh the page to see newly added items appear in the left pane
