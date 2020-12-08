@@ -22,8 +22,8 @@ const migrate = () => {
       'related.organizations': [],
       'related.projects': [],
       'related.software': [],
-      technologies: [],
       team: [],
+      technologies: [],
       topics: []
     },
     $unset: {
