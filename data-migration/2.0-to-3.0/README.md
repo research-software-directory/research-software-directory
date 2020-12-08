@@ -1,6 +1,6 @@
-# Updating data from 2.0.2 to 3.0.0
+# Updating data from 2.0.2 to 3.0.x
 
-The following code snippet emulates the situation where the code is in version 3.0.0 while the data is in version 2.0.2.
+The following code snippet emulates the situation where the code is in version 3.0.x while the data is in version 2.0.2.
 
 ```shell
 # update the references
@@ -52,7 +52,7 @@ docker-compose exec database mongo rsd /tmp/migrate.js
 docker-compose exec harvesting python app.py resolve all
 ```
 
-The data you get from the API should now be according to the 3.0.0 schema, e.g.
+The data you get from the API should now be according to the 3.0.x schema, e.g.
 [http://localhost/api/project/764](http://localhost/api/project/764), and all aspects of the site should now work. You
 should verify if everything works by doing the checks mentioned in section [Verifying the local
 installation](https://github.com/research-software-directory/research-software-directory/blob/3.0.0/docs/dev.md#verifying-the-local-installation).

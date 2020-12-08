@@ -1,3 +1,9 @@
+# 3.0.1
+
+- Fixed bug in migration script (there was no key `tags` in the project collection, so the `$rename` operation failed)
+- Updated the sample data with the latest production data (grabbed Dec 8, 2020)
+- Updated the data entry notes for project collection
+
 # 3.0.0
 
 commit comparison [2.0.2...3.0.0](https://github.com/research-software-directory/research-software-directory/compare/2.0.2...3.0.0)

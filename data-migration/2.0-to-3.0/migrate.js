@@ -23,10 +23,8 @@ const migrate = () => {
       'related.projects': [],
       'related.software': [],
       team: [],
+      technologies: [],
       topics: []
-    },
-    $rename: {
-      tags: 'technologies'
     },
     $unset: {
       corporateUrl: '',
