@@ -104,7 +104,7 @@ authors:
     family-names: Zach
     given-names:  Hoskins
 cff-version: "1.1.0"
-date-released: 2020-12-01
+date-released: 2020-12-08
 doi: 10.5281/zenodo.1154130
 keywords: 
   - "Current Research Information Systems"
@@ -118,4 +118,4 @@ license: Apache-2.0
 message: "If you use this software, please cite it using these metadata."
 repository-code: "https://github.com/research-software-directory/research-software-directory"
 title: "Research Software Directory"
-version: "3.0.0"
+version: "3.0.1"
