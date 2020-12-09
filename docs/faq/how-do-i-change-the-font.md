@@ -98,5 +98,5 @@ pysassc --style=compressed --sourcemap style/rsd.scss static/style/rsd.scss.css
 
 Afterwards, your new font should be included in `static/style/rsd.scss.css`.
 
-Refer to the [general workflow when making changes](/docs/customize.md#general-workflow-when-making-changes) to update
+Refer to the [general workflow when making changes](../changing-the-look-and-feel.md#general-workflow-when-making-changes) to update
 the Docker container with the new content.
