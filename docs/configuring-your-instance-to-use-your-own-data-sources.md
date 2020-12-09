@@ -1,4 +1,4 @@
-# Configuring the Research Software Directory
+# Using your own data sources
 
 The research software directory is configured using a file with environment
 variables called `.env`. An example config file
