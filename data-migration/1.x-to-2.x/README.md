@@ -8,7 +8,7 @@ from 1.2.0 to 2.0.0. Furthermore, the frontend now shows information for page
 maintainers, for which a new MongoDB collection ``logging`` is needed.
 
 When migrating data there is always the possibility of **LOSS OF DATA**. Review the
-notes on how to make a backup of the Mongo data [here](/docs/maintaining.md#updating-a-production-instance).
+notes on how to make a backup of the Mongo data [here](https://github.com/research-software-directory/research-software-directory/tree/2.0.2/README.md#updating-a-production-instance).
 
 ```shell
 source rsd-secrets.env
@@ -29,7 +29,7 @@ db.project.deleteMany({})
 db.project_cache.deleteMany({})
 ```
 Then, update the project identifiers as used in the ``software`` collection by
-copy-pasting the contents of the [data migration script](/data-migration/1.x-to-2.x/migrate.js) into the Mongo shell.
+copy-pasting the contents of the [data migration script](https://github.com/research-software-directory/research-software-directory/blob/2.0.2/data-migration-1.x-to-2.js) into the Mongo shell.
 
 Exit the Mongo shell with Ctrl-d or ``exit``, then run the harvester:
 
