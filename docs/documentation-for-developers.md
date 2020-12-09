@@ -12,7 +12,7 @@ git clone https://github.com/<your-github-organization>/research-software-direct
 
 ## Try it out, step 2/3: Configure
 
-See [configure.md](configure.md)
+See section [Using your own data sources](using-your-own-data-sources.md).
 
 ## Try it out, step 3/3: Start the complete stack using [docker-compose](https://docs.docker.com/compose/)
 

@@ -24,5 +24,6 @@
     "replacementPatterns": [{
         "pattern": "^/",
         "replacement": "https://github.com/research-software-directory/research-software-directory/blob/master/"
-    }]
+    }],
+    "retryOn429": true
 }

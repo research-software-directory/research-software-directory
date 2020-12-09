@@ -42,7 +42,7 @@ selecting them via the dropdown list in the Admin interface of the Research Soft
 
 ### Output and impact
 
-The items on the  dropdown list are harvested periodically from the
+The items on the dropdown list are harvested periodically from the
 [Netherlands eScience Center group on
 Zotero](https://www.zotero.org/groups/1689348). For reference, Zotero is the
 place where we keep track of NLeSC's _output_ and _impact_:
@@ -107,6 +107,8 @@ blue ``+`` symbol.
 1. Optionally, fill in the person's email address
 1. Optionally, provide an image of the person
 1. **Don't forget** to click ``Save`` when you're done.
+1. Refer to section [_Delays_](#delays) and section [_The query
+trick_](#the-query-trick) to know when you get to see your changes.
 
 ## How do I add a new ``Mention``?
 
@@ -128,6 +130,8 @@ blue ``+`` symbol.
       produced with NLeSC funding), or as "impact" (the mention was produced without
       NLeSC funding, for example when a paper cites code that NLeSC created).
 1. **Don't forget** to click ``Save`` when you're done.
+1. Refer to section [_Delays_](#delays) and section [_The query
+trick_](#the-query-trick) to know when you get to see your changes.
 
 ## How do I add a new ``Organization``?
 
@@ -143,7 +147,8 @@ clicking the blue ``+`` symbol.
    1. Organizations often offer the source files for their logos via a link on
       their website, usually named something like "Press" or "House style".
 1. **Don't forget** to click ``Save`` when you're done.
-1. You may need to refresh the page to see newly added items appear in the left pane
+1. Refer to section [_Delays_](#delays) and section [_The query
+trick_](#the-query-trick) to know when you get to see your changes.
 
 ## How/when do I get to see my changes?
 
@@ -161,12 +166,12 @@ If your change only involves the Research Software Directory's Admin interface,
 for example when you add a pre-existing ``Mention`` to a ``Software`` and press
 ``Save``, the corresponding database collection is updated immediately but the
 data needed for populating the product page template is collected at intervals.
-Again, refer to the schedule at
+Refer to the schedule at
 [https://research-software.nl/schedule](https://research-software.nl/schedule) and look for the
 ``python app.py resolve`` task.
 
 If your change involves an external data source, e.g. you have new commits on
-GitHub, or a new release on Zenodo, you will only see the resulting data show up
+GitHub, a new release on Zenodo, or you've added an entry to Zotero, you will only see the resulting data show up
 in the Research Software Directory after the corresponding data is harvested.
 Check [https://research-software.nl/schedule](https://research-software.nl/schedule) and look for
 the ``python app.py harvest commits`` and ``python app.py harvest citations``

@@ -31,7 +31,7 @@ Make sure the item you want to add has some sort of identifier such as a DOI or
 a URL; without it, whatever you're adding is just hearsay.
 
 1. Synchronize with the Zotero server.
-1. On the right-hand side, select the ``Miscellaneous`` folder (or, you could try to find a more appropriate folder, but
+1. On the left-hand side, select the ``Miscellaneous`` folder (or, you could try to find a more appropriate folder, but
    know that that won't matter for anything related to the Research Software Directory -- it does not use the folder
    structure from Zotero, just the items that are in it).
 1. Click the `Add by identifier` button.
@@ -46,14 +46,14 @@ correct, as follows:
    1. Verify that the `Item Type` (top of the list) is correct.
    1. For some `Item Type`s, you need to fill in `Type` as well (see the list below).
    1. Verify that any names have been entered correctly, for instance in the `Author` or
-   `Programmer` fields. We are using the `firstname`, `lastname` format, where each
-   is in its own input field. You can switch between single and two field entry by
+   `Programmer` fields. A person's first name and last name each have their
+   own input field. You can switch between single and two field entry by
    pressing the small button next to the names. Name particles (`de`, `van der`, etc.)
    should be included in the lastname so for `Jan de Groot` use lastname `de
    Groot`.
    1. Verify that the dates have been entered correctly. Use a single date (don't
    use date ranges). Because dates are tricky, Zotero shows a string such as
-   `y m d` or `d m y` next to each date, to show what each number represents.
+   `y m d` or `d m y` next to each date, to show how it has interpreted each number.
 1. If everything looks good, synchronize with the Zotero server again.
 
 
@@ -62,32 +62,28 @@ correct, as follows:
 Below is a list of output we would like to keep track of, with a short
 description. Pick the one that best describes your output, and fill out the
 metadata required. By default Zotero shows a much larger list of metadata,
-please fill out the others entries as good as possible.
+use your judgment to fill out the other fields as necessary.
 
 If you have an item that doesn't fit, please [open an issue
 here](https://github.com/research-software-directory/research-software-directory/issues) and we'll figure it
-out & update this document.
+out and update this document.
 
 ### Software
 
 You don't need to add `Software` items to Zotero. We keep track of our software
 output via the Research Software Directory. If you have a software package that
 you want to add, use the Research Software Directory's Admin interface as
-explained [here](README.md).
+explained [here](entering-data.md).
 
 ### Papers
 
-If you have a DOI, use the 'Add by identifier' button, and check that the ``Item type`` in the ``Info`` tab says either
-``Journal Article`` or ``Conference Paper``. Depending on the domain, there may be differences between the two
-categories, choose the one you think is most appropriate for your paper.
+If you have a DOI, use the 'Add by identifier' button, and check that the ``Item type`` in the ``Info`` tab is correct.
 
 ### Datasets
 
-Datasets will be a new feature in an upcoming Zotero release. For now, set
-`Item Type` to `Journal Article`.
 If you don't have a DOI for the dataset yet, make sure to [upload a copy of the item
-to Zenodo](https://zenodo.org/deposit/new), FigShare or an other place that provides a DOI. The item's URL should
-point to [https://doi.org/&lt;yourdoi&gt;](https://doi.org/<yourdoi>).
+to Zenodo](https://zenodo.org/deposit/new), FigShare or an other place that provides a DOI.
+Set `Item Type` to `Web page`, and set the item's URL to [https://doi.org/&lt;yourdoi&gt;](https://doi.org/<yourdoi>).
 
 ### Conference poster or presentation slides
 
@@ -119,4 +115,4 @@ A PhD, Master, or Bachelor thesis. Set `Item Type` to `Thesis` and fill in
 Please choose the most appropriate type from `Blogpost`, `Book`, `Book Section`,
 `Interview`, `Magazine Article`, `Newspaper Article`, `Podcast`, `Radio
 Broadcast`, `TV Broadcast`, `Video Recording`, `Webpage`. And make a best effort
-at filling out the other metadata on the `Info` tab.
+attempt at filling out the other metadata on the `Info` tab.
