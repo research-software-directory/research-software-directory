@@ -1,7 +1,7 @@
 Flask==1.0
 Flask-Cors==3.0.3
 requests==2.20.0
-urllib3==1.24.2
+urllib3==1.26.5
 gunicorn==20.0.4
 pytest==3.3.2
 PyJWT==1.5.3
