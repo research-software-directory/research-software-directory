@@ -22,10 +22,10 @@ It's easy to get lost in this plethora of services, but for running an instance
 of the Research Software Directory, you'll only need 3 of them:
 
 1. **EC2**: this is where we will run your customized instance of the Research
-Software Directory and host it online; [jump to the EC2 section](/README.md#configuring-ec2)
+Software Directory and host it online; [jump to the EC2 section](#configuring-ec2)
 1. **IAM**: we use this to create a user with limited privileges, so we don't
-have to use root credentials when we don't have to; [jump to the IAM section](/README.md#configuring-iam)
-1. **S3**: this is where we will store our daily backups; [jump to the S3 section](/README.md#configuring-s3)
+have to use root credentials when we don't have to; [jump to the IAM section](#configuring-iam)
+1. **S3**: this is where we will store our daily backups; [jump to the S3 section](#configuring-s3)
 
 ## Configuring EC2
 
