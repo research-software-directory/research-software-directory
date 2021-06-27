@@ -23,30 +23,28 @@
 }
 
 #search-software {
-
   line-height: 6rem;
-  margin: 2.5em 0 2em; 
+  margin: 2.5em 0 2em;
 
-  
   .search-bar {
     height: 6rem;
     font-size: 1.8rem;
     display: flex;
-    position:relative;
+    position: relative;
 
-    &_button{
-      position:absolute;
-      
-      right:0;
+    &_button {
+      position: absolute;
+
+      right: 0;
       cursor: pointer;
       background-color: $dark;
       height: 6rem;
       width: 6rem;
-      display:flex;
+      display: flex;
       justify-content: center;
       align-items: center;
 
-      .icon{
+      .icon {
         width: 2.4rem;
         height: 2.4rem;
         transform: scale(0.9);
@@ -55,7 +53,7 @@
       }
     }
 
-    @include bp(max, $tablet){
+    @include bp(max, $tablet) {
       font-size: 1.2rem;
     }
 
@@ -64,72 +62,70 @@
       padding: 0 1em;
       height: 100%;
       z-index: +1;
-      flex:1;
+      flex: 1;
       background-color: transparent;
       border: none;
       vertical-align: middle;
-      transition: background-color .3s ease;
+      transition: background-color 0.3s ease;
 
-      &:focus{
-        outline:0;
-        background-color: darken( $light, 6% );
+      &:focus {
+        outline: 0;
+        background-color: darken($light, 6%);
         margin-right: 6rem;
       }
     }
 
-    &:hover{
-      .search-bar_button{
+    &:hover {
+      .search-bar_button {
         background-color: $primaryColor;
 
-        .icon{
+        .icon {
           transform: scale(1);
         }
       }
     }
-
   }
 }
 
-#sorter{
+#sorter {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
   margin-bottom: 35px;
-  
+
   .text {
     padding-right: 1em;
     font-family: $primaryFontBold;
   }
-
 }
-
 
 // Animations for software items
 .slide-fade-enter-active {
   transition: transform 0.36s ease 0.1s, opacity 0.36s ease 0.1s;
 }
 .slide-fade-leave-active {
-  transition: transform 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0), opacity 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: transform 0.2s cubic-bezier(1, 0.5, 0.8, 1),
+    opacity 0.2s cubic-bezier(1, 0.5, 0.8, 1);
 }
-.slide-fade-enter{
+.slide-fade-enter {
   opacity: 0;
 }
-.slide-fade-leave-to{
-  transform: translate3d( 0, 10px, 0 );
+.slide-fade-leave-to {
+  transform: translate3d(0, 10px, 0);
   opacity: 0;
 }
 
 #noscript_projects {
   ul {
-    text-indent:-20px;
-    margin-left:20px;
+    text-indent: -20px;
+    margin-left: 20px;
   }
   li {
     list-style-type: none;
     border: 1px solid $dark;
     a {
-      padding: .2em;
+      padding: 0.2em;
       display: block;
       &:hover {
         color: $primaryColor;
@@ -138,47 +134,46 @@
   }
 }
 
-#software{ align-items: flex-start; }
+#software {
+  align-items: flex-start;
+}
 
 #software_list {
-
-  .software_list_wrap{
+  .software_list_wrap {
     display: flex;
     flex-wrap: wrap;
   }
 
   .software_item {
     overflow: hidden;
-    position:relative;
+    position: relative;
     min-height: 300px;
     width: 50%;
     padding: 1em;
     border: 1px solid white;
     display: flex;
     flex-direction: column;
-    
-    &:focus{
-        background-color: darken( $light, 10%);
-        outline:0;
-        .code{
-          font-family: $primaryFontBold;
-        }
+
+    &:focus {
+      background-color: darken($light, 10%);
+      outline: 0;
+      .code {
+        font-family: $primaryFontBold;
+      }
     }
 
-   
-    
     &.highlighted {
       background-color: $primaryColor;
-      color:white;
+      color: white;
 
-      &:focus{
-        background-color: darken( $primaryColor, 7%);
+      &:focus {
+        background-color: darken($primaryColor, 7%);
       }
     }
 
     &:hover {
       background-color: $dark;
-      color:white;
+      color: white;
     }
 
     .name {
@@ -186,17 +181,17 @@
       height: auto;
       min-height: 3em;
       flex-shrink: 0;
-      
     }
-    .short{
+    .short {
       flex-shrink: 0;
       padding: 1em 0 1.3em;
     }
-    .name, .short{
+    .name,
+    .short {
       width: calc(100% - 70px);
       padding-right: 5px;
     }
-    .software_data{
+    .software_data {
       margin-top: auto;
       font-size: 1.2rem;
       display: flex;
@@ -204,15 +199,15 @@
       align-items: center;
       align-content: center;
 
-      .last-update{
+      .last-update {
         flex-shrink: 0;
       }
-      .highlighted{
+      .highlighted {
         display: flex;
         justify-content: flex-end;
         align-items: center;
 
-        .icon{
+        .icon {
           width: 1.1em;
           height: 1.1em;
           fill: currentColor;
@@ -220,16 +215,14 @@
           margin-top: -0.25em;
         }
       }
-
     }
-    
 
     .code {
       position: absolute;
       top: 0;
       right: 0;
-      width:70px;
-      height:70px;
+      width: 70px;
+      height: 70px;
       font-size: 2.4rem;
       font-family: $primaryFontLight;
       color: $black;
@@ -239,34 +232,31 @@
       align-items: center;
     }
 
-
     // .software-item
-    @include bp( max, $tablet ){
-      .name, .short{
+    @include bp(max, $tablet) {
+      .name,
+      .short {
         width: calc(100% - 60px);
       }
     }
 
-    @include bp( max, $phablet + 100px ){
+    @include bp(max, $phablet + 100px) {
       width: 100%;
       .code {
-        width:60px;
-        height:60px;
+        width: 60px;
+        height: 60px;
       }
       .name {
         min-height: 2.5em;
       }
-      
     }
-
   }
 }
 
 .pagination {
-
   margin: 3.5em 0 5.5em;
   width: 100%;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -289,7 +279,6 @@
   }
 }
 
-
 #filters {
   margin-bottom: 50px;
   height: auto;
@@ -298,81 +287,76 @@
   flex-direction: column;
 
   // break filter groups to two columns between mobile and desktop
-  .filters_container{
+  .filters_container {
     overflow: hidden;
     transition: max-height 1.4s ease;
-    
-    &.mob-hidden{
+
+    &.mob-hidden {
       transition: max-height 0.7s ease;
     }
 
-    @include bp( maxMin, $tablet, $phablet ){
-      .filters_columns{
+    @include bp(maxMin, $tablet, $phablet) {
+      .filters_columns {
         columns: auto 2;
         column-gap: 40px;
         padding-bottom: 1.5em;
       }
     }
 
-    @include bp( max, $tablet){
+    @include bp(max, $tablet) {
       max-height: 1200px;
-     
-      &.mob-hidden{
+
+      &.mob-hidden {
         max-height: 0;
       }
     }
 
-    @include bp( max, $phablet){
+    @include bp(max, $phablet) {
       order: 2;
       max-height: 2000px;
     }
   }
 
-  .filter-group{
+  .filter-group {
     break-inside: avoid;
 
-    &:not(:last-child){  margin-bottom: 2.25em; }
+    &:not(:last-child) {
+      margin-bottom: 2.25em;
+    }
 
-    ul{
+    ul {
       padding-right: 20px;
 
-      li{ 
+      li {
         overflow: hidden;
-        padding: 0.2em 0; 
+        padding: 0.2em 0;
         // max-height: 5em;
         transition: all 0.2s ease-in, opacity 0.15s ease-in;
 
         &.empty {
-          opacity: .5 !important;
+          opacity: 0.5 !important;
           pointer-events: none;
         }
       }
     }
 
-    &_title{
+    &_title {
       display: inline-block;
       cursor: pointer;
       font-family: $primaryFontBold;
       padding-bottom: 0.5em;
 
-      &:hover{
+      &:hover {
         color: $primaryColor;
       }
-      .toggle-button{
+      .toggle-button {
         margin-left: 0.5em;
-        border-radius: 55%;
-        padding: 0px 5px;
-        font-size: 11px;
-        border-right: 1px solid;
-        border-left: 1px solid;
       }
     }
-
   }
 
   // Toggle for all filters
-  .toggle-filters{
-    
+  .toggle-filters {
     cursor: pointer;
     border-top: 1px solid $divider;
     padding-top: 0.5em;
@@ -381,39 +365,37 @@
     font-family: $primaryFontBold;
 
     display: none;
-    
-    .text{
+
+    .text {
       display: flex;
       align-items: center;
     }
-    .icon{
+    .icon {
       margin-right: 0.4em;
       font-size: 1.3em;
       padding-bottom: 0.25em;
     }
 
-    &:hover{
+    &:hover {
       color: $primaryColor;
     }
 
     // only display on tablet and under
-    @include bp( max, $tablet ){
+    @include bp(max, $tablet) {
       display: flex;
     }
 
-    @include bp( max, $phablet ){
+    @include bp(max, $phablet) {
       border-top: 0;
       border-bottom: 1px solid $divider;
       margin-bottom: 2em;
     }
-
-    
   }
 }
 #escience_blog {
   padding: 80px 0;
-  
-  .blog_post-list{
+
+  .blog_post-list {
     margin: 0 -10px;
   }
 
@@ -421,11 +403,11 @@
     width: 50%;
     padding: 10px;
 
-    &:not(:last-child){
+    &:not(:last-child) {
       margin-bottom: 20px;
     }
 
-    .author{
+    .author {
       font-size: 1.4rem;
       padding: 0.3em 0 0.8em;
     }
@@ -435,28 +417,27 @@
       font-size: 2.4rem;
       line-height: 1.3;
 
-      @include bp(max, $phablet){
+      @include bp(max, $phablet) {
         font-size: 2rem;
       }
-
     }
 
     &:hover {
       .title {
         color: $primaryColor;
       }
-      img{
+      img {
         transform: scale(1.03);
       }
     }
 
-    .image-container{
+    .image-container {
       overflow: hidden;
       height: 260px;
       margin-bottom: 15px;
     }
 
-    img{
+    img {
       transition: transform 0.27s ease-in-out;
       overflow: hidden;
       object-fit: cover;
@@ -464,67 +445,64 @@
       height: 100%;
     }
 
-    @include bp(max, $phablet){
+    @include bp(max, $phablet) {
       width: 100%;
 
-      .image-container{
+      .image-container {
         height: 220px;
       }
-
     }
-
   }
 
-  @include bp(max, $tablet){
+  @include bp(max, $tablet) {
     padding: 60px 0;
   }
 }
 
-
 #latest_mentions {
-
   padding: 70px 0;
 
-  ul{
-      padding: 20px 0 15px;
+  ul {
+    padding: 20px 0 15px;
   }
-  li{
-    &:not(:last-child) { margin-bottom: 2px; }
-    .mention_content{ 
-        display: block;
-        padding: 1.8em 1.4em 1.6em; 
-        // background-color: lighten( $dark, 10% );
-        background-color: $light;
+  li {
+    &:not(:last-child) {
+      margin-bottom: 2px;
+    }
+    .mention_content {
+      display: block;
+      padding: 1.8em 1.4em 1.6em;
+      // background-color: lighten( $dark, 10% );
+      background-color: $light;
     }
     .mention_info {
       display: flex;
       // flex-wrap: wrap;
       justify-content: space-between;
     }
-    .mention_title{
+    .mention_title {
       font-family: $primaryFontBold;
       padding-right: 1em;
     }
-    .mention_post-date{
+    .mention_post-date {
       flex-shrink: 0;
       font-family: $primaryFontLight;
     }
-    .mention_location{
+    .mention_location {
       font-family: $primaryFontLight;
     }
-    a.mention_content:hover{
-        background-color: lighten( $dark, 5% );
-        color: $white;
+    a.mention_content:hover {
+      background-color: lighten($dark, 5%);
+      color: $white;
     }
-    .icon{
+    .icon {
       margin-left: 0.5em;
       width: 0.8em;
       height: 0.8em;
       display: inline-block;
       fill: currentColor;
     }
-  } 
-
+  }
 
   // a .icon {
   //   width: .8em;
@@ -543,7 +521,7 @@
   // .mention_info {
   //   width: 75%;
   // }
-  
+
   // .mention_date {
   //   flex-shrink: 0;
   //   width: 25%;
@@ -552,7 +530,7 @@
 
   // @include bp(max, $tablet){
   //   padding: 50px 0;
-    
+
   //   .mention_info, .mention_date{
   //     width: 100%;
   //     text-align: left;
@@ -561,7 +539,23 @@
   //     padding-top: 1em;
   //     font-size: 1.4rem;
   //   }
-  
-  // }
 
+  // }
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

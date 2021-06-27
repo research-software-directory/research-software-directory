@@ -94,8 +94,11 @@
               <div class="filter-group">
                 <div class="filter-group_title" @click="topicsFilterOpen = !topicsFilterOpen">
                   Topic
-                  <span class="toggle-button">
-                    [[ topicsFilterOpen ? '-' : '+' ]]
+                  <span class="toggle-button" v-if="topicsFilterOpen">
+                    <i class="arrow down"></i>
+                  </span>
+                  <span class="toggle-button" v-else>
+                    <i class="arrow left"></i>
                   </span>
                 </div>
 
@@ -117,8 +120,11 @@
               <div class="filter-group">
                 <div class="filter-group_title" @click="technologiesFilterOpen = !technologiesFilterOpen">
                   Technology
-                  <span class="toggle-button">
-                    [[ technologiesFilterOpen ? '-' : '+' ]]
+                  <span class="toggle-button" v-if="technologiesFilterOpen">
+                    <i class="arrow down"></i>
+                  </span>
+                  <span class="toggle-button" v-else>
+                    <i class="arrow left"></i>
                   </span>
                 </div>
 
@@ -139,8 +145,11 @@
               <div class="filter-group">
                 <div class="filter-group_title" @click="statusesFilterOpen = !statusesFilterOpen">
                   Status
-                  <span class="toggle-button">
-                    [[ statusesFilterOpen ? '-' : '+' ]]
+                  <span class="toggle-button" v-if="statusesFilterOpen">
+                    <i class="arrow down"></i>
+                  </span>
+                  <span class="toggle-button" v-else>
+                    <i class="arrow left"></i>
                   </span>
                 </div>
 
