@@ -8,7 +8,7 @@ The Research Software Directory is made of the following services
 - [admin](/admin/): React application for editing the data in the directory. Hosted by `reverse-proxy` service.
 - [auth-github](/auth-github): Protects the `admin` service by forcing authentication with a GitHub account and authorization using GitHub organization membership.
 - [https](/https): Responsible for encrypting (HTTPS) traffic from `reverse-proxy` service.- [backup]
-- (/backup): For backup, copies database to an S3 bucket every day. Only runs when configured.
+- [backup](/backup): For backup, copies database to an S3 bucket every day. Only runs when configured.
 - [database](/database): A Mongo database. Used by `backend` service to store data. Initializes with sample data when database is empty.
 - [graphs](/graphs): Web page which shows metrics of directory. Hosted by `reverse-proxy` service.
 - [harvesting](/harvesting): Scheduled jobs which periodicaly fetch external data. For example commits from GitHub and mentions from Zotero.
