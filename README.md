@@ -6,7 +6,18 @@
 [![Integration Tests](https://github.com/research-software-directory/research-software-directory/workflows/Integration%20Tests/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Integration+tests%22)
 [![Check Markdown links](https://github.com/research-software-directory/research-software-directory/workflows/Check%20Markdown%20links/badge.svg)](https://github.com/research-software-directory/research-software-directory/actions?query=workflow%3A%22Check+Markdown+links%22)
 
+-----
+
+# __THIS IMPLEMENTATION IS DEPRICATED!__
+
+__This implementation of the Research Software Directory is depricated and is no longer maintained.__  
+Please visit the new [RSD-as-a-service](https://github.com/research-software-directory/RSD-as-a-service) repository instead.
+
+----
+
 # Research Software Directory
+
+
 
 ## What is it?
 
