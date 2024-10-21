@@ -10,7 +10,7 @@
 
 # __THIS IMPLEMENTATION IS DEPRECATED!__
 
-__This implementation of the Research Software Directory is depricated and is no longer maintained.__  
+__This implementation of the Research Software Directory is deprecated and is no longer maintained.__  
 Please visit the new [RSD-as-a-service](https://github.com/research-software-directory/RSD-as-a-service) repository instead.
 
 ----
