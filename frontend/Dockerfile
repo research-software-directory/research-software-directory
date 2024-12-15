@@ -1,20 +1,18 @@
-FROM python:3.8-alpine
+FROM node:14-alpine
 
-RUN apk update && apk add --no-cache build-base
+RUN mkdir /app
 
-WORKDIR /src
+WORKDIR /app
 
-COPY requirements.txt /src/
+COPY package.json /app/
 
-RUN python3 -m pip install --upgrade pip && \
-    pip3 install -r requirements.txt
+RUN npm install
 
-COPY . /src
+COPY src /app/src/
+COPY public /app/public/
 
-RUN pysassc --style=compressed --sourcemap style/rsd.scss static/style/rsd.scss.css
+RUN npm run build
 
-STOPSIGNAL SIGINT
-
-CMD sh -c "mkdir -p /shared_static && cp -r /src/static/* /shared_static && gunicorn --preload --workers 3 --max-requests 10 --timeout 15 --bind 0.0.0.0:5004 --access-logfile - --error-logfile - entry:application"
-
-EXPOSE 5004
+FROM nginx:1.17.8-alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=0 /app/dist /usr/share/nginx/html

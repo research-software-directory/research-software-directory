@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  database:
+    image: mongo:3.6
+  backend:
+    ports:
+      - 5001:5001
