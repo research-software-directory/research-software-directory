@@ -159,20 +159,20 @@ def project_status(start_str, end_str):
     start = str_to_datetime(start_str).replace(tzinfo=None)
     end = str_to_datetime(end_str).replace(tzinfo=None)
     today = datetime.now().replace(tzinfo=None)
-    if end < today:
-        return {
-            'status': 'Finished',
-            'progress': 1
-        }
-    elif start > today:
+    if today < start < end:
         return {
             'status': 'Starting',
             'progress': 0
         }
-    else:
+    if start <= today <= end:
         return {
             'status': 'Running',
             'progress': (today - start ) / (end - start)
+        }
+    if start < end < today:
+        return {
+            'status': 'Finished',
+            'progress': 1
         }
 
 @application.route('/projects/<project_id>')
