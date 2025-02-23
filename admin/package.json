@@ -7,7 +7,7 @@
     "url": "https://github.com/research-software-directory/admin"
   },
   "dependencies": {
-    "ajv": "^6.4.0",
+    "ajv": "^6.12.3",
     "axios": "^0.18.1",
     "history": "^4.7.2",
     "immutability-helper": "^2.6.6",
